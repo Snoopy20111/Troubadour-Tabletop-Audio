@@ -6,6 +6,9 @@ MyBot/Release
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+#Files with contents we don't want public
+MyBot/token.config
+
 # User-specific files
 *.rsuser
 *.suo

@@ -8,12 +8,29 @@
  * scopes 'bot' and 'applications.commands', e.g.
  * https://discord.com/oauth2/authorize?client_id=940762342495518720&scope=bot+applications.commands&permissions=139586816064
  */
-const std::string    BOT_TOKEN    = "add your token here";
+
+std::string getBotToken()
+{
+	//read from .config (text) file and grab the token
+	std::ifstream myfile ("token.config");
+	std::string token;
+	if (myfile.is_open())
+	{
+		myfile >> token;
+		std::cout << "Token from config file is: " << token << "\n";
+	}
+	else
+	{
+		std::cout << "Token config file not opened properly. Ensure it's at the correct location and isn't corrupted!";
+	}
+	myfile.close();
+	return token;
+}
 
 int main()
 {
 	/* Create bot cluster */
-	dpp::cluster bot(BOT_TOKEN);
+	dpp::cluster bot(getBotToken());
 
 	/* Output simple log messages to stdout */
 	bot.on_log(dpp::utility::cout_logger());

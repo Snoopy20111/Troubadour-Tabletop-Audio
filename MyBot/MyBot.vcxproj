@@ -111,6 +111,9 @@
     <PostBuildEvent>
       <Message>Copy 32 Bit Debug DLLs to Build</Message>
     </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>xcopy /f /d /k $(MSBuildProjectDirectory)\token.config $(OutDir)\token.config</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -137,6 +140,9 @@
     <PostBuildEvent>
       <Message>Copy 32 Bit Release DLLs to Build</Message>
     </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>xcopy /f /d /k $(MSBuildProjectDirectory)\token.config $(OutDir)\token.config</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -159,6 +165,9 @@
     <PostBuildEvent>
       <Message>Copy 64 Bit Debug DLLs to Build</Message>
     </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>xcopy /f /d /k $(MSBuildProjectDirectory)\token.config $(OutDir)\token.config</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -185,6 +194,9 @@
     <PostBuildEvent>
       <Message>Copy 64 Bit Release DLLs to Build</Message>
     </PostBuildEvent>
+    <PreBuildEvent>
+      <Command>xcopy /f /d /k $(MSBuildProjectDirectory)\token.config $(OutDir)\token.config</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="MyBot.cpp" />
