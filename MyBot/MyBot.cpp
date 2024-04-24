@@ -27,6 +27,22 @@ std::string getBotToken()
 	return token;
 }
 
+//void indexBanks()
+
+//void indexEvents()????
+
+//void listEvents()
+
+//void play()
+
+//void updateParam()
+
+//void stop()
+
+//void join()
+
+//void leave()
+
 int main()
 {
 	/* Create bot cluster */
@@ -40,7 +56,8 @@ int main()
 		/* Wrap command registration in run_once to make sure it doesnt run on every full reconnection */
 		if (dpp::run_once<struct register_bot_commands>()) {
 			std::vector<dpp::slashcommand> commands {
-				{ "ping", "Ping pong!", bot.me.id }
+				{ "ping", "Ping the bot to ensure it's alive.", bot.me.id },
+				{ "list", "List all found banks/events.", bot.me.id}
 			};
 
 			bot.global_bulk_command_create(commands);
@@ -51,6 +68,9 @@ int main()
 	bot.on_slashcommand([](const dpp::slashcommand_t& event) -> dpp::task<void> {
 		if (event.command.get_command_name() == "ping") {
 			co_await event.co_reply("Pong!");
+		}
+		else if (event.command.get_command_name() == "list") {
+			co_await event.co_reply("List, blah blah blah");
 		}
 		co_return;
 	});
