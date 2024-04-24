@@ -57,26 +57,70 @@ int main()
 		if (dpp::run_once<struct register_bot_commands>()) {
 			std::vector<dpp::slashcommand> commands {
 				{ "ping", "Ping the bot to ensure it's alive.", bot.me.id },
-				{ "list", "List all found banks/events.", bot.me.id}
+				{ "list", "List all found banks/events.", bot.me.id},
+				{ "join", "Join your current voice channel.", bot.me.id},
+				{ "leave", "Leave the current voice channel.", bot.me.id}
 			};
-
 			bot.global_bulk_command_create(commands);
 		}
 	});
 
-	/* Handle slash command with the most recent addition to D++ features, coroutines! */
-	bot.on_slashcommand([](const dpp::slashcommand_t& event) -> dpp::task<void> {
+	/* Handle slash commands */
+	bot.on_slashcommand([&bot](const dpp::slashcommand_t& event) {
 		if (event.command.get_command_name() == "ping") {
-			co_await event.co_reply("Pong!");
+			std::string response = "Pong! I'm alive!";
+			event.reply(dpp::message(response.c_str()).set_flags(dpp::m_ephemeral));
+			std::cout << response.c_str() << std::endl;
 		}
 		else if (event.command.get_command_name() == "list") {
-			co_await event.co_reply("List, blah blah blah");
+			std::string response = "List of events (coming soon).";
+			event.reply(dpp::message(response.c_str()).set_flags(dpp::m_ephemeral));
+			std::cout << response.c_str() << std::endl;
 		}
-		co_return;
+		else if (event.command.get_command_name() == "join") {
+			dpp::guild* g = dpp::find_guild(event.command.guild_id);				//Get the Guild aka Server
+			auto current_vc = event.from->get_voice(event.command.guild_id);		//Get the bot's current voice channel
+			bool join_vc = true;
+			if (current_vc) {																	//If already in voice...
+				auto users_vc = g->voice_members.find(event.command.get_issuing_user().id);		//get channel of user
+				if ((users_vc != g->voice_members.end()) && (current_vc->channel_id == users_vc->second.channel_id)) {
+					join_vc = false;			//skips joining a voice chat below
+				}
+				else {
+					event.from->disconnect_voice(event.command.guild_id);				//We're in a different VC, so leave it and join the new one below
+					join_vc = true;														//possibly redundant assignment?
+				}
+			}
+			if (join_vc) {																//If we need to join a call above...
+				if (!g->connect_member_voice(event.command.get_issuing_user().id)) {	//try to connect, return false if we fail
+					event.reply(dpp::message("You're not in a voice channel to be joined!").set_flags(dpp::m_ephemeral));
+					std::cout << "Not in a voice channel to be joined." << std::endl;
+					//return 1;
+				}
+				//If not caught above, we're in voice! Not instant, will need to wait for on_voice_ready callback
+				event.reply(dpp::message("Joined your channel!").set_flags(dpp::m_ephemeral));
+				std::cout << "Joined channel of user." << std::endl;
+			}
+			else {
+				event.reply(dpp::message("I am already living in your walls.").set_flags(dpp::m_ephemeral));
+				std::cout << "Already living in your walls." << std::endl;
+			}
+		}
+		else if (event.command.get_command_name() == "leave") {
+			dpp::guild* g = dpp::find_guild(event.command.guild_id);
+			auto current_vc = event.from->get_voice(event.command.guild_id);
+			if (current_vc) {
+				event.from->disconnect_voice(event.command.guild_id);
+				event.reply(dpp::message("Bye bye! I hope I played good sounds!").set_flags(dpp::m_ephemeral));
+				std::cout << "Leaving voice channel." << std::endl;
+			}
+		}
 	});
 
 	/* Start the bot */
 	bot.start(dpp::st_wait);
+
+	//FMOD update loop here?
 
 	return 0;
 }
