@@ -4,7 +4,7 @@
 std::filesystem::path getExecutablePath() {
     TCHAR path[MAX_PATH];
     DWORD length = GetModuleFileName(NULL, path, MAX_PATH);
-    printf("Executable location path Length: %d\nPath: %ls\n", length, path);
+    printf("Executable location Path: %ls\nLength: %d\n", path, length);
     return path;
 }
 
