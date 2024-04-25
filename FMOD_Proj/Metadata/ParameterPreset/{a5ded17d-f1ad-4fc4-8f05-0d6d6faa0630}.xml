@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{a5ded17d-f1ad-4fc4-8f05-0d6d6faa0630}">
+		<property name="name">
+			<value>MainOrGym</value>
+		</property>
+		<relationship name="folder">
+			<destination>{22312349-d57f-4705-a689-952236bfc399}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{c6d2157d-adfc-4659-b78d-a9e37c1844c6}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{c6d2157d-adfc-4659-b78d-a9e37c1844c6}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+		<property name="seekSpeed">
+			<value>2</value>
+		</property>
+	</object>
+</objects>

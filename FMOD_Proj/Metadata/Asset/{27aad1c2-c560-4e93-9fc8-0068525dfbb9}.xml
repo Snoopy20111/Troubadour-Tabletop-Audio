@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="EncodableAsset" id="{27aad1c2-c560-4e93-9fc8-0068525dfbb9}">
+		<property name="assetPath">
+			<value>RoboxingMusic/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{f930ae7e-03ac-4797-acd5-e828f088234b}</destination>
+		</relationship>
+	</object>
+</objects>
