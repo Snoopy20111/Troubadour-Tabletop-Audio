@@ -17,6 +17,7 @@
  */
 
 bool isRunning = true;
+bool isConnected = false;
 
 //file paths
 std::filesystem::path exe_path;
@@ -24,6 +25,7 @@ std::filesystem::path banks_path;
 std::filesystem::path workpath;
 
 //---FMOD Declearations---//
+FMOD_RESULT result;										//Reusable error checking result
 FMOD::Studio::System* pSystem = nullptr;				//overall system
 FMOD::System* pCoreSystem = nullptr;					//overall core system
 FMOD::Studio::Bank* pMasterBank = nullptr;				//Master Bank
@@ -32,6 +34,10 @@ FMOD::Studio::Bank* pSharedUIBank = nullptr;			//Example non-master bank
 FMOD::Studio::Bus* pMasterBus = nullptr;				//Master bus
 FMOD::ChannelGroup* pMasterBusGroup = nullptr;			//Channel Group of the master bus
 FMOD::DSP* mCaptureDSP = nullptr;						//DSP to attach to Master Channel Group for stealing output
+
+dpp::voiceconn* currentVC = nullptr;
+dpp::discord_voice_client* currentClient = nullptr;
+
 
 //Test Event stuff, will be replaced with more flexible lists built at runtime
 FMOD::Studio::EventDescription* pEventDescription = nullptr;        //Event Description, essentially the Event itself plus data
@@ -42,40 +48,51 @@ std::string master_bank = "Master.bank";							//Known bank names, basically jus
 std::string masterstrings_bank = "Master.strings.bank";
 std::string ui_bank = "Shared_UI.bank";
 
-//FMOD Functions
+//FMOD and Audio Functions
 void ERRCHECK(FMOD_RESULT result) {
-	if (result != FMOD_OK)
-	{
+	if (result != FMOD_OK) {
 		printf("FMOD Error! (%d) %s\n", result, FMOD_ErrorString(result));
-		exit(-1);
+		exit(-1 * result);
 	}
 }
 
-FMOD_RESULT F_CALLBACK captureDSPReadCallback(FMOD_DSP_STATE* dsp_state, float* inbuffer, float* outbuffer, unsigned int length, int inchannels, int* outchannels)
-{
-	char name[256];
-	unsigned int userdata;
+uint8_t floatToPCM(double inSample) {
+	uint8_t outSample;
+
+	//Floor and Ceiling
+	if (inSample > 1.0) { inSample = 1.0; }
+	else if (inSample < -1.0) { inSample = -1.0; }
+
+	//Putting the numbers in order using two's complement (first bit 0 = positive, 1 = negative)
+	if (inSample >= 0) { outSample = lrintf(inSample * 32767.0); }			//This will be the source of problems, no doubt
+	else { outSample = lrintf(inSample * 32767.0) * 2; }
+	return outSample;
+}
+
+FMOD_RESULT F_CALLBACK captureDSPReadCallback(FMOD_DSP_STATE* dsp_state, float* inbuffer, float* outbuffer, unsigned int length, int inchannels, int* outchannels) {
+	
 	FMOD::DSP* thisdsp = (FMOD::DSP*)dsp_state->instance;
 
-	/* This redundant call just shows using the instance parameter of FMOD_DSP_STATE to call a DSP information function. */
-	ERRCHECK(thisdsp->getInfo(name, 0, 0, 0, 0));
-	ERRCHECK(thisdsp->getUserData((void**)&userdata));
+	std::vector<uint8_t> pcmdata;
+	uint16_t newPCMData[dpp::send_audio_raw_max_length];
 
-	/* This loop assumes inchannels = outchannels, which it will be if the DSP is created with '0'
-	as the number of channels in FMOD_DSP_DESCRIPTION.
-	Specifying an actual channel count will mean you have to take care of any number of channels coming in,
-	but outputting the number of channels specified. Generally it is best to keep the channel
-	count at 0 for maximum compatibility. */
-	for (unsigned int samp = 0; samp < length; samp++)
-	{
+	for (unsigned int samp = 0; samp < length; samp++) {
 		for (int chan = 0; chan < *outchannels; chan++) {
-			/* This DSP filter just halves the volume! Input is modified, and sent to output. */
-			//outbuffer[(samp * *outchannels) + chan] = inbuffer[(samp * inchannels) + chan] * 0.2f;
-			outbuffer[(samp * *outchannels) + chan] = inbuffer[(samp * inchannels) + chan] * 0.2f;
+			//outbuffer[(samp * *outchannels) + chan] = inbuffer[(samp * inchannels) + chan];	// This DSP filter just passes out what it got in.
+			outbuffer[(samp * *outchannels) + chan] = 0.0f;										//This filter basically just mutes the system output.
+			if (isConnected) {
+				pcmdata.push_back(floatToPCM(inbuffer[(samp * inchannels) + chan]));			//If connected, build the frame
+			}
 		}
 	}
+	//std::cout << pcmdata.data() << std::endl;
 
-	//Pass appropriate data to Discord here!
+	//Pass PCM data to Discord here!
+	if (isConnected) {
+		
+		currentClient->send_audio_raw((uint16_t*)pcmdata.data(), pcmdata.size());
+		//std::cout << "here\n";
+	}
 
 	return FMOD_OK;
 }
@@ -112,12 +129,12 @@ void list(const dpp::slashcommand_t& event) {
 }
 
 void join(const dpp::slashcommand_t& event) {
-	dpp::guild* g = dpp::find_guild(event.command.guild_id);							//Get the Guild aka Server
-	auto current_vc = event.from->get_voice(event.command.guild_id);					//Get the bot's current voice channel
+	dpp::guild* guild = dpp::find_guild(event.command.guild_id);						//Get the Guild aka Server
+	currentVC = event.from->get_voice(event.command.guild_id);							//Get the bot's current voice channel
 	bool join_vc = true;
-	if (current_vc) {																	//If already in voice...
-		auto users_vc = g->voice_members.find(event.command.get_issuing_user().id);		//get channel of user
-		if ((users_vc != g->voice_members.end()) && (current_vc->channel_id == users_vc->second.channel_id)) {
+	if (currentVC) {																	//If already in voice...
+		auto users_vc = guild->voice_members.find(event.command.get_issuing_user().id);	//get channel of user
+		if ((users_vc != guild->voice_members.end()) && (currentVC->channel_id == users_vc->second.channel_id)) {
 			join_vc = false;			//skips joining a voice chat below
 		}
 		else {
@@ -126,7 +143,7 @@ void join(const dpp::slashcommand_t& event) {
 		}
 	}
 	if (join_vc) {																		//If we need to join a call above...
-		if (!g->connect_member_voice(event.command.get_issuing_user().id)) {			//try to connect, return false if we fail
+		if (!guild->connect_member_voice(event.command.get_issuing_user().id)) {		//try to connect, return false if we fail
 			event.reply(dpp::message("You're not in a voice channel to be joined!").set_flags(dpp::m_ephemeral));
 			std::cout << "Not in a voice channel to be joined." << std::endl;
 			return;
@@ -134,6 +151,9 @@ void join(const dpp::slashcommand_t& event) {
 		//If not caught above, we're in voice! Not instant, will need to wait for on_voice_ready callback
 		event.reply(dpp::message("Joined your channel!").set_flags(dpp::m_ephemeral));
 		std::cout << "Joined channel of user." << std::endl;
+		ERRCHECK(pEventInstance->start());
+		ERRCHECK(pEventInstance->release());
+
 	}
 	else {
 		event.reply(dpp::message("I am already living in your walls.").set_flags(dpp::m_ephemeral));
@@ -142,11 +162,12 @@ void join(const dpp::slashcommand_t& event) {
 }
 
 void leave(const dpp::slashcommand_t& event) {
-	auto current_vc = event.from->get_voice(event.command.guild_id);
-	if (current_vc) {
+	currentVC = event.from->get_voice(event.command.guild_id);
+	if (currentVC) {
 		event.from->disconnect_voice(event.command.guild_id);
 		event.reply(dpp::message("Bye bye! I hope I played good sounds!").set_flags(dpp::m_ephemeral));
 		std::cout << "Leaving voice channel." << std::endl;
+		isConnected = false;
 	}
 }
 
@@ -158,8 +179,7 @@ void leave(const dpp::slashcommand_t& event) {
 //void stop()
 
 
-void init()
-{
+void init() {
 	std::cout << "###########################" << std::endl;
 	std::cout << "###                     ###" << std::endl;
 	std::cout << "###  Session Music Bot  ###" << std::endl;
@@ -176,7 +196,9 @@ void init()
 	std::cout << "Initializing FMOD...";
 	ERRCHECK(FMOD::Studio::System::create(&pSystem));
 	ERRCHECK(pSystem->initialize(128, FMOD_STUDIO_INIT_NORMAL, FMOD_INIT_NORMAL, nullptr));
+	//Set DSP Buffer Size here
 	ERRCHECK(pSystem->getCoreSystem(&pCoreSystem));
+	pCoreSystem->setDSPBufferSize(dpp::send_audio_raw_max_length, 4);
 	std::cout << "Done." << std::endl;
 
 	//Load Master Bank and Master Strings
@@ -208,6 +230,7 @@ void init()
 		dspdesc.userdata = (void*)0x12345678;
 		ERRCHECK(pCoreSystem->createDSP(&dspdesc, &mCaptureDSP));
 	}
+	ERRCHECK(pMasterBusGroup->addDSP(FMOD_CHANNELCONTROL_DSP_TAIL, mCaptureDSP));		//Adds the newly defined dsp
 
 	//Setting Listener positioning, normally would be done from game engine data
 	std::cout << "Setting up Listener...";
@@ -262,17 +285,20 @@ int main() {
 		else if (event.command.get_command_name() == "leave") { leave(event); }
 	});
 
+	bot.on_voice_ready([&bot](const dpp::voice_ready_t& event) {
+		std::cout << "Voice Ready\n";
+		currentClient = event.voice_client;							//Get the bot's current voice channel
+		isConnected = true;
+	});
+
 	/* Start the bot */
 	bot.start();
 
-	ERRCHECK(pEventInstance->start());
-	ERRCHECK(pEventInstance->release());
-
 	//FMOD update loop here?
-	while (isRunning)
-	{
+	while (isRunning) {
 		pSystem->update();
 		Sleep(10);
+		//std::cout << currentVC << std::endl;
 	}
 	std::cout << "Quitting program. Releasing resources..." << std::endl;
 
