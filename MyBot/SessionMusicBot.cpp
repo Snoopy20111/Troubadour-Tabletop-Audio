@@ -1,11 +1,12 @@
 #include "SessionMusicBot.h"				//Pre-written sanity checks for versions
-#include <filesystem>						//Standard C++ Filesystem
 #include <dpp/dpp.h>						//D++ header
 #include "fmod.hpp"							//FMOD Core
 #include "fmod_studio.hpp"					//FMOD Studio
 #include "fmod_common.h"
 #include "fmod_studio_common.h"
-#include "SessionMusicBot_Utils.h"			//Some utility functions that 
+#include "fmod_errors.h"					//Allows FMOD Results to be output as understandable text
+#include <filesystem>						//Standard C++ Filesystem
+#include "SessionMusicBot_Utils.h"			//Some utility functions specific to this bot
 
 /* Be sure to place your token in the line below.
  * Follow steps here to get a token:
@@ -23,46 +24,66 @@ std::filesystem::path banks_path;
 std::filesystem::path workpath;
 
 //---FMOD Declearations---//
+FMOD_RESULT result;										//reusable FMOD_RESULT value
 FMOD::Studio::System* pSystem = nullptr;				//overall system
 FMOD::System* pCoreSystem = nullptr;					//overall core system
-
 FMOD::Studio::Bank* pMasterBank = nullptr;				//Master Bank
 FMOD::Studio::Bank* pMasterStringsBank = nullptr;		//Master Strings
 FMOD::Studio::Bank* pSharedUIBank = nullptr;			//Example non-master bank
 FMOD::Studio::Bus* pMasterBus = nullptr;				//Master bus
 FMOD::ChannelGroup* pMasterBusGroup = nullptr;			//Channel Group of the master bus
-FMOD_RESULT result;										//reusable FMOD_RESULT value
-
-//DSP Capture stuff
 FMOD::DSP* mCaptureDSP = nullptr;						//DSP to attach to Master Channel Group for stealing output
-FMOD_DSP_READ_CALLBACK mReadCallback;
-float mDataBuffer[2048];								//size assumes 1024 samples per buffer in stereo
-//float[] mDataBuffer;
-//GCHandle mObjHandle;
-unsigned int mBufferLength;
-int mChannels = 0;
 
-
-//FMOD::Studio::EventDescription* pEventDescription = nullptr;        //Event Description, essentially the Event itself plus data
-//FMOD::Studio::EventInstance* pEventInstance = nullptr;              //Event Instance
+//Test Event stuff, will be replaced with more flexible lists built at runtime
+FMOD::Studio::EventDescription* pEventDescription = nullptr;        //Event Description, essentially the Event itself plus data
+FMOD::Studio::EventInstance* pEventInstance = nullptr;              //Event Instance
 FMOD_3D_ATTRIBUTES listenerAttributes;
 FMOD_3D_ATTRIBUTES eventAttributes;
-
-
-//Known bank names, basically just Master and Strings
-std::string master_bank = "Master.bank";
+std::string master_bank = "Master.bank";							//Known bank names, basically just Master and Strings
 std::string masterstrings_bank = "Master.strings.bank";
 std::string ui_bank = "Shared_UI.bank";
 
-
-void ERRCHECK(FMOD_RESULT result) {									//This stands in for actual error checking from FMOD.
-	//Todo: Get more specific with these errors						//Not sure why that's not working.
+//FMOD Functions
+void ERRCHECK(FMOD_RESULT result) {
 	if (result != FMOD_OK)
 	{
-		std::cout << "FMOD Error!" << std::endl;
+		printf("FMOD Error! (%d) %s\n", result, FMOD_ErrorString(result));
+		exit(-1);
 	}
 }
 
+FMOD_RESULT F_CALLBACK captureDSPReadCallback(FMOD_DSP_STATE* dsp_state, float* inbuffer, float* outbuffer, unsigned int length, int inchannels, int* outchannels)
+{
+	char name[256];
+	unsigned int userdata;
+	FMOD::DSP* thisdsp = (FMOD::DSP*)dsp_state->instance;
+
+	/* This redundant call just shows using the instance parameter of FMOD_DSP_STATE to call a DSP information function. */
+	result = thisdsp->getInfo(name, 0, 0, 0, 0);
+	ERRCHECK(result);
+	result = thisdsp->getUserData((void**)&userdata);
+	ERRCHECK(result);
+
+	/* This loop assumes inchannels = outchannels, which it will be if the DSP is created with '0'
+	as the number of channels in FMOD_DSP_DESCRIPTION.
+	Specifying an actual channel count will mean you have to take care of any number of channels coming in,
+	but outputting the number of channels specified. Generally it is best to keep the channel
+	count at 0 for maximum compatibility. */
+	for (unsigned int samp = 0; samp < length; samp++)
+	{
+		for (int chan = 0; chan < *outchannels; chan++) {
+			/* This DSP filter just halves the volume! Input is modified, and sent to output. */
+			//outbuffer[(samp * *outchannels) + chan] = inbuffer[(samp * inchannels) + chan] * 0.2f;
+			outbuffer[(samp * *outchannels) + chan] = inbuffer[(samp * inchannels) + chan] * 0.2f;
+		}
+	}
+
+	//Pass appropriate data to Discord here!
+
+	return FMOD_OK;
+}
+
+//Bot Functions
 std::string getBotToken()
 {
 	//read from .config (text) file and grab the token
@@ -139,36 +160,6 @@ void leave(const dpp::slashcommand_t& event) {
 //void updateParam()
 //void stop()
 
-FMOD_RESULT F_CALLBACK captureDSPReadCallback(FMOD_DSP_STATE* dsp_state, float* inbuffer, float* outbuffer, unsigned int length, int inchannels, int* outchannels)
-{
-	char name[256];
-	unsigned int userdata;
-	FMOD::DSP* thisdsp = (FMOD::DSP*)dsp_state->instance;
-
-	/* This redundant call just shows using the instance parameter of FMOD_DSP_STATE to call a DSP information function. */
-	result = thisdsp->getInfo(name, 0, 0, 0, 0);
-	ERRCHECK(result);
-	result = thisdsp->getUserData((void**)&userdata);
-	ERRCHECK(result);
-
-	/* This loop assumes inchannels = outchannels, which it will be if the DSP is created with '0'
-	as the number of channels in FMOD_DSP_DESCRIPTION.
-	Specifying an actual channel count will mean you have to take care of any number of channels coming in,
-	but outputting the number of channels specified. Generally it is best to keep the channel
-	count at 0 for maximum compatibility. */
-	for (unsigned int samp = 0; samp < length; samp++)
-	{
-		for (int chan = 0; chan < *outchannels; chan++) {
-			/* This DSP filter just halves the volume! Input is modified, and sent to output. */
-			//outbuffer[(samp * *outchannels) + chan] = inbuffer[(samp * inchannels) + chan] * 0.2f;
-			outbuffer[(samp * *outchannels) + chan] = inbuffer[(samp * inchannels) + chan] * 0.2f;
-		}
-	}
-
-	//Pass appropriate data to Discord here!
-
-	return FMOD_OK;
-}
 
 void init()
 {
@@ -179,39 +170,39 @@ void init()
 	std::cout << "###########################" << std::endl;
 
 	//file paths
-	exe_path = getExecutableFolder();						//Special function from util header
+	exe_path = getExecutableFolder();						//Special function from SessionMusicBot_Utils.h
 	banks_path = exe_path.append("soundbanks");
 	workpath = banks_path;
 
 	workpath.append(master_bank);       //Sets workpath to default file, to ensure there's always at least _a_ path
 
 	//FMOD Init
-	//Todo: error checking
 	std::cout << "Initializing FMOD...";
-	FMOD::Studio::System::create(&pSystem);
-	pSystem->initialize(128, FMOD_STUDIO_INIT_NORMAL, FMOD_INIT_NORMAL, nullptr);
-	pSystem->getCoreSystem(&pCoreSystem);
+	ERRCHECK(FMOD::Studio::System::create(&pSystem));
+	ERRCHECK(pSystem->initialize(128, FMOD_STUDIO_INIT_NORMAL, FMOD_INIT_NORMAL, nullptr));
+	ERRCHECK(pSystem->getCoreSystem(&pCoreSystem));
 	std::cout << "Done." << std::endl;
 
 	//Load Master Bank and Master Strings
 	std::cout << "Loading banks...";
-	pSystem->loadBankFile(workpath.replace_filename(master_bank).string().c_str(), FMOD_STUDIO_LOAD_BANK_NORMAL, &pMasterBank);
-	pSystem->loadBankFile(workpath.replace_filename(masterstrings_bank).string().c_str(), FMOD_STUDIO_LOAD_BANK_NORMAL, &pMasterStringsBank);
-	pSystem->loadBankFile(workpath.replace_filename(ui_bank).string().c_str(), FMOD_STUDIO_LOAD_BANK_NORMAL, &pSharedUIBank);
+
+	workpath.replace_filename(master_bank).string().c_str();
+	std::cout << workpath.string();
+	ERRCHECK(pSystem->loadBankFile(workpath.replace_filename(master_bank).string().c_str(), FMOD_STUDIO_LOAD_BANK_NORMAL, &pMasterBank));
+	ERRCHECK(pSystem->loadBankFile(workpath.replace_filename(masterstrings_bank).string().c_str(), FMOD_STUDIO_LOAD_BANK_NORMAL, &pMasterStringsBank));
+	ERRCHECK(pSystem->loadBankFile(workpath.replace_filename(ui_bank).string().c_str(), FMOD_STUDIO_LOAD_BANK_NORMAL, &pSharedUIBank));
 	std::cout << "Done." << std::endl;
 
 	//Also get the Master Bus, set volume, and get the related Channel Group
 	std::cout << "Getting Busses and Channel Groups...";
-	pSystem->getBus("bus:/", &pMasterBus);
-	//pMasterBus->setVolume(dBToFloat(-4.0f));
-	pMasterBus->getChannelGroup(&pMasterBusGroup);
+	ERRCHECK(pSystem->getBus("bus:/", &pMasterBus));
+	ERRCHECK(pMasterBus->setVolume(dBToFloat(-4.0f)));
+	ERRCHECK(pMasterBus->getChannelGroup(&pMasterBusGroup));
 	std::cout << "Done." << std::endl;
 
-	/*
-		Define and create our capture DSP on the Master Channel Group.
-		Copied & Pasted from FMOD's examples. No idea why this works and my billion other attempts didn't.
-		Nor why it must be in brackets, within a function! Ugh.
-	*/
+	
+	//Define and create our capture DSP on the Master Channel Group.
+	//Copied from FMOD's examples, unsure why this works and why it must be in brackets.
 	{
 		FMOD_DSP_DESCRIPTION dspdesc;
 		memset(&dspdesc, 0, sizeof(dspdesc));
@@ -222,28 +213,22 @@ void init()
 		dspdesc.read = captureDSPReadCallback;
 		dspdesc.userdata = (void*)0x12345678;
 
-		result = pCoreSystem->createDSP(&dspdesc, &mCaptureDSP);
-		ERRCHECK(result);
+		ERRCHECK(pCoreSystem->createDSP(&dspdesc, &mCaptureDSP));
 	}
 
-
 	//Setting Listener positioning, normally would be done from game engine data
-	//Todo: Error checking
 	std::cout << "Setting up Listener...";
 	listenerAttributes.position = { 0.0f, 0.0f, 0.0f };
 	listenerAttributes.forward = { 0.0f, 1.0f, 0.0f };
 	listenerAttributes.up = { 0.0f, 0.0f, 1.0f };
 	listenerAttributes.velocity = { 0.0f, 0.0f, 0.0f };         //Used exclusively for Doppler, but built-in Doppler kinda sucks
-	pSystem->setListenerAttributes(0, &listenerAttributes);
+	ERRCHECK(pSystem->setListenerAttributes(0, &listenerAttributes));
 	std::cout << "Done." << std::endl;
 
 	//Create event instance
-	//std::cout << "Creating Event Instances...\n";
-	//pSystem->getEvent("event:/Master/Music/TitleTheme", &pEventDescription);
-	//pEventDescription->createInstance(&pEventInstance);
-
-	//pEventInstance->start();
-	//pEventInstance->release();
+	std::cout << "Creating Test Event Instance...\n";
+	ERRCHECK(pSystem->getEvent("event:/Master/Music/TitleTheme", &pEventDescription));
+	ERRCHECK(pEventDescription->createInstance(&pEventInstance));
 
 	std::cout << "###########################" << std::endl;
 	std::cout << "###                     ###" << std::endl;
@@ -286,6 +271,9 @@ int main() {
 
 	/* Start the bot */
 	bot.start();
+
+	ERRCHECK(pEventInstance->start());
+	ERRCHECK(pEventInstance->release());
 
 	//FMOD update loop here?
 	while (isRunning)
