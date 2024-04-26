@@ -24,7 +24,6 @@ std::filesystem::path banks_path;
 std::filesystem::path workpath;
 
 //---FMOD Declearations---//
-FMOD_RESULT result;										//reusable FMOD_RESULT value
 FMOD::Studio::System* pSystem = nullptr;				//overall system
 FMOD::System* pCoreSystem = nullptr;					//overall core system
 FMOD::Studio::Bank* pMasterBank = nullptr;				//Master Bank
@@ -59,10 +58,8 @@ FMOD_RESULT F_CALLBACK captureDSPReadCallback(FMOD_DSP_STATE* dsp_state, float* 
 	FMOD::DSP* thisdsp = (FMOD::DSP*)dsp_state->instance;
 
 	/* This redundant call just shows using the instance parameter of FMOD_DSP_STATE to call a DSP information function. */
-	result = thisdsp->getInfo(name, 0, 0, 0, 0);
-	ERRCHECK(result);
-	result = thisdsp->getUserData((void**)&userdata);
-	ERRCHECK(result);
+	ERRCHECK(thisdsp->getInfo(name, 0, 0, 0, 0));
+	ERRCHECK(thisdsp->getUserData((void**)&userdata));
 
 	/* This loop assumes inchannels = outchannels, which it will be if the DSP is created with '0'
 	as the number of channels in FMOD_DSP_DESCRIPTION.
@@ -170,11 +167,10 @@ void init()
 	std::cout << "###########################" << std::endl;
 
 	//file paths
-	exe_path = getExecutableFolder();						//Special function from SessionMusicBot_Utils.h
+	exe_path = getExecutableFolder();				//Special function from SessionMusicBot_Utils.h
 	banks_path = exe_path.append("soundbanks");
 	workpath = banks_path;
-
-	workpath.append(master_bank);       //Sets workpath to default file, to ensure there's always at least _a_ path
+	workpath.append(master_bank);					//Sets workpath to default file, to ensure there's always at least a valid path
 
 	//FMOD Init
 	std::cout << "Initializing FMOD...";
@@ -185,9 +181,6 @@ void init()
 
 	//Load Master Bank and Master Strings
 	std::cout << "Loading banks...";
-
-	workpath.replace_filename(master_bank).string().c_str();
-	std::cout << workpath.string();
 	ERRCHECK(pSystem->loadBankFile(workpath.replace_filename(master_bank).string().c_str(), FMOD_STUDIO_LOAD_BANK_NORMAL, &pMasterBank));
 	ERRCHECK(pSystem->loadBankFile(workpath.replace_filename(masterstrings_bank).string().c_str(), FMOD_STUDIO_LOAD_BANK_NORMAL, &pMasterStringsBank));
 	ERRCHECK(pSystem->loadBankFile(workpath.replace_filename(ui_bank).string().c_str(), FMOD_STUDIO_LOAD_BANK_NORMAL, &pSharedUIBank));
@@ -197,10 +190,11 @@ void init()
 	std::cout << "Getting Busses and Channel Groups...";
 	ERRCHECK(pSystem->getBus("bus:/", &pMasterBus));
 	ERRCHECK(pMasterBus->setVolume(dBToFloat(-4.0f)));
-	ERRCHECK(pMasterBus->getChannelGroup(&pMasterBusGroup));
+	ERRCHECK(pMasterBus->lockChannelGroup());					//We need the Master Channel Group to always exist even when events arn't playing...
+	ERRCHECK(pSystem->flushCommands());							//And we must make sure the Channel Group exists when we query it...
+	ERRCHECK(pMasterBus->getChannelGroup(&pMasterBusGroup));	//Or else this fails immediately, and we'll have DSP problems.
 	std::cout << "Done." << std::endl;
 
-	
 	//Define and create our capture DSP on the Master Channel Group.
 	//Copied from FMOD's examples, unsure why this works and why it must be in brackets.
 	{
@@ -212,7 +206,6 @@ void init()
 		dspdesc.numoutputbuffers = 2;
 		dspdesc.read = captureDSPReadCallback;
 		dspdesc.userdata = (void*)0x12345678;
-
 		ERRCHECK(pCoreSystem->createDSP(&dspdesc, &mCaptureDSP));
 	}
 

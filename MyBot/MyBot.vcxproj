@@ -180,8 +180,8 @@ xcopy /f /d /k $(MSBuildProjectDirectory)\token.config $(OutDir)token.config</Co
     </Link>
     <PostBuildEvent>
       <Command>copy /y "$(ProjectDir)dependencies\64\debug\bin\*.dll" "$(OutDir)"
-xcopy /y /d "C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\core\lib\x64\*.dll" "$(OutDir)"
-xcopy /y /d "C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\studio\lib\x64\*.dll" "$(OutDir)"
+copy /y "C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\core\lib\x64\*.dll" "$(OutDir)"
+copy /y "C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\studio\lib\x64\*.dll" "$(OutDir)"
 for /r "$(MSBuildProjectDirectory)\soundbanks" %%D in (*) do xcopy /y /d /f /i "%%D" "$(OutDir)soundbanks\"
 xcopy /f /d /k $(MSBuildProjectDirectory)\token.config $(OutDir)token.config</Command>
     </PostBuildEvent>
