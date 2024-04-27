@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Workspace" id="{dc07a1f3-1f78-40ba-88c8-2386f8debc68}">
 		<property name="builtBanksOutputDirectory">
-			<value>../Soundbanks</value>
+			<value>../MyBot/soundbanks</value>
 		</property>
 		<relationship name="masterEventFolder">
 			<destination>{d3991d65-deb5-44d4-8fc7-6c98abf3a82e}</destination>
