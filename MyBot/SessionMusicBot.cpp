@@ -19,6 +19,7 @@
 
 bool isRunning = true;
 bool isConnected = false;
+bool fromSilence = true;
 
 //file paths
 std::filesystem::path exe_path;
@@ -36,10 +37,10 @@ FMOD::Studio::Bus* pMasterBus = nullptr;				//Master bus
 FMOD::ChannelGroup* pMasterBusGroup = nullptr;			//Channel Group of the master bus
 FMOD::DSP* mCaptureDSP = nullptr;						//DSP to attach to Master Channel Group for stealing output
 
-dpp::voiceconn* currentVC = nullptr;
+dpp::voiceconn* currentVC = nullptr;					//Goes stale, todo: fix or make it only used temporarily
 dpp::discord_voice_client* currentClient = nullptr;
 
-std::vector<uint16_t> myPCMData;
+std::vector<uint16_t> myPCMData;						//Main buffer of PCM audio data, which FMOD adds to and D++ cuts "frames" from
 
 
 //Test Event stuff, will be replaced with more flexible lists built at runtime
@@ -81,7 +82,6 @@ FMOD_RESULT F_CALLBACK captureDSPReadCallback(FMOD_DSP_STATE* dsp_state, float* 
 			for (int chan = 0; chan < *outchannels; chan++) {
 				//outbuffer[(samp * *outchannels) + chan] = inbuffer[(samp * inchannels) + chan];	// This DSP filter just passes out what it got in.
 				outbuffer[(samp * *outchannels) + chan] = 0.0f;										//This filter basically just mutes the system output.
-				//pcmdata[(samp * *outchannels) + chan] = floatToPCM(inbuffer[(samp * inchannels) + chan]);				//Start building our new frame
 				pcmdata.push_back(floatToPCM(inbuffer[(samp*inchannels) + chan]));
 			}
 		}
@@ -95,11 +95,7 @@ FMOD_RESULT F_CALLBACK captureDSPReadCallback(FMOD_DSP_STATE* dsp_state, float* 
 	}
 	//Pass PCM data to our larger buffer
 	if (isConnected) {
-
-		//std::cout << inbuffer[sizeof(inbuffer) - 1] << "\n";
-		//std::cout << pcmdata[pcmdata.size() - 1] << "\n";
 		myPCMData.insert(myPCMData.end(), pcmdata.cbegin(), pcmdata.cend());
-		//currentClient->send_audio_raw((uint16_t*)pcmdata.data(), length);
 	}
 
 	return FMOD_OK;
@@ -320,7 +316,6 @@ int main() {
 	/* Start the bot */
 	bot.start();
 
-	size_t audiolength = dpp::send_audio_raw_max_length;
 
 	//FMOD update loop here?
 	while (isRunning) {
@@ -333,18 +328,34 @@ int main() {
 
 		pSystem->update();
 		
-		//If connected and has enough PCM Data, send it, then trim that data from the buffer
-		if (isConnected && myPCMData.size() > (audiolength)) {			//
-			std::cout << "Sending PCM Data at time: " << elapsed << std::endl;
-			std::vector<uint16_t> pcmdata = myPCMData;
-			pcmdata.resize(audiolength);					//cuts out everything we don't want
+		//Sending PCM Data to D++ for encoding and encrypting
+		if (isConnected) {
+			//The first time playing from silence, send a bunch of packets to build some time.
+			//This will add some latency from "play" to transmission, but necessary
+			// to avoid starving D++ of samples
+			if (fromSilence && (myPCMData.size() > dpp::send_audio_raw_max_length * 50)) {					// 69120 samples, ~ 1.5 sec
+				std::cout << "Sending PCM Data from silence at time: " << elapsed << std::endl;
 
-			currentClient->send_audio_raw((uint16_t*)pcmdata.data(), pcmdata.size());
-
-			myPCMData.erase(myPCMData.begin(), myPCMData.begin() + audiolength);
-		}
-
-
+				while (myPCMData.size() > dpp::send_audio_raw_max_length * 2) {								//Until minimum size we want our buffer
+					std::cout << "[] ";
+					std::vector<uint16_t> pcmdata = myPCMData;												//Copy the buffer
+					pcmdata.resize(dpp::send_audio_raw_max_length);											//trim copy down to one "frame"
+					currentClient->send_audio_raw(pcmdata.data(), pcmdata.size());							//Send over the data
+					myPCMData.erase(myPCMData.begin(), myPCMData.begin() + dpp::send_audio_raw_max_length);	//Trim our main buffer of the data just sent
+				}
+				fromSilence = false;
+			}
+			//Standard loop
+			else if (!fromSilence && (myPCMData.size() > dpp::send_audio_raw_max_length * 2)) {
+				std::cout << "Sending PCM Data at time: " << elapsed << std::endl;
+				std::vector<uint16_t> pcmdata = myPCMData;
+				pcmdata.resize(dpp::send_audio_raw_max_length);					//cuts out everything we don't want
+				currentClient->send_audio_raw(pcmdata.data(), pcmdata.size());
+				myPCMData.erase(myPCMData.begin(), myPCMData.begin() + dpp::send_audio_raw_max_length);
+			}
+			//Todo: what if the audio ends? We should stop transmitting, right? Probably would go here.
+			//Check if any events are playing, and if not plus output is silent, fromSilence = true again.
+		} 
 		Sleep(10);
 	}
 	std::cout << "Quitting program. Releasing resources..." << std::endl;
