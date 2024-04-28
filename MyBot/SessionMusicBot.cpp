@@ -65,6 +65,9 @@ uint16_t floatToPCM(float inSample) {
 	if (inSample >= 1.0) { outSample = 32767; }					//Ceiling
 	else if (inSample <= -1.0) { outSample = -32768; }			//Floor
 	else { outSample = (uint16_t)floor(inSample * 32767.0); }	//Normal conversion
+
+	//Todo: Dithering?
+
 	return outSample;
 }
 
@@ -156,8 +159,6 @@ void join(const dpp::slashcommand_t& event) {
 		//If not caught above, we're in voice! Not instant, will need to wait for on_voice_ready callback
 		event.reply(dpp::message("Joined your channel!").set_flags(dpp::m_ephemeral));
 		std::cout << "Joined channel of user." << std::endl;
-		ERRCHECK(pEventInstance->start());
-		ERRCHECK(pEventInstance->release());
 
 	}
 	else {
@@ -204,6 +205,7 @@ void init() {
 	ERRCHECK(pSystem->getCoreSystem(&pCoreSystem));
 	std::cout << "Done." << std::endl;
 
+
 	//Load Master Bank and Master Strings
 	std::cout << "Loading banks...";
 	ERRCHECK(pSystem->loadBankFile(workpath.replace_filename(master_bank).string().c_str(), FMOD_STUDIO_LOAD_BANK_NORMAL, &pMasterBank));
@@ -215,10 +217,11 @@ void init() {
 	std::cout << "Getting Busses and Channel Groups...";
 	ERRCHECK(pSystem->getBus("bus:/", &pMasterBus));
 	ERRCHECK(pMasterBus->setVolume(dBToFloat(-10.0f)));
-	ERRCHECK(pMasterBus->lockChannelGroup());					//We need the Master Channel Group to always exist even when events arn't playing...
-	ERRCHECK(pSystem->flushCommands());							//And we must make sure the Channel Group exists when we query it...
+	ERRCHECK(pMasterBus->lockChannelGroup());					//Tell the Master Channel Group to always exist even when events arn't playing...
+	ERRCHECK(pSystem->flushCommands());							//And wait until all previous commands are done (ensuring Channel Group exists)...
 	ERRCHECK(pMasterBus->getChannelGroup(&pMasterBusGroup));	//Or else this fails immediately, and we'll have DSP problems.
 	std::cout << "Done." << std::endl;
+
 
 	//Define and create our capture DSP on the Master Channel Group.
 	//Copied from FMOD's examples, unsure why this works and why it must be in brackets.
@@ -235,21 +238,30 @@ void init() {
 	}
 	ERRCHECK(pMasterBusGroup->addDSP(FMOD_CHANNELCONTROL_DSP_TAIL, mCaptureDSP));		//Adds the newly defined dsp
 
-	//Setting Listener positioning, normally would be done from game engine data
+
+	//Setting Listener positioning for 3D, if desired. Normally done from Game Engine data
 	std::cout << "Setting up Listener...";
 	listenerAttributes.position = { 0.0f, 0.0f, 0.0f };
 	listenerAttributes.forward = { 0.0f, 1.0f, 0.0f };
 	listenerAttributes.up = { 0.0f, 0.0f, 1.0f };
-	listenerAttributes.velocity = { 0.0f, 0.0f, 0.0f };         //Used exclusively for Doppler, but built-in Doppler kinda sucks
 	ERRCHECK(pSystem->setListenerAttributes(0, &listenerAttributes));
 	std::cout << "Done." << std::endl;
 
 	//Create event instance
-	std::cout << "Creating Test Event Instance...\n";
+	std::cout << "Creating Test Event Instance...";
 	//ERRCHECK(pSystem->getEvent("event:/Master/Sine", &pEventDescription));
 	ERRCHECK(pSystem->getEvent("event:/Master/Music/TitleTheme", &pEventDescription));
 	ERRCHECK(pEventDescription->createInstance(&pEventInstance));
 	std::cout << "Done." << std::endl;
+
+	//Debug details
+	int samplerate; FMOD_SPEAKERMODE speakermode; int numrawspeakers;
+	ERRCHECK(pCoreSystem->getSoftwareFormat(&samplerate, &speakermode, &numrawspeakers));
+	ERRCHECK(pSystem->flushCommands());
+	std::cout << "###########################" << std::endl;
+	std::cout << "FMOD System Info:\n  Sample Rate- " << samplerate << "\n  Speaker Mode- " << speakermode
+		<< "\n  Num Raw Speakers- " << numrawspeakers << std::endl;
+
 
 	std::cout << "###########################" << std::endl;
 	std::cout << "###                     ###" << std::endl;
@@ -265,7 +277,6 @@ int main() {
 	auto start = std::chrono::system_clock::now();
 	auto end = std::chrono::system_clock::now();
 	auto last = end;
-
 	std::chrono::duration<double, std::milli> elapsed;
 	std::chrono::duration<double, std::milli> elapsed_since_last;
 
@@ -302,36 +313,45 @@ int main() {
 		std::cout << "Voice Ready\n";
 		currentClient = event.voice_client;							//Get the bot's current voice channel
 		isConnected = true;
+		ERRCHECK(pEventInstance->start());
+		ERRCHECK(pEventInstance->release());
 	});
 
 	/* Start the bot */
 	bot.start();
 
+	size_t audiolength = dpp::send_audio_raw_max_length;
+
 	//FMOD update loop here?
 	while (isRunning) {
+
+		//Update time
+		last = end;
+		end = std::chrono::system_clock::now();
+		elapsed = end - start;
+		elapsed_since_last = end - last;
+
 		pSystem->update();
-
+		
 		//If connected and has enough PCM Data, send it, then trim that data from the buffer
-		if (isConnected && myPCMData.size() >= dpp::send_audio_raw_max_length) {
-			std::cout << "Sending PCM Data \n";
+		if (isConnected && myPCMData.size() > (audiolength)) {			//
+			std::cout << "Sending PCM Data at time: " << elapsed << std::endl;
 			std::vector<uint16_t> pcmdata = myPCMData;
-			pcmdata.resize(dpp::send_audio_raw_max_length);					//cuts out everything we don't want
+			pcmdata.resize(audiolength);					//cuts out everything we don't want
 
-			currentClient->send_audio_raw((uint16_t*)myPCMData.data(), myPCMData.size());
+			currentClient->send_audio_raw((uint16_t*)pcmdata.data(), pcmdata.size());
 
-			myPCMData.erase(myPCMData.begin(), myPCMData.begin() + dpp::send_audio_raw_max_length);
-			//myPCMData.clear();
+			myPCMData.erase(myPCMData.begin(), myPCMData.begin() + audiolength);
 		}
 
 
-		//Sleep(5);
-		//std::cout << currentVC << std::endl;
+		Sleep(10);
 	}
 	std::cout << "Quitting program. Releasing resources..." << std::endl;
 
 	//When closing, remove DSP from master channel group, and release the DSP
 	pMasterBusGroup->removeDSP(mCaptureDSP);
-	mCaptureDSP->release();						//Is this necessary?
+	mCaptureDSP->release();						//Is this one necessary, given below?
 
 	//Unload and release System
 	pSystem->unloadAll();
