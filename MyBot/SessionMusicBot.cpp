@@ -6,6 +6,7 @@
 #include "fmod_studio_common.h"
 #include "fmod_errors.h"					//Allows FMOD Results to be output as understandable text
 #include <filesystem>						//Standard C++ Filesystem
+#include <chrono>							//Standard C++ Timekeeping (mostly for debugging?)
 #include "SessionMusicBot_Utils.h"			//Some utility functions specific to this bot
 
 /* Be sure to place your token in the line below.
@@ -58,21 +59,12 @@ void ERRCHECK(FMOD_RESULT result) {
 	}
 }
 
-uint16_t doubleToPCM(float inSample) {
+uint16_t floatToPCM(float inSample) {
 	uint16_t outSample;
 
-	//Floor and Ceiling
-	if (inSample >= 1.0) { outSample = 32767; }
-	else if (inSample <= -1.0) { outSample = -32768; }
-	//if (inSample > 1.0) { inSample = 1.0; }
-	//else if (inSample < -1.0) { inSample = -1.0; }
-
-	//Putting the numbers in order using two's complement (first bit 0 = positive, 1 = negative)
-	//if (inSample >= 0) { outSample = lrintf(inSample * 32767.0); }			//This will be the source of problems, no doubt
-	//else { outSample = lrintf(inSample * 32767.0) * 2; }
-	//outSample = (uint16_t)llrint(inSample * 32767.0);
-	outSample = (uint16_t)floor(inSample * 32767.0);
-
+	if (inSample >= 1.0) { outSample = 32767; }					//Ceiling
+	else if (inSample <= -1.0) { outSample = -32768; }			//Floor
+	else { outSample = (uint16_t)floor(inSample * 32767.0); }	//Normal conversion
 	return outSample;
 }
 
@@ -86,12 +78,11 @@ FMOD_RESULT F_CALLBACK captureDSPReadCallback(FMOD_DSP_STATE* dsp_state, float* 
 			for (int chan = 0; chan < *outchannels; chan++) {
 				//outbuffer[(samp * *outchannels) + chan] = inbuffer[(samp * inchannels) + chan];	// This DSP filter just passes out what it got in.
 				outbuffer[(samp * *outchannels) + chan] = 0.0f;										//This filter basically just mutes the system output.
-				//pcmdata[(samp * *outchannels) + chan] = doubleToPCM(inbuffer[(samp * inchannels) + chan]);				//Start building our new frame
-				pcmdata.push_back(doubleToPCM(inbuffer[(samp*inchannels) + chan]));
+				//pcmdata[(samp * *outchannels) + chan] = floatToPCM(inbuffer[(samp * inchannels) + chan]);				//Start building our new frame
+				pcmdata.push_back(floatToPCM(inbuffer[(samp*inchannels) + chan]));
 			}
 		}
 	}
-
 	else {
 		for (unsigned int samp = 0; samp < length; samp++) {
 			for (int chan = 0; chan < *outchannels; chan++) {
@@ -99,15 +90,13 @@ FMOD_RESULT F_CALLBACK captureDSPReadCallback(FMOD_DSP_STATE* dsp_state, float* 
 			}
 		}
 	}
-	//Pass PCM data to Discord here!
+	//Pass PCM data to our larger buffer
 	if (isConnected) {
 
-		std::cout << inbuffer[0] << "\n";
-		std::cout << pcmdata[0] << "\n";
+		//std::cout << inbuffer[sizeof(inbuffer) - 1] << "\n";
+		//std::cout << pcmdata[pcmdata.size() - 1] << "\n";
 		myPCMData.insert(myPCMData.end(), pcmdata.cbegin(), pcmdata.cend());
-		
 		//currentClient->send_audio_raw((uint16_t*)pcmdata.data(), length);
-		//std::cout << "here\n";
 	}
 
 	return FMOD_OK;
@@ -225,7 +214,7 @@ void init() {
 	//Also get the Master Bus, set volume, and get the related Channel Group
 	std::cout << "Getting Busses and Channel Groups...";
 	ERRCHECK(pSystem->getBus("bus:/", &pMasterBus));
-	ERRCHECK(pMasterBus->setVolume(dBToFloat(-4.0f)));
+	ERRCHECK(pMasterBus->setVolume(dBToFloat(-10.0f)));
 	ERRCHECK(pMasterBus->lockChannelGroup());					//We need the Master Channel Group to always exist even when events arn't playing...
 	ERRCHECK(pSystem->flushCommands());							//And we must make sure the Channel Group exists when we query it...
 	ERRCHECK(pMasterBus->getChannelGroup(&pMasterBusGroup));	//Or else this fails immediately, and we'll have DSP problems.
@@ -257,7 +246,8 @@ void init() {
 
 	//Create event instance
 	std::cout << "Creating Test Event Instance...\n";
-	ERRCHECK(pSystem->getEvent("event:/Master/Sine", &pEventDescription));
+	//ERRCHECK(pSystem->getEvent("event:/Master/Sine", &pEventDescription));
+	ERRCHECK(pSystem->getEvent("event:/Master/Music/TitleTheme", &pEventDescription));
 	ERRCHECK(pEventDescription->createInstance(&pEventInstance));
 	std::cout << "Done." << std::endl;
 
@@ -271,6 +261,14 @@ void init() {
 int main() {
 
 	init();
+
+	auto start = std::chrono::system_clock::now();
+	auto end = std::chrono::system_clock::now();
+	auto last = end;
+
+	std::chrono::duration<double, std::milli> elapsed;
+	std::chrono::duration<double, std::milli> elapsed_since_last;
+
 
 	/* Create bot cluster */
 	dpp::cluster bot(getBotToken());
@@ -313,19 +311,20 @@ int main() {
 	while (isRunning) {
 		pSystem->update();
 
-		//If connected and has PCM Data, Send PCM data, then clear PCM buffer
-		if (isConnected && !myPCMData.empty()) {
-			currentClient->send_audio_raw((uint16_t*)myPCMData.data(), myPCMData.size());
-			myPCMData.clear();
-			//std::cout << inbuffer[0] << "\n";
-			//std::cout << pcmdata[0] << "\n\n";
+		//If connected and has enough PCM Data, send it, then trim that data from the buffer
+		if (isConnected && myPCMData.size() >= dpp::send_audio_raw_max_length) {
+			std::cout << "Sending PCM Data \n";
+			std::vector<uint16_t> pcmdata = myPCMData;
+			pcmdata.resize(dpp::send_audio_raw_max_length);					//cuts out everything we don't want
 
-			//currentClient->send_audio_raw((uint16_t*)pcmdata, length);
-			//std::cout << "here\n";
+			currentClient->send_audio_raw((uint16_t*)myPCMData.data(), myPCMData.size());
+
+			myPCMData.erase(myPCMData.begin(), myPCMData.begin() + dpp::send_audio_raw_max_length);
+			//myPCMData.clear();
 		}
 
 
-		Sleep(10);
+		//Sleep(5);
 		//std::cout << currentVC << std::endl;
 	}
 	std::cout << "Quitting program. Releasing resources..." << std::endl;
