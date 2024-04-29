@@ -1,7 +1,5 @@
-# D++ Windows Bot Template
+# Session Music Bot
 
-A [D++](https://github.com/brainboxdotcc/DPP) Discord Bot template for Visual Studio 2022 (x64 and x86, release and debug). This repository is the result of [this tutorial](https://dpp.dev/build-a-discord-bot-windows-visual-studio.html) with additional enhancements for automatic selection of the correct architecture, and copying of the dll files into the correct folders on successful build.
+Built with VS2022 for Windows, x86 and x64.
 
-This template comes packaged with the latest master branch of D++ from the CI. To use this project simply put your code into the `MyBot.cpp` and press F7. You can do much more with this template.
-
-For support and assistance please join [the official support discord](https://discord.gg/dpp).
+Built with FMOD Engine API 2.02.16. May work with later versions as the API is really stable but do so at your own risk. Also using D++ (version unknown, this was built from their most current VS Template).
