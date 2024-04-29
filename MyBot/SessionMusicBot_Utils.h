@@ -25,12 +25,11 @@ float dBToFloat(float input) {
 }
 
 uint16_t floatToPCM(float inSample) {
-	uint16_t outSample;
-	if (inSample > 1.0) { inSample = 1.0f; }					//Ceiling
-	else if (inSample < -1.0) { inSample = -1.0f; }				//Floor
-	outSample = (uint16_t)roundf(inSample * 32767.0f);			//Normal conversion
+	//uint16_t outSample;
+	if (inSample >= 1.0) { return 32767; }					//Ceiling
+	else if (inSample <= -1.0) { return -32767;}			//Floor
+	return (uint16_t)roundf(inSample * 32767.0f);			//Normal conversion
 	//Todo: Dithering?
-	return outSample;
 }
 
 void ERRCHECK(FMOD_RESULT result) {

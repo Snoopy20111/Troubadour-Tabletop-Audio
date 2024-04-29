@@ -17,10 +17,6 @@
  * https://discord.com/oauth2/authorize?client_id=940762342495518720&scope=bot+applications.commands&permissions=139586816064
  */
 
-bool isRunning = true;
-bool isConnected = false;
-bool fromSilence = true;
-
 //file paths
 std::filesystem::path exe_path;
 std::filesystem::path banks_path;
@@ -37,11 +33,12 @@ FMOD::Studio::Bus* pMasterBus = nullptr;				//Master bus
 FMOD::ChannelGroup* pMasterBusGroup = nullptr;			//Channel Group of the master bus
 FMOD::DSP* mCaptureDSP = nullptr;						//DSP to attach to Master Channel Group for stealing output
 
-dpp::voiceconn* currentVC = nullptr;					//Goes stale, todo: fix or make it only used temporarily
 dpp::discord_voice_client* currentClient = nullptr;
 
 std::vector<uint16_t> myPCMData;						//Main buffer of PCM audio data, which FMOD adds to and D++ cuts "frames" from
-
+bool isRunning = true;
+bool isConnected = false;
+bool fromSilence = true;
 
 //Test Event stuff, will be replaced with more flexible lists built at runtime
 FMOD::Studio::EventDescription* pEventDescription = nullptr;        //Event Description, essentially the Event itself plus data
@@ -61,8 +58,8 @@ FMOD_RESULT F_CALLBACK captureDSPReadCallback(FMOD_DSP_STATE* dsp_state, float* 
 	if (isConnected) {
 		for (unsigned int samp = 0; samp < length; samp++) {
 			for (int chan = 0; chan < *outchannels; chan++) {
-				//outbuffer[(samp * *outchannels) + chan] = inbuffer[(samp * inchannels) + chan];	// This DSP filter just passes out what it got in.
-				outbuffer[(samp * *outchannels) + chan] = 0.0f;										//This filter basically just mutes the system output.
+				outbuffer[(samp * *outchannels) + chan] = inbuffer[(samp * inchannels) + chan];	// This DSP filter just passes out what it got in.
+				//outbuffer[(samp * *outchannels) + chan] = 0.0f;										//This filter basically just mutes the system output.
 				pcmdata.push_back(floatToPCM(inbuffer[(samp*inchannels) + chan]));
 			}
 		}
@@ -96,7 +93,7 @@ void list(const dpp::slashcommand_t& event) {
 
 void join(const dpp::slashcommand_t& event) {
 	dpp::guild* guild = dpp::find_guild(event.command.guild_id);						//Get the Guild aka Server
-	currentVC = event.from->get_voice(event.command.guild_id);							//Get the bot's current voice channel
+	dpp::voiceconn* currentVC = event.from->get_voice(event.command.guild_id);			//Get the bot's current voice channel
 	bool join_vc = true;
 	if (currentVC) {																	//If already in voice...
 		auto users_vc = guild->voice_members.find(event.command.get_issuing_user().id);	//get channel of user
@@ -126,7 +123,7 @@ void join(const dpp::slashcommand_t& event) {
 }
 
 void leave(const dpp::slashcommand_t& event) {
-	currentVC = event.from->get_voice(event.command.guild_id);
+	dpp::voiceconn* currentVC = event.from->get_voice(event.command.guild_id);
 	if (currentVC) {
 		event.from->disconnect_voice(event.command.guild_id);
 		event.reply(dpp::message("Bye bye! I hope I played good sounds!").set_flags(dpp::m_ephemeral));
@@ -308,6 +305,7 @@ int main() {
 			else if (!fromSilence && (myPCMData.size() > dpp::send_audio_raw_max_length * 7)) {
 				std::cout << "Sending PCM Data at time: " << elapsed << std::endl;
 				while (myPCMData.size() > dpp::send_audio_raw_max_length * 2) {								//Until minimum size we want our buffer
+
 					currentClient->send_audio_raw(myPCMData.data(), dpp::send_audio_raw_max_length);		//Send the buffer
 					myPCMData.erase(myPCMData.begin(), myPCMData.begin() + dpp::send_audio_raw_max_length);	//Trim the data just sent from head of main buffer
 				}
