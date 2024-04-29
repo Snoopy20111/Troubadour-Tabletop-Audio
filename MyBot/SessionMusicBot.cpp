@@ -53,25 +53,6 @@ std::string masterstrings_bank = "Master.strings.bank";
 std::string ui_bank = "Shared_UI.bank";
 
 //FMOD and Audio Functions
-void ERRCHECK(FMOD_RESULT result) {
-	if (result != FMOD_OK) {
-		printf("FMOD Error! (%d) %s\n", result, FMOD_ErrorString(result));
-		exit(-1 * result);
-	}
-}
-
-uint16_t floatToPCM(float inSample) {
-	uint16_t outSample;
-	if (inSample > 1.0) { inSample = 1.0f; }					//Ceiling
-	else if (inSample < -1.0) { inSample = -1.0f; }				//Floor
-
-	outSample = (uint16_t)roundf(inSample * 32767.0f);			//Normal conversion
-
-	//Todo: Dithering?
-
-	return outSample;
-}
-
 FMOD_RESULT F_CALLBACK captureDSPReadCallback(FMOD_DSP_STATE* dsp_state, float* inbuffer, float* outbuffer, unsigned int length, int inchannels, int* outchannels) {
 	
 	FMOD::DSP* thisdsp = (FMOD::DSP*)dsp_state->instance;
@@ -97,29 +78,10 @@ FMOD_RESULT F_CALLBACK captureDSPReadCallback(FMOD_DSP_STATE* dsp_state, float* 
 	if (isConnected) {
 		myPCMData.insert(myPCMData.end(), pcmdata.cbegin(), pcmdata.cend());
 	}
-
 	return FMOD_OK;
 }
 
 //Bot Functions
-std::string getBotToken()
-{
-	//read from .config (text) file and grab the token
-	std::ifstream myfile ("token.config");
-	std::string token;
-	if (myfile.is_open())
-	{
-		myfile >> token;
-		std::cout << "Token from config file is: " << token << "\n";
-	}
-	else
-	{
-		std::cout << "Token config file not opened properly. Ensure it's at the correct location and isn't corrupted!";
-	}
-	myfile.close();
-	return token;
-}
-
 void ping(const dpp::slashcommand_t& event) {
 	std::string response = "Pong! I'm alive!";
 	event.reply(dpp::message(response.c_str()).set_flags(dpp::m_ephemeral));
@@ -173,14 +135,6 @@ void leave(const dpp::slashcommand_t& event) {
 	}
 }
 
-//void indexBanks()
-//void indexEvents()????
-//void listEvents()
-//void play()
-//void updateParam()
-//void stop()
-
-
 void init() {
 	std::cout << "###########################" << std::endl;
 	std::cout << "###                     ###" << std::endl;
@@ -201,7 +155,6 @@ void init() {
 	ERRCHECK(pSystem->getCoreSystem(&pCoreSystem));
 	std::cout << "Done." << std::endl;
 
-
 	//Load Master Bank and Master Strings
 	std::cout << "Loading banks...";
 	ERRCHECK(pSystem->loadBankFile(workpath.replace_filename(master_bank).string().c_str(), FMOD_STUDIO_LOAD_BANK_NORMAL, &pMasterBank));
@@ -218,7 +171,6 @@ void init() {
 	ERRCHECK(pMasterBus->getChannelGroup(&pMasterBusGroup));	//Or else this fails immediately, and we'll have DSP problems.
 	std::cout << "Done." << std::endl;
 
-
 	//Define and create our capture DSP on the Master Channel Group.
 	//Copied from FMOD's examples, unsure why this works and why it must be in brackets.
 	{
@@ -234,7 +186,6 @@ void init() {
 	}
 	ERRCHECK(pMasterBusGroup->addDSP(FMOD_CHANNELCONTROL_DSP_TAIL, mCaptureDSP));		//Adds the newly defined dsp
 
-
 	//Setting Listener positioning for 3D, if desired. Normally done from Game Engine data
 	std::cout << "Setting up Listener...";
 	listenerAttributes.position = { 0.0f, 0.0f, 0.0f };
@@ -243,7 +194,9 @@ void init() {
 	ERRCHECK(pSystem->setListenerAttributes(0, &listenerAttributes));
 	std::cout << "Done." << std::endl;
 
-	//Create event instance
+	// Create event instance, for testing.
+	// In the future we'll have a vector/list of Event Descriptions for every known event,
+	// and probably a vector/list of Event Instances too.
 	std::cout << "Creating Test Event Instance...";
 	//ERRCHECK(pSystem->getEvent("event:/Master/Sine", &pEventDescription));
 	ERRCHECK(pSystem->getEvent("event:/Master/Music/TitleTheme", &pEventDescription));
@@ -266,18 +219,15 @@ void init() {
 	std::cout << "###########################" << std::endl;
 }
 
-void startBot() {
-
-}
 int main() {
 
 	init();
 
+	//Time stuff for debugging
 	auto start = std::chrono::system_clock::now();
 	auto end = std::chrono::system_clock::now();
 	auto last = end;
 	std::chrono::duration<double, std::milli> elapsed;
-	std::chrono::duration<double, std::milli> elapsed_since_last;
 
 
 	/* Create bot cluster */
@@ -311,37 +261,40 @@ int main() {
 	bot.on_voice_ready([&bot](const dpp::voice_ready_t& event) {
 		std::cout << "Voice Ready\n";
 		currentClient = event.voice_client;							//Get the bot's current voice channel
-		isConnected = true;
-		ERRCHECK(pEventInstance->start());
-		ERRCHECK(pEventInstance->release());
+		isConnected = true;											//Tell the rest of the program we've connected
+		ERRCHECK(pEventInstance->start());							//Start test audio event...
+		ERRCHECK(pEventInstance->release());						//...and release its resources when it stops playing.
 	});
 
 	/* Start the bot */
 	bot.start();
 
-	bool timerNotRunning = true;
-	//FMOD update loop here?
+	bool timerNotRunning = true;		//Temp variable to make sure our times start at the first update loop where we know we've connected
+
+	//Program loop
 	while (isRunning) {
 
 		//Update time
 		last = end;
 		end = std::chrono::system_clock::now();
 
+		//Update FMOD processes
 		pSystem->update();
 		
-		//Sending PCM Data to D++ for encoding and encrypting
+		//Send PCM data to D++, if applicable
 		if (isConnected) {
+			//Start timer the first time we enter "isConnected"
 			if (timerNotRunning) {
 				start = std::chrono::system_clock::now();
 				end = std::chrono::system_clock::now();
 				timerNotRunning = false;
 			}
 			elapsed = end - start;
-			elapsed_since_last = end - last;
+
 			//The first time playing from silence, send a bunch of packets to build some time.
 			//This will add some latency from "play" to transmission, but necessary to avoid starving D++ of samples
 			//For some reason though this isn't enough, it's physically playing the samples too slow??
-			if (fromSilence && (myPCMData.size() > dpp::send_audio_raw_max_length * 30)) {
+			if (fromSilence && (myPCMData.size() > dpp::send_audio_raw_max_length * 30)) {					//~1.5 seconds?
 				std::cout << "Sending PCM Data from silence at time: " << elapsed << std::endl;
 
 				while (myPCMData.size() > dpp::send_audio_raw_max_length * 2) {								//Until minimum size we want our buffer
@@ -351,7 +304,7 @@ int main() {
 				fromSilence = false;
 				
 			}
-			//Standard loop
+			//Standard update
 			else if (!fromSilence && (myPCMData.size() > dpp::send_audio_raw_max_length * 7)) {
 				std::cout << "Sending PCM Data at time: " << elapsed << std::endl;
 				while (myPCMData.size() > dpp::send_audio_raw_max_length * 2) {								//Until minimum size we want our buffer
@@ -359,23 +312,26 @@ int main() {
 					myPCMData.erase(myPCMData.begin(), myPCMData.begin() + dpp::send_audio_raw_max_length);	//Trim the data just sent from head of main buffer
 				}
 			}
+			//Else just report how much is left in the D++ buffer
 			else {
 				std::cout << "Seconds remaining: " << currentClient->get_secs_remaining() << std::endl;
 			}
-			//Todo: what if the audio ends? We should stop transmitting, right? Probably would go here.
-			//Check if any events are playing, and if not plus output is silent, fromSilence = true again.
+			//Todo: what if the audio ends? We should stop trying to transmit normally, right? Probably would go here.
+			// Possible approach: !eventsPlaying && output is silent, fromSilence = true.
 			if (currentClient->get_secs_remaining() > 10) {
-				ERRCHECK(pEventInstance->stop(FMOD_STUDIO_STOP_ALLOWFADEOUT));
+				ERRCHECK(pEventInstance->stop(FMOD_STUDIO_STOP_ALLOWFADEOUT));			//So one can hear the audio play out even after we stop transmitting
 				isConnected = false;
 			}
 		} 
 		Sleep(10);
 	}
+
+	//Program quit. We never actually reach here as it stands, but we'll deal with that later.
 	std::cout << "Quitting program. Releasing resources..." << std::endl;
 
 	//When closing, remove DSP from master channel group, and release the DSP
 	pMasterBusGroup->removeDSP(mCaptureDSP);
-	mCaptureDSP->release();						//Is this one necessary, given below?
+	mCaptureDSP->release();
 
 	//Unload and release System
 	pSystem->unloadAll();

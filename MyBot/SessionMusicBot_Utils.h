@@ -23,3 +23,37 @@ float randomFloat() {
 float dBToFloat(float input) {
     return (float)pow(10, (input / 20));
 }
+
+uint16_t floatToPCM(float inSample) {
+	uint16_t outSample;
+	if (inSample > 1.0) { inSample = 1.0f; }					//Ceiling
+	else if (inSample < -1.0) { inSample = -1.0f; }				//Floor
+	outSample = (uint16_t)roundf(inSample * 32767.0f);			//Normal conversion
+	//Todo: Dithering?
+	return outSample;
+}
+
+void ERRCHECK(FMOD_RESULT result) {
+	if (result != FMOD_OK) {
+		printf("FMOD Error! (%d) %s\n", result, FMOD_ErrorString(result));
+		exit(-1 * result);
+	}
+}
+
+std::string getBotToken()
+{
+	//read from .config (text) file and grab the token
+	std::ifstream myfile("token.config");
+	std::string token;
+	if (myfile.is_open())
+	{
+		myfile >> token;
+		std::cout << "Token from config file is: " << token << "\n";
+	}
+	else
+	{
+		std::cout << "Token config file not opened properly. Ensure it's at the correct location and isn't corrupted!";
+	}
+	myfile.close();
+	return token;
+}
