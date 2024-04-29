@@ -62,10 +62,10 @@ void ERRCHECK(FMOD_RESULT result) {
 
 uint16_t floatToPCM(float inSample) {
 	uint16_t outSample;
+	if (inSample >= 1.0) { inSample = 1.0f; }					//Ceiling
+	else if (inSample <= -1.0) { inSample = -1.0f; }			//Floor
 
-	if (inSample >= 1.0) { outSample = 32767; }					//Ceiling
-	else if (inSample <= -1.0) { outSample = -32768; }			//Floor
-	else { outSample = (uint16_t)floor(inSample * 32767.0); }	//Normal conversion
+	outSample = (uint16_t)floor(inSample * 32767.0f);			//Normal conversion
 
 	//Todo: Dithering?
 
@@ -316,45 +316,55 @@ int main() {
 	/* Start the bot */
 	bot.start();
 
-
+	bool timerNotRunning = true;
 	//FMOD update loop here?
 	while (isRunning) {
 
 		//Update time
 		last = end;
 		end = std::chrono::system_clock::now();
-		elapsed = end - start;
-		elapsed_since_last = end - last;
+		//elapsed = end - start;
+		//elapsed_since_last = end - last;
 
 		pSystem->update();
 		
 		//Sending PCM Data to D++ for encoding and encrypting
 		if (isConnected) {
+			if (timerNotRunning) {
+				start = std::chrono::system_clock::now();
+				end = std::chrono::system_clock::now();
+				timerNotRunning = false;
+			}
+			elapsed = end - start;
+			elapsed_since_last = end - last;
 			//The first time playing from silence, send a bunch of packets to build some time.
-			//This will add some latency from "play" to transmission, but necessary
-			// to avoid starving D++ of samples
-			if (fromSilence && (myPCMData.size() > dpp::send_audio_raw_max_length * 50)) {					// 69120 samples, ~ 1.5 sec
+			//This will add some latency from "play" to transmission, but necessary to avoid starving D++ of samples
+			if (fromSilence && (myPCMData.size() > dpp::send_audio_raw_max_length * 60)) {					// 
 				std::cout << "Sending PCM Data from silence at time: " << elapsed << std::endl;
 
 				while (myPCMData.size() > dpp::send_audio_raw_max_length * 2) {								//Until minimum size we want our buffer
-					std::cout << "[] ";
-					std::vector<uint16_t> pcmdata = myPCMData;												//Copy the buffer
-					pcmdata.resize(dpp::send_audio_raw_max_length);											//trim copy down to one "frame"
-					currentClient->send_audio_raw(pcmdata.data(), pcmdata.size());							//Send over the data
+					currentClient->send_audio_raw(myPCMData.data(), dpp::send_audio_raw_max_length);		//Send the buffer (method will take the first chunk it needs)
 					myPCMData.erase(myPCMData.begin(), myPCMData.begin() + dpp::send_audio_raw_max_length);	//Trim our main buffer of the data just sent
 				}
 				fromSilence = false;
+				
 			}
 			//Standard loop
 			else if (!fromSilence && (myPCMData.size() > dpp::send_audio_raw_max_length * 2)) {
 				std::cout << "Sending PCM Data at time: " << elapsed << std::endl;
-				std::vector<uint16_t> pcmdata = myPCMData;
-				pcmdata.resize(dpp::send_audio_raw_max_length);					//cuts out everything we don't want
-				currentClient->send_audio_raw(pcmdata.data(), pcmdata.size());
+				currentClient->send_audio_raw(myPCMData.data(), dpp::send_audio_raw_max_length);
 				myPCMData.erase(myPCMData.begin(), myPCMData.begin() + dpp::send_audio_raw_max_length);
+			}
+			else {
+				std::cout << "Seconds remaining: " << currentClient->get_secs_remaining() << std::endl;
 			}
 			//Todo: what if the audio ends? We should stop transmitting, right? Probably would go here.
 			//Check if any events are playing, and if not plus output is silent, fromSilence = true again.
+			if (currentClient->get_secs_remaining() > 10) {
+				std::cout << "Timescale is: " << currentClient->get_timescale() << "\n";
+				ERRCHECK(pEventInstance->stop(FMOD_STUDIO_STOP_ALLOWFADEOUT));
+				isConnected = false;
+			}
 		} 
 		Sleep(10);
 	}
