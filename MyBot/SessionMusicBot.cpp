@@ -7,6 +7,7 @@
 #include "fmod_errors.h"					//Allows FMOD Results to be output as understandable text
 #include <filesystem>						//Standard C++ Filesystem
 #include <chrono>							//Standard C++ Timekeeping (mostly for debugging?)
+#include <mutex>							//Standard C++ Mutex, to prevent race conditions between FMOD, Main, and Bot threads
 #include "SessionMusicBot_Utils.h"			//Some utility functions specific to this bot
 
 /* Be sure to place your token in the line below.
@@ -17,12 +18,12 @@
  * https://discord.com/oauth2/authorize?client_id=940762342495518720&scope=bot+applications.commands&permissions=139586816064
  */
 
-//file paths
+//---File Paths---//
 std::filesystem::path exe_path;
 std::filesystem::path banks_path;
 std::filesystem::path workpath;
 
-//---FMOD Declearations---//
+//---FMOD Declarations---//
 FMOD_RESULT result;										//Reusable error checking result
 FMOD::Studio::System* pSystem = nullptr;				//overall system
 FMOD::System* pCoreSystem = nullptr;					//overall core system
@@ -33,9 +34,10 @@ FMOD::Studio::Bus* pMasterBus = nullptr;				//Master bus
 FMOD::ChannelGroup* pMasterBusGroup = nullptr;			//Channel Group of the master bus
 FMOD::DSP* mCaptureDSP = nullptr;						//DSP to attach to Master Channel Group for stealing output
 
+//---Misc Bot Declarations---//
 dpp::discord_voice_client* currentClient = nullptr;
-
 std::vector<uint16_t> myPCMData;						//Main buffer of PCM audio data, which FMOD adds to and D++ cuts "frames" from
+std::mutex pcmDataMutex;
 bool isRunning = true;
 bool isConnected = false;
 bool fromSilence = true;
@@ -67,13 +69,18 @@ FMOD_RESULT F_CALLBACK captureDSPReadCallback(FMOD_DSP_STATE* dsp_state, float* 
 	else {
 		for (unsigned int samp = 0; samp < length; samp++) {
 			for (int chan = 0; chan < *outchannels; chan++) {
-				outbuffer[(samp * *outchannels) + chan] = 0.0f;										//This filter basically just mutes the system output.
+				outbuffer[(samp * *outchannels) + chan] = inbuffer[(samp * inchannels) + chan];	// This DSP filter just passes out what it got in.
+				//outbuffer[(samp * *outchannels) + chan] = 0.0f;										//This filter basically just mutes the system output.
 			}
 		}
 	}
 	//Pass PCM data to our larger buffer
 	if (isConnected) {
+		pcmDataMutex.lock();
+		std::cout << "Locked by DSP\n";
 		myPCMData.insert(myPCMData.end(), pcmdata.cbegin(), pcmdata.cend());
+		std::cout << "Unlocking by DSP\n";
+		pcmDataMutex.unlock();
 	}
 	return FMOD_OK;
 }
@@ -208,6 +215,9 @@ void init() {
 	std::cout << "FMOD System Info:\n  Sample Rate- " << samplerate << "\n  Speaker Mode- " << speakermode
 		<< "\n  Num Raw Speakers- " << numrawspeakers << std::endl;
 
+	ERRCHECK(pEventInstance->start());							//Start test audio event...
+	ERRCHECK(pEventInstance->release());						//...and release its resources when it stops playing.
+
 
 	std::cout << "###########################" << std::endl;
 	std::cout << "###                     ###" << std::endl;
@@ -259,8 +269,8 @@ int main() {
 		std::cout << "Voice Ready\n";
 		currentClient = event.voice_client;							//Get the bot's current voice channel
 		isConnected = true;											//Tell the rest of the program we've connected
-		ERRCHECK(pEventInstance->start());							//Start test audio event...
-		ERRCHECK(pEventInstance->release());						//...and release its resources when it stops playing.
+		//ERRCHECK(pEventInstance->start());							//Start test audio event...
+		//ERRCHECK(pEventInstance->release());						//...and release its resources when it stops playing.
 	});
 
 	/* Start the bot */
@@ -291,24 +301,34 @@ int main() {
 			//The first time playing from silence, send a bunch of packets to build some time.
 			//This will add some latency from "play" to transmission, but necessary to avoid starving D++ of samples
 			//For some reason though this isn't enough, it's physically playing the samples too slow??
-			if (fromSilence && (myPCMData.size() > dpp::send_audio_raw_max_length * 30)) {					//~1.5 seconds?
+			if (fromSilence && (myPCMData.size() > dpp::send_audio_raw_max_length * 32)) {					//~1.5 seconds?
 				std::cout << "Sending PCM Data from silence at time: " << elapsed << std::endl;
 
+				pcmDataMutex.lock();
+				std::cout << "Locked by Standard Buffer Update\n";
 				while (myPCMData.size() > dpp::send_audio_raw_max_length * 2) {								//Until minimum size we want our buffer
 					currentClient->send_audio_raw(myPCMData.data(), dpp::send_audio_raw_max_length);		//Send the buffer (method will take the first chunk it needs)
 					myPCMData.erase(myPCMData.begin(), myPCMData.begin() + dpp::send_audio_raw_max_length);	//Trim our main buffer of the data just sent
 				}
+				std::cout << "Unlocking by Standard Buffer Update\n";
+				pcmDataMutex.unlock();
+
 				fromSilence = false;
 				
 			}
-			//Standard update
+			//Standard buffer update
 			else if (!fromSilence && (myPCMData.size() > dpp::send_audio_raw_max_length * 7)) {
 				std::cout << "Sending PCM Data at time: " << elapsed << std::endl;
-				while (myPCMData.size() > dpp::send_audio_raw_max_length * 2) {								//Until minimum size we want our buffer
 
+				pcmDataMutex.lock();
+				std::cout << "Locked by Standard Buffer Update\n";
+				while (myPCMData.size() > dpp::send_audio_raw_max_length * 2) {								//Until minimum size we want our buffer
 					currentClient->send_audio_raw(myPCMData.data(), dpp::send_audio_raw_max_length);		//Send the buffer
 					myPCMData.erase(myPCMData.begin(), myPCMData.begin() + dpp::send_audio_raw_max_length);	//Trim the data just sent from head of main buffer
 				}
+				std::cout << "Unlocking by Standard Buffer Update\n";
+				pcmDataMutex.unlock();
+				
 			}
 			//Else just report how much is left in the D++ buffer
 			else {
