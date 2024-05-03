@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="MixerGroup" id="{ab0c2c17-5a98-43a0-9014-880b562c8be6}">
+		<property name="note">
+			<value>This group exists to squish everything down to stereo, so the DSP callback works appropriately (requires 2-channel stereo output to give to Discord)</value>
+		</property>
+		<property name="name">
+			<value>SubMaster</value>
+		</property>
+		<relationship name="effectChain">
+			<destination>{72c58ad6-1dff-4cf3-8228-a686ead81cf0}</destination>
+		</relationship>
+		<relationship name="panner">
+			<destination>{60edb6ec-2b00-4020-b169-7af709331c8a}</destination>
+		</relationship>
+		<relationship name="output">
+			<destination>{0f296a96-e357-477a-b07e-fd6c61f98d80}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusEffectChain" id="{72c58ad6-1dff-4cf3-8228-a686ead81cf0}">
+		<relationship name="effects">
+			<destination>{a960079f-9e97-4403-8bca-056f172f2410}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusPanner" id="{60edb6ec-2b00-4020-b169-7af709331c8a}">
+		<property name="overridingOutputFormat">
+			<value>1</value>
+		</property>
+	</object>
+	<object class="MixerBusFader" id="{a960079f-9e97-4403-8bca-056f172f2410}" />
+</objects>

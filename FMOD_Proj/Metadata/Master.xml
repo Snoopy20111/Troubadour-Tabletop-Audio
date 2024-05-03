@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="MixerMaster" id="{0f296a96-e357-477a-b07e-fd6c61f98d80}">
+		<property name="note">
+			<value>Forced Stereo out! Everything should be routed into SubMaster so the Master channel receives and outputs only Stereo, but if not, Session Music Bot will have issues with the DSP callback.</value>
+		</property>
 		<property name="name">
 			<value>Master Bus</value>
 		</property>
@@ -21,7 +24,7 @@
 	</object>
 	<object class="MixerBusPanner" id="{3554199f-0902-489f-bfeb-051e39618dcf}">
 		<property name="overridingOutputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{738c980b-fd2b-41ce-8ed1-a1c96a529da8}" />

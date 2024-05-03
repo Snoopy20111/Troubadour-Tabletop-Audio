@@ -47,7 +47,7 @@ std::string getBotToken()
 	if (myfile.is_open())
 	{
 		myfile >> token;
-		std::cout << "Token from config file is: " << token << "\n";
+		//std::cout << "Token from config file is: " << token << "\n";
 	}
 	else
 	{

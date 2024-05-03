@@ -5,7 +5,7 @@
 			<value>TitleTheme</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{9d549a17-b291-431c-925f-66a09901b4ff}</destination>
@@ -63,7 +63,7 @@
 			<destination>{13fb60ff-ae93-4606-968e-4218bfe8a10e}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{0f296a96-e357-477a-b07e-fd6c61f98d80}</destination>
+			<destination>{ab0c2c17-5a98-43a0-9014-880b562c8be6}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{60e1c5d8-987f-4b2e-8f6e-e0a9547e2cd2}" />
@@ -372,7 +372,6 @@
 	<object class="MixerBusEffectChain" id="{bcaa2abc-a20f-4786-ace9-76b6af9d0995}">
 		<relationship name="effects">
 			<destination>{89bb1a4d-b30c-48c5-934d-af7c4487d970}</destination>
-			<destination>{8cc48016-7819-46a7-b310-fe7c70326c47}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{9f2fa694-86d5-4575-a474-fbbd1ad46d43}" />
@@ -487,11 +486,6 @@
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{89bb1a4d-b30c-48c5-934d-af7c4487d970}" />
-	<object class="SpatialiserEffect" id="{8cc48016-7819-46a7-b310-fe7c70326c47}">
-		<property name="distanceRolloffType">
-			<value>2</value>
-		</property>
-	</object>
 	<object class="AutomationPoint" id="{12d92d99-b013-4736-96bb-cc315a25d423}">
 		<property name="position">
 			<value>12.328448323529464</value>
