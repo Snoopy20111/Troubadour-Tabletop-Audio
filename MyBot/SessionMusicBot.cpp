@@ -58,28 +58,27 @@ FMOD_RESULT F_CALLBACK captureDSPReadCallback(FMOD_DSP_STATE* dsp_state, float* 
 	FMOD::DSP* thisdsp = (FMOD::DSP*)dsp_state->instance;
 	std::vector<uint16_t> pcmdata;
 
-	//std::cout << "Length: " << length << " || InChannels: " << inchannels << " || OutChannels: " << *outchannels << std::endl;
-
 	if (isConnected) {
+		//std::cout << "Length: " << length << " || InChannels: " << inchannels << " || OutChannels: " << *outchannels << std::endl;
+		if (inchannels > 2 && *outchannels > 2) {
+			std::cout << "In and Out channels greater than 2!" << std::endl;
+			return FMOD_ERR_DSP_SILENCE;			//should return differently, but ensures stereo i/o
+		}
 		std::lock_guard lk(pcmDataMutex);
 		for (unsigned int samp = 0; samp < length; samp++) {
 			for (int chan = 0; chan < *outchannels; chan++) {
 				//outbuffer[(samp * *outchannels) + chan] = inbuffer[(samp * inchannels) + chan];	// This DSP filter just passes out what it got in.
-				outbuffer[(samp * *outchannels) + chan] = 0.0f;										//This filter basically just mutes the system output.
+				//outbuffer[(samp * *outchannels) + chan] = 0.0f;										//This filter basically just mutes the system output.
 				pcmdata.push_back(floatToPCM(inbuffer[(samp*inchannels) + chan]));
 			}
 		}
-		std::cout << "pcmdata size: " << pcmdata.size() << std::endl;
 		//Pass PCM data to our larger buffer
+		//std::cout << "pcmdata length: " << pcmdata.size() << std::endl;
 		myPCMData.insert(myPCMData.end(), pcmdata.cbegin(), pcmdata.cend());
+		return FMOD_ERR_DSP_SILENCE;
 	}
 	else {
-		for (unsigned int samp = 0; samp < length; samp++) {
-			for (int chan = 0; chan < *outchannels; chan++) {
-				//outbuffer[(samp * *outchannels) + chan] = inbuffer[(samp * inchannels) + chan];	// This DSP filter just passes out what it got in.
-				outbuffer[(samp * *outchannels) + chan] = 0.0f;										//This filter basically just mutes the system output.
-			}
-		}
+		return FMOD_ERR_DSP_SILENCE;
 	}
 	return FMOD_OK;
 }
@@ -154,8 +153,10 @@ void init() {
 	//FMOD Init
 	std::cout << "Initializing FMOD...";
 	ERRCHECK(FMOD::Studio::System::create(&pSystem));
-	ERRCHECK(pSystem->initialize(128, FMOD_STUDIO_INIT_NORMAL, FMOD_INIT_NORMAL, nullptr));
 	ERRCHECK(pSystem->getCoreSystem(&pCoreSystem));
+	//ERRCHECK(pCoreSystem->setDSPBufferSize(4096, 4));
+	ERRCHECK(pSystem->initialize(128, FMOD_STUDIO_INIT_NORMAL, FMOD_INIT_NORMAL, nullptr));
+	
 	std::cout << "Done." << std::endl;
 
 	//Load Master Bank and Master Strings
@@ -181,8 +182,8 @@ void init() {
 		memset(&dspdesc, 0, sizeof(dspdesc));
 		strncpy_s(dspdesc.name, "LH_captureDSP", sizeof(dspdesc.name));
 		dspdesc.version = 0x00010000;
-		dspdesc.numinputbuffers = 8;
-		dspdesc.numoutputbuffers = 8;
+		dspdesc.numinputbuffers = 1;
+		dspdesc.numoutputbuffers = 1;
 		dspdesc.read = captureDSPReadCallback;
 		//dspdesc.userdata = (void*)0x12345678;
 		ERRCHECK(pCoreSystem->createDSP(&dspdesc, &mCaptureDSP));
