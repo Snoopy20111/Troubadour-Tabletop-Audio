@@ -56,7 +56,6 @@ std::string ui_bank = "Shared_UI.bank";
 FMOD_RESULT F_CALLBACK captureDSPReadCallback(FMOD_DSP_STATE* dsp_state, float* inbuffer, float* outbuffer, unsigned int length, int inchannels, int* outchannels) {
 
 	FMOD::DSP* thisdsp = (FMOD::DSP*)dsp_state->instance;
-	std::vector<uint16_t> pcmdata;
 
 	if (isConnected) {
 		//std::cout << "Length: " << length << " || InChannels: " << inchannels << " || OutChannels: " << *outchannels << std::endl;
@@ -64,18 +63,16 @@ FMOD_RESULT F_CALLBACK captureDSPReadCallback(FMOD_DSP_STATE* dsp_state, float* 
 			std::cout << "In and Out channels greater than 2!" << std::endl;
 			return FMOD_ERR_DSP_SILENCE;			//should return differently, but ensures stereo i/o
 		}
-		std::lock_guard lk(pcmDataMutex);
 		for (unsigned int samp = 0; samp < length; samp++) {
 			for (int chan = 0; chan < *outchannels; chan++) {
 				//outbuffer[(samp * *outchannels) + chan] = inbuffer[(samp * inchannels) + chan];	// This DSP filter just passes out what it got in.
 				//outbuffer[(samp * *outchannels) + chan] = 0.0f;										//This filter basically just mutes the system output.
-				pcmdata.push_back(floatToPCM(inbuffer[(samp*inchannels) + chan]));
+				myPCMData.push_back(floatToPCM(inbuffer[(samp*inchannels) + chan]));
 			}
 		}
-		//Pass PCM data to our larger buffer
 		//std::cout << "pcmdata length: " << pcmdata.size() << std::endl;
-		myPCMData.insert(myPCMData.end(), pcmdata.cbegin(), pcmdata.cend());
-		return FMOD_ERR_DSP_SILENCE;
+		//myPCMData.insert(myPCMData.end(), pcmdata.cbegin(), pcmdata.cend());
+		//return FMOD_ERR_DSP_SILENCE;
 	}
 	else {
 		return FMOD_ERR_DSP_SILENCE;
@@ -182,8 +179,8 @@ void init() {
 		memset(&dspdesc, 0, sizeof(dspdesc));
 		strncpy_s(dspdesc.name, "LH_captureDSP", sizeof(dspdesc.name));
 		dspdesc.version = 0x00010000;
-		dspdesc.numinputbuffers = 1;
-		dspdesc.numoutputbuffers = 1;
+		dspdesc.numinputbuffers = 2;
+		dspdesc.numoutputbuffers = 2;
 		dspdesc.read = captureDSPReadCallback;
 		//dspdesc.userdata = (void*)0x12345678;
 		ERRCHECK(pCoreSystem->createDSP(&dspdesc, &mCaptureDSP));
@@ -290,10 +287,7 @@ int main() {
 		
 		//Send PCM data to D++, if applicable
 		if (isConnected) {
-
-			//protect all data in this block. Not usually a problem, but all the same.
-			std::lock_guard lk(pcmDataMutex);
-
+			
 			//Start timer the first time we enter "isConnected"
 			if (timerNotRunning) {
 				start = std::chrono::system_clock::now();
