@@ -37,7 +37,9 @@ FMOD::DSP* mCaptureDSP = nullptr;						//DSP to attach to Master Channel Group f
 //---Misc Bot Declarations---//
 dpp::discord_voice_client* currentClient = nullptr;
 std::vector<uint16_t> myPCMData;						//Main buffer of PCM audio data, which FMOD adds to and D++ cuts "frames" from
-std::mutex pcmDataMutex;
+int lastBufferSize = 0;
+int samplesAddedCounter = 0;
+
 bool isRunning = true;
 bool isConnected = false;
 bool fromSilence = true;
@@ -58,26 +60,45 @@ FMOD_RESULT F_CALLBACK captureDSPReadCallback(FMOD_DSP_STATE* dsp_state, float* 
 	FMOD::DSP* thisdsp = (FMOD::DSP*)dsp_state->instance;
 
 	if (isConnected) {
-		//std::cout << "Length: " << length << " || InChannels: " << inchannels << " || OutChannels: " << *outchannels << std::endl;
-		if (inchannels > 2 && *outchannels > 2) {
-			std::cout << "In and Out channels greater than 2!" << std::endl;
-			return FMOD_ERR_DSP_SILENCE;			//should return differently, but ensures stereo i/o
+		switch (inchannels) {
+			default:
+				//std::cout << "DSP needs mono or stereo in and out! Currently has " << inchannels <<
+				//	" inchannels and " << *outchannels << " outchannels." << std::endl;
+				std::cout << "DSP needs mono or stereo in and out!" << std::endl;
+				return FMOD_ERR_DSP_SILENCE;			//ensures stereo i/o
+
+			case 1:																				//mono input
+				std::cout << "Mono" << std::endl;
+				if (*outchannels == 1) {
+					for (unsigned int samp = 0; samp < length; samp++) {
+						outbuffer[(samp * *outchannels)] = 0.0f;										//Brute force mutes system output
+						myPCMData.push_back(floatToPCM(inbuffer[samp]));					//Adds sample to PCM buffer...
+						myPCMData.push_back(floatToPCM(inbuffer[samp]));					//...twice, because D++ expects stereo input
+						samplesAddedCounter += 2;
+					}
+				}
+				else {
+					std::cout << "Mono in, not mono out!" << std::endl;
+				}
+				break;
+
+			case 2:																				//stereo input
+				std::cout << "Stereo" << std::endl;
+				for (unsigned int samp = 0; samp < length; samp++) {
+					for (int chan = 0; chan < *outchannels; chan++) {
+						outbuffer[(samp * *outchannels) + chan] = 0.0f;									//Brute force mutes system output
+						myPCMData.push_back(floatToPCM(inbuffer[(samp * inchannels) + chan]));			//Adds sample to PCM buffer in approprate channel
+						samplesAddedCounter++;
+					}
+				}
+				break;
+			//Add other cases for other input channel configurations. Ultimately, all must mix down to stereo.
 		}
-		for (unsigned int samp = 0; samp < length; samp++) {
-			for (int chan = 0; chan < *outchannels; chan++) {
-				//outbuffer[(samp * *outchannels) + chan] = inbuffer[(samp * inchannels) + chan];	// This DSP filter just passes out what it got in.
-				//outbuffer[(samp * *outchannels) + chan] = 0.0f;										//This filter basically just mutes the system output.
-				myPCMData.push_back(floatToPCM(inbuffer[(samp*inchannels) + chan]));
-			}
-		}
-		//std::cout << "pcmdata length: " << pcmdata.size() << std::endl;
-		//myPCMData.insert(myPCMData.end(), pcmdata.cbegin(), pcmdata.cend());
-		//return FMOD_ERR_DSP_SILENCE;
+		return FMOD_OK;
 	}
 	else {
 		return FMOD_ERR_DSP_SILENCE;
 	}
-	return FMOD_OK;
 }
 
 //Bot Functions
@@ -179,8 +200,8 @@ void init() {
 		memset(&dspdesc, 0, sizeof(dspdesc));
 		strncpy_s(dspdesc.name, "LH_captureDSP", sizeof(dspdesc.name));
 		dspdesc.version = 0x00010000;
-		dspdesc.numinputbuffers = 2;
-		dspdesc.numoutputbuffers = 2;
+		dspdesc.numinputbuffers = 1;
+		dspdesc.numoutputbuffers = 1;
 		dspdesc.read = captureDSPReadCallback;
 		//dspdesc.userdata = (void*)0x12345678;
 		ERRCHECK(pCoreSystem->createDSP(&dspdesc, &mCaptureDSP));
@@ -232,6 +253,7 @@ int main() {
 	std::chrono::system_clock::time_point end = std::chrono::system_clock::now();
 	std::chrono::system_clock::time_point last = end;
 	std::chrono::duration<double, std::milli> elapsed;
+	std::chrono::duration<double, std::milli> elapsedFrame;
 
 	/* Create bot cluster */
 	dpp::cluster bot(getBotToken());
@@ -274,6 +296,7 @@ int main() {
 	bot.start();
 
 	bool timerNotRunning = true;		//Temp variable to make sure our times start at the first update loop where we know we've connected
+	int allSamplesAdded = 0;
 
 	//Program loop
 	while (isRunning) {
@@ -282,12 +305,9 @@ int main() {
 		last = end;
 		end = std::chrono::system_clock::now();
 
-		//Update FMOD processes
-		pSystem->update();
-		
 		//Send PCM data to D++, if applicable
 		if (isConnected) {
-			
+
 			//Start timer the first time we enter "isConnected"
 			if (timerNotRunning) {
 				start = std::chrono::system_clock::now();
@@ -295,26 +315,38 @@ int main() {
 				timerNotRunning = false;
 			}
 			elapsed = end - start;
+			elapsedFrame = end - last;
+
+
+			std::cout << "Frame time: " << elapsedFrame << " || Samples added: " << samplesAddedCounter << std::endl;
+			allSamplesAdded += samplesAddedCounter;
+			samplesAddedCounter = 0;
+
+			if (elapsed.count() > 10000) {
+				std::cout << "Total samples over 10 seconds: " << allSamplesAdded << std::endl;
+				std::cout << "Avg of " << allSamplesAdded / elapsed.count() << " samples per ms" << std::endl;
+				return 0;
+			}
+
 			
-			if (fromSilence && (myPCMData.size() > dpp::send_audio_raw_max_length * 16)) {
+			if (!fromSilence && (myPCMData.size() > dpp::send_audio_raw_max_length * 8)) {					//Normal process
+				std::cout << "Sending PCM Data at time: " << elapsed << std::endl;
+
+				while (myPCMData.size() > dpp::send_audio_raw_max_length * 8) {									//Until minimum size we want our buffer
+					currentClient->send_audio_raw(myPCMData.data(), dpp::send_audio_raw_max_length);		//Send the buffer (method will take the first chunk it needs)
+					myPCMData.erase(myPCMData.begin(), myPCMData.begin() + dpp::send_audio_raw_max_length);	//Trim our main buffer of the data just sent
+				}
+			}
+			else if (fromSilence && (myPCMData.size() > dpp::send_audio_raw_max_length * 8)) {			//Meant to build a buffer before actually starting
 				std::cout << "Sending PCM Data from silence at time: " << elapsed << std::endl;
 
-				while (myPCMData.size() > dpp::send_audio_raw_max_length * 2) {								//Until minimum size we want our buffer
+				while (myPCMData.size() > dpp::send_audio_raw_max_length * 8) {								//Until minimum size we want our buffer
 					currentClient->send_audio_raw(myPCMData.data(), dpp::send_audio_raw_max_length);		//Send the buffer (method will take the first chunk it needs)
 					myPCMData.erase(myPCMData.begin(), myPCMData.begin() + dpp::send_audio_raw_max_length);	//Trim our main buffer of the data just sent
 				}
 				fromSilence = false;
 			}
-			else if (!fromSilence && (myPCMData.size() > dpp::send_audio_raw_max_length)) {
-				std::cout << "Sending PCM Data at time: " << elapsed << std::endl;
-
-				while (myPCMData.size() > dpp::send_audio_raw_max_length) {								//Until minimum size we want our buffer
-					currentClient->send_audio_raw(myPCMData.data(), dpp::send_audio_raw_max_length);		//Send the buffer (method will take the first chunk it needs)
-					myPCMData.erase(myPCMData.begin(), myPCMData.begin() + dpp::send_audio_raw_max_length);	//Trim our main buffer of the data just sent
-				}
-			}
-			//Else just report how much is left in the D++ buffer
-			else {
+			else {																						//Else just report how much is left in the D++ buffer
 				std::cout << "Seconds remaining: " << currentClient->get_secs_remaining() << std::endl;
 			}
 			//Todo: what if the audio ends? We should stop trying to transmit normally, right? Probably would go here.
@@ -323,8 +355,10 @@ int main() {
 				ERRCHECK(pEventInstance->stop(FMOD_STUDIO_STOP_ALLOWFADEOUT));			//So one can hear the audio play out even after we stop transmitting
 				isConnected = false;
 			}
-		} 
-		Sleep(10);
+		}
+		//Update FMOD processes. Just before "Sleep" which gives it a solid 10 ms to process without main thread interference.
+		pSystem->update();
+		Sleep(20);
 	}
 
 	//Program quit. We never actually reach here as it stands, but we'll deal with that later.
