@@ -318,7 +318,7 @@ int main() {
 			elapsedFrame = end - last;
 
 
-			std::cout << "Frame time: " << elapsedFrame << " || Samples added: " << samplesAddedCounter << std::endl;
+			std::cout << "Frame time: " << elapsedFrame << " || Samples added: " << samplesAddedCounter << "|| Samples in buffer: " << myPCMData.size() << std::endl;
 			allSamplesAdded += samplesAddedCounter;
 			samplesAddedCounter = 0;
 
@@ -329,10 +329,10 @@ int main() {
 			}
 
 			
-			if (!fromSilence && (myPCMData.size() > dpp::send_audio_raw_max_length * 8)) {					//Normal process
+			if (!fromSilence && (myPCMData.size() > dpp::send_audio_raw_max_length)) {					//Normal process
 				std::cout << "Sending PCM Data at time: " << elapsed << std::endl;
 
-				while (myPCMData.size() > dpp::send_audio_raw_max_length * 8) {									//Until minimum size we want our buffer
+				while (myPCMData.size() > dpp::send_audio_raw_max_length) {									//Until minimum size we want our buffer
 					currentClient->send_audio_raw(myPCMData.data(), dpp::send_audio_raw_max_length);		//Send the buffer (method will take the first chunk it needs)
 					myPCMData.erase(myPCMData.begin(), myPCMData.begin() + dpp::send_audio_raw_max_length);	//Trim our main buffer of the data just sent
 				}
@@ -347,7 +347,7 @@ int main() {
 				fromSilence = false;
 			}
 			else {																						//Else just report how much is left in the D++ buffer
-				std::cout << "Seconds remaining: " << currentClient->get_secs_remaining() << std::endl;
+				std::cout << "D++ Seconds remaining: " << currentClient->get_secs_remaining() << std::endl;
 			}
 			//Todo: what if the audio ends? We should stop trying to transmit normally, right? Probably would go here.
 			// Possible approach: !eventsPlaying && output is silent, fromSilence = true.
