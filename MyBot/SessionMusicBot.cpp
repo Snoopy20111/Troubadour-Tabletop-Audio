@@ -24,25 +24,26 @@ std::filesystem::path banks_path;
 std::filesystem::path workpath;
 
 //---FMOD Declarations---//
-FMOD_RESULT result;										//Reusable error checking result
 FMOD::Studio::System* pSystem = nullptr;				//overall system
 FMOD::System* pCoreSystem = nullptr;					//overall core system
 FMOD::Studio::Bank* pMasterBank = nullptr;				//Master Bank
 FMOD::Studio::Bank* pMasterStringsBank = nullptr;		//Master Strings
-FMOD::Studio::Bank* pSharedUIBank = nullptr;			//Example non-master bank
+FMOD::Studio::Bank* pSharedUIBank = nullptr;			//Example non-master bank. TODO: replace this with dynamic system
 FMOD::Studio::Bus* pMasterBus = nullptr;				//Master bus
 FMOD::ChannelGroup* pMasterBusGroup = nullptr;			//Channel Group of the master bus
 FMOD::DSP* mCaptureDSP = nullptr;						//DSP to attach to Master Channel Group for stealing output
 
 //---Misc Bot Declarations---//
-dpp::discord_voice_client* currentClient = nullptr;
-std::vector<uint16_t> myPCMData;						//Main buffer of PCM audio data, which FMOD adds to and D++ cuts "frames" from
-int lastBufferSize = 0;
-int samplesAddedCounter = 0;
-
+dpp::discord_voice_client* currentClient = nullptr;		//current Voice Client of the bot. Only designed to run on one server.
+std::vector<int16_t> myPCMData;							//Main buffer of PCM audio data, which FMOD adds to and D++ cuts "frames" from
 bool isRunning = true;
 bool isConnected = false;
 bool fromSilence = true;
+
+#ifndef NDEBUG
+//---Extra Variables only present in Debug mode, for extra data---//
+int samplesAddedCounter = 0;
+#endif
 
 //Test Event stuff, will be replaced with more flexible lists built at runtime
 FMOD::Studio::EventDescription* pEventDescription = nullptr;        //Event Description, essentially the Event itself plus data
@@ -61,20 +62,15 @@ FMOD_RESULT F_CALLBACK captureDSPReadCallback(FMOD_DSP_STATE* dsp_state, float* 
 
 	if (isConnected) {
 		switch (inchannels) {
-			default:
-				//std::cout << "DSP needs mono or stereo in and out! Currently has " << inchannels <<
-				//	" inchannels and " << *outchannels << " outchannels." << std::endl;
-				std::cout << "DSP needs mono or stereo in and out!" << std::endl;
-				return FMOD_ERR_DSP_SILENCE;			//ensures stereo i/o
-
-			case 1:																				//mono input
-				std::cout << "Mono" << std::endl;
+			case 1:																				//Mono Input
 				if (*outchannels == 1) {
 					for (unsigned int samp = 0; samp < length; samp++) {
 						outbuffer[(samp * *outchannels)] = 0.0f;										//Brute force mutes system output
 						myPCMData.push_back(floatToPCM(inbuffer[samp]));					//Adds sample to PCM buffer...
 						myPCMData.push_back(floatToPCM(inbuffer[samp]));					//...twice, because D++ expects stereo input
+#ifndef NDEBUG
 						samplesAddedCounter += 2;
+#endif
 					}
 				}
 				else {
@@ -82,23 +78,26 @@ FMOD_RESULT F_CALLBACK captureDSPReadCallback(FMOD_DSP_STATE* dsp_state, float* 
 				}
 				break;
 
-			case 2:																				//stereo input
-				std::cout << "Stereo" << std::endl;
+			case 2:																				//Stereo Input
 				for (unsigned int samp = 0; samp < length; samp++) {
 					for (int chan = 0; chan < *outchannels; chan++) {
-						outbuffer[(samp * *outchannels) + chan] = 0.0f;									//Brute force mutes system output
 						myPCMData.push_back(floatToPCM(inbuffer[(samp * inchannels) + chan]));			//Adds sample to PCM buffer in approprate channel
+#ifndef NDEBUG
 						samplesAddedCounter++;
+#endif
 					}
 				}
 				break;
-			//Add other cases for other input channel configurations. Ultimately, all must mix down to stereo.
+
+			//Add cases here for other input channel configurations. Ultimately, all must mix down to stereo.
+
+			default:
+				std::cout << "DSP needs mono or stereo in and out!" << std::endl;
+				return FMOD_ERR_DSP_DONTPROCESS;
+				break;
 		}
-		return FMOD_OK;
 	}
-	else {
-		return FMOD_ERR_DSP_SILENCE;
-	}
+	return FMOD_ERR_DSP_SILENCE;		//ensures System output is silent without manually telling every sample to be 0.0f
 }
 
 //Bot Functions
@@ -163,10 +162,10 @@ void init() {
 	std::cout << "###########################" << std::endl;
 
 	//file paths
-	exe_path = getExecutableFolder();				//Special function from SessionMusicBot_Utils.h
+	exe_path = getExecutableFolder();						//Special function from SessionMusicBot_Utils.h
 	banks_path = exe_path.append("soundbanks");
 	workpath = banks_path;
-	workpath.append(master_bank);					//Sets workpath to default file, to ensure there's always at least a valid path
+	workpath.append(master_bank);							//Sets workpath to default file, to ensure there's always at least a valid path
 
 	//FMOD Init
 	std::cout << "Initializing FMOD...";
@@ -233,9 +232,6 @@ void init() {
 	std::cout << "FMOD System Info:\n  Sample Rate- " << samplerate << "\n  Speaker Mode- " << speakermode
 		<< "\n  Num Raw Speakers- " << numrawspeakers << std::endl;
 
-	//ERRCHECK(pEventInstance->start());							//Start test audio event...
-	//ERRCHECK(pEventInstance->release());						//...and release its resources when it stops playing.
-
 
 	std::cout << "###########################" << std::endl;
 	std::cout << "###                     ###" << std::endl;
@@ -248,12 +244,17 @@ int main() {
 
 	init();
 
+#ifndef NDEBUG
 	//Time stuff for debugging
 	std::chrono::system_clock::time_point start = std::chrono::system_clock::now();
 	std::chrono::system_clock::time_point end = std::chrono::system_clock::now();
 	std::chrono::system_clock::time_point last = end;
 	std::chrono::duration<double, std::milli> elapsed;
 	std::chrono::duration<double, std::milli> elapsedFrame;
+
+	bool timerNotRunning = true;		//To make sure our times start at the first update loop where we know we've connected
+	int allSamplesAdded = 0;
+#endif
 
 	/* Create bot cluster */
 	dpp::cluster bot(getBotToken());
@@ -286,7 +287,7 @@ int main() {
 	bot.on_voice_ready([&bot](const dpp::voice_ready_t& event) {
 		std::cout << "Voice Ready\n";
 		currentClient = event.voice_client;							//Get the bot's current voice channel
-		//currentClient->set_send_audio_type(dpp::discord_voice_client::satype_live_audio);
+		currentClient->set_send_audio_type(dpp::discord_voice_client::satype_live_audio);
 		isConnected = true;											//Tell the rest of the program we've connected
 		ERRCHECK(pEventInstance->start());							//Start test audio event...
 		ERRCHECK(pEventInstance->release());						//...and release its resources when it stops playing.
@@ -294,9 +295,6 @@ int main() {
 
 	/* Start the bot */
 	bot.start();
-
-	bool timerNotRunning = true;		//Temp variable to make sure our times start at the first update loop where we know we've connected
-	int allSamplesAdded = 0;
 
 	//Program loop
 	while (isRunning) {
@@ -308,6 +306,7 @@ int main() {
 		//Send PCM data to D++, if applicable
 		if (isConnected) {
 
+#ifndef NDEBUG
 			//Start timer the first time we enter "isConnected"
 			if (timerNotRunning) {
 				start = std::chrono::system_clock::now();
@@ -316,47 +315,30 @@ int main() {
 			}
 			elapsed = end - start;
 			elapsedFrame = end - last;
-
-
 			std::cout << "Frame time: " << elapsedFrame << " || Samples added: " << samplesAddedCounter << "|| Samples in buffer: " << myPCMData.size() << std::endl;
-			allSamplesAdded += samplesAddedCounter;
 			samplesAddedCounter = 0;
-
-			if (elapsed.count() > 10000) {
-				std::cout << "Total samples over 10 seconds: " << allSamplesAdded << std::endl;
-				std::cout << "Avg of " << allSamplesAdded / elapsed.count() << " samples per ms" << std::endl;
-				return 0;
-			}
+#endif
 
 			
-			if (!fromSilence && (myPCMData.size() > dpp::send_audio_raw_max_length)) {					//Normal process
+			if (myPCMData.size() > dpp::send_audio_raw_max_length * 2) {								//If buffer is full enough (allows slight wiggle room)
+#ifndef NDEBUG
 				std::cout << "Sending PCM Data at time: " << elapsed << std::endl;
+#endif
 
-				while (myPCMData.size() > dpp::send_audio_raw_max_length) {									//Until minimum size we want our buffer
-					currentClient->send_audio_raw(myPCMData.data(), dpp::send_audio_raw_max_length);		//Send the buffer (method will take the first chunk it needs)
-					myPCMData.erase(myPCMData.begin(), myPCMData.begin() + dpp::send_audio_raw_max_length);	//Trim our main buffer of the data just sent
+				while (myPCMData.size() > dpp::send_audio_raw_max_length * 2) {										//Until minimum size we want our buffer
+					currentClient->send_audio_raw((uint16_t*)myPCMData.data(), dpp::send_audio_raw_max_length);		//Send the buffer (method takes 11520 BYTES, so 5760 samples)
+					myPCMData.erase(myPCMData.begin(), myPCMData.begin() + (dpp::send_audio_raw_max_length * 0.5));	//Trim our main buffer of the data just sent
 				}
 			}
-			else if (fromSilence && (myPCMData.size() > dpp::send_audio_raw_max_length * 8)) {			//Meant to build a buffer before actually starting
-				std::cout << "Sending PCM Data from silence at time: " << elapsed << std::endl;
-
-				while (myPCMData.size() > dpp::send_audio_raw_max_length * 8) {								//Until minimum size we want our buffer
-					currentClient->send_audio_raw(myPCMData.data(), dpp::send_audio_raw_max_length);		//Send the buffer (method will take the first chunk it needs)
-					myPCMData.erase(myPCMData.begin(), myPCMData.begin() + dpp::send_audio_raw_max_length);	//Trim our main buffer of the data just sent
-				}
-				fromSilence = false;
-			}
+#ifndef NDEBUG
 			else {																						//Else just report how much is left in the D++ buffer
 				std::cout << "D++ Seconds remaining: " << currentClient->get_secs_remaining() << std::endl;
 			}
+#endif
 			//Todo: what if the audio ends? We should stop trying to transmit normally, right? Probably would go here.
 			// Possible approach: !eventsPlaying && output is silent, fromSilence = true.
-			if (currentClient->get_secs_remaining() > 10) {
-				ERRCHECK(pEventInstance->stop(FMOD_STUDIO_STOP_ALLOWFADEOUT));			//So one can hear the audio play out even after we stop transmitting
-				isConnected = false;
-			}
 		}
-		//Update FMOD processes. Just before "Sleep" which gives it a solid 10 ms to process without main thread interference.
+		//Update FMOD processes. Just before "Sleep" which gives FMOD time to process without main thread interference.
 		pSystem->update();
 		Sleep(20);
 	}
@@ -364,11 +346,13 @@ int main() {
 	//Program quit. We never actually reach here as it stands, but we'll deal with that later.
 	std::cout << "Quitting program. Releasing resources..." << std::endl;
 
-	//When closing, remove DSP from master channel group, and release the DSP
+	//Todo: If in voice, leave chat before dying
+
+	//Remove DSP from master channel group, and release the DSP
 	pMasterBusGroup->removeDSP(mCaptureDSP);
 	mCaptureDSP->release();
 
-	//Unload and release System
+	//Unload and release FMOD Studio System
 	pSystem->unloadAll();
 	pSystem->release();
 

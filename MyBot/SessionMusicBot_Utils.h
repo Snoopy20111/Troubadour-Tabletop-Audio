@@ -1,6 +1,6 @@
 #pragma once
 
-// UTILS //
+//---UTILS---//
 std::filesystem::path getExecutablePath() {
     TCHAR path[MAX_PATH];
     DWORD length = GetModuleFileName(NULL, path, MAX_PATH);
@@ -24,18 +24,17 @@ float dBToFloat(float input) {
     return (float)pow(10, (input / 20));
 }
 
-uint16_t floatToPCM(float inSample) {
-	//uint16_t outSample;
+int16_t floatToPCM(float inSample) {
 	if (inSample >= 1.0) { return 32767; }					//Ceiling
 	else if (inSample <= -1.0) { return -32767;}			//Floor
-	return (uint16_t)roundf(inSample * 32767.0f);			//Normal conversion
+	return (int16_t)roundf(inSample * 32767.0f);			//Normal conversion
 	//Todo: Dithering?
 }
 
 void ERRCHECK(FMOD_RESULT result) {
 	if (result != FMOD_OK) {
 		printf("FMOD Error! (%d) %s\n", result, FMOD_ErrorString(result));
-		exit(-1 * result);
+		exit(-1 * result);									//Gives the FMOD error code, but as negative because negative is bad
 	}
 }
 
@@ -44,14 +43,10 @@ std::string getBotToken()
 	//read from .config (text) file and grab the token
 	std::ifstream myfile("token.config");
 	std::string token;
-	if (myfile.is_open())
-	{
-		myfile >> token;
-		//std::cout << "Token from config file is: " << token << "\n";
-	}
-	else
-	{
+	if (myfile.is_open()) { myfile >> token; }
+	else {
 		std::cout << "Token config file not opened properly. Ensure it's at the correct location and isn't corrupted!";
+		exit(-1);
 	}
 	myfile.close();
 	return token;
