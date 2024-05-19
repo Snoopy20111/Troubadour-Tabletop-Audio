@@ -1,6 +1,9 @@
 #pragma once
 
 //---UTILS---//
+
+// Gets the location of the program executable.
+// If porting away from Windows this is the first (maybe last?) code change you should have to make.
 std::filesystem::path getExecutablePath() {
     TCHAR path[MAX_PATH];
     DWORD length = GetModuleFileName(NULL, path, MAX_PATH);
@@ -34,7 +37,7 @@ int16_t floatToPCM(float inSample) {
 void ERRCHECK(FMOD_RESULT result) {
 	if (result != FMOD_OK) {
 		printf("FMOD Error! (%d) %s\n", result, FMOD_ErrorString(result));
-		exit(-1 * result);									//Gives the FMOD error code, but as negative because negative is bad
+		exit(result);									//Gives the FMOD error code
 	}
 }
 

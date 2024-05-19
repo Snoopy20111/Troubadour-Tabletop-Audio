@@ -21,41 +21,47 @@
 //---File Paths---//
 std::filesystem::path exe_path;
 std::filesystem::path banks_path;
-std::filesystem::path workpath;
+std::filesystem::path workpath;							//reusable path that gets filenames appended and then used
 
 //---FMOD Declarations---//
 FMOD::Studio::System* pSystem = nullptr;				//overall system
 FMOD::System* pCoreSystem = nullptr;					//overall core system
-FMOD::Studio::Bank* pMasterBank = nullptr;				//Master Bank
-FMOD::Studio::Bank* pMasterStringsBank = nullptr;		//Master Strings
-FMOD::Studio::Bank* pSharedUIBank = nullptr;			//Example non-master bank. TODO: replace this with dynamic system
 FMOD::Studio::Bus* pMasterBus = nullptr;				//Master bus
 FMOD::ChannelGroup* pMasterBusGroup = nullptr;			//Channel Group of the master bus
 FMOD::DSP* mCaptureDSP = nullptr;						//DSP to attach to Master Channel Group for stealing output
+
+//---Banks and stuff---//
+FMOD::Studio::Bank* pMasterBank = nullptr;							//Master Bank
+FMOD::Studio::Bank* pMasterStringsBank = nullptr;					//Master Strings
+std::vector<FMOD::Studio::Bank*> pBanks;							// List of all other banks
+std::vector<std::filesystem::path> bankPaths;						// And their filepaths
+
+std::vector<FMOD::Studio::EventDescription*> eventDescriptionVector;		//todo: set nullptrs?
+std::vector<FMOD::Studio::EventInstance*> eventInstanceVector;
+FMOD_3D_ATTRIBUTES listenerAttributes;
+FMOD_3D_ATTRIBUTES eventAttributes;
+FMOD::Studio::EventDescription* pEventDescription = nullptr;        //Event Description, essentially the Event itself plus data
+FMOD::Studio::EventInstance* pEventInstance = nullptr;              //Event Instance
+
+
+std::string master_bank = "Master.bank";							//Master bank, always load first
+std::string masterstrings_bank = "Master.strings.bank";				//Strings, allows us to refer to events by name instead of GUID
+std::vector<std::string> eventPaths;								// And all known events
+const std::string callableEventPath = "event:/Master/";
 
 //---Misc Bot Declarations---//
 dpp::discord_voice_client* currentClient = nullptr;		//current Voice Client of the bot. Only designed to run on one server.
 std::vector<int16_t> myPCMData;							//Main buffer of PCM audio data, which FMOD adds to and D++ cuts "frames" from
 bool isRunning = true;
 bool isConnected = false;
-bool fromSilence = true;
+bool isPlaying = false;
 
 #ifndef NDEBUG
 //---Extra Variables only present in Debug mode, for extra data---//
 int samplesAddedCounter = 0;
 #endif
 
-//Test Event stuff, will be replaced with more flexible lists built at runtime
-FMOD::Studio::EventDescription* pEventDescription = nullptr;        //Event Description, essentially the Event itself plus data
-FMOD::Studio::EventInstance* pEventInstance = nullptr;              //Event Instance
-FMOD_3D_ATTRIBUTES listenerAttributes;
-FMOD_3D_ATTRIBUTES eventAttributes;
-std::string master_bank = "Master.bank";							//Known bank names, basically just Master and Strings
-std::string masterstrings_bank = "Master.strings.bank";
-std::string ui_bank = "Shared_UI.bank";
-
-//FMOD and Audio Functions
-
+//---FMOD and Audio Functions---//
 FMOD_RESULT F_CALLBACK captureDSPReadCallback(FMOD_DSP_STATE* dsp_state, float* inbuffer, float* outbuffer, unsigned int length, int inchannels, int* outchannels) {
 
 	FMOD::DSP* thisdsp = (FMOD::DSP*)dsp_state->instance;
@@ -100,17 +106,128 @@ FMOD_RESULT F_CALLBACK captureDSPReadCallback(FMOD_DSP_STATE* dsp_state, float* 
 	return FMOD_ERR_DSP_SILENCE;		//ensures System output is silent without manually telling every sample to be 0.0f
 }
 
-//Bot Functions
+//---Bot Functions---//
+// Simple ping, responds in chat and output log
 void ping(const dpp::slashcommand_t& event) {
-	std::string response = "Pong! I'm alive!";
-	event.reply(dpp::message(response.c_str()).set_flags(dpp::m_ephemeral));
-	std::cout << response.c_str() << std::endl;
+	event.reply(dpp::message("Pong! I'm alive!").set_flags(dpp::m_ephemeral));
+	std::cout << "Responding to Ping command." << std::endl;
 }
 
-void list(const dpp::slashcommand_t& event) {
-	std::string response = "List of events (coming soon).";
-	event.reply(dpp::message(response.c_str()).set_flags(dpp::m_ephemeral));
-	std::cout << response.c_str() << std::endl;
+// Looks through the Soundbanks folder and makes an index of all existing & valid .bank files, events, and parameters
+void list_banks(const dpp::slashcommand_t& event) {
+	// If currently playing audio in a voice chat, exit early
+	if (isPlaying) {
+		event.reply(dpp::message("Cannot index banks while the bot is active! Bad juju, probably.").set_flags(dpp::m_ephemeral));
+		return;
+	}
+
+	// Clear current Bank vector
+	// Note: won't unload existing banks, so may still be safe? Need to figure out intended workflow.
+	bankPaths.clear();
+
+	//Show "Thinking..." while putting the list together
+	event.thinking(true, [event](const dpp::confirmation_callback_t& callback) {
+		std::cout << "Checking Banks path: " << banks_path << std::endl;
+		std::string output = "";
+		for (const auto& entry : std::filesystem::directory_iterator(banks_path)) {
+			if (entry.is_directory()) {
+				std::cout << entry.path() << " is a directory. Skipping..." << std::endl;
+				continue;
+			}
+			if (entry.path().extension() != ".bank") {
+				std::cout << entry.path() << " extension is " << entry.path().extension()
+					<< " which isn't an FMOD bank. Skipping..." << std::endl;
+			}
+
+			std::cout << entry.path() << std::endl;
+			bankPaths.push_back(entry.path());
+		}
+
+		for (int i = 0; i < bankPaths.size(); i++) {
+			output.append("- " + bankPaths[i].filename().string() + "\n");
+		}
+		event.edit_original_response(dpp::message("## Found FMOD Banks: ##\n" + output));
+	});
+}
+
+// Display list of known audio events
+// in the future, these should only be ones the user can play, not _all_ events.
+void list_events(const dpp::slashcommand_t& event) {
+
+	if (!pMasterStringsBank->isValid() || pMasterStringsBank == nullptr) {
+		std::cout << "Bad juju! Master Strings bank is invalid or nullptr." << std::endl;
+		return;
+	}
+
+	eventPaths.clear();
+
+	event.thinking(true, [event](const dpp::confirmation_callback_t& callback) {
+
+		int count = 0;
+		ERRCHECK(pMasterStringsBank->getStringCount(&count));
+		if (count == 0) {
+			return;
+		}
+
+		std::cout << "Count: " << count << std::endl;
+
+		for (int i = 0; i < count; i++) {
+			FMOD_GUID pathGUID;
+			char pathStringChars[256];
+			char* pathStringCharsptr = pathStringChars;
+			int retreived;
+
+			ERRCHECK(pMasterStringsBank->getStringInfo(i, &pathGUID, pathStringCharsptr, 256, &retreived));
+			std::string pathString(pathStringCharsptr);
+
+			//Discard all strings that aren't events in the Master folder
+			//In the future we may want/need to use this for vectors of busses, VCAs, etc.
+			if ((pathString.find("event:/Master/", 0) != 0)) {
+				std::cout << "Skipped: " << pathString << std::endl;
+				continue;
+			}
+
+			//What's left should be good for our eventPaths vector
+			std::cout << "Added: " << pathString << std::endl;
+			eventPaths.push_back(pathString);
+		}
+		//And now print 'em to Discord!
+		std::string output = "";
+
+		for (int i = 0; i < eventPaths.size(); i++) {
+			output.append("- " + eventPaths[i] + "\n");
+		}
+		event.edit_original_response(dpp::message("## Found Events: ##\n" + output));
+	});
+}
+
+void list_params(const dpp::slashcommand_t& event) {
+	//Todo: For a given event (possibly another argument for function?)
+}
+
+void list_all(const dpp::slashcommand_t& event) {
+	//Todo: index banks, list events, and tally up the parameters for each event
+}
+
+void play(const dpp::slashcommand_t& event) {
+	//Todo: play from the indexed event list, and add to events playing list
+}
+
+void pause(const dpp::slashcommand_t& event) {
+	//Todo: pause event (or all events) with matching name, if that can be done
+	//Probably unnecessary, do later?
+}
+
+void stop(const dpp::slashcommand_t& event) {
+	//Todo: Stop event with given name in events playing list
+}
+
+void stop_now(const dpp::slashcommand_t& event) {
+	//Todo: same as above but with different stop type
+}
+
+void stop_all(const dpp::slashcommand_t& event) {
+	//Todo: For Each in events playing list, stop_now
 }
 
 void join(const dpp::slashcommand_t& event) {
@@ -147,6 +264,8 @@ void join(const dpp::slashcommand_t& event) {
 void leave(const dpp::slashcommand_t& event) {
 	dpp::voiceconn* currentVC = event.from->get_voice(event.command.guild_id);
 	if (currentVC) {
+		// Todo: Stop all events immediately
+		// Todo: Wait until 
 		event.from->disconnect_voice(event.command.guild_id);
 		event.reply(dpp::message("Bye bye! I hope I played good sounds!").set_flags(dpp::m_ephemeral));
 		std::cout << "Leaving voice channel." << std::endl;
@@ -173,14 +292,12 @@ void init() {
 	ERRCHECK(pSystem->getCoreSystem(&pCoreSystem));
 	//ERRCHECK(pCoreSystem->setDSPBufferSize(4096, 4));
 	ERRCHECK(pSystem->initialize(128, FMOD_STUDIO_INIT_NORMAL, FMOD_INIT_NORMAL, nullptr));
-	
 	std::cout << "Done." << std::endl;
 
 	//Load Master Bank and Master Strings
-	std::cout << "Loading banks...";
+	std::cout << "Loading Master banks...";
 	ERRCHECK(pSystem->loadBankFile(workpath.replace_filename(master_bank).string().c_str(), FMOD_STUDIO_LOAD_BANK_NORMAL, &pMasterBank));
 	ERRCHECK(pSystem->loadBankFile(workpath.replace_filename(masterstrings_bank).string().c_str(), FMOD_STUDIO_LOAD_BANK_NORMAL, &pMasterStringsBank));
-	ERRCHECK(pSystem->loadBankFile(workpath.replace_filename(ui_bank).string().c_str(), FMOD_STUDIO_LOAD_BANK_NORMAL, &pSharedUIBank));
 	std::cout << "Done." << std::endl;
 
 	//Also get the Master Bus, set volume, and get the related Channel Group
@@ -191,6 +308,7 @@ void init() {
 	ERRCHECK(pSystem->flushCommands());							//And wait until all previous commands are done (ensuring Channel Group exists)...
 	ERRCHECK(pMasterBus->getChannelGroup(&pMasterBusGroup));	//Or else this fails immediately, and we'll have DSP problems.
 	std::cout << "Done." << std::endl;
+	
 
 	//Define and create our capture DSP on the Master Channel Group.
 	//Copied from FMOD's examples, unsure why this works and why it must be in brackets.
@@ -207,7 +325,7 @@ void init() {
 	}
 	ERRCHECK(pMasterBusGroup->addDSP(FMOD_CHANNELCONTROL_DSP_TAIL, mCaptureDSP));		//Adds the newly defined dsp
 
-	//Setting Listener positioning for 3D, if desired. Normally done from Game Engine data
+	//Setting Listener positioning for 3D, in case it's used 
 	std::cout << "Setting up Listener...";
 	listenerAttributes.position = { 0.0f, 0.0f, 0.0f };
 	listenerAttributes.forward = { 0.0f, 1.0f, 0.0f };
@@ -219,7 +337,7 @@ void init() {
 	// In the future we'll have a vector/list of Event Descriptions for every known event,
 	// and probably a vector/list of Event Instances too.
 	std::cout << "Creating Test Event Instance...";
-	//ERRCHECK(pSystem->getEvent("event:/Master/Sine", &pEventDescription));
+	//ERRCHECK(pSystem->getEvent("event:/Master/Test_Sine", &pEventDescription));
 	ERRCHECK(pSystem->getEvent("event:/Master/Music/TitleTheme", &pEventDescription));
 	ERRCHECK(pEventDescription->createInstance(&pEventInstance));
 	std::cout << "Done." << std::endl;
@@ -268,7 +386,10 @@ int main() {
 		if (dpp::run_once<struct register_bot_commands>()) {
 			std::vector<dpp::slashcommand> commands {
 				{ "ping", "Ping the bot to ensure it's alive.", bot.me.id },
-				{ "list", "List all found banks/events.", bot.me.id},
+				{ "list_banks", "Search for, and list, all audio banks.", bot.me.id},
+				{ "list_events", "List all found audio events.", bot.me.id},
+				{ "list_params", "List all found audio events.", bot.me.id},
+				{ "list_all", "List all found audio events.", bot.me.id},
 				{ "join", "Join your current voice channel.", bot.me.id},
 				{ "leave", "Leave the current voice channel.", bot.me.id}
 			};
@@ -279,7 +400,10 @@ int main() {
 	/* Handle slash commands */
 	bot.on_slashcommand([&bot](const dpp::slashcommand_t& event) {
 		if (event.command.get_command_name() == "ping") { ping(event); }
-		else if (event.command.get_command_name() == "list") { list(event); }
+		else if (event.command.get_command_name() == "list_banks") { list_banks(event); }
+		else if (event.command.get_command_name() == "list_events") { list_events(event); }
+		else if (event.command.get_command_name() == "list_params") { list_events(event); }
+		else if (event.command.get_command_name() == "list_all") { list_all(event); }
 		else if (event.command.get_command_name() == "join") { join(event); }
 		else if (event.command.get_command_name() == "leave") { leave(event); }
 	});
@@ -315,7 +439,7 @@ int main() {
 			}
 			elapsed = end - start;
 			elapsedFrame = end - last;
-			std::cout << "Frame time: " << elapsedFrame << " || Samples added: " << samplesAddedCounter << "|| Samples in buffer: " << myPCMData.size() << std::endl;
+			std::cout << "Frame time: " << elapsedFrame << " || Samples added: " << samplesAddedCounter << " || Samples in buffer: " << myPCMData.size() << std::endl;
 			samplesAddedCounter = 0;
 #endif
 

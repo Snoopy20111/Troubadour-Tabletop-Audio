@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{56c88aca-69c7-47cb-a1cd-197412678d6f}">
 		<property name="name">
-			<value>Sine</value>
+			<value>Test_Sine</value>
 		</property>
 		<property name="outputFormat">
 			<value>0</value>

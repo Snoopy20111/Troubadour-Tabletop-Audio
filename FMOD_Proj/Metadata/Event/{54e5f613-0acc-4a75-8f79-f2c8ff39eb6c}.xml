@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{54e5f613-0acc-4a75-8f79-f2c8ff39eb6c}">
 		<property name="note">
-			<value>Plays if a given event can't be found</value>
+			<value>Plays if a given event can't be found.</value>
 		</property>
 		<property name="name">
 			<value>Oops</value>
