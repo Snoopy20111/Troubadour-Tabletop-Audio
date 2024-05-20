@@ -31,23 +31,26 @@ FMOD::ChannelGroup* pMasterBusGroup = nullptr;			//Channel Group of the master b
 FMOD::DSP* mCaptureDSP = nullptr;						//DSP to attach to Master Channel Group for stealing output
 
 //---Banks and stuff---//
-FMOD::Studio::Bank* pMasterBank = nullptr;							//Master Bank
-FMOD::Studio::Bank* pMasterStringsBank = nullptr;					//Master Strings
+FMOD::Studio::Bank* pMasterBank = nullptr;							//Master Bank, always loads first and contains shared content
+std::string master_bank = "Master.bank";
+FMOD::Studio::Bank* pMasterStringsBank = nullptr;					//Master Strings, allows us to refer to events by name instead of GUID
+std::string masterstrings_bank = "Master.strings.bank";
 std::vector<FMOD::Studio::Bank*> pBanks;							// List of all other banks
-std::vector<std::filesystem::path> bankPaths;						// And their filepaths
+std::vector<std::filesystem::path> bankPaths;
+std::vector<FMOD::Studio::EventDescription*> pEventDescriptions;	// List of all Events (plus associated data)
+std::vector<std::string> eventPaths;
+const std::string callableEventPath = "event:/Master/";				// The path where our callable events exist
+std::vector<FMOD::Studio::EventInstance*> pEventInstances;			// List of all Event Instances
 
-std::vector<FMOD::Studio::EventDescription*> eventDescriptionVector;		//todo: set nullptrs?
-std::vector<FMOD::Studio::EventInstance*> eventInstanceVector;
 FMOD_3D_ATTRIBUTES listenerAttributes;
 FMOD_3D_ATTRIBUTES eventAttributes;
 FMOD::Studio::EventDescription* pEventDescription = nullptr;        //Event Description, essentially the Event itself plus data
 FMOD::Studio::EventInstance* pEventInstance = nullptr;              //Event Instance
 
 
-std::string master_bank = "Master.bank";							//Master bank, always load first
-std::string masterstrings_bank = "Master.strings.bank";				//Strings, allows us to refer to events by name instead of GUID
-std::vector<std::string> eventPaths;								// And all known events
-const std::string callableEventPath = "event:/Master/";
+
+
+
 
 //---Misc Bot Declarations---//
 dpp::discord_voice_client* currentClient = nullptr;		//current Voice Client of the bot. Only designed to run on one server.
@@ -115,38 +118,45 @@ void ping(const dpp::slashcommand_t& event) {
 
 // Looks through the Soundbanks folder and makes an index of all existing & valid .bank files, events, and parameters
 void list_banks(const dpp::slashcommand_t& event) {
-	// If currently playing audio in a voice chat, exit early
-	if (isPlaying) {
-		event.reply(dpp::message("Cannot index banks while the bot is active! Bad juju, probably.").set_flags(dpp::m_ephemeral));
+	if (isPlaying) {			// If currently playing audio in a voice chat, exit early
+		event.reply(dpp::message("Cannot index banks while the bot is active! Bad juju.").set_flags(dpp::m_ephemeral));
 		return;
 	}
-
 	// Clear current Bank vector
-	// Note: won't unload existing banks, so may still be safe? Need to figure out intended workflow.
 	bankPaths.clear();
 
 	//Show "Thinking..." while putting the list together
 	event.thinking(true, [event](const dpp::confirmation_callback_t& callback) {
+
 		std::cout << "Checking Banks path: " << banks_path << std::endl;
 		std::string output = "";
-		for (const auto& entry : std::filesystem::directory_iterator(banks_path)) {
-			if (entry.is_directory()) {
+
+		for (const auto& entry : std::filesystem::directory_iterator(banks_path)) {			// For every entry found in the banks folder
+			if (entry.is_directory()) {														// Skip if directory...
 				std::cout << entry.path() << " is a directory. Skipping..." << std::endl;
 				continue;
 			}
-			if (entry.path().extension() != ".bank") {
-				std::cout << entry.path() << " extension is " << entry.path().extension()
-					<< " which isn't an FMOD bank. Skipping..." << std::endl;
+			else if (entry.path().extension() != ".bank") {									// Skip if not a bank...
+				std::cout << "Skipped: " << entry.path() << "|| Extension is " << entry.path().extension()
+					<< " which isn't an FMOD bank." << std::endl;
+				continue;
 			}
 
-			std::cout << entry.path() << std::endl;
+			std::cout << entry.path() << std::endl;											// Accepted!
 			bankPaths.push_back(entry.path());
 		}
 
-		for (int i = 0; i < bankPaths.size(); i++) {
+
+
+		for (int i = 0; i < bankPaths.size(); i++) {										// For every accepted bank
+
+
+			FMOD::Studio::Bank* newBank = nullptr;											// Load and add filename to the output string
+			ERRCHECK(pSystem->loadBankFile(bankPaths[i].string().c_str(), FMOD_STUDIO_LOAD_BANK_NORMAL, &newBank));
+			pBanks.push_back(newBank);
 			output.append("- " + bankPaths[i].filename().string() + "\n");
 		}
-		event.edit_original_response(dpp::message("## Found FMOD Banks: ##\n" + output));
+		event.edit_original_response(dpp::message("## Found FMOD Banks: ##\n" + output));	// Send back output, list of all (now loaded) banks
 	});
 }
 
@@ -336,11 +346,11 @@ void init() {
 	// Create event instance, for testing.
 	// In the future we'll have a vector/list of Event Descriptions for every known event,
 	// and probably a vector/list of Event Instances too.
-	std::cout << "Creating Test Event Instance...";
+	//std::cout << "Creating Test Event Instance...";
 	//ERRCHECK(pSystem->getEvent("event:/Master/Test_Sine", &pEventDescription));
-	ERRCHECK(pSystem->getEvent("event:/Master/Music/TitleTheme", &pEventDescription));
-	ERRCHECK(pEventDescription->createInstance(&pEventInstance));
-	std::cout << "Done." << std::endl;
+	//ERRCHECK(pSystem->getEvent("event:/Master/Music/TitleTheme", &pEventDescription));
+	//ERRCHECK(pEventDescription->createInstance(&pEventInstance));
+	//std::cout << "Done." << std::endl;
 
 	//Debug details
 	int samplerate; FMOD_SPEAKERMODE speakermode; int numrawspeakers;
