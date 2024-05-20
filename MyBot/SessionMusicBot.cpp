@@ -126,7 +126,7 @@ void list_banks(const dpp::slashcommand_t& event) {
 	event.thinking(true, [event](const dpp::confirmation_callback_t& callback) {
 
 		std::cout << "Checking Banks path: " << banks_dir_path.string() << std::endl;
-		std::string output = "";
+		std::string output = "- Master.bank\n- Master.strings.bank\n";				//Ensures Master and Strings banks are always in list
 
 		//Form list of .bank files in the soundbanks folder
 		for (const auto& entry : std::filesystem::directory_iterator(banks_dir_path)) {		// For every entry found in the banks folder
@@ -180,20 +180,19 @@ void list_banks(const dpp::slashcommand_t& event) {
 				pBanks.push_back(newBank);
 				std::cout << "Loaded: " << bankPaths[i].string() << std::endl;
 			}
-			else {
-				std::cout << "Skipped Load: " << bankPaths[i].string() << std::endl;
-			}
-			output.append("- " + bankPaths[i].filename().string() + "\n");	//Add to output list anyway, listing all banks
+			else { std::cout << "Skipped Load: " << bankPaths[i].string() << std::endl; }
+
+			output.append("- " + bankPaths[i].filename().string() + "\n");	//Add to output list regardless, listing all banks
 		}
 		
 		// ...and output.
 		event.edit_original_response(dpp::message("## Found FMOD Banks: ##\n" + output));
 
 		// Cleanup! Unload unused banks
-		// Use pBanks, as everything there should now be loaded
 		int offset = 0;
+		int i = 0;
 
-		for (int i = 0; i < pBanks.size(); i+0) {			// For each loaded bank
+		while (i < pBanks.size()) {			// For each loaded bank
 
 			bool foundInList = false;
 			char pathchars[256];
@@ -207,9 +206,6 @@ void list_banks(const dpp::slashcommand_t& event) {
 			for (int j = 0; j < bankPaths.size(); j++) {		// For each Bank filepath we know of
 				if (pathString == bankPaths[j]) {				// check if found in paths list
 					foundInList = true;
-#ifndef NDEBUG
-					std::cout << "Found in list: " << pathString << std::endl;
-#endif
 				}
 			}
 			if (!foundInList) {									// If not found in list
@@ -219,6 +215,9 @@ void list_banks(const dpp::slashcommand_t& event) {
 				offset--;
 			}
 			else { i++; }
+			if (i >= INT16_MAX || offset <= INT16_MIN) {		// Emergency cutoff switch to prevent infinite loop...assuming no user will have 32767+ banks.
+				break;											// Probably wasteful, but makes me sleep better at night.
+			}
 		}
 	});
 }
@@ -228,21 +227,23 @@ void list_banks(const dpp::slashcommand_t& event) {
 void list_events(const dpp::slashcommand_t& event) {
 
 	if (!pMasterStringsBank->isValid() || pMasterStringsBank == nullptr) {
-		std::cout << "Bad juju! Master Strings bank is invalid or nullptr." << std::endl;
+		std::cout << "Master Strings bank is invalid or nullptr. Bad juju!" << std::endl;
+		event.reply(dpp::message("Master Strings bank is invalid or nullptr. Bad juju!").set_flags(dpp::m_ephemeral));
 		return;
 	}
 
 	eventPaths.clear();
+	pEventDescriptions.clear();		//Okay to clear, because not the same "already loaded" issues?
 
 	event.thinking(true, [event](const dpp::confirmation_callback_t& callback) {
 
 		int count = 0;
 		ERRCHECK(pMasterStringsBank->getStringCount(&count));
-		if (count == 0) {
+		if (count <= 0) {
+			std::cout << "Invalid strings count, that's a problem." << std::endl;
+			event.edit_original_response(dpp::message("Error, no Event/Bus/VCA/Param Strings found. Check the output log!"));
 			return;
 		}
-
-		std::cout << "Count: " << count << std::endl;
 
 		for (int i = 0; i < count; i++) {
 			FMOD_GUID pathGUID;
@@ -253,17 +254,22 @@ void list_events(const dpp::slashcommand_t& event) {
 			ERRCHECK(pMasterStringsBank->getStringInfo(i, &pathGUID, pathStringCharsptr, 256, &retreived));
 			std::string pathString(pathStringCharsptr);
 
-			//Discard all strings that aren't events in the Master folder
-			//In the future we may want/need to use this for vectors of busses, VCAs, etc.
+			// Discard all strings that aren't events in the Master folder (busses, VCAs, Parameters, other events, etc.)
 			if ((pathString.find("event:/Master/", 0) != 0)) {
-				std::cout << "Skipped: " << pathString << std::endl;
+				std::cout << "Skipped: " << pathString << " -- Not event in Master folder." << std::endl;
 				continue;
 			}
 
-			//What's left should be good for our eventPaths vector
-			std::cout << "Added: " << pathString << std::endl;
+			// What's left should be good for our eventPaths vector
+			std::cout << "Accepted: " << pathString << std::endl;
 			eventPaths.push_back(pathString);
+
+			// Grab associated Event Description
+			FMOD::Studio::EventDescription* newEventDesc = nullptr;
+			ERRCHECK(pSystem->getEvent(pathString.c_str(), &newEventDesc));
+			pEventDescriptions.push_back(newEventDesc);
 		}
+
 		//And now print 'em to Discord!
 		std::string output = "";
 
@@ -280,6 +286,9 @@ void list_params(const dpp::slashcommand_t& event) {
 
 void list_all(const dpp::slashcommand_t& event) {
 	//Todo: index banks, list events, and tally up the parameters for each event
+	list_banks(event);
+	list_events(event);
+	list_params(event);
 }
 
 void play(const dpp::slashcommand_t& event) {
