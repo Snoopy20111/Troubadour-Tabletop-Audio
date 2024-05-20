@@ -20,7 +20,7 @@
 
 //---File Paths---//
 std::filesystem::path exe_path;
-std::filesystem::path banks_path;
+std::filesystem::path banks_dir_path;
 std::filesystem::path workpath;							//reusable path that gets filenames appended and then used
 
 //---FMOD Declarations---//
@@ -46,11 +46,6 @@ FMOD_3D_ATTRIBUTES listenerAttributes;
 FMOD_3D_ATTRIBUTES eventAttributes;
 FMOD::Studio::EventDescription* pEventDescription = nullptr;        //Event Description, essentially the Event itself plus data
 FMOD::Studio::EventInstance* pEventInstance = nullptr;              //Event Instance
-
-
-
-
-
 
 //---Misc Bot Declarations---//
 dpp::discord_voice_client* currentClient = nullptr;		//current Voice Client of the bot. Only designed to run on one server.
@@ -118,45 +113,113 @@ void ping(const dpp::slashcommand_t& event) {
 
 // Looks through the Soundbanks folder and makes an index of all existing & valid .bank files, events, and parameters
 void list_banks(const dpp::slashcommand_t& event) {
+
 	if (isPlaying) {			// If currently playing audio in a voice chat, exit early
 		event.reply(dpp::message("Cannot index banks while the bot is active! Bad juju.").set_flags(dpp::m_ephemeral));
 		return;
 	}
+
 	// Clear current Bank vector
 	bankPaths.clear();
 
 	//Show "Thinking..." while putting the list together
 	event.thinking(true, [event](const dpp::confirmation_callback_t& callback) {
 
-		std::cout << "Checking Banks path: " << banks_path << std::endl;
+		std::cout << "Checking Banks path: " << banks_dir_path.string() << std::endl;
 		std::string output = "";
 
-		for (const auto& entry : std::filesystem::directory_iterator(banks_path)) {			// For every entry found in the banks folder
+		//Form list of .bank files in the soundbanks folder
+		for (const auto& entry : std::filesystem::directory_iterator(banks_dir_path)) {		// For every entry found in the banks folder
 			if (entry.is_directory()) {														// Skip if directory...
-				std::cout << entry.path() << " is a directory. Skipping..." << std::endl;
+				std::cout << "   Skipped: " << entry.path().string() << " -- is a directory." << std::endl;
 				continue;
 			}
 			else if (entry.path().extension() != ".bank") {									// Skip if not a bank...
-				std::cout << "Skipped: " << entry.path() << "|| Extension is " << entry.path().extension()
-					<< " which isn't an FMOD bank." << std::endl;
+				std::cout << "   Skipped: " << entry.path().string() << " -- Extension is "
+					<< entry.path().extension() << " which isn't an FMOD bank." << std::endl;
 				continue;
 			}
-
-			std::cout << entry.path() << std::endl;											// Accepted!
-			bankPaths.push_back(entry.path());
+			else if ((entry.path().filename() == "Master.bank")								// Skip if Master or Strings...
+				|| (entry.path().filename() == "Master.strings.bank")) {
+				std::cout << "   Skipped: " << entry.path().string() << " -- is Master or Strings bank." << std::endl;
+			}
+			else {
+				std::cout << "   Accepted: " << entry.path().string() << std::endl;			// Accepted!
+				bankPaths.push_back(entry.path());
+			}
 		}
 
+		//Get list of already loaded banks
+		int count = 0;
+		ERRCHECK(pSystem->getBankCount(&count));
+		std::vector<FMOD::Studio::Bank*> loadedBanks; loadedBanks.resize(count);
+		int writtenCount = 0;
+		ERRCHECK(pSystem->getBankList(loadedBanks.data(), count, &writtenCount));
 
+		// For every accepted bank path, add to output list, and load if not loaded already
+		for (int i = 0; i < bankPaths.size(); i++) {						// For every accepted bank path
+			bool canLoad = true;
+			// Check the bank isn't already loaded
+			for (int j = 0; j < count; j++) {								// For each loaded bank
+				char pathchars[256];
+				char* pathptr = pathchars;
+				int retrieved = 0;
+				ERRCHECK(loadedBanks[j]->getPath(pathptr, 256, &retrieved));
 
-		for (int i = 0; i < bankPaths.size(); i++) {										// For every accepted bank
+				std::string pathString(pathptr);							// Make string, then format
+				pathString = formatBankToFilepath(pathString, banks_dir_path);
 
+				if (bankPaths[i].string() == pathString) {					// If the paths match, disqualify
+					canLoad = false;
+				}
+			}
 
-			FMOD::Studio::Bank* newBank = nullptr;											// Load and add filename to the output string
-			ERRCHECK(pSystem->loadBankFile(bankPaths[i].string().c_str(), FMOD_STUDIO_LOAD_BANK_NORMAL, &newBank));
-			pBanks.push_back(newBank);
-			output.append("- " + bankPaths[i].filename().string() + "\n");
+			if (canLoad) {
+				FMOD::Studio::Bank* newBank = nullptr;						// Load
+				ERRCHECK(pSystem->loadBankFile(bankPaths[i].string().c_str(), FMOD_STUDIO_LOAD_BANK_NORMAL, &newBank));
+				pBanks.push_back(newBank);
+				std::cout << "Loaded: " << bankPaths[i].string() << std::endl;
+			}
+			else {
+				std::cout << "Skipped Load: " << bankPaths[i].string() << std::endl;
+			}
+			output.append("- " + bankPaths[i].filename().string() + "\n");	//Add to output list anyway, listing all banks
 		}
-		event.edit_original_response(dpp::message("## Found FMOD Banks: ##\n" + output));	// Send back output, list of all (now loaded) banks
+		
+		// ...and output.
+		event.edit_original_response(dpp::message("## Found FMOD Banks: ##\n" + output));
+
+		// Cleanup! Unload unused banks
+		// Use pBanks, as everything there should now be loaded
+		int offset = 0;
+
+		for (int i = 0; i < pBanks.size(); i+0) {			// For each loaded bank
+
+			bool foundInList = false;
+			char pathchars[256];
+			char* pathptr = pathchars;
+			int retrieved = 0;
+			ERRCHECK(pBanks[i + offset]->getPath(pathptr, 256, &retrieved));
+
+			std::string pathString(pathptr);					// Make string, then format to filepath
+			pathString = formatBankToFilepath(pathString, banks_dir_path);
+
+			for (int j = 0; j < bankPaths.size(); j++) {		// For each Bank filepath we know of
+				if (pathString == bankPaths[j]) {				// check if found in paths list
+					foundInList = true;
+#ifndef NDEBUG
+					std::cout << "Found in list: " << pathString << std::endl;
+#endif
+				}
+			}
+			if (!foundInList) {									// If not found in list
+				std::cout << "Unload & Delete: " << pathString << std::endl;
+				pBanks[i + offset]->unload();					// Unload, then erase that element
+				pBanks.erase(pBanks.begin() + i);
+				offset--;
+			}
+			else { i++; }
+		}
 	});
 }
 
@@ -292,8 +355,8 @@ void init() {
 
 	//file paths
 	exe_path = getExecutableFolder();						//Special function from SessionMusicBot_Utils.h
-	banks_path = exe_path.append("soundbanks");
-	workpath = banks_path;
+	banks_dir_path = exe_path.append("soundbanks");
+	workpath = banks_dir_path;
 	workpath.append(master_bank);							//Sets workpath to default file, to ensure there's always at least a valid path
 
 	//FMOD Init

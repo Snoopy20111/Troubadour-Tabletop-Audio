@@ -54,3 +54,10 @@ std::string getBotToken()
 	myfile.close();
 	return token;
 }
+
+std::string formatBankToFilepath(std::string bankPath, std::filesystem::path banks_dir_path) {
+	bankPath.erase(0, 6);										// Remove "bank:/" at start
+	bankPath.append(".bank");									// Add ".bank" at end
+	bankPath = banks_dir_path.string() + "\\" + bankPath;		// Add banks directory path at start
+	return bankPath;
+}
