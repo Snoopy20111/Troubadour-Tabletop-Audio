@@ -31,7 +31,7 @@ int16_t floatToPCM(float inSample) {
 	if (inSample >= 1.0) { return 32767; }					//Ceiling
 	else if (inSample <= -1.0) { return -32767;}			//Floor
 	return (int16_t)roundf(inSample * 32767.0f);			//Normal conversion
-	//Todo: Dithering?
+	//Todo: Dithering? Probably not necessary
 }
 
 void ERRCHECK(FMOD_RESULT result) {
@@ -55,6 +55,7 @@ std::string getBotToken()
 	return token;
 }
 
+// Turns paths of FMOD format ("bank:/") to the filepath it would've loaded from
 std::string formatBankToFilepath(std::string bankPath, std::filesystem::path bank_dir_path) {
 	bankPath.erase(0, 6);										// Remove "bank:/" at start
 	bankPath.append(".bank");									// Add ".bank" at end
@@ -62,8 +63,26 @@ std::string formatBankToFilepath(std::string bankPath, std::filesystem::path ban
 	return bankPath;
 }
 
+// Removes "event:/Master/" from the path of a given event, for displaying lists and using as keys
 std::string truncateEventPath(std::string input) {
 	std::string truncatedPath = input;
 	truncatedPath.erase(0, 14);
 	return truncatedPath;
 }
+
+/* Struct to contain each Event Description and all associated parameters.
+ * This can be easily adjusted and expanded to contain all parameter details,
+ * such as IDs, min/max/default values, types, etc.
+ */
+struct sessionEventDesc {
+	FMOD::Studio::EventDescription* description = nullptr;
+	std::vector<std::string> params;
+};
+
+/* Struct to contain each Event Instance and all associated parameters.
+ * Note: Global Parameters are going to be a beast of their own.
+ */
+struct sessionEventInstance {
+	FMOD::Studio::EventInstance* instance = nullptr;
+	std::vector<std::string> params;
+};
