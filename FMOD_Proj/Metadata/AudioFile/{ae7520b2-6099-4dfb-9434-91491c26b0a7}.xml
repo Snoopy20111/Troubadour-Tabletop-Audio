@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{ae7520b2-6099-4dfb-9434-91491c26b0a7}">
 		<property name="assetPath">
-			<value>RoboxingMusic/MenuAndPreGame_Loop_Section.flac</value>
+			<value>System/RoboxingMusic/MenuAndPreGame_Loop_Section.flac</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>

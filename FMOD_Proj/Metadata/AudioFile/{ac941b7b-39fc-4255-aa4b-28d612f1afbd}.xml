@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
-	<object class="AudioFile" id="{edb2cf6c-532e-4349-b99c-960a7a372b65}">
+	<object class="AudioFile" id="{ac941b7b-39fc-4255-aa4b-28d612f1afbd}">
 		<property name="assetPath">
-			<value>System/Cartoon_Horn.flac</value>
+			<value>System/UI_MetalTransition_Open.flac</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>48</value>
@@ -11,7 +11,7 @@
 			<value>2</value>
 		</property>
 		<property name="length">
-			<value>0.44233333333333336</value>
+			<value>2.0065833333333334</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{f930ae7e-03ac-4797-acd5-e828f088234b}</destination>

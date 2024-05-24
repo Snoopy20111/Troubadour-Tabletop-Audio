@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{56c88aca-69c7-47cb-a1cd-197412678d6f}">
+		<property name="note">
+			<value>Plays a looping mono sine wave at 1000 hz.</value>
+		</property>
 		<property name="name">
 			<value>Test_Sine</value>
 		</property>
@@ -8,7 +11,7 @@
 			<value>0</value>
 		</property>
 		<relationship name="folder">
-			<destination>{19a4e887-4a02-4bde-90c9-9be24168d13d}</destination>
+			<destination>{a96c7e2f-8591-4798-9953-5633b8418419}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{e58f654b-c54d-4f03-a308-831a0a53dcd9}</destination>

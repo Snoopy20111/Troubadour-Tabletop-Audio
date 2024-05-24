@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{a87a55de-b84e-4373-9e12-4b331e2d3a33}">
 		<property name="assetPath">
-			<value>sine-tone-1000hz.wav</value>
+			<value>System/SineTone_1000hz.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>48</value>
