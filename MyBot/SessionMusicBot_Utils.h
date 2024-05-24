@@ -11,11 +11,13 @@ std::filesystem::path getExecutablePath() {
     return path;
 }
 
+// Gets the folder where the executable is contained
 std::filesystem::path getExecutableFolder() {
     std::filesystem::path exePath = getExecutablePath();
     return exePath.parent_path();
 }
 
+// Returns a random signed floating point value
 float randomFloat() {
     float result = (float)(rand()) / (float)(RAND_MAX);
     bool isPositive = ((float)(rand()) > ((float)(RAND_MAX) / 2));
@@ -23,10 +25,13 @@ float randomFloat() {
     return result;
 }
 
+// Shorthand for converting dB value into decimal (0-1). Good for setting volumes.
 float dBToFloat(float input) {
     return (float)pow(10, (input / 20));
 }
 
+// Converts a floating point sample value to signed 16-bit.
+// Used extensively to convert samples "stolen" by our DSP for Discord.
 int16_t floatToPCM(float inSample) {
 	if (inSample >= 1.0) { return 32767; }					//Ceiling
 	else if (inSample <= -1.0) { return -32767;}			//Floor
@@ -34,13 +39,23 @@ int16_t floatToPCM(float inSample) {
 	//Todo: Dithering? Probably not necessary
 }
 
-void ERRCHECK(FMOD_RESULT result) {
+// Hard FMOD Error Check, will quit program if encountered
+// Best to use in places where continuing will without a doubt cause weirder issues, corrupt data, etc.
+void ERRCHECK_HARD(FMOD_RESULT result) {
 	if (result != FMOD_OK) {
 		printf("FMOD Error! (%d) %s\n", result, FMOD_ErrorString(result));
-		exit(result);									//Gives the FMOD error code
+		exit(result);								//Gives the FMOD error code again
 	}
 }
 
+// Soft FMOD Error Check, will simply print the result. More like a warning.
+void ERRCHECK_SOFT(FMOD_RESULT result) {
+	if (result != FMOD_OK) {
+		printf("FMOD Error! (%d) %s\n", result, FMOD_ErrorString(result));
+	}
+}
+
+// Retrieves the Bot Token string from the token.config file
 std::string getBotToken()
 {
 	//read from .config (text) file and grab the token
@@ -65,9 +80,7 @@ std::string formatBankToFilepath(std::string bankPath, std::filesystem::path ban
 
 // Removes "event:/Master/" from the path of a given event, for displaying lists and using as keys
 std::string truncateEventPath(std::string input) {
-	std::string truncatedPath = input;
-	truncatedPath.erase(0, 14);
-	return truncatedPath;
+	return input.erase(0, 14);
 }
 
 /* Struct to contain each Event Description and all associated parameters.
@@ -76,13 +89,16 @@ std::string truncateEventPath(std::string input) {
  */
 struct sessionEventDesc {
 	FMOD::Studio::EventDescription* description = nullptr;
-	std::vector<std::string> params;
+	std::vector<FMOD_STUDIO_PARAMETER_DESCRIPTION> params;
 };
 
 /* Struct to contain each Event Instance and all associated parameters.
- * Note: Global Parameters are going to be a beast of their own.
+ * Instance points to the EventInstance itself.
+ * Params is a copy of the Params vector from the related EventDescription.
+ * This is potentially wasteful compared to pointers, might have Live Connect issues,
+ * but is also the simplest approach to get started.
  */
 struct sessionEventInstance {
 	FMOD::Studio::EventInstance* instance = nullptr;
-	std::vector<std::string> params;
+	std::vector<FMOD_STUDIO_PARAMETER_DESCRIPTION> params;
 };

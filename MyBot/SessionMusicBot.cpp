@@ -21,7 +21,6 @@
 //---File Paths---//
 std::filesystem::path exe_path;
 std::filesystem::path bank_dir_path;
-std::filesystem::path workpath;							//reusable path that gets filenames appended and then used
 
 //---FMOD Declarations---//
 FMOD::Studio::System* pSystem = nullptr;				//overall system
@@ -41,9 +40,7 @@ std::map<std::string, sessionEventDesc> pEventDescriptions;					// Map of all Ev
 std::vector<std::string> eventPaths;
 const std::string callableEventPath = "event:/Master/";						// The path where our callable events exist
 std::map<std::string, sessionEventInstance> pEventInstances;				// Map of all Event Instances, which pair user-given name to instance
-
 FMOD_3D_ATTRIBUTES listenerAttributes;
-//FMOD_3D_ATTRIBUTES eventAttributes;
 
 //---Misc Bot Declarations---//
 dpp::discord_voice_client* currentClient = nullptr;		//current Voice Client of the bot. Only designed to run on one server.
@@ -58,6 +55,7 @@ int samplesAddedCounter = 0;
 #endif
 
 //---FMOD and Audio Functions---//
+// Callback for stealing sample data from the Master Bus
 FMOD_RESULT F_CALLBACK captureDSPReadCallback(FMOD_DSP_STATE* dsp_state, float* inbuffer, float* outbuffer, unsigned int length, int inchannels, int* outchannels) {
 
 	FMOD::DSP* thisdsp = (FMOD::DSP*)dsp_state->instance;
@@ -102,12 +100,13 @@ FMOD_RESULT F_CALLBACK captureDSPReadCallback(FMOD_DSP_STATE* dsp_state, float* 
 	return FMOD_ERR_DSP_SILENCE;		//ensures System output is silent without manually telling every sample to be 0.0f
 }
 
+// Callback that triggers when an Event Instance is released
 // Despite the name, this callback will receive callbacks of all types, and so must filter them out
 FMOD_RESULT F_CALLBACK eventInstanceDestroyedCallback(FMOD_STUDIO_EVENT_CALLBACK_TYPE type, FMOD_STUDIO_EVENTINSTANCE* event, void* parameters) {
 
-	FMOD::Studio::EventInstance* myEvent = (FMOD::Studio::EventInstance*)event;		//Cast approved by Firelight in the documentation
+	FMOD::Studio::EventInstance* myEvent = (FMOD::Studio::EventInstance*)event;		// Cast approved by Firelight in the documentation
 
-	if (type == FMOD_STUDIO_EVENT_CALLBACK_DESTROYED) {
+	if (type == FMOD_STUDIO_EVENT_CALLBACK_DESTROYED) {								// Redundant due to callback mask
 		std::cout << "Callback triggered" << std::endl;
 		// Iterate through the pEventInstances map and erase the entry associated with this Instance.
 		for (const auto& [niceName, sessionEventInstance] : pEventInstances) {
@@ -129,7 +128,7 @@ void ping(const dpp::slashcommand_t& event) {
 }
 
 // Base function, called on startup and when requested by List Banks command
-std::string index_banks() {
+void list_banks() {
 
 	std::cout << "Checking Banks path: " << bank_dir_path.string() << std::endl;
 	std::string output = "- Master.bank\n- Master.strings.bank\n";				//Ensures Master and Strings banks are always in list
@@ -157,10 +156,10 @@ std::string index_banks() {
 
 	//Get list of already loaded banks
 	int count = 0;
-	ERRCHECK(pSystem->getBankCount(&count));
+	ERRCHECK_HARD(pSystem->getBankCount(&count));
 	std::vector<FMOD::Studio::Bank*> loadedBanks; loadedBanks.resize(count);
 	int writtenCount = 0;
-	ERRCHECK(pSystem->getBankList(loadedBanks.data(), count, &writtenCount));
+	ERRCHECK_HARD(pSystem->getBankList(loadedBanks.data(), count, &writtenCount));
 
 	// For every accepted bank path, add to output list, and load if not loaded already
 	for (int i = 0; i < bankPaths.size(); i++) {						// For every accepted bank path
@@ -170,7 +169,7 @@ std::string index_banks() {
 			char pathchars[256];						// Hope we don't need longer paths than this...
 			char* pathptr = pathchars;
 			int retrieved = 0;
-			ERRCHECK(loadedBanks[j]->getPath(pathptr, 256, &retrieved));// Get the path as char*
+			ERRCHECK_HARD(loadedBanks[j]->getPath(pathptr, 256, &retrieved));// Get the path as char*
 
 			std::string pathString(pathptr);							// Make string, then format
 			pathString = formatBankToFilepath(pathString, bank_dir_path);
@@ -181,38 +180,18 @@ std::string index_banks() {
 		}
 
 		if (canLoad) {
-			FMOD::Studio::Bank* newBank = nullptr;						// Load
-			ERRCHECK(pSystem->loadBankFile(bankPaths[i].string().c_str(), FMOD_STUDIO_LOAD_BANK_NORMAL, &newBank));
+			FMOD::Studio::Bank* newBank = nullptr;						// Load, if bank qualifies
+			ERRCHECK_HARD(pSystem->loadBankFile(bankPaths[i].string().c_str(), FMOD_STUDIO_LOAD_BANK_NORMAL, &newBank));
 			pBanks.push_back(newBank);
 			std::cout << "   Loaded: " << bankPaths[i].string() << std::endl;
 		}
 		else { std::cout << "   Skipped Load: " << bankPaths[i].string() << std::endl; }
-
-		output.append("- " + bankPaths[i].filename().string() + "\n");	//Add to output list regardless, listing all banks
 	}
-	return output;
-}
-
-// Indexes and Prints all valid .bank files
-void list_banks(const dpp::slashcommand_t& event) {
-
-	if (isPlaying) {											// If currently playing audio in a voice chat, exit early
-		event.reply(dpp::message("Cannot index banks while the bot is active! Bad juju.").set_flags(dpp::m_ephemeral));
-		return;
-	}
-	
-	bankPaths.clear();											// Clear current Bank vector
-
-	//Show "Thinking..." while putting the list together
-	event.thinking(true, [event](const dpp::confirmation_callback_t& callback) {
-		//Most of the string-building logic is in the index_banks function
-		event.edit_original_response(dpp::message("## Found FMOD Banks: ##\n" + index_banks()));
-	});
 
 	// Cleanup! Unload unused banks
 	int offset = 0;
 	int i = 0;
-	
+
 	// This is probably going to break. Have to try it with a bunch of banks and remove a few.
 	while (i < pBanks.size()) {								// For each loaded bank
 
@@ -220,7 +199,7 @@ void list_banks(const dpp::slashcommand_t& event) {
 		char pathchars[256];
 		char* pathptr = pathchars;
 		int retrieved = 0;
-		ERRCHECK(pBanks[i + offset]->getPath(pathptr, 256, &retrieved));
+		ERRCHECK_HARD(pBanks[i + offset]->getPath(pathptr, 256, &retrieved));
 
 		std::string pathString(pathptr);					// Make string, then format to filepath
 		pathString = formatBankToFilepath(pathString, bank_dir_path);
@@ -243,10 +222,35 @@ void list_banks(const dpp::slashcommand_t& event) {
 	}
 }
 
+// Indexes and Prints all valid .bank files
+void list_banks(const dpp::slashcommand_t& event) {
+
+	if (pEventInstances.size() > 0) {							// Unsafe to load/unload banks while events are active
+		event.reply(dpp::message("Cannot index banks while the bot is playing audio! Bad juju.").set_flags(dpp::m_ephemeral));
+		return;
+	}
+	
+	bankPaths.clear();											// Clear current Bank vector
+
+	//Show "Thinking..." while putting the list together
+	event.thinking(true, [event](const dpp::confirmation_callback_t& callback) {
+
+		list_banks();											// Re-list what banks exist, load new ones
+
+		std::string output = "- Master.bank\n- Master.strings.bank\n";
+
+		for (int i = 0; i < bankPaths.size(); i++) {
+			output.append("- " + bankPaths[i].filename().string() + "\n");
+		}
+
+		event.edit_original_response(dpp::message("## Found FMOD Banks: ##\n" + output));
+	});
+}
+
 // Base function, called on startup and when requested by List Events command
-void index_events() {
+void list_events() {
 	int count = 0;
-	ERRCHECK(pMasterStringsBank->getStringCount(&count));
+	ERRCHECK_HARD(pMasterStringsBank->getStringCount(&count));
 	if (count <= 0) {
 		std::cout << "Invalid strings count of " << count << ", that's a problem." << std::endl;
 		std::cout << "Double check the Master.strings.bank file was loaded properly." << std::endl;
@@ -259,16 +263,16 @@ void index_events() {
 		char* pathStringCharsptr = pathStringChars;
 		int retreived;
 
-		ERRCHECK(pMasterStringsBank->getStringInfo(i, &pathGUID, pathStringCharsptr, 256, &retreived));
+		ERRCHECK_HARD(pMasterStringsBank->getStringInfo(i, &pathGUID, pathStringCharsptr, 256, &retreived));
 		std::string pathString(pathStringCharsptr);
 
 		// Discard all strings that aren't events in the Master folder (busses, VCAs, Parameters, other events, etc.)
-		if ((pathString.find("event:/", 0) != 0)) {												// Skip if not Event...
+		if ((pathString.find("event:/", 0) != 0)) {										// Skip if not Event...
 			std::cout << "   Skipped: " << pathString << " -- Not Event." << std::endl;
 			continue;
 		}
-		if ((pathString.find(callableEventPath, 0) != 0)) {										// Skip if not in Master folder...
-			std::cout << "   Skipped: " << pathString << " -- Not Event in Master folder." << std::endl;
+		if ((pathString.find(callableEventPath, 0) != 0)) {								// Skip if not in Master folder...
+			std::cout << "   Skipped: " << pathString << " -- Not in Master folder." << std::endl;
 			continue;
 		}
 
@@ -278,7 +282,7 @@ void index_events() {
 
 		// Grab associated Event Description
 		FMOD::Studio::EventDescription* newEventDesc = nullptr;
-		ERRCHECK(pSystem->getEvent(pathString.c_str(), &newEventDesc));
+		ERRCHECK_HARD(pSystem->getEvent(pathString.c_str(), &newEventDesc));
 		sessionEventDesc newSessionEventDesc; newSessionEventDesc.description = newEventDesc;
 
 		// Grab the name of each associated non-built-in parameter
@@ -288,8 +292,26 @@ void index_events() {
 			FMOD_STUDIO_PARAMETER_DESCRIPTION parameter;
 			newSessionEventDesc.description->getParameterDescriptionByIndex(i, &parameter);
 			if (parameter.type == FMOD_STUDIO_PARAMETER_GAME_CONTROLLED) {
-				std::cout << "      Uses parameter: " << parameter.name << std::endl;
-				newSessionEventDesc.params.push_back(parameter.name);
+				std::string paramName(parameter.name);
+				std::string coutString = "      Uses parameter: " + paramName;
+#ifndef NDEBUG
+				coutString.append(" with flag: " + std::to_string(parameter.flags));
+#endif
+				if ((parameter.flags >> 2) % 2 == 1) {			// Global
+					coutString.append(" (Global)");
+				}
+				if (((parameter.flags >> 4) % 2 == 1) &&		// Labeled, like "enum"
+					((parameter.flags >> 3) % 2 == 1)) {		// Also triggers Discrete flag, but
+					coutString.append(" (Labeled)");			// we don't want that to show.
+				}
+				else if ((parameter.flags >> 3) % 2 == 1) {		// Discrete, like "int"
+					coutString.append(" (Discrete)");
+				}
+				if ((parameter.flags % 2) == 1) {				// Read Only
+					coutString.append(" (Read-Only)");
+				}
+				std::cout << coutString << std::endl;
+				newSessionEventDesc.params.push_back(parameter);
 			}
 		}
 		pEventDescriptions.insert({ truncateEventPath(pathString), newSessionEventDesc });		// Add to map, connected to a trimmed "easy" path name
@@ -301,7 +323,8 @@ void list_events(const dpp::slashcommand_t& event) {
 
 	if (!pMasterStringsBank->isValid() || pMasterStringsBank == nullptr) {
 		std::cout << "Master Strings bank is invalid or nullptr. Bad juju!" << std::endl;
-		event.reply(dpp::message("Master Strings bank is invalid or nullptr. Bad juju!").set_flags(dpp::m_ephemeral));
+		event.reply(dpp::message("Master Strings bank is invalid or nullptr. Bad juju!")
+			.set_flags(dpp::m_ephemeral));
 		return;
 	}
 
@@ -311,28 +334,75 @@ void list_events(const dpp::slashcommand_t& event) {
 	event.thinking(true, [event](const dpp::confirmation_callback_t& callback) {
 
 		// Index the events with function above
-		index_events();
+		list_events();
 
 		// And now print 'em to Discord!
 		std::string output = "";
-		std::vector<std::string> truncatedEventPaths;
 
-		for (int i = 0; i < eventPaths.size(); i++) {
-			truncatedEventPaths.push_back(truncateEventPath(eventPaths[i]));
-			output.append("- " + truncatedEventPaths[i] + "\n");
-			std::vector<std::string> eventParams = pEventDescriptions.at(truncateEventPath(eventPaths[i])).params;
+		for (int i = 0; i < eventPaths.size(); i++) {										// For every path	
+			output.append("- " + truncateEventPath(eventPaths[i]) + "\n");					// Add the shortened path to the output string...
+			std::vector<FMOD_STUDIO_PARAMETER_DESCRIPTION> eventParams
+				= pEventDescriptions.at(truncateEventPath(eventPaths[i])).params;
 			if (eventParams.size() == 0) {
 				continue;
 			}
-			for (int j = 0; j < eventParams.size(); j++) {
-				output.append(" - Parameter: " + eventParams[j] + "\n");
+			for (int j = 0; j < eventParams.size(); j++) {									// as well as each associated parameters and their ranges, if any.
+				std::string paramName = eventParams[j].name;
+				std::string paramMinVal; float paramMinVal_f = eventParams[j].minimum;
+				std::string paramMaxVal; float paramMaxVal_f = eventParams[j].maximum;
+
+				if ((eventParams[j].flags >> 3) % 2 == 1) {							// If Discrete or labeled, show no decimal places
+					int paramMinVal_i = (int)roundf(paramMinVal_f);
+					int paramMaxVal_i = (int)roundf(paramMaxVal_f);
+					paramMinVal = std::to_string(paramMinVal_i);
+					paramMaxVal = std::to_string(paramMaxVal_i);
+				}
+				else if (abs(paramMinVal_f - roundf(paramMinVal_f)) < 0.005f) {		// If super close to int, show 1 decimal place
+					paramMinVal_f = roundf(paramMinVal_f * 10) * 0.1;				// Relies on assumption string has 6 digits after decimal
+					paramMinVal = std::to_string(paramMinVal_f);
+					paramMinVal.resize(paramMinVal.size() - 5);
+
+					if (abs(paramMaxVal_f - roundf(paramMaxVal_f)) < 0.005f) {
+						paramMaxVal_f = roundf(paramMaxVal_f * 10) * 0.1;
+						paramMaxVal = std::to_string(paramMaxVal_f);
+						paramMaxVal.resize(paramMaxVal.size() - 5);
+					}
+					else {
+						paramMaxVal_f = roundf(paramMaxVal_f * 100) * 0.01;
+						paramMaxVal = std::to_string(paramMaxVal_f);
+					}
+				}
+				else {																// Otherwise show 2 decimal places
+					paramMinVal_f = roundf(paramMinVal_f * 100) * 0.01;				// Relies on assumption string has 6 digits after decimal
+					paramMinVal = std::to_string(paramMinVal_f);
+					paramMinVal.resize(paramMinVal.size() - 4);
+					paramMaxVal_f = roundf(paramMaxVal_f * 100) * 0.01;
+					paramMaxVal = std::to_string(paramMaxVal_f);
+					paramMaxVal.resize(paramMaxVal.size() - 4);
+				}
+				output.append(" - Parameter: " + paramName + " [ " + paramMinVal + " - " + paramMaxVal + " ]");
+
+				if ((eventParams[j].flags >> 2) % 2 == 1) {			// Global
+					output.append(" (Global)");
+				}
+				if (((eventParams[j].flags >> 4) % 2 == 1) &&		// Labeled, like "enum"
+					((eventParams[j].flags >> 3) % 2 == 1)) {		// Also triggers Discrete flag, but
+					output.append(" (Labeled)");					// we don't want that to show.
+				}
+				else if ((eventParams[j].flags >> 3) % 2 == 1) {	// Discrete, like "int"
+					output.append(" (Discrete)");
+				}
+				if ((eventParams[j].flags % 2) == 1) {				// Read Only
+					output.append(" (Read-Only)");
+				}
+				output.append("\n");
 			}
 		}
 		if (output == "") {
-			event.edit_original_response(dpp::message("No playable events found!"));
+			event.edit_original_response(dpp::message("No playable events found!"));		// If no events were found _at all_ then say so.
 		}
 		else {
-			event.edit_original_response(dpp::message("## Found Events: ##\n" + output));
+			event.edit_original_response(dpp::message("## Found Events: ##\n" + output));	// Else, normal output
 		}
 	});
 }
@@ -387,8 +457,8 @@ void play(const dpp::slashcommand_t& event) {
 	FMOD::Studio::EventDescription* newEventDesc = pEventDescriptions.at(eventToPlay).description;
 	if (newEventDesc->isValid()) {
 		FMOD::Studio::EventInstance* newEventInst = nullptr;
-		ERRCHECK(newEventDesc->createInstance(&newEventInst));
-		std::vector<std::string> newEventParams = pEventDescriptions.at(eventToPlay).params;
+		ERRCHECK_HARD(newEventDesc->createInstance(&newEventInst));
+		std::vector<FMOD_STUDIO_PARAMETER_DESCRIPTION> newEventParams = pEventDescriptions.at(eventToPlay).params;
 		sessionEventInstance newSessionEventInst;
 		newSessionEventInst.instance = newEventInst;
 		newSessionEventInst.params = newEventParams;
@@ -510,7 +580,7 @@ void param(const dpp::slashcommand_t& event) {
 
 	int foundParamIndex = -1;
 	for (int i = 0; i < pEventInstances.at(instanceName).params.size(); i++) {
-		if (pEventInstances.at(instanceName).params[i] == paramName) {
+		if (pEventInstances.at(instanceName).params[i].name == paramName) {
 			foundParamIndex = i;
 		}
 	}
@@ -519,10 +589,10 @@ void param(const dpp::slashcommand_t& event) {
 		event.reply(dpp::message("Instance " + instanceName + " has no parameters of name " + paramName + " associated with it.").set_flags(dpp::m_ephemeral));
 	}
 
-	//Finally set the parameter
-	ERRCHECK(pEventInstances.at(instanceName).instance->setParameterByName(paramName.c_str(), value));
+	// Finally set the parameter
+	ERRCHECK_HARD(pEventInstances.at(instanceName).instance->setParameterByName(paramName.c_str(), value));
 	std::cout << "Command carried out." << std::endl;
-	event.reply(dpp::message("Stopping Event Instance: " + instanceName).set_flags(dpp::m_ephemeral));
+	event.reply(dpp::message("Setting Parameter: " + paramName + " on Instance " + instanceName + " with value " + std::to_string(value)).set_flags(dpp::m_ephemeral));
 }
 
 void stop_all() {
@@ -602,30 +672,30 @@ void init() {
 	// file paths
 	exe_path = getExecutableFolder();						// Special function from SessionMusicBot_Utils.h
 	bank_dir_path = exe_path.append("soundbanks");			// Todo: validate this path exists
-	workpath = bank_dir_path;
-	workpath.append(master_bank);							// Sets workpath to default file, to ensure there's always at least a valid path
 
 	// FMOD Init
 	std::cout << "Initializing FMOD...";
-	ERRCHECK(FMOD::Studio::System::create(&pSystem));
-	ERRCHECK(pSystem->getCoreSystem(&pCoreSystem));
-	//ERRCHECK(pCoreSystem->setDSPBufferSize(4096, 4));
-	ERRCHECK(pSystem->initialize(128, FMOD_STUDIO_INIT_NORMAL, FMOD_INIT_NORMAL, nullptr));
+	ERRCHECK_HARD(FMOD::Studio::System::create(&pSystem));
+	ERRCHECK_HARD(pSystem->getCoreSystem(&pCoreSystem));
+	//ERRCHECK_HARD(pCoreSystem->setDSPBufferSize(4096, 4));
+	ERRCHECK_HARD(pSystem->initialize(128, FMOD_STUDIO_INIT_NORMAL, FMOD_INIT_NORMAL, nullptr));
 	std::cout << "Done." << std::endl;
 
 	// Load Master Bank and Master Strings
-	std::cout << "Loading Master banks...";
-	ERRCHECK(pSystem->loadBankFile(workpath.replace_filename(master_bank).string().c_str(), FMOD_STUDIO_LOAD_BANK_NORMAL, &pMasterBank));
-	ERRCHECK(pSystem->loadBankFile(workpath.replace_filename(masterstrings_bank).string().c_str(), FMOD_STUDIO_LOAD_BANK_NORMAL, &pMasterStringsBank));
+	std::cout << "Loading Master banks...\n";
+	ERRCHECK_HARD(pSystem->loadBankFile((bank_dir_path.string() + "\\" + master_bank).c_str(), FMOD_STUDIO_LOAD_BANK_NORMAL, &pMasterBank));
+	ERRCHECK_HARD(pSystem->loadBankFile((bank_dir_path.string() + "\\" + masterstrings_bank).c_str(), FMOD_STUDIO_LOAD_BANK_NORMAL, &pMasterStringsBank));
+
+
 	std::cout << "Done." << std::endl;
 
 	// Also get the Master Bus, set volume, and get the related Channel Group
 	std::cout << "Getting Busses and Channel Groups...";
-	ERRCHECK(pSystem->getBus("bus:/", &pMasterBus));
-	ERRCHECK(pMasterBus->setVolume(dBToFloat(-10.0f)));
-	ERRCHECK(pMasterBus->lockChannelGroup());					// Tell the Master Channel Group to always exist even when events arn't playing...
-	ERRCHECK(pSystem->flushCommands());							// And wait until all previous commands are done (ensuring Channel Group exists)...
-	ERRCHECK(pMasterBus->getChannelGroup(&pMasterBusGroup));	// Or else this fails immediately, and we'll have DSP problems.
+	ERRCHECK_HARD(pSystem->getBus("bus:/", &pMasterBus));
+	ERRCHECK_HARD(pMasterBus->setVolume(dBToFloat(-10.0f)));
+	ERRCHECK_HARD(pMasterBus->lockChannelGroup());					// Tell the Master Channel Group to always exist even when events arn't playing...
+	ERRCHECK_HARD(pSystem->flushCommands());							// And wait until all previous commands are done (ensuring Channel Group exists)...
+	ERRCHECK_HARD(pMasterBus->getChannelGroup(&pMasterBusGroup));	// Or else this fails immediately, and we'll have DSP problems.
 	std::cout << "Done." << std::endl;
 	
 
@@ -639,45 +709,38 @@ void init() {
 		dspdesc.numinputbuffers = 1;
 		dspdesc.numoutputbuffers = 1;
 		dspdesc.read = captureDSPReadCallback;
-		ERRCHECK(pCoreSystem->createDSP(&dspdesc, &mCaptureDSP));
+		ERRCHECK_HARD(pCoreSystem->createDSP(&dspdesc, &mCaptureDSP));
 	}
-	ERRCHECK(pMasterBusGroup->addDSP(FMOD_CHANNELCONTROL_DSP_TAIL, mCaptureDSP));		// Adds the newly defined dsp
+	ERRCHECK_HARD(pMasterBusGroup->addDSP(FMOD_CHANNELCONTROL_DSP_TAIL, mCaptureDSP));		// Adds the newly defined dsp
 
 	// Setting Listener positioning for 3D, in case it's used 
 	std::cout << "Setting up Listener...";
 	listenerAttributes.position = { 0.0f, 0.0f, 0.0f };
 	listenerAttributes.forward = { 0.0f, 1.0f, 0.0f };
 	listenerAttributes.up = { 0.0f, 0.0f, 1.0f };
-	ERRCHECK(pSystem->setListenerAttributes(0, &listenerAttributes));
+	ERRCHECK_HARD(pSystem->setListenerAttributes(0, &listenerAttributes));
 	std::cout << "Done." << std::endl;
 
 	// Debug details
 	int samplerate; FMOD_SPEAKERMODE speakermode; int numrawspeakers;
-	ERRCHECK(pCoreSystem->getSoftwareFormat(&samplerate, &speakermode, &numrawspeakers));
-	ERRCHECK(pSystem->flushCommands());
+	ERRCHECK_HARD(pCoreSystem->getSoftwareFormat(&samplerate, &speakermode, &numrawspeakers));
+	ERRCHECK_HARD(pSystem->flushCommands());
 	std::cout << std::endl;
 	std::cout << "###########################" << std::endl << std::endl;
 	std::cout << "FMOD System Info:\n  Sample Rate- " << samplerate << "\n  Speaker Mode- " << speakermode
 		<< "\n  Num Raw Speakers- " << numrawspeakers << std::endl;
-
-	std::cout << std::endl;
-	std::cout << "###########################" << std::endl;
-	std::cout << "###                     ###" << std::endl;
-	std::cout << "###   All systems go!   ###" << std::endl;
-	std::cout << "###                     ###" << std::endl;
-	std::cout << "###########################" << std::endl;
 	std::cout << std::endl;
 }
 
 // Init function specifically for user-defined needs (loading banks, indexing events & params, etc)
-void init_sessionFMOD() {
+void init_session() {
 	std::cout << "###########################" << std::endl << std::endl;
 	std::cout << "Loading and Indexing all other banks..." << std::endl;
-	index_banks();
+	list_banks();
 	std::cout << "...Done!" << std::endl << std::endl;
 
 	std::cout << "Indexing events and parameters..." << std::endl;
-	index_events();
+	list_events();
 	std::cout << "...Done!" << std::endl << std::endl;
 	std::cout << "###########################" << std::endl;
 	std::cout << std::endl;
@@ -686,7 +749,7 @@ void init_sessionFMOD() {
 int main() {
 
 	init();
-	init_sessionFMOD();
+	init_session();
 
 #ifndef NDEBUG
 	//Time stuff for debugging
@@ -699,6 +762,7 @@ int main() {
 	bool timerNotRunning = true;		//To make sure our times start at the first update loop where we know we've connected
 	int allSamplesAdded = 0;
 #endif
+	std::cout << "Starting Bot..." << std::endl << std::endl;
 
 	/* Create bot cluster */
 	dpp::cluster bot(getBotToken());
@@ -712,7 +776,7 @@ int main() {
 		if (dpp::run_once<struct register_bot_commands>()) {
 			std::vector<dpp::slashcommand> commands {
 				{ "list_events", "Index and list all playable events.", bot.me.id},
-				{ "list_playing", "Index and list all found parameters.", bot.me.id},
+				{ "list_playing", "Shows all playing event instances and their parameters.", bot.me.id},
 				{ "play", "Create a new Event Instance.", bot.me.id},
 				{ "pause", "Pause a currently playing Event Instance.", bot.me.id},
 				{ "unpause", "Resume a currently playing Event Instance.", bot.me.id},
