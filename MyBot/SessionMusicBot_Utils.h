@@ -83,6 +83,88 @@ std::string truncateEventPath(std::string input) {
 	return input.erase(0, 14);
 }
 
+std::string paramMinMaxString(FMOD_STUDIO_PARAMETER_DESCRIPTION param) {
+	std::string paramName = param.name;
+	std::string paramMinVal; float paramMinVal_f = param.minimum;
+	std::string paramMaxVal; float paramMaxVal_f = param.maximum;
+
+	if ((param.flags >> 3) % 2 == 1) {									// If Discrete or labeled, show no decimal places
+		int paramMinVal_i = (int)roundf(paramMinVal_f);
+		int paramMaxVal_i = (int)roundf(paramMaxVal_f);
+		paramMinVal = std::to_string(paramMinVal_i);
+		paramMaxVal = std::to_string(paramMaxVal_i);
+	}
+	else {
+		if (abs(paramMinVal_f - roundf(paramMinVal_f)) < 0.005f) {		// If super close to int, show 1 decimal place
+			paramMinVal_f = roundf(paramMinVal_f * 10) * 0.1;			// Relies on assumption string has 6 digits after decimal
+			paramMinVal = std::to_string(paramMinVal_f);
+			paramMinVal.resize(paramMinVal.size() - 5);
+		}
+		else {															// Otherwise show 2 decimal places
+			paramMinVal_f = roundf(paramMinVal_f * 100) * 0.01;			// Relies on assumption string has 6 digits after decimal
+			paramMinVal = std::to_string(paramMinVal_f);
+			paramMinVal.resize(paramMinVal.size() - 4);
+		}
+
+		if (abs(paramMaxVal_f - roundf(paramMaxVal_f)) < 0.005f) {		// Handles max value rounding in the same way
+			paramMaxVal_f = roundf(paramMaxVal_f * 10) * 0.1;
+			paramMaxVal = std::to_string(paramMaxVal_f);
+			paramMaxVal.resize(paramMaxVal.size() - 5);
+		}
+		else {
+			paramMaxVal_f = roundf(paramMaxVal_f * 100) * 0.01;
+			paramMaxVal = std::to_string(paramMaxVal_f);
+			paramMaxVal.resize(paramMaxVal.size() - 4);
+		}
+	}
+
+	return " - Parameter: " + paramName + " [ " + paramMinVal + " - " + paramMaxVal + " ]";
+}
+
+std::string paramAttributesString(FMOD_STUDIO_PARAMETER_DESCRIPTION param) {
+
+	std::string output;
+
+	if ((param.flags >> 2) % 2 == 1) {			// Global
+		output.append(" (Global)");
+	}
+	if (((param.flags >> 4) % 2 == 1) &&		// Labeled, like "enum"
+		((param.flags >> 3) % 2 == 1)) {		// Also triggers Discrete flag, but
+		output.append(" (Labeled)");			// we don't want that to show.
+	}
+	else if ((param.flags >> 3) % 2 == 1) {		// Discrete, like "int"
+		output.append(" (Discrete)");
+	}
+	if ((param.flags % 2) == 1) {				// Read Only
+		output.append(" (Read-Only)");
+	}
+	output.append("\n");
+
+	return output;
+}
+
+// Returns true if the Opus-sized packet has any signal at all.
+// Some minor fudging included here to keep from checking
+// _every_ sample, in the name of performance, but also because we don't want
+bool containsSignal(std::vector<int16_t> pcmdata) {
+	int limit = (dpp::send_audio_raw_max_length * 0.5);
+	for (int i = 0; i < limit; i += 16) {				// Checks every 16th sample of 5760
+		//std::cout << "Limit: " << limit << " Index: " << i << " Vector Size: " << pcmdata.size() << " Matches with " << pcmdata.at(i) << std::endl;
+		if (pcmdata[i] != 0) {							// If there's any signal at all,
+			return true;								// this is likely to return _very_ quickly
+		}
+	}
+
+	for (int i = limit - 16; i < limit; i++) {			// Double checking for the last few samples, just in case.
+		if (pcmdata[i] != 0) {							// Prevents transients from being chopped off in worst-case.
+			return true;
+		}
+	}
+														// If all checked samples were zero, odds are EXTREMELY slim of
+	return false;										// the rest being silence too.
+}
+
+
 /* Struct to contain each Event Description and all associated parameters.
  * This can be easily adjusted and expanded to contain all parameter details,
  * such as IDs, min/max/default values, types, etc.

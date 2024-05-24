@@ -1,4 +1,4 @@
-#include "SessionMusicBot.h"				//Pre-written sanity checks for versions
+﻿#include "SessionMusicBot.h"				//Pre-written sanity checks for versions
 #include <dpp/dpp.h>						//D++ header
 #include "fmod.hpp"							//FMOD Core
 #include "fmod_studio.hpp"					//FMOD Studio
@@ -30,24 +30,23 @@ FMOD::ChannelGroup* pMasterBusGroup = nullptr;			//Channel Group of the master b
 FMOD::DSP* mCaptureDSP = nullptr;						//DSP to attach to Master Channel Group for stealing output
 
 //---Banks and stuff---//
-FMOD::Studio::Bank* pMasterBank = nullptr;									//Master Bank, always loads first and contains shared content
+FMOD::Studio::Bank* pMasterBank = nullptr;							//Master Bank, always loads first and contains shared content
 std::string master_bank = "Master.bank";
-FMOD::Studio::Bank* pMasterStringsBank = nullptr;							//Master Strings, allows us to refer to events by name instead of GUID
+FMOD::Studio::Bank* pMasterStringsBank = nullptr;					//Master Strings, allows us to refer to events by name instead of GUID
 std::string masterstrings_bank = "Master.strings.bank";
-std::vector<FMOD::Studio::Bank*> pBanks;									// List of all other banks
-std::vector<std::filesystem::path> bankPaths;
-std::map<std::string, sessionEventDesc> pEventDescriptions;					// Map of all Event Descriptions and their parameters
-std::vector<std::string> eventPaths;
-const std::string callableEventPath = "event:/Master/";						// The path where our callable events exist
-std::map<std::string, sessionEventInstance> pEventInstances;				// Map of all Event Instances, which pair user-given name to instance
-FMOD_3D_ATTRIBUTES listenerAttributes;
+std::vector<FMOD::Studio::Bank*> pBanks;							// Vector of all other banks
+std::vector<std::filesystem::path> bankPaths;						// Vector of paths to the respective .bank files (at time of load)
+std::map<std::string, sessionEventDesc> pEventDescriptions;			// Map of all Event Descriptions and their parameters
+std::vector<std::string> eventPaths;								// Vector of FMOD-internal paths the user can call
+const std::string callableEventPath = "event:/Master/";				// The FMOD-internal path where our callable events exist
+std::map<std::string, sessionEventInstance> pEventInstances;		// Map of all Event Instances, which pair user-given name to instance
+FMOD_3D_ATTRIBUTES listenerAttributes;								// Holds the listener's position & orientation (at the origin). Not yet used (todo: 5.1 or 4.0 mixdown DSP?)
 
 //---Misc Bot Declarations---//
-dpp::discord_voice_client* currentClient = nullptr;		//current Voice Client of the bot. Only designed to run on one server.
-std::vector<int16_t> myPCMData;							//Main buffer of PCM audio data, which FMOD adds to and D++ cuts "frames" from
-bool exitRequested = false;
-bool isConnected = false;
-bool isPlaying = false;
+dpp::discord_voice_client* currentClient = nullptr;		// Current Voice Client of the bot. Only designed to run on one server.
+std::vector<int16_t> myPCMData;							// Main buffer of PCM audio data, which FMOD adds to and D++ cuts "frames" from
+bool exitRequested = false;								// Set to "true" when you want off Mr. Bones Wild Tunes.
+bool isConnected = false;								// Set to "true" when bot is connected to a Voice Channel.
 
 #ifndef NDEBUG
 //---Extra Variables only present in Debug mode, for extra data---//
@@ -293,24 +292,13 @@ void list_events() {
 			newSessionEventDesc.description->getParameterDescriptionByIndex(i, &parameter);
 			if (parameter.type == FMOD_STUDIO_PARAMETER_GAME_CONTROLLED) {
 				std::string paramName(parameter.name);
-				std::string coutString = "      Uses parameter: " + paramName;
+				std::string coutString = "      ";
 #ifndef NDEBUG
 				coutString.append(" with flag: " + std::to_string(parameter.flags));
 #endif
-				if ((parameter.flags >> 2) % 2 == 1) {			// Global
-					coutString.append(" (Global)");
-				}
-				if (((parameter.flags >> 4) % 2 == 1) &&		// Labeled, like "enum"
-					((parameter.flags >> 3) % 2 == 1)) {		// Also triggers Discrete flag, but
-					coutString.append(" (Labeled)");			// we don't want that to show.
-				}
-				else if ((parameter.flags >> 3) % 2 == 1) {		// Discrete, like "int"
-					coutString.append(" (Discrete)");
-				}
-				if ((parameter.flags % 2) == 1) {				// Read Only
-					coutString.append(" (Read-Only)");
-				}
-				std::cout << coutString << std::endl;
+				coutString.append(paramMinMaxString(parameter));
+				coutString.append(paramAttributesString(parameter));
+				std::cout << coutString;
 				newSessionEventDesc.params.push_back(parameter);
 			}
 		}
@@ -329,7 +317,7 @@ void list_events(const dpp::slashcommand_t& event) {
 	}
 
 	eventPaths.clear();
-	pEventDescriptions.clear();		// Okay to clear, because not the same "already loaded" issues?
+	pEventDescriptions.clear();
 
 	event.thinking(true, [event](const dpp::confirmation_callback_t& callback) {
 
@@ -347,55 +335,8 @@ void list_events(const dpp::slashcommand_t& event) {
 				continue;
 			}
 			for (int j = 0; j < eventParams.size(); j++) {									// as well as each associated parameters and their ranges, if any.
-				std::string paramName = eventParams[j].name;
-				std::string paramMinVal; float paramMinVal_f = eventParams[j].minimum;
-				std::string paramMaxVal; float paramMaxVal_f = eventParams[j].maximum;
-
-				if ((eventParams[j].flags >> 3) % 2 == 1) {							// If Discrete or labeled, show no decimal places
-					int paramMinVal_i = (int)roundf(paramMinVal_f);
-					int paramMaxVal_i = (int)roundf(paramMaxVal_f);
-					paramMinVal = std::to_string(paramMinVal_i);
-					paramMaxVal = std::to_string(paramMaxVal_i);
-				}
-				else if (abs(paramMinVal_f - roundf(paramMinVal_f)) < 0.005f) {		// If super close to int, show 1 decimal place
-					paramMinVal_f = roundf(paramMinVal_f * 10) * 0.1;				// Relies on assumption string has 6 digits after decimal
-					paramMinVal = std::to_string(paramMinVal_f);
-					paramMinVal.resize(paramMinVal.size() - 5);
-
-					if (abs(paramMaxVal_f - roundf(paramMaxVal_f)) < 0.005f) {
-						paramMaxVal_f = roundf(paramMaxVal_f * 10) * 0.1;
-						paramMaxVal = std::to_string(paramMaxVal_f);
-						paramMaxVal.resize(paramMaxVal.size() - 5);
-					}
-					else {
-						paramMaxVal_f = roundf(paramMaxVal_f * 100) * 0.01;
-						paramMaxVal = std::to_string(paramMaxVal_f);
-					}
-				}
-				else {																// Otherwise show 2 decimal places
-					paramMinVal_f = roundf(paramMinVal_f * 100) * 0.01;				// Relies on assumption string has 6 digits after decimal
-					paramMinVal = std::to_string(paramMinVal_f);
-					paramMinVal.resize(paramMinVal.size() - 4);
-					paramMaxVal_f = roundf(paramMaxVal_f * 100) * 0.01;
-					paramMaxVal = std::to_string(paramMaxVal_f);
-					paramMaxVal.resize(paramMaxVal.size() - 4);
-				}
-				output.append(" - Parameter: " + paramName + " [ " + paramMinVal + " - " + paramMaxVal + " ]");
-
-				if ((eventParams[j].flags >> 2) % 2 == 1) {			// Global
-					output.append(" (Global)");
-				}
-				if (((eventParams[j].flags >> 4) % 2 == 1) &&		// Labeled, like "enum"
-					((eventParams[j].flags >> 3) % 2 == 1)) {		// Also triggers Discrete flag, but
-					output.append(" (Labeled)");					// we don't want that to show.
-				}
-				else if ((eventParams[j].flags >> 3) % 2 == 1) {	// Discrete, like "int"
-					output.append(" (Discrete)");
-				}
-				if ((eventParams[j].flags % 2) == 1) {				// Read Only
-					output.append(" (Read-Only)");
-				}
-				output.append("\n");
+				output.append(paramMinMaxString(eventParams[j]));							// Re-does the work done for debug Cout, bu₮structurally cleaner
+				output.append(paramAttributesString(eventParams[j]));						// and keeps it from being linked together too tightly.
 			}
 		}
 		if (output == "") {
