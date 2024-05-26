@@ -8,6 +8,7 @@ MyBot/Release
 
 #Files with contents we don't want public
 MyBot/token.config
+Packages/
 
 # User-specific files
 *.rsuser

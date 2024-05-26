@@ -6,8 +6,9 @@
 #include "fmod_studio_common.h"
 #include "fmod_errors.h"					//Allows FMOD Results to be output as understandable text
 #include <filesystem>						//Standard C++ Filesystem
+#ifndef NDEBUG
 #include <chrono>							//Standard C++ Timekeeping (mostly for debugging?)
-#include <mutex>							//Standard C++ Mutex, to prevent race conditions between FMOD, Main, and Bot threads
+#endif
 #include "SessionMusicBot_Utils.h"			//Some utility functions specific to this bot
 
 /* Be sure to place your token in the line below.
