@@ -83,6 +83,7 @@ std::string truncateEventPath(std::string input) {
 	return input.erase(0, 14);
 }
 
+// 
 std::string paramMinMaxString(FMOD_STUDIO_PARAMETER_DESCRIPTION param) {
 	std::string paramName = param.name;
 	std::string paramMinVal; float paramMinVal_f = param.minimum;
@@ -96,23 +97,23 @@ std::string paramMinMaxString(FMOD_STUDIO_PARAMETER_DESCRIPTION param) {
 	}
 	else {
 		if (abs(paramMinVal_f - roundf(paramMinVal_f)) < 0.005f) {		// If super close to int, show 1 decimal place
-			paramMinVal_f = roundf(paramMinVal_f * 10) * 0.1;			// Relies on assumption string has 6 digits after decimal
+			paramMinVal_f = roundf(paramMinVal_f * 10) * 0.1f;			// Relies on assumption string has 6 digits after decimal
 			paramMinVal = std::to_string(paramMinVal_f);
 			paramMinVal.resize(paramMinVal.size() - 5);
 		}
 		else {															// Otherwise show 2 decimal places
-			paramMinVal_f = roundf(paramMinVal_f * 100) * 0.01;			// Relies on assumption string has 6 digits after decimal
+			paramMinVal_f = roundf(paramMinVal_f * 100) * 0.01f;			// Relies on assumption string has 6 digits after decimal
 			paramMinVal = std::to_string(paramMinVal_f);
 			paramMinVal.resize(paramMinVal.size() - 4);
 		}
 
 		if (abs(paramMaxVal_f - roundf(paramMaxVal_f)) < 0.005f) {		// Handles max value rounding in the same way
-			paramMaxVal_f = roundf(paramMaxVal_f * 10) * 0.1;
+			paramMaxVal_f = roundf(paramMaxVal_f * 10) * 0.1f;
 			paramMaxVal = std::to_string(paramMaxVal_f);
 			paramMaxVal.resize(paramMaxVal.size() - 5);
 		}
 		else {
-			paramMaxVal_f = roundf(paramMaxVal_f * 100) * 0.01;
+			paramMaxVal_f = roundf(paramMaxVal_f * 100) * 0.01f;
 			paramMaxVal = std::to_string(paramMaxVal_f);
 			paramMaxVal.resize(paramMaxVal.size() - 4);
 		}
@@ -145,9 +146,9 @@ std::string paramAttributesString(FMOD_STUDIO_PARAMETER_DESCRIPTION param) {
 
 // Returns true if the Opus-sized packet has any signal at all.
 // Some minor fudging included here to keep from checking
-// _every_ sample, in the name of performance, but also because we don't want
+// _every_ sample, in the name of performance
 bool containsSignal(std::vector<int16_t> pcmdata) {
-	int limit = (dpp::send_audio_raw_max_length * 0.5);
+	int limit = (int)(dpp::send_audio_raw_max_length * 0.5);
 	for (int i = 0; i < limit; i += 16) {				// Checks every 16th sample of 5760
 		//std::cout << "Limit: " << limit << " Index: " << i << " Vector Size: " << pcmdata.size() << " Matches with " << pcmdata.at(i) << std::endl;
 		if (pcmdata[i] != 0) {							// If there's any signal at all,

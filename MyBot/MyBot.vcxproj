@@ -115,7 +115,7 @@
 copy /y "C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\core\lib\x86\*.dll" "$(OutDir)"
 copy /y "C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\studio\lib\x86\*.dll" "$(OutDir)"
 for /r "$(MSBuildProjectDirectory)\soundbanks" %%D in (*) do xcopy /y /d /f /i "%%D" "$(OutDir)soundbanks\"
-xcopy /f /d /k $(MSBuildProjectDirectory)\token.config $(OutDir)token.config</Command>
+copy /y "$(MSBuildProjectDirectory)\token.config" "$(OutDir)token.config"</Command>
     </PostBuildEvent>
     <PostBuildEvent>
       <Message>Copy 32 Bit Debug DLLs, Soundbanks, and Bot Token to Build</Message>
@@ -151,7 +151,7 @@ xcopy /f /d /k $(MSBuildProjectDirectory)\token.config $(OutDir)token.config</Co
 copy /y "C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\core\lib\x86\fmod.dll" "$(OutDir)"
 copy /y "C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\studio\lib\x86\fmodstudio.dll" "$(OutDir)"
 for /r "$(MSBuildProjectDirectory)\soundbanks" %%D in (*) do xcopy /y /d /f /i "%%D" "$(OutDir)soundbanks\"
-xcopy /f /d /k $(MSBuildProjectDirectory)\token.config $(OutDir)token.config</Command>
+copy /y "$(MSBuildProjectDirectory)\token.config" "$(OutDir)token.config"</Command>
     </PostBuildEvent>
     <PostBuildEvent>
       <Message>Copy 32 Bit Release DLLs, Soundbanks, and Bot Token to Build</Message>
@@ -183,7 +183,7 @@ xcopy /f /d /k $(MSBuildProjectDirectory)\token.config $(OutDir)token.config</Co
 copy /y "C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\core\lib\x64\*.dll" "$(OutDir)"
 copy /y "C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\studio\lib\x64\*.dll" "$(OutDir)"
 for /r "$(MSBuildProjectDirectory)\soundbanks" %%D in (*) do xcopy /y /d /f /i "%%D" "$(OutDir)soundbanks\"
-xcopy /f /d /k $(MSBuildProjectDirectory)\token.config $(OutDir)token.config</Command>
+copy /y "$(MSBuildProjectDirectory)\token.config" "$(OutDir)token.config"</Command>
     </PostBuildEvent>
     <PostBuildEvent>
       <Message>Copy 64 Bit Debug DLLs, Soundbanks, and Bot Token to Build</Message>

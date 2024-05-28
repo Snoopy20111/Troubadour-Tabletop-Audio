@@ -162,7 +162,7 @@ void list_banks() {
 	ERRCHECK_HARD(pSystem->getBankList(loadedBanks.data(), count, &writtenCount));
 
 	// For every accepted bank path, add to output list, and load if not loaded already
-	for (int i = 0; i < bankPaths.size(); i++) {						// For every accepted bank path
+	for (int i = 0; i < (int)bankPaths.size(); i++) {					// For every accepted bank path
 		bool canLoad = true;
 		// Check the bank isn't already loaded
 		for (int j = 0; j < count; j++) {								// For each loaded bank
@@ -193,7 +193,7 @@ void list_banks() {
 	int i = 0;
 
 	// This is probably going to break. Have to try it with a bunch of banks and remove a few.
-	while (i < pBanks.size()) {								// For each loaded bank
+	while (i < (int)pBanks.size()) {							// For each loaded bank
 
 		bool foundInList = false;							// Get the path ("bank:/")
 		char pathchars[256];
@@ -204,7 +204,7 @@ void list_banks() {
 		std::string pathString(pathptr);					// Make string, then format to filepath
 		pathString = formatBankToFilepath(pathString, bank_dir_path);
 
-		for (int j = 0; j < bankPaths.size(); j++) {		// For each Bank filepath we know of
+		for (int j = 0; j < (int)bankPaths.size(); j++) {		// For each Bank filepath we know of
 			if (pathString == bankPaths[j]) {				// check if found in paths list
 				foundInList = true;
 			}
@@ -239,7 +239,7 @@ void list_banks(const dpp::slashcommand_t& event) {
 
 		std::string output = "- Master.bank\n- Master.strings.bank\n";
 
-		for (int i = 0; i < bankPaths.size(); i++) {
+		for (int i = 0; i < (int)bankPaths.size(); i++) {
 			output.append("- " + bankPaths[i].filename().string() + "\n");
 		}
 
@@ -328,14 +328,14 @@ void list_events(const dpp::slashcommand_t& event) {
 		// And now print 'em to Discord!
 		std::string output = "";
 
-		for (int i = 0; i < eventPaths.size(); i++) {										// For every path	
+		for (int i = 0; i < (int)eventPaths.size(); i++) {										// For every path	
 			output.append("- " + truncateEventPath(eventPaths[i]) + "\n");					// Add the shortened path to the output string...
 			std::vector<FMOD_STUDIO_PARAMETER_DESCRIPTION> eventParams
 				= pEventDescriptions.at(truncateEventPath(eventPaths[i])).params;
 			if (eventParams.size() == 0) {
 				continue;
 			}
-			for (int j = 0; j < eventParams.size(); j++) {									// as well as each associated parameters and their ranges, if any.
+			for (int j = 0; j < (int)eventParams.size(); j++) {									// as well as each associated parameters and their ranges, if any.
 				output.append(paramMinMaxString(eventParams[j]));							// Re-does the work done for debug Cout, bu₮structurally cleaner
 				output.append(paramAttributesString(eventParams[j]));						// and keeps it from being linked together too tightly.
 			}
@@ -521,7 +521,7 @@ void param(const dpp::slashcommand_t& event) {
 	}	// In future, perhaps another else if to filter out the type, if we want to handle that in a special way
 
 	int foundParamIndex = -1;
-	for (int i = 0; i < pEventInstances.at(instanceName).params.size(); i++) {
+	for (int i = 0; i < (int)pEventInstances.at(instanceName).params.size(); i++) {
 		if (pEventInstances.at(instanceName).params[i].name == paramName) {
 			foundParamIndex = i;
 		}
@@ -833,7 +833,7 @@ int main() {
 #endif
 				while (myPCMData.size() > (dpp::send_audio_raw_max_length * 0.5)) {									// Until minimum size we want our buffer
 					currentClient->send_audio_raw((uint16_t*)myPCMData.data(), dpp::send_audio_raw_max_length);		// Send the buffer (method takes 11520 BYTES, so 5760 samples)
-					myPCMData.erase(myPCMData.begin(), myPCMData.begin() + (dpp::send_audio_raw_max_length * 0.5));	// Trim our main buffer of the data just sent
+					myPCMData.erase(myPCMData.begin(), myPCMData.begin() + (int)(dpp::send_audio_raw_max_length * 0.5));	// Trim our main buffer of the data just sent
 				}
 			}
 #ifndef NDEBUG
