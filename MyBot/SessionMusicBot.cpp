@@ -375,7 +375,7 @@ void list_playing(const dpp::slashcommand_t& event) {
 // Creates and starts a new Event Instance
 void play(const dpp::slashcommand_t& event) {
 	dpp::command_interaction cmd_data = event.command.get_command_interaction();
-	int count = cmd_data.options.size();
+	int count = (int)cmd_data.options.size();
 	if (count < 2) {
 		std::cout << "Play command arrived with less than 2 arguments. Bad juju!" << std::endl;
 		event.reply(dpp::message("Play command sent with less than 2 arguments. Bad juju!").set_flags(dpp::m_ephemeral));
@@ -422,7 +422,7 @@ void play(const dpp::slashcommand_t& event) {
 void pause(const dpp::slashcommand_t& event) {
 	//Very similar to Unpause and Stop
 	dpp::command_interaction cmd_data = event.command.get_command_interaction();
-	int count = cmd_data.options.size();
+	int count = (int)cmd_data.options.size();
 	if (count < 1) {
 		std::cout << "Pause command arrived with no arguments. Bad juju!" << std::endl;
 		event.reply(dpp::message("Pause command sent with no arguments. Bad juju!").set_flags(dpp::m_ephemeral));
@@ -447,7 +447,7 @@ void pause(const dpp::slashcommand_t& event) {
 void unpause(const dpp::slashcommand_t& event) {
 	//Very similar to Pause and Stop
 	dpp::command_interaction cmd_data = event.command.get_command_interaction();
-	int count = cmd_data.options.size();
+	int count = (int)cmd_data.options.size();
 	if (count < 1) {
 		std::cout << "Unpause command arrived with no arguments. Bad juju!" << std::endl;
 		event.reply(dpp::message("Unpause command sent with no arguments. Bad juju!").set_flags(dpp::m_ephemeral));
@@ -473,7 +473,7 @@ void unpause(const dpp::slashcommand_t& event) {
 void stop(const dpp::slashcommand_t& event) {
 	// Very similar to Pause and Unpause
 	dpp::command_interaction cmd_data = event.command.get_command_interaction();
-	int count = cmd_data.options.size();
+	int count = (int)cmd_data.options.size();
 	if (count < 1) {
 		std::cout << "Stop command arrived with no arguments. Bad juju!" << std::endl;
 		event.reply(dpp::message("Stop command sent with no arguments. Bad juju!").set_flags(dpp::m_ephemeral));
@@ -499,7 +499,7 @@ void stop(const dpp::slashcommand_t& event) {
 // Sets parameter with given name and value on given Event Instance
 void param(const dpp::slashcommand_t& event) {
 	dpp::command_interaction cmd_data = event.command.get_command_interaction();
-	int count = cmd_data.options.size();
+	int count = (int)cmd_data.options.size();
 	if (count < 3) {
 		std::cout << "Set Parameter command arrived with no arguments. Bad juju!" << std::endl;
 		event.reply(dpp::message("Set Parameter command sent with no arguments. Bad juju!").set_flags(dpp::m_ephemeral));
