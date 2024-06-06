@@ -84,7 +84,7 @@ std::string truncateEventPath(std::string input) {
 }
 
 // 
-std::string paramMinMaxString(FMOD_STUDIO_PARAMETER_DESCRIPTION param) {
+std::string paramMinMaxString(FMOD_STUDIO_PARAMETER_DESCRIPTION param, bool isCout = false) {
 	std::string paramName = param.name;
 	std::string paramMinVal; float paramMinVal_f = param.minimum;
 	std::string paramMaxVal; float paramMaxVal_f = param.maximum;
@@ -119,10 +119,15 @@ std::string paramMinMaxString(FMOD_STUDIO_PARAMETER_DESCRIPTION param) {
 		}
 	}
 
-	return " - Parameter: " + paramName + " [ " + paramMinVal + " - " + paramMaxVal + " ]";
+	if (isCout) {
+		return " - Parameter: " + paramName + " [ " + paramMinVal + " - " + paramMaxVal + " ]";
+	}
+	else {
+		return paramName + " [ " + paramMinVal + " - " + paramMaxVal + " ]";
+	}
 }
 
-std::string paramAttributesString(FMOD_STUDIO_PARAMETER_DESCRIPTION param) {
+std::string paramAttributesString(FMOD_STUDIO_PARAMETER_DESCRIPTION param, bool isCout = false) {
 
 	std::string output;
 

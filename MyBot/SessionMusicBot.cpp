@@ -48,6 +48,9 @@ dpp::discord_voice_client* currentClient = nullptr;		// Current Voice Client of 
 std::vector<int16_t> myPCMData;							// Main buffer of PCM audio data, which FMOD adds to and D++ cuts "frames" from
 bool exitRequested = false;								// Set to "true" when you want off Mr. Bones Wild Tunes.
 bool isConnected = false;								// Set to "true" when bot is connected to a Voice Channel.
+dpp::embed basicEmbed = dpp::embed()					// Generic embed with all the shared details
+	.set_color(dpp::colors::construction_cone_orange)
+	.set_timestamp(time(0));
 
 #ifndef NDEBUG
 //---Extra Variables only present in Debug mode, for extra data---//
@@ -297,8 +300,8 @@ void list_events() {
 #ifndef NDEBUG
 				coutString.append(" with flag: " + std::to_string(parameter.flags));
 #endif
-				coutString.append(paramMinMaxString(parameter));
-				coutString.append(paramAttributesString(parameter));
+				coutString.append(paramMinMaxString(parameter, true));
+				coutString.append(paramAttributesString(parameter, true));
 				std::cout << coutString;
 				newSessionEventDesc.params.push_back(parameter);
 			}
@@ -326,25 +329,29 @@ void list_events(const dpp::slashcommand_t& event) {
 		list_events();
 
 		// And now print 'em to Discord!
-		std::string output = "";
-
-		for (int i = 0; i < (int)eventPaths.size(); i++) {										// For every path	
-			output.append("- " + truncateEventPath(eventPaths[i]) + "\n");					// Add the shortened path to the output string...
-			std::vector<FMOD_STUDIO_PARAMETER_DESCRIPTION> eventParams
-				= pEventDescriptions.at(truncateEventPath(eventPaths[i])).params;
-			if (eventParams.size() == 0) {
-				continue;
-			}
-			for (int j = 0; j < (int)eventParams.size(); j++) {									// as well as each associated parameters and their ranges, if any.
-				output.append(paramMinMaxString(eventParams[j]));							// Re-does the work done for debug Cout, bu₮structurally cleaner
-				output.append(paramAttributesString(eventParams[j]));						// and keeps it from being linked together too tightly.
-			}
-		}
-		if (output == "") {
+		
+		if (eventPaths.size() == 0) {
 			event.edit_original_response(dpp::message("No playable events found!"));		// If no events were found _at all_ then say so.
 		}
 		else {
-			event.edit_original_response(dpp::message("## Found Events: ##\n" + output));	// Else, normal output
+			dpp::embed paramListEmbed = basicEmbed;								// Create the embed and set non-standard details
+			paramListEmbed.set_title("Event List with Params");
+
+			for (int i = 0; i < (int)eventPaths.size(); i++) {										// For every path	
+				std::vector<FMOD_STUDIO_PARAMETER_DESCRIPTION> eventParams = pEventDescriptions.at(truncateEventPath(eventPaths[i])).params;
+				if (eventParams.size() == 0) {
+					paramListEmbed.add_field(truncateEventPath(eventPaths[i]), "");			// Add the shortened path as a field		
+					continue;
+				}
+				else {
+					std::string paramOutString = "";
+					for (int j = 0; j < (int)eventParams.size(); j++) {									// as well as each associated parameters and their ranges, if any.
+						paramOutString.append(paramMinMaxString(eventParams[j]) + paramAttributesString(eventParams[j]));
+					}
+					paramListEmbed.add_field(truncateEventPath(eventPaths[i]), paramOutString);
+				}
+			}
+			event.edit_original_response(dpp::message(event.command.channel_id, paramListEmbed));
 		}
 	});
 }
