@@ -124,6 +124,7 @@ FMOD_RESULT F_CALLBACK eventInstanceDestroyedCallback(FMOD_STUDIO_EVENT_CALLBACK
 }
 
 //---Bot Functions---//
+
 // Simple ping, responds in chat and output log
 void ping(const dpp::slashcommand_t& event) {
 	event.reply(dpp::message("Pong! I'm alive!").set_flags(dpp::m_ephemeral));
@@ -386,6 +387,7 @@ void play(const dpp::slashcommand_t& event) {
 	if (count < 2) {
 		std::cout << "Play command arrived with less than 2 arguments. Bad juju!" << std::endl;
 		event.reply(dpp::message("Play command sent with less than 2 arguments. Bad juju!").set_flags(dpp::m_ephemeral));
+		return;
 	}
 
 	std::string eventToPlay = std::get<std::string>(event.get_parameter(cmd_data.options[0].name));
@@ -433,6 +435,7 @@ void pause(const dpp::slashcommand_t& event) {
 	if (count < 1) {
 		std::cout << "Pause command arrived with no arguments. Bad juju!" << std::endl;
 		event.reply(dpp::message("Pause command sent with no arguments. Bad juju!").set_flags(dpp::m_ephemeral));
+		return;
 	}
 
 	std::string inputName = std::get<std::string>(event.get_parameter(cmd_data.options[0].name));
@@ -458,6 +461,7 @@ void unpause(const dpp::slashcommand_t& event) {
 	if (count < 1) {
 		std::cout << "Unpause command arrived with no arguments. Bad juju!" << std::endl;
 		event.reply(dpp::message("Unpause command sent with no arguments. Bad juju!").set_flags(dpp::m_ephemeral));
+		return;
 	}
 
 	std::string inputName = std::get<std::string>(event.get_parameter(cmd_data.options[0].name));
@@ -481,17 +485,22 @@ void stop(const dpp::slashcommand_t& event) {
 	// Very similar to Pause and Unpause
 	dpp::command_interaction cmd_data = event.command.get_command_interaction();
 	int count = (int)cmd_data.options.size();
-	if (count < 1) {
+	if (count < 1) {			// If somehow this was sent without arguments, that's bad.
 		std::cout << "Stop command arrived with no arguments. Bad juju!" << std::endl;
 		event.reply(dpp::message("Stop command sent with no arguments. Bad juju!").set_flags(dpp::m_ephemeral));
+		return;
 	}
 
 	std::cout << "Stop command issued." << std::endl;
 	std::string inputName = std::get<std::string>(event.get_parameter(cmd_data.options[0].name));
+	bool value;
+	if (count > 1) { value = std::get<bool>(event.get_parameter(cmd_data.options[2].name)); }
+	else { value = false; }
 
 	std::cout << "Instance Name: " << inputName << std::endl;
 	if (pEventInstances.find(inputName) != pEventInstances.end()) {
-		pEventInstances.at(inputName).instance->stop(FMOD_STUDIO_STOP_ALLOWFADEOUT);
+		if (value) { pEventInstances.at(inputName).instance->stop(FMOD_STUDIO_STOP_ALLOWFADEOUT); }
+		else { pEventInstances.at(inputName).instance->stop(FMOD_STUDIO_STOP_IMMEDIATE); }
 		//Callback should handle removing this instance from our map when the event is done.
 		std::cout << "Command carried out." << std::endl;
 		event.reply(dpp::message("Stopping Event Instance: " + inputName).set_flags(dpp::m_ephemeral));
@@ -501,6 +510,21 @@ void stop(const dpp::slashcommand_t& event) {
 		event.reply(dpp::message("No Event Instance found with given name: " + inputName).set_flags(dpp::m_ephemeral));
 	}
 	
+}
+
+// Base function, called in a few places as part of other methods like quit()
+void stop_all() {
+	std::cout << "Stopping all events." << std::endl;
+	//For each instance in events playing list, stop_now
+	for (const auto& [niceName, sessionEventInstance] : pEventInstances) {
+		sessionEventInstance.instance->stop(FMOD_STUDIO_STOP_IMMEDIATE);
+	}
+}
+
+// Stops all playing events in the list.
+void stop_all(const dpp::slashcommand_t& event) {
+	stop_all();
+	event.reply(dpp::message("All events stopped.").set_flags(dpp::m_ephemeral));
 }
 
 // Sets parameter with given name and value on given Event Instance
@@ -542,19 +566,6 @@ void param(const dpp::slashcommand_t& event) {
 	ERRCHECK_HARD(pEventInstances.at(instanceName).instance->setParameterByName(paramName.c_str(), value));
 	std::cout << "Command carried out." << std::endl;
 	event.reply(dpp::message("Setting Parameter: " + paramName + " on Instance " + instanceName + " with value " + std::to_string(value)).set_flags(dpp::m_ephemeral));
-}
-
-void stop_all() {
-	std::cout << "Stopping all events." << std::endl;
-	//For each instance in events playing list, stop_now
-	for (const auto& [niceName, sessionEventInstance] : pEventInstances) {
-		sessionEventInstance.instance->stop(FMOD_STUDIO_STOP_IMMEDIATE);
-	}
-}
-
-void stop_all(const dpp::slashcommand_t& event) {
-	stop_all();
-	event.reply(dpp::message("All events stopped.").set_flags(dpp::m_ephemeral));
 }
 
 void join(const dpp::slashcommand_t& event) {
@@ -761,6 +772,14 @@ int main() {
 			commands[5].add_option(
 				dpp::command_option(dpp::co_string, "instance-name", "The name of the event instance to stop.", true)
 			);
+			commands[5].add_option(
+				dpp::command_option(dpp::co_boolean, "stop-immediately?", "Optional: stop the sounds NOW, without fadeouts.", false)
+			);
+
+			// Sub-commands for Stop_All
+			commands[6].add_option(
+				dpp::command_option(dpp::co_boolean, "stop-immediately?", "Optional: stop the sounds NOW, without fadeouts.", false)
+			);
 
 			// Sub-commands for Param
 			commands[7].add_option(
@@ -857,7 +876,7 @@ int main() {
 	}
 
 	// Quitting program.
-	std::cout << "Quitting program. Releasing resources..." << std::endl;
+	std::cout << "Quitting program. Releasing resources...";
 
 	// Todo: If in voice, leave chat before dying?
 
@@ -870,6 +889,8 @@ int main() {
 	pSystem->release();
 
 	// Todo: Any cleanup necessary for the bot?
+
+	std::cout << std::endl;
 
 	return 0;
 }
