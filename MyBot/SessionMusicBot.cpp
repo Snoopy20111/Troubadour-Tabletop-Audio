@@ -132,7 +132,7 @@ void ping(const dpp::slashcommand_t& event) {
 }
 
 // Base function, called on startup and when requested by List Banks command
-void list_banks() {
+void banks() {
 
 	std::cout << "Checking Banks path: " << bank_dir_path.string() << std::endl;
 	std::string output = "- Master.bank\n- Master.strings.bank\n";				//Ensures Master and Strings banks are always in list
@@ -227,7 +227,7 @@ void list_banks() {
 }
 
 // Indexes and Prints all valid .bank files
-void list_banks(const dpp::slashcommand_t& event) {
+void banks(const dpp::slashcommand_t& event) {
 
 	if (pEventInstances.size() > 0) {							// Unsafe to load/unload banks while events are active
 		event.reply(dpp::message("Cannot index banks while the bot is playing audio! Bad juju.").set_flags(dpp::m_ephemeral));
@@ -239,7 +239,7 @@ void list_banks(const dpp::slashcommand_t& event) {
 	//Show "Thinking..." while putting the list together
 	event.thinking(true, [event](const dpp::confirmation_callback_t& callback) {
 
-		list_banks();											// Re-list what banks exist, load new ones
+		banks();											// Re-list what banks exist, load new ones
 
 		std::string output = "- Master.bank\n- Master.strings.bank\n";
 
@@ -252,7 +252,7 @@ void list_banks(const dpp::slashcommand_t& event) {
 }
 
 // Base function, called on startup and when requested by List Events command
-void list_events() {
+void events() {
 	int count = 0;
 	ERRCHECK_HARD(pMasterStringsBank->getStringCount(&count));
 	if (count <= 0) {
@@ -312,7 +312,7 @@ void list_events() {
 }
 
 // Indexes and Prints all playable Event Descriptions & Parameters
-void list_events(const dpp::slashcommand_t& event) {
+void events(const dpp::slashcommand_t& event) {
 
 	if (!pMasterStringsBank->isValid() || pMasterStringsBank == nullptr) {
 		std::cout << "Master Strings bank is invalid or nullptr. Bad juju!" << std::endl;
@@ -327,7 +327,7 @@ void list_events(const dpp::slashcommand_t& event) {
 	event.thinking(true, [event](const dpp::confirmation_callback_t& callback) {
 
 		// Index the events with function above
-		list_events();
+		events();
 
 		// And now print 'em to Discord!
 		
@@ -358,7 +358,7 @@ void list_events(const dpp::slashcommand_t& event) {
 }
 
 // Prints all currently playing Event Instances
-void list_playing(const dpp::slashcommand_t& event) {
+void list(const dpp::slashcommand_t& event) {
 	// Simply list the currently playing events. No indexing here.
 	// Todo: show the parameters of each playing event, eventually.
 
@@ -513,7 +513,7 @@ void stop(const dpp::slashcommand_t& event) {
 }
 
 // Base function, called in a few places as part of other methods like quit()
-void stop_all() {
+void stopall() {
 	std::cout << "Stopping all events." << std::endl;
 	//For each instance in events playing list, stop_now
 	for (const auto& [niceName, sessionEventInstance] : pEventInstances) {
@@ -522,8 +522,8 @@ void stop_all() {
 }
 
 // Stops all playing events in the list.
-void stop_all(const dpp::slashcommand_t& event) {
-	stop_all();
+void stopall(const dpp::slashcommand_t& event) {
+	stopall();
 	event.reply(dpp::message("All events stopped.").set_flags(dpp::m_ephemeral));
 }
 
@@ -603,7 +603,7 @@ void leave(const dpp::slashcommand_t& event) {
 	dpp::voiceconn* currentVC = event.from->get_voice(event.command.guild_id);
 	if (currentVC) {
 		std::cout << "Leaving voice channel." << std::endl;
-		stop_all();										// Stop all FMOD events immediately
+		stopall();										// Stop all FMOD events immediately
 		event.from->disconnect_voice(event.command.guild_id);	// Disconnect from Voice (triggers callback laid out in main)
 		event.reply(dpp::message("Bye bye! I hope I played good sounds!").set_flags(dpp::m_ephemeral));
 	}
@@ -645,8 +645,6 @@ void init() {
 	std::cout << "Loading Master banks...\n";
 	ERRCHECK_HARD(pSystem->loadBankFile((bank_dir_path.string() + "\\" + master_bank).c_str(), FMOD_STUDIO_LOAD_BANK_NORMAL, &pMasterBank));
 	ERRCHECK_HARD(pSystem->loadBankFile((bank_dir_path.string() + "\\" + masterstrings_bank).c_str(), FMOD_STUDIO_LOAD_BANK_NORMAL, &pMasterStringsBank));
-
-
 	std::cout << "Done." << std::endl;
 
 	// Also get the Master Bus, set volume, and get the related Channel Group
@@ -696,11 +694,11 @@ void init() {
 void init_session() {
 	std::cout << "###########################" << std::endl << std::endl;
 	std::cout << "Loading and Indexing all other banks..." << std::endl;
-	list_banks();
+	banks();
 	std::cout << "...Done!" << std::endl << std::endl;
 
 	std::cout << "Indexing events and parameters..." << std::endl;
-	list_events();
+	events();
 	std::cout << "...Done!" << std::endl << std::endl;
 	std::cout << "###########################" << std::endl;
 	std::cout << std::endl;
@@ -735,16 +733,16 @@ int main() {
 		/* Wrap command registration in run_once to make sure it doesnt run on every full reconnection */
 		if (dpp::run_once<struct register_bot_commands>()) {
 			std::vector<dpp::slashcommand> commands {
-				{ "list_events", "Index and list all playable events.", bot.me.id},
-				{ "list_playing", "Shows all playing event instances and their parameters.", bot.me.id},
+				{ "events", "List all playable events.", bot.me.id},
+				{ "list", "Shows all playing event instances and their parameters.", bot.me.id},
 				{ "play", "Create a new Event Instance.", bot.me.id},
 				{ "pause", "Pause a currently playing Event Instance.", bot.me.id},
 				{ "unpause", "Resume a currently playing Event Instance.", bot.me.id},
 				{ "stop", "Stop a currently playing Event Instance.", bot.me.id},
-				{ "stop_all", "Stop all Event Instances immediately.", bot.me.id},
+				{ "stopall", "Stop all Event Instances immediately.", bot.me.id},
 				{ "param", "Set a parameter on an Event Instance.", bot.me.id},
 				{ "ping", "Ping the bot to ensure it's alive.", bot.me.id },
-				{ "list_banks", "Index and load all audio banks.", bot.me.id},
+				{ "banks", "Lists all banks in the Soundbanks folder.", bot.me.id},
 				{ "join", "Join your current voice channel.", bot.me.id},
 				{ "leave", "Leave the current voice channel.", bot.me.id},
 				{ "quit", "Ends the bot program.", bot.me.id}
@@ -755,7 +753,7 @@ int main() {
 				dpp::command_option(dpp::co_string, "event-name", "The event you wish to play.", true)
 			);
 			commands[2].add_option(
-				dpp::command_option(dpp::co_string, "instance-name", "Name used for interactions with this event. \"a\" will use event-name.", true)
+				dpp::command_option(dpp::co_string, "instance-name", "Optional: name used for interactions with this event instance. \"a\" will use event-name.", true)
 			);
 
 			// Sub-commands for Pause
@@ -798,16 +796,16 @@ int main() {
 
 	/* Handle slash commands */
 	bot.on_slashcommand([&bot](const dpp::slashcommand_t& event) {
-		if (event.command.get_command_name() == "list_events") { list_events(event); }
-		else if (event.command.get_command_name() == "list_playing") { list_playing(event); }
+		if (event.command.get_command_name() == "events") { events(event); }
+		else if (event.command.get_command_name() == "list") { list(event); }
 		else if (event.command.get_command_name() == "play") { play(event); }
 		else if (event.command.get_command_name() == "pause") { pause(event); }
 		else if (event.command.get_command_name() == "unpause") { unpause(event); }
 		else if (event.command.get_command_name() == "stop") { stop(event); }
-		else if (event.command.get_command_name() == "stop_all") { stop_all(event); }
+		else if (event.command.get_command_name() == "stopall") { stopall(event); }
 		else if (event.command.get_command_name() == "param") { param(event); }
 		else if (event.command.get_command_name() == "ping") { ping(event); }
-		else if (event.command.get_command_name() == "list_banks") { list_banks(event); }
+		else if (event.command.get_command_name() == "banks") { banks(event); }
 		else if (event.command.get_command_name() == "join") { join(event); }
 		else if (event.command.get_command_name() == "leave") { leave(event); }
 		else if (event.command.get_command_name() == "quit") { quit(event); }
