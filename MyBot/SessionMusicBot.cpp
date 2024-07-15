@@ -382,19 +382,37 @@ void list(const dpp::slashcommand_t& event) {
 
 // Creates and starts a new Event Instance
 void play(const dpp::slashcommand_t& event) {
+
 	dpp::command_interaction cmd_data = event.command.get_command_interaction();
 	int count = (int)cmd_data.options.size();
-	if (count < 2) {
-		std::cout << "Play command arrived with less than 2 arguments. Bad juju!" << std::endl;
-		event.reply(dpp::message("Play command sent with less than 2 arguments. Bad juju!").set_flags(dpp::m_ephemeral));
+	if (count < 1) {
+		std::cout << "Events command arrived with no arguments. Bad juju!" << std::endl;
+		event.reply(dpp::message("Events command sent with no arguments. Bad juju!").set_flags(dpp::m_ephemeral));
+		return;
+	}
+	else if (count > 2) {
+		std::cout << "Events command arrived with too many arguments (>2). Bad juju!" << std::endl;
+		event.reply(dpp::message("Events command sent with too many arguments (>2). Bad juju!").set_flags(dpp::m_ephemeral));
 		return;
 	}
 
 	std::string eventToPlay = std::get<std::string>(event.get_parameter(cmd_data.options[0].name));
-	std::string inputName = std::get<std::string>(event.get_parameter(cmd_data.options[1].name));
-	std::string newName = inputName;
-	if (inputName == "a") { newName = eventToPlay; }				// If user input "a" then just use the eventToPlay name
 
+	// Determining the Instance name
+	// If the user gave a name in the command, use that
+	// If the user gave no name, use the Event name
+	std::string inputName;
+	if (count > 1) {
+		inputName = std::get<std::string>(event.get_parameter(cmd_data.options[1].name));
+		if (inputName == "" || inputName.size() == 0) {		// If the input was bogus, pretend there was no input
+			inputName = eventToPlay;
+		}
+	}
+	else {
+		inputName = eventToPlay;
+	}
+
+	std::string newName = inputName;
 	std::string cleanName = newName;
 	int iterator = 1;
 	while (pEventInstances.find(newName) != pEventInstances.end()) {		// If that name already exists, quietly give it a number
@@ -753,7 +771,7 @@ int main() {
 				dpp::command_option(dpp::co_string, "event-name", "The event you wish to play.", true)
 			);
 			commands[2].add_option(
-				dpp::command_option(dpp::co_string, "instance-name", "Optional: name used for interactions with this event instance. \"a\" will use event-name.", true)
+				dpp::command_option(dpp::co_string, "instance-name", "Optional: name used for interactions with this event instance. Defaults to the name of the event.", false)
 			);
 
 			// Sub-commands for Pause
