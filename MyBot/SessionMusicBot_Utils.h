@@ -56,9 +56,8 @@ void ERRCHECK_SOFT(FMOD_RESULT result) {
 }
 
 // Retrieves the Bot Token string from the token.config file
-std::string getBotToken()
-{
-	//read from .config (text) file and grab the token
+std::string getBotToken() {
+	// Read from .config (text) file and grab the token
 	std::ifstream myfile("token.config");
 	std::string token;
 	if (myfile.is_open()) { myfile >> token; }
@@ -69,6 +68,93 @@ std::string getBotToken()
 	myfile.close();
 	return token;
 }
+
+/*std::map<dpp::snowflake, std::string> getOwners() {
+	// Read from config file and grab the Discord username, as well as username
+	std::ifstream myfile("owner.config");
+
+	std::map<dpp::snowflake, std::string> owners;
+	
+
+	if (myfile.is_open()) {
+
+		int numOfCharsRead = 0;
+		bool isInSpace = true;
+		char ch;
+
+		dpp::snowflake newSnowflake; uint64_t newSnowflakeNum;
+		std::string newOwner;
+
+		bool isSnowflake = true;
+		int digitCount = 0;
+
+		// Iterate through each character, doing additional steps along the way when the right bits are encountered
+		// Assumes that myfile.get() will follow the same iterator that >> does
+		while (myfile.get(ch)) {
+
+			// If it's not alphanumeric or punctuation, we don't want it
+			if (!std::isalnum(ch) || !std::ispunct(ch)) { continue; }
+		}
+
+		if (isSnowflake) {		// Snowflake
+			// uint64 has 20 characters at most
+			// todo: add checks here, because I'm not convinced it'll always compute
+			myfile >> newSnowflakeNum;
+			std::cout << newSnowflakeNum << std::endl;
+			isSnowflake = false;
+		}
+		else {					// Username
+
+		}
+
+		while (myfile.get(ch)) {
+			numOfCharsRead++;
+
+			
+
+			//Number
+			//Letter
+			//Blank (tab or space)
+			//Space (tab, space, or escape char)
+			//Control (tab, escape char, NUL, DEL, control codes, etc)
+
+			//This process is to put together a 64-bit number, followed by some spaces, and then the Username
+			//Expected sequence: snowflake, username, snowflake, username
+
+			// Is it a number?
+			if (std::isdigit(ch)) {
+
+			}
+
+			// Is it a character?
+			//else if ()
+
+			if (std::isspace(ch, myfile.getloc())) {
+				isInSpace = true;
+			}
+			else if (isInSpace) {
+				isInSpace = false;
+			}
+
+		}
+
+	}
+	else {
+		std::cout << "Owner not established in owner.config file. Ensure the file is in the correct location and not corrupted." << std::endl;
+		exit(-1);
+	}
+	myfile.close();
+	return owners;
+}
+
+bool addOwners() {
+	return true;
+}
+
+bool removeOwners() {
+	return true;
+}*/
+
 
 // Turns paths of FMOD format ("bank:/") to the filepath it would've loaded from
 std::string formatBankToFilepath(std::string bankPath, std::filesystem::path bank_dir_path) {

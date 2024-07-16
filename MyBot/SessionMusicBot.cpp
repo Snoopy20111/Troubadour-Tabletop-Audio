@@ -48,6 +48,7 @@ dpp::discord_voice_client* currentClient = nullptr;		// Current Voice Client of 
 std::vector<int16_t> myPCMData;							// Main buffer of PCM audio data, which FMOD adds to and D++ cuts "frames" from
 bool exitRequested = false;								// Set to "true" when you want off Mr. Bones Wild Tunes.
 bool isConnected = false;								// Set to "true" when bot is connected to a Voice Channel.
+std::vector<dpp::snowflake> owningUsers;				// Vector of the bot's owner and whitelisted users (todo: whitelisting). Owner is always first value.
 dpp::embed basicEmbed = dpp::embed()					// Generic embed with all the shared details
 	.set_color(dpp::colors::construction_cone_orange)
 	.set_timestamp(time(0));
@@ -230,7 +231,7 @@ void banks() {
 void banks(const dpp::slashcommand_t& event) {
 
 	if (pEventInstances.size() > 0) {							// Unsafe to load/unload banks while events are active
-		event.reply(dpp::message("Cannot index banks while the bot is playing audio! Bad juju.").set_flags(dpp::m_ephemeral));
+		event.reply(dpp::message("Cannot mess with banks while the bot is playing audio! Please stop all events first.").set_flags(dpp::m_ephemeral));
 		return;
 	}
 	
@@ -565,6 +566,7 @@ void param(const dpp::slashcommand_t& event) {
 		event.reply(dpp::message("No Event Instance found with given name: " + instanceName).set_flags(dpp::m_ephemeral));
 	}
 	else if (pEventInstances.at(instanceName).params.size() == 0) {
+		// Todo: check here for Global parameters as well, just to be sure.
 		std::cout << "Instance has no parameters." << std::endl;
 		event.reply(dpp::message("Instance " + instanceName + " has no parameters associated with it.").set_flags(dpp::m_ephemeral));
 	}	// In future, perhaps another else if to filter out the type, if we want to handle that in a special way
@@ -607,7 +609,6 @@ void join(const dpp::slashcommand_t& event) {
 			return;
 		}
 		//If not caught above, we're in voice! Not instant, will need to wait for on_voice_ready callback
-		event.reply(dpp::message("Joined your channel!").set_flags(dpp::m_ephemeral));
 		std::cout << "Joined channel of user." << std::endl;
 
 	}
@@ -746,13 +747,18 @@ int main() {
 	/* Output simple log messages to stdout */
 	bot.on_log(dpp::utility::cout_logger());
 
+	// Get the bot application, and add the Owner to the Owning Users list (for permissions)
+	dpp::application botapp = bot.current_application_get_sync();	//Blocking function used for simplicity
+	std::cout << "Owner Username: " << botapp.owner.username << " with Snowflake ID: " << botapp.owner.id << std::endl;
+	owningUsers.push_back(botapp.owner.id);
+
 	/* Register slash command here in on_ready */
 	bot.on_ready([&bot](const dpp::ready_t& event) {
 		/* Wrap command registration in run_once to make sure it doesnt run on every full reconnection */
 		if (dpp::run_once<struct register_bot_commands>()) {
 			std::vector<dpp::slashcommand> commands {
-				{ "events", "List all playable events.", bot.me.id},
-				{ "list", "Shows all playing event instances and their parameters.", bot.me.id},
+				{ "events", "List all playable events and their parameters.", bot.me.id},
+				{ "list", "Show all playing event instances and their parameters.", bot.me.id},
 				{ "play", "Create a new Event Instance.", bot.me.id},
 				{ "pause", "Pause a currently playing Event Instance.", bot.me.id},
 				{ "unpause", "Resume a currently playing Event Instance.", bot.me.id},
@@ -760,10 +766,10 @@ int main() {
 				{ "stopall", "Stop all Event Instances immediately.", bot.me.id},
 				{ "param", "Set a parameter on an Event Instance.", bot.me.id},
 				{ "ping", "Ping the bot to ensure it's alive.", bot.me.id },
-				{ "banks", "Lists all banks in the Soundbanks folder.", bot.me.id},
+				{ "banks", "List all banks in the Soundbanks folder.", bot.me.id},
 				{ "join", "Join your current voice channel.", bot.me.id},
 				{ "leave", "Leave the current voice channel.", bot.me.id},
-				{ "quit", "Ends the bot program.", bot.me.id}
+				{ "quit", "Leave voice and exit the program.", bot.me.id}
 			};
 
 			// Sub-commands for Play
@@ -789,12 +795,12 @@ int main() {
 				dpp::command_option(dpp::co_string, "instance-name", "The name of the event instance to stop.", true)
 			);
 			commands[5].add_option(
-				dpp::command_option(dpp::co_boolean, "stop-immediately?", "Optional: stop the sounds NOW, without fadeouts.", false)
+				dpp::command_option(dpp::co_boolean, "stop-immediately", "Optional: stop the sounds NOW, without fadeouts.", false)
 			);
 
 			// Sub-commands for Stop_All
 			commands[6].add_option(
-				dpp::command_option(dpp::co_boolean, "stop-immediately?", "Optional: stop the sounds NOW, without fadeouts.", false)
+				dpp::command_option(dpp::co_boolean, "stop-immediately", "Optional: stop the sounds NOW, without fadeouts.", false)
 			);
 
 			// Sub-commands for Param
@@ -808,25 +814,51 @@ int main() {
 				dpp::command_option(dpp::co_number, "value", "What you want the parameter to be.", true)
 			);
 
+			// Permissions. Show commands for only those who can use slash commands in a server.
+			// Only the Owner will be allowed to enact commands, but that's checked locally.
+			for (int i = 0; i > commands.size(); i++) {
+				commands[i].default_member_permissions.has(dpp::permissions::p_use_application_commands);
+			}
+
 			bot.global_bulk_command_create(commands);
 		}
 	});
 
 	/* Handle slash commands */
 	bot.on_slashcommand([&bot](const dpp::slashcommand_t& event) {
-		if (event.command.get_command_name() == "events") { events(event); }
-		else if (event.command.get_command_name() == "list") { list(event); }
-		else if (event.command.get_command_name() == "play") { play(event); }
-		else if (event.command.get_command_name() == "pause") { pause(event); }
-		else if (event.command.get_command_name() == "unpause") { unpause(event); }
-		else if (event.command.get_command_name() == "stop") { stop(event); }
-		else if (event.command.get_command_name() == "stopall") { stopall(event); }
-		else if (event.command.get_command_name() == "param") { param(event); }
-		else if (event.command.get_command_name() == "ping") { ping(event); }
-		else if (event.command.get_command_name() == "banks") { banks(event); }
-		else if (event.command.get_command_name() == "join") { join(event); }
-		else if (event.command.get_command_name() == "leave") { leave(event); }
-		else if (event.command.get_command_name() == "quit") { quit(event); }
+
+		// Filter out non-Owners from enacting commands
+		dpp::snowflake cmdSender = std::get<dpp::snowflake>(event.get_parameter("user"));
+		bool canRun = false;
+		std::cout << "owningUsers size: " << owningUsers.size() << std::endl;
+		for (int i = 0; i > owningUsers.size(); i++) {
+			std::cout << "cmdSender: " << cmdSender.str() << " || owningUser: " << owningUsers[i] << std::endl;
+			if (owningUsers[i] == cmdSender) {
+				canRun = true;
+			}
+		}
+		if (!canRun) {
+			event.reply(dpp::message("Sorry, only the bot owner can run commands for me.").set_flags(dpp::m_ephemeral));
+		}
+		else {
+			if (event.command.get_command_name() == "events") { events(event); }
+			else if (event.command.get_command_name() == "list") { list(event); }
+			else if (event.command.get_command_name() == "play") { play(event); }
+			else if (event.command.get_command_name() == "pause") { pause(event); }
+			else if (event.command.get_command_name() == "unpause") { unpause(event); }
+			else if (event.command.get_command_name() == "stop") { stop(event); }
+			else if (event.command.get_command_name() == "stopall") { stopall(event); }
+			else if (event.command.get_command_name() == "param") { param(event); }
+			else if (event.command.get_command_name() == "ping") { ping(event); }
+			else if (event.command.get_command_name() == "banks") { banks(event); }
+			else if (event.command.get_command_name() == "join") { join(event); }
+			else if (event.command.get_command_name() == "leave") { leave(event); }
+			else if (event.command.get_command_name() == "quit") { quit(event); }
+			else {
+				std::string enteredname = event.command.get_command_name();
+				event.reply(dpp::message("Sorry, " + enteredname + " isn't a command I understand. Apologies.").set_flags(dpp::m_ephemeral));
+			}
+		}
 	});
 
 	/* Set currentClient and tell the program we're connected */
