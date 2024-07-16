@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="ParameterPreset" id="{a5ded17d-f1ad-4fc4-8f05-0d6d6faa0630}">
 		<property name="name">
-			<value>MainOrGym</value>
+			<value>Roboxing_MainToGym</value>
 		</property>
 		<relationship name="folder">
 			<destination>{22312349-d57f-4705-a689-952236bfc399}</destination>
