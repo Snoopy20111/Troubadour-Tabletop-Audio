@@ -15,8 +15,7 @@
  * Follow steps here to get a token:
  * https://dpp.dev/creating-a-bot-application.html
  * When you invite the bot, be sure to invite it with the 
- * scopes 'bot' and 'applications.commands', e.g.
- * https://discord.com/oauth2/authorize?client_id=940762342495518720&scope=bot+applications.commands&permissions=139586816064
+ * scopes 'bot' and 'applications.commands'.
  */
 
 //---File Paths---//

@@ -42,7 +42,7 @@ Function PrepRelease {
 	Remove-Item $User_DelPath -Recurse
 	
 	# Copy ReadMe.txt from MyBot to Packages\[versioning + arch]
-	Copy-Item -Path ".\MyBot\README.txt" -Destination $Package_TargetPath
+	Copy-Item -Path ".\MyBot\Setup Instructions.txt" -Destination $Package_TargetPath
 	
 	#Change the build path of the FMOD project
 	$xml = [xml](Get-Content -Path $FMODWorkspaceXML_Path) 	#Read contents of XML file

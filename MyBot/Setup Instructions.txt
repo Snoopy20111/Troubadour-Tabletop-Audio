@@ -1,0 +1,33 @@
+Howdy! Thanks for giving the Music Bot a try.
+
+Here's a quick guide to setting up this bot. It's not too difficult, but not as easy as many other bots. More information can also be found at the D++ page on creating a Bot Token (https://dpp.dev/creating-a-bot-application.html).
+
+1) Go to the Discord Developer Portal (https://discord.com/developers/applications/) and log in with your Discord account.
+
+2) Make a New Application and Bot.
+	- Click the button to make a New Application.
+	- Give it whatever name you like. You can always change it later.
+	- On the panel to the left, go to "Bot," and in the "Build-A-Bot" section of the page select "Add Bot."
+	- In the new options that appeared, set your bot's username. This is how it will appear in your list of server members.
+
+3) Generate a Token.
+	- Click the new button that says "Reset Token." You will likely need to enter your password again or use 2-Factor-Authentication.
+	- You'll be given a token. DO NOT SHARE THIS, it is essentially the keys to the related bot account!
+	- In your Session Music Bot's folder (wherever you put it), find the file token.config. Open it in a text editor like Notepad, and delete any contents.
+	- Copy and Paste your token here. Don't add any spaces or other characters, or the bot will fail to work.
+	- Save your token.config file.
+
+4) Generate an invite link with permissions.
+	- Go to the OAuth2 tab on the left of the Dev Portal.
+	- Scroll down to the OAuth2 URL Generator.
+	- Check the scope "bot." Another section will appear below. Check the text permissions "send messages" and voice Permissions "Connect" and "Speak."
+	- At the very bottom, copy the Generated URL, and paste it in a new tab of your browser.
+	- A window will appear to choose what server to invite it to. Do so, then click "Authorize."
+
+6) Start the program.
+	- Go to the server in your Discord client which you invited the bot to. You should see it in the list of users, named with the username you set in step 2.
+	- Run SessionMusicBot.exe. A console output window should appear, and in Discord the bot will appear to come online.
+
+That's it! From there you can start giving it slash commands, authoring events from the included FMOD Studio project for it, and playing that audio for everybody present. To close the bot, I recommend using the /quit command, but you can also just close the console window and kick the bot from any Voice Chats it's in.
+
+Have fun!

@@ -154,8 +154,8 @@ copy /y "$(MSBuildProjectDirectory)\token.config" "$(OutDir)token.config"</Comma
     </Link>
     <PostBuildEvent>
       <Command>copy /y "$(ProjectDir)dependencies\32\release\bin\*.dll" "$(OutDir)"
-copy /y "C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\core\lib\x86\fmod.dll" "$(OutDir)"
-copy /y "C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\studio\lib\x86\fmodstudio.dll" "$(OutDir)"
+copy /y "C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\core\lib\x86\*.dll" "$(OutDir)"
+copy /y "C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\studio\lib\x86\*.dll" "$(OutDir)"
 for /r "$(MSBuildProjectDirectory)\soundbanks" %%D in (*) do xcopy /y /d /f /i "%%D" "$(OutDir)soundbanks\"
 copy /y "$(MSBuildProjectDirectory)\token.config" "$(OutDir)token.config"</Command>
     </PostBuildEvent>
@@ -222,8 +222,8 @@ copy /y "$(MSBuildProjectDirectory)\token.config" "$(OutDir)token.config"</Comma
     </Link>
     <PostBuildEvent>
       <Command>copy /y "$(ProjectDir)dependencies\64\release\bin\*.dll" "$(OutDir)"
-copy /y "C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\core\lib\x64\fmod.dll" "$(OutDir)"
-copy /y "C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\studio\lib\x64\fmodstudio.dll" "$(OutDir)"
+copy /y "C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\core\lib\x64\*.dll" "$(OutDir)"
+copy /y "C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\studio\lib\x64\*.dll" "$(OutDir)"
 for /r "$(MSBuildProjectDirectory)\soundbanks" %%D in (*) do xcopy /y /d /f /i "%%D" "$(OutDir)soundbanks\"
 copy /y "$(MSBuildProjectDirectory)\token.config" "$(OutDir)token.config"</Command>
     </PostBuildEvent>
