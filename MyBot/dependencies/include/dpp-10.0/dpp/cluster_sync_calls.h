@@ -932,6 +932,20 @@ entitlement entitlement_test_create_sync(const class entitlement& new_entitlemen
 confirmation entitlement_test_delete_sync(snowflake entitlement_id);
 
 /**
+ * @brief For One-Time Purchase consumable SKUs, marks a given entitlement for the user as consumed.
+ *
+ * @see dpp::cluster::entitlement_consume
+ * @see https://discord.com/developers/docs/monetization/entitlements#consume-an-entitlement
+ * @param entitlement_id The entitlement to mark as consumed.
+ * @return confirmation returned object on completion
+ * \memberof dpp::cluster
+ * @throw dpp::rest_exception upon failure to execute REST function
+ * @warning This function is a blocking (synchronous) call and should only be used from within a separate thread.
+ * Avoid direct use of this function inside an event handler.
+ */
+confirmation entitlement_consume_sync(snowflake entitlement_id);
+
+/**
  * @brief Get the gateway information for the bot using the token
  * @see dpp::cluster::get_gateway_bot
  * @see https://discord.com/developers/docs/topics/gateway#get-gateway-bot
@@ -1983,6 +1997,70 @@ message_map messages_get_sync(snowflake channel_id, snowflake around, snowflake 
  * Avoid direct use of this function inside an event handler.
  */
 confirmation message_unpin_sync(snowflake channel_id, snowflake message_id);
+
+/**
+ * @brief Get a list of users that voted for this specific answer.
+ *
+ * @param m Message that contains the poll to retrieve the answers from
+ * @param answer_id ID of the answer to retrieve votes from (see poll_answer::answer_id)
+ * @param after Users after this ID should be retrieved if this is set to non-zero
+ * @param limit This number of users maximum should be returned, up to 100
+ * @return user_map returned object on completion
+ * @see dpp::cluster::poll_get_answer_voters
+ * @see https://discord.com/developers/docs/resources/poll#get-answer-voters
+ * \memberof dpp::cluster
+ * @throw dpp::rest_exception upon failure to execute REST function
+ * @warning This function is a blocking (synchronous) call and should only be used from within a separate thread.
+ * Avoid direct use of this function inside an event handler.
+ */
+user_map poll_get_answer_voters_sync(const message& m, uint32_t answer_id, snowflake after, uint64_t limit);
+
+/**
+ * @brief Get a list of users that voted for this specific answer.
+ *
+ * @param message_id ID of the message with the poll to retrieve the answers from
+ * @param channel_id ID of the channel with the poll to retrieve the answers from
+ * @param answer_id ID of the answer to retrieve votes from (see poll_answer::answer_id)
+ * @param after Users after this ID should be retrieved if this is set to non-zero
+ * @param limit This number of users maximum should be returned, up to 100
+ * @return user_map returned object on completion
+ * @see dpp::cluster::poll_get_answer_voters
+ * @see https://discord.com/developers/docs/resources/poll#get-answer-voters
+ * \memberof dpp::cluster
+ * @throw dpp::rest_exception upon failure to execute REST function
+ * @warning This function is a blocking (synchronous) call and should only be used from within a separate thread.
+ * Avoid direct use of this function inside an event handler.
+ */
+user_map poll_get_answer_voters_sync(snowflake message_id, snowflake channel_id, uint32_t answer_id, snowflake after, uint64_t limit);
+
+/**
+ * @brief Immediately end a poll.
+ *
+ * @param m Message that contains the poll
+ * @return message returned object on completion
+ * @see dpp::cluster::poll_end
+ * @see https://discord.com/developers/docs/resources/poll#end-poll
+ * \memberof dpp::cluster
+ * @throw dpp::rest_exception upon failure to execute REST function
+ * @warning This function is a blocking (synchronous) call and should only be used from within a separate thread.
+ * Avoid direct use of this function inside an event handler.
+ */
+message poll_end_sync(const message &m);
+
+/**
+ * @brief Immediately end a poll.
+ *
+ * @param message_id ID of the message with the poll to end
+ * @param channel_id ID of the channel with the poll to end
+ * @return message returned object on completion
+ * @see dpp::cluster::poll_end
+ * @see https://discord.com/developers/docs/resources/poll#end-poll
+ * \memberof dpp::cluster
+ * @throw dpp::rest_exception upon failure to execute REST function
+ * @warning This function is a blocking (synchronous) call and should only be used from within a separate thread.
+ * Avoid direct use of this function inside an event handler.
+ */
+message poll_end_sync(snowflake message_id, snowflake channel_id);
 
 /**
  * @brief Get a channel's pins
