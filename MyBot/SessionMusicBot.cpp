@@ -609,6 +609,7 @@ void join(const dpp::slashcommand_t& event) {
 		}
 		//If not caught above, we're in voice! Not instant, will need to wait for on_voice_ready callback
 		std::cout << "Joined channel of user." << std::endl;
+		event.reply(dpp::message("Joined your voice channel!").set_flags(dpp::m_ephemeral));
 
 	}
 	else {
@@ -827,11 +828,15 @@ int main() {
 	bot.on_slashcommand([&bot](const dpp::slashcommand_t& event) {
 
 		// Filter out non-Owners from enacting commands
-		dpp::snowflake cmdSender = std::get<dpp::snowflake>(event.get_parameter("user"));
+		//std::cout << "Command received" << std::endl;
+		//dpp::snowflake cmdSender = std::get<dpp::snowflake>(event.get_parameter("user"));
+		dpp::snowflake cmdSender = event.command.get_issuing_user().id;
+		//std::cout << "Command sent by " << event.command.get_issuing_user
+		// ().username << " with snowflake " << cmdSender << std::endl;
 		bool canRun = false;
-		std::cout << "owningUsers size: " << owningUsers.size() << std::endl;
-		for (int i = 0; i > owningUsers.size(); i++) {
-			std::cout << "cmdSender: " << cmdSender.str() << " || owningUser: " << owningUsers[i] << std::endl;
+		//std::cout << "owningUsers size: " << owningUsers.size() << std::endl;
+		for (int i = 0; i < owningUsers.size(); i++) {
+			//std::cout << "cmdSender: " << cmdSender.str() << " || owningUser: " << owningUsers[i] << std::endl;
 			if (owningUsers[i] == cmdSender) {
 				canRun = true;
 			}
