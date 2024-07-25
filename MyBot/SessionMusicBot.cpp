@@ -362,10 +362,8 @@ void list(const dpp::slashcommand_t& event) {
 	// Simply list the currently playing events. No indexing here.
 	// Todo: show the parameters of each playing event, eventually.
 
-	if (pEventInstances.size() < 1) {
-		std::cout << "No playing Event Instances." << std::endl;
-	}
-	event.thinking(true, [event](const dpp::confirmation_callback_t& callback) {
+	
+	/*event.thinking(true, [event](const dpp::confirmation_callback_t& callback) {
 		std::string output = "";
 
 		for (const auto& [niceName, instance] : pEventInstances) {
@@ -376,6 +374,76 @@ void list(const dpp::slashcommand_t& event) {
 		}
 		else {
 			event.edit_original_response(dpp::message("## Playing Events: ##\n" + output));
+		}
+	});*/
+
+	event.thinking(true, [event](const dpp::confirmation_callback_t& callback) {
+
+		if (pEventInstances.empty()) {
+			std::cout << "No playing Event Instances." << std::endl;
+			event.edit_original_response(dpp::message("No playing Event Instances."));
+		}
+		else {
+			dpp::embed paramListEmbed = basicEmbed;								// Create the embed and set non-standard details
+			paramListEmbed.set_title("Playing Events");
+
+			for (auto const& inst : pEventInstances) {		// For each Event Instance
+
+				// Get the Event Instance name
+				std::string instName = inst.first;
+
+				// Get the related Event Description
+				FMOD::Studio::EventDescription* instDesc;
+				inst.second.instance->getDescription(&instDesc);
+
+				// Get the Event Description's name
+				char pathchars[256];						// Hope we don't need longer paths than this...
+				char* pathptr = pathchars;
+				int retrieved = 0;
+				ERRCHECK_HARD(instDesc->getPath(pathptr, 512, &retrieved));	// Get the path as char*
+				std::string instDescName(pathptr);							// Make string, then format
+				instDescName = truncateEventPath(instDescName);
+				
+				if (inst.second.params.empty()) {							// If no parameters,
+					paramListEmbed.add_field(instName, instDescName);		// add field with the name and Desc path
+				}
+				else {														// If there ARE parameters, strap in...
+					std::string paramOutString = "";
+					for (int i = 0; i < inst.second.params.size(); i++) {
+
+						// get current parameter value
+						float paramVal = 0; float paramFinalVal = 0;
+						ERRCHECK_HARD(inst.second.instance->getParameterByID(inst.second.params[i].id, &paramVal, &paramFinalVal));
+						std::string paramValStr = paramValueString(paramVal, inst.second.params[i]);
+
+						// Get the min/max
+						std::string paramMinMaxStr = paramMinMaxString(inst.second.params[i]);
+						// Get the Attributes
+						std::string paramAttributesStr = paramAttributesString(inst.second.params[i]);
+
+						// Glue 'em all together
+						paramOutString.append(instDescName + paramValStr + paramMinMaxStr + paramAttributesStr);
+					}
+					paramListEmbed.add_field(instName, paramOutString);
+				}
+
+			}
+
+			for (int i = 0; i < (int)eventPaths.size(); i++) {					// For every path	
+				std::vector<FMOD_STUDIO_PARAMETER_DESCRIPTION> eventParams = pEventDescriptions.at(truncateEventPath(eventPaths[i])).params;
+				if (eventParams.size() == 0) {
+					paramListEmbed.add_field(truncateEventPath(eventPaths[i]), "");			// Add the shortened path as a field		
+					continue;
+				}
+				else {
+					std::string paramOutString = "";
+					for (int j = 0; j < (int)eventParams.size(); j++) {			// as well as each param, its range, and current value.
+						paramOutString.append(paramMinMaxString(eventParams[j]) + paramAttributesString(eventParams[j]));
+					}
+					paramListEmbed.add_field(truncateEventPath(eventPaths[i]), paramOutString);
+				}
+			}
+			event.edit_original_response(dpp::message(event.command.channel_id, paramListEmbed));
 		}
 	});
 }

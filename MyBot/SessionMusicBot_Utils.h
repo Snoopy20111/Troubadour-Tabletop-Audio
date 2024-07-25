@@ -235,6 +235,28 @@ std::string paramAttributesString(FMOD_STUDIO_PARAMETER_DESCRIPTION param, bool 
 	return output;
 }
 
+std::string paramValueString(float inputValue, FMOD_STUDIO_PARAMETER_DESCRIPTION param) {
+	std::string output;
+
+	//Some yucky string cleanup to have a readable version of the value
+	if ((param.flags >> 3) % 2 == 1) {				// If Discrete or labeled, show no decimal places
+		int inputValue_i = (int)roundf(inputValue);
+		output = std::to_string(inputValue_i);
+	}
+	else {
+		if (abs(inputValue - roundf(inputValue)) < 0.005f) {	// If super close to int, show 1 decimal place
+			inputValue = roundf(inputValue * 10) * 0.1f;		// Relies on assumption of 6 decimal places shown
+			output = std::to_string(inputValue);
+			output.resize(output.size() - 5);
+		}
+		else {													// Else, show 2 decimal places
+			inputValue = roundf(inputValue * 100) * 0.01f;
+			output = std::to_string(inputValue);
+			output.resize(output.size() - 4);
+		}
+	}
+}
+
 // Returns true if the Opus-sized packet has any signal at all.
 // Some minor fudging included here to keep from checking
 // _every_ sample, in the name of performance
