@@ -170,7 +170,7 @@ std::string truncateEventPath(std::string input) {
 }
 
 // 
-std::string paramMinMaxString(FMOD_STUDIO_PARAMETER_DESCRIPTION param, bool isCout = false) {
+std::string paramMinMaxString(FMOD_STUDIO_PARAMETER_DESCRIPTION param) {
 	std::string paramName = param.name;
 	std::string paramMinVal; float paramMinVal_f = param.minimum;
 	std::string paramMaxVal; float paramMaxVal_f = param.maximum;
@@ -204,16 +204,10 @@ std::string paramMinMaxString(FMOD_STUDIO_PARAMETER_DESCRIPTION param, bool isCo
 			paramMaxVal.resize(paramMaxVal.size() - 4);
 		}
 	}
-
-	if (isCout) {
-		return " - Parameter: " + paramName + " [ " + paramMinVal + " - " + paramMaxVal + " ]";
-	}
-	else {
-		return paramName + " [ " + paramMinVal + " - " + paramMaxVal + " ]";
-	}
+	return "[ " + paramMinVal + " - " + paramMaxVal + " ]";
 }
 
-std::string paramAttributesString(FMOD_STUDIO_PARAMETER_DESCRIPTION param, bool isCout = false) {
+std::string paramAttributesString(FMOD_STUDIO_PARAMETER_DESCRIPTION param) {
 
 	std::string output;
 
@@ -237,7 +231,6 @@ std::string paramAttributesString(FMOD_STUDIO_PARAMETER_DESCRIPTION param, bool 
 
 std::string paramValueString(float inputValue, FMOD_STUDIO_PARAMETER_DESCRIPTION param) {
 	std::string output;
-
 	//Some yucky string cleanup to have a readable version of the value
 	if ((param.flags >> 3) % 2 == 1) {				// If Discrete or labeled, show no decimal places
 		int inputValue_i = (int)roundf(inputValue);
@@ -255,6 +248,7 @@ std::string paramValueString(float inputValue, FMOD_STUDIO_PARAMETER_DESCRIPTION
 			output.resize(output.size() - 4);
 		}
 	}
+	return output;
 }
 
 // Returns true if the Opus-sized packet has any signal at all.

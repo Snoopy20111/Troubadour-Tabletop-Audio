@@ -298,11 +298,13 @@ void events() {
 			if (parameter.type == FMOD_STUDIO_PARAMETER_GAME_CONTROLLED) {
 				std::string paramName(parameter.name);
 				std::string coutString = "      ";
+
+				coutString.append(" - Parameter: " + paramName);
+				coutString.append(" " + paramMinMaxString(parameter));
+				coutString.append(" " + paramAttributesString(parameter));
 #ifndef NDEBUG
 				coutString.append(" with flag: " + std::to_string(parameter.flags));
 #endif
-				coutString.append(paramMinMaxString(parameter, true));
-				coutString.append(paramAttributesString(parameter, true));
 				std::cout << coutString;
 				newSessionEventDesc.params.push_back(parameter);
 			}
@@ -346,7 +348,8 @@ void events(const dpp::slashcommand_t& event) {
 				}
 				else {
 					std::string paramOutString = "";
-					for (int j = 0; j < (int)eventParams.size(); j++) {									// as well as each associated parameters and their ranges, if any.
+					for (int j = 0; j < (int)eventParams.size(); j++) {			// as well as each associated parameters and their ranges, if any.
+						paramOutString.append(eventParams[j].name);
 						paramOutString.append(paramMinMaxString(eventParams[j]) + paramAttributesString(eventParams[j]));
 					}
 					paramListEmbed.add_field(truncateEventPath(eventPaths[i]), paramOutString);
@@ -361,21 +364,6 @@ void events(const dpp::slashcommand_t& event) {
 void list(const dpp::slashcommand_t& event) {
 	// Simply list the currently playing events. No indexing here.
 	// Todo: show the parameters of each playing event, eventually.
-
-	
-	/*event.thinking(true, [event](const dpp::confirmation_callback_t& callback) {
-		std::string output = "";
-
-		for (const auto& [niceName, instance] : pEventInstances) {
-			output.append("- " + niceName + "\n");
-		}
-		if (output == "") {
-			event.edit_original_response(dpp::message("No events currently playing!"));
-		}
-		else {
-			event.edit_original_response(dpp::message("## Playing Events: ##\n" + output));
-		}
-	});*/
 
 	event.thinking(true, [event](const dpp::confirmation_callback_t& callback) {
 
@@ -409,9 +397,13 @@ void list(const dpp::slashcommand_t& event) {
 				}
 				else {														// If there ARE parameters, strap in...
 					std::string paramOutString = "";
+					if (instDescName != instName) {				// If the instance and event name are different
+						paramOutString.append("event: " + instDescName + "\n");	// add in the event name
+					}
 					for (int i = 0; i < inst.second.params.size(); i++) {
 
-						// get current parameter value
+						// get current parameter name & value
+						std::string paramName(inst.second.params[i].name);
 						float paramVal = 0; float paramFinalVal = 0;
 						ERRCHECK_HARD(inst.second.instance->getParameterByID(inst.second.params[i].id, &paramVal, &paramFinalVal));
 						std::string paramValStr = paramValueString(paramVal, inst.second.params[i]);
@@ -421,28 +413,14 @@ void list(const dpp::slashcommand_t& event) {
 						// Get the Attributes
 						std::string paramAttributesStr = paramAttributesString(inst.second.params[i]);
 
-						// Glue 'em all together
-						paramOutString.append(instDescName + paramValStr + paramMinMaxStr + paramAttributesStr);
+						// Glue 'em all together, adding new lines per-parameter
+						paramOutString.append("- " + paramName + ": " + paramValStr + "  " + paramMinMaxStr + paramAttributesStr);
+						if (i > 0) { paramOutString.append("\n"); }
 					}
 					paramListEmbed.add_field(instName, paramOutString);
 				}
-
 			}
 
-			for (int i = 0; i < (int)eventPaths.size(); i++) {					// For every path	
-				std::vector<FMOD_STUDIO_PARAMETER_DESCRIPTION> eventParams = pEventDescriptions.at(truncateEventPath(eventPaths[i])).params;
-				if (eventParams.size() == 0) {
-					paramListEmbed.add_field(truncateEventPath(eventPaths[i]), "");			// Add the shortened path as a field		
-					continue;
-				}
-				else {
-					std::string paramOutString = "";
-					for (int j = 0; j < (int)eventParams.size(); j++) {			// as well as each param, its range, and current value.
-						paramOutString.append(paramMinMaxString(eventParams[j]) + paramAttributesString(eventParams[j]));
-					}
-					paramListEmbed.add_field(truncateEventPath(eventPaths[i]), paramOutString);
-				}
-			}
 			event.edit_original_response(dpp::message(event.command.channel_id, paramListEmbed));
 		}
 	});
