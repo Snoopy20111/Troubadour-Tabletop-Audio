@@ -36,10 +36,20 @@ FMOD::Studio::Bank* pMasterStringsBank = nullptr;					//Master Strings, allows u
 std::string masterstrings_bank = "Master.strings.bank";
 std::vector<FMOD::Studio::Bank*> pBanks;							// Vector of all other banks
 std::vector<std::filesystem::path> bankPaths;						// Vector of paths to the respective .bank files (at time of load)
+
+const std::string callableEventPath = "event:/Master/";				// The FMOD-internal path where our callable events exist
 std::map<std::string, sessionEventDesc> pEventDescriptions;			// Map of all Event Descriptions and their parameters
 std::vector<std::string> eventPaths;								// Vector of FMOD-internal paths the user can call
-const std::string callableEventPath = "event:/Master/";				// The FMOD-internal path where our callable events exist
 std::map<std::string, sessionEventInstance> pEventInstances;		// Map of all Event Instances, which pair user-given name to instance
+
+//Busses, which I'm naively pretty sure don't need instances and custom names
+const std::string busPath = "bus:/";
+std::vector<std::string> busPaths;				// Vector of FMOD-internal paths to each bus
+const std::string vcaPath = "vca:/";
+std::vector<std::string> vcaPaths;
+const std::string snapshotPath = "snapshot:/";
+std::vector<std::string> snapshotPaths;
+
 FMOD_3D_ATTRIBUTES listenerAttributes;								// Holds the listener's position & orientation (at the origin). Not yet used (todo: 5.1 or 4.0 mixdown DSP?)
 
 //---Misc Bot Declarations---//
@@ -251,6 +261,112 @@ void banks(const dpp::slashcommand_t& event) {
 	});
 }
 
+// Indexes all Events, Busses, VCAs, Snapshots, etc. on Startup ONLY.
+void index() {
+	// Make sure vectors and maps are clear
+	eventPaths.clear();
+	busPaths.clear();
+	vcaPaths.clear();
+	snapshotPaths.clear();
+
+	int count = 0;
+	ERRCHECK_HARD(pMasterStringsBank->getStringCount(&count));
+	if (count <= 0) {
+		std::cout << "Invalid strings count of " << count << ", that's a problem." << std::endl;
+		std::cout << "Double check the Master.strings.bank file was loaded properly." << std::endl;
+		return;
+	}
+
+	// Loop through every entry
+	for (int i = 0; i < count; i++) {
+		FMOD_GUID pathGUID;
+		char pathStringChars[256];
+		char* pathStringCharsptr = pathStringChars;
+		int retreived;
+
+		ERRCHECK_HARD(pMasterStringsBank->getStringInfo(i, &pathGUID, pathStringCharsptr, 256, &retreived));
+		std::string pathString(pathStringCharsptr);
+
+		// Is it an event?
+		if ((pathString.find("event:/", 0) == 0)) {
+
+			// Skip it if not in the Master folder.
+			if ((pathString.find(callableEventPath, 0) != 0)) {
+				std::cout << "   Skipped as Event: " << pathString << " -- Not in Master folder." << std::endl;
+				continue;
+			}
+
+			// What's left should be good for our eventPaths vector
+			std::cout << "   Accepted as Event: " << pathString << std::endl;
+			eventPaths.push_back(pathString);
+
+			// Grab associated Event Description
+			FMOD::Studio::EventDescription* newEventDesc = nullptr;
+			ERRCHECK_HARD(pSystem->getEvent(pathString.c_str(), &newEventDesc));
+			sessionEventDesc newSessionEventDesc; newSessionEventDesc.description = newEventDesc;
+
+			// Grab the name of each associated non-built-in parameter
+			int descParamCount = 0;
+			newSessionEventDesc.description->getParameterDescriptionCount(&descParamCount);
+
+			for (int i = 0; i < descParamCount; i++) {
+				FMOD_STUDIO_PARAMETER_DESCRIPTION parameter;
+				newSessionEventDesc.description->getParameterDescriptionByIndex(i, &parameter);
+				if (parameter.type == FMOD_STUDIO_PARAMETER_GAME_CONTROLLED) {
+					std::string paramName(parameter.name);
+					std::string coutString = "      ";
+
+					coutString.append(" - Parameter: " + paramName);
+					coutString.append(" " + paramMinMaxString(parameter));
+					coutString.append(" " + paramAttributesString(parameter));
+#ifndef NDEBUG
+					coutString.append(" with flag: " + std::to_string(parameter.flags));
+#endif
+					std::cout << coutString;
+					newSessionEventDesc.params.push_back(parameter);
+				}
+			}
+			pEventDescriptions.insert({ truncateEventPath(pathString), newSessionEventDesc });	// Add to map, connected to a trimmed "easy" path name
+		}
+
+		// Is it a bus?
+		else if ((pathString.find(busPath, 0) == 0)) {
+			if (pathString == busPath) {		//The Master Bus is just "bus:/"
+				std::cout << "   Skipped as Bus: " << pathString << " -- Master Bus." << std::endl;
+			}
+			else {
+				busPaths.push_back(pathString);
+				std::cout << "   Accepted as Bus: " << pathString << std::endl;
+			}
+		}
+
+		// Is it a VCA?
+		else if ((pathString.find(vcaPath, 0) == 0)) {
+			vcaPaths.push_back(pathString);
+			std::cout << "   Accepted as VCA: " << pathString << std::endl;
+		}
+
+		// Is it a Snapshot?
+		else if ((pathString.find(snapshotPath, 0) == 0)) {
+			snapshotPaths.push_back(pathString);
+			std::cout << "   Accepted as Snapshot: " << pathString << std::endl;
+		}
+
+		// Is it a parameter? (todo: something with this, so we can possibly set global parameters)
+		else if (pathString.find("parameter:/") == 0) {
+			std::cout << "   Skipped as Parameter: " << pathString << " -- Still working on indexing params!" << std::endl;
+		}
+
+		// Is it a bank? (We don't care here, just for Cout data)
+		else if (pathString.find("bank:/", 0) == 0) {
+			std::cout << "   Skipped as Bank: " << pathString << " -- Is a Bank." << std::endl;
+		}
+		
+		// If it's none of the above, then we have NO idea what this thing is.
+		else { std::cout << "   Skipped: " << pathString << " -- Unrecognized string." << std::endl; }
+	}
+}
+
 // Base function, called on startup and when requested by List Events command
 void events() {
 	int count = 0;
@@ -279,9 +395,19 @@ void events() {
 			std::cout << "   Skipped: " << pathString << " -- Not in Master folder." << std::endl;
 			continue;
 		}
+		if (!eventPaths.empty()) {
+			bool alreadyExists = false;
+			for (int i = 0; i < eventPaths.size(); i++) {
+				if (eventPaths[i] == pathString) { alreadyExists = true; }
+			}
+			if (alreadyExists) {
+				std::cout << "   Skipped: " << pathString << " -- Already Listed." << std::endl;
+				continue;
+			}
+		}
 
 		// What's left should be good for our eventPaths vector
-		std::cout << "   Accepted: " << pathString << std::endl;
+		std::cout << "   Accepted as Event: " << pathString << std::endl;
 		eventPaths.push_back(pathString);
 
 		// Grab associated Event Description
@@ -762,8 +888,8 @@ void init_session() {
 	banks();
 	std::cout << "...Done!" << std::endl << std::endl;
 
-	std::cout << "Indexing events and parameters..." << std::endl;
-	events();
+	std::cout << "Indexing Objects..." << std::endl;
+	index();
 	std::cout << "...Done!" << std::endl << std::endl;
 	std::cout << "###########################" << std::endl;
 	std::cout << std::endl;
