@@ -1,8 +1,8 @@
-# Session Music Bot
+# Troubadour
 
-Built with VS2022 for Windows, x86 and x64.
+A Discord Bot built with VS2022 for Windows, x86 and x64, using FMOD Studio 2.02.16 and D++.
 
-Built with FMOD Engine API 2.02.16. May work with later versions as the API is really stable but do so at your own risk. Also using D++ (version unknown, this was built from their most current VS Template).
+May work with later versions of FMOD as the API is really stable, but do so at your own risk. Also using D++ (version unknown, this was built from their most current VS Template).
 
 When building locally, be sure to do the following:
 - Ensure you've [created a Discord Bot Token](https://dpp.dev/creating-a-bot-application.html) and set everything up on Discord's end.
