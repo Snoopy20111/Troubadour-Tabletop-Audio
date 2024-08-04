@@ -27,7 +27,12 @@ float randomFloat() {
 
 // Shorthand for converting dB value into decimal (0-1). Good for setting volumes.
 float dBToFloat(float input) {
-    return (float)pow(10, (input / 20));
+    return (float)pow(10, (input * 0.05));
+}
+
+// Shorthand for converting normalized float values (0-1) to dB. Good for making volume values human-readable.
+float floatTodB(float input) {
+	return log10f(input) * 20.0f;
 }
 
 // Converts a floating point sample value to signed 16-bit.
@@ -167,6 +172,21 @@ std::string formatBankToFilepath(std::string bankPath, std::filesystem::path ban
 // Removes "event:/Master/" from the path of a given event, for displaying lists and using as keys
 std::string truncateEventPath(std::string input) {
 	return input.erase(0, 14);
+}
+
+// Removes "bus:/" from the path of a given event, for displaying lists and using as keys
+std::string truncateBusPath(std::string input) {
+	return input.erase(0, 5);
+}
+
+// Removes "vca:/" from the path of a given event, for displaying lists and using as keys
+std::string truncateVCAPath(std::string input) {
+	return input.erase(0, 5);
+}
+
+// Removes "snapshot:/" from the path of a given event, for displaying lists and using as keys
+std::string truncateSnapshotPath(std::string input) {
+	return input.erase(0, 10);
 }
 
 // 

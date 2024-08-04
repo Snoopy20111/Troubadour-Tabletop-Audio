@@ -14,7 +14,7 @@
 /* Be sure to place your token in the line below.
  * Follow steps here to get a token:
  * https://dpp.dev/creating-a-bot-application.html
- * When you invite the bot, be sure to invite it with the 
+ * When you invite the bot, be sure to invite it with the
  * scopes 'bot' and 'applications.commands'.
  */
 
@@ -42,13 +42,22 @@ std::map<std::string, sessionEventDesc> pEventDescriptions;			// Map of all Even
 std::vector<std::string> eventPaths;								// Vector of FMOD-internal paths the user can call
 std::map<std::string, sessionEventInstance> pEventInstances;		// Map of all Event Instances, which pair user-given name to instance
 
-//Busses, which I'm naively pretty sure don't need instances and custom names
+// Busses
 const std::string busPath = "bus:/";
 std::vector<std::string> busPaths;				// Vector of FMOD-internal paths to each bus
+std::map <std::string, FMOD::Studio::Bus*> pBusses;
+const float DISCORD_MASTERBUS_VOLOFFSET = -10.0f;
+
+// VCAs
 const std::string vcaPath = "vca:/";
 std::vector<std::string> vcaPaths;
+std::map <std::string, FMOD::Studio::VCA*> pVCAs;
+
+// Snapshots
 const std::string snapshotPath = "snapshot:/";
 std::vector<std::string> snapshotPaths;
+std::map <std::string, FMOD::Studio::EventDescription*> pSnapshots;
+std::map<std::string, FMOD::Studio::EventInstance*> pSnapshotInstances;
 
 FMOD_3D_ATTRIBUTES listenerAttributes;								// Holds the listener's position & orientation (at the origin). Not yet used (todo: 5.1 or 4.0 mixdown DSP?)
 
@@ -120,14 +129,30 @@ FMOD_RESULT F_CALLBACK eventInstanceDestroyedCallback(FMOD_STUDIO_EVENT_CALLBACK
 	FMOD::Studio::EventInstance* myEvent = (FMOD::Studio::EventInstance*)event;		// Cast approved by Firelight in the documentation
 
 	if (type == FMOD_STUDIO_EVENT_CALLBACK_DESTROYED) {								// Redundant due to callback mask
-		std::cout << "Callback triggered" << std::endl;
-		// Iterate through the pEventInstances map and erase the entry associated with this Instance.
-		for (const auto& [niceName, sessionEventInstance] : pEventInstances) {
-			if (myEvent == sessionEventInstance.instance) {
-				std::cout << "Event Instance destroyed, erasing key from pEventInstances: " << niceName << std::endl;
-				pEventInstances.erase(niceName);
-			}
+		std::cout << "Event Destroyed Callback Triggered." << std::endl;
 
+		// Get some data to differentiate Events from Snapshots
+		FMOD::Studio::EventDescription* myEventDesc = nullptr;
+		myEvent->getDescription(&myEventDesc);
+		bool isSnapshot = false;
+		myEventDesc->isSnapshot(&isSnapshot);
+
+		// Iterate through the respective Instance map and erase the entry associated with this Instance.
+		if (!isSnapshot) {		// Event
+			for (const auto& [niceName, sessionEventInstance] : pEventInstances) {
+				if (myEvent == sessionEventInstance.instance) {
+					std::cout << "Event Instance destroyed, erasing key from pEventInstances: " << niceName << std::endl;
+					pEventInstances.erase(niceName);
+				}
+			}
+		}
+		else {					// Snapshot
+			for (const auto& [niceName, snapshotInstance] : pSnapshotInstances) {
+				if (myEvent == snapshotInstance) {
+					std::cout << "Snapshot destroyed, erasing key from pSnapshotInstances: " << niceName << std::endl;
+					pSnapshotInstances.erase(niceName);
+				}
+			}
 		}
 	}
 	return FMOD_OK;
@@ -332,24 +357,47 @@ void index() {
 		// Is it a bus?
 		else if ((pathString.find(busPath, 0) == 0)) {
 			if (pathString == busPath) {		//The Master Bus is just "bus:/"
-				std::cout << "   Skipped as Bus: " << pathString << " -- Master Bus." << std::endl;
+
+				std::cout << "   Accepted as Master Bus: " << pathString << std::endl;
 			}
 			else {
+				// Get the Bus and add it to the map
+				FMOD::Studio::Bus* newBus = nullptr;
+				ERRCHECK_HARD(pSystem->getBus(pathString.c_str(), &newBus));
+				pBusses.insert({ truncateBusPath(pathString), newBus });
 				busPaths.push_back(pathString);
-				std::cout << "   Accepted as Bus: " << pathString << std::endl;
+				std::cout << "   Accepted as Bus: " << pathString << " || Nice Name: " << truncateBusPath(pathString) << std::endl;
 			}
 		}
 
 		// Is it a VCA?
 		else if ((pathString.find(vcaPath, 0) == 0)) {
+			// Get the VCA and add it to the map
+			FMOD::Studio::VCA* newVCA = nullptr;
+			ERRCHECK_HARD(pSystem->getVCA(pathString.c_str(), &newVCA));
+			pVCAs.insert({ truncateVCAPath(pathString), newVCA });
+
 			vcaPaths.push_back(pathString);
-			std::cout << "   Accepted as VCA: " << pathString << std::endl;
+			std::cout << "   Accepted as VCA: " << pathString << " || Nice Name: " << truncateVCAPath(pathString) << std::endl;
 		}
 
 		// Is it a Snapshot?
 		else if ((pathString.find(snapshotPath, 0) == 0)) {
-			snapshotPaths.push_back(pathString);
-			std::cout << "   Accepted as Snapshot: " << pathString << std::endl;
+
+			// Get the Snapshot and add it to the map
+			FMOD::Studio::EventDescription* newSnapshot = nullptr;
+			ERRCHECK_HARD(pSystem->getEvent(pathString.c_str(), &newSnapshot));
+
+			bool isSnapshot = false;
+			newSnapshot->isSnapshot(&isSnapshot);
+			if (!isSnapshot) {		//If this event description isn't actually a Snapshot
+				std::cout << "   Skipped as Snapshot: " << pathString << " -- Not actually a snapshot!" << std::endl;
+			}
+			else {
+				pSnapshots.insert({ truncateSnapshotPath(pathString), newSnapshot });
+				snapshotPaths.push_back(pathString);
+				std::cout << "   Accepted as Snapshot: " << pathString << " || Nice Name: " << truncateSnapshotPath(pathString) << std::endl;
+			}
 		}
 
 		// Is it a parameter? (todo: something with this, so we can possibly set global parameters)
@@ -558,13 +606,13 @@ void play(const dpp::slashcommand_t& event) {
 	dpp::command_interaction cmd_data = event.command.get_command_interaction();
 	int count = (int)cmd_data.options.size();
 	if (count < 1) {
-		std::cout << "Events command arrived with no arguments. Bad juju!" << std::endl;
-		event.reply(dpp::message("Events command sent with no arguments. Bad juju!").set_flags(dpp::m_ephemeral));
+		std::cout << "Play command arrived with no arguments. Bad juju!" << std::endl;
+		event.reply(dpp::message("Play command sent with no arguments. Bad juju!").set_flags(dpp::m_ephemeral));
 		return;
 	}
 	else if (count > 2) {
-		std::cout << "Events command arrived with too many arguments (>2). Bad juju!" << std::endl;
-		event.reply(dpp::message("Events command sent with too many arguments (>2). Bad juju!").set_flags(dpp::m_ephemeral));
+		std::cout << "Play command arrived with too many arguments (>2). Bad juju!" << std::endl;
+		event.reply(dpp::message("Play command sent with too many arguments (>2). Bad juju!").set_flags(dpp::m_ephemeral));
 		return;
 	}
 
@@ -595,25 +643,48 @@ void play(const dpp::slashcommand_t& event) {
 	std::cout << "Play command issued." << std::endl;
 	std::cout << "Event to Play: " << eventToPlay << " || Instance name: " << newName << std::endl;
 
-	FMOD::Studio::EventDescription* newEventDesc = pEventDescriptions.at(eventToPlay).description;
-	if (newEventDesc->isValid()) {
-		FMOD::Studio::EventInstance* newEventInst = nullptr;
-		ERRCHECK_HARD(newEventDesc->createInstance(&newEventInst));
-		std::vector<FMOD_STUDIO_PARAMETER_DESCRIPTION> newEventParams = pEventDescriptions.at(eventToPlay).params;
-		sessionEventInstance newSessionEventInst;
-		newSessionEventInst.instance = newEventInst;
-		newSessionEventInst.params = newEventParams;
-		pEventInstances.insert({ newName, newSessionEventInst });
-		pEventInstances.at(newName).instance->setCallback(eventInstanceDestroyedCallback, FMOD_STUDIO_EVENT_CALLBACK_DESTROYED);
-		pEventInstances.at(newName).instance->start();
-		pEventInstances.at(newName).instance->release();
+	FMOD::Studio::EventDescription* newEventDesc = nullptr;// = pEventDescriptions.at(eventToPlay).description;
+	bool isSnapshot = false;
 
-		std::cout << "Playing event: " << eventToPlay << " with Instance name: " << newName << std::endl;
-		event.reply(dpp::message("Playing event: " + eventToPlay + " with Instance name: " + newName).set_flags(dpp::m_ephemeral));
+	if (pEventDescriptions.contains(eventToPlay)) {
+		newEventDesc = pEventDescriptions.at(eventToPlay).description;
+	}
+	else if (pSnapshots.contains(eventToPlay)) {
+		newEventDesc = pSnapshots.at(eventToPlay);
+		newEventDesc->isSnapshot(&isSnapshot);
+	}
+
+	if ((newEventDesc != nullptr) && (newEventDesc->isValid())) {
+		if (!isSnapshot) {
+			FMOD::Studio::EventInstance* newEventInst = nullptr;
+			ERRCHECK_HARD(newEventDesc->createInstance(&newEventInst));
+			std::vector<FMOD_STUDIO_PARAMETER_DESCRIPTION> newEventParams = pEventDescriptions.at(eventToPlay).params;
+			sessionEventInstance newSessionEventInst;
+			newSessionEventInst.instance = newEventInst;
+			newSessionEventInst.params = newEventParams;
+			pEventInstances.insert({ newName, newSessionEventInst });
+			ERRCHECK_HARD(pEventInstances.at(newName).instance->setCallback(eventInstanceDestroyedCallback, FMOD_STUDIO_EVENT_CALLBACK_DESTROYED));
+			ERRCHECK_HARD(pEventInstances.at(newName).instance->start());
+			ERRCHECK_HARD(pEventInstances.at(newName).instance->release());
+
+			std::cout << "Playing event: " << eventToPlay << " with Instance name: " << newName << std::endl;
+			event.reply(dpp::message("Playing event: " + eventToPlay + " with Instance name: " + newName).set_flags(dpp::m_ephemeral));
+		}
+		else {
+			FMOD::Studio::EventInstance* newSnapInst = nullptr;
+			ERRCHECK_HARD(newEventDesc->createInstance(&newSnapInst));
+			ERRCHECK_HARD(newSnapInst->setCallback(eventInstanceDestroyedCallback, FMOD_STUDIO_EVENT_CALLBACK_DESTROYED));
+			ERRCHECK_HARD(newSnapInst->start());
+			ERRCHECK_HARD(newSnapInst->release());
+			pSnapshotInstances.insert({ newName, newSnapInst });
+
+			std::cout << "Playing snapshot: " << eventToPlay << " with Instance name: " << newName << std::endl;
+			event.reply(dpp::message("Playing snapshot: " + eventToPlay + " with Instance name: " + newName).set_flags(dpp::m_ephemeral));
+		}
 	}
 	else {
-		std::cout << "No valid Event Description found with the given path." << std::endl;
-		event.reply(dpp::message("No valid Event Description found with the given path.").set_flags(dpp::m_ephemeral));
+		std::cout << "No valid Event or Snapshot found with the given path." << std::endl;
+		event.reply(dpp::message("No valid Event or Snapshot found with the given path.").set_flags(dpp::m_ephemeral));
 	}
 }
 
@@ -634,9 +705,13 @@ void pause(const dpp::slashcommand_t& event) {
 	std::cout << "Instance Name: " << inputName << std::endl;
 	if (pEventInstances.find(inputName) != pEventInstances.end()) {
 		pEventInstances.at(inputName).instance->setPaused(true);
-		//Callback should handle removing this instance from our map when the event is done.
 		std::cout << "Pause command carried out." << std::endl;
 		event.reply(dpp::message("Pausing Event Instance: " + inputName).set_flags(dpp::m_ephemeral));
+	}
+	else if (pSnapshotInstances.find(inputName) != pSnapshotInstances.end()) {
+		pSnapshotInstances.at(inputName)->setPaused(true);
+		std::cout << "Pause command carried out." << std::endl;
+		event.reply(dpp::message("Pausing Snapshot: " + inputName).set_flags(dpp::m_ephemeral));
 	}
 	else {
 		std::cout << "Couldn't find Instance with given name." << std::endl;
@@ -660,9 +735,13 @@ void unpause(const dpp::slashcommand_t& event) {
 	std::cout << "Instance Name: " << inputName << std::endl;
 	if (pEventInstances.find(inputName) != pEventInstances.end()) {
 		pEventInstances.at(inputName).instance->setPaused(false);
-		//Callback should handle removing this instance from our map when the event is done.
 		std::cout << "Unpause command carried out." << std::endl;
 		event.reply(dpp::message("Unpausing Event Instance: " + inputName).set_flags(dpp::m_ephemeral));
+	}
+	else if (pSnapshotInstances.find(inputName) != pSnapshotInstances.end()) {
+		pSnapshotInstances.at(inputName)->setPaused(false);
+		std::cout << "Unpause command carried out." << std::endl;
+		event.reply(dpp::message("Unpausing Snapshot: " + inputName).set_flags(dpp::m_ephemeral));
 	}
 	else {
 		std::cout << "Couldn't find Instance with given name." << std::endl;
@@ -670,7 +749,7 @@ void unpause(const dpp::slashcommand_t& event) {
 	}
 }
 
-// Stops Event with given name in events playing list
+// Stops Event or Snapshot with given name in events playing list
 void stop(const dpp::slashcommand_t& event) {
 	// Very similar to Pause and Unpause
 	dpp::command_interaction cmd_data = event.command.get_command_interaction();
@@ -692,28 +771,45 @@ void stop(const dpp::slashcommand_t& event) {
 		if (value) { pEventInstances.at(inputName).instance->stop(FMOD_STUDIO_STOP_ALLOWFADEOUT); }
 		else { pEventInstances.at(inputName).instance->stop(FMOD_STUDIO_STOP_IMMEDIATE); }
 		//Callback should handle removing this instance from our map when the event is done.
-		std::cout << "Command carried out." << std::endl;
+		std::cout << "Stop command carried out." << std::endl;
 		event.reply(dpp::message("Stopping Event Instance: " + inputName).set_flags(dpp::m_ephemeral));
+	}
+	else if (pSnapshotInstances.find(inputName) != pSnapshotInstances.end()) {
+		if (value) { pSnapshotInstances.at(inputName)->stop(FMOD_STUDIO_STOP_ALLOWFADEOUT); }
+		else { pSnapshotInstances.at(inputName)->stop(FMOD_STUDIO_STOP_IMMEDIATE); }
+		std::cout << "Stop command carried out." << std::endl;
+		event.reply(dpp::message("Stopping Snapshot: " + inputName).set_flags(dpp::m_ephemeral));
 	}
 	else {
 		std::cout << "Couldn't find Instance with given name." << std::endl;
-		event.reply(dpp::message("No Event Instance found with given name: " + inputName).set_flags(dpp::m_ephemeral));
+		event.reply(dpp::message("No Event Instance or Snapshot found with given name: " + inputName).set_flags(dpp::m_ephemeral));
 	}
 	
 }
 
 // Base function, called in a few places as part of other methods like quit()
-void stopall() {
-	std::cout << "Stopping all events." << std::endl;
+void stopallevents() {
+	std::cout << "Stopping all events...";
 	//For each instance in events playing list, stop_now
 	for (const auto& [niceName, sessionEventInstance] : pEventInstances) {
 		sessionEventInstance.instance->stop(FMOD_STUDIO_STOP_IMMEDIATE);
 	}
+	std::cout << "Done." << std::endl;
 }
 
-// Stops all playing events in the list.
+// Base function, stops all snapshots.
+void stopallsnaps() {
+	std::cout << "Stopping Snapshots...";
+	for (const auto& [niceName, snapshotInstance] : pSnapshotInstances) {
+		snapshotInstance->stop(FMOD_STUDIO_STOP_IMMEDIATE);
+	}
+	std::cout << "Done." << std::endl;
+}
+
+// Stops all playing events and/or snapshots in the list.
 void stopall(const dpp::slashcommand_t& event) {
-	stopall();
+	stopallevents();
+	stopallsnaps();
 	event.reply(dpp::message("All events stopped.").set_flags(dpp::m_ephemeral));
 }
 
@@ -759,6 +855,38 @@ void param(const dpp::slashcommand_t& event) {
 	event.reply(dpp::message("Setting Parameter: " + paramName + " on Instance " + instanceName + " with value " + std::to_string(value)).set_flags(dpp::m_ephemeral));
 }
 
+// Sets the volume of a given Bus or VCA
+void volume(const dpp::slashcommand_t& event) {
+	dpp::command_interaction cmd_data = event.command.get_command_interaction();
+	int count = (int)cmd_data.options.size();
+	if (count < 2) {
+		std::cout << "Set Volume command arrived with improper arguments. Bad juju!" << std::endl;
+		event.reply(dpp::message("Set Volume command arrived with improper arguments. Bad juju!").set_flags(dpp::m_ephemeral));
+	}
+
+	std::cout << "Set Volume command issued." << std::endl;
+	std::string busOrVCAName = std::get<std::string>(event.get_parameter(cmd_data.options[0].name));
+	float value = (float)std::get<double>(event.get_parameter(cmd_data.options[1].name));
+	if (value > 10.0f) { value *= -1; }
+	value = dBToFloat(value);
+
+	// If found in Busses map
+	if (pBusses.find(busOrVCAName) != pBusses.end()) {
+		ERRCHECK_HARD(pBusses.at(busOrVCAName)->setVolume(value));
+		event.reply(dpp::message("Setting Bus: " + busOrVCAName + " to volume: " + std::to_string(floatTodB(value))).set_flags(dpp::m_ephemeral));
+	}
+	// Else if "Master" (not kept in Busses map)
+	else if (busOrVCAName == "Master" || busOrVCAName == "master") {
+		ERRCHECK_HARD(pMasterBus->setVolume(value + DISCORD_MASTERBUS_VOLOFFSET));
+		event.reply(dpp::message("Setting Bus: Master to volume: " + std::to_string(floatTodB(value))).set_flags(dpp::m_ephemeral));
+	}
+	// Else if found in VCA map
+	else if (pVCAs.find(busOrVCAName) != pVCAs.end()) {
+		ERRCHECK_HARD(pVCAs.at(busOrVCAName)->setVolume(value));
+		event.reply(dpp::message("Setting VCA: " + busOrVCAName + " to volume: " + std::to_string(floatTodB(value))).set_flags(dpp::m_ephemeral));
+	}
+}
+
 void join(const dpp::slashcommand_t& event) {
 	dpp::guild* guild = dpp::find_guild(event.command.guild_id);						//Get the Guild aka Server
 	dpp::voiceconn* currentVC = event.from->get_voice(event.command.guild_id);			//Get the bot's current voice channel
@@ -794,7 +922,8 @@ void leave(const dpp::slashcommand_t& event) {
 	dpp::voiceconn* currentVC = event.from->get_voice(event.command.guild_id);
 	if (currentVC) {
 		std::cout << "Leaving voice channel." << std::endl;
-		stopall();										// Stop all FMOD events immediately
+		stopallevents();										// Stop all FMOD events immediately
+		stopallsnaps();
 
 		isConnected = false;
 		currentClient->stop_audio();
@@ -846,7 +975,7 @@ void init() {
 	// Also get the Master Bus, set volume, and get the related Channel Group
 	std::cout << "Getting Busses and Channel Groups...";
 	ERRCHECK_HARD(pSystem->getBus("bus:/", &pMasterBus));
-	ERRCHECK_HARD(pMasterBus->setVolume(dBToFloat(-10.0f)));
+	ERRCHECK_HARD(pMasterBus->setVolume(dBToFloat(DISCORD_MASTERBUS_VOLOFFSET)));
 	ERRCHECK_HARD(pMasterBus->lockChannelGroup());					// Tell the Master Channel Group to always exist even when events arn't playing...
 	ERRCHECK_HARD(pSystem->flushCommands());							// And wait until all previous commands are done (ensuring Channel Group exists)...
 	ERRCHECK_HARD(pMasterBus->getChannelGroup(&pMasterBusGroup));	// Or else this fails immediately, and we'll have DSP problems.
@@ -936,12 +1065,13 @@ int main() {
 			std::vector<dpp::slashcommand> commands {
 				{ "events", "List all playable events and their parameters.", bot.me.id},
 				{ "list", "Show all playing event instances and their parameters.", bot.me.id},
-				{ "play", "Create a new Event Instance.", bot.me.id},
+				{ "play", "Create a new Event Instance (or Snapshot).", bot.me.id},
 				{ "pause", "Pause a currently playing Event Instance.", bot.me.id},
 				{ "unpause", "Resume a currently playing Event Instance.", bot.me.id},
 				{ "stop", "Stop a currently playing Event Instance.", bot.me.id},
-				{ "stopall", "Stop all Event Instances immediately.", bot.me.id},
+				{ "stopall", "Stop all Event Instances and Snapshots immediately.", bot.me.id},
 				{ "param", "Set a parameter on an Event Instance.", bot.me.id},
+				{ "volume", "Set the volume of a bus or VCA.", bot.me.id},
 				{ "ping", "Ping the bot to ensure it's alive.", bot.me.id },
 				{ "banks", "List all banks in the Soundbanks folder.", bot.me.id},
 				{ "join", "Join your current voice channel.", bot.me.id},
@@ -951,33 +1081,33 @@ int main() {
 
 			// Sub-commands for Play
 			commands[2].add_option(
-				dpp::command_option(dpp::co_string, "event-name", "The event you wish to play.", true)
+				dpp::command_option(dpp::co_string, "event-name", "The Event (or Snapshot) you wish to play.", true)
 			);
 			commands[2].add_option(
-				dpp::command_option(dpp::co_string, "instance-name", "Optional: name used for interactions with this event instance. Defaults to the name of the event.", false)
+				dpp::command_option(dpp::co_string, "instance-name", "Optional: name used for interactions with this new Instance. Defaults to the name of the Event.", false)
 			);
 
 			// Sub-commands for Pause
 			commands[3].add_option(
-				dpp::command_option(dpp::co_string, "instance-name", "The name of the event instance to pause.", true)
+				dpp::command_option(dpp::co_string, "instance-name", "The name of the Instance to pause.", true)
 			);
 
 			// Sub-commands for Unpause
 			commands[4].add_option(
-				dpp::command_option(dpp::co_string, "instance-name", "The name of the event instance to unpause.", true)
+				dpp::command_option(dpp::co_string, "instance-name", "The name of the Instance to unpause.", true)
 			);
 
 			// Sub-commands for Stop
 			commands[5].add_option(
-				dpp::command_option(dpp::co_string, "instance-name", "The name of the event instance to stop.", true)
+				dpp::command_option(dpp::co_string, "instance-name", "The name of the Instance to stop.", true)
 			);
 			commands[5].add_option(
-				dpp::command_option(dpp::co_boolean, "stop-immediately", "Optional: stop the sounds NOW, without fadeouts.", false)
+				dpp::command_option(dpp::co_boolean, "stop-immediately", "Optional: stop the Instance NOW, without fadeouts?", false)
 			);
 
 			// Sub-commands for Stop_All
 			commands[6].add_option(
-				dpp::command_option(dpp::co_boolean, "stop-immediately", "Optional: stop the sounds NOW, without fadeouts.", false)
+				dpp::command_option(dpp::co_boolean, "stop-immediately", "Optional: stop everything NOW, without fadeouts?", false)
 			);
 
 			// Sub-commands for Param
@@ -989,6 +1119,15 @@ int main() {
 			);
 			commands[7].add_option(
 				dpp::command_option(dpp::co_number, "value", "What you want the parameter to be.", true)
+			);
+
+			// Sub-commands for Volume
+			commands[8].add_option(
+				dpp::command_option(dpp::co_string, "bus-or-vca-name", "The name of the Bus or VCA to adjust the volume of.", true)
+			);
+			commands[8].add_option(
+				dpp::command_option(dpp::co_number, "value",
+					"The target volume in dB. Values above +10 will be assumed negative, for your ears' sake.", true)
 			);
 
 			// Permissions. Show commands for only those who can use slash commands in a server.
@@ -1030,6 +1169,7 @@ int main() {
 			else if (event.command.get_command_name() == "stop") { stop(event); }
 			else if (event.command.get_command_name() == "stopall") { stopall(event); }
 			else if (event.command.get_command_name() == "param") { param(event); }
+			else if (event.command.get_command_name() == "volume") { volume(event); }
 			else if (event.command.get_command_name() == "ping") { ping(event); }
 			else if (event.command.get_command_name() == "banks") { banks(event); }
 			else if (event.command.get_command_name() == "join") { join(event); }
