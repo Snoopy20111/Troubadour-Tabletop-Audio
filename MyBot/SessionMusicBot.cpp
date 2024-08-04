@@ -795,6 +795,11 @@ void leave(const dpp::slashcommand_t& event) {
 	if (currentVC) {
 		std::cout << "Leaving voice channel." << std::endl;
 		stopall();										// Stop all FMOD events immediately
+
+		isConnected = false;
+		currentClient->stop_audio();
+		currentClient = nullptr;
+
 		event.from->disconnect_voice(event.command.guild_id);	// Disconnect from Voice (triggers callback laid out in main)
 		event.reply(dpp::message("Bye bye! I hope I played good sounds!").set_flags(dpp::m_ephemeral));
 	}
@@ -1045,12 +1050,12 @@ int main() {
 		isConnected = true;											// Tell the rest of the program we've connected
 	});
 
-	/* Clear D++ audio buffer and set currentClient to nullptr */
+	/* Just confirm when we're leaving Voice. Everything is stopped
+	   and null'd before this is called, but it's good to have just in case.
+	*/
 	bot.on_voice_client_disconnect([&bot](const dpp::voice_client_disconnect_t& event) {
 		std::cout << "Voice Disconnecting." << std::endl;
 		isConnected = false;
-		currentClient->stop_audio();
-		currentClient = nullptr;
 	});
 
 	/* Start the bot */
