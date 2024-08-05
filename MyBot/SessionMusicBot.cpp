@@ -963,7 +963,7 @@ void init() {
 	ERRCHECK_HARD(FMOD::Studio::System::create(&pSystem));
 	ERRCHECK_HARD(pSystem->getCoreSystem(&pCoreSystem));
 	//ERRCHECK_HARD(pCoreSystem->setDSPBufferSize(4096, 4));
-	ERRCHECK_HARD(pSystem->initialize(128, FMOD_STUDIO_INIT_NORMAL, FMOD_INIT_NORMAL, nullptr));
+	ERRCHECK_HARD(pSystem->initialize(128, FMOD_STUDIO_INIT_LIVEUPDATE, FMOD_INIT_NORMAL, nullptr));
 	std::cout << "Done." << std::endl;
 
 	// Load Master Bank and Master Strings
