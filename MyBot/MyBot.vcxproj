@@ -325,8 +325,15 @@ copy /y "$(MSBuildProjectDirectory)\token.config" "$(OutDir)token.config"</Comma
     <ClInclude Include="dependencies\include\dpp-10.0\dpp\webhook.h" />
     <ClInclude Include="dependencies\include\dpp-10.0\dpp\win32_safe_warnings.h" />
     <ClInclude Include="dependencies\include\dpp-10.0\dpp\wsclient.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="SessionMusicBot.h" />
     <ClInclude Include="SessionMusicBot_Utils.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="SessionMusicBot.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="icon.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
