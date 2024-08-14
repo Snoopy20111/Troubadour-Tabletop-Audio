@@ -56,8 +56,13 @@ std::map <std::string, FMOD::Studio::VCA*> pVCAs;
 // Snapshots
 const std::string snapshotPath = "snapshot:/";
 std::vector<std::string> snapshotPaths;
-std::map <std::string, FMOD::Studio::EventDescription*> pSnapshots;
+std::map<std::string, FMOD::Studio::EventDescription*> pSnapshots;
 std::map<std::string, FMOD::Studio::EventInstance*> pSnapshotInstances;
+
+// Global Parameters
+const std::string paramPath = "parameter:/";
+std::vector<std::string> globalParamNames;
+std::map<std::string, FMOD_STUDIO_PARAMETER_DESCRIPTION> pGlobalParams;
 
 FMOD_3D_ATTRIBUTES listenerAttributes;								// Holds the listener's position & orientation (at the origin). Not yet used (todo: 5.1 or 4.0 mixdown DSP?)
 
@@ -314,7 +319,6 @@ void index() {
 
 		// Is it an event?
 		if ((pathString.find("event:/", 0) == 0)) {
-
 			// Skip it if not in the Master folder.
 			if ((pathString.find(callableEventPath, 0) != 0)) {
 				std::cout << "   Skipped as Event: " << pathString << " -- Not in Master folder." << std::endl;
@@ -357,7 +361,6 @@ void index() {
 		// Is it a bus?
 		else if ((pathString.find(busPath, 0) == 0)) {
 			if (pathString == busPath) {		//The Master Bus is just "bus:/"
-
 				std::cout << "   Accepted as Master Bus: " << pathString << std::endl;
 			}
 			else {
@@ -400,9 +403,9 @@ void index() {
 			}
 		}
 
-		// Is it a parameter? (todo: something with this, so we can possibly set global parameters)
-		else if (pathString.find("parameter:/") == 0) {
-			std::cout << "   Skipped as Parameter: " << pathString << " -- Still working on indexing params!" << std::endl;
+		// Is it a parameter? (will be addressed after this loop)
+		else if (pathString.find(paramPath) == 0) {
+			std::cout << "   Skipped as Parameter: " << pathString << " -- See below." << std::endl;
 		}
 
 		// Is it a bank? (We don't care here, just for Cout data)
@@ -413,6 +416,27 @@ void index() {
 		// If it's none of the above, then we have NO idea what this thing is.
 		else { std::cout << "   Skipped: " << pathString << " -- Unrecognized string." << std::endl; }
 	}
+
+	// Seperately, get the list of Global Parameters
+	FMOD_STUDIO_PARAMETER_DESCRIPTION paramArray[100];	// Very unlikely to go past this amount
+	FMOD_STUDIO_PARAMETER_DESCRIPTION* paramArrayPtr = paramArray;
+	int paramCount = 0;
+	pSystem->getParameterDescriptionList(paramArrayPtr, 100, &paramCount);
+
+	// Add them to the vector, one-by-one
+	std::cout << std::endl;
+	std::cout << "   Global Parameters:" << std::endl;
+	for (int i = 0; i < paramCount; i++) {
+		globalParamNames.push_back(paramArray[i].name);
+		pGlobalParams.insert({ paramArray[i].name, paramArray[i] });
+
+		std::string coutString = "      - ";
+		coutString.append(paramArray[i].name);
+		coutString.append(" " + paramMinMaxString(paramArray[i]));
+		coutString.append(" " + paramAttributesString(paramArray[i], false));
+		std::cout << coutString << std::endl;
+	}
+
 }
 
 // Base function, called on startup and when requested by List Events command
@@ -813,8 +837,34 @@ void stopall(const dpp::slashcommand_t& event) {
 	event.reply(dpp::message("All events stopped.").set_flags(dpp::m_ephemeral));
 }
 
-// Sets parameter with given name and value on given Event Instance
-void param(const dpp::slashcommand_t& event) {
+
+// Param Sub-Command: Sets parameter with given name and value, globally
+void param_global(const dpp::slashcommand_t& event, dpp::command_data_option subcommand) {
+	int count = (int)subcommand.options.size();
+	if (count < 2) {
+		std::cout << "Set Parameter command arrived with no arguments. Bad juju!" << std::endl;
+		event.reply(dpp::message("Set Parameter command sent with no arguments. Bad juju!").set_flags(dpp::m_ephemeral));
+	}
+
+	std::cout << "Set Parameter command issued." << std::endl;
+	std::string paramName = std::get<std::string>(event.get_parameter(subcommand.options[0].name));
+	float value = (float)std::get<double>(event.get_parameter(subcommand.options[1].name));
+
+	// Check for parameter in list of known params
+	if (!pGlobalParams.contains(paramName)) {					// If that parameter name isn't in our list of Global Params
+		event.reply(dpp::message("Parameter " + paramName + " not found in Global Parameter list.").set_flags(dpp::m_ephemeral));
+		return;
+	}
+
+	// Set parameter
+	ERRCHECK_HARD(pSystem->setParameterByName(paramName.c_str(), value));
+	std::cout << "Command carried out." << std::endl;
+	event.reply(dpp::message("Setting Global Parameter: " + paramName + " with value " + paramValueString(value, pGlobalParams.at(paramName)))
+		.set_flags(dpp::m_ephemeral));
+}
+
+// Param Sub-Command: Sets parameter with given name and value on given Event Instance
+void param_event(const dpp::slashcommand_t& event, dpp::command_data_option subcommand) {
 	dpp::command_interaction cmd_data = event.command.get_command_interaction();
 	int count = (int)cmd_data.options.size();
 	if (count < 3) {
@@ -833,10 +883,9 @@ void param(const dpp::slashcommand_t& event) {
 		event.reply(dpp::message("No Event Instance found with given name: " + instanceName).set_flags(dpp::m_ephemeral));
 	}
 	else if (pEventInstances.at(instanceName).params.size() == 0) {
-		// Todo: check here for Global parameters as well, just to be sure.
 		std::cout << "Instance has no parameters." << std::endl;
 		event.reply(dpp::message("Instance " + instanceName + " has no parameters associated with it.").set_flags(dpp::m_ephemeral));
-	}	// In future, perhaps another else if to filter out the type, if we want to handle that in a special way
+	}
 
 	int foundParamIndex = -1;
 	for (int i = 0; i < (int)pEventInstances.at(instanceName).params.size(); i++) {
@@ -855,6 +904,14 @@ void param(const dpp::slashcommand_t& event) {
 	event.reply(dpp::message("Setting Parameter: " + paramName + " on Instance " + instanceName + " with value " + std::to_string(value)).set_flags(dpp::m_ephemeral));
 }
 
+// Sets parameter with given name and value, either Globally or on an Event Instance
+void param(const dpp::slashcommand_t& event) {
+	dpp::command_interaction cmd_data = event.command.get_command_interaction();
+	dpp::command_data_option subcommand = cmd_data.options[0];
+	if (subcommand.name == "event") { param_event(event, subcommand); }
+	else if (subcommand.name == "global") { param_global(event, subcommand); }
+}
+
 // Sets the volume of a given Bus or VCA
 void volume(const dpp::slashcommand_t& event) {
 	dpp::command_interaction cmd_data = event.command.get_command_interaction();
@@ -871,7 +928,7 @@ void volume(const dpp::slashcommand_t& event) {
 	value = dBToFloat(value);
 
 	// If found in Busses map
-	if (pBusses.find(busOrVCAName) != pBusses.end()) {
+	if (pBusses.contains(busOrVCAName)) {
 		ERRCHECK_HARD(pBusses.at(busOrVCAName)->setVolume(value));
 		event.reply(dpp::message("Setting Bus: " + busOrVCAName + " to volume: " + std::to_string(floatTodB(value))).set_flags(dpp::m_ephemeral));
 	}
@@ -881,7 +938,7 @@ void volume(const dpp::slashcommand_t& event) {
 		event.reply(dpp::message("Setting Bus: Master to volume: " + std::to_string(floatTodB(value))).set_flags(dpp::m_ephemeral));
 	}
 	// Else if found in VCA map
-	else if (pVCAs.find(busOrVCAName) != pVCAs.end()) {
+	else if (pVCAs.contains(busOrVCAName)) {
 		ERRCHECK_HARD(pVCAs.at(busOrVCAName)->setVolume(value));
 		event.reply(dpp::message("Setting VCA: " + busOrVCAName + " to volume: " + std::to_string(floatTodB(value))).set_flags(dpp::m_ephemeral));
 	}
@@ -1070,7 +1127,7 @@ int main() {
 				{ "unpause", "Resume a currently playing Event Instance.", bot.me.id},
 				{ "stop", "Stop a currently playing Event Instance.", bot.me.id},
 				{ "stopall", "Stop all Event Instances and Snapshots immediately.", bot.me.id},
-				{ "param", "Set a parameter on an Event Instance.", bot.me.id},
+				{ "param", "Set a parameter, Globally or on an Event Instance.", bot.me.id},
 				{ "volume", "Set the volume of a bus or VCA.", bot.me.id},
 				{ "ping", "Ping the bot to ensure it's alive.", bot.me.id },
 				{ "banks", "List all banks in the Soundbanks folder.", bot.me.id},
@@ -1079,7 +1136,7 @@ int main() {
 				{ "quit", "Leave voice and exit the program.", bot.me.id}
 			};
 
-			// Sub-commands for Play
+			// Play options
 			commands[2].add_option(
 				dpp::command_option(dpp::co_string, "event-name", "The Event (or Snapshot) you wish to play.", true)
 			);
@@ -1087,17 +1144,29 @@ int main() {
 				dpp::command_option(dpp::co_string, "instance-name", "Optional: name used for interactions with this new Instance. Defaults to the name of the Event.", false)
 			);
 
-			// Sub-commands for Pause
+			// Sub-Command: Play Event
+			/*dpp::command_option playEventSubCmd = dpp::command_option(dpp::co_sub_command, "event", "Create a new Event Instance.");
+			playEventSubCmd.add_option(dpp::command_option(dpp::co_string, "event-name", "The Event you wish to play.", true));
+			playEventSubCmd.add_option(dpp::command_option(dpp::co_string, "instance-name", "Optional: name used for interactions with this new Instance. Defaults to the name of the Event.", false));
+			commands[2].add_option(playEventSubCmd);
+
+			// Sub-Command: Play Snapshot
+			dpp::command_option playSnapshotSubCmd = dpp::command_option(dpp::co_sub_command, "snapshot", "Create a new Snapshot.");
+			playSnapshotSubCmd.add_option(dpp::command_option(dpp::co_string, "snapshot-name", "The Snapshot you wish to activate.", true));
+			playSnapshotSubCmd.add_option(dpp::command_option(dpp::co_string, "instance-name", "Optional: name used for interactions with this new Instance. Defaults to the name of the Snapshot.", false));
+			commands[2].add_option(playSnapshotSubCmd);*/
+
+			// Pause options
 			commands[3].add_option(
 				dpp::command_option(dpp::co_string, "instance-name", "The name of the Instance to pause.", true)
 			);
 
-			// Sub-commands for Unpause
+			// Unpause options
 			commands[4].add_option(
 				dpp::command_option(dpp::co_string, "instance-name", "The name of the Instance to unpause.", true)
 			);
 
-			// Sub-commands for Stop
+			// Stop options
 			commands[5].add_option(
 				dpp::command_option(dpp::co_string, "instance-name", "The name of the Instance to stop.", true)
 			);
@@ -1105,21 +1174,24 @@ int main() {
 				dpp::command_option(dpp::co_boolean, "stop-immediately", "Optional: stop the Instance NOW, without fadeouts?", false)
 			);
 
-			// Sub-commands for Stop_All
+			// Stop_All options
 			commands[6].add_option(
 				dpp::command_option(dpp::co_boolean, "stop-immediately", "Optional: stop everything NOW, without fadeouts?", false)
 			);
 
-			// Sub-commands for Param
-			commands[7].add_option(
-				dpp::command_option(dpp::co_string, "instance-name", "The name of the event instance to set parameters on.", true)
-			);
-			commands[7].add_option(
-				dpp::command_option(dpp::co_string, "parameter-name", "The name of the parameter to set.", true)
-			);
-			commands[7].add_option(
-				dpp::command_option(dpp::co_number, "value", "What you want the parameter to be.", true)
-			);
+			// Param options
+			// Sub-Command: Event Instance
+			dpp::command_option eventInstSubCmd = dpp::command_option(dpp::co_sub_command, "event", "Set a local parameter.");
+			eventInstSubCmd.add_option(dpp::command_option(dpp::co_string, "instance-name", "The name of the event instance to set parameters on.", true));
+			eventInstSubCmd.add_option(dpp::command_option(dpp::co_string, "parameter-name", "The name of the parameter to set.", true));
+			eventInstSubCmd.add_option(dpp::command_option(dpp::co_number, "value", "What you want the parameter to be.", true));
+			commands[7].add_option(eventInstSubCmd);
+
+			// Sub-Command: Global
+			dpp::command_option globalSubCmd = dpp::command_option(dpp::co_sub_command, "global", "Set a Global parameter.");
+			globalSubCmd.add_option(dpp::command_option(dpp::co_string, "parameter-name", "The name of the parameter to set.", true));
+			globalSubCmd.add_option(dpp::command_option(dpp::co_number, "value", "What you want the parameter to be.", true));
+			commands[7].add_option(globalSubCmd);
 
 			// Sub-commands for Volume
 			commands[8].add_option(
@@ -1131,7 +1203,7 @@ int main() {
 			);
 
 			// Permissions. Show commands for only those who can use slash commands in a server.
-			// Only the Owner will be allowed to enact commands, but that's checked locally.
+			// Only the Owner will be allowed to enact commands, but that'll be checked locally.
 			for (int i = 0; i > commands.size(); i++) {
 				commands[i].default_member_permissions.has(dpp::permissions::p_use_application_commands);
 			}
