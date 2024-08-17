@@ -975,7 +975,9 @@ void join(const dpp::slashcommand_t& event) {
 	}
 }
 
-void leave(const dpp::slashcommand_t& event) {
+// Leaves the current voice channel
+// Cannot separate base and "command" function due to needing event object, so optional "respond" param included
+void leave(const dpp::slashcommand_t& event, bool eventRespond = true) {
 	dpp::voiceconn* currentVC = event.from->get_voice(event.command.guild_id);
 	if (currentVC) {
 		std::cout << "Leaving voice channel." << std::endl;
@@ -987,19 +989,26 @@ void leave(const dpp::slashcommand_t& event) {
 		currentClient = nullptr;
 
 		event.from->disconnect_voice(event.command.guild_id);	// Disconnect from Voice (triggers callback laid out in main)
-		event.reply(dpp::message("Bye bye! I hope I played good sounds!").set_flags(dpp::m_ephemeral));
+		
+		if (eventRespond) {
+			event.reply(dpp::message("Bye bye! I hope I played good sounds!").set_flags(dpp::m_ephemeral));
+		}
+	}
+	else {
+		if (eventRespond) {
+			event.reply(dpp::message("A problem occured when trying to leave the voice channel.").set_flags(dpp::m_ephemeral));
+		}
 	}
 }
 
+// Quit the program, leaving the voice channel if we're in one
 void quit(const dpp::slashcommand_t& event) {
 	if (isConnected && (currentClient != nullptr)) {
-		leave(event);
+		leave(event, false);		//Leave voice, but don't reply to the event
 	}
-	// Todo: clear D++ audio buffers and stop sending?
-	// How does this overlap with the onDisconnect callback?
 	exitRequested = true;
-	std::cout << "Quit Command received." << std::endl;
-
+	std::cout << "Quit command received." << std::endl;
+	event.reply(dpp::message("Shutting down. Bye bye! I hope I played good sounds!").set_flags(dpp::m_ephemeral));
 }
 
 // Initialize FMOD, DSP, and filepaths for later reference
