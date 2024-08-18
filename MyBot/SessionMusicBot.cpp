@@ -270,7 +270,7 @@ void banks() {
 void banks(const dpp::slashcommand_t& event) {
 
 	if (pEventInstances.size() > 0) {							// Unsafe to load/unload banks while events are active
-		event.reply(dpp::message("Cannot mess with banks while the bot is playing audio! Please stop all events first.").set_flags(dpp::m_ephemeral));
+		event.reply(dpp::message("It's dangerous to mess with banks while the bot is playing audio! Please stop all events first.").set_flags(dpp::m_ephemeral));
 		return;
 	}
 	
@@ -278,16 +278,22 @@ void banks(const dpp::slashcommand_t& event) {
 
 	//Show "Thinking..." while putting the list together
 	event.thinking(true, [event](const dpp::confirmation_callback_t& callback) {
+		banks();													// Re-list what banks exist, load new ones
 
-		banks();											// Re-list what banks exist, load new ones
+		dpp::embed bankListEmbed = basicEmbed;						// Create the embed and set non-standard details
+		bankListEmbed.set_title("Found FMOD Banks");
 
-		std::string output = "- Master.bank\n- Master.strings.bank\n";
+		// Known banks, program fails if these don't load / exist
+		bankListEmbed.add_field("Master.bank", "");
+		bankListEmbed.add_field("Master.strings.bank", "");
 
-		for (int i = 0; i < (int)bankPaths.size(); i++) {
-			output.append("- " + bankPaths[i].filename().string() + "\n");
+		std::cout << "BankPaths size: " << std::to_string(bankPaths.size()) << std::endl;
+		// For every additional bank, add the shortened path as a field
+		for (int i = 0; i < (int)bankPaths.size(); i++) {					// For every path
+			bankListEmbed.add_field(bankPaths[i].filename().string(), "");			// Add the shortened path as a field
+			continue;
 		}
-
-		event.edit_original_response(dpp::message("## Found FMOD Banks: ##\n" + output));
+		event.edit_original_response(dpp::message(event.command.channel_id, bankListEmbed));
 	});
 }
 
