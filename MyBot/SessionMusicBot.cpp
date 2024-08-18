@@ -554,6 +554,7 @@ void events(const dpp::slashcommand_t& event) {
 					std::string paramOutString = "";
 					for (int j = 0; j < (int)eventParams.size(); j++) {			// as well as each associated parameters and their ranges, if any.
 						paramOutString.append(eventParams[j].name);
+						paramOutString.append(" ");
 						paramOutString.append(paramMinMaxString(eventParams[j]) + paramAttributesString(eventParams[j]));
 					}
 					paramListEmbed.add_field(truncateEventPath(eventPaths[i]), paramOutString);
@@ -630,37 +631,8 @@ void list(const dpp::slashcommand_t& event) {
 	});
 }
 
-// Creates and starts a new Event Instance
-void play(const dpp::slashcommand_t& event) {
-
-	dpp::command_interaction cmd_data = event.command.get_command_interaction();
-	int count = (int)cmd_data.options.size();
-	if (count < 1) {
-		std::cout << "Play command arrived with no arguments. Bad juju!" << std::endl;
-		event.reply(dpp::message("Play command sent with no arguments. Bad juju!").set_flags(dpp::m_ephemeral));
-		return;
-	}
-	else if (count > 2) {
-		std::cout << "Play command arrived with too many arguments (>2). Bad juju!" << std::endl;
-		event.reply(dpp::message("Play command sent with too many arguments (>2). Bad juju!").set_flags(dpp::m_ephemeral));
-		return;
-	}
-
-	std::string eventToPlay = std::get<std::string>(event.get_parameter(cmd_data.options[0].name));
-
-	// Determining the Instance name
-	// If the user gave a name in the command, use that
-	// If the user gave no name, use the Event name
-	std::string inputName;
-	if (count > 1) {
-		inputName = std::get<std::string>(event.get_parameter(cmd_data.options[1].name));
-		if (inputName == "" || inputName.size() == 0) {		// If the input was bogus, pretend there was no input
-			inputName = eventToPlay;
-		}
-	}
-	else {
-		inputName = eventToPlay;
-	}
+// Play Sub-Command: create a new Instance of an event
+void play_event(const dpp::slashcommand_t& event, std::string eventToPlay, std::string inputName) {
 
 	std::string newName = inputName;
 	std::string cleanName = newName;
@@ -670,52 +642,121 @@ void play(const dpp::slashcommand_t& event) {
 		iterator++;
 	}
 
-	std::cout << "Play command issued." << std::endl;
+	std::cout << "Play Event command issued." << std::endl;
 	std::cout << "Event to Play: " << eventToPlay << " || Instance name: " << newName << std::endl;
 
-	FMOD::Studio::EventDescription* newEventDesc = nullptr;// = pEventDescriptions.at(eventToPlay).description;
-	bool isSnapshot = false;
+	FMOD::Studio::EventDescription* newEventDesc = nullptr;
 
 	if (pEventDescriptions.contains(eventToPlay)) {
 		newEventDesc = pEventDescriptions.at(eventToPlay).description;
 	}
-	else if (pSnapshots.contains(eventToPlay)) {
+
+	if ((newEventDesc != nullptr) && (newEventDesc->isValid())) {
+		FMOD::Studio::EventInstance* newEventInst = nullptr;
+		ERRCHECK_HARD(newEventDesc->createInstance(&newEventInst));
+		std::vector<FMOD_STUDIO_PARAMETER_DESCRIPTION> newEventParams = pEventDescriptions.at(eventToPlay).params;
+		sessionEventInstance newSessionEventInst;
+		newSessionEventInst.instance = newEventInst;
+		newSessionEventInst.params = newEventParams;
+		pEventInstances.insert({ newName, newSessionEventInst });
+		ERRCHECK_HARD(pEventInstances.at(newName).instance->setCallback(eventInstanceDestroyedCallback, FMOD_STUDIO_EVENT_CALLBACK_DESTROYED));
+		ERRCHECK_HARD(pEventInstances.at(newName).instance->start());
+		ERRCHECK_HARD(pEventInstances.at(newName).instance->release());
+
+		std::cout << "Playing event: " << eventToPlay << " with Instance name: " << newName << std::endl;
+		event.reply(dpp::message("Playing event: " + eventToPlay + " with Instance name: " + newName).set_flags(dpp::m_ephemeral));
+	}
+	else {
+		std::cout << "No valid Event found with the given path." << std::endl;
+		event.reply(dpp::message("No valid Event found with the given path.").set_flags(dpp::m_ephemeral));
+	}
+}
+
+// Play Sub-Command: create a new Instance of a snapshot
+void play_snapshot(const dpp::slashcommand_t& event, std::string eventToPlay, std::string inputName) {
+
+	std::string newName = inputName;
+	std::string cleanName = newName;
+	int iterator = 1;
+	while (pEventInstances.find(newName) != pEventInstances.end()) {		// If that name already exists, quietly give it a number
+		newName = cleanName + "-" + std::to_string(iterator);				// Keep counting up until valid.
+		iterator++;
+	}
+
+	std::cout << "Play Snapshot command issued." << std::endl;
+	std::cout << "Snapshot to Play: " << eventToPlay << " || Instance name: " << newName << std::endl;
+
+	FMOD::Studio::EventDescription* newEventDesc = nullptr;
+	
+	if (pSnapshots.contains(eventToPlay)) {
 		newEventDesc = pSnapshots.at(eventToPlay);
-		newEventDesc->isSnapshot(&isSnapshot);
 	}
 
 	if ((newEventDesc != nullptr) && (newEventDesc->isValid())) {
-		if (!isSnapshot) {
-			FMOD::Studio::EventInstance* newEventInst = nullptr;
-			ERRCHECK_HARD(newEventDesc->createInstance(&newEventInst));
-			std::vector<FMOD_STUDIO_PARAMETER_DESCRIPTION> newEventParams = pEventDescriptions.at(eventToPlay).params;
-			sessionEventInstance newSessionEventInst;
-			newSessionEventInst.instance = newEventInst;
-			newSessionEventInst.params = newEventParams;
-			pEventInstances.insert({ newName, newSessionEventInst });
-			ERRCHECK_HARD(pEventInstances.at(newName).instance->setCallback(eventInstanceDestroyedCallback, FMOD_STUDIO_EVENT_CALLBACK_DESTROYED));
-			ERRCHECK_HARD(pEventInstances.at(newName).instance->start());
-			ERRCHECK_HARD(pEventInstances.at(newName).instance->release());
+		FMOD::Studio::EventInstance* newSnapInst = nullptr;
+		ERRCHECK_HARD(newEventDesc->createInstance(&newSnapInst));
+		ERRCHECK_HARD(newSnapInst->setCallback(eventInstanceDestroyedCallback, FMOD_STUDIO_EVENT_CALLBACK_DESTROYED));
+		ERRCHECK_HARD(newSnapInst->start());
+		ERRCHECK_HARD(newSnapInst->release());
+		pSnapshotInstances.insert({ newName, newSnapInst });
 
-			std::cout << "Playing event: " << eventToPlay << " with Instance name: " << newName << std::endl;
-			event.reply(dpp::message("Playing event: " + eventToPlay + " with Instance name: " + newName).set_flags(dpp::m_ephemeral));
-		}
-		else {
-			FMOD::Studio::EventInstance* newSnapInst = nullptr;
-			ERRCHECK_HARD(newEventDesc->createInstance(&newSnapInst));
-			ERRCHECK_HARD(newSnapInst->setCallback(eventInstanceDestroyedCallback, FMOD_STUDIO_EVENT_CALLBACK_DESTROYED));
-			ERRCHECK_HARD(newSnapInst->start());
-			ERRCHECK_HARD(newSnapInst->release());
-			pSnapshotInstances.insert({ newName, newSnapInst });
-
-			std::cout << "Playing snapshot: " << eventToPlay << " with Instance name: " << newName << std::endl;
-			event.reply(dpp::message("Playing snapshot: " + eventToPlay + " with Instance name: " + newName).set_flags(dpp::m_ephemeral));
-		}
+		std::cout << "Playing snapshot: " << eventToPlay << " with Instance name: " << newName << std::endl;
+		event.reply(dpp::message("Playing snapshot: " + eventToPlay + " with Instance name: " + newName).set_flags(dpp::m_ephemeral));
 	}
 	else {
-		std::cout << "No valid Event or Snapshot found with the given path." << std::endl;
-		event.reply(dpp::message("No valid Event or Snapshot found with the given path.").set_flags(dpp::m_ephemeral));
+		std::cout << "No valid Snapshot found with the given path." << std::endl;
+		event.reply(dpp::message("No valid Snapshot found with the given path.").set_flags(dpp::m_ephemeral));
 	}
+}
+
+// Creates and starts a new Event Instance
+void play(const dpp::slashcommand_t& event) {
+	// Command and Subcommand data
+	dpp::command_interaction cmd_data = event.command.get_command_interaction();
+	dpp::command_data_option subcommand = cmd_data.options[0];
+
+	// Check the input variables are good
+	int count = (int)cmd_data.options.size();
+	if (count < 1) {
+		std::cout << "Play command arrived with no arguments or subcommands. Bad juju!" << std::endl;
+		event.reply(dpp::message("Play command sent with no arguments or subcommands. Bad juju!").set_flags(dpp::m_ephemeral));
+		return;
+	}
+	else if (count > 2) {
+		std::cout << "Play command arrived with too many arguments. Bad juju!" << std::endl;
+		event.reply(dpp::message("Play command sent with too many arguments. Bad juju!").set_flags(dpp::m_ephemeral));
+		return;
+	}
+
+	int subcount = (int)subcommand.options.size();
+	if (subcount < 1) {
+		std::cout << "Play " << subcommand.name << " command arrived without enough arguments.Bad juju!" << std::endl;
+		event.reply(dpp::message("Play " + subcommand.name + " command sent without enough arguments. Bad juju!").set_flags(dpp::m_ephemeral));
+		return;
+	}
+	else if (subcount > 2) {
+		std::cout << "Play " << subcommand.name << " command arrived with too many arguments. Bad juju!" << std::endl;
+		event.reply(dpp::message("Play " + subcommand.name + " command sent with too many arguments. Bad juju!").set_flags(dpp::m_ephemeral));
+		return;
+	}
+
+	std::string eventToPlay = std::get<std::string>(event.get_parameter(subcommand.options[0].name));
+	std::cout << "Event To Play: " << eventToPlay << std::endl;
+
+	// Checking the Instance name
+	// If the user gave a name in the command, use that
+	// If the user gave no name, use the Event name
+	std::string inputName;
+	if (subcount > 1) {
+		inputName = std::get<std::string>(event.get_parameter(subcommand.options[1].name));
+		if (inputName == "" || inputName.size() == 0) { inputName = eventToPlay; }		// If the input was bogus, pretend there was no input
+	}
+	else { inputName = eventToPlay; }
+
+	// Divert to the proper subcommand
+	if (subcommand.name == "event") { play_event(event, eventToPlay, inputName); }
+	else if (subcommand.name == "snapshot") { play_snapshot(event, eventToPlay, inputName); }
+	else { event.reply(dpp::message("Used Play event without subcommand. This is a bug and not supported.").set_flags(dpp::m_ephemeral)); }
 }
 
 // Pauses Event with given name in events playing list
@@ -818,7 +859,7 @@ void stop(const dpp::slashcommand_t& event) {
 }
 
 // Base function, called in a few places as part of other methods like quit()
-void stopallevents() {
+void stopall_events() {
 	std::cout << "Stopping all events...";
 	//For each instance in events playing list, stop_now
 	for (const auto& [niceName, sessionEventInstance] : pEventInstances) {
@@ -828,7 +869,7 @@ void stopallevents() {
 }
 
 // Base function, stops all snapshots.
-void stopallsnaps() {
+void stopall_snapshots() {
 	std::cout << "Stopping Snapshots...";
 	for (const auto& [niceName, snapshotInstance] : pSnapshotInstances) {
 		snapshotInstance->stop(FMOD_STUDIO_STOP_IMMEDIATE);
@@ -836,13 +877,17 @@ void stopallsnaps() {
 	std::cout << "Done." << std::endl;
 }
 
-// Stops all playing events and/or snapshots in the list.
-void stopall(const dpp::slashcommand_t& event) {
-	stopallevents();
-	stopallsnaps();
-	event.reply(dpp::message("All events stopped.").set_flags(dpp::m_ephemeral));
+// Base function, stops all events and snapshots.
+void stopall() {
+	stopall_events();
+	stopall_snapshots();
 }
 
+// Stops all playing events and/or snapshots in the list.
+void stopall(const dpp::slashcommand_t& event) {
+	stopall();
+	event.reply(dpp::message("All events stopped.").set_flags(dpp::m_ephemeral));
+}
 
 // Param Sub-Command: Sets parameter with given name and value, globally
 void param_global(const dpp::slashcommand_t& event, dpp::command_data_option subcommand) {
@@ -987,8 +1032,7 @@ void leave(const dpp::slashcommand_t& event, bool eventRespond = true) {
 	dpp::voiceconn* currentVC = event.from->get_voice(event.command.guild_id);
 	if (currentVC) {
 		std::cout << "Leaving voice channel." << std::endl;
-		stopallevents();										// Stop all FMOD events immediately
-		stopallsnaps();
+		stopall();			// Stop all events and snapshots immediately
 
 		isConnected = false;
 		currentClient->stop_audio();
@@ -1151,16 +1195,19 @@ int main() {
 				{ "quit", "Leave voice and exit the program.", bot.me.id}
 			};
 
+			// List options
+
+			
 			// Play options
-			commands[2].add_option(
+			/*commands[2].add_option(
 				dpp::command_option(dpp::co_string, "event-name", "The Event (or Snapshot) you wish to play.", true)
 			);
 			commands[2].add_option(
 				dpp::command_option(dpp::co_string, "instance-name", "Optional: name used for interactions with this new Instance. Defaults to the name of the Event.", false)
-			);
+			);*/
 
 			// Sub-Command: Play Event
-			/*dpp::command_option playEventSubCmd = dpp::command_option(dpp::co_sub_command, "event", "Create a new Event Instance.");
+			dpp::command_option playEventSubCmd = dpp::command_option(dpp::co_sub_command, "event", "Create a new Event Instance.");
 			playEventSubCmd.add_option(dpp::command_option(dpp::co_string, "event-name", "The Event you wish to play.", true));
 			playEventSubCmd.add_option(dpp::command_option(dpp::co_string, "instance-name", "Optional: name used for interactions with this new Instance. Defaults to the name of the Event.", false));
 			commands[2].add_option(playEventSubCmd);
@@ -1169,7 +1216,7 @@ int main() {
 			dpp::command_option playSnapshotSubCmd = dpp::command_option(dpp::co_sub_command, "snapshot", "Create a new Snapshot.");
 			playSnapshotSubCmd.add_option(dpp::command_option(dpp::co_string, "snapshot-name", "The Snapshot you wish to activate.", true));
 			playSnapshotSubCmd.add_option(dpp::command_option(dpp::co_string, "instance-name", "Optional: name used for interactions with this new Instance. Defaults to the name of the Snapshot.", false));
-			commands[2].add_option(playSnapshotSubCmd);*/
+			commands[2].add_option(playSnapshotSubCmd);
 
 			// Pause options
 			commands[3].add_option(
