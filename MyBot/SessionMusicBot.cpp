@@ -445,6 +445,204 @@ void index() {
 
 }
 
+// Prints all currently indexed Events, Snapshots, Global Parameters, Busses, and VCAs.
+void list(const dpp::slashcommand_t& event) {
+	dpp::command_interaction cmd_data = event.command.get_command_interaction();
+
+	// Check the input variables are good
+	int count = (int)cmd_data.options.size();
+	if (count > 2) {
+		std::cout << "List command received with too many arguments." << std::endl;
+		event.reply(dpp::message("List command received with too many arguments.").set_flags(dpp::m_ephemeral));
+		return;
+	}
+
+	event.thinking(true, [event](const dpp::confirmation_callback_t& callback) {
+
+		// Basic setup
+		dpp::embed listEmbed = basicEmbed;
+		basicEmbed.set_title("Dashboard List");
+		std::cout << "Listing current:" << std::endl;
+
+		// Event Instances
+		if (pEventInstances.empty()) {
+			std::cout << "   No playing Event Instances." << std::endl;
+			listEmbed.add_field("Active Events", "- No active events");
+		}
+		else {
+			std::string eventInstanceList = "";
+			for (auto const& inst : pEventInstances) {		// For each Event Instance
+
+				// Get the Event Instance name
+				std::string instName = inst.first;
+
+				// Get the related Event Description
+				FMOD::Studio::EventDescription* instDesc;
+				inst.second.instance->getDescription(&instDesc);
+
+				// Get the Event Description's name
+				char pathchars[256];						// Hope we don't need longer paths than this...
+				char* pathptr = pathchars;
+				int retrieved = 0;
+				ERRCHECK_HARD(instDesc->getPath(pathptr, 512, &retrieved));	// Get the path as char*
+				std::string instDescName(pathptr);							// Make string, then format
+				instDescName = truncateEventPath(instDescName);
+
+				eventInstanceList.append("- __" + instName + "__");	// Append the event Instance name
+
+				if (!inst.second.params.empty()) {			// If this Instance has any parameters associated...
+					std::string paramOutString = " - source event: " + instDescName + "\n";	// add in the event name
+					for (int i = 0; i < inst.second.params.size(); i++) {
+						// get current parameter name & value
+						std::string paramName(inst.second.params[i].name);
+						float paramVal = 0; float paramFinalVal = 0;
+						ERRCHECK_HARD(inst.second.instance->getParameterByID(inst.second.params[i].id, &paramVal, &paramFinalVal));
+						std::string paramValStr = paramValueString(paramVal, inst.second.params[i]);
+
+						// Get the min/max
+						std::string paramMinMaxStr = paramMinMaxString(inst.second.params[i]);
+						// Get the Attributes
+						std::string paramAttributesStr = paramAttributesString(inst.second.params[i]);
+
+						// Glue 'em all together, adding new lines per-parameter
+						paramOutString.append(" - " + paramName + ": " + paramValStr + "  " + paramMinMaxStr + paramAttributesStr);
+						if (i > 0) { paramOutString.append("\n"); }
+					}
+					eventInstanceList.append("\n" + paramOutString);
+				}
+				eventInstanceList.append("\n");		// Close it off, new line, next event
+			}
+			listEmbed.add_field("Active Events", eventInstanceList);
+		}
+
+
+		// Global Parameters
+		if (pGlobalParams.empty()) {
+			std::cout << "   No current Global Parameters." << std::endl;
+			listEmbed.add_field("Global Parameters", "- No Global Parameters");
+		}
+		else {
+			std::string globalParametersList = "";
+
+			for (auto const& param : pGlobalParams) {
+
+				// Get the Event Instance name
+				std::string paramName = param.first;
+
+				// Get the related Event Description
+				//FMOD::Studio::EventDescription* instDesc;
+				//param.second.instance->getDescription(&instDesc);
+
+				// Get the related Parameter's current value
+				float paramVal = 0;
+				ERRCHECK_HARD(pSystem->getParameterByName(param.second.name, &paramVal));
+				std::string paramValStr = paramValueString(paramVal, param.second);
+
+				// Get the min/max
+				std::string paramMinMaxStr = paramMinMaxString(param.second);
+				// Get the Attributes
+				std::string paramAttributesStr = paramAttributesString(param.second);
+
+				// Glue 'em all together, adding new lines per-parameter
+				globalParametersList.append("- " + paramName + ": " + paramValStr + "  " + paramMinMaxStr + paramAttributesStr + "\n");
+			}
+			listEmbed.add_field("Global Parameters", globalParametersList);
+		}
+
+
+		// Snapshots
+		if (pSnapshotInstances.empty()) {
+			std::cout << "   No current Snapshots." << std::endl;
+			listEmbed.add_field("Active Snapshots", "- No Snapshots active");
+		}
+		else {
+			std::string snapshotsList = "";
+
+			for (auto const& snapshot : pSnapshotInstances) {
+
+				// Get the Event Instance name
+				std::string snapName = snapshot.first;
+
+				// Get the related Event Description
+				FMOD::Studio::EventDescription* instDesc = nullptr;
+				snapshot.second->getDescription(&instDesc);
+
+				// Get the Event Description's name
+				char pathchars[256];						// Hope we don't need longer paths than this...
+				char* pathptr = pathchars;
+				int retrieved = 0;
+				ERRCHECK_HARD(instDesc->getPath(pathptr, 512, &retrieved));	// Get the path as char*
+				std::string instDescName(pathptr);							// Make string, then format
+				instDescName = truncateEventPath(instDescName);
+				snapshotsList.append("- " + snapName + "\n");	// Append the event Instance name
+			}
+			listEmbed.add_field("Active Snapshots", snapshotsList);
+		}
+		
+		// Some workarounds to extract the values from "event" rather than passing them in (forbidden due to lambda)
+		int count = (int)event.command.get_command_interaction().options.size();
+		bool showFaders = false;
+		if (count > 0) {
+			showFaders = std::get<bool>(event.get_parameter(event.command.get_command_interaction().options[0].name));
+		}
+
+		// Busses and VCAs
+		if (showFaders) {
+			// Busses
+			if (pBusses.empty()) {
+				std::cout << "   No current Busses." << std::endl;
+				listEmbed.add_field("Busses", "- No Busses, somehow. This is either a bug, or you've messed up the FMOD project.");
+			}
+			else {
+				std::string bussesList = "";
+				
+				//Todo: Sort the Busses in a hierarchical way. Maybe by number of slash chars in name? Maybe when these are indexed?
+				for (auto const& bus : pBusses) {
+
+					// Get the Bus name
+					std::string busName = bus.first;
+
+					float value = 0;
+					ERRCHECK_HARD(bus.second->getVolume(&value));
+					value = floatTodB(value);
+
+					bussesList.append("- " + busName + ": " + volumeString(value) + "\n");
+				}
+				listEmbed.add_field("Busses", bussesList);
+			}
+
+			// VCAs
+			if (pVCAs.empty()) {
+				std::cout << "   No current VCAs." << std::endl;
+				listEmbed.add_field("VCAs", "- No Current VCAs");
+			}
+			else {
+				std::string vcaList = "";
+
+				for (auto const& vca : pVCAs) {
+
+					// Get the VCA name
+					std::string vcaName = vca.first;
+
+					float value = 0;
+					ERRCHECK_HARD(vca.second->getVolume(&value));
+					value = floatTodB(value);
+
+					vcaList.append("- " + vcaName + ": " + volumeString(value) + "\n");
+				}
+				listEmbed.add_field("VCAs", vcaList);
+			}
+
+		}
+
+		// Send it off, finally
+		event.edit_original_response(dpp::message(event.command.channel_id, listEmbed));
+	});
+}
+
+// List Playable events and snapshots
+
+
 // Base function, called on startup and when requested by List Events command
 void events() {
 	int count = 0;
@@ -565,72 +763,6 @@ void events(const dpp::slashcommand_t& event) {
 	});
 }
 
-// Prints all currently playing Event Instances
-void list(const dpp::slashcommand_t& event) {
-	// Simply list the currently playing events. No indexing here.
-	// Todo: show the parameters of each playing event, eventually.
-
-	event.thinking(true, [event](const dpp::confirmation_callback_t& callback) {
-
-		if (pEventInstances.empty()) {
-			std::cout << "No playing Event Instances." << std::endl;
-			event.edit_original_response(dpp::message("No playing Event Instances."));
-		}
-		else {
-			dpp::embed paramListEmbed = basicEmbed;								// Create the embed and set non-standard details
-			paramListEmbed.set_title("Playing Events");
-
-			for (auto const& inst : pEventInstances) {		// For each Event Instance
-
-				// Get the Event Instance name
-				std::string instName = inst.first;
-
-				// Get the related Event Description
-				FMOD::Studio::EventDescription* instDesc;
-				inst.second.instance->getDescription(&instDesc);
-
-				// Get the Event Description's name
-				char pathchars[256];						// Hope we don't need longer paths than this...
-				char* pathptr = pathchars;
-				int retrieved = 0;
-				ERRCHECK_HARD(instDesc->getPath(pathptr, 512, &retrieved));	// Get the path as char*
-				std::string instDescName(pathptr);							// Make string, then format
-				instDescName = truncateEventPath(instDescName);
-				
-				if (inst.second.params.empty()) {							// If no parameters,
-					paramListEmbed.add_field(instName, instDescName);		// add field with the name and Desc path
-				}
-				else {														// If there ARE parameters, strap in...
-					std::string paramOutString = "";
-					if (instDescName != instName) {				// If the instance and event name are different
-						paramOutString.append("event: " + instDescName + "\n");	// add in the event name
-					}
-					for (int i = 0; i < inst.second.params.size(); i++) {
-
-						// get current parameter name & value
-						std::string paramName(inst.second.params[i].name);
-						float paramVal = 0; float paramFinalVal = 0;
-						ERRCHECK_HARD(inst.second.instance->getParameterByID(inst.second.params[i].id, &paramVal, &paramFinalVal));
-						std::string paramValStr = paramValueString(paramVal, inst.second.params[i]);
-
-						// Get the min/max
-						std::string paramMinMaxStr = paramMinMaxString(inst.second.params[i]);
-						// Get the Attributes
-						std::string paramAttributesStr = paramAttributesString(inst.second.params[i]);
-
-						// Glue 'em all together, adding new lines per-parameter
-						paramOutString.append("- " + paramName + ": " + paramValStr + "  " + paramMinMaxStr + paramAttributesStr);
-						if (i > 0) { paramOutString.append("\n"); }
-					}
-					paramListEmbed.add_field(instName, paramOutString);
-				}
-			}
-
-			event.edit_original_response(dpp::message(event.command.channel_id, paramListEmbed));
-		}
-	});
-}
-
 // Play Sub-Command: create a new Instance of an event
 void play_event(const dpp::slashcommand_t& event, std::string eventToPlay, std::string inputName) {
 
@@ -678,7 +810,7 @@ void play_snapshot(const dpp::slashcommand_t& event, std::string eventToPlay, st
 	std::string newName = inputName;
 	std::string cleanName = newName;
 	int iterator = 1;
-	while (pEventInstances.find(newName) != pEventInstances.end()) {		// If that name already exists, quietly give it a number
+	while (pSnapshotInstances.find(newName) != pSnapshotInstances.end()) {		// If that name already exists, quietly give it a number
 		newName = cleanName + "-" + std::to_string(iterator);				// Keep counting up until valid.
 		iterator++;
 	}
@@ -1196,16 +1328,11 @@ int main() {
 			};
 
 			// List options
-
+			commands[1].add_option(
+				dpp::command_option(dpp::co_boolean, "include-faders", "Show available busses and VCAs. Snapshots are the suggested (easier) way of setting these values.", false)
+			);
 			
 			// Play options
-			/*commands[2].add_option(
-				dpp::command_option(dpp::co_string, "event-name", "The Event (or Snapshot) you wish to play.", true)
-			);
-			commands[2].add_option(
-				dpp::command_option(dpp::co_string, "instance-name", "Optional: name used for interactions with this new Instance. Defaults to the name of the Event.", false)
-			);*/
-
 			// Sub-Command: Play Event
 			dpp::command_option playEventSubCmd = dpp::command_option(dpp::co_sub_command, "event", "Create a new Event Instance.");
 			playEventSubCmd.add_option(dpp::command_option(dpp::co_string, "event-name", "The Event you wish to play.", true));

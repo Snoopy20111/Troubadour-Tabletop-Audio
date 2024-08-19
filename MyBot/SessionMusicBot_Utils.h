@@ -275,6 +275,26 @@ std::string paramValueString(float inputValue, FMOD_STUDIO_PARAMETER_DESCRIPTION
 	return output;
 }
 
+// Format volume levels displayed
+std::string volumeString(float inputValue) {
+	std::string output;
+
+	if (abs(inputValue - roundf(inputValue)) < 0.005f) {	// If super close to int, show 1 decimal place
+		inputValue = roundf(inputValue * 10) * 0.1f;		// Relies on assumption of 6 decimal places shown
+		output = std::to_string(inputValue);
+		output.resize(output.size() - 5);
+	}
+	else {													// Else, show 2 decimal places
+		inputValue = roundf(inputValue * 100) * 0.01f;
+		output = std::to_string(inputValue);
+		output.resize(output.size() - 4);
+	}
+
+	output.append(" dB");		// Full Scale? I think?
+
+	return output;
+}
+
 // Returns true if the Opus-sized packet has any signal at all.
 // Some minor fudging included here to keep from checking
 // _every_ sample, in the name of performance
