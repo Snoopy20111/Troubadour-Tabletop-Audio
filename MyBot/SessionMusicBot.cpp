@@ -284,15 +284,21 @@ void banks(const dpp::slashcommand_t& event) {
 		bankListEmbed.set_title("Found FMOD Banks");
 
 		// Known banks, program fails if these don't load / exist
-		bankListEmbed.add_field("Master.bank", "");
-		bankListEmbed.add_field("Master.strings.bank", "");
+		bankListEmbed.add_field("Required Banks", "- Master.bank\n- Master.strings.bank");
 
+		std::string bankPathsOutput = "";
 		std::cout << "BankPaths size: " << std::to_string(bankPaths.size()) << std::endl;
+
 		// For every additional bank, add the shortened path as a field
 		for (int i = 0; i < (int)bankPaths.size(); i++) {					// For every path
-			bankListEmbed.add_field(bankPaths[i].filename().string(), "");			// Add the shortened path as a field
+			bankPathsOutput.append(bankPaths[i].filename().string());   
 			continue;
 		}
+
+		if (!bankPathsOutput.empty()) {
+			bankListEmbed.add_field("Additional Banks", bankPathsOutput);
+		}
+
 		event.edit_original_response(dpp::message(event.command.channel_id, bankListEmbed));
 	});
 }
@@ -632,7 +638,6 @@ void list(const dpp::slashcommand_t& event) {
 				}
 				listEmbed.add_field("VCAs", vcaList);
 			}
-
 		}
 
 		// Send it off, finally
@@ -640,11 +645,9 @@ void list(const dpp::slashcommand_t& event) {
 	});
 }
 
-// List Playable events and snapshots
-
-
-// Base function, called on startup and when requested by List Events command
-void events() {
+// Base function, called when requested by Playable command
+void playable() {
+	// Get the number of strings in the Master Strings bank
 	int count = 0;
 	ERRCHECK_HARD(pMasterStringsBank->getStringCount(&count));
 	if (count <= 0) {
@@ -653,70 +656,118 @@ void events() {
 		return;
 	}
 
+	std::cout << "Refreshing playables list..." << std::endl;
+
+	// Get a copy of the event Paths list, and the same for the Snapshots path list
+	std::vector<std::string> existingEvents = eventPaths;
+	std::vector<std::string> existingSnapshots = snapshotPaths;
+
+	// For every entry
 	for (int i = 0; i < count; i++) {
 		FMOD_GUID pathGUID;
 		char pathStringChars[256];
 		char* pathStringCharsptr = pathStringChars;
 		int retreived;
-
 		ERRCHECK_HARD(pMasterStringsBank->getStringInfo(i, &pathGUID, pathStringCharsptr, 256, &retreived));
 		std::string pathString(pathStringCharsptr);
 
-		// Discard all strings that aren't events in the Master folder (busses, VCAs, Parameters, other events, etc.)
-		if ((pathString.find("event:/", 0) != 0)) {										// Skip if not Event...
-			std::cout << "   Skipped: " << pathString << " -- Not Event." << std::endl;
+		// Discard if this string isn't an event or snapshot
+		if ((pathString.find("event:/", 0) != 0) && (pathString.find("snapshot:/", 0) != 0)) {	// Skip if not Event or Snapshot...
+			std::cout << "   Skipped: " << pathString << " -- Not Event or Snapshot." << std::endl;
 			continue;
 		}
-		if ((pathString.find(callableEventPath, 0) != 0)) {								// Skip if not in Master folder...
-			std::cout << "   Skipped: " << pathString << " -- Not in Master folder." << std::endl;
+		// Discard if it's an event outside the Master folder
+		if ((pathString.find("event:/", 0) == 0) && (pathString.find(callableEventPath, 0) != 0)) {								// Skip if not in Master folder...
+			std::cout << "   Skipped: " << pathString << " -- Event not in Master folder." << std::endl;
 			continue;
 		}
+
+		// Discard strings that are already loaded
+		// Also remove them from their respective "existing" lists, such that whatever remains
+		// on those lists is no longer available (removed during Live Connect?)
 		if (!eventPaths.empty()) {
-			bool alreadyExists = false;
-			for (int i = 0; i < eventPaths.size(); i++) {
-				if (eventPaths[i] == pathString) { alreadyExists = true; }
+			bool alreadyExistsEvent = false;
+			for (int j = 0; i < eventPaths.size(); j++) {
+				if (eventPaths[i] == pathString) { alreadyExistsEvent = true; break; }
 			}
-			if (alreadyExists) {
-				std::cout << "   Skipped: " << pathString << " -- Already Listed." << std::endl;
+			if (alreadyExistsEvent) {
+				std::cout << "   Skipped: " << pathString << " -- Event already listed." << std::endl;
+				for (int k = 0; k < existingEvents.size(); k++) {
+					if (pathString == existingEvents[k]) {
+						existingEvents.erase(existingEvents.begin() + k);
+					}
+				}
 				continue;
 			}
 		}
 
-		// What's left should be good for our eventPaths vector
-		std::cout << "   Accepted as Event: " << pathString << std::endl;
-		eventPaths.push_back(pathString);
-
-		// Grab associated Event Description
-		FMOD::Studio::EventDescription* newEventDesc = nullptr;
-		ERRCHECK_HARD(pSystem->getEvent(pathString.c_str(), &newEventDesc));
-		sessionEventDesc newSessionEventDesc; newSessionEventDesc.description = newEventDesc;
-
-		// Grab the name of each associated non-built-in parameter
-		int descParamCount = 0;
-		newSessionEventDesc.description->getParameterDescriptionCount(&descParamCount);
-		for (int i = 0; i < descParamCount; i++) {
-			FMOD_STUDIO_PARAMETER_DESCRIPTION parameter;
-			newSessionEventDesc.description->getParameterDescriptionByIndex(i, &parameter);
-			if (parameter.type == FMOD_STUDIO_PARAMETER_GAME_CONTROLLED) {
-				std::string paramName(parameter.name);
-				std::string coutString = "      ";
-
-				coutString.append(" - Parameter: " + paramName);
-				coutString.append(" " + paramMinMaxString(parameter));
-				coutString.append(" " + paramAttributesString(parameter));
-#ifndef NDEBUG
-				coutString.append(" with flag: " + std::to_string(parameter.flags));
-#endif
-				std::cout << coutString;
-				newSessionEventDesc.params.push_back(parameter);
+		if (!snapshotPaths.empty()) {
+			bool alreadyExistsSnapshot = false;
+			for (int j = 0; i < snapshotPaths.size(); j++) {
+				if (snapshotPaths[i] == pathString) { alreadyExistsSnapshot = true; break; }
+			}
+			if (alreadyExistsSnapshot) {
+				std::cout << "   Skipped: " << pathString << " -- Snapshot already listed." << std::endl;
+				for (int k = 0; k < existingSnapshots.size(); k++) {
+					if (pathString == existingSnapshots[k]) {
+						existingSnapshots.erase(existingSnapshots.begin() + k);
+					}
+				}
+				continue;
 			}
 		}
-		pEventDescriptions.insert({ truncateEventPath(pathString), newSessionEventDesc });		// Add to map, connected to a trimmed "easy" path name
+
+		// What's left should be good for our vectors
+		
+		// Events
+		if ((pathString.find("event:/", 0) == 0)) {
+			std::cout << "   Accepted as Event: " << pathString << std::endl;
+			eventPaths.push_back(pathString);
+
+			// Grab associated Event Description
+			FMOD::Studio::EventDescription* newEventDesc = nullptr;
+			ERRCHECK_HARD(pSystem->getEvent(pathString.c_str(), &newEventDesc));
+			sessionEventDesc newSessionEventDesc; newSessionEventDesc.description = newEventDesc;
+
+			// Grab the name of each associated non-built-in parameter
+			int descParamCount = 0;
+			newSessionEventDesc.description->getParameterDescriptionCount(&descParamCount);
+			for (int i = 0; i < descParamCount; i++) {
+				FMOD_STUDIO_PARAMETER_DESCRIPTION parameter;
+				newSessionEventDesc.description->getParameterDescriptionByIndex(i, &parameter);
+				if (parameter.type == FMOD_STUDIO_PARAMETER_GAME_CONTROLLED) {
+					std::string paramName(parameter.name);
+					std::string coutString = "      ";
+
+					coutString.append(" - Parameter: " + paramName);
+					coutString.append(" " + paramMinMaxString(parameter));
+					coutString.append(" " + paramAttributesString(parameter));
+#ifndef NDEBUG
+					coutString.append(" with flag: " + std::to_string(parameter.flags));
+#endif
+					std::cout << coutString;
+					newSessionEventDesc.params.push_back(parameter);
+				}
+			}
+			pEventDescriptions.insert({ truncateEventPath(pathString), newSessionEventDesc });		// Add to map, connected to a trimmed "easy" path name
+		}
+
+		// Snapshots
+		else {
+			std::cout << "   Accepted as Snapshot: " << pathString << std::endl;
+			snapshotPaths.push_back(pathString);
+
+			// Grab Snapshot's Event Description and add to Snapshots map
+			FMOD::Studio::EventDescription* newSnapshotDesc = nullptr;
+			ERRCHECK_HARD(pSystem->getEvent(pathString.c_str(), &newSnapshotDesc));
+			pSnapshots.insert({truncateSnapshotPath(pathString), newSnapshotDesc});
+		}
 	}
+	std::cout << "...Done!" << std::endl << std::endl;
 }
 
 // Indexes and Prints all playable Event Descriptions & Parameters
-void events(const dpp::slashcommand_t& event) {
+void playable(const dpp::slashcommand_t& event) {
 
 	if (!pMasterStringsBank->isValid() || pMasterStringsBank == nullptr) {
 		std::cout << "Master Strings bank is invalid or nullptr. Bad juju!" << std::endl;
@@ -725,39 +776,75 @@ void events(const dpp::slashcommand_t& event) {
 		return;
 	}
 
-	eventPaths.clear();
-	pEventDescriptions.clear();
+	dpp::command_interaction cmd_data = event.command.get_command_interaction();
+
+	// Check the input variables are good
+	int count = (int)cmd_data.options.size();
+	if (count > 1) {
+		std::cout << "Playable command received with too many arguments." << std::endl;
+		event.reply(dpp::message("Playable command received with too many arguments.").set_flags(dpp::m_ephemeral));
+		return;
+	}
 
 	event.thinking(true, [event](const dpp::confirmation_callback_t& callback) {
 
-		// Index the events with function above
-		events();
+		// Get whether the command came with the optional "reindex" parameter
+		int count = (int)event.command.get_command_interaction().options.size();
+		bool reindex = false;
+		if (count > 0) {
+			reindex = std::get<bool>(event.get_parameter(event.command.get_command_interaction().options[0].name));
+		}
+
+		// If told to, clear all event description vectors/maps, then re-index
+		if (reindex) {
+			eventPaths.clear();
+			pEventDescriptions.clear();
+			snapshotPaths.clear();
+			pSnapshots.clear();
+
+			playable();
+		}
+		else { std::cout << "Listing Playables without re-indexing." << std::endl; }
 
 		// And now print 'em to Discord!
-		
-		if (eventPaths.size() == 0) {
-			event.edit_original_response(dpp::message("No playable events found!"));		// If no events were found _at all_ then say so.
+		if ((eventPaths.size() == 0) && (snapshotPaths.size() == 0)) {
+			// If no playables are found, say so.
+			event.edit_original_response(dpp::message("No playable Events or Snapshots found!"));
 		}
 		else {
 			dpp::embed paramListEmbed = basicEmbed;								// Create the embed and set non-standard details
-			paramListEmbed.set_title("Event List with Params");
+			paramListEmbed.set_title("Playables");
 
-			for (int i = 0; i < (int)eventPaths.size(); i++) {										// For every path	
+			std::string playableEventsOutput = "";
+
+			// Events
+			for (int i = 0; i < (int)eventPaths.size(); i++) {								// For every path	
 				std::vector<FMOD_STUDIO_PARAMETER_DESCRIPTION> eventParams = pEventDescriptions.at(truncateEventPath(eventPaths[i])).params;
-				if (eventParams.size() == 0) {
-					paramListEmbed.add_field(truncateEventPath(eventPaths[i]), "");			// Add the shortened path as a field		
-					continue;
-				}
-				else {
+				playableEventsOutput.append("- " + truncateEventPath(eventPaths[i]) + "\n");
+
+				if (eventParams.size() != 0) {
 					std::string paramOutString = "";
 					for (int j = 0; j < (int)eventParams.size(); j++) {			// as well as each associated parameters and their ranges, if any.
+						paramOutString.append(" - ");
 						paramOutString.append(eventParams[j].name);
 						paramOutString.append(" ");
 						paramOutString.append(paramMinMaxString(eventParams[j]) + paramAttributesString(eventParams[j]));
 					}
-					paramListEmbed.add_field(truncateEventPath(eventPaths[i]), paramOutString);
+					playableEventsOutput.append(paramOutString);
 				}
 			}
+			paramListEmbed.add_field("Events", playableEventsOutput);
+
+			std::string playableSnapshotsOutput = "";
+
+			//Snapshots 
+			for (int i = 0; i < (int)snapshotPaths.size(); i++) {						// For every path	
+				playableSnapshotsOutput.append("- ");
+				playableSnapshotsOutput.append(truncateSnapshotPath(snapshotPaths[i]) + "\n");
+			}
+
+			paramListEmbed.add_field("Snapshots", playableSnapshotsOutput);
+
 			event.edit_original_response(dpp::message(event.command.channel_id, paramListEmbed));
 		}
 	});
@@ -1311,7 +1398,7 @@ int main() {
 		/* Wrap command registration in run_once to make sure it doesnt run on every full reconnection */
 		if (dpp::run_once<struct register_bot_commands>()) {
 			std::vector<dpp::slashcommand> commands {
-				{ "events", "List all playable events and their parameters.", bot.me.id},
+				{ "playable", "List all playable events, their parameters, and snapshots.", bot.me.id},
 				{ "list", "Show all playing event instances and their parameters.", bot.me.id},
 				{ "play", "Create a new Event Instance (or Snapshot).", bot.me.id},
 				{ "pause", "Pause a currently playing Event Instance.", bot.me.id},
@@ -1326,6 +1413,11 @@ int main() {
 				{ "leave", "Leave the current voice channel.", bot.me.id},
 				{ "quit", "Leave voice and exit the program.", bot.me.id}
 			};
+
+			// Playable options
+			commands[0].add_option(
+				dpp::command_option(dpp::co_boolean, "should-reindex", "Whether to re-check all available Events and Snapshots, helpful for Live Connect.", false)
+			);
 
 			// List options
 			commands[1].add_option(
@@ -1422,7 +1514,7 @@ int main() {
 			event.reply(dpp::message("Sorry, only the bot owner can run commands for me.").set_flags(dpp::m_ephemeral));
 		}
 		else {
-			if (event.command.get_command_name() == "events") { events(event); }
+			if (event.command.get_command_name() == "playable") { playable(event); }
 			else if (event.command.get_command_name() == "list") { list(event); }
 			else if (event.command.get_command_name() == "play") { play(event); }
 			else if (event.command.get_command_name() == "pause") { pause(event); }
