@@ -1039,6 +1039,42 @@ void unpause(const dpp::slashcommand_t& event) {
 	}
 }
 
+// Key Off for the given Event Instance
+void keyoff(const dpp::slashcommand_t& event) {
+	//Very similar to Pause, Unpause, and Stop.
+	dpp::command_interaction cmd_data = event.command.get_command_interaction();
+	int count = (int)cmd_data.options.size();
+	if (count < 1) {
+		std::cout << "Keyoff command arrived with no arguments. Bad juju!" << std::endl;
+		event.reply(dpp::message("Keyoff command sent with no arguments. Bad juju!").set_flags(dpp::m_ephemeral));
+		return;
+	}
+
+	std::string inputName = std::get<std::string>(event.get_parameter(cmd_data.options[0].name));
+
+	std::cout << "Key Off command issued." << std::endl;
+	std::cout << "Instance Name: " << inputName << std::endl;
+	if (pEventInstances.find(inputName) != pEventInstances.end()) {
+		FMOD::Studio::EventDescription* eventDesc = nullptr;
+		ERRCHECK_HARD(pEventInstances.at(inputName).instance->getDescription(&eventDesc));
+		bool hasSusPoint = false;
+		eventDesc->hasSustainPoint(&hasSusPoint);
+		if (hasSusPoint) {
+			pEventInstances.at(inputName).instance->keyOff();
+			std::cout << "KeyOff command carried out." << std::endl;
+			event.reply(dpp::message("Keying Off event instance: " + inputName).set_flags(dpp::m_ephemeral));
+		}
+		else {
+			std::cout << "KeyOff command skipped: event has no keys to off." << std::endl;
+			event.reply(dpp::message("Event Instance " + inputName + " has no keys to off.").set_flags(dpp::m_ephemeral));
+		}
+	}
+	else {
+		std::cout << "Couldn't find Event Instance with given name." << std::endl;
+		event.reply(dpp::message("No Event Instance found with given name: " + inputName).set_flags(dpp::m_ephemeral));
+	}
+}
+
 // Stops Event or Snapshot with given name in events playing list
 void stop(const dpp::slashcommand_t& event) {
 	// Very similar to Pause and Unpause
@@ -1403,6 +1439,7 @@ int main() {
 				{ "play", "Create a new Event Instance (or Snapshot).", bot.me.id},
 				{ "pause", "Pause a currently playing Event Instance.", bot.me.id},
 				{ "unpause", "Resume a currently playing Event Instance.", bot.me.id},
+				{ "keyoff", "Key off a sustain point, if the Event Instance has any.", bot.me.id},
 				{ "stop", "Stop a currently playing Event Instance.", bot.me.id},
 				{ "stopall", "Stop all Event Instances and Snapshots immediately.", bot.me.id},
 				{ "param", "Set a parameter, Globally or on an Event Instance.", bot.me.id},
@@ -1447,16 +1484,21 @@ int main() {
 				dpp::command_option(dpp::co_string, "instance-name", "The name of the Instance to unpause.", true)
 			);
 
-			// Stop options
+			// KeyOff options
 			commands[5].add_option(
+				dpp::command_option(dpp::co_string, "instance-name", "The name of the Instance to key off.", true)
+			);
+
+			// Stop options
+			commands[6].add_option(
 				dpp::command_option(dpp::co_string, "instance-name", "The name of the Instance to stop.", true)
 			);
-			commands[5].add_option(
+			commands[6].add_option(
 				dpp::command_option(dpp::co_boolean, "stop-immediately", "Optional: stop the Instance NOW, without fadeouts?", false)
 			);
 
 			// Stop_All options
-			commands[6].add_option(
+			commands[7].add_option(
 				dpp::command_option(dpp::co_boolean, "stop-immediately", "Optional: stop everything NOW, without fadeouts?", false)
 			);
 
@@ -1466,19 +1508,19 @@ int main() {
 			eventInstSubCmd.add_option(dpp::command_option(dpp::co_string, "instance-name", "The name of the event instance to set parameters on.", true));
 			eventInstSubCmd.add_option(dpp::command_option(dpp::co_string, "parameter-name", "The name of the parameter to set.", true));
 			eventInstSubCmd.add_option(dpp::command_option(dpp::co_number, "value", "What you want the parameter to be.", true));
-			commands[7].add_option(eventInstSubCmd);
+			commands[8].add_option(eventInstSubCmd);
 
 			// Sub-Command: Global
 			dpp::command_option globalSubCmd = dpp::command_option(dpp::co_sub_command, "global", "Set a Global parameter.");
 			globalSubCmd.add_option(dpp::command_option(dpp::co_string, "parameter-name", "The name of the parameter to set.", true));
 			globalSubCmd.add_option(dpp::command_option(dpp::co_number, "value", "What you want the parameter to be.", true));
-			commands[7].add_option(globalSubCmd);
+			commands[8].add_option(globalSubCmd);
 
 			// Sub-commands for Volume
-			commands[8].add_option(
+			commands[9].add_option(
 				dpp::command_option(dpp::co_string, "bus-or-vca-name", "The name of the Bus or VCA to adjust the volume of.", true)
 			);
-			commands[8].add_option(
+			commands[9].add_option(
 				dpp::command_option(dpp::co_number, "value",
 					"The target volume in dB. Values above +10 will be assumed negative, for your ears' sake.", true)
 			);
@@ -1519,6 +1561,7 @@ int main() {
 			else if (event.command.get_command_name() == "play") { play(event); }
 			else if (event.command.get_command_name() == "pause") { pause(event); }
 			else if (event.command.get_command_name() == "unpause") { unpause(event); }
+			else if (event.command.get_command_name() == "keyoff") { keyoff(event); }
 			else if (event.command.get_command_name() == "stop") { stop(event); }
 			else if (event.command.get_command_name() == "stopall") { stopall(event); }
 			else if (event.command.get_command_name() == "param") { param(event); }
