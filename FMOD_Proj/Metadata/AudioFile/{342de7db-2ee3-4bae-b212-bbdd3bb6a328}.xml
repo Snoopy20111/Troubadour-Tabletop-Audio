@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{342de7db-2ee3-4bae-b212-bbdd3bb6a328}">
 		<property name="assetPath">
-			<value>Kingdom Hearts Soundfont_maintrack.mp3</value>
+			<value>_Examples/KingdomHearts/Kingdom Hearts Soundfont_maintrack.mp3</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>

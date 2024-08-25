@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{2032f8f3-7913-4a08-ba54-35579d1096b5}">
 		<property name="assetPath">
-			<value>Misc/SiobhanD_-_Famous_Last_Words_(2023).mp3</value>
+			<value>FamousLastWords/SiobhanD_-_Famous_Last_Words_(2023).mp3</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>
