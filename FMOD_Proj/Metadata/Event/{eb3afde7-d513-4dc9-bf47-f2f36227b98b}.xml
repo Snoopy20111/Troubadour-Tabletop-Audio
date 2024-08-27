@@ -69,7 +69,7 @@ Measure 95: 100 bpm</value>
 			<destination>{bac60c82-96e9-475e-992c-57dc292ae846}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{0f296a96-e357-477a-b07e-fd6c61f98d80}</destination>
+			<destination>{38a44cf6-9119-4967-9b9b-7f5236d1087a}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{22976278-3dcd-45e8-a98d-2c8d985c8eff}" />
