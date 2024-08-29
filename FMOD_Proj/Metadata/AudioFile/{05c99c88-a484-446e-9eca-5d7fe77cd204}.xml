@@ -4,11 +4,8 @@
 		<property name="assetPath">
 			<value>EphemeralSolace/Javolenus_-_Ephemeral_Solace_Lyre2.flac</value>
 		</property>
-		<property name="isStreaming">
-			<value>true</value>
-		</property>
 		<property name="frequencyInKHz">
-			<value>96</value>
+			<value>48</value>
 		</property>
 		<property name="channelCount">
 			<value>1</value>
