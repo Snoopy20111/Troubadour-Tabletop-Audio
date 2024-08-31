@@ -112,7 +112,10 @@
 	</object>
 	<object class="TempoMarker" id="{a4a26e2d-4f43-4577-8dc0-ea0a5ec12a32}">
 		<property name="position">
-			<value>0</value>
+			<value>0.050504867401506059</value>
+		</property>
+		<property name="tempo">
+			<value>101</value>
 		</property>
 		<relationship name="timeline">
 			<destination>{5dfe24fa-1440-450c-a5ac-0fb6a8d6157e}</destination>

@@ -4705,6 +4705,9 @@ Stopping will go to the appropriate Outro</value>
 		</relationship>
 	</object>
 	<object class="EventMixerReturn" id="{8866f4c5-99b9-498a-96ac-c4244c905f98}">
+		<property name="volume">
+			<value>-3</value>
+		</property>
 		<property name="name">
 			<value>Delay</value>
 		</property>
@@ -10849,18 +10852,27 @@ Stopping will go to the appropriate Outro</value>
 	<object class="MixerBusFader" id="{9e5a59db-b286-473e-ada6-12cbd52223e1}" />
 	<object class="DelayEffect" id="{c08f75e6-939a-446c-81f4-0f14f607440f}">
 		<property name="delay">
-			<value>1000</value>
+			<value>1200</value>
+		</property>
+		<property name="feedback">
+			<value>36</value>
 		</property>
 		<property name="level">
-			<value>-5.5</value>
+			<value>-8</value>
 		</property>
 		<property name="dryLevel">
 			<value>-80</value>
 		</property>
 	</object>
 	<object class="DelayEffect" id="{ff31f598-488a-4666-b8ba-484c86cd9f3b}">
+		<property name="delay">
+			<value>533.333008</value>
+		</property>
+		<property name="feedback">
+			<value>41</value>
+		</property>
 		<property name="level">
-			<value>-9</value>
+			<value>-8.5</value>
 		</property>
 		<property name="dryLevel">
 			<value>-80</value>

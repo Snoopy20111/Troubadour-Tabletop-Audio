@@ -243,7 +243,7 @@
 	</object>
 	<object class="TempoMarker" id="{58d08481-0ed8-4274-9c8e-b75d7835af11}">
 		<property name="position">
-			<value>0</value>
+			<value>2.333333333333333</value>
 		</property>
 		<property name="tempo">
 			<value>90</value>
