@@ -2,13 +2,13 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{4417e768-5eae-4bd3-ac35-b348c74db021}">
 		<property name="name">
-			<value>GrandCircles_Random</value>
+			<value>GrandCircles</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
 		</property>
 		<relationship name="folder">
-			<destination>{d3991d65-deb5-44d4-8fc7-6c98abf3a82e}</destination>
+			<destination>{19a4e887-4a02-4bde-90c9-9be24168d13d}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{9dfdbea5-5361-43bb-a17b-94c7a21cab77}</destination>
@@ -33,6 +33,9 @@
 		</relationship>
 		<relationship name="parameters">
 			<destination>{43d2268f-a09d-449f-9888-6eb18665c3ef}</destination>
+		</relationship>
+		<relationship name="banks">
+			<destination>{6613e609-1f23-4f70-8361-7ebf8c6210c2}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{9dfdbea5-5361-43bb-a17b-94c7a21cab77}">
