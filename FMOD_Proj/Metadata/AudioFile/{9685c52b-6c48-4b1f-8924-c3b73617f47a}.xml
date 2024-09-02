@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{9685c52b-6c48-4b1f-8924-c3b73617f47a}">
 		<property name="assetPath">
-			<value>Misc/speck_-_The_Past_Is_An_Illusion_(So_Them_Say).flac</value>
+			<value>Misc/speck_The_Past_Is_An_Illusion_(So_Them_Say).flac</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>

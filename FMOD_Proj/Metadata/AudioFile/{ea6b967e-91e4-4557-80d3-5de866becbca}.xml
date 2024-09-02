@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{ea6b967e-91e4-4557-80d3-5de866becbca}">
 		<property name="assetPath">
-			<value>Misc/mactonite_-_Piano_Piece_6(Winter_Lights).mp3</value>
+			<value>Misc/mactonite_Piano_Piece_6(Winter_Lights).mp3</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>

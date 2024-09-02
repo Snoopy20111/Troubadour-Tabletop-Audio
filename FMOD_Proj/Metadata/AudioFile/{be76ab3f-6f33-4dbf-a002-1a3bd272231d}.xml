@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{be76ab3f-6f33-4dbf-a002-1a3bd272231d}">
 		<property name="assetPath">
-			<value>NiGiD_-_Where_the_Wind_Blows/Cello.flac</value>
+			<value>NiGiD_Where_the_Wind_Blows/Cello.flac</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>
