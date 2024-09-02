@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{36228d3f-927e-48ab-842c-f5646dc484ed}">
 		<property name="name">
-			<value>jaspertine_-_Mojave_Scotch</value>
+			<value>MojaveScotch</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>

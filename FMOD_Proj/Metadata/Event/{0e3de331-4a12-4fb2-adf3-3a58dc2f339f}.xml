@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{0e3de331-4a12-4fb2-adf3-3a58dc2f339f}">
 		<property name="name">
-			<value>Paradigm_-_Greensleeves_(reinvented)</value>
+			<value>Greensleeves</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>

@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{0cec98ee-1f49-48b6-9d80-16bd5273ccf0}">
 		<property name="name">
-			<value>phusion_-_space_and_time</value>
+			<value>SpaceAndTime</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
