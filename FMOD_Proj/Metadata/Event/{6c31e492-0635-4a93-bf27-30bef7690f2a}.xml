@@ -8,7 +8,7 @@
 			<value>1</value>
 		</property>
 		<relationship name="folder">
-			<destination>{d3991d65-deb5-44d4-8fc7-6c98abf3a82e}</destination>
+			<destination>{19a4e887-4a02-4bde-90c9-9be24168d13d}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{cd7875ef-1311-4aab-8ac6-1875078be799}</destination>
@@ -132,9 +132,15 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{2ba4f8e0-33c3-47d7-a4d7-f99ba98b2acc}">
+		<property name="volume">
+			<value>-2</value>
+		</property>
 		<property name="name">
 			<value>Audio 1</value>
 		</property>
+		<relationship name="modulators">
+			<destination>{6abee96d-7805-4dac-9d49-a0bbf474d549}</destination>
+		</relationship>
 		<relationship name="effectChain">
 			<destination>{6cf5c4f2-24b1-4bff-96c9-af780d81d447}</destination>
 		</relationship>
@@ -170,7 +176,7 @@
 			<value>-80</value>
 		</property>
 		<property name="attackTime">
-			<value>400</value>
+			<value>580</value>
 		</property>
 		<property name="attackShape">
 			<value>-0.485502213</value>
@@ -182,7 +188,7 @@
 			<value>0</value>
 		</property>
 		<property name="releaseTime">
-			<value>8000</value>
+			<value>6800</value>
 		</property>
 		<property name="releaseShape">
 			<value>0.128746197</value>
@@ -219,6 +225,23 @@
 		<relationship name="relatedModule">
 			<destination>{600ef246-546a-496e-a820-dd2f25be1083}</destination>
 		</relationship>
+	</object>
+	<object class="LFOModulator" id="{6abee96d-7805-4dac-9d49-a0bbf474d549}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>volume</value>
+		</property>
+		<property name="shape">
+			<value>6</value>
+		</property>
+		<property name="rate">
+			<value>0.25999999</value>
+		</property>
+		<property name="depth">
+			<value>6</value>
+		</property>
+		<property name="direction">
+			<value>-100</value>
+		</property>
 	</object>
 	<object class="MixerBusEffectChain" id="{6cf5c4f2-24b1-4bff-96c9-af780d81d447}">
 		<relationship name="effects">

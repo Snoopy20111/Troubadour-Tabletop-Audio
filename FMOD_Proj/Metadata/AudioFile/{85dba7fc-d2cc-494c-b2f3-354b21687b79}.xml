@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{85dba7fc-d2cc-494c-b2f3-354b21687b79}">
 		<property name="assetPath">
-			<value>Misc/690294__lightmister__space-main-menu-trailer.mp3</value>
+			<value>SpaceConfined/690294__lightmister__space-main-menu-trailer.mp3</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>

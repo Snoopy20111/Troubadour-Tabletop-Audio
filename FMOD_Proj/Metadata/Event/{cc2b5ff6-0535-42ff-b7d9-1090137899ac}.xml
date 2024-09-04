@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{cc2b5ff6-0535-42ff-b7d9-1090137899ac}">
+		<property name="note">
+			<value>May not be worth using the stems, there's only two of them and the Stereo mix sounds alright.</value>
+		</property>
 		<property name="name">
 			<value>SilentDream</value>
 		</property>
@@ -8,7 +11,7 @@
 			<value>1</value>
 		</property>
 		<relationship name="folder">
-			<destination>{d3991d65-deb5-44d4-8fc7-6c98abf3a82e}</destination>
+			<destination>{05d4e7c5-db3d-4e4f-acbd-6335e6863406}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{3da66caa-a9cc-46d1-8920-77f390b62b34}</destination>
@@ -87,6 +90,9 @@
 			<destination>{39102bff-fa31-4af8-a697-ec264ce18bcc}</destination>
 			<destination>{7711cb0a-579e-4413-8cbb-c288ffc14974}</destination>
 		</relationship>
+		<relationship name="markers">
+			<destination>{72bbce79-c580-4184-a7d5-4fa0753b693d}</destination>
+		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{b28614cc-3107-4cd2-9f16-fbd2b796e76e}">
 		<relationship name="effectChain">
@@ -118,7 +124,7 @@
 			<value>-80</value>
 		</property>
 		<property name="name">
-			<value>Audio 1</value>
+			<value>Stereo</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{75e9d934-916c-4555-869d-eb7394b32a29}</destination>
@@ -131,8 +137,14 @@
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{39102bff-fa31-4af8-a697-ec264ce18bcc}">
+		<property name="start">
+			<value>32.025111607142854</value>
+		</property>
 		<property name="length">
-			<value>563.068253968254</value>
+			<value>531.068253968254</value>
+		</property>
+		<property name="timelockedOffset">
+			<value>32</value>
 		</property>
 		<relationship name="audioFile">
 			<destination>{5233d281-c96c-47d0-8f97-e6c9e739ad25}</destination>
@@ -140,7 +152,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{7b0ec77e-72bb-4148-b9d9-aa23ecae7d62}">
 		<property name="name">
-			<value>Audio 2</value>
+			<value>Cello</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{8ed39f4a-a24b-4d27-9890-459b0259c9a5}</destination>
@@ -153,16 +165,22 @@
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{7711cb0a-579e-4413-8cbb-c288ffc14974}">
+		<property name="start">
+			<value>0.025111607142857144</value>
+		</property>
 		<property name="length">
 			<value>563.068253968254</value>
 		</property>
+		<relationship name="fadeInCurve">
+			<destination>{523bd2e8-e074-48e6-b536-3039008c8bce}</destination>
+		</relationship>
 		<relationship name="audioFile">
 			<destination>{65057b07-ef4f-4e80-8c3b-68b0fb97a815}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{ff31271b-28ac-40d1-af2b-b5f58e0395fd}">
 		<property name="name">
-			<value>Audio 3</value>
+			<value>Piano</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{a2c151cc-43b7-4845-b078-a4bf1e40b7f1}</destination>
@@ -172,6 +190,20 @@
 		</relationship>
 		<relationship name="output">
 			<destination>{b28614cc-3107-4cd2-9f16-fbd2b796e76e}</destination>
+		</relationship>
+	</object>
+	<object class="TempoMarker" id="{72bbce79-c580-4184-a7d5-4fa0753b693d}">
+		<property name="position">
+			<value>0</value>
+		</property>
+		<property name="tempo">
+			<value>112</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{a0d8a0f5-14bf-4c09-ac55-6b853b407eb8}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{0565fc56-71b9-4c01-9417-cd6646999920}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{64e3336c-d971-4bd9-80e6-97a3dc9e0f26}">
@@ -193,6 +225,14 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{08c668ea-3144-498a-b3b6-471251524316}" />
+	<object class="FadeCurve" id="{523bd2e8-e074-48e6-b536-3039008c8bce}">
+		<relationship name="startPoint">
+			<destination>{73f752c8-162d-4552-9d3e-fcae59b7abbb}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{2f85c858-a06b-4680-96b9-31c7e3e9674c}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusEffectChain" id="{a2c151cc-43b7-4845-b078-a4bf1e40b7f1}">
 		<relationship name="effects">
 			<destination>{d67cac3f-c899-4aa0-ac00-b524d10c9c32}</destination>
@@ -202,5 +242,24 @@
 	<object class="MixerBusFader" id="{f6977b0f-e7c2-4794-ab7b-06e83a5a0dce}" />
 	<object class="MixerBusFader" id="{8f60f620-752a-4da6-b17b-7e311986e8ce}" />
 	<object class="MixerBusFader" id="{cee17135-1a9a-4bc0-b316-559b5df1ef9b}" />
+	<object class="AutomationPoint" id="{73f752c8-162d-4552-9d3e-fcae59b7abbb}">
+		<property name="position">
+			<value>0.025111607142857144</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+		<property name="curveShape">
+			<value>-0.2547189</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{2f85c858-a06b-4680-96b9-31c7e3e9674c}">
+		<property name="position">
+			<value>0.033482142857142856</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{d67cac3f-c899-4aa0-ac00-b524d10c9c32}" />
 </objects>

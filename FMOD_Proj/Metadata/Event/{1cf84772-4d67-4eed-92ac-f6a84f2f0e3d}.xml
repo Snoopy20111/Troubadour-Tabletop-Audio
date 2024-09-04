@@ -8,7 +8,7 @@
 			<value>1</value>
 		</property>
 		<relationship name="folder">
-			<destination>{d3991d65-deb5-44d4-8fc7-6c98abf3a82e}</destination>
+			<destination>{c6e1e9bb-1aa2-4146-bd9d-a1d696290cc7}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{0b16e85e-d833-4938-8c9d-74f583bc25d2}</destination>
@@ -171,7 +171,7 @@
 			<value>-80</value>
 		</property>
 		<property name="name">
-			<value>Audio 1</value>
+			<value>Ref</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{ee25bf40-3b78-4ca9-a995-afded62b8cd4}</destination>
@@ -199,7 +199,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{ff63a1db-7def-4454-83e1-4075310191b4}">
 		<property name="name">
-			<value>Audio 2</value>
+			<value>Bass</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{685bfc79-cda3-45a5-8d58-8b65e48ae515}</destination>
@@ -221,7 +221,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{bf4c27e3-9d9b-4501-b985-fe0442d602dd}">
 		<property name="name">
-			<value>Audio 3</value>
+			<value>Fractals</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{7e22a6e4-ec60-4544-ae6d-6c53da738faf}</destination>
@@ -249,7 +249,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{9fbb781c-2011-46ad-a085-317938a6c024}">
 		<property name="name">
-			<value>Audio 4</value>
+			<value>Piano_Bow</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{28df3fb3-ae61-4c11-af14-16ca7b26958d}</destination>
@@ -277,7 +277,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{28b88961-d915-4ab3-b9de-37f8f999a7a3}">
 		<property name="name">
-			<value>Audio 5</value>
+			<value>Piano_Lofi</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{8ab9c69b-c825-4acc-96d9-6464fede03b5}</destination>
@@ -305,7 +305,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{37042667-738f-47b7-a6df-018933f4a14a}">
 		<property name="name">
-			<value>Audio 6</value>
+			<value>Piano_Pick</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{43c0185e-70b8-45ab-834f-7230ddc143f0}</destination>
@@ -333,7 +333,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{489d7bef-19fd-4070-bfb8-975e1be42a73}">
 		<property name="name">
-			<value>Audio 7</value>
+			<value>Piano_Soft</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{62001c95-7d88-4e44-8b76-630c468636ac}</destination>
@@ -355,7 +355,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{7fb45f36-e3cb-4cff-8c7c-4d3c7ea412f1}">
 		<property name="name">
-			<value>Audio 8</value>
+			<value>Drums</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{74db99d8-0c17-41a5-9fe7-ddb7a9b15247}</destination>

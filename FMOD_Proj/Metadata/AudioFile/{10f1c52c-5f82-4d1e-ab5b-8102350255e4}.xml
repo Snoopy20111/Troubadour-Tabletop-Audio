@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{10f1c52c-5f82-4d1e-ab5b-8102350255e4}">
 		<property name="assetPath">
-			<value>Spacedust/airtone_-_spacedust_pianopick.mp3</value>
+			<value>Spacedust/airtone_spacedust_pianopick.mp3</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>

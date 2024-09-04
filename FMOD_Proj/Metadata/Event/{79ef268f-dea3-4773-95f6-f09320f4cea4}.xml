@@ -8,7 +8,7 @@
 			<value>0</value>
 		</property>
 		<relationship name="folder">
-			<destination>{d3991d65-deb5-44d4-8fc7-6c98abf3a82e}</destination>
+			<destination>{c6e1e9bb-1aa2-4146-bd9d-a1d696290cc7}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{9102f5ad-465c-49a6-83e4-899d9c55b8e5}</destination>
@@ -108,7 +108,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{b820c29c-6258-4d88-af13-44f6123ffd7a}">
 		<property name="name">
-			<value>Audio 1</value>
+			<value>Strings</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{428c6a72-a1bf-4922-8bd7-b55c2d95a49d}</destination>
@@ -121,8 +121,14 @@
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{70b34168-0306-4991-9437-fcf8b8fcf644}">
+		<property name="start">
+			<value>30.545454545454543</value>
+		</property>
 		<property name="length">
-			<value>196.36362811791383</value>
+			<value>165.81817357245922</value>
+		</property>
+		<property name="timelockedOffset">
+			<value>30.545454545454543</value>
 		</property>
 		<relationship name="audioFile">
 			<destination>{22ce6b75-e695-467f-b79c-a2da395faeaf}</destination>
@@ -130,7 +136,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{14e5ce61-9c69-4f91-b245-2c5f888b8889}">
 		<property name="name">
-			<value>Audio 2</value>
+			<value>Cello</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{cc2b49ec-68cd-43b0-96c9-7e6700c39e4e}</destination>

@@ -329,7 +329,11 @@
 			<value>-11</value>
 		</property>
 	</object>
-	<object class="SFXReverbEffect" id="{540afa0f-e209-4b30-9a0d-53ee3297997e}" />
+	<object class="SFXReverbEffect" id="{540afa0f-e209-4b30-9a0d-53ee3297997e}">
+		<property name="bypass">
+			<value>true</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{286f6bb9-ef48-45cb-aad1-aba192a33c7a}" />
 	<object class="AutomationPoint" id="{466603e8-529f-4e8c-9b5b-c37ebbb7cbb0}">
 		<property name="position">

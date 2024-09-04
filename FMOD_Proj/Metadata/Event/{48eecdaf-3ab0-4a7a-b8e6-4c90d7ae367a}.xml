@@ -8,7 +8,7 @@
 			<value>1</value>
 		</property>
 		<relationship name="folder">
-			<destination>{d3991d65-deb5-44d4-8fc7-6c98abf3a82e}</destination>
+			<destination>{19a4e887-4a02-4bde-90c9-9be24168d13d}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{88e0eb19-20bf-4702-ac68-0cabffefe4dc}</destination>
@@ -25,6 +25,7 @@
 		<relationship name="markerTracks">
 			<destination>{68533104-9b98-477c-9602-9d21ea40f906}</destination>
 			<destination>{7f77b1af-9cf4-4265-8a3d-eec90217605d}</destination>
+			<destination>{10d5b0d4-4dab-4ba5-b61c-529b4600c0eb}</destination>
 		</relationship>
 		<relationship name="groupTracks">
 			<destination>{04b32313-1396-47ca-b0fb-586f88f9a73f}</destination>
@@ -70,6 +71,7 @@
 	<object class="EventAutomatableProperties" id="{f437666b-3ba3-462e-9bcd-50a9b7277cef}" />
 	<object class="MarkerTrack" id="{68533104-9b98-477c-9602-9d21ea40f906}" />
 	<object class="MarkerTrack" id="{7f77b1af-9cf4-4265-8a3d-eec90217605d}" />
+	<object class="MarkerTrack" id="{10d5b0d4-4dab-4ba5-b61c-529b4600c0eb}" />
 	<object class="GroupTrack" id="{04b32313-1396-47ca-b0fb-586f88f9a73f}">
 		<relationship name="modules">
 			<destination>{99605b44-4693-41b7-96f0-c0d1bb789246}</destination>
@@ -151,9 +153,6 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{8059abff-061c-4205-ac53-d1a528acc38a}">
-		<property name="volume">
-			<value>10</value>
-		</property>
 		<relationship name="effectChain">
 			<destination>{81fa0d94-1186-4351-81bd-d6bd8f3ddd73}</destination>
 		</relationship>
@@ -516,7 +515,7 @@
 			<value>Green</value>
 		</property>
 		<property name="volume">
-			<value>-6.5</value>
+			<value>-11.5</value>
 		</property>
 		<property name="name">
 			<value>Reverb</value>
@@ -559,7 +558,7 @@
 			<destination>{e449f082-bfc5-4742-9746-c5fb95457062}</destination>
 		</relationship>
 		<relationship name="markerTrack">
-			<destination>{68533104-9b98-477c-9602-9d21ea40f906}</destination>
+			<destination>{7f77b1af-9cf4-4265-8a3d-eec90217605d}</destination>
 		</relationship>
 		<relationship name="triggerConditions">
 			<destination>{c0d0973c-317c-4fbf-96e4-45ca117add5b}</destination>
@@ -579,7 +578,7 @@
 			<destination>{e449f082-bfc5-4742-9746-c5fb95457062}</destination>
 		</relationship>
 		<relationship name="markerTrack">
-			<destination>{7f77b1af-9cf4-4265-8a3d-eec90217605d}</destination>
+			<destination>{68533104-9b98-477c-9602-9d21ea40f906}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionRegion" id="{04b95ce3-5f90-4ae5-bd23-8000fca0a479}">
@@ -590,13 +589,13 @@
 			<value>291.81818181818181</value>
 		</property>
 		<property name="quantizationInterval">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<relationship name="timeline">
 			<destination>{e449f082-bfc5-4742-9746-c5fb95457062}</destination>
 		</relationship>
 		<relationship name="markerTrack">
-			<destination>{7f77b1af-9cf4-4265-8a3d-eec90217605d}</destination>
+			<destination>{10d5b0d4-4dab-4ba5-b61c-529b4600c0eb}</destination>
 		</relationship>
 		<relationship name="transitionTimeline">
 			<destination>{5aa9793c-55cd-474a-aa2a-130dbb066b1c}</destination>
@@ -734,11 +733,16 @@
 	</object>
 	<object class="MixerBusEffectChain" id="{4a6cff52-e8d1-46b0-ae60-1523b84a01d9}">
 		<relationship name="effects">
+			<destination>{fd08c2b4-244e-43f9-b7c0-831e72f11e0a}</destination>
 			<destination>{7818db0c-4ed6-44fa-8956-2347e59c81e3}</destination>
 			<destination>{be1374ec-ab16-4617-aae5-a53cee436415}</destination>
 		</relationship>
 	</object>
-	<object class="MixerBusPanner" id="{89f6f68c-4106-49fe-add5-c0a95adf04cf}" />
+	<object class="MixerBusPanner" id="{89f6f68c-4106-49fe-add5-c0a95adf04cf}">
+		<property name="overridingOutputFormat">
+			<value>1</value>
+		</property>
+	</object>
 	<object class="TransitionSourceFadeOutCurve" id="{2a26597e-3a78-478d-a91e-ef4489f8ac0c}">
 		<relationship name="startPoint">
 			<destination>{b192efa8-7d6c-4aa0-bdf1-39a6832425b7}</destination>
@@ -1108,12 +1112,20 @@
 			<value>1</value>
 		</property>
 	</object>
+	<object class="PannerEffect" id="{fd08c2b4-244e-43f9-b7c0-831e72f11e0a}">
+		<property name="stereoPan">
+			<value>60</value>
+		</property>
+		<property name="overridingOutputFormat">
+			<value>1</value>
+		</property>
+	</object>
 	<object class="MixerSend" id="{7818db0c-4ed6-44fa-8956-2347e59c81e3}">
 		<property name="level">
 			<value>0</value>
 		</property>
 		<property name="inputFormat">
-			<value>0</value>
+			<value>1</value>
 		</property>
 		<relationship name="mixerReturn">
 			<destination>{fa1575c7-3b9c-4fd4-ae4e-bf813d6787b4}</destination>

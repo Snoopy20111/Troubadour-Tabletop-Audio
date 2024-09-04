@@ -2,19 +2,19 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{d33f8290-6d62-4b33-a8d6-f670f91e48d9}">
 		<property name="assetPath">
-			<value>PackingtonsPound/Javolenus_-_Packington_s_Pound_mando1.flac</value>
+			<value>PackingtonsPound/Javolenus_Packingtons_Pound_mando1.flac</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>
 		</property>
 		<property name="frequencyInKHz">
-			<value>96</value>
+			<value>48</value>
 		</property>
 		<property name="channelCount">
 			<value>1</value>
 		</property>
 		<property name="length">
-			<value>127</value>
+			<value>125</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{f930ae7e-03ac-4797-acd5-e828f088234b}</destination>
