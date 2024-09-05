@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{aeab50fd-129e-479a-b27f-669e5fa2edef}">
-		<property name="note">
-			<value>Only needs a _little_ cleaning. Collapse some stems to mono to save voices, a little basic volume adjustment / checking, etc.</value>
-		</property>
+		<property name="note" />
 		<property name="name">
 			<value>IrishCoffee</value>
 		</property>
@@ -11,7 +9,7 @@
 			<value>1</value>
 		</property>
 		<relationship name="folder">
-			<destination>{66800250-1eaa-4e4b-ac6d-8174e49c5de3}</destination>
+			<destination>{c6e1e9bb-1aa2-4146-bd9d-a1d696290cc7}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{955cf632-8060-4437-b36a-ea3599a18574}</destination>
@@ -236,9 +234,6 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{338b80e7-e583-4422-85b6-c26673e6ff21}">
-		<property name="volume">
-			<value>-80</value>
-		</property>
 		<property name="name">
 			<value>Ref</value>
 		</property>
@@ -296,7 +291,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{69459bfe-33a6-4d55-8ed5-d5e873c7eb46}">
 		<property name="volume">
-			<value>-8</value>
+			<value>-4.5</value>
 		</property>
 		<property name="name">
 			<value>Gtr_12str</value>
@@ -327,7 +322,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{2a2cd257-1bc7-4ddd-823d-9e455db59ebd}">
 		<property name="volume">
-			<value>-7.5</value>
+			<value>-4.5</value>
 		</property>
 		<property name="name">
 			<value>Gtr_6str</value>
@@ -358,7 +353,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{6e694da8-9b63-470d-940f-6ad4fba09ecb}">
 		<property name="volume">
-			<value>-6.5</value>
+			<value>-15.5</value>
 		</property>
 		<property name="name">
 			<value>Perc_Bongo</value>
@@ -389,7 +384,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{eec18520-6400-4867-bac0-b5fb1dcc63f2}">
 		<property name="volume">
-			<value>1</value>
+			<value>3</value>
 		</property>
 		<property name="name">
 			<value>Perc_Claps</value>
@@ -451,7 +446,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{aae9d4d2-eae9-4922-9a88-20ba8c7a2066}">
 		<property name="volume">
-			<value>-5</value>
+			<value>-8</value>
 		</property>
 		<property name="name">
 			<value>Perc_Gtr</value>
@@ -666,13 +661,21 @@
 			<destination>{7bf923bf-2676-4fb6-b87d-f8ff91734b14}</destination>
 		</relationship>
 	</object>
-	<object class="MixerBusPanner" id="{56f6f3bd-baf0-433e-a399-0e65be79a8a7}" />
+	<object class="MixerBusPanner" id="{56f6f3bd-baf0-433e-a399-0e65be79a8a7}">
+		<property name="stereoPan">
+			<value>-48</value>
+		</property>
+	</object>
 	<object class="MixerBusEffectChain" id="{de4c07ab-e528-4b67-ac37-7dd2c5996cb3}">
 		<relationship name="effects">
 			<destination>{3ffd2df2-b968-45ee-baa8-07bbae6d1da3}</destination>
 		</relationship>
 	</object>
-	<object class="MixerBusPanner" id="{98ca7f1c-35f1-4de8-adc2-e6324a4f7e9f}" />
+	<object class="MixerBusPanner" id="{98ca7f1c-35f1-4de8-adc2-e6324a4f7e9f}">
+		<property name="stereoPan">
+			<value>48</value>
+		</property>
+	</object>
 	<object class="MixerBusEffectChain" id="{80050a4a-30d4-430c-9449-13fbd26af0d3}">
 		<relationship name="effects">
 			<destination>{be0bc6e2-aa2d-451c-9367-02f0017cf974}</destination>
