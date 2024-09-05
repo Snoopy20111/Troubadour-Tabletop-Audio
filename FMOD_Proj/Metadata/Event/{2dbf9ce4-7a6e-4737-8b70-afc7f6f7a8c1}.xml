@@ -97,7 +97,7 @@
 	<object class="MixerBusPanner" id="{e68f66ff-1d26-4940-a1b1-f9b5d36daab8}" />
 	<object class="SingleSound" id="{0503fd0a-9bbf-4948-924b-f2daa2525606}">
 		<property name="length">
-			<value>170.73632653061225</value>
+			<value>166.82404166666666</value>
 		</property>
 		<relationship name="audioFile">
 			<destination>{3d90f998-4fef-4422-a568-2dba83e41f74}</destination>
@@ -105,7 +105,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{20de152c-aa81-49f0-a7ac-14662dbbd815}">
 		<property name="volume">
-			<value>5.5</value>
+			<value>1</value>
 		</property>
 		<property name="name">
 			<value>Piano</value>
@@ -122,16 +122,13 @@
 	</object>
 	<object class="SingleSound" id="{ab6ebd9d-31d6-410e-b1ad-19da6ebb95ba}">
 		<property name="length">
-			<value>170.99385487528346</value>
+			<value>165.09727083333334</value>
 		</property>
 		<relationship name="audioFile">
 			<destination>{14307448-2ec8-490e-a570-fd19129bbe93}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{0ea0aeca-8156-48a1-a66d-dd92e6c6e6fb}">
-		<property name="volume">
-			<value>3.5</value>
-		</property>
 		<property name="name">
 			<value>Bass</value>
 		</property>

@@ -8,7 +8,7 @@
 			<value>1</value>
 		</property>
 		<relationship name="folder">
-			<destination>{66800250-1eaa-4e4b-ac6d-8174e49c5de3}</destination>
+			<destination>{c6e1e9bb-1aa2-4146-bd9d-a1d696290cc7}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{d048b83b-181a-4998-a981-528a5d250333}</destination>
@@ -57,7 +57,7 @@
 	<object class="MarkerTrack" id="{f7c97360-fa3f-463c-b962-4052af6ede3b}" />
 	<object class="GroupTrack" id="{7e399e5a-9568-4205-bda0-28cedd8315cc}">
 		<relationship name="modules">
-			<destination>{0207fae8-7056-47c1-ab35-91c98c7dc074}</destination>
+			<destination>{8d3fb9f8-7d3c-4fca-a3a0-877dec25aa4f}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{54739acc-d099-4956-b3a6-109b1e1e53c6}</destination>
@@ -65,7 +65,7 @@
 	</object>
 	<object class="Timeline" id="{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}">
 		<relationship name="modules">
-			<destination>{0207fae8-7056-47c1-ab35-91c98c7dc074}</destination>
+			<destination>{8d3fb9f8-7d3c-4fca-a3a0-877dec25aa4f}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{b55e6ca4-ac5e-4428-8573-a3e58e74140e}">
@@ -85,20 +85,20 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{4f89fbeb-ee37-4107-af07-38192c60fe7c}" />
-	<object class="SingleSound" id="{0207fae8-7056-47c1-ab35-91c98c7dc074}">
+	<object class="SingleSound" id="{8d3fb9f8-7d3c-4fca-a3a0-877dec25aa4f}">
 		<property name="length">
-			<value>151.05600000000001</value>
+			<value>146.63664583333335</value>
+		</property>
+		<property name="volume">
+			<value>2</value>
 		</property>
 		<relationship name="audioFile">
-			<destination>{4470d0d1-6b3a-453e-acf3-6742c72fde74}</destination>
+			<destination>{c5236b2e-247f-47c2-b45e-ca9fe2b92c96}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{54739acc-d099-4956-b3a6-109b1e1e53c6}">
-		<property name="volume">
-			<value>7</value>
-		</property>
 		<property name="name">
-			<value>Audio 1</value>
+			<value>Guitar</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{09642a13-89f1-409c-a0f8-2e7265e0e8ef}</destination>
