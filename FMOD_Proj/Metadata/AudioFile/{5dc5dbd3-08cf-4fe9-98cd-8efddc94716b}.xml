@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{5dc5dbd3-08cf-4fe9-98cd-8efddc94716b}">
 		<property name="assetPath">
-			<value>TanseysFancy/Javolenus_-_Tansey_s_Fancy_(Trad.)_Mix.flac</value>
+			<value>TanseysFancy/Javolenus_TanseysFancy_(Trad)_Mix.flac</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>
