@@ -488,6 +488,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{c5d90c4c-4894-412f-9d7f-9a53231d4a91}">
+		<property name="volume">
+			<value>-3</value>
+		</property>
 		<property name="name">
 			<value>BlockFlute</value>
 		</property>
@@ -541,6 +544,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{b1026299-9d95-40db-a4ef-a06e7b5d6188}">
+		<property name="volume">
+			<value>-4</value>
+		</property>
 		<property name="name">
 			<value>Harmonica</value>
 		</property>

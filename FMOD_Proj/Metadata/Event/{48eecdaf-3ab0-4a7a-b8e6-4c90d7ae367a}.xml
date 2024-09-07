@@ -40,6 +40,9 @@
 		<relationship name="timeline">
 			<destination>{e449f082-bfc5-4742-9746-c5fb95457062}</destination>
 		</relationship>
+		<relationship name="banks">
+			<destination>{6613e609-1f23-4f70-8361-7ebf8c6210c2}</destination>
+		</relationship>
 	</object>
 	<object class="EventMixer" id="{88e0eb19-20bf-4702-ac68-0cabffefe4dc}">
 		<relationship name="masterBus">
@@ -851,7 +854,7 @@
 	</object>
 	<object class="LimiterEffect" id="{56b2ddf9-dbef-4b1a-8eea-aa24a671efd8}">
 		<property name="boost">
-			<value>3.60000014</value>
+			<value>4.5999999</value>
 		</property>
 		<property name="ceiling">
 			<value>-2.5</value>
