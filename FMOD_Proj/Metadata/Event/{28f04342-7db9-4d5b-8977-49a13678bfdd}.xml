@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{28f04342-7db9-4d5b-8977-49a13678bfdd}">
+		<property name="note">
+			<value>sinewaves by airtone (c) copyright 2023 Licensed under a Creative Commons Attribution Noncommercial  (3.0) license. https://dig.ccmixter.org/files/airtone/65981</value>
+		</property>
 		<property name="name">
 			<value>SineWaves</value>
 		</property>

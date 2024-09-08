@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{e2a2374b-1853-41e6-aa77-d0782fd9d8be}">
+		<property name="note">
+			<value>Sobrevuelo by Chuaqui (c) copyright 2015 Licensed under a Creative Commons Attribution Noncommercial  (3.0) license. https://dig.ccmixter.org/files/Chuaqui/49554</value>
+		</property>
 		<property name="name">
-			<value>Chuaqui_Sobrevuelo</value>
+			<value>Flyover</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
 		</property>
 		<relationship name="folder">
-			<destination>{c6e1e9bb-1aa2-4146-bd9d-a1d696290cc7}</destination>
+			<destination>{66800250-1eaa-4e4b-ac6d-8174e49c5de3}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{6a51db86-c2c5-494d-b187-25fa77d0f5d0}</destination>
@@ -94,6 +97,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{39e949f6-15de-4fd3-aeeb-ce8465246191}">
+		<property name="volume">
+			<value>-10</value>
+		</property>
 		<property name="name">
 			<value>Audio 1</value>
 		</property>

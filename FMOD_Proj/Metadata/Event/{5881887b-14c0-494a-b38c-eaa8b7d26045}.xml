@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{5881887b-14c0-494a-b38c-eaa8b7d26045}">
+		<property name="note">
+			<value>Caring Can Make A Difference (Short Emotional Film Score with Stems) by geoffpeters (c) copyright 2014 Licensed under a Creative Commons Attribution (3.0) license. https://dig.ccmixter.org/files/geoffpeters/48537 Ft: Elizabeth Wojtowicz</value>
+		</property>
 		<property name="name">
 			<value>CaringCanMakeADifference</value>
 		</property>
@@ -30,6 +33,9 @@
 		</relationship>
 		<relationship name="parameters">
 			<destination>{b445fae5-97a8-4dc3-8222-fefbe3d0bae4}</destination>
+		</relationship>
+		<relationship name="banks">
+			<destination>{6613e609-1f23-4f70-8361-7ebf8c6210c2}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{3ea8b238-fb30-47cb-ab73-8af3b51141ef}">

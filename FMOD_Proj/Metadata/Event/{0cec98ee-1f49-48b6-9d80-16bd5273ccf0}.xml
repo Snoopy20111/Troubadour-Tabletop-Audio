@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{0cec98ee-1f49-48b6-9d80-16bd5273ccf0}">
+		<property name="note">
+			<value>Space And Time by Tomas PhUsIoN (c) copyright 2012 Licensed under a Creative Commons Attribution Noncommercial  (3.0) license. https://dig.ccmixter.org/files/phusion/39037</value>
+		</property>
 		<property name="name">
 			<value>SpaceAndTime</value>
 		</property>

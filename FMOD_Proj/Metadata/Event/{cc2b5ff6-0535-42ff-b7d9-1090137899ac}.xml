@@ -2,7 +2,9 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{cc2b5ff6-0535-42ff-b7d9-1090137899ac}">
 		<property name="note">
-			<value>May not be worth using the stems, there's only two of them and the Stereo mix sounds alright.</value>
+			<value>May not be worth using the stems, there's only two of them and the Stereo mix sounds alright.
+
+Silent Dream Duet for Piano and Cello by Martijn de Boer (NiGiD) (c) copyright 2021 Licensed under a Creative Commons Attribution Noncommercial  (3.0) license. https://dig.ccmixter.org/files/NiGiD/63807 </value>
 		</property>
 		<property name="name">
 			<value>SilentDream</value>

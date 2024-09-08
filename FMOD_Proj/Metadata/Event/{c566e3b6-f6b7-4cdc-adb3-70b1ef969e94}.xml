@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{c566e3b6-f6b7-4cdc-adb3-70b1ef969e94}">
+		<property name="note">
+			<value>Refraction by jaspertine (c) copyright 2024 Licensed under a Creative Commons Attribution (4.0) license. https://dig.ccmixter.org/files/jaspertine/68742</value>
+		</property>
 		<property name="name">
 			<value>Refraction</value>
 		</property>

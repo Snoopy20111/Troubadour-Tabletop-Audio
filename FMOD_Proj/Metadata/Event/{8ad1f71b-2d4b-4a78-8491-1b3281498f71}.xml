@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{8ad1f71b-2d4b-4a78-8491-1b3281498f71}">
+		<property name="note">
+			<value>Piano Piece 6 (Winter Lights) by Darkroom (c) copyright 2020 Licensed under a Creative Commons Attribution Noncommercial  (3.0) license. https://dig.ccmixter.org/files/mactonite/62882</value>
+		</property>
 		<property name="name">
 			<value>WinterLights</value>
 		</property>
@@ -98,7 +101,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{26119012-3dad-42d1-99b9-501d4baa916a}">
 		<property name="name">
-			<value>Audio 1</value>
+			<value>Piano</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{c64095a6-bd7f-416f-bb37-24994c0fd699}</destination>

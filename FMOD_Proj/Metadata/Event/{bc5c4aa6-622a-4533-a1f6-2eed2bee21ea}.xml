@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{bc5c4aa6-622a-4533-a1f6-2eed2bee21ea}">
+		<property name="note">
+			<value>Maya by reiswerk (c) copyright 2020 Licensed under a Creative Commons Sampling Plus license. https://dig.ccmixter.org/files/Reiswerk/61260 Ft: Norine Braun</value>
+		</property>
 		<property name="name">
 			<value>Maya</value>
 		</property>

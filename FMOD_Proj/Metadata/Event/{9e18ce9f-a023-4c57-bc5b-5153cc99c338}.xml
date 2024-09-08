@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{9e18ce9f-a023-4c57-bc5b-5153cc99c338}">
+		<property name="note">
+			<value>Stuck In A Dark Place by Skye Jordan (c) copyright 2024 Licensed under a Creative Commons Attribution Noncommercial (4.0) license. https://dig.ccmixter.org/files/SkyeJordan/68146</value>
+		</property>
 		<property name="name">
 			<value>StuckInADarkPlace</value>
 		</property>

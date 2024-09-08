@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{2dbf9ce4-7a6e-4737-8b70-afc7f6f7a8c1}">
+		<property name="note">
+			<value>Nostalgia (Piano Impro) by Doxent Zsigmond (c) copyright 2013 Licensed under a Creative Commons Attribution (3.0) license. https://dig.ccmixter.org/files/doxent/44263
+
+Forza Nostalgia by Martijn de Boer (NiGiD) (c) copyright 2023 Licensed under a Creative Commons Attribution Noncommercial  (3.0) license. https://dig.ccmixter.org/files/NiGiD/66054 Ft: Doxent Zsigmond</value>
+		</property>
 		<property name="name">
 			<value>Nostalgia</value>
 		</property>
@@ -104,9 +109,6 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{20de152c-aa81-49f0-a7ac-14662dbbd815}">
-		<property name="volume">
-			<value>1</value>
-		</property>
 		<property name="name">
 			<value>Piano</value>
 		</property>
@@ -129,6 +131,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{0ea0aeca-8156-48a1-a66d-dd92e6c6e6fb}">
+		<property name="volume">
+			<value>-1</value>
+		</property>
 		<property name="name">
 			<value>Bass</value>
 		</property>

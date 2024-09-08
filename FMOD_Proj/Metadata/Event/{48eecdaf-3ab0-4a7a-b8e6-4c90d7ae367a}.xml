@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{48eecdaf-3ab0-4a7a-b8e6-4c90d7ae367a}">
+		<property name="note">
+			<value>Blackwaterside (Trad.) by Javolenus (c) copyright 2024 Licensed under a Creative Commons Attribution Noncommercial (4.0) license. https://dig.ccmixter.org/files/Javolenus/68249</value>
+		</property>
 		<property name="name">
 			<value>Blackwaterside</value>
 		</property>

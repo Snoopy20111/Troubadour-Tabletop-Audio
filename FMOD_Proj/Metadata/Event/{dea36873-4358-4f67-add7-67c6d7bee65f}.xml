@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{dea36873-4358-4f67-add7-67c6d7bee65f}">
+		<property name="note">
+			<value>Traditional Eastern instrument Macedonian Tambura - improvisation played by Boris Todorovic.aif by Tomlija -- https://freesound.org/s/110333/ -- License: Attribution 3.0</value>
+		</property>
 		<property name="name">
 			<value>MacedonianImprov</value>
 		</property>
@@ -8,7 +11,7 @@
 			<value>1</value>
 		</property>
 		<relationship name="folder">
-			<destination>{c6e1e9bb-1aa2-4146-bd9d-a1d696290cc7}</destination>
+			<destination>{66800250-1eaa-4e4b-ac6d-8174e49c5de3}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{363067c3-0b40-42ef-9c04-d428831af708}</destination>
@@ -88,6 +91,9 @@
 	<object class="SingleSound" id="{4c05f72a-c408-46e7-adf8-cb5f8d2e47f3}">
 		<property name="length">
 			<value>166.370125</value>
+		</property>
+		<property name="looping">
+			<value>true</value>
 		</property>
 		<relationship name="audioFile">
 			<destination>{7d0121f8-db0e-4de8-a985-9b0bc4de0381}</destination>

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{36228d3f-927e-48ab-842c-f5646dc484ed}">
+		<property name="note">
+			<value>Mojave Scotch by jaspertine (c) copyright 2024 Licensed under a Creative Commons Attribution (4.0) license. https://dig.ccmixter.org/files/jaspertine/68084</value>
+		</property>
 		<property name="name">
 			<value>MojaveScotch</value>
 		</property>
@@ -193,6 +196,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{adcdb816-138b-4605-b954-e338c4a7a1d9}">
+		<property name="volume">
+			<value>-6</value>
+		</property>
 		<property name="name">
 			<value>Bass</value>
 		</property>
@@ -224,6 +230,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{98aa3b5d-b36f-4459-a5ca-262e15a7a171}">
+		<property name="volume">
+			<value>-8</value>
+		</property>
 		<property name="name">
 			<value>Drms</value>
 		</property>
@@ -252,6 +261,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{c1fb2e49-6931-4f88-9b88-99e66c059f34}">
+		<property name="volume">
+			<value>-6</value>
+		</property>
 		<property name="name">
 			<value>Drms_Quiet</value>
 		</property>
@@ -280,6 +292,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{906d4048-7973-4c1b-b63c-60c3bf19aa91}">
+		<property name="volume">
+			<value>-6</value>
+		</property>
 		<property name="name">
 			<value>Gtr_Amb</value>
 		</property>
@@ -308,6 +323,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{21e99c74-3032-416d-94c2-9fd06ca10949}">
+		<property name="volume">
+			<value>-6</value>
+		</property>
 		<property name="name">
 			<value>Gtr_Left</value>
 		</property>
@@ -336,6 +354,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{d37e8474-d041-40f2-bcf2-e7f763243c5a}">
+		<property name="volume">
+			<value>-6</value>
+		</property>
 		<property name="name">
 			<value>Gtr_Right</value>
 		</property>
@@ -367,6 +388,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{54eaba6c-17df-4b90-ba27-31bd97815be6}">
+		<property name="volume">
+			<value>-6</value>
+		</property>
 		<property name="name">
 			<value>Orgn_High</value>
 		</property>
@@ -392,6 +416,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{36798c73-28e9-4042-963e-1ad4045195db}">
+		<property name="volume">
+			<value>-6</value>
+		</property>
 		<property name="name">
 			<value>Organ</value>
 		</property>
@@ -420,6 +447,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{fc77fdb1-9ee8-4e2e-a0d1-15f88fb02b9d}">
+		<property name="volume">
+			<value>-6</value>
+		</property>
 		<property name="name">
 			<value>Scratch</value>
 		</property>
@@ -448,6 +478,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{f9b6300a-94da-4448-8f43-baa0f69102fb}">
+		<property name="volume">
+			<value>-6</value>
+		</property>
 		<property name="name">
 			<value>Solo</value>
 		</property>

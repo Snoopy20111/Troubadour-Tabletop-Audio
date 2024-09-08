@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{79ef268f-dea3-4773-95f6-f09320f4cea4}">
+		<property name="note">
+			<value>Red Forest by Martijn de Boer (NiGiD) (c) copyright 2014 Licensed under a Creative Commons Attribution Noncommercial  (3.0) license. https://dig.ccmixter.org/files/NiGiD/48012</value>
+		</property>
 		<property name="name">
 			<value>RedForest</value>
 		</property>

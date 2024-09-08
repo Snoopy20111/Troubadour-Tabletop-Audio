@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{fe179a00-f1e4-4b89-a58c-a01c215139d6}">
+		<property name="note">
+			<value>Quiet Gongs with Spacious Chimes by GeeArtriasRose (c) copyright 2024 Licensed under a Creative Commons Attribution Noncommercial (4.0) license. https://dig.ccmixter.org/files/GeeArtriasRose/68673</value>
+		</property>
 		<property name="name">
 			<value>QuietGongsWithSpaciousChimes</value>
 		</property>

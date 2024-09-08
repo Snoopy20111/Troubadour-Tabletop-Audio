@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{090022b1-82b3-45c0-89c3-256f4d92e37f}">
+		<property name="note">
+			<value>Kalimba Song for the Whales by Kara Square (c) copyright 2021 Licensed under a Creative Commons Attribution Noncommercial  (3.0) license. https://dig.ccmixter.org/files/mindmapthat/63640</value>
+		</property>
 		<property name="name">
 			<value>KalimbaSongForTheWhales</value>
 		</property>
@@ -8,7 +11,7 @@
 			<value>0</value>
 		</property>
 		<relationship name="folder">
-			<destination>{c6e1e9bb-1aa2-4146-bd9d-a1d696290cc7}</destination>
+			<destination>{66800250-1eaa-4e4b-ac6d-8174e49c5de3}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{30373eb8-7f8f-459f-b401-0ae15b96e9f2}</destination>

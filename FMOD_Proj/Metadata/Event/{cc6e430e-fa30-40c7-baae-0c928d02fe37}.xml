@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{cc6e430e-fa30-40c7-baae-0c928d02fe37}">
+		<property name="note">
+			<value>Packington's Pound by Javolenus (c) copyright 2024 Licensed under a Creative Commons Attribution Noncommercial (4.0) license. https://dig.ccmixter.org/files/Javolenus/67763</value>
+		</property>
 		<property name="name">
 			<value>PackingtonsPound</value>
 		</property>
@@ -145,6 +148,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{e50bf771-15b3-4cce-9e63-e07ca9577b04}">
+		<property name="volume">
+			<value>-2</value>
+		</property>
 		<property name="name">
 			<value>Gtr</value>
 		</property>
@@ -168,7 +174,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{68690d51-f60f-4436-b2a2-e81b7c45f8d1}">
 		<property name="volume">
-			<value>-2.5</value>
+			<value>-5</value>
 		</property>
 		<property name="name">
 			<value>Gtr_Perc</value>
@@ -193,7 +199,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{00210d5a-1132-4f83-b131-90666b5dbaf8}">
 		<property name="volume">
-			<value>-1</value>
+			<value>-3</value>
 		</property>
 		<property name="name">
 			<value>Mando1_L</value>
@@ -218,7 +224,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{861df0ff-c305-439e-8b4e-015846683693}">
 		<property name="volume">
-			<value>-1</value>
+			<value>-3</value>
 		</property>
 		<property name="name">
 			<value>Mando2_R</value>
@@ -242,6 +248,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{11a33f1e-405f-41f1-b424-455b2684d04c}">
+		<property name="volume">
+			<value>-2</value>
+		</property>
 		<property name="name">
 			<value>Mando3_Lead</value>
 		</property>
@@ -307,6 +316,9 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{b9e3feae-21e3-4587-9982-2e1298633970}">
+		<property name="surroundStereoSeparation">
+			<value>180</value>
+		</property>
 		<property name="overridingOutputFormat">
 			<value>1</value>
 		</property>

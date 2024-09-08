@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{cf2a6064-2219-43d1-9696-b6acb68421e3}">
+		<property name="note">
+			<value>To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed under a Creative Commons Attribution Noncommercial (4.0) license. https://dig.ccmixter.org/files/Javolenus/67611 </value>
+		</property>
 		<property name="name">
 			<value>ToDriveTheColdWinterAway</value>
 		</property>

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{1cf84772-4d67-4eed-92ac-f6a84f2f0e3d}">
+		<property name="note">
+			<value>spacedust by airtone (c) copyright 2022 Licensed under a Creative Commons Attribution (3.0) license. https://dig.ccmixter.org/files/airtone/64741</value>
+		</property>
 		<property name="name">
 			<value>SpaceDust</value>
 		</property>

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{201c1ccd-df25-4bf9-beef-5d5bdb24831a}">
+		<property name="note">
+			<value>Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commons Attribution Noncommercial (4.0) license. https://dig.ccmixter.org/files/Javolenus/68294</value>
+		</property>
 		<property name="name">
 			<value>EphemeralSolace</value>
 		</property>

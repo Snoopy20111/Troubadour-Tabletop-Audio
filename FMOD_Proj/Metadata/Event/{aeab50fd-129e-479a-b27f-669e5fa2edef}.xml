@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{aeab50fd-129e-479a-b27f-669e5fa2edef}">
-		<property name="note" />
+		<property name="note">
+			<value>Irish Coffee by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Commons Attribution Noncommercial  (3.0) license. https://dig.ccmixter.org/files/JeffSpeed68/61360</value>
+		</property>
 		<property name="name">
 			<value>IrishCoffee</value>
 		</property>
@@ -262,6 +264,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{16938925-d327-4297-8ea3-f2a862f2dd3f}">
+		<property name="volume">
+			<value>-3</value>
+		</property>
 		<property name="name">
 			<value>Bass</value>
 		</property>
@@ -291,7 +296,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{69459bfe-33a6-4d55-8ed5-d5e873c7eb46}">
 		<property name="volume">
-			<value>-4.5</value>
+			<value>-8.5</value>
 		</property>
 		<property name="name">
 			<value>Gtr_12str</value>
@@ -322,7 +327,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{2a2cd257-1bc7-4ddd-823d-9e455db59ebd}">
 		<property name="volume">
-			<value>-4.5</value>
+			<value>-8.5</value>
 		</property>
 		<property name="name">
 			<value>Gtr_6str</value>
@@ -353,7 +358,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{6e694da8-9b63-470d-940f-6ad4fba09ecb}">
 		<property name="volume">
-			<value>-15.5</value>
+			<value>-17.5</value>
 		</property>
 		<property name="name">
 			<value>Perc_Bongo</value>
@@ -383,9 +388,6 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{eec18520-6400-4867-bac0-b5fb1dcc63f2}">
-		<property name="volume">
-			<value>3</value>
-		</property>
 		<property name="name">
 			<value>Perc_Claps</value>
 		</property>
@@ -415,7 +417,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{b6d1e7e3-9115-4719-8bf2-944c463cc7f0}">
 		<property name="volume">
-			<value>-1.5</value>
+			<value>-4.5</value>
 		</property>
 		<property name="name">
 			<value>Perc_Djembe</value>
@@ -446,7 +448,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{aae9d4d2-eae9-4922-9a88-20ba8c7a2066}">
 		<property name="volume">
-			<value>-8</value>
+			<value>-12</value>
 		</property>
 		<property name="name">
 			<value>Perc_Gtr</value>
@@ -477,7 +479,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{dab0a8d1-8607-448d-bb9a-187007e67caf}">
 		<property name="volume">
-			<value>-2</value>
+			<value>-5</value>
 		</property>
 		<property name="name">
 			<value>Perc_Tambourine</value>
@@ -504,6 +506,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{222fc644-bc30-4c91-bf00-fa2d5c0e5601}">
+		<property name="volume">
+			<value>-3</value>
+		</property>
 		<property name="name">
 			<value>Mel_IrishFlute</value>
 		</property>
@@ -532,6 +537,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{5dcba1cf-20ac-415e-8cf7-e3fd26448b78}">
+		<property name="volume">
+			<value>-3</value>
+		</property>
 		<property name="name">
 			<value>Mel_Accordion</value>
 		</property>
@@ -557,6 +565,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{d409200e-e691-436e-b634-5c9e323f77ec}">
+		<property name="volume">
+			<value>-3</value>
+		</property>
 		<property name="name">
 			<value>Mel_Banjo</value>
 		</property>
@@ -582,6 +593,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{439fc682-e78a-4afd-9847-fb409b6026ac}">
+		<property name="volume">
+			<value>-3</value>
+		</property>
 		<property name="name">
 			<value>Mel_Fiddle</value>
 		</property>
@@ -607,6 +621,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{2b108a33-328c-4907-bb51-2971f4a998c4}">
+		<property name="volume">
+			<value>-3</value>
+		</property>
 		<property name="name">
 			<value>Mel_Bagpipes</value>
 		</property>

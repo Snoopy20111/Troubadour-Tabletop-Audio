@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{d07b80c4-ea4f-4354-b799-6556df8f3afd}">
+		<property name="note">
+			<value>Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative Commons Attribution Noncommercial (4.0) license. https://dig.ccmixter.org/files/JeffSpeed68/66360</value>
+		</property>
 		<property name="name">
 			<value>SpringBlues</value>
 		</property>

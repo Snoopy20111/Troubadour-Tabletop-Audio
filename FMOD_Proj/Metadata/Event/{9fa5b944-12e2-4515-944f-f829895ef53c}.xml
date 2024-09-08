@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{9fa5b944-12e2-4515-944f-f829895ef53c}">
+		<property name="note">
+			<value>Tansey's Fancy (Trad.) by Javolenus (c) copyright 2024 Licensed under a Creative Commons Attribution Noncommercial (4.0) license. https://dig.ccmixter.org/files/Javolenus/67931</value>
+		</property>
 		<property name="name">
 			<value>TanseysFancy</value>
 		</property>
