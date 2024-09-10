@@ -171,7 +171,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{9bd8c62e-e6ef-4705-a8d7-504f8bcfe5ce}">
 		<property name="volume">
-			<value>-4</value>
+			<value>-6</value>
 		</property>
 		<property name="name">
 			<value>Bass</value>
@@ -202,7 +202,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{a5da2d64-473a-4fc5-b040-33506ac229fe}">
 		<property name="volume">
-			<value>-4</value>
+			<value>-6</value>
 		</property>
 		<property name="name">
 			<value>Choir</value>
@@ -227,7 +227,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{133053bb-0c78-4021-8fd5-f49624c71cb9}">
 		<property name="volume">
-			<value>-4</value>
+			<value>-6</value>
 		</property>
 		<property name="name">
 			<value>Str_Full</value>
@@ -258,7 +258,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{b08c1319-31ee-4c0f-8d2b-ff127c50fe85}">
 		<property name="volume">
-			<value>-4</value>
+			<value>-6</value>
 		</property>
 		<property name="name">
 			<value>Str_ViolinDr</value>
@@ -289,7 +289,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{d48e8e8b-21c7-480c-9587-93a3291f58a7}">
 		<property name="volume">
-			<value>-4</value>
+			<value>-6</value>
 		</property>
 		<property name="name">
 			<value>Str_ViolinW</value>
@@ -320,7 +320,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{fe83909b-9647-4081-85fd-4d937de9ce10}">
 		<property name="volume">
-			<value>-4</value>
+			<value>-6</value>
 		</property>
 		<property name="name">
 			<value>Keys</value>
@@ -345,7 +345,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{309e181e-b18c-433e-aea7-7bc4f2e3926c}">
 		<property name="volume">
-			<value>-4</value>
+			<value>-6</value>
 		</property>
 		<property name="name">
 			<value>Texture_1</value>
@@ -370,7 +370,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{2f961b96-00d3-4a34-96ef-3616b84670fa}">
 		<property name="volume">
-			<value>-4</value>
+			<value>-6</value>
 		</property>
 		<property name="name">
 			<value>Texture_2</value>

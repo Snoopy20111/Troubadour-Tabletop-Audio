@@ -126,6 +126,9 @@ Forza Nostalgia by Martijn de Boer (NiGiD) (c) copyright 2023 Licensed under a C
 		<property name="length">
 			<value>165.09727083333334</value>
 		</property>
+		<relationship name="fadeOutCurve">
+			<destination>{608dd01f-e204-4979-b535-562d1bc09b40}</destination>
+		</relationship>
 		<relationship name="audioFile">
 			<destination>{14307448-2ec8-490e-a570-fd19129bbe93}</destination>
 		</relationship>
@@ -160,6 +163,14 @@ Forza Nostalgia by Martijn de Boer (NiGiD) (c) copyright 2023 Licensed under a C
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{6780d7c6-86d1-4a99-b2d2-8f5f720f99b1}" />
+	<object class="FadeCurve" id="{608dd01f-e204-4979-b535-562d1bc09b40}">
+		<relationship name="startPoint">
+			<destination>{57551765-37b1-4b2e-83a4-c1495ca1aeb7}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{42342254-79c1-45c9-9804-d60afa639fcf}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusEffectChain" id="{f65cff5a-2da4-4aa7-a141-9575106b30b7}">
 		<relationship name="effects">
 			<destination>{fafecba2-3301-4a63-8685-bddabc950aa0}</destination>
@@ -168,5 +179,24 @@ Forza Nostalgia by Martijn de Boer (NiGiD) (c) copyright 2023 Licensed under a C
 	<object class="MixerBusPanner" id="{932ca3bd-fd8b-426b-8f2a-3e6032b3f75a}" />
 	<object class="MixerBusFader" id="{57f087a5-62a8-48e3-9cd7-bd2e3fba2ee9}" />
 	<object class="MixerBusFader" id="{03c2b5cc-866f-4824-894a-f3afa55c7eb6}" />
+	<object class="AutomationPoint" id="{57551765-37b1-4b2e-83a4-c1495ca1aeb7}">
+		<property name="position">
+			<value>161.625</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+		<property name="curveShape">
+			<value>0.280921131</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{42342254-79c1-45c9-9804-d60afa639fcf}">
+		<property name="position">
+			<value>165.09727083333334</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{fafecba2-3301-4a63-8685-bddabc950aa0}" />
 </objects>
