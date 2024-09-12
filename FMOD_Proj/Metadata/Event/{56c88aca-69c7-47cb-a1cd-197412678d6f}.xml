@@ -5,7 +5,7 @@
 			<value>Plays a looping mono sine wave at 1000 hz.</value>
 		</property>
 		<property name="name">
-			<value>Test_Sine</value>
+			<value>_Test_Sine</value>
 		</property>
 		<property name="outputFormat">
 			<value>0</value>
