@@ -11,7 +11,7 @@
 			<value>1</value>
 		</property>
 		<relationship name="folder">
-			<destination>{c6e1e9bb-1aa2-4146-bd9d-a1d696290cc7}</destination>
+			<destination>{19a4e887-4a02-4bde-90c9-9be24168d13d}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{bc2e630e-7c1f-46be-9d67-5f77460a35c7}</destination>
@@ -33,6 +33,9 @@
 		</relationship>
 		<relationship name="timeline">
 			<destination>{20e386fc-51d1-4e50-a68c-48b0b5520371}</destination>
+		</relationship>
+		<relationship name="banks">
+			<destination>{6613e609-1f23-4f70-8361-7ebf8c6210c2}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{bc2e630e-7c1f-46be-9d67-5f77460a35c7}">
@@ -81,6 +84,12 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{8534adc1-c53f-43c9-b5f7-2c3fc7f305a6}">
+		<property name="volume">
+			<value>-2</value>
+		</property>
+		<relationship name="modulators">
+			<destination>{983fb0b0-471b-4192-ab95-ebbb6c0d199a}</destination>
+		</relationship>
 		<relationship name="effectChain">
 			<destination>{7337e105-3b72-4c6a-b828-1e2aa245f672}</destination>
 		</relationship>
@@ -112,10 +121,10 @@
 	<object class="MixerBusPanner" id="{bf7fc36c-25e8-4195-9b3d-68c30fd700dc}" />
 	<object class="SingleSound" id="{389a851d-8593-42ec-a98c-15c6cf891379}">
 		<property name="length">
-			<value>482.4769306529019</value>
+			<value>200.89605709491752</value>
 		</property>
 		<property name="timelockedOffset">
-			<value>0.24963184709799763</value>
+			<value>0.10394290508241406</value>
 		</property>
 		<relationship name="fadeInCurve">
 			<destination>{6c4d83fe-fc67-4f99-8869-52a4a63c3518}</destination>
@@ -144,6 +153,9 @@
 		<property name="name">
 			<value>Audio 1</value>
 		</property>
+		<relationship name="modulators">
+			<destination>{933848c9-b7c2-4330-a7a7-f59aa1ae7c9e}</destination>
+		</relationship>
 		<relationship name="effectChain">
 			<destination>{2a9e5365-7823-4700-9fb5-a1a0932bd901}</destination>
 		</relationship>
@@ -156,10 +168,10 @@
 	</object>
 	<object class="LoopRegion" id="{7586497b-3ea4-4f46-8181-f576021a84d6}">
 		<property name="position">
-			<value>9.875</value>
+			<value>5</value>
 		</property>
 		<property name="length">
-			<value>468.125</value>
+			<value>191</value>
 		</property>
 		<relationship name="timeline">
 			<destination>{20e386fc-51d1-4e50-a68c-48b0b5520371}</destination>
@@ -170,6 +182,32 @@
 		<relationship name="transitionTimeline">
 			<destination>{f7283454-e586-441f-8ef8-9ed573157706}</destination>
 		</relationship>
+	</object>
+	<object class="ADSRModulator" id="{983fb0b0-471b-4192-ab95-ebbb6c0d199a}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>volume</value>
+		</property>
+		<property name="initialValue">
+			<value>-80</value>
+		</property>
+		<property name="attackTime">
+			<value>0</value>
+		</property>
+		<property name="holdTime">
+			<value>0</value>
+		</property>
+		<property name="decayTime">
+			<value>0</value>
+		</property>
+		<property name="releaseTime">
+			<value>15000</value>
+		</property>
+		<property name="releaseShape">
+			<value>0.252501041</value>
+		</property>
+		<property name="finalValue">
+			<value>-80</value>
+		</property>
 	</object>
 	<object class="MixerBusEffectChain" id="{7337e105-3b72-4c6a-b828-1e2aa245f672}">
 		<relationship name="effects">
@@ -208,6 +246,26 @@
 			<destination>{6790a12f-c974-4022-bca0-4c3f5dd5a523}</destination>
 		</relationship>
 	</object>
+	<object class="LFOModulator" id="{933848c9-b7c2-4330-a7a7-f59aa1ae7c9e}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>volume</value>
+		</property>
+		<property name="shape">
+			<value>6</value>
+		</property>
+		<property name="rate">
+			<value>0.0749999955</value>
+		</property>
+		<property name="phase">
+			<value>74</value>
+		</property>
+		<property name="depth">
+			<value>4</value>
+		</property>
+		<property name="direction">
+			<value>-100</value>
+		</property>
+	</object>
 	<object class="MixerBusEffectChain" id="{2a9e5365-7823-4700-9fb5-a1a0932bd901}">
 		<relationship name="effects">
 			<destination>{e4584bc8-8666-4ee0-95db-4dff439bc1fa}</destination>
@@ -239,7 +297,7 @@
 	</object>
 	<object class="AutomationPoint" id="{cc25407f-80bd-48b3-bf1c-1bf5d3546d90}">
 		<property name="position">
-			<value>0.75547328739661546</value>
+			<value>1.75</value>
 		</property>
 		<property name="value">
 			<value>1</value>
