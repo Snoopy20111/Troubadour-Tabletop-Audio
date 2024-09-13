@@ -2,13 +2,13 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{50b53278-62fa-42b3-a183-7364cda58821}">
 		<property name="name">
-			<value>Austin-Song-Needs-Name</value>
+			<value>_Austin-Song-Needs-Name</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
 		</property>
 		<relationship name="folder">
-			<destination>{19a4e887-4a02-4bde-90c9-9be24168d13d}</destination>
+			<destination>{66800250-1eaa-4e4b-ac6d-8174e49c5de3}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{30582ad1-1989-45a1-b93f-06c2c550c0c7}</destination>
@@ -33,9 +33,6 @@
 		</relationship>
 		<relationship name="timeline">
 			<destination>{3c726743-a46b-4bc9-9441-05d54eb7f410}</destination>
-		</relationship>
-		<relationship name="banks">
-			<destination>{6613e609-1f23-4f70-8361-7ebf8c6210c2}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{30582ad1-1989-45a1-b93f-06c2c550c0c7}">

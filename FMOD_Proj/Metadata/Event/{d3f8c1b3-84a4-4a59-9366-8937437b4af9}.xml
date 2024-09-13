@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{d3f8c1b3-84a4-4a59-9366-8937437b4af9}">
+		<property name="note">
+			<value>An original piece by Logan Hardin, aka Snoopy20111, the author :) Used in the game Roboxing, available for free on Itch.io.</value>
+		</property>
 		<property name="name">
-			<value>RoboxingTheme</value>
+			<value>_RoboxingTheme</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
 		</property>
 		<relationship name="folder">
-			<destination>{19a4e887-4a02-4bde-90c9-9be24168d13d}</destination>
+			<destination>{66800250-1eaa-4e4b-ac6d-8174e49c5de3}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{5e328302-489f-4b6a-97e2-c3dc9f061faa}</destination>
@@ -38,9 +41,6 @@
 		</relationship>
 		<relationship name="parameters">
 			<destination>{922bcbd0-994b-4b62-9647-0983f63c376e}</destination>
-		</relationship>
-		<relationship name="banks">
-			<destination>{6613e609-1f23-4f70-8361-7ebf8c6210c2}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{5e328302-489f-4b6a-97e2-c3dc9f061faa}">
