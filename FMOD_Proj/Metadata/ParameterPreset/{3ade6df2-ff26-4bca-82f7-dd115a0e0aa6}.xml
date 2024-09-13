@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="ParameterPreset" id="{3ade6df2-ff26-4bca-82f7-dd115a0e0aa6}">
 		<property name="name">
-			<value>State_IntBig</value>
+			<value>State_Int02</value>
 		</property>
 		<relationship name="folder">
 			<destination>{22312349-d57f-4705-a689-952236bfc399}</destination>
@@ -16,7 +16,7 @@
 			<value>1</value>
 		</property>
 		<property name="maximum">
-			<value>101</value>
+			<value>21</value>
 		</property>
 		<property name="initialValue">
 			<value>0</value>
