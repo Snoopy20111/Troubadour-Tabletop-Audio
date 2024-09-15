@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{9869274b-c7a3-49eb-be83-d8e590e6ebb6}">
 		<property name="assetPath">
-			<value>_Examples/Music/EphemeralSolace/Javolenus_-_Ephemeral_Solace_StereoMix.flac</value>
+			<value>_Examples/Music/EphemeralSolace/Javolenus_Ephemeral_Solace_StereoMix.flac</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>
