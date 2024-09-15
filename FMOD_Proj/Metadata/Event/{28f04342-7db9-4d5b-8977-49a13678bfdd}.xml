@@ -206,6 +206,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{24c08131-4e45-4053-ab65-94cb6f20826e}">
+		<property name="volume">
+			<value>-3</value>
+		</property>
 		<property name="name">
 			<value>Gtr_Main</value>
 		</property>
@@ -231,6 +234,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{8878746c-92de-43f2-978b-4e8e3e032bce}">
+		<property name="volume">
+			<value>-3</value>
+		</property>
 		<property name="name">
 			<value>Gtr1</value>
 		</property>
@@ -267,6 +273,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{3ebcc2c6-5eb9-442a-a724-7b91587c52fb}">
+		<property name="volume">
+			<value>-3</value>
+		</property>
 		<property name="name">
 			<value>Gtr2</value>
 		</property>
@@ -303,6 +312,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{df7aba93-ffcc-4bce-b6d8-bf6eab2b028c}">
+		<property name="volume">
+			<value>-3</value>
+		</property>
 		<property name="name">
 			<value>Harp1</value>
 		</property>
@@ -328,6 +340,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{d24af27f-de87-4adb-b39b-9249d0ca58da}">
+		<property name="volume">
+			<value>-3</value>
+		</property>
 		<property name="name">
 			<value>Harp2</value>
 		</property>
@@ -364,6 +379,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{a88f3e20-9fc9-4412-8789-3b0b787863c5}">
+		<property name="volume">
+			<value>-3</value>
+		</property>
 		<property name="name">
 			<value>Harp3</value>
 		</property>
@@ -400,6 +418,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{36816535-def1-4b1e-8b56-dab566f6d99b}">
+		<property name="volume">
+			<value>-3</value>
+		</property>
 		<property name="name">
 			<value>Drums</value>
 		</property>
@@ -447,6 +468,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{ce93e5f8-d45f-4cd9-910c-e4c79845d573}">
+		<property name="volume">
+			<value>-3</value>
+		</property>
 		<property name="name">
 			<value>Synth</value>
 		</property>
@@ -494,6 +518,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{b3cddf03-7c72-4aa3-80af-b501db081c9b}">
+		<property name="volume">
+			<value>-3</value>
+		</property>
 		<property name="name">
 			<value>SynthPad</value>
 		</property>
@@ -516,6 +543,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{cdb8cd0a-9e05-46b4-886c-280c22e0380f}">
+		<property name="volume">
+			<value>-3</value>
+		</property>
 		<property name="name">
 			<value>Strings</value>
 		</property>

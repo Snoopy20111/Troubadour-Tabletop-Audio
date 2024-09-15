@@ -133,13 +133,13 @@
 	</object>
 	<object class="SingleSound" id="{70b34168-0306-4991-9437-fcf8b8fcf644}">
 		<property name="start">
-			<value>30.545454545454543</value>
+			<value>34.909090909090907</value>
 		</property>
 		<property name="length">
-			<value>165.81817357245922</value>
+			<value>161.45453720882284</value>
 		</property>
 		<property name="timelockedOffset">
-			<value>30.545454545454543</value>
+			<value>34.909090909090907</value>
 		</property>
 		<relationship name="audioFile">
 			<destination>{22ce6b75-e695-467f-b79c-a2da395faeaf}</destination>
