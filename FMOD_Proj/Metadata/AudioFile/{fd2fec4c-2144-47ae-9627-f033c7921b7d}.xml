@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{fd2fec4c-2144-47ae-9627-f033c7921b7d}">
 		<property name="assetPath">
-			<value>BlueSkyBolero/Javolenus_Blue_Sky_Bolero.flac</value>
+			<value>_Examples/Music/BlueSkyBolero/Javolenus_Blue_Sky_Bolero.flac</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>

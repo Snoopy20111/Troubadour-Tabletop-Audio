@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{b0c66eac-d570-4db1-9ba8-17db46a48a31}">
 		<property name="assetPath">
-			<value>_Examples/RoboxingTheme/MenuAndPreGame_Intro.flac</value>
+			<value>NonRelease/Music/RoboxingTheme/MenuAndPreGame_Intro.flac</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>

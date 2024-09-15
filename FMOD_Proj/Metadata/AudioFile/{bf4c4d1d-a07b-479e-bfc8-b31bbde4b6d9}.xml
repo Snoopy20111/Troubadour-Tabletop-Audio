@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{bf4c4d1d-a07b-479e-bfc8-b31bbde4b6d9}">
 		<property name="assetPath">
-			<value>CaringCanMakeADifference/Caring Can Make A Difference (Preview) - Geoff Peters.mp3</value>
+			<value>_Examples/Music/CaringCanMakeADifference/Caring Can Make A Difference (Preview) - Geoff Peters.mp3</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>

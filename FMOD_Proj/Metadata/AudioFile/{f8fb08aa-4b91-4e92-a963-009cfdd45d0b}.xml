@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{f8fb08aa-4b91-4e92-a963-009cfdd45d0b}">
 		<property name="assetPath">
-			<value>CyanGranite/PAR VTL Mel.flac</value>
+			<value>_Examples/Music/CyanGranite/PAR VTL Mel.flac</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>

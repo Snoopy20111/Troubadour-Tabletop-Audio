@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{c90bc5f3-e417-43f8-be88-ff9d7a69e0d3}">
 		<property name="assetPath">
-			<value>SpaceAndTime/Full Strings staccato.mp3</value>
+			<value>NonRelease/Music/SpaceAndTime/Full Strings staccato.mp3</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>

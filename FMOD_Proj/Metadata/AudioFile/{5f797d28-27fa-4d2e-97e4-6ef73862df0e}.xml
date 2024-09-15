@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{5f797d28-27fa-4d2e-97e4-6ef73862df0e}">
 		<property name="assetPath">
-			<value>FareTheeWell/airtone_-_faretheewell.flac</value>
+			<value>_Examples/Music/FareTheeWell/airtone_-_faretheewell.flac</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>

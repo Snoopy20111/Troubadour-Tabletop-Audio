@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{8c1c2754-3209-4b1d-a384-32bfcbfad0b1}">
 		<property name="assetPath">
-			<value>Blackwaterside/Javolenus_Blackwaterside_(Trad)_Lyre3.flac</value>
+			<value>_Examples/Music/Blackwaterside/Javolenus_Blackwaterside_(Trad)_Lyre3.flac</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>

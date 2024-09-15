@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{5adf7200-6579-4540-999a-72b9de205920}">
 		<property name="assetPath">
-			<value>SpaceAndTime/Full Strings Vibrato.mp3</value>
+			<value>NonRelease/Music/SpaceAndTime/Full Strings Vibrato.mp3</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>

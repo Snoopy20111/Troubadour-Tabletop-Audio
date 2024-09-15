@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{23e89d32-7578-480f-83c3-0227ec5a2e8c}">
 		<property name="assetPath">
-			<value>MojaveScotch/jaspertine_-_Mojave_Scotch_GuitarAmb.mp3</value>
+			<value>_Examples/Music/MojaveScotch/jaspertine_-_Mojave_Scotch_GuitarAmb.mp3</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>

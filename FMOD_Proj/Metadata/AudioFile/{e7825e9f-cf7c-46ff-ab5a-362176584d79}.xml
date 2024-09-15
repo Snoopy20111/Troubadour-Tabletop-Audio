@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{e7825e9f-cf7c-46ff-ab5a-362176584d79}">
 		<property name="assetPath">
-			<value>SpaceAndTime/harp.mp3</value>
+			<value>NonRelease/Music/SpaceAndTime/harp.mp3</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>

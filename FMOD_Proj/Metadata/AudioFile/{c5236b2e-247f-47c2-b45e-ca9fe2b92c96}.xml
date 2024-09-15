@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{c5236b2e-247f-47c2-b45e-ca9fe2b92c96}">
 		<property name="assetPath">
-			<value>ToDriveTheColdWinterAway/Javolenus_ToDriveTheColdWinterAway_(Guitar).flac</value>
+			<value>_Examples/Music/ToDriveTheColdWinterAway/Javolenus_ToDriveTheColdWinterAway_(Guitar).flac</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>

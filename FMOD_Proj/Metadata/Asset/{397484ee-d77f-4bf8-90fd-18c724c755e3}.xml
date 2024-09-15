@@ -5,7 +5,7 @@
 			<value>BPM- 98</value>
 		</property>
 		<property name="assetPath">
-			<value>KalimbaSongForTheWhales/</value>
+			<value>NonRelease/Music/KalimbaSongForTheWhales/</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{f930ae7e-03ac-4797-acd5-e828f088234b}</destination>

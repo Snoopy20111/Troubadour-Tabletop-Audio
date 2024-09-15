@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{ef43a736-3753-4112-9116-c4ed7ee05a65}">
 		<property name="assetPath">
-			<value>Misc/Amb/urmymuse_Lute_Fowerth_Branle_of_Malte.flac</value>
+			<value>NonRelease/Music_Diegetic/urmymuse_Lute_Fowerth_Branle_of_Malte.flac</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>

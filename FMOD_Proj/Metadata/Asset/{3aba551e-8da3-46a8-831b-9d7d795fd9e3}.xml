@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="EncodableAsset" id="{3aba551e-8da3-46a8-831b-9d7d795fd9e3}">
 		<property name="assetPath">
-			<value>BlueSkyBolero/</value>
+			<value>_Examples/Music/BlueSkyBolero/</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{f930ae7e-03ac-4797-acd5-e828f088234b}</destination>

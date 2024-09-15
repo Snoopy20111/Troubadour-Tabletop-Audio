@@ -8,7 +8,7 @@
 			<value>1</value>
 		</property>
 		<relationship name="folder">
-			<destination>{d3991d65-deb5-44d4-8fc7-6c98abf3a82e}</destination>
+			<destination>{c6e1e9bb-1aa2-4146-bd9d-a1d696290cc7}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{80050a2e-6821-4b51-9042-45ed3dc27471}</destination>
@@ -151,7 +151,7 @@
 	</object>
 	<object class="EventMixerGroup" id="{0bba649b-12f6-4025-a244-f33cf19242fd}">
 		<property name="name">
-			<value>Mando1</value>
+			<value>Mando1_Rhythm</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{68051a56-13dc-497e-af6a-05306cb1f76f}</destination>
@@ -176,7 +176,7 @@
 			<value>2</value>
 		</property>
 		<property name="name">
-			<value>Mando2</value>
+			<value>Mando2_Lead</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{1b9d15c4-2699-4cdb-a4a0-cfb82b47adbf}</destination>
@@ -265,7 +265,7 @@
 			<value>3</value>
 		</property>
 		<property name="inputFormat">
-			<value>0</value>
+			<value>1</value>
 		</property>
 		<relationship name="mixerReturn">
 			<destination>{d2eb1641-48db-45bf-a78f-ae6edf0478b0}</destination>

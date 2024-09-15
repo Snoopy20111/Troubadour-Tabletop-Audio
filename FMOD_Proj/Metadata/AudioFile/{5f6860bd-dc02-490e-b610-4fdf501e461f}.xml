@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{5f6860bd-dc02-490e-b610-4fdf501e461f}">
 		<property name="assetPath">
-			<value>StuckInADarkPlace/SkyeJordan_-_Stuck_In_A_Dark_Place.mp3</value>
+			<value>NonRelease/Music/StuckInADarkPlace/SkyeJordan_-_Stuck_In_A_Dark_Place.mp3</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>

@@ -5,7 +5,7 @@
 			<value>Cyan Granite by 7OOP3D (c) copyright 2024 Licensed under a Creative Commons Attribution (3.0) license. https://dig.ccmixter.org/files/7OOP3D/68089 Ft: Admiral Bob</value>
 		</property>
 		<property name="assetPath">
-			<value>CyanGranite/</value>
+			<value>_Examples/Music/CyanGranite/</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{f930ae7e-03ac-4797-acd5-e828f088234b}</destination>

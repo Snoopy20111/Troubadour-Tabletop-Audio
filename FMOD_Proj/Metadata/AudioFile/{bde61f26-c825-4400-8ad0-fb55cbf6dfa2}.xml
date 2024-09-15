@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{bde61f26-c825-4400-8ad0-fb55cbf6dfa2}">
 		<property name="assetPath">
-			<value>GrandCircles/AntSurvila_GRAND_CIRCLES.mp3</value>
+			<value>_Examples/Music/GrandCircles/AntSurvila_GRAND_CIRCLES.mp3</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>

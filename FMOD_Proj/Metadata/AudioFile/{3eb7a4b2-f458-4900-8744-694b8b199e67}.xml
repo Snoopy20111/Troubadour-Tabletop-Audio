@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{3eb7a4b2-f458-4900-8744-694b8b199e67}">
 		<property name="assetPath">
-			<value>PackingtonsPound/Javolenus_Packingtons_Pound_gtr1.flac</value>
+			<value>_Examples/Music/PackingtonsPound/Javolenus_Packingtons_Pound_gtr1.flac</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>

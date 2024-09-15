@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{9ab916bc-d598-400c-84a7-b5093b6685f3}">
 		<property name="assetPath">
-			<value>Trobador/Javolenus_Trobador_StereoMix.flac</value>
+			<value>_Examples/Music/Trobador/Javolenus_Trobador_StereoMix.flac</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>

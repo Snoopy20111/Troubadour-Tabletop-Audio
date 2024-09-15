@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{6da4b23c-1980-438c-bcf1-24ab90922e62}">
 		<property name="assetPath">
-			<value>Maya/norineb_-_maya.mp3</value>
+			<value>_Examples/Music/Maya/norineb_-_maya.mp3</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>

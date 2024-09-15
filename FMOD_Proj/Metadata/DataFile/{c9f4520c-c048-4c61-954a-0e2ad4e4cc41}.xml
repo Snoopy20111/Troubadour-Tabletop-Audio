@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="DataFile" id="{c9f4520c-c048-4c61-954a-0e2ad4e4cc41}">
 		<property name="assetPath">
-			<value>StuckInADarkPlace/ChordAndMelody.mid</value>
+			<value>NonRelease/Music/StuckInADarkPlace/ChordAndMelody.mid</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{f930ae7e-03ac-4797-acd5-e828f088234b}</destination>

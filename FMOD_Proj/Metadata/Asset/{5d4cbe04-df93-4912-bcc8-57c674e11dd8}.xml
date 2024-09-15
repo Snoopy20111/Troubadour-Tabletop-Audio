@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="EncodableAsset" id="{5d4cbe04-df93-4912-bcc8-57c674e11dd8}">
 		<property name="assetPath">
-			<value>SpaceConfined/</value>
+			<value>_Examples/Music/SpaceConfined/</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{f930ae7e-03ac-4797-acd5-e828f088234b}</destination>

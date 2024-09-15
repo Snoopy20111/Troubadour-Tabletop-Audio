@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{8cf3cc5d-7684-419e-bf80-2f7cfe5ac17b}">
 		<property name="assetPath">
-			<value>KalimbaSongForTheWhales/mindmapthat_-_Kalimba_Song_for_the_Whales.mp3</value>
+			<value>NonRelease/Music/KalimbaSongForTheWhales/mindmapthat_-_Kalimba_Song_for_the_Whales.mp3</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>

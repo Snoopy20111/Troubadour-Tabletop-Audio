@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{24d743e6-49b5-4fd5-ba77-a0f33c550f80}">
 		<property name="assetPath">
-			<value>CyanGranite/VOX Choir.flac</value>
+			<value>_Examples/Music/CyanGranite/VOX Choir.flac</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>

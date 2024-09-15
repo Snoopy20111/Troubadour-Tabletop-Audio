@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{78e979e7-179f-4f46-916b-847aa8cb13ab}">
 		<property name="assetPath">
-			<value>IAmDionysus/AntSurvila_-_I_AM_DIONYSUS_Keys.flac</value>
+			<value>_Examples/Music/IAmDionysus/AntSurvila_-_I_AM_DIONYSUS_Keys.flac</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>

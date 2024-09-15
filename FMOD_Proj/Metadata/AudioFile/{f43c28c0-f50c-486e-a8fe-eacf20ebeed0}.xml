@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{f43c28c0-f50c-486e-a8fe-eacf20ebeed0}">
 		<property name="assetPath">
-			<value>SpaceAndTime/phusion_-_space_and_time.mp3</value>
+			<value>NonRelease/Music/SpaceAndTime/phusion_-_space_and_time.mp3</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>

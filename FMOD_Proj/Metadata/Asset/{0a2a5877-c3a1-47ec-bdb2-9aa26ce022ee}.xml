@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="EncodableAsset" id="{0a2a5877-c3a1-47ec-bdb2-9aa26ce022ee}">
 		<property name="assetPath">
-			<value>CaringCanMakeADifference/</value>
+			<value>_Examples/Music/CaringCanMakeADifference/</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{f930ae7e-03ac-4797-acd5-e828f088234b}</destination>

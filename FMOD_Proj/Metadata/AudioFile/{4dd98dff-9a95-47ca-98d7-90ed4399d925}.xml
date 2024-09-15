@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{4dd98dff-9a95-47ca-98d7-90ed4399d925}">
 		<property name="assetPath">
-			<value>Sinewaves/airtone_sinewaves_guitar2_01.flac</value>
+			<value>_Examples/Music/Sinewaves/airtone_sinewaves_guitar2_01.flac</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>

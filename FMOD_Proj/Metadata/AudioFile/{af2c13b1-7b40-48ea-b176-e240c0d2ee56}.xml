@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{af2c13b1-7b40-48ea-b176-e240c0d2ee56}">
 		<property name="assetPath">
-			<value>CyanGranite/KEY Suitcased.flac</value>
+			<value>_Examples/Music/CyanGranite/KEY Suitcased.flac</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>

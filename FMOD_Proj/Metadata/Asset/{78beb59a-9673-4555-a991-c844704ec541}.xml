@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="EncodableAsset" id="{78beb59a-9673-4555-a991-c844704ec541}">
 		<property name="assetPath">
-			<value>Misc/</value>
+			<value>_Examples/Music/GeeArtriasRose_MeditativeAmb/</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{f930ae7e-03ac-4797-acd5-e828f088234b}</destination>

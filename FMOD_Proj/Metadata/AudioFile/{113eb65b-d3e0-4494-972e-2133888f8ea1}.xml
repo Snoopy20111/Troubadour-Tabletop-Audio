@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{113eb65b-d3e0-4494-972e-2133888f8ea1}">
 		<property name="assetPath">
-			<value>Distill/jaspertine_-_Distill_Drums.flac</value>
+			<value>_Examples/Music/Distill/jaspertine_-_Distill_Drums.flac</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>

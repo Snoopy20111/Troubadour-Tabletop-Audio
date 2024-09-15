@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{2c8ab7b8-7b97-4bc4-9dd7-49106d7ac6c1}">
 		<property name="assetPath">
-			<value>CyanGranite/SYN Fog Horn.flac</value>
+			<value>_Examples/Music/CyanGranite/SYN Fog Horn.flac</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>

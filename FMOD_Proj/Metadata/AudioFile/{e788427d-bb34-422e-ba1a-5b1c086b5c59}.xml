@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{e788427d-bb34-422e-ba1a-5b1c086b5c59}">
 		<property name="assetPath">
-			<value>WhereTheWindBlows/NiGiD_-_Where_the_Wind_Blows.mp3</value>
+			<value>NonRelease/Music/WhereTheWindBlows/NiGiD_-_Where_the_Wind_Blows.mp3</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>

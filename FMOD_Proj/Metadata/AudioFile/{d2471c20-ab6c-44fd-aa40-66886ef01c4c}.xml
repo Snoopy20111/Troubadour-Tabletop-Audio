@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{d2471c20-ab6c-44fd-aa40-66886ef01c4c}">
 		<property name="assetPath">
-			<value>CyanGranite/BAS Mut8.flac</value>
+			<value>_Examples/Music/CyanGranite/BAS Mut8.flac</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>

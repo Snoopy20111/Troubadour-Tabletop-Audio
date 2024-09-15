@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{7d0121f8-db0e-4de8-a985-9b0bc4de0381}">
 		<property name="assetPath">
-			<value>Misc/Amb/tomlija__traditional-eastern-instrument-macedonian-tambura-improvisation-played-by-boris-todorovic.flac</value>
+			<value>NonRelease/Music_Diegetic/tomlija__traditional-eastern-instrument-macedonian-tambura-improvisation-played-by-boris-todorovic.flac</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>

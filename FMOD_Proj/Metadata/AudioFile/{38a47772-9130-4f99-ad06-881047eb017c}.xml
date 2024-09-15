@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{38a47772-9130-4f99-ad06-881047eb017c}">
 		<property name="assetPath">
-			<value>Trobador/Javolenus_Trobador_gtrBeat.flac</value>
+			<value>_Examples/Music/Trobador/Javolenus_Trobador_gtrBeat.flac</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>
@@ -11,7 +11,7 @@
 			<value>48</value>
 		</property>
 		<property name="channelCount">
-			<value>1</value>
+			<value>2</value>
 		</property>
 		<property name="length">
 			<value>216.95587499999999</value>
