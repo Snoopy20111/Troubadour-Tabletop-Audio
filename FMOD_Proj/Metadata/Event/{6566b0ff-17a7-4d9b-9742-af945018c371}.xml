@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{6566b0ff-17a7-4d9b-9742-af945018c371}">
+		<property name="note">
+			<value>Trobador by Javolenus (c) copyright 2024 Licensed under a Creative Commons Attribution Noncommercial (4.0) license. https://dig.ccmixter.org/files/Javolenus/67741 </value>
+		</property>
 		<property name="name">
 			<value>Trobador</value>
 		</property>
@@ -262,7 +265,7 @@
 	<object class="MixerBusFader" id="{9b2138bf-4dab-4961-8347-3555d95d980c}" />
 	<object class="MixerSend" id="{b98c0aad-7643-49c3-a701-0fbb51a59a44}">
 		<property name="level">
-			<value>3</value>
+			<value>-4</value>
 		</property>
 		<property name="inputFormat">
 			<value>1</value>
