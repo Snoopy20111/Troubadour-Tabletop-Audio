@@ -11,7 +11,7 @@
 			<value>1</value>
 		</property>
 		<relationship name="folder">
-			<destination>{c6e1e9bb-1aa2-4146-bd9d-a1d696290cc7}</destination>
+			<destination>{66800250-1eaa-4e4b-ac6d-8174e49c5de3}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{80050a2e-6821-4b51-9042-45ed3dc27471}</destination>
@@ -193,10 +193,10 @@
 	</object>
 	<object class="EventMixerReturn" id="{d2eb1641-48db-45bf-a78f-ae6edf0478b0}">
 		<property name="volume">
-			<value>-7.5</value>
+			<value>-9</value>
 		</property>
 		<property name="name">
-			<value>A</value>
+			<value>Reverb</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{bda871e4-7bd1-4a5a-8f4c-f195b1ae6537}</destination>
@@ -297,7 +297,7 @@
 	<object class="MixerBusFader" id="{7f8cbf0a-c900-47e7-823b-ac97ae78b061}" />
 	<object class="PannerEffect" id="{be5a2291-c7c2-406d-a5c0-1a794efa2d97}">
 		<property name="stereoPan">
-			<value>20</value>
+			<value>10</value>
 		</property>
 		<property name="overridingOutputFormat">
 			<value>1</value>
