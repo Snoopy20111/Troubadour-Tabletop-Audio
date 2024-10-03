@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{b59f44bf-77b5-41eb-b027-c2adb34cd4dd}">
 		<property name="assetPath">
-			<value>_Examples/Music/Refraction/jaspertine_-_Refraction_DrumsMiddle.mp3</value>
+			<value>NonRelease/Music/Refraction/jaspertine_-_Refraction_DrumsMiddle.mp3</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>
