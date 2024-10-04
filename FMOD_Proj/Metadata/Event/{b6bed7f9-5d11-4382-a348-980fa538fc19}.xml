@@ -15,7 +15,7 @@ I AM DIONYSUS by Ant.Survila (c) copyright 2024 Licensed under a Creative Common
 			<value>1</value>
 		</property>
 		<relationship name="folder">
-			<destination>{c6e1e9bb-1aa2-4146-bd9d-a1d696290cc7}</destination>
+			<destination>{19a4e887-4a02-4bde-90c9-9be24168d13d}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{3ac99a9c-52db-442d-a152-9f14e3c9355e}</destination>
@@ -47,6 +47,9 @@ I AM DIONYSUS by Ant.Survila (c) copyright 2024 Licensed under a Creative Common
 		</relationship>
 		<relationship name="timeline">
 			<destination>{171cb10d-a42e-4b6f-8b6c-d5f2539748d0}</destination>
+		</relationship>
+		<relationship name="banks">
+			<destination>{6613e609-1f23-4f70-8361-7ebf8c6210c2}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{3ac99a9c-52db-442d-a152-9f14e3c9355e}">
