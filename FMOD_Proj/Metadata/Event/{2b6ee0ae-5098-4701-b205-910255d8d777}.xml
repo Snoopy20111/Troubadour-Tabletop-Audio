@@ -365,6 +365,9 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{c32f9937-d0b0-40ab-99e4-3270c919cf88}">
+		<property name="volume">
+			<value>-3</value>
+		</property>
 		<relationship name="effectChain">
 			<destination>{9b64513e-8cf3-46a9-b270-53db69f77cc1}</destination>
 		</relationship>
@@ -1667,7 +1670,6 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 	<object class="MixerBusEffectChain" id="{9b64513e-8cf3-46a9-b270-53db69f77cc1}">
 		<relationship name="effects">
 			<destination>{431a74a3-8f45-401d-a322-67162328f984}</destination>
-			<destination>{d148ba1d-9c33-421e-b9c7-9c857c68514f}</destination>
 			<destination>{3ffd141c-ae85-4a18-842c-368855bac7aa}</destination>
 		</relationship>
 	</object>
@@ -2639,11 +2641,6 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 	<object class="LimiterEffect" id="{431a74a3-8f45-401d-a322-67162328f984}">
 		<property name="ceiling">
 			<value>-1.60000002</value>
-		</property>
-	</object>
-	<object class="GainEffect" id="{d148ba1d-9c33-421e-b9c7-9c857c68514f}">
-		<property name="gain">
-			<value>-4.5</value>
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{3ffd141c-ae85-4a18-842c-368855bac7aa}" />

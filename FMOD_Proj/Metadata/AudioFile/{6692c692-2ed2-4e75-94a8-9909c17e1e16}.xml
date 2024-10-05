@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{6692c692-2ed2-4e75-94a8-9909c17e1e16}">
 		<property name="assetPath">
-			<value>_Examples/Music/Resonance/resonance-bass.mp3</value>
+			<value>NonRelease/Music/Resonance/resonance-bass.mp3</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>
