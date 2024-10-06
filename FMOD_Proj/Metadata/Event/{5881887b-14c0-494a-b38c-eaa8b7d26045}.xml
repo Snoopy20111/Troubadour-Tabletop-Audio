@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{5881887b-14c0-494a-b38c-eaa8b7d26045}">
 		<property name="note">
-			<value>True to its name, this piece is good for emotional moments
+			<value>True to its name, this piece is good for emotional moments, shocks of despair or grief, or alternatively for moments of severe kindness.
 
 Caring Can Make A Difference (Short Emotional Film Score with Stems) by geoffpeters (c) copyright 2014 Licensed under a Creative Commons Attribution (3.0) license. https://dig.ccmixter.org/files/geoffpeters/48537 Ft: Elizabeth Wojtowicz</value>
 		</property>
@@ -119,8 +119,11 @@ Caring Can Make A Difference (Short Emotional Film Score with Stems) by geoffpet
 	<object class="MixerBusPanner" id="{0f9d8cf2-598b-49be-ae21-3d0763cc5284}" />
 	<object class="SingleSound" id="{7dba3f6d-3d7a-4631-9dbf-e9b1936773ad}">
 		<property name="length">
-			<value>82.578229166666674</value>
+			<value>82</value>
 		</property>
+		<relationship name="fadeOutCurve">
+			<destination>{5c07c45c-f270-4fa2-aeef-fa60a51f7170}</destination>
+		</relationship>
 		<relationship name="audioFile">
 			<destination>{ef8a8cdc-dc42-4bf6-bd40-7e9e692ee5fb}</destination>
 		</relationship>
@@ -144,8 +147,11 @@ Caring Can Make A Difference (Short Emotional Film Score with Stems) by geoffpet
 	</object>
 	<object class="SingleSound" id="{0cec7c60-ea6a-4ed2-8992-78a55b7ffdef}">
 		<property name="length">
-			<value>82.578229166666674</value>
+			<value>82</value>
 		</property>
+		<relationship name="fadeOutCurve">
+			<destination>{3a93a49d-cfa5-4e92-90b1-bf76854a509a}</destination>
+		</relationship>
 		<relationship name="audioFile">
 			<destination>{33a6776b-6e57-4660-a522-b690083a55f8}</destination>
 		</relationship>
@@ -214,6 +220,14 @@ Caring Can Make A Difference (Short Emotional Film Score with Stems) by geoffpet
 	</object>
 	<object class="MixerBusPanner" id="{5fff8213-685b-456d-8866-8f02a137da2d}" />
 	<object class="MixerBusFader" id="{36359316-8294-48e2-b475-e8f3ef558e2a}" />
+	<object class="FadeCurve" id="{5c07c45c-f270-4fa2-aeef-fa60a51f7170}">
+		<relationship name="startPoint">
+			<destination>{ce6cec82-c37e-4a76-b4c5-49f1d11aad04}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{e7c220f1-6e3f-4706-9394-f51f2582684a}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusEffectChain" id="{2aa9fe10-88e6-4810-9649-f4fa84da9f50}">
 		<relationship name="effects">
 			<destination>{cce93239-5de2-42f6-b11a-1bde3a92c0c3}</destination>
@@ -221,6 +235,14 @@ Caring Can Make A Difference (Short Emotional Film Score with Stems) by geoffpet
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{3c6e7c51-aacc-4a4a-993a-c8e89645ceb0}" />
+	<object class="FadeCurve" id="{3a93a49d-cfa5-4e92-90b1-bf76854a509a}">
+		<relationship name="startPoint">
+			<destination>{8f861d51-0c40-4406-8331-d500657f795b}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{08e12caf-ce17-4312-8bdb-2e7497497f7d}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusEffectChain" id="{508d88ad-5d63-4730-9782-f93516acb539}">
 		<relationship name="effects">
 			<destination>{b70e216e-b0b2-4cba-8f93-e3a5562ea46a}</destination>
@@ -236,6 +258,25 @@ Caring Can Make A Difference (Short Emotional Film Score with Stems) by geoffpet
 	</object>
 	<object class="MixerBusPanner" id="{af5d9f8b-604c-44ee-94b2-8fc35b96e7f1}" />
 	<object class="MixerBusFader" id="{0991c90e-6c74-46d2-9eba-10840ee493e8}" />
+	<object class="AutomationPoint" id="{ce6cec82-c37e-4a76-b4c5-49f1d11aad04}">
+		<property name="position">
+			<value>81</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+		<property name="curveShape">
+			<value>0.25471893</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{e7c220f1-6e3f-4706-9394-f51f2582684a}">
+		<property name="position">
+			<value>82</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
 	<object class="MixerSend" id="{cce93239-5de2-42f6-b11a-1bde3a92c0c3}">
 		<property name="level">
 			<value>0</value>
@@ -248,6 +289,25 @@ Caring Can Make A Difference (Short Emotional Film Score with Stems) by geoffpet
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{d6f57262-f8a2-4bae-9351-68379669db14}" />
+	<object class="AutomationPoint" id="{8f861d51-0c40-4406-8331-d500657f795b}">
+		<property name="position">
+			<value>81</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+		<property name="curveShape">
+			<value>0.25471893</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{08e12caf-ce17-4312-8bdb-2e7497497f7d}">
+		<property name="position">
+			<value>82</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
 	<object class="MixerSend" id="{b70e216e-b0b2-4cba-8f93-e3a5562ea46a}">
 		<property name="level">
 			<value>-4</value>
