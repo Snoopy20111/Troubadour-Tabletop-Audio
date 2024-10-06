@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{2f5b5353-2dfa-4bab-a314-8c12076e4494}">
 		<property name="assetPath">
-			<value>_Examples/Music/Blackwaterside/Javolenus_Blackwaterside_(Trad)_Drum.flac</value>
+			<value>_Examples/Music/Blackwaterside/Javolenus_Blackwaterside_Drum.flac</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>48</value>

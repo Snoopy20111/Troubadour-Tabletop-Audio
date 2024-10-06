@@ -2,7 +2,9 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{d07b80c4-ea4f-4354-b799-6556df8f3afd}">
 		<property name="note">
-			<value>No, the "1" is not actually where it's set in the event. It had to be moved so the Transition Region to Out would line up with where I put the "Out" destination marker.
+			<value>A grooving track heavy with percussion. Useful for country bumpkins, farms, possibly halflings, and general downhome shenanigans. 
+
+No, the "1" is not actually where it's set in the event. It had to be moved so the Transition Region to Out would line up with where I put the "Out" destination marker.
 
 Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative Commons Attribution Noncommercial (4.0) license. https://dig.ccmixter.org/files/JeffSpeed68/66360</value>
 		</property>

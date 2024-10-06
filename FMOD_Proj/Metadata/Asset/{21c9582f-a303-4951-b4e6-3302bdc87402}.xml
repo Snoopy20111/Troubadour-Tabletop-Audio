@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="EncodableAsset" id="{21c9582f-a303-4951-b4e6-3302bdc87402}">
+		<property name="note">
+			<value>Greensleeves (reinvented) by Paradigm (c) copyright 2015 Licensed under a Creative Commons Attribution Noncommercial  (3.0) license. https://dig.ccmixter.org/files/Paradigm/49569 Ft: Bonnie Gritton, Susan Duehlmeier</value>
+		</property>
 		<property name="assetPath">
 			<value>NonRelease/Music/Greensleeves(Reinvented)/</value>
 		</property>

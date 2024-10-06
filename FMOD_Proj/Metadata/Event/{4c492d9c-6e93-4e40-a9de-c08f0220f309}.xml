@@ -2,7 +2,11 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{4c492d9c-6e93-4e40-a9de-c08f0220f309}">
 		<property name="note">
-			<value>Blue Sky Bolero by Javolenus (c) copyright 2022 Licensed under a Creative Commons Attribution Noncommercial  (3.0) license. https://dig.ccmixter.org/files/Javolenus/64859</value>
+			<value>An evocative solo piece, great for travel, cowboys, open fields, etc.
+
+Optionally, setting "State" will transition to and loop that particular section of the music.
+
+Blue Sky Bolero by Javolenus (c) copyright 2022 Licensed under a Creative Commons Attribution Noncommercial  (3.0) license. https://dig.ccmixter.org/files/Javolenus/64859</value>
 		</property>
 		<property name="name">
 			<value>BlueSkyBolero</value>

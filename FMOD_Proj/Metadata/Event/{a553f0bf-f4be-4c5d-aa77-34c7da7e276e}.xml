@@ -2,7 +2,11 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{a553f0bf-f4be-4c5d-aa77-34c7da7e276e}">
 		<property name="note">
-			<value>Cyan Granite by 7OOP3D (c) copyright 2024 Licensed under a Creative Commons Attribution (3.0) license. https://dig.ccmixter.org/files/7OOP3D/68089 Ft: Admiral Bob</value>
+			<value>An interesting track that evokes a mix of science fiction and religious tones at scale. Good for boss battles against foes matching either genre description.
+
+Optionally, setting "State" will transition to and loop that particular section of the music.
+
+Cyan Granite by 7OOP3D (c) copyright 2024 Licensed under a Creative Commons Attribution (3.0) license. https://dig.ccmixter.org/files/7OOP3D/68089 Ft: Admiral Bob</value>
 		</property>
 		<property name="name">
 			<value>CyanGranite</value>

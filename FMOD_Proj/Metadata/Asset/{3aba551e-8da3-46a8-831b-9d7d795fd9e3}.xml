@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="EncodableAsset" id="{3aba551e-8da3-46a8-831b-9d7d795fd9e3}">
+		<property name="note">
+			<value>Blue Sky Bolero by Javolenus (c) copyright 2022 Licensed under a Creative Commons Attribution Noncommercial  (3.0) license. https://dig.ccmixter.org/files/Javolenus/64859</value>
+		</property>
 		<property name="assetPath">
 			<value>_Examples/Music/BlueSkyBolero/</value>
 		</property>

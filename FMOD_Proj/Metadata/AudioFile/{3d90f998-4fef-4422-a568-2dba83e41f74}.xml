@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{3d90f998-4fef-4422-a568-2dba83e41f74}">
+		<property name="note">
+			<value>Nostalgia (Piano Impro) by Doxent Zsigmond (c) copyright 2013 Licensed under a Creative Commons Attribution (3.0) license. https://dig.ccmixter.org/files/doxent/44263</value>
+		</property>
 		<property name="assetPath">
 			<value>_Examples/Music/Nostalgia/doxent_Nostalgia_Piano.flac</value>
 		</property>

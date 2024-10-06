@@ -2,7 +2,9 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{9fa5b944-12e2-4515-944f-f829895ef53c}">
 		<property name="note">
-			<value>A huge mess of transition markers and conditions, all in an attempt to prevent repeating the last choice for greater variation. Each State parameter essentially tracks which variation of part A, B, or C was last played, and the conditions avoid that one without allowing "fallthrough" or weighted chances (except the first time through where variation 1 is more likely).
+			<value>A traditional English folk tune. This track can be good for taverns, festivals, markets, campfires, etc., especially situations where a single musician could be playing.
+
+A slight mess of transition markers and conditions, all in an attempt to prevent repeating the last choice for greater variation. Each State parameter essentially tracks which variation of part A, B, or C was last played, and the conditions avoid that one without allowing "fallthrough" or weighted chances (except the first time through where variation 1 is more likely).
 
 Tansey's Fancy (Trad.) by Javolenus (c) copyright 2024 Licensed under a Creative Commons Attribution Noncommercial (4.0) license. https://dig.ccmixter.org/files/Javolenus/67931</value>
 		</property>

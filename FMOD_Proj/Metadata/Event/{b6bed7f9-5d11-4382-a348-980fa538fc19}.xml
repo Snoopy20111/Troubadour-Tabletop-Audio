@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{b6bed7f9-5d11-4382-a348-980fa538fc19}">
 		<property name="note">
-			<value>Heavy strings &amp; synths, useful for major scenes of devestation and defeat, or of power and reverence.
+			<value>A track heavy with strings &amp; textural synths. Useful for major scenes of devestation and defeat (or fear of such), or alternatively of great power and reverence. Big battles, big armies, big supernatural powers, big sacrifices.
 
 The beats don't make full sense here, so don't trust them too much. As a result, sometimes the better way to end the piece is with a fade-out (To End) rather than a deliberate Outro (To Outro).
 
@@ -646,6 +646,9 @@ I AM DIONYSUS by Ant.Survila (c) copyright 2024 Licensed under a Creative Common
 		<property name="timelockedOffset">
 			<value>2.1306301476680147</value>
 		</property>
+		<relationship name="fadeInCurve">
+			<destination>{5e9704e2-e0fa-4063-90b2-44da6c141c21}</destination>
+		</relationship>
 		<relationship name="audioFile">
 			<destination>{362987ea-9bbd-4a72-b270-437dde95f952}</destination>
 		</relationship>
@@ -1238,6 +1241,9 @@ I AM DIONYSUS by Ant.Survila (c) copyright 2024 Licensed under a Creative Common
 		<property name="timelockedOffset">
 			<value>1.6306301476680147</value>
 		</property>
+		<relationship name="fadeInCurve">
+			<destination>{96b16d25-1d78-4fc1-b70e-886eab1dc717}</destination>
+		</relationship>
 		<relationship name="audioFile">
 			<destination>{7170ea87-907c-4ffc-88e3-4aec2000f09b}</destination>
 		</relationship>
@@ -2718,7 +2724,7 @@ I AM DIONYSUS by Ant.Survila (c) copyright 2024 Licensed under a Creative Common
 			<value>true</value>
 		</property>
 		<property name="triggerProbability">
-			<value>33</value>
+			<value>10</value>
 		</property>
 		<relationship name="timeline">
 			<destination>{171cb10d-a42e-4b6f-8b6c-d5f2539748d0}</destination>
@@ -2744,7 +2750,7 @@ I AM DIONYSUS by Ant.Survila (c) copyright 2024 Licensed under a Creative Common
 			<value>true</value>
 		</property>
 		<property name="triggerProbability">
-			<value>33.3333321</value>
+			<value>10</value>
 		</property>
 		<relationship name="timeline">
 			<destination>{171cb10d-a42e-4b6f-8b6c-d5f2539748d0}</destination>
@@ -3152,6 +3158,14 @@ I AM DIONYSUS by Ant.Survila (c) copyright 2024 Licensed under a Creative Common
 	</object>
 	<object class="MixerBusPanner" id="{5afde5d2-60af-4c09-ac6c-82ff12a48baa}" />
 	<object class="MixerBusFader" id="{32639c62-34ed-4adc-a0d2-710f06406270}" />
+	<object class="FadeCurve" id="{5e9704e2-e0fa-4063-90b2-44da6c141c21}">
+		<relationship name="startPoint">
+			<destination>{42542bb6-0a43-498a-bd3e-84f17cd6a7c3}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{d78f42dd-3ab8-451e-a4e5-237f40ee4f08}</destination>
+		</relationship>
+	</object>
 	<object class="TransitionSourceFadeOutCurve" id="{7307a986-39f6-4b05-b1e2-edcf43f5c6ba}">
 		<relationship name="startPoint">
 			<destination>{f4b46d0c-eb39-45bf-83cc-efb03e86360e}</destination>
@@ -3707,6 +3721,14 @@ I AM DIONYSUS by Ant.Survila (c) copyright 2024 Licensed under a Creative Common
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{b49c7290-f2ae-494f-b5aa-b520d7bf220b}" />
+	<object class="FadeCurve" id="{96b16d25-1d78-4fc1-b70e-886eab1dc717}">
+		<relationship name="startPoint">
+			<destination>{e8e4df63-0bf7-4916-ad73-6e101174ba9b}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{307b61c4-11c8-4dd3-9c3f-2fcb99ec56f3}</destination>
+		</relationship>
+	</object>
 	<object class="TransitionSourceFadeOutCurve" id="{b513bb7b-07a6-4630-a398-07f110cd16ac}">
 		<relationship name="startPoint">
 			<destination>{9613c6bd-81f0-46e6-9255-5abae4607d0f}</destination>
@@ -5448,6 +5470,25 @@ I AM DIONYSUS by Ant.Survila (c) copyright 2024 Licensed under a Creative Common
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{39de1cd7-2719-4b79-9654-275a4c032c0d}" />
+	<object class="AutomationPoint" id="{42542bb6-0a43-498a-bd3e-84f17cd6a7c3}">
+		<property name="position">
+			<value>0</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+		<property name="curveShape">
+			<value>-0.2547189</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{d78f42dd-3ab8-451e-a4e5-237f40ee4f08}">
+		<property name="position">
+			<value>0.35294117647058826</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+	</object>
 	<object class="AutomationPoint" id="{f4b46d0c-eb39-45bf-83cc-efb03e86360e}">
 		<property name="position">
 			<value>4.4408920985006262e-16</value>
@@ -6460,6 +6501,25 @@ I AM DIONYSUS by Ant.Survila (c) copyright 2024 Licensed under a Creative Common
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{5760d2d2-0ee1-4de4-93d8-2715579e3fff}" />
+	<object class="AutomationPoint" id="{e8e4df63-0bf7-4916-ad73-6e101174ba9b}">
+		<property name="position">
+			<value>0</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+		<property name="curveShape">
+			<value>-0.2547189</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{307b61c4-11c8-4dd3-9c3f-2fcb99ec56f3}">
+		<property name="position">
+			<value>0.35294117647058826</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+	</object>
 	<object class="AutomationPoint" id="{9613c6bd-81f0-46e6-9255-5abae4607d0f}">
 		<property name="position">
 			<value>0.48529411764705888</value>

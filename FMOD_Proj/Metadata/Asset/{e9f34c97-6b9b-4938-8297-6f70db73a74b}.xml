@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="EncodableAsset" id="{e9f34c97-6b9b-4938-8297-6f70db73a74b}">
+		<property name="note">
+			<value>Mojave Scotch by jaspertine (c) copyright 2024 Licensed under a Creative Commons Attribution (4.0) license. https://dig.ccmixter.org/files/jaspertine/68084</value>
+		</property>
 		<property name="assetPath">
 			<value>_Examples/Music/MojaveScotch/</value>
 		</property>

@@ -2,7 +2,9 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{8ad1f71b-2d4b-4a78-8491-1b3281498f71}">
 		<property name="note">
-			<value>Piano Piece 6 (Winter Lights) by Darkroom (c) copyright 2020 Licensed under a Creative Commons Attribution Noncommercial  (3.0) license. https://dig.ccmixter.org/files/mactonite/62882</value>
+			<value>Fairly peaceful with hints of darkness. Good for intros to a Winter setting or session.
+
+Piano Piece 6 (Winter Lights) by Darkroom (c) copyright 2020 Licensed under a Creative Commons Attribution Noncommercial  (3.0) license. https://dig.ccmixter.org/files/mactonite/62882</value>
 		</property>
 		<property name="name">
 			<value>WinterLights</value>
@@ -78,6 +80,9 @@
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{960f698d-5004-47f4-b329-96de97d646d0}">
+		<relationship name="modulators">
+			<destination>{dbad5bbe-c01a-454c-a9b8-c8aa6fcf0d6c}</destination>
+		</relationship>
 		<relationship name="effectChain">
 			<destination>{ab73512e-48c7-4525-8c85-0289e287ff7d}</destination>
 		</relationship>
@@ -141,6 +146,32 @@
 		<relationship name="markerTrack">
 			<destination>{400b3b8e-d538-4ec5-ac2c-00e0d0c88905}</destination>
 		</relationship>
+	</object>
+	<object class="ADSRModulator" id="{dbad5bbe-c01a-454c-a9b8-c8aa6fcf0d6c}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>volume</value>
+		</property>
+		<property name="initialValue">
+			<value>-80</value>
+		</property>
+		<property name="attackTime">
+			<value>0</value>
+		</property>
+		<property name="holdTime">
+			<value>0</value>
+		</property>
+		<property name="decayTime">
+			<value>0</value>
+		</property>
+		<property name="releaseTime">
+			<value>7000</value>
+		</property>
+		<property name="releaseShape">
+			<value>0.179758608</value>
+		</property>
+		<property name="finalValue">
+			<value>-80</value>
+		</property>
 	</object>
 	<object class="MixerBusEffectChain" id="{ab73512e-48c7-4525-8c85-0289e287ff7d}">
 		<relationship name="effects">

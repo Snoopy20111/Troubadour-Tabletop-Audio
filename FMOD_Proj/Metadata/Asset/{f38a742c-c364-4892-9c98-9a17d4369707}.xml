@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="EncodableAsset" id="{f38a742c-c364-4892-9c98-9a17d4369707}">
+		<property name="note">
+			<value>Maya by reiswerk (c) copyright 2020 Licensed under a Creative Commons Sampling Plus license. https://dig.ccmixter.org/files/Reiswerk/61260 Ft: Norine Braun</value>
+		</property>
 		<property name="assetPath">
 			<value>_Examples/Music/Maya/</value>
 		</property>

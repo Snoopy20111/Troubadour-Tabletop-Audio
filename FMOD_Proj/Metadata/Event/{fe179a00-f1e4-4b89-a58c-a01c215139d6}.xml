@@ -2,7 +2,9 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{fe179a00-f1e4-4b89-a58c-a01c215139d6}">
 		<property name="note">
-			<value>Quiet Gongs with Spacious Chimes by GeeArtriasRose (c) copyright 2024 Licensed under a Creative Commons Attribution Noncommercial (4.0) license. https://dig.ccmixter.org/files/GeeArtriasRose/68673</value>
+			<value>An ambient track with darker tones, more spooky and mysterious. Excellent for Temples, but also for dark dungeons and the deep places of the earth.
+
+Quiet Gongs with Spacious Chimes by GeeArtriasRose (c) copyright 2024 Licensed under a Creative Commons Attribution Noncommercial (4.0) license. https://dig.ccmixter.org/files/GeeArtriasRose/68673</value>
 		</property>
 		<property name="name">
 			<value>QuietGongsWithSpaciousChimes</value>
@@ -217,6 +219,7 @@
 	</object>
 	<object class="MixerBusEffectChain" id="{da634532-82be-41b8-863a-bfc189d3559f}">
 		<relationship name="effects">
+			<destination>{bd9f03bc-5422-4852-84ec-dac8940bea06}</destination>
 			<destination>{240319a2-39ee-4b58-b250-ed20e1071d8c}</destination>
 		</relationship>
 	</object>
@@ -255,6 +258,14 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{e83d03f5-e5ed-4ebf-abaf-4c720b334765}" />
+	<object class="LimiterEffect" id="{bd9f03bc-5422-4852-84ec-dac8940bea06}">
+		<property name="boost">
+			<value>2</value>
+		</property>
+		<property name="ceiling">
+			<value>-1.10000002</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{240319a2-39ee-4b58-b250-ed20e1071d8c}" />
 	<object class="MixerSend" id="{7df06cff-e6b8-4f47-a67e-05afd776700f}">
 		<property name="level">

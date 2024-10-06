@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
 	<object class="EncodableAsset" id="{7f0f39d7-cdd8-473c-9aca-2291bfcc601d}">
+		<property name="note">
+			<value>Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative Commons Attribution Noncommercial (4.0) license. https://dig.ccmixter.org/files/JeffSpeed68/66360</value>
+		</property>
 		<property name="assetPath">
 			<value>_Examples/Music/SpringBlues/</value>
 		</property>

@@ -2,7 +2,9 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{cf2a6064-2219-43d1-9696-b6acb68421e3}">
 		<property name="note">
-			<value>Very fun example of using Command Instruments. Also uses some weird quirks of how AHDSR works when stopping &amp; releasing the event, which means this event will live a lot longer than expected after it's stopped.
+			<value>A slow track that evokes a mix of peace and wistfulness, a love for home, warmth, and safety. Good for kind traditions, homesickness, players weathering storms, being emotionally close to each other, or other such cases.
+
+Very fun example of using Command Instruments. Also uses some weird quirks of how AHDSR works when stopping &amp; releasing the event, which means this event will live a lot longer than expected after it's stopped.
 
 To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed under a Creative Commons Attribution Noncommercial (4.0) license. https://dig.ccmixter.org/files/Javolenus/67611 </value>
 		</property>
@@ -1432,45 +1434,57 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 		</property>
 	</object>
 	<object class="TransitionDestinationSound" id="{f006c956-2294-48c0-a41d-8332b5d7fe0a}">
-		<property name="start">
+		<property name="length">
 			<value>14</value>
 		</property>
-		<property name="length">
-			<value>0</value>
-		</property>
+		<relationship name="fadeInCurve">
+			<destination>{07ffc2b8-ae1a-42d0-8efc-40ae85e70d5e}</destination>
+		</relationship>
 	</object>
 	<object class="TransitionSourceSound" id="{91f15495-a508-41dc-aaa3-d8440caf3160}">
 		<property name="length">
 			<value>14</value>
 		</property>
+		<relationship name="fadeOutCurve">
+			<destination>{af628e64-73bd-4b26-8dac-321282f631cf}</destination>
+		</relationship>
 	</object>
 	<object class="TransitionDestinationSound" id="{6e754a5d-993f-4fe5-8a8b-c36effa3f88f}">
-		<property name="start">
+		<property name="length">
 			<value>14</value>
 		</property>
-		<property name="length">
-			<value>0</value>
-		</property>
+		<relationship name="fadeInCurve">
+			<destination>{dc6863ed-b030-424c-8347-7ebf981876d2}</destination>
+		</relationship>
 	</object>
 	<object class="TransitionSourceSound" id="{54a5a979-8e61-410a-95b8-2eeaa6e52ffd}">
 		<property name="length">
 			<value>14</value>
 		</property>
+		<relationship name="fadeOutCurve">
+			<destination>{bc492dd3-aba5-45a7-bf23-0b7574421a40}</destination>
+		</relationship>
 	</object>
 	<object class="TransitionDestinationSound" id="{e398fd5f-34de-4233-a9e0-ec246a134748}">
-		<property name="start">
+		<property name="length">
 			<value>14</value>
 		</property>
-		<property name="length">
-			<value>0</value>
-		</property>
+		<relationship name="fadeInCurve">
+			<destination>{006e370e-b6f9-4b00-9654-9e9b647289bf}</destination>
+		</relationship>
 	</object>
 	<object class="TransitionSourceSound" id="{c2a808a6-9009-4732-b19e-5a3cfd539525}">
 		<property name="length">
 			<value>14</value>
 		</property>
+		<relationship name="fadeOutCurve">
+			<destination>{ace10cb9-4fb5-4505-9019-1368bca8c014}</destination>
+		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{54739acc-d099-4956-b3a6-109b1e1e53c6}">
+		<property name="volume">
+			<value>5</value>
+		</property>
 		<property name="name">
 			<value>Guitar</value>
 		</property>
@@ -2973,6 +2987,7 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 	</object>
 	<object class="MixerBusEffectChain" id="{4cdfcb98-606d-4059-be61-a80da0f22d63}">
 		<relationship name="effects">
+			<destination>{b27f1e17-6fcd-49b4-bbb9-a13d3b2f264a}</destination>
 			<destination>{4db30052-7052-4d60-a27e-076218e909f3}</destination>
 		</relationship>
 	</object>
@@ -3468,6 +3483,72 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 		</relationship>
 		<relationship name="endPoint">
 			<destination>{a5218efa-91da-40c4-aad1-1b4d104e7875}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionDestinationFadeInCurve" id="{07ffc2b8-ae1a-42d0-8efc-40ae85e70d5e}">
+		<relationship name="startPoint">
+			<destination>{9fdc430e-039a-4b59-9857-fd2e6e464968}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{aad85cbf-1ae6-435c-bb82-f36478389f17}</destination>
+		</relationship>
+		<relationship name="relatedModule">
+			<destination>{91f15495-a508-41dc-aaa3-d8440caf3160}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionSourceFadeOutCurve" id="{af628e64-73bd-4b26-8dac-321282f631cf}">
+		<relationship name="startPoint">
+			<destination>{c5fac5c1-36c5-4658-87d1-3b47b726c520}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{806609c2-7a3c-40ca-9a2a-40f0b33befd3}</destination>
+		</relationship>
+		<relationship name="relatedModule">
+			<destination>{f006c956-2294-48c0-a41d-8332b5d7fe0a}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionDestinationFadeInCurve" id="{dc6863ed-b030-424c-8347-7ebf981876d2}">
+		<relationship name="startPoint">
+			<destination>{32d5a4a7-cd2a-474f-99ed-822e83712003}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{ecd9868d-217e-4aef-843e-b008a1e8861a}</destination>
+		</relationship>
+		<relationship name="relatedModule">
+			<destination>{54a5a979-8e61-410a-95b8-2eeaa6e52ffd}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionSourceFadeOutCurve" id="{bc492dd3-aba5-45a7-bf23-0b7574421a40}">
+		<relationship name="startPoint">
+			<destination>{ba0e5841-3f4e-4258-8355-dfcb67a8caf5}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{76a2c4cd-8eb9-43a5-8c44-ed18afa09c29}</destination>
+		</relationship>
+		<relationship name="relatedModule">
+			<destination>{6e754a5d-993f-4fe5-8a8b-c36effa3f88f}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionDestinationFadeInCurve" id="{006e370e-b6f9-4b00-9654-9e9b647289bf}">
+		<relationship name="startPoint">
+			<destination>{e59ebcb0-e51d-4991-82a7-9eb741d2c809}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{38300b54-1daa-46d7-8b02-e85b834fd4f4}</destination>
+		</relationship>
+		<relationship name="relatedModule">
+			<destination>{c2a808a6-9009-4732-b19e-5a3cfd539525}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionSourceFadeOutCurve" id="{ace10cb9-4fb5-4505-9019-1368bca8c014}">
+		<relationship name="startPoint">
+			<destination>{d28955cc-2979-40e9-a804-0664c725d6b6}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{03e8b1df-f0f0-4200-a51d-7e94f1620285}</destination>
+		</relationship>
+		<relationship name="relatedModule">
+			<destination>{e398fd5f-34de-4233-a9e0-ec246a134748}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{09642a13-89f1-409c-a0f8-2e7265e0e8ef}">
@@ -4243,6 +4324,14 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 		<relationship name="automationCurves">
 			<destination>{25e8297b-5483-4fdf-9755-bb55da0e35a6}</destination>
 		</relationship>
+	</object>
+	<object class="LimiterEffect" id="{b27f1e17-6fcd-49b4-bbb9-a13d3b2f264a}">
+		<property name="boost">
+			<value>2.70000005</value>
+		</property>
+		<property name="ceiling">
+			<value>-3</value>
+		</property>
 	</object>
 	<object class="MixerBusFader" id="{4db30052-7052-4d60-a27e-076218e909f3}" />
 	<object class="AutomationPoint" id="{f1792eec-7f9b-46e3-842c-07b7d1d734f3}">
@@ -5323,6 +5412,120 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 	<object class="AutomationPoint" id="{a5218efa-91da-40c4-aad1-1b4d104e7875}">
 		<property name="position">
 			<value>0.90000000000000002</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{9fdc430e-039a-4b59-9857-fd2e6e464968}">
+		<property name="position">
+			<value>0</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+		<property name="curveShape">
+			<value>-0.2547189</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{aad85cbf-1ae6-435c-bb82-f36478389f17}">
+		<property name="position">
+			<value>14</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{c5fac5c1-36c5-4658-87d1-3b47b726c520}">
+		<property name="position">
+			<value>0</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+		<property name="curveShape">
+			<value>0.25471893</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{806609c2-7a3c-40ca-9a2a-40f0b33befd3}">
+		<property name="position">
+			<value>14</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{32d5a4a7-cd2a-474f-99ed-822e83712003}">
+		<property name="position">
+			<value>0</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+		<property name="curveShape">
+			<value>-0.2547189</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{ecd9868d-217e-4aef-843e-b008a1e8861a}">
+		<property name="position">
+			<value>14</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{ba0e5841-3f4e-4258-8355-dfcb67a8caf5}">
+		<property name="position">
+			<value>0</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+		<property name="curveShape">
+			<value>0.25471893</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{76a2c4cd-8eb9-43a5-8c44-ed18afa09c29}">
+		<property name="position">
+			<value>14</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{e59ebcb0-e51d-4991-82a7-9eb741d2c809}">
+		<property name="position">
+			<value>0</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+		<property name="curveShape">
+			<value>-0.2547189</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{38300b54-1daa-46d7-8b02-e85b834fd4f4}">
+		<property name="position">
+			<value>14</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{d28955cc-2979-40e9-a804-0664c725d6b6}">
+		<property name="position">
+			<value>0</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+		<property name="curveShape">
+			<value>0.25471893</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{03e8b1df-f0f0-4200-a51d-7e94f1620285}">
+		<property name="position">
+			<value>14</value>
 		</property>
 		<property name="value">
 			<value>0</value>

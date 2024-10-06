@@ -2,7 +2,9 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{d3f8c1b3-84a4-4a59-9366-8937437b4af9}">
 		<property name="note">
-			<value>An original piece by Logan Hardin, aka Snoopy20111, the author :) Used in the game Roboxing, available for free on Itch.io.</value>
+			<value>An original piece by Logan Hardin, aka Snoopy20111, the author :) Used in the game Roboxing, available for free on Itch.io, and OST on Bandcamp.
+https://tyler-eichten.itch.io/roboxing
+https://snoopy20111.bandcamp.com/album/roboxing</value>
 		</property>
 		<property name="name">
 			<value>_RoboxingTheme</value>
