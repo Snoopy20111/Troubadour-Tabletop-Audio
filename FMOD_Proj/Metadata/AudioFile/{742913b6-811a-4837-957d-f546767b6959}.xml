@@ -2,10 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{742913b6-811a-4837-957d-f546767b6959}">
 		<property name="assetPath">
-			<value>_Examples/Music/Maya/Maya Harmonium.mp3</value>
-		</property>
-		<property name="isStreaming">
-			<value>true</value>
+			<value>_Examples/Music/Maya/Reiswerk_Maya_Harmonium.mp3</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>

@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{14307448-2ec8-490e-a570-fd19129bbe93}">
 		<property name="assetPath">
-			<value>_Examples/Music/Nostalgia/NiGiD_Forza_Nostalgia.flac</value>
+			<value>_Examples/Music/Nostalgia/NiGiD_ForzaNostalgia_Bass.flac</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>

@@ -2,10 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{0c036aee-7f80-45d7-8a6d-b706973bd03d}">
 		<property name="assetPath">
-			<value>_Examples/Music/MojaveScotch/jaspertine_-_Mojave_Scotch_Drums.mp3</value>
-		</property>
-		<property name="isStreaming">
-			<value>true</value>
+			<value>_Examples/Music/MojaveScotch/jaspertine_MojaveScotch_Drums.mp3</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>

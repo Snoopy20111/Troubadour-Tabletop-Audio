@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{33a6776b-6e57-4660-a522-b690083a55f8}">
 		<property name="assetPath">
-			<value>_Examples/Music/CaringCanMakeADifference/stems-violin-2.flac</value>
+			<value>_Examples/Music/CaringCanMakeADifference/geoffpeters_CaringCanMakeADifference_Violin.flac</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>

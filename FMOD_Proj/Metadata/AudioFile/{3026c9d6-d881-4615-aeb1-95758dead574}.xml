@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{3026c9d6-d881-4615-aeb1-95758dead574}">
 		<property name="assetPath">
-			<value>NonRelease/Music/WalkingGait/Walking Gait_Loop.flac</value>
+			<value>NonRelease/Music/WalkingGait/Snoopy20111_WalkingGait_Loop.flac</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>

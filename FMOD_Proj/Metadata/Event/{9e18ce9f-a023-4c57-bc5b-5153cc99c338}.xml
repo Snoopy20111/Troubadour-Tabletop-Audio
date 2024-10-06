@@ -167,9 +167,6 @@
 		<property name="length">
 			<value>198.40000000000001</value>
 		</property>
-		<relationship name="audioFile">
-			<destination>{5f6860bd-dc02-490e-b610-4fdf501e461f}</destination>
-		</relationship>
 	</object>
 	<object class="TransitionSourceSound" id="{379d742d-3ec8-42b9-911e-7166d24aebcf}">
 		<property name="length">

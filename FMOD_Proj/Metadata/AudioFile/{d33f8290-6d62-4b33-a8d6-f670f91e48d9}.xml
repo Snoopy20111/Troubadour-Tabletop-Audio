@@ -2,10 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{d33f8290-6d62-4b33-a8d6-f670f91e48d9}">
 		<property name="assetPath">
-			<value>_Examples/Music/PackingtonsPound/Javolenus_Packingtons_Pound_mando1.flac</value>
-		</property>
-		<property name="isStreaming">
-			<value>true</value>
+			<value>_Examples/Music/PackingtonsPound/Javolenus_PackingtonsPound_mando1.flac</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>48</value>

@@ -2,10 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{3a1ada28-dfd8-47f3-8558-0f073c10f9a8}">
 		<property name="assetPath">
-			<value>NonRelease/Music/Resonance/resonance-rhythm.mp3</value>
-		</property>
-		<property name="isStreaming">
-			<value>true</value>
+			<value>NonRelease/Music/Resonance/airtone_Resonance_Rhythm.mp3</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>

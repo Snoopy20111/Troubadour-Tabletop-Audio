@@ -2,10 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{f933aba6-4278-4f88-a440-a3999ebf3e21}">
 		<property name="assetPath">
-			<value>_Examples/Music/IAmDionysus/AntSurvila_I_AM_DIONYSUS_SoloViolin.flac</value>
-		</property>
-		<property name="isStreaming">
-			<value>true</value>
+			<value>_Examples/Music/IAmDionysus/AntSurvila_IAmDionysus_SoloViolin.flac</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>

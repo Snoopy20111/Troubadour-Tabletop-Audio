@@ -4,9 +4,6 @@
 		<property name="assetPath">
 			<value>_Examples/Music/Blackwaterside/Javolenus_Blackwaterside_(Trad)_Lyre2.flac</value>
 		</property>
-		<property name="isStreaming">
-			<value>true</value>
-		</property>
 		<property name="frequencyInKHz">
 			<value>48</value>
 		</property>

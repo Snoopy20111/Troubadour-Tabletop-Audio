@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{3d90f998-4fef-4422-a568-2dba83e41f74}">
 		<property name="assetPath">
-			<value>_Examples/Music/Nostalgia/doxent_Nostalgia_(PianoImpro).flac</value>
+			<value>_Examples/Music/Nostalgia/doxent_Nostalgia_Piano.flac</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>

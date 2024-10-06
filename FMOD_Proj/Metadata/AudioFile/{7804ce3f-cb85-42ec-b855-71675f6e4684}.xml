@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{7804ce3f-cb85-42ec-b855-71675f6e4684}">
 		<property name="assetPath">
-			<value>_Examples/Music/EphemeralSolace/Javolenus_Ephemeral_Solace_Lyre.flac</value>
+			<value>_Examples/Music/EphemeralSolace/Javolenus_EphemeralSolace_Lyre.flac</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>48</value>

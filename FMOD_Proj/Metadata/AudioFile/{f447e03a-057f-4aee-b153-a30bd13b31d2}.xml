@@ -2,10 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{f447e03a-057f-4aee-b153-a30bd13b31d2}">
 		<property name="assetPath">
-			<value>_Examples/Music/IrishCoffee/guitar percussions.mp3</value>
-		</property>
-		<property name="isStreaming">
-			<value>true</value>
+			<value>_Examples/Music/IrishCoffee/JeffSpeed68_IrishCoffee_GuitarPerc.mp3</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>

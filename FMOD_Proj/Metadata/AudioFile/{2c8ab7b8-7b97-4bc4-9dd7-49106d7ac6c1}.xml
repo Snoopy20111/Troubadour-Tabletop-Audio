@@ -2,10 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{2c8ab7b8-7b97-4bc4-9dd7-49106d7ac6c1}">
 		<property name="assetPath">
-			<value>_Examples/Music/CyanGranite/SYN Fog Horn.flac</value>
-		</property>
-		<property name="isStreaming">
-			<value>true</value>
+			<value>_Examples/Music/CyanGranite/7OOP3D_CyanGranite_SYN-FogHorn.flac</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>

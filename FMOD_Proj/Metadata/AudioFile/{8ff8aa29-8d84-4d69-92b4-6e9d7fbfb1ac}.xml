@@ -2,10 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{8ff8aa29-8d84-4d69-92b4-6e9d7fbfb1ac}">
 		<property name="assetPath">
-			<value>NonRelease/Music/SpaceAndTime/Double Bass Pizzicato.mp3</value>
-		</property>
-		<property name="isStreaming">
-			<value>true</value>
+			<value>NonRelease/Music/SpaceAndTime/PhUsIoN_SpaceAndTime_DoubleBass-Pizzicato.mp3</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>

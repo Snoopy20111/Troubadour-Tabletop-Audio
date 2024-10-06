@@ -2,10 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{f6ed2d2e-18b8-4ab3-bc80-2d086f6676bc}">
 		<property name="assetPath">
-			<value>NonRelease/Music/KalimbaSongForTheWhales/Kara Square - Kalimba 3 Notes.wav</value>
-		</property>
-		<property name="isStreaming">
-			<value>true</value>
+			<value>NonRelease/Music/KalimbaSongForTheWhales/mindmapthat_KalimbaSongForTheWhales_3Notes.wav</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>

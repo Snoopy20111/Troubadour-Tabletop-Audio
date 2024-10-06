@@ -120,6 +120,7 @@
 		<property name="length">
 			<value>0.2109375</value>
 		</property>
+		<property name="name" />
 		<relationship name="parameters">
 			<destination>{53c93126-c61a-4545-aaf7-27d2a2379f68}</destination>
 		</relationship>

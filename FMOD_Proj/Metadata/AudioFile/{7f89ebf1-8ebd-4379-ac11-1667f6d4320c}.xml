@@ -2,10 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{7f89ebf1-8ebd-4379-ac11-1667f6d4320c}">
 		<property name="assetPath">
-			<value>_Examples/Music/SpringBlues/JeffSpeed68_SpringBlues_acoustic guitar_02.mp3</value>
-		</property>
-		<property name="isStreaming">
-			<value>true</value>
+			<value>_Examples/Music/SpringBlues/JeffSpeed68_SpringBlues_AcousticGuitar_02.mp3</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>48</value>

@@ -2,10 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{d818fb91-7ec9-4015-96a0-4ec41246eba1}">
 		<property name="assetPath">
-			<value>NonRelease/Music/Refraction/jaspertine_-_Refraction_Piano.mp3</value>
-		</property>
-		<property name="isStreaming">
-			<value>true</value>
+			<value>NonRelease/Music/Refraction/jaspertine_Refraction_Piano.mp3</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>

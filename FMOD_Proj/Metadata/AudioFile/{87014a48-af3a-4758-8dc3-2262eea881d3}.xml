@@ -2,10 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{87014a48-af3a-4758-8dc3-2262eea881d3}">
 		<property name="assetPath">
-			<value>NonRelease/Music/SpaceAndTime/2nd Full Strings.mp3</value>
-		</property>
-		<property name="isStreaming">
-			<value>true</value>
+			<value>NonRelease/Music/SpaceAndTime/PhUsIoN_SpaceAndTime_2ndFullStrings.mp3</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>

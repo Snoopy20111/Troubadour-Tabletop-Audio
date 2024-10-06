@@ -2,10 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{38a47772-9130-4f99-ad06-881047eb017c}">
 		<property name="assetPath">
-			<value>NonRelease/Music/Trobador/Javolenus_Trobador_gtrBeat.flac</value>
-		</property>
-		<property name="isStreaming">
-			<value>true</value>
+			<value>NonRelease/Music/Trobador/Javolenus_Trobador_GtrBeat.flac</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>48</value>

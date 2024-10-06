@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{69155201-50c6-4dff-b969-232c4bfc440c}">
 		<property name="assetPath">
-			<value>NonRelease/Music/KingdomHearts/Kingdom Hearts Soundfont_Intro.mp3</value>
+			<value>NonRelease/Music/AustinsSong_KingdomHearts/Kingdom Hearts Soundfont_Intro.mp3</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>48</value>

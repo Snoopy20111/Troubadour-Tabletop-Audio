@@ -2,10 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{ee87f0a9-81a7-47d2-8334-36c3dff2fd1f}">
 		<property name="assetPath">
-			<value>_Examples/Music/DownUnder/Gtr_6str_2.mp3</value>
-		</property>
-		<property name="isStreaming">
-			<value>true</value>
+			<value>_Examples/Music/DownUnder/JeffSpeed68_DownUnder_Gtr-6str2.mp3</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>

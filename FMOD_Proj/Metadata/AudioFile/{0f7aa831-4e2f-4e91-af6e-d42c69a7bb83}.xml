@@ -2,10 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{0f7aa831-4e2f-4e91-af6e-d42c69a7bb83}">
 		<property name="assetPath">
-			<value>_Examples/Music/Maya/Maya Flute.mp3</value>
-		</property>
-		<property name="isStreaming">
-			<value>true</value>
+			<value>_Examples/Music/Maya/Reiswerk_Maya_Flute.mp3</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>44.0999985</value>
