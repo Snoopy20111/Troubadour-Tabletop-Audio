@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{c13fe4b7-4ea2-4029-9314-624c160afae1}">
+		<property name="assetPath">
+			<value>_Examples/Music/CyanGranite/700P3D_CyanGranite_KEY-Rhodes_MonkeysPaw_07.flac</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>52.06471655328798</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{f930ae7e-03ac-4797-acd5-e828f088234b}</destination>
+		</relationship>
+	</object>
+</objects>

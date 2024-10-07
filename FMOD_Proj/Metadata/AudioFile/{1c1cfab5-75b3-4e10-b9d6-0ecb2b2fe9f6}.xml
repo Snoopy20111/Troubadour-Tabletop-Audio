@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{1c1cfab5-75b3-4e10-b9d6-0ecb2b2fe9f6}">
+		<property name="assetPath">
+			<value>_Examples/Music/DownUnder/JeffSpeed68_DownUnder_Recorder2_01.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>40.019591836734691</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{f930ae7e-03ac-4797-acd5-e828f088234b}</destination>
+		</relationship>
+	</object>
+</objects>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{c2b62a1e-a924-4e90-96fb-3379e3e8d587}">
+		<property name="assetPath">
+			<value>_Examples/Music/IrishCoffee/JeffSpeed68_IrishCoffee_Accordion.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>189.93632653061223</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{f930ae7e-03ac-4797-acd5-e828f088234b}</destination>
+		</relationship>
+	</object>
+</objects>

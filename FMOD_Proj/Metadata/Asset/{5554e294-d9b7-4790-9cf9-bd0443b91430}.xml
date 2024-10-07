@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="EncodableAsset" id="{5554e294-d9b7-4790-9cf9-bd0443b91430}">
+		<property name="note">
+			<value>Sobrevuelo by Chuaqui (c) copyright 2015 Licensed under a Creative Commons Attribution Noncommercial  (3.0) license. https://dig.ccmixter.org/files/Chuaqui/49554</value>
+		</property>
+		<property name="assetPath">
+			<value>NonRelease/Music/Flyover/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{f930ae7e-03ac-4797-acd5-e828f088234b}</destination>
+		</relationship>
+	</object>
+</objects>

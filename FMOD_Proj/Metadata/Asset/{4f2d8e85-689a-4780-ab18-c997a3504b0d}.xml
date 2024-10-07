@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="EncodableAsset" id="{4f2d8e85-689a-4780-ab18-c997a3504b0d}">
+		<property name="note">
+			<value>Trobador by Javolenus (c) copyright 2024 Licensed under a Creative Commons Attribution Noncommercial (4.0) license. https://dig.ccmixter.org/files/Javolenus/67741</value>
+		</property>
+		<property name="assetPath">
+			<value>NonRelease/Music/Trobador/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{f930ae7e-03ac-4797-acd5-e828f088234b}</destination>
+		</relationship>
+	</object>
+</objects>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="EncodableAsset" id="{5b8a96f2-82d7-42f2-8e98-d1c0d8f18813}">
+		<property name="note">
+			<value>spacedust by airtone (c) copyright 2022 Licensed under a Creative Commons Attribution (3.0) license. https://dig.ccmixter.org/files/airtone/64741</value>
+		</property>
+		<property name="assetPath">
+			<value>NonRelease/Music/Spacedust/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{f930ae7e-03ac-4797-acd5-e828f088234b}</destination>
+		</relationship>
+	</object>
+</objects>

@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="AudioFile" id="{ac941b7b-39fc-4255-aa4b-28d612f1afbd}">
 		<property name="assetPath">
-			<value>Examples/RoboxingTheme/UI_MetalTransition_Open.flac</value>
+			<value>NonRelease/Music/RoboxingTheme/UI_MetalTransition_Open.flac</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>48</value>

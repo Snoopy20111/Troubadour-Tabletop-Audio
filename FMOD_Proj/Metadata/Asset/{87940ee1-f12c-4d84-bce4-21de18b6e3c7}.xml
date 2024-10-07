@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="EncodableAsset" id="{87940ee1-f12c-4d84-bce4-21de18b6e3c7}">
+		<property name="note">
+			<value>Red Forest by Martijn de Boer (NiGiD) (c) copyright 2014 Licensed under a Creative Commons Attribution Noncommercial  (3.0) license. https://dig.ccmixter.org/files/NiGiD/48012</value>
+		</property>
+		<property name="assetPath">
+			<value>NonRelease/Music/RedForest/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{f930ae7e-03ac-4797-acd5-e828f088234b}</destination>
+		</relationship>
+	</object>
+</objects>

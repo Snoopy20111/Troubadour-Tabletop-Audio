@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="EncodableAsset" id="{89b92cc0-d797-4952-822b-bbd0ecf9f96e}">
+		<property name="note">
+			<value>To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed under a Creative Commons Attribution Noncommercial (4.0) license. https://dig.ccmixter.org/files/Javolenus/67611 </value>
+		</property>
+		<property name="assetPath">
+			<value>_Examples/Music/ToDriveTheColdWinterAway/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{f930ae7e-03ac-4797-acd5-e828f088234b}</destination>
+		</relationship>
+	</object>
+</objects>
