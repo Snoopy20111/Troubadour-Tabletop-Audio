@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
-	<object class="AudioFile" id="{b9498bd3-eb10-45ea-9326-0cc1527ec841}">
+	<object class="AudioFile" id="{3647560e-1add-4807-8a84-3d18fdef72c3}">
 		<property name="assetPath">
 			<value>_Examples/Music/DownUnder/JeffSpeed68_DownUnder_Djembes2.mp3</value>
 		</property>
@@ -11,7 +11,7 @@
 			<value>2</value>
 		</property>
 		<property name="length">
-			<value>244.24489795918367</value>
+			<value>214.98775510204081</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{f930ae7e-03ac-4797-acd5-e828f088234b}</destination>
