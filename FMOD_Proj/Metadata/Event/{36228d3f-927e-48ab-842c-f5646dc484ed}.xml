@@ -190,7 +190,7 @@ Mojave Scotch by jaspertine (c) copyright 2024 Licensed under a Creative Commons
 			<destination>{204a841b-fb2f-4f58-81f9-bcdc889a693f}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{0f296a96-e357-477a-b07e-fd6c61f98d80}</destination>
+			<destination>{38a44cf6-9119-4967-9b9b-7f5236d1087a}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{1ddad7d4-1c45-47f8-bd6e-9a960d88bb93}" />
@@ -11016,7 +11016,7 @@ Mojave Scotch by jaspertine (c) copyright 2024 Licensed under a Creative Commons
 			<value>1</value>
 		</property>
 		<relationship name="commandTarget">
-			<destination>{e4399d46-9535-4c68-b7b4-8f9232d49f02}</destination>
+			<destination>{496b181c-c281-4e39-8526-bbb0a996cdd4}</destination>
 		</relationship>
 	</object>
 	<object class="CommandSound" id="{6b390523-5233-472b-a689-ba92ef25652d}">
@@ -11033,7 +11033,7 @@ Mojave Scotch by jaspertine (c) copyright 2024 Licensed under a Creative Commons
 			<value>1</value>
 		</property>
 		<relationship name="commandTarget">
-			<destination>{e4399d46-9535-4c68-b7b4-8f9232d49f02}</destination>
+			<destination>{496b181c-c281-4e39-8526-bbb0a996cdd4}</destination>
 		</relationship>
 	</object>
 	<object class="CommandSound" id="{84a6f99a-16fb-41a5-90db-11f4a5394f8d}">
@@ -11050,7 +11050,7 @@ Mojave Scotch by jaspertine (c) copyright 2024 Licensed under a Creative Commons
 			<value>1</value>
 		</property>
 		<relationship name="commandTarget">
-			<destination>{e4399d46-9535-4c68-b7b4-8f9232d49f02}</destination>
+			<destination>{496b181c-c281-4e39-8526-bbb0a996cdd4}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionDestinationSound" id="{bbd2bc42-59a5-4951-8453-419c0ab5ade6}">
@@ -11392,7 +11392,7 @@ Mojave Scotch by jaspertine (c) copyright 2024 Licensed under a Creative Commons
 			<value>1</value>
 		</property>
 		<relationship name="commandTarget">
-			<destination>{4bba2661-197c-45e0-b1f5-3bbb106c8626}</destination>
+			<destination>{69bb2e76-418e-4242-b0e2-bdc5cc613370}</destination>
 		</relationship>
 	</object>
 	<object class="CommandSound" id="{0a16f287-2da2-4603-b49a-86e39174c6c0}">
@@ -11409,7 +11409,7 @@ Mojave Scotch by jaspertine (c) copyright 2024 Licensed under a Creative Commons
 			<value>1</value>
 		</property>
 		<relationship name="commandTarget">
-			<destination>{4bba2661-197c-45e0-b1f5-3bbb106c8626}</destination>
+			<destination>{69bb2e76-418e-4242-b0e2-bdc5cc613370}</destination>
 		</relationship>
 	</object>
 	<object class="CommandSound" id="{01d8cd94-bdc5-42ac-98e0-82a162076f2f}">
@@ -11423,7 +11423,7 @@ Mojave Scotch by jaspertine (c) copyright 2024 Licensed under a Creative Commons
 			<value>3</value>
 		</property>
 		<relationship name="commandTarget">
-			<destination>{e4399d46-9535-4c68-b7b4-8f9232d49f02}</destination>
+			<destination>{496b181c-c281-4e39-8526-bbb0a996cdd4}</destination>
 		</relationship>
 	</object>
 	<object class="CommandSound" id="{b44f9ba3-81c4-4092-805d-8767f9fd2b01}">
@@ -11437,7 +11437,7 @@ Mojave Scotch by jaspertine (c) copyright 2024 Licensed under a Creative Commons
 			<value>3</value>
 		</property>
 		<relationship name="commandTarget">
-			<destination>{4bba2661-197c-45e0-b1f5-3bbb106c8626}</destination>
+			<destination>{69bb2e76-418e-4242-b0e2-bdc5cc613370}</destination>
 		</relationship>
 	</object>
 	<object class="CommandSound" id="{ab037b40-a753-43cb-8e1d-ae8987231ab2}">
@@ -11451,7 +11451,7 @@ Mojave Scotch by jaspertine (c) copyright 2024 Licensed under a Creative Commons
 			<value>3</value>
 		</property>
 		<relationship name="commandTarget">
-			<destination>{4bba2661-197c-45e0-b1f5-3bbb106c8626}</destination>
+			<destination>{69bb2e76-418e-4242-b0e2-bdc5cc613370}</destination>
 		</relationship>
 	</object>
 	<object class="CommandSound" id="{3e0d336c-21f6-4f62-a6c1-a6f36ddb475c}">
@@ -11465,7 +11465,7 @@ Mojave Scotch by jaspertine (c) copyright 2024 Licensed under a Creative Commons
 			<value>3</value>
 		</property>
 		<relationship name="commandTarget">
-			<destination>{e4399d46-9535-4c68-b7b4-8f9232d49f02}</destination>
+			<destination>{496b181c-c281-4e39-8526-bbb0a996cdd4}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{5bb13f17-365f-4c54-862a-a7aaf3985678}">
@@ -17866,7 +17866,7 @@ Mojave Scotch by jaspertine (c) copyright 2024 Licensed under a Creative Commons
 			<value>true</value>
 		</property>
 		<relationship name="parameter">
-			<destination>{e4399d46-9535-4c68-b7b4-8f9232d49f02}</destination>
+			<destination>{496b181c-c281-4e39-8526-bbb0a996cdd4}</destination>
 		</relationship>
 	</object>
 	<object class="EventCondition" id="{e08887e0-4318-4317-8295-08d09cf3196d}" />
@@ -17912,7 +17912,7 @@ Mojave Scotch by jaspertine (c) copyright 2024 Licensed under a Creative Commons
 			<value>true</value>
 		</property>
 		<relationship name="parameter">
-			<destination>{e4399d46-9535-4c68-b7b4-8f9232d49f02}</destination>
+			<destination>{496b181c-c281-4e39-8526-bbb0a996cdd4}</destination>
 		</relationship>
 	</object>
 	<object class="EventCondition" id="{eb8e4fb8-58c1-4afc-b66b-c5cd0d604ee0}" />
@@ -18022,7 +18022,7 @@ Mojave Scotch by jaspertine (c) copyright 2024 Licensed under a Creative Commons
 			<value>true</value>
 		</property>
 		<relationship name="parameter">
-			<destination>{4bba2661-197c-45e0-b1f5-3bbb106c8626}</destination>
+			<destination>{69bb2e76-418e-4242-b0e2-bdc5cc613370}</destination>
 		</relationship>
 	</object>
 	<object class="EventCondition" id="{34083e24-3978-45cc-83af-2d92c306b22d}" />
@@ -18068,7 +18068,7 @@ Mojave Scotch by jaspertine (c) copyright 2024 Licensed under a Creative Commons
 			<value>true</value>
 		</property>
 		<relationship name="parameter">
-			<destination>{4bba2661-197c-45e0-b1f5-3bbb106c8626}</destination>
+			<destination>{69bb2e76-418e-4242-b0e2-bdc5cc613370}</destination>
 		</relationship>
 	</object>
 	<object class="EventCondition" id="{9361c655-21f0-4307-a53f-1c050796d327}" />
@@ -18335,7 +18335,7 @@ Mojave Scotch by jaspertine (c) copyright 2024 Licensed under a Creative Commons
 			<value>1</value>
 		</property>
 		<relationship name="parameter">
-			<destination>{e4399d46-9535-4c68-b7b4-8f9232d49f02}</destination>
+			<destination>{496b181c-c281-4e39-8526-bbb0a996cdd4}</destination>
 		</relationship>
 	</object>
 	<object class="EventCondition" id="{d3a8f199-a3b2-4fa9-9927-ae466f73cd4c}" />
@@ -18378,7 +18378,7 @@ Mojave Scotch by jaspertine (c) copyright 2024 Licensed under a Creative Commons
 			<value>1</value>
 		</property>
 		<relationship name="parameter">
-			<destination>{e4399d46-9535-4c68-b7b4-8f9232d49f02}</destination>
+			<destination>{496b181c-c281-4e39-8526-bbb0a996cdd4}</destination>
 		</relationship>
 	</object>
 	<object class="EventCondition" id="{184784e7-6ae7-494a-bc4f-50b75807303a}" />
@@ -18421,7 +18421,7 @@ Mojave Scotch by jaspertine (c) copyright 2024 Licensed under a Creative Commons
 			<value>1</value>
 		</property>
 		<relationship name="parameter">
-			<destination>{4bba2661-197c-45e0-b1f5-3bbb106c8626}</destination>
+			<destination>{69bb2e76-418e-4242-b0e2-bdc5cc613370}</destination>
 		</relationship>
 	</object>
 	<object class="EventCondition" id="{eb37b4f2-42e6-4e86-b4f3-d5b54c9ae12f}" />
@@ -18464,7 +18464,7 @@ Mojave Scotch by jaspertine (c) copyright 2024 Licensed under a Creative Commons
 			<value>1</value>
 		</property>
 		<relationship name="parameter">
-			<destination>{4bba2661-197c-45e0-b1f5-3bbb106c8626}</destination>
+			<destination>{69bb2e76-418e-4242-b0e2-bdc5cc613370}</destination>
 		</relationship>
 	</object>
 	<object class="EventCondition" id="{cb42dc49-2c02-4616-a93f-5ab89f920f76}" />
@@ -18507,7 +18507,7 @@ Mojave Scotch by jaspertine (c) copyright 2024 Licensed under a Creative Commons
 			<value>1</value>
 		</property>
 		<relationship name="parameter">
-			<destination>{4bba2661-197c-45e0-b1f5-3bbb106c8626}</destination>
+			<destination>{69bb2e76-418e-4242-b0e2-bdc5cc613370}</destination>
 		</relationship>
 	</object>
 	<object class="EventCondition" id="{1ba32285-e301-4e52-822d-7226d996d22f}" />
@@ -19018,7 +19018,7 @@ Mojave Scotch by jaspertine (c) copyright 2024 Licensed under a Creative Commons
 			<value>1</value>
 		</property>
 		<relationship name="parameter">
-			<destination>{e4399d46-9535-4c68-b7b4-8f9232d49f02}</destination>
+			<destination>{496b181c-c281-4e39-8526-bbb0a996cdd4}</destination>
 		</relationship>
 	</object>
 	<object class="EventCondition" id="{f87bbe04-6e48-424b-9bb1-a6bc5625f104}" />
@@ -19061,7 +19061,7 @@ Mojave Scotch by jaspertine (c) copyright 2024 Licensed under a Creative Commons
 			<value>1</value>
 		</property>
 		<relationship name="parameter">
-			<destination>{e4399d46-9535-4c68-b7b4-8f9232d49f02}</destination>
+			<destination>{496b181c-c281-4e39-8526-bbb0a996cdd4}</destination>
 		</relationship>
 	</object>
 	<object class="EventCondition" id="{18dbb710-49d2-4e9d-b167-612e5f1c0ee4}" />

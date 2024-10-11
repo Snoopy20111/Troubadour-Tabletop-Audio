@@ -73,7 +73,7 @@ Blackwaterside (Trad.) by Javolenus (c) copyright 2024 Licensed under a Creative
 			<destination>{1c1e3d1c-8d6e-4e40-933c-ad5cb8852e65}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{0f296a96-e357-477a-b07e-fd6c61f98d80}</destination>
+			<destination>{38a44cf6-9119-4967-9b9b-7f5236d1087a}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{f437666b-3ba3-462e-9bcd-50a9b7277cef}" />

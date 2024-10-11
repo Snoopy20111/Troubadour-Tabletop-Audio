@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPresetFolder" id="{d2206711-25f6-4793-a1f5-6610d7b07e76}">
+		<property name="name">
+			<value>Roboxing</value>
+		</property>
+		<relationship name="folder">
+			<destination>{136945fa-c6bb-40e9-84c7-7cd58d12db0e}</destination>
+		</relationship>
+	</object>
+</objects>

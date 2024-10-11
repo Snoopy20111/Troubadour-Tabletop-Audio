@@ -63,7 +63,7 @@ Cyan Granite by 7OOP3D (c) copyright 2024 Licensed under a Creative Commons Attr
 			<destination>{7d721fd1-0d04-4af4-aa65-d5ee3ea22269}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{0f296a96-e357-477a-b07e-fd6c61f98d80}</destination>
+			<destination>{38a44cf6-9119-4967-9b9b-7f5236d1087a}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{08e564e8-db09-4850-8718-1f6647b4b865}" />

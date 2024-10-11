@@ -83,7 +83,7 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<destination>{02b1d0e8-a5f0-4756-8ea3-0d2d703afa7c}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{0f296a96-e357-477a-b07e-fd6c61f98d80}</destination>
+			<destination>{38a44cf6-9119-4967-9b9b-7f5236d1087a}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{ba5b17d9-81a6-4c05-85cd-8f12cbf39a4e}" />

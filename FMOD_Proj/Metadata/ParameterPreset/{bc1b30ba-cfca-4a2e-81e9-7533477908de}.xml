@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
-	<object class="ParameterPreset" id="{58367d43-a4c4-411b-b4c0-bd9c30410a9e}">
+	<object class="ParameterPreset" id="{bc1b30ba-cfca-4a2e-81e9-7533477908de}">
 		<property name="name">
-			<value>GlobalParam</value>
+			<value>Test_GlobalParam</value>
 		</property>
 		<relationship name="folder">
-			<destination>{22312349-d57f-4705-a689-952236bfc399}</destination>
+			<destination>{554f113d-d40a-4f1c-adab-adedb26ee290}</destination>
 		</relationship>
 		<relationship name="parameter">
-			<destination>{6f76f2d8-5810-4334-91d8-2f5b6dc38b11}</destination>
+			<destination>{601a6277-ec79-4ade-acf8-e4ebdb1d75c1}</destination>
 		</relationship>
 	</object>
-	<object class="GameParameter" id="{6f76f2d8-5810-4334-91d8-2f5b6dc38b11}">
+	<object class="GameParameter" id="{601a6277-ec79-4ade-acf8-e4ebdb1d75c1}">
 		<property name="isGlobal">
 			<value>true</value>
 		</property>

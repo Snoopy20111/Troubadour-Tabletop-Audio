@@ -184,7 +184,7 @@ Forza Nostalgia by Martijn de Boer (NiGiD) (c) copyright 2023 Licensed under a C
 			<destination>{e68f66ff-1d26-4940-a1b1-f9b5d36daab8}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{0f296a96-e357-477a-b07e-fd6c61f98d80}</destination>
+			<destination>{38a44cf6-9119-4967-9b9b-7f5236d1087a}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{4440c2b0-3c8a-492a-8917-252377355da7}" />

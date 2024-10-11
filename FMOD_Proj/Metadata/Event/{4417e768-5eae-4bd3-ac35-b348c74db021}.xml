@@ -61,7 +61,7 @@ GRAND CIRCLES by Ant.Survila (c) copyright 2024 Licensed under a Creative Common
 			<destination>{f0ae2872-812d-497a-8cc7-82758a2a428a}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{0f296a96-e357-477a-b07e-fd6c61f98d80}</destination>
+			<destination>{38a44cf6-9119-4967-9b9b-7f5236d1087a}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{ac7c37ba-bebb-4518-801c-3651835d50bb}" />

@@ -149,7 +149,7 @@ Maya by reiswerk (c) copyright 2020 Licensed under a Creative Commons Sampling P
 			<destination>{d8dc5c88-5815-4971-b513-5b9972918bf0}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{0f296a96-e357-477a-b07e-fd6c61f98d80}</destination>
+			<destination>{38a44cf6-9119-4967-9b9b-7f5236d1087a}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{0968c08b-3cf8-461b-8c9f-eb408065b8f3}" />

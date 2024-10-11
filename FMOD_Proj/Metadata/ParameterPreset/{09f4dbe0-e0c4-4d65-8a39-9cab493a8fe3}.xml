@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{09f4dbe0-e0c4-4d65-8a39-9cab493a8fe3}">
+		<property name="name">
+			<value>Plays_A</value>
+		</property>
+		<relationship name="folder">
+			<destination>{b3d312ee-a46f-46be-9306-959e2d2862eb}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{496b181c-c281-4e39-8526-bbb0a996cdd4}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{496b181c-c281-4e39-8526-bbb0a996cdd4}">
+		<property name="parameterType">
+			<value>1</value>
+		</property>
+		<property name="maximum">
+			<value>11</value>
+		</property>
+		<property name="isReadOnly">
+			<value>true</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+		<property name="isExposedRecursively">
+			<value>false</value>
+		</property>
+	</object>
+</objects>

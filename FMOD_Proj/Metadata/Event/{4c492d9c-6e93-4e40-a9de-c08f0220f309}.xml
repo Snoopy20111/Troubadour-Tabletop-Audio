@@ -63,7 +63,7 @@ Blue Sky Bolero by Javolenus (c) copyright 2022 Licensed under a Creative Common
 			<destination>{5e2ebf09-bb83-4539-a51a-401236f0d8ce}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{0f296a96-e357-477a-b07e-fd6c61f98d80}</destination>
+			<destination>{38a44cf6-9119-4967-9b9b-7f5236d1087a}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{c335e92d-87de-47c5-9a68-b181120b9283}" />
@@ -124,7 +124,6 @@ Blue Sky Bolero by Javolenus (c) copyright 2022 Licensed under a Creative Common
 		<property name="length">
 			<value>0.2109375</value>
 		</property>
-		<property name="name" />
 		<relationship name="parameters">
 			<destination>{53c93126-c61a-4545-aaf7-27d2a2379f68}</destination>
 		</relationship>
