@@ -20,12 +20,9 @@
 			<destination>{de1f829c-42fb-4617-9994-132cdd91405d}</destination>
 		</relationship>
 		<relationship name="snapshotProperties">
-			<destination>{e3665be2-d96a-4f19-9e32-90d71406bb5a}</destination>
 			<destination>{38a583b0-b450-4924-a467-5d94b2fe268e}</destination>
-			<destination>{5ac4d2ca-097b-4577-97b0-5d87a7d62048}</destination>
 		</relationship>
 		<relationship name="snapshotTracks">
-			<destination>{3768507d-704e-44d9-af68-e1f092adc736}</destination>
 			<destination>{23e5e435-1b66-4bd5-bbb9-42f42acc166e}</destination>
 		</relationship>
 	</object>
@@ -37,17 +34,6 @@
 	<object class="MarkerTrack" id="{92fc07a0-0d56-4ab1-919f-cee15ef7d23f}" />
 	<object class="Timeline" id="{57de80ed-59bc-4c4c-b983-ff56f2cfc94a}" />
 	<object class="SnapshotMasterTrack" id="{de1f829c-42fb-4617-9994-132cdd91405d}" />
-	<object class="SnapshotProperty" id="{e3665be2-d96a-4f19-9e32-90d71406bb5a}">
-		<property name="propertyName">
-			<value>volume</value>
-		</property>
-		<property name="value">
-			<value>5</value>
-		</property>
-		<relationship name="automatableObject">
-			<destination>{f676784a-9fa5-4de7-b07e-6b15397b849b}</destination>
-		</relationship>
-	</object>
 	<object class="SnapshotProperty" id="{38a583b0-b450-4924-a467-5d94b2fe268e}">
 		<property name="propertyName">
 			<value>volume</value>
@@ -57,22 +43,6 @@
 		</property>
 		<relationship name="automatableObject">
 			<destination>{3e6f1e7a-62e3-43db-aa68-3e5a2d6b93f1}</destination>
-		</relationship>
-	</object>
-	<object class="SnapshotProperty" id="{5ac4d2ca-097b-4577-97b0-5d87a7d62048}">
-		<property name="propertyName">
-			<value>pitch</value>
-		</property>
-		<property name="value">
-			<value>3.79999995</value>
-		</property>
-		<relationship name="automatableObject">
-			<destination>{f676784a-9fa5-4de7-b07e-6b15397b849b}</destination>
-		</relationship>
-	</object>
-	<object class="SnapshotTrack" id="{3768507d-704e-44d9-af68-e1f092adc736}">
-		<relationship name="mixerStrip">
-			<destination>{f676784a-9fa5-4de7-b07e-6b15397b849b}</destination>
 		</relationship>
 	</object>
 	<object class="SnapshotTrack" id="{23e5e435-1b66-4bd5-bbb9-42f42acc166e}">

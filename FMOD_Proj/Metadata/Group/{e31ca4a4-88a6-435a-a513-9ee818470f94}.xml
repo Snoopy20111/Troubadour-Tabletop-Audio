@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="MixerGroup" id="{e31ca4a4-88a6-435a-a513-9ee818470f94}">
+		<property name="note">
+			<value>No events in here should be playing by themselves. Only as Event Instruments, routed through the other groups.</value>
+		</property>
+		<property name="volume">
+			<value>-80</value>
+		</property>
+		<property name="name">
+			<value>Source</value>
+		</property>
+		<relationship name="effectChain">
+			<destination>{814ad788-85fc-4bf7-81b2-c55989369b2f}</destination>
+		</relationship>
+		<relationship name="panner">
+			<destination>{ca80e440-a91f-410d-94dc-ac47fbc23656}</destination>
+		</relationship>
+		<relationship name="output">
+			<destination>{ab0c2c17-5a98-43a0-9014-880b562c8be6}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusEffectChain" id="{814ad788-85fc-4bf7-81b2-c55989369b2f}">
+		<relationship name="effects">
+			<destination>{aa8f3665-d85f-489a-9acb-67cbb644d0a8}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusPanner" id="{ca80e440-a91f-410d-94dc-ac47fbc23656}" />
+	<object class="MixerBusFader" id="{aa8f3665-d85f-489a-9acb-67cbb644d0a8}" />
+</objects>

@@ -10,7 +10,7 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<value>DownUnder</value>
 		</property>
 		<property name="outputFormat">
-			<value>3</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{19a4e887-4a02-4bde-90c9-9be24168d13d}</destination>
@@ -1716,6 +1716,7 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 	<object class="MixerBusEffectChain" id="{9b64513e-8cf3-46a9-b270-53db69f77cc1}">
 		<relationship name="effects">
 			<destination>{431a74a3-8f45-401d-a322-67162328f984}</destination>
+			<destination>{05aa0428-23b4-4422-ac8f-e214b9845dea}</destination>
 			<destination>{3ffd141c-ae85-4a18-842c-368855bac7aa}</destination>
 		</relationship>
 	</object>
@@ -2688,7 +2689,12 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 	</object>
 	<object class="LimiterEffect" id="{431a74a3-8f45-401d-a322-67162328f984}">
 		<property name="ceiling">
-			<value>-1.60000002</value>
+			<value>-1.80000007</value>
+		</property>
+	</object>
+	<object class="ChannelMixEffect" id="{05aa0428-23b4-4422-ac8f-e214b9845dea}">
+		<property name="outputGrouping">
+			<value>2</value>
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{3ffd141c-ae85-4a18-842c-368855bac7aa}" />

@@ -12,7 +12,7 @@ Blue Sky Bolero by Javolenus (c) copyright 2022 Licensed under a Creative Common
 			<value>BlueSkyBolero</value>
 		</property>
 		<property name="outputFormat">
-			<value>3</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{19a4e887-4a02-4bde-90c9-9be24168d13d}</destination>
@@ -164,6 +164,7 @@ Blue Sky Bolero by Javolenus (c) copyright 2022 Licensed under a Creative Common
 	</object>
 	<object class="MixerBusEffectChain" id="{85986069-0b1a-42b0-8eb7-f195e1c0c585}">
 		<relationship name="effects">
+			<destination>{3ba03e00-6457-49cc-8bd8-aae9cb7b85b1}</destination>
 			<destination>{77687bc5-6daf-475f-a400-5c3c791d18ea}</destination>
 		</relationship>
 	</object>
@@ -187,6 +188,11 @@ Blue Sky Bolero by Javolenus (c) copyright 2022 Licensed under a Creative Common
 	</object>
 	<object class="MixerBusPanner" id="{688ed217-46da-477e-a087-c741bfde730b}" />
 	<object class="EventCondition" id="{88cbe1ba-adcc-482c-8a94-2f02352eb367}" />
+	<object class="ChannelMixEffect" id="{3ba03e00-6457-49cc-8bd8-aae9cb7b85b1}">
+		<property name="outputGrouping">
+			<value>2</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{77687bc5-6daf-475f-a400-5c3c791d18ea}" />
 	<object class="Automator" id="{7415ea6c-3034-422b-b456-57ee1defef48}">
 		<property name="nameOfPropertyBeingAutomated">

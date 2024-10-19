@@ -118,7 +118,7 @@ Stopping will go to the appropriate Outro</value>
 			<destination>{6b47341f-03e7-4d82-974b-eaf713a562df}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{38a44cf6-9119-4967-9b9b-7f5236d1087a}</destination>
+			<destination>{e31ca4a4-88a6-435a-a513-9ee818470f94}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{269a73b5-5576-4d81-8571-014855454e0e}" />
