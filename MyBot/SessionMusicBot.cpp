@@ -67,6 +67,8 @@ std::map<std::string, FMOD_STUDIO_PARAMETER_DESCRIPTION> pGlobalParams;
 FMOD_3D_ATTRIBUTES listenerAttributes;								// Holds the listener's position & orientation (at the origin). Not yet used (todo: 5.1 or 4.0 mixdown DSP?)
 
 //---Misc Bot Declarations---//
+
+dpp::application botapp;								// The application object of the bot. Defined from a callback while starting up the bot.
 dpp::discord_voice_client* currentClient = nullptr;		// Current Voice Client of the bot. Only designed to run on one server.
 std::vector<int16_t> myPCMData;							// Main buffer of PCM audio data, which FMOD adds to and D++ cuts "frames" from
 bool exitRequested = false;								// Set to "true" when you want off Mr. Bones Wild Tunes.
@@ -1317,7 +1319,7 @@ void quit(const dpp::slashcommand_t& event) {
 }
 
 // Initialize FMOD, DSP, and filepaths for later reference
-void init() {
+static void init() {
 	std::cout << "###########################" << std::endl;
 	std::cout << "###                     ###" << std::endl;
 	std::cout << "###  Session Music Bot  ###" << std::endl;
@@ -1387,7 +1389,7 @@ void init() {
 }
 
 // Init function specifically for user-defined needs (loading banks, indexing events & params, etc)
-void init_session() {
+static void init_session() {
 	std::cout << "###########################" << std::endl << std::endl;
 	std::cout << "Loading and Indexing all other banks..." << std::endl;
 	banks();
@@ -1398,6 +1400,18 @@ void init_session() {
 	std::cout << "...Done!" << std::endl << std::endl;
 	std::cout << "###########################" << std::endl;
 	std::cout << std::endl;
+}
+
+void onBotAppGet(const dpp::confirmation_callback_t& callbackObj) {
+	if (!callbackObj.is_error()) {
+		botapp = callbackObj.get<dpp::application>();
+		std::cout << "Owner added with Username: " << botapp.owner.username << " and Snowflake ID: " << botapp.owner.id << std::endl;
+		owningUsers.push_back(botapp.owner.id);
+	}
+	else {
+		std::cout << "Error getting bot application object: " << callbackObj.get_error().human_readable << std::endl;
+		exit(0);
+	}
 }
 
 int main() {
@@ -1425,9 +1439,8 @@ int main() {
 	bot.on_log(dpp::utility::cout_logger());
 
 	// Get the bot application, and add the Owner to the Owning Users list (for permissions)
-	dpp::application botapp = bot.current_application_get_sync();	//Blocking function used for simplicity
-	std::cout << "Owner Username: " << botapp.owner.username << " with Snowflake ID: " << botapp.owner.id << std::endl;
-	owningUsers.push_back(botapp.owner.id);
+	// Fake blocking function to make debug output coherent
+	bot.current_application_get(onBotAppGet);
 
 	/* Register slash command here in on_ready */
 	bot.on_ready([&bot](const dpp::ready_t& event) {
