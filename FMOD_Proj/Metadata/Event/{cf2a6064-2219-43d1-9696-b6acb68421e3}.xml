@@ -9,7 +9,7 @@ Very fun example of using Command Instruments. Also uses some weird quirks of ho
 To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed under a Creative Commons Attribution Noncommercial (4.0) license. https://dig.ccmixter.org/files/Javolenus/67611 </value>
 		</property>
 		<property name="name">
-			<value>ToDriveTheColdWinterAway</value>
+			<value>MUS_ToDriveTheColdWinterAway</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
@@ -4326,9 +4326,6 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 		</relationship>
 	</object>
 	<object class="LimiterEffect" id="{b27f1e17-6fcd-49b4-bbb9-a13d3b2f264a}">
-		<property name="boost">
-			<value>2.70000005</value>
-		</property>
 		<property name="ceiling">
 			<value>-3</value>
 		</property>

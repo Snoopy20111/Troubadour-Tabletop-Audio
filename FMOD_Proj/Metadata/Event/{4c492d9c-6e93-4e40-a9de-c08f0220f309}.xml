@@ -9,7 +9,7 @@ Optionally, setting "State" will transition to and loop that particular section 
 Blue Sky Bolero by Javolenus (c) copyright 2022 Licensed under a Creative Commons Attribution Noncommercial  (3.0) license. https://dig.ccmixter.org/files/Javolenus/64859</value>
 		</property>
 		<property name="name">
-			<value>BlueSkyBolero</value>
+			<value>MUS_BlueSkyBolero</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>

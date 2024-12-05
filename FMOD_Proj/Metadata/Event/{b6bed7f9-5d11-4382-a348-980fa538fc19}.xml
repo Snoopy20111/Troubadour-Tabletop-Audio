@@ -9,7 +9,7 @@ The beats don't make full sense here, so don't trust them too much. As a result,
 I AM DIONYSUS by Ant.Survila (c) copyright 2024 Licensed under a Creative Commons Attribution Noncommercial (4.0) license. https://dig.ccmixter.org/files/AntSurvila/68571</value>
 		</property>
 		<property name="name">
-			<value>IAmDionysus</value>
+			<value>MUS_IAmDionysus</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>

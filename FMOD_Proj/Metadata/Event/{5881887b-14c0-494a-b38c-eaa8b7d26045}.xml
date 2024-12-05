@@ -7,13 +7,13 @@
 Caring Can Make A Difference (Short Emotional Film Score with Stems) by geoffpeters (c) copyright 2014 Licensed under a Creative Commons Attribution (3.0) license. https://dig.ccmixter.org/files/geoffpeters/48537 Ft: Elizabeth Wojtowicz</value>
 		</property>
 		<property name="name">
-			<value>CaringCanMakeADifference</value>
+			<value>MUS_CaringCanMakeADifference</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
 		</property>
 		<relationship name="folder">
-			<destination>{175408ad-0db0-4fa5-adc2-9ebb6dede68d}</destination>
+			<destination>{19a4e887-4a02-4bde-90c9-9be24168d13d}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{3ea8b238-fb30-47cb-ab73-8af3b51141ef}</destination>

@@ -110,10 +110,8 @@ Lute - Calleno Custure Me by urmymuse (c) copyright 2023 Licensed under a Creati
 			<value>2</value>
 		</property>
 		<relationship name="sounds">
-			<destination>{f685aae6-83a0-40a0-8155-1bd19e126289}</destination>
-			<destination>{8918a776-502b-4887-a1e3-76d108ef9916}</destination>
-			<destination>{698d67fa-3024-4e44-a23d-4b3ca64de1e9}</destination>
-			<destination>{b453c42c-453e-426c-a88d-d5a5a0c028e8}</destination>
+			<destination>{cbe13c91-d532-4a5b-8adb-0b9a28756585}</destination>
+			<destination>{50bc5e02-3e02-4703-8446-0427fd9b7ad9}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{971d6bc1-54a9-4a7a-8d50-1b82aabb8ec6}">
@@ -186,35 +184,22 @@ Lute - Calleno Custure Me by urmymuse (c) copyright 2023 Licensed under a Creati
 	</object>
 	<object class="MixerBusPanner" id="{24976f09-5a70-424f-b20c-eaec90d8f9ea}" />
 	<object class="MixerBusFader" id="{3f044a6a-dd95-47d4-aff5-2000920178d5}" />
-	<object class="SingleSound" id="{f685aae6-83a0-40a0-8155-1bd19e126289}">
-		<property name="volume">
-			<value>-2.5</value>
+	<object class="MultiSound" id="{cbe13c91-d532-4a5b-8adb-0b9a28756585}">
+		<property name="playlistMode">
+			<value>2</value>
 		</property>
-		<relationship name="audioFile">
-			<destination>{ef45fdab-22ee-4f6d-946a-98db7cf04c0b}</destination>
-		</relationship>
-	</object>
-	<object class="MultiSound" id="{8918a776-502b-4887-a1e3-76d108ef9916}">
 		<relationship name="sounds">
-			<destination>{b8ac1f4b-2c7b-4674-9a14-3a080b3f5943}</destination>
-			<destination>{0dc3c6c9-70a2-44c8-88b6-ea6533240ff7}</destination>
-			<destination>{9435c4a9-ff49-4d51-b268-15f43c468269}</destination>
-			<destination>{3702d0e5-c559-4dd9-82d0-ba501792eba1}</destination>
-			<destination>{0ce629e2-55be-4806-b3c2-22c77ea6046d}</destination>
+			<destination>{2d22a0dc-1111-4059-a5e7-4f3fc23773aa}</destination>
+			<destination>{6beac216-f17a-4445-aa50-535a81e9ca0e}</destination>
 		</relationship>
 	</object>
-	<object class="SingleSound" id="{698d67fa-3024-4e44-a23d-4b3ca64de1e9}">
-		<relationship name="audioFile">
-			<destination>{ef43a736-3753-4112-9116-c4ed7ee05a65}</destination>
-		</relationship>
-	</object>
-	<object class="MultiSound" id="{b453c42c-453e-426c-a88d-d5a5a0c028e8}">
+	<object class="MultiSound" id="{50bc5e02-3e02-4703-8446-0427fd9b7ad9}">
+		<property name="playlistMode">
+			<value>2</value>
+		</property>
 		<relationship name="sounds">
-			<destination>{090b4493-a411-49a1-a783-a45e42293aa6}</destination>
-			<destination>{fcb7815c-a8b8-4b5d-b3c9-976e77eca002}</destination>
-			<destination>{27227136-bd6a-450d-b0c4-fab5c5f38922}</destination>
-			<destination>{4253acb8-eca5-4ca5-9709-a1f9d224f370}</destination>
-			<destination>{67db0a3e-cd71-4669-815f-1e9c068134d9}</destination>
+			<destination>{f84fe32d-ac9d-40e8-bc7d-a62dced21928}</destination>
+			<destination>{387ca7ae-46e2-4da0-8d29-4b90450c5b74}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{4fe89aa5-fcad-4fcf-a46b-82626c0f1c9a}">
@@ -225,47 +210,50 @@ Lute - Calleno Custure Me by urmymuse (c) copyright 2023 Licensed under a Creati
 	<object class="MixerBusPanner" id="{6aca86bb-16f9-4d6c-9b78-437325593ffb}" />
 	<object class="EventCondition" id="{54cdaebd-2f10-4a5b-a864-9e0a0ed4ced0}" />
 	<object class="MixerBusFader" id="{d1fb4317-041e-49bc-a8a7-cfcd5248b597}" />
-	<object class="SilenceSound" id="{b8ac1f4b-2c7b-4674-9a14-3a080b3f5943}">
-		<property name="duration">
-			<value>1200</value>
+	<object class="SingleSound" id="{2d22a0dc-1111-4059-a5e7-4f3fc23773aa}">
+		<property name="volume">
+			<value>-2.5</value>
 		</property>
+		<relationship name="audioFile">
+			<destination>{ef45fdab-22ee-4f6d-946a-98db7cf04c0b}</destination>
+		</relationship>
 	</object>
-	<object class="SilenceSound" id="{0dc3c6c9-70a2-44c8-88b6-ea6533240ff7}">
-		<property name="duration">
-			<value>1100</value>
-		</property>
-	</object>
-	<object class="SilenceSound" id="{9435c4a9-ff49-4d51-b268-15f43c468269}" />
-	<object class="SilenceSound" id="{3702d0e5-c559-4dd9-82d0-ba501792eba1}">
-		<property name="duration">
-			<value>900</value>
-		</property>
-	</object>
-	<object class="SilenceSound" id="{0ce629e2-55be-4806-b3c2-22c77ea6046d}">
+	<object class="SilenceSound" id="{6beac216-f17a-4445-aa50-535a81e9ca0e}">
 		<property name="duration">
 			<value>800</value>
 		</property>
+		<relationship name="modulators">
+			<destination>{652f88cf-0164-4fe8-ba38-c99356d5050c}</destination>
+		</relationship>
 	</object>
-	<object class="SilenceSound" id="{090b4493-a411-49a1-a783-a45e42293aa6}">
-		<property name="duration">
-			<value>1200</value>
-		</property>
+	<object class="SingleSound" id="{f84fe32d-ac9d-40e8-bc7d-a62dced21928}">
+		<relationship name="audioFile">
+			<destination>{ef43a736-3753-4112-9116-c4ed7ee05a65}</destination>
+		</relationship>
 	</object>
-	<object class="SilenceSound" id="{fcb7815c-a8b8-4b5d-b3c9-976e77eca002}">
-		<property name="duration">
-			<value>1100</value>
-		</property>
-	</object>
-	<object class="SilenceSound" id="{27227136-bd6a-450d-b0c4-fab5c5f38922}" />
-	<object class="SilenceSound" id="{4253acb8-eca5-4ca5-9709-a1f9d224f370}">
-		<property name="duration">
-			<value>900</value>
-		</property>
-	</object>
-	<object class="SilenceSound" id="{67db0a3e-cd71-4669-815f-1e9c068134d9}">
+	<object class="SilenceSound" id="{387ca7ae-46e2-4da0-8d29-4b90450c5b74}">
 		<property name="duration">
 			<value>800</value>
 		</property>
+		<relationship name="modulators">
+			<destination>{e48b6828-2edd-4093-a499-560c684a6f90}</destination>
+		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{af0cdf0b-5df1-481e-b40d-b71964397681}" />
+	<object class="RandomizerModulator" id="{652f88cf-0164-4fe8-ba38-c99356d5050c}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>duration</value>
+		</property>
+		<property name="amount">
+			<value>0.666666687</value>
+		</property>
+	</object>
+	<object class="RandomizerModulator" id="{e48b6828-2edd-4093-a499-560c684a6f90}">
+		<property name="nameOfPropertyBeingModulated">
+			<value>duration</value>
+		</property>
+		<property name="amount">
+			<value>0.666666687</value>
+		</property>
+	</object>
 </objects>

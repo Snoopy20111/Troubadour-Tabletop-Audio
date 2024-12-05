@@ -9,7 +9,7 @@ Optionally, setting "State" will transition to and loop that particular section 
 Cyan Granite by 7OOP3D (c) copyright 2024 Licensed under a Creative Commons Attribution (3.0) license. https://dig.ccmixter.org/files/7OOP3D/68089 Ft: Admiral Bob</value>
 		</property>
 		<property name="name">
-			<value>CyanGranite</value>
+			<value>MUS_CyanGranite</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>

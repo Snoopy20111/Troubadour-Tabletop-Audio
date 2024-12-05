@@ -9,7 +9,7 @@ Optionally, setting "State" will transition to and loop that particular section 
 Distill by jaspertine (c) copyright 2024 Licensed under a Creative Commons Attribution (4.0) license. https://dig.ccmixter.org/files/jaspertine/68386</value>
 		</property>
 		<property name="name">
-			<value>Distill</value>
+			<value>MUS_Distill</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>

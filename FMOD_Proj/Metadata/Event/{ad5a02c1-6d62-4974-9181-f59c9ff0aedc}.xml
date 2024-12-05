@@ -7,7 +7,7 @@
 Multiple Meditative Gongs, Puja 1 by GeeArtriasRose (c) copyright 2024 Licensed under a Creative Commons Attribution Noncommercial (4.0) license. https://dig.ccmixter.org/files/GeeArtriasRose/68652</value>
 		</property>
 		<property name="name">
-			<value>MultipleMeditativeGongsPuja</value>
+			<value>MUS_MultipleMeditativeGongsPuja</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
@@ -294,7 +294,10 @@ Multiple Meditative Gongs, Puja 1 by GeeArtriasRose (c) copyright 2024 Licensed 
 			<value>0</value>
 		</property>
 		<property name="curveShape">
-			<value>-0.2547189</value>
+			<value>0.5</value>
+		</property>
+		<property name="isSCurve">
+			<value>true</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{cc25407f-80bd-48b3-bf1c-1bf5d3546d90}">

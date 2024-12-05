@@ -7,13 +7,13 @@
 Piano Piece 6 (Winter Lights) by Darkroom (c) copyright 2020 Licensed under a Creative Commons Attribution Noncommercial  (3.0) license. https://dig.ccmixter.org/files/mactonite/62882</value>
 		</property>
 		<property name="name">
-			<value>WinterLights</value>
+			<value>MUS_WinterLights</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
 		</property>
 		<relationship name="folder">
-			<destination>{175408ad-0db0-4fa5-adc2-9ebb6dede68d}</destination>
+			<destination>{19a4e887-4a02-4bde-90c9-9be24168d13d}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{ac0a726a-ba05-4e5b-ab79-46de6f9b22af}</destination>
