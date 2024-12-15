@@ -117,7 +117,7 @@
 			<value>-4</value>
 		</property>
 		<property name="name">
-			<value>Audio 1</value>
+			<value>Music</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{c754b754-4ba8-42a1-8489-240c1d346c05}</destination>
@@ -142,7 +142,7 @@
 			<value>-3</value>
 		</property>
 		<property name="name">
-			<value>Audio 2</value>
+			<value>Ambience</value>
 		</property>
 		<relationship name="effectChain">
 			<destination>{ed731db7-8fb2-493b-b9e6-7231f239c0ba}</destination>

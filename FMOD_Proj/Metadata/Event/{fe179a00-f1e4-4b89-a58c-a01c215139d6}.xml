@@ -123,6 +123,9 @@ Quiet Gongs with Spacious Chimes by GeeArtriasRose (c) copyright 2024 Licensed u
 		<property name="length">
 			<value>409.94400000000002</value>
 		</property>
+		<property name="volume">
+			<value>8</value>
+		</property>
 		<relationship name="audioFile">
 			<destination>{6a758f03-4035-41d8-9ca0-6d23c579ae9b}</destination>
 		</relationship>
