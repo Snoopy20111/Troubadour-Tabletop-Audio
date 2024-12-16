@@ -1989,7 +1989,30 @@ struct DPP_EXPORT voice_buffer_send_t : public event_dispatch_t {
 };
 
 /**
- * @brief voice ready
+ * @brief voice user talking
+ */
+struct DPP_EXPORT voice_user_talking_t : public event_dispatch_t {
+	using event_dispatch_t::event_dispatch_t;
+	using event_dispatch_t::operator=;
+
+	/**
+	 * @brief voice client where user is talking
+	 */
+	class discord_voice_client* voice_client = nullptr;
+
+	/**
+	 * @brief talking user id
+	 */
+	snowflake user_id = {};
+
+	/**
+	 * @brief flags for talking user
+	 */
+	uint8_t talking_flags = 0;
+};
+
+/**
+ * @brief voice user talking
  */
 struct DPP_EXPORT voice_ready_t : public event_dispatch_t {
 	using event_dispatch_t::event_dispatch_t;
@@ -2198,5 +2221,5 @@ struct DPP_EXPORT entitlement_delete_t : public event_dispatch_t {
 	entitlement deleted = {};
 };
 
-}
+} // namespace dpp
 

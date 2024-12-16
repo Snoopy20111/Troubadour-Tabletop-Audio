@@ -241,11 +241,6 @@ class DPP_EXPORT discord_voice_client : public websocket_client
 	void cleanup();
 
 	/**
-	 * @brief A frame of silence packet
-	 */
-	static constexpr uint8_t silence_packet[3] = { 0xf8, 0xff, 0xfe };
-
-	/**
 	 * @brief Mutex for outbound packet stream
 	 */
 	std::mutex stream_mutex;
@@ -439,13 +434,6 @@ class DPP_EXPORT discord_voice_client : public websocket_client
 	 */
 	bool paused;
 
-	/**
-	 * @brief Whether has sent 5 frame of silence before stopping on pause.
-	 *
-	 * This is to avoid unintended Opus interpolation with subsequent transmissions.
-	 */
-	bool sent_stop_frames;
-
 #ifdef HAVE_VOICE
 	/**
 	 * @brief libopus encoder
@@ -487,13 +475,13 @@ class DPP_EXPORT discord_voice_client : public websocket_client
 	 * @brief The list of users that have E2EE potentially enabled for
 	 * DAVE protocol.
 	 */
-	std::set<dpp::snowflake> dave_mls_user_list;
+	std::set<std::string> dave_mls_user_list;
 
 	/**
 	 * @brief The list of users that have left the voice channel but
 	 * not yet removed from MLS group.
 	 */
-	std::set<dpp::snowflake> dave_mls_pending_remove_list;
+	std::set<std::string> dave_mls_pending_remove_list;
 
 	/**
 	 * @brief File descriptor for UDP connection
@@ -662,10 +650,8 @@ class DPP_EXPORT discord_voice_client : public websocket_client
 	 * @param packet packet data
 	 * @param len length of packet
 	 * @param duration duration of opus packet
-	 * @param send_now send this packet right away without buffering.
-	 * Do NOT set send_now to true outside write_ready.
 	 */
-	void send(const char* packet, size_t len, uint64_t duration, bool send_now = false);
+	void send(const char* packet, size_t len, uint64_t duration);
 
 	/**
 	 * @brief Queue a message to be sent via the websocket
@@ -976,10 +962,6 @@ public:
 	 * @param duration Generally duration is 2.5, 5, 10, 20, 40 or 60
 	 * if the timescale is 1000000 (1ms) 
 	 * 
-	 * @param send_now Send this packet right away without buffering,
-	 * this will skip duration calculation for the packet being sent
-	 * and only safe to be set to true in write_ready.
-	 *
 	 * @return discord_voice_client& Reference to self
 	 * 
 	 * @note It is your responsibility to ensure that packets of data 
@@ -990,7 +972,7 @@ public:
 	 * 
 	 * @throw dpp::voice_exception If data length is invalid or voice support not compiled into D++
 	 */
-	discord_voice_client& send_audio_opus(const uint8_t* opus_packet, const size_t length, uint64_t duration, bool send_now = false);
+	discord_voice_client& send_audio_opus(uint8_t* opus_packet, const size_t length, uint64_t duration);
 
 	/**
 	 * @brief Send opus packets to the voice channel
@@ -1017,7 +999,7 @@ public:
 	 * 
 	 * @throw dpp::voice_exception If data length is invalid or voice support not compiled into D++
 	 */
-	discord_voice_client& send_audio_opus(const uint8_t* opus_packet, const size_t length);
+	discord_voice_client& send_audio_opus(uint8_t* opus_packet, const size_t length);
 
 	/**
 	 * @brief Send silence to the voice channel
@@ -1029,19 +1011,6 @@ public:
 	 * @throw dpp::voice_exception if voice support is not compiled into D++
 	 */
 	discord_voice_client& send_silence(const uint64_t duration);
-
-	/**
-	 * @brief Send stop frames to the voice channel.
-	 *
-	 * @param send_now send this packet right away without buffering.
-	 * Do NOT set send_now to true outside write_ready.
-	 * Also make sure you're not locking stream_mutex if you
-	 * don't set send_now to true.
-	 * 
-	 * @return discord_voice_client& Reference to self
-	 * @throw dpp::voice_exception if voice support is not compiled into D++
-	 */
-	discord_voice_client& send_stop_frames(bool send_now = false);
 
 	/**
 	 * @brief Sets the audio type that will be sent with send_audio_* methods.
@@ -1271,5 +1240,5 @@ public:
 	void process_mls_group_rosters(const std::map<uint64_t, std::vector<uint8_t>>& rmap);
 };
 
-}
+} // namespace dpp
 

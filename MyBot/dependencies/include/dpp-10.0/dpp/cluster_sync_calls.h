@@ -590,8 +590,8 @@ DPP_DEPRECATED("Please use coroutines instead of sync functions: https://dpp.dev
  * @note This method supports audit log reasons set by the cluster::set_audit_reason() method.
  * @param c Channel to set permissions for
  * @param overwrite_id Overwrite to change (a user or role ID)
- * @param allow Bitmask of allowed permissions (refer to enum dpp::permissions)
- * @param deny Bitmask of denied permissions (refer to enum dpp::permissions)
+ * @param allow allow permissions bitmask
+ * @param deny deny permissions bitmask
  * @param member true if the overwrite_id is a user id, false if it is a channel id
  * @return confirmation returned object on completion
  * \memberof dpp::cluster
@@ -610,8 +610,8 @@ DPP_DEPRECATED("Please use coroutines instead of sync functions: https://dpp.dev
  * @note This method supports audit log reasons set by the cluster::set_audit_reason() method.
  * @param channel_id ID of the channel to set permissions for
  * @param overwrite_id Overwrite to change (a user or role ID)
- * @param allow Bitmask of allowed permissions (refer to enum dpp::permissions)
- * @param deny Bitmask of denied permissions (refer to enum dpp::permissions)
+ * @param allow allow permissions bitmask
+ * @param deny deny permissions bitmask
  * @param member true if the overwrite_id is a user id, false if it is a channel id
  * @return confirmation returned object on completion
  * \memberof dpp::cluster
@@ -2621,7 +2621,7 @@ DPP_DEPRECATED("Please use coroutines instead of sync functions: https://dpp.dev
 /**
  * @brief Get all guild stickers
  * @see dpp::cluster::guild_stickers_get
- * @see https://discord.com/developers/docs/resources/sticker#list-guild-stickers
+ * @see https://discord.com/developers/docs/resources/sticker#get-guild-stickers
  * @param guild_id Guild ID of the guild where the sticker is
  * @return sticker_map returned object on completion
  * \memberof dpp::cluster
@@ -2649,7 +2649,7 @@ DPP_DEPRECATED("Please use coroutines instead of sync functions: https://dpp.dev
 /**
  * @brief Get a list of available sticker packs
  * @see dpp::cluster::sticker_packs_get
- * @see https://discord.com/developers/docs/resources/sticker#list-sticker-packs
+ * @see https://discord.com/developers/docs/resources/sticker#list-nitro-sticker-packs
  * @return sticker_pack_map returned object on completion
  * \memberof dpp::cluster
  * @throw dpp::rest_exception upon failure to execute REST function
@@ -3096,21 +3096,6 @@ DPP_DEPRECATED("Please use coroutines instead of sync functions: https://dpp.dev
 DPP_DEPRECATED("Please use coroutines instead of sync functions: https://dpp.dev/coro-introduction.html") confirmation current_user_set_voice_state_sync(snowflake guild_id, snowflake channel_id, bool suppress = false, time_t request_to_speak_timestamp = 0);
 
 /**
- * @brief Get the bot's voice state in a guild without a Gateway connection
- *
- * @see dpp::cluster::current_user_get_voice_state
- * @see https://discord.com/developers/docs/resources/voice#get-current-user-voice-state
- * @param guild_id Guild to get the voice state for
- * @return voicestate returned object on completion
- * \memberof dpp::cluster
- * @throw dpp::rest_exception upon failure to execute REST function
- * @deprecated This function is deprecated, please use coroutines instead.
- * @warning This function is a blocking (synchronous) call and should only be used from within a separate thread.
- * Avoid direct use of this function inside an event handler.
- */
-DPP_DEPRECATED("Please use coroutines instead of sync functions: https://dpp.dev/coro-introduction.html") voicestate current_user_get_voice_state_sync(snowflake guild_id);
-
-/**
  * @brief Set a user's voice state on a stage channel
  *
  * **Caveats**
@@ -3137,22 +3122,6 @@ DPP_DEPRECATED("Please use coroutines instead of sync functions: https://dpp.dev
  * Avoid direct use of this function inside an event handler.
  */
 DPP_DEPRECATED("Please use coroutines instead of sync functions: https://dpp.dev/coro-introduction.html") confirmation user_set_voice_state_sync(snowflake user_id, snowflake guild_id, snowflake channel_id, bool suppress = false);
-
-/**
- * @brief Get a user's voice state in a guild without a Gateway connection
- *
- * @see dpp::cluster::user_get_voice_state
- * @see https://discord.com/developers/docs/resources/voice#get-user-voice-state
- * @param guild_id Guild to get the voice state for
- * @param user_id The user to get the voice state of
- * @return voicestate returned object on completion
- * \memberof dpp::cluster
- * @throw dpp::rest_exception upon failure to execute REST function
- * @deprecated This function is deprecated, please use coroutines instead.
- * @warning This function is a blocking (synchronous) call and should only be used from within a separate thread.
- * Avoid direct use of this function inside an event handler.
- */
-DPP_DEPRECATED("Please use coroutines instead of sync functions: https://dpp.dev/coro-introduction.html") voicestate user_get_voice_state_sync(snowflake guild_id, snowflake user_id);
 
 /**
  * @brief Get current user's connections (linked accounts, e.g. steam, xbox).

@@ -24,7 +24,6 @@
 #include <dpp/misc-enum.h>
 #include <string>
 #include <functional>
-#include <ctime>
 #include <dpp/socket.h>
 #include <cstdint>
 
@@ -258,4 +257,4 @@ public:
 	virtual void log(dpp::loglevel severity, const std::string &msg) const;
 };
 
-}
+} // namespace dpp
