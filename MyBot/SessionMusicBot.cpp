@@ -80,7 +80,6 @@ dpp::embed basicEmbed = dpp::embed()					// Generic embed with all the shared de
 
 #ifndef NDEBUG
 //---Extra Variables only present in Debug mode, for extra data---//
-int samplesAddedCounter = 0;
 #endif
 
 //---FMOD and Audio Functions---//
@@ -97,9 +96,6 @@ FMOD_RESULT F_CALLBACK captureDSPReadCallback(FMOD_DSP_STATE* dsp_state, float* 
 						outbuffer[(samp * *outchannels)] = 0.0f;										//Brute force mutes system output
 						myPCMData.push_back(floatToPCM(inbuffer[samp]));					//Adds sample to PCM buffer...
 						myPCMData.push_back(floatToPCM(inbuffer[samp]));					//...twice, because D++ expects stereo input
-#ifndef NDEBUG
-						samplesAddedCounter += 2;
-#endif
 					}
 				}
 				else {
@@ -111,9 +107,6 @@ FMOD_RESULT F_CALLBACK captureDSPReadCallback(FMOD_DSP_STATE* dsp_state, float* 
 				for (unsigned int samp = 0; samp < length; samp++) {
 					for (int chan = 0; chan < *outchannels; chan++) {
 						myPCMData.push_back(floatToPCM(inbuffer[(samp * inchannels) + chan]));			//Adds sample to PCM buffer in approprate channel
-#ifndef NDEBUG
-						samplesAddedCounter++;
-#endif
 					}
 				}
 				break;
@@ -335,12 +328,12 @@ void index() {
 		if ((pathString.find("event:/", 0) == 0)) {
 			// Skip it if not in the Master folder.
 			if ((pathString.find(callableEventPath, 0) != 0)) {
-				std::cout << "   Skipped as Event: " << pathString << " -- Not in Master folder." << std::endl;
+				std::cout << "   Skipped as Event: " << pathString << " -- Not in Master folder." << "\n";
 				continue;
 			}
 
 			// What's left should be good for our eventPaths vector
-			std::cout << "   Accepted as Event: " << pathString << std::endl;
+			std::cout << "   Accepted as Event: " << pathString << "\n";
 			eventPaths.push_back(pathString);
 
 			// Grab associated Event Description
@@ -375,7 +368,7 @@ void index() {
 		// Is it a bus?
 		else if ((pathString.find(busPath, 0) == 0)) {
 			if (pathString == busPath) {		//The Master Bus is just "bus:/"
-				std::cout << "   Accepted as Master Bus: " << pathString << std::endl;
+				std::cout << "   Accepted as Master Bus: " << pathString << "\n";
 			}
 			else {
 				// Get the Bus and add it to the map
@@ -383,7 +376,7 @@ void index() {
 				ERRCHECK_HARD(pSystem->getBus(pathString.c_str(), &newBus));
 				pBusses.insert({ truncateBusPath(pathString), newBus });
 				busPaths.push_back(pathString);
-				std::cout << "   Accepted as Bus: " << pathString << " || Nice Name: " << truncateBusPath(pathString) << std::endl;
+				std::cout << "   Accepted as Bus: " << pathString << " || Nice Name: " << truncateBusPath(pathString) << "\n";
 			}
 		}
 
@@ -395,7 +388,7 @@ void index() {
 			pVCAs.insert({ truncateVCAPath(pathString), newVCA });
 
 			vcaPaths.push_back(pathString);
-			std::cout << "   Accepted as VCA: " << pathString << " || Nice Name: " << truncateVCAPath(pathString) << std::endl;
+			std::cout << "   Accepted as VCA: " << pathString << " || Nice Name: " << truncateVCAPath(pathString) << "\n";
 		}
 
 		// Is it a Snapshot?
@@ -408,28 +401,30 @@ void index() {
 			bool isSnapshot = false;
 			newSnapshot->isSnapshot(&isSnapshot);
 			if (!isSnapshot) {		//If this event description isn't actually a Snapshot
-				std::cout << "   Skipped as Snapshot: " << pathString << " -- Not actually a snapshot!" << std::endl;
+				std::cout << "   Skipped as Snapshot: " << pathString << " -- Not actually a snapshot!" << "\n";
 			}
 			else {
 				pSnapshots.insert({ truncateSnapshotPath(pathString), newSnapshot });
 				snapshotPaths.push_back(pathString);
-				std::cout << "   Accepted as Snapshot: " << pathString << " || Nice Name: " << truncateSnapshotPath(pathString) << std::endl;
+				std::cout << "   Accepted as Snapshot: " << pathString << " || Nice Name: " << truncateSnapshotPath(pathString) << "\n";
 			}
 		}
 
 		// Is it a parameter? (will be addressed after this loop)
 		else if (pathString.find(paramPath) == 0) {
-			std::cout << "   Skipped as Parameter: " << pathString << " -- See below." << std::endl;
+			std::cout << "   Skipped as Parameter: " << pathString << " -- See below for Global Parameters." << "\n";
 		}
 
 		// Is it a bank? (We don't care here, just for Cout data)
 		else if (pathString.find("bank:/", 0) == 0) {
-			std::cout << "   Skipped as Bank: " << pathString << " -- Is a Bank." << std::endl;
+			std::cout << "   Skipped as Bank: " << pathString << " -- Is a Bank." << "\n";
 		}
 		
 		// If it's none of the above, then we have NO idea what this thing is.
-		else { std::cout << "   Skipped: " << pathString << " -- Unrecognized string." << std::endl; }
+		else { std::cout << "   Skipped: " << pathString << " -- Unrecognized string." << "\n"; }
 	}
+
+	std::cout << std::endl;
 
 	// Seperately, get the list of Global Parameters
 	FMOD_STUDIO_PARAMETER_DESCRIPTION paramArray[100];	// Very unlikely to go past this amount
@@ -438,7 +433,6 @@ void index() {
 	pSystem->getParameterDescriptionList(paramArrayPtr, 100, &paramCount);
 
 	// Add them to the vector, one-by-one
-	std::cout << std::endl;
 	std::cout << "   Global Parameters:" << std::endl;
 	for (int i = 0; i < paramCount; i++) {
 		globalParamNames.push_back(paramArray[i].name);
@@ -470,7 +464,7 @@ void list(const dpp::slashcommand_t& event) {
 		// Basic setup
 		dpp::embed listEmbed = basicEmbed;
 		basicEmbed.set_title("Dashboard List");
-		std::cout << "Listing current:" << std::endl;
+		std::cout << "Listing current:" << "\n";
 
 		// Event Instances
 		if (pEventInstances.empty()) {
@@ -534,14 +528,10 @@ void list(const dpp::slashcommand_t& event) {
 
 			for (auto const& param : pGlobalParams) {
 
-				// Get the Event Instance name
+				// Get the Global Parameter's name
 				std::string paramName = param.first;
 
-				// Get the related Event Description
-				//FMOD::Studio::EventDescription* instDesc;
-				//param.second.instance->getDescription(&instDesc);
-
-				// Get the related Parameter's current value
+				// Get the Parameter's current value
 				float paramVal = 0;
 				ERRCHECK_HARD(pSystem->getParameterByName(param.second.name, &paramVal));
 				std::string paramValStr = paramValueString(paramVal, param.second);
@@ -653,12 +643,12 @@ void playable() {
 	int count = 0;
 	ERRCHECK_HARD(pMasterStringsBank->getStringCount(&count));
 	if (count <= 0) {
-		std::cout << "Invalid strings count of " << count << ", that's a problem." << std::endl;
+		std::cout << "Invalid strings count of " << count << ", that's a problem." << "\n";
 		std::cout << "Double check the Master.strings.bank file was loaded properly." << std::endl;
 		return;
 	}
 
-	std::cout << "Refreshing playables list..." << std::endl;
+	std::cout << "Refreshing playables list..." << "\n";
 
 	// Get a copy of the event Paths list, and the same for the Snapshots path list
 	std::vector<std::string> existingEvents = eventPaths;
@@ -765,7 +755,7 @@ void playable() {
 			pSnapshots.insert({truncateSnapshotPath(pathString), newSnapshotDesc});
 		}
 	}
-	std::cout << "...Done!" << std::endl << std::endl;
+	std::cout << "...Done!" << "\n" << std::endl;
 }
 
 // Indexes and Prints all playable Event Descriptions & Parameters
@@ -863,7 +853,7 @@ void play_event(const dpp::slashcommand_t& event, std::string eventToPlay, std::
 		iterator++;
 	}
 
-	std::cout << "Play Event command issued." << std::endl;
+	std::cout << "Play Event command issued." << "\n";
 	std::cout << "Event to Play: " << eventToPlay << " || Instance name: " << newName << std::endl;
 
 	FMOD::Studio::EventDescription* newEventDesc = nullptr;
@@ -904,7 +894,7 @@ void play_snapshot(const dpp::slashcommand_t& event, std::string eventToPlay, st
 		iterator++;
 	}
 
-	std::cout << "Play Snapshot command issued." << std::endl;
+	std::cout << "Play Snapshot command issued." << "\n";
 	std::cout << "Snapshot to Play: " << eventToPlay << " || Instance name: " << newName << std::endl;
 
 	FMOD::Studio::EventDescription* newEventDesc = nullptr;
@@ -1419,17 +1409,6 @@ int main() {
 	init();
 	init_session();
 
-#ifndef NDEBUG
-	//Time stuff for debugging
-	std::chrono::system_clock::time_point start = std::chrono::system_clock::now();
-	std::chrono::system_clock::time_point end = std::chrono::system_clock::now();
-	std::chrono::system_clock::time_point last = end;
-	std::chrono::duration<double, std::milli> elapsed;
-	std::chrono::duration<double, std::milli> elapsedFrame;
-
-	bool timerNotRunning = true;		//To make sure our times start at the first update loop where we know we've connected
-	int allSamplesAdded = 0;
-#endif
 	std::cout << "Starting Bot..." << std::endl << std::endl;
 
 	/* Create bot cluster */
@@ -1612,39 +1591,14 @@ int main() {
 
 	/* Program loop */
 	while (!exitRequested) {
-#ifndef NDEBUG
-		//Update time
-		last = end;
-		end = std::chrono::system_clock::now();
-#endif
 		// Send PCM data to D++, if applicable
 		if (isConnected) {
-#ifndef NDEBUG
-			//Start timer the first time we enter "isConnected"
-			if (timerNotRunning) {
-				start = std::chrono::system_clock::now();
-				end = std::chrono::system_clock::now();
-				timerNotRunning = false;
-			}
-			elapsed = end - start;
-			elapsedFrame = end - last;
-			std::cout << "Frame time: " << elapsedFrame << " || Samples added: " << samplesAddedCounter << " || Samples in buffer: " << myPCMData.size() << std::endl;
-			samplesAddedCounter = 0;
-#endif
 			if (myPCMData.size() > dpp::send_audio_raw_max_length) {								// If buffer is full enough (note: big enough so half of buffer always remains)
-#ifndef NDEBUG
-				std::cout << "Sending PCM Data at time: " << elapsed << std::endl;
-#endif
 				while (myPCMData.size() > (dpp::send_audio_raw_max_length * 0.5)) {									// Until minimum size we want our buffer
 					currentClient->send_audio_raw((uint16_t*)myPCMData.data(), dpp::send_audio_raw_max_length);		// Send the buffer (method takes 11520 BYTES, so 5760 samples)
 					myPCMData.erase(myPCMData.begin(), myPCMData.begin() + (int)(dpp::send_audio_raw_max_length * 0.5));	// Trim our main buffer of the data just sent
 				}
 			}
-#ifndef NDEBUG
-			else {																						//Else just report how much is left in the D++ buffer
-				std::cout << "D++ Seconds remaining: " << currentClient->get_secs_remaining() << std::endl;
-			}
-#endif
 			// Todo: what if the audio ends? Or if completely silent? We should stop trying to transmit normally, right? Probably would go here.
 			// Possible approach: !eventsPlaying && output is silent, fromSilence = true.
 		}

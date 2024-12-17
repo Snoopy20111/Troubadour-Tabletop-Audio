@@ -1,3 +1,5 @@
+cd $PSScriptRoot
+
 $BuildDate = Get-Date -Format "yy.MM.dd.HH.mm.ss"
 $CurrentVersion = "v0.1."
 $OIMVersionNum = $CurrentVersion + $BuildDate
@@ -43,6 +45,8 @@ Function PrepRelease {
 	
 	# Copy ReadMe.txt from MyBot to Packages\[versioning + arch]
 	Copy-Item -Path ".\MyBot\Setup Instructions.txt" -Destination $Package_TargetPath
+	# Also copy Credits.txt from the main directory to the package
+	Copy-Item -Path "Credits.txt" -Destination $Package_TargetPath
 	
 	#Change the build path of the FMOD project
 	$xml = [xml](Get-Content -Path $FMODWorkspaceXML_Path) 	#Read contents of XML file
