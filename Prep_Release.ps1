@@ -1,3 +1,5 @@
+cd $PSScriptRoot
+
 $BuildDate = Get-Date -Format "yy.MM.dd.HH.mm.ss"
 $CurrentVersion = "v0.1."
 $OIMVersionNum = $CurrentVersion + $BuildDate
@@ -37,12 +39,14 @@ Function PrepRelease {
 	
 	# Delete files/folders in directory starting with "." .gitignore .cache .unsaved .user
 	Remove-Item $Gitignore_DelPath
-	Remove-Item $Cache_DelPath -Recurse
-	Remove-Item $Unsaved_DelPath -Recurse
-	Remove-Item $User_DelPath -Recurse
+	if (Test-Path -Path $Cache_DelPath) { Remove-Item $Cache_DelPath -Recurse }
+	if (Test-Path -Path $Unsaved_DelPath) { Remove-Item $Unsaved_DelPath -Recurse }
+	if (Test-Path -Path $User_DelPath) { Remove-Item $User_DelPath -Recurse }
 	
 	# Copy ReadMe.txt from MyBot to Packages\[versioning + arch]
 	Copy-Item -Path ".\MyBot\Setup Instructions.txt" -Destination $Package_TargetPath
+	# Also copy Credits.txt from the main directory to the package
+	Copy-Item -Path "Credits.txt" -Destination $Package_TargetPath
 	
 	#Change the build path of the FMOD project
 	$xml = [xml](Get-Content -Path $FMODWorkspaceXML_Path) 	#Read contents of XML file
