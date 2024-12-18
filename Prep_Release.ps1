@@ -39,9 +39,9 @@ Function PrepRelease {
 	
 	# Delete files/folders in directory starting with "." .gitignore .cache .unsaved .user
 	Remove-Item $Gitignore_DelPath
-	Remove-Item $Cache_DelPath -Recurse
-	Remove-Item $Unsaved_DelPath -Recurse
-	Remove-Item $User_DelPath -Recurse
+	if (Test-Path -Path $Cache_DelPath) { Remove-Item $Cache_DelPath -Recurse }
+	if (Test-Path -Path $Unsaved_DelPath) { Remove-Item $Unsaved_DelPath -Recurse }
+	if (Test-Path -Path $User_DelPath) { Remove-Item $User_DelPath -Recurse }
 	
 	# Copy ReadMe.txt from MyBot to Packages\[versioning + arch]
 	Copy-Item -Path ".\MyBot\Setup Instructions.txt" -Destination $Package_TargetPath

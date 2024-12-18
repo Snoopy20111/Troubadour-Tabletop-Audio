@@ -412,7 +412,7 @@ void index() {
 
 		// Is it a parameter? (will be addressed after this loop)
 		else if (pathString.find(paramPath) == 0) {
-			std::cout << "   Skipped as Parameter: " << pathString << " -- See below for Global Parameters." << "\n";
+			std::cout << "   Skipped as Parameter: " << pathString << "\n";
 		}
 
 		// Is it a bank? (We don't care here, just for Cout data)
@@ -1418,7 +1418,6 @@ int main() {
 	bot.on_log(dpp::utility::cout_logger());
 
 	// Get the bot application, and add the Owner to the Owning Users list (for permissions)
-	// Fake blocking function to make debug output coherent
 	bot.current_application_get(onBotAppGet);
 
 	/* Register slash command here in on_ready */

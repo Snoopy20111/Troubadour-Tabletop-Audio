@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
-	<object class="AudioFile" id="{22c97f75-76f5-4430-9c97-943b10118a7d}">
+	<object class="AudioFile" id="{5bf5116a-671e-4e73-ab01-e9086bf2fc7f}">
 		<property name="assetPath">
-			<value>_Examples/Music/SpringBlues/JeffSpeed68_SpringBlues_CH_03.mp3</value>
+			<value>_Examples/Music/SpringBlues/JeffSpeed68_SpringBlues_CH_04.mp3</value>
 		</property>
 		<property name="frequencyInKHz">
 			<value>48</value>
