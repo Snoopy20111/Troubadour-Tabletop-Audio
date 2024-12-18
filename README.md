@@ -2,7 +2,7 @@
 
 A Discord Bot for making your DnD sessions more fully audibly immersive! Of no relation to [Bard Audio](https://github.com/gl326/bard-audio).
 
-Built with VS2022 for x64 Windows, using FMOD Studio 2.02 and D++ (which is forked from a well-maintained Visual Studio template, so you may safely assume it's using the latest version of that as well).
+Built with VS2022 for x64 Windows, using FMOD Studio 2.02 and D++ v10.0.33.
 
 When building locally, be sure to do the following:
 - Ensure you've [created a Discord Bot Token](https://dpp.dev/creating-a-bot-application.html) and set everything up on Discord's end.
