@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{ef45fdab-22ee-4f6d-946a-98db7cf04c0b}">
 		<property name="assetPath">
 			<value>NonRelease/Music_Diegetic/urmymuse_Lute_Calleno_Custure_Me.flac</value>

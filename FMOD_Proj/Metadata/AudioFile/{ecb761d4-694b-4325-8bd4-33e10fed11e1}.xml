@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{ecb761d4-694b-4325-8bd4-33e10fed11e1}">
 		<property name="assetPath">
 			<value>_Examples/SFX/WoodenCreaks01_In_001.flac</value>

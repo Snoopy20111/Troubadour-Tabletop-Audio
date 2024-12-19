@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{99e07956-e293-4297-8c62-9880ec0362d1}">
 		<property name="assetPath">
 			<value>NonRelease/Music/Refraction/jaspertine_Refraction_Solo.mp3</value>

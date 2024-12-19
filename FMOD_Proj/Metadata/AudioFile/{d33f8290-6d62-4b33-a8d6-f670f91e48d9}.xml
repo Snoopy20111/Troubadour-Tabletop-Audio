@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{d33f8290-6d62-4b33-a8d6-f670f91e48d9}">
 		<property name="assetPath">
 			<value>_Examples/Music/PackingtonsPound/Javolenus_PackingtonsPound_mando1.flac</value>

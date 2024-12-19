@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{ef43a736-3753-4112-9116-c4ed7ee05a65}">
 		<property name="assetPath">
 			<value>NonRelease/Music_Diegetic/urmymuse_Lute_Fowerth_Branle_of_Malte.flac</value>

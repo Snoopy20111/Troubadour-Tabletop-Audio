@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{f447e03a-057f-4aee-b153-a30bd13b31d2}">
 		<property name="assetPath">
 			<value>_Examples/Music/IrishCoffee/JeffSpeed68_IrishCoffee_GuitarPerc.mp3</value>

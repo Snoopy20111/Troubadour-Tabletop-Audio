@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{eb48f923-343a-480c-99db-91d946d7c92f}">
 		<property name="assetPath">
 			<value>_Examples/SFX/IndoorCrowdMedClose01_003.flac</value>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{59ac6e9e-e5ef-4129-9888-023d1df396c4}">
 		<property name="assetPath">
 			<value>_Examples/Music/CyanGranite/700P3D_CyanGranite_VOX-Choir_06.flac</value>

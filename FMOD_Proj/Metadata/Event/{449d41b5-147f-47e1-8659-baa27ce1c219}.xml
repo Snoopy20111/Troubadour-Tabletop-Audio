@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{449d41b5-147f-47e1-8659-baa27ce1c219}">
 		<property name="name">
 			<value>AMB_DarkTemple</value>

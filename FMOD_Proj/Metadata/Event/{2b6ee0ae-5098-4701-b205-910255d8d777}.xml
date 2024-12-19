@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{2b6ee0ae-5098-4701-b205-910255d8d777}">
 		<property name="note">
 			<value>A surprisingly intense track, good for travelling through "the bush," though the instrumentation includes an odd mix of West African, European, Western, and Australian instruments.
@@ -71,9 +71,9 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 	<object class="MasterTrack" id="{d9cd63fa-96e6-438c-b265-7e934c4fdad5}">
 		<relationship name="modules">
 			<destination>{2c2c64e7-2374-4438-b455-dd694443c1bc}</destination>
-			<destination>{40e2fba1-c086-4c70-8796-d68d91feb9a6}</destination>
-			<destination>{df1a85ca-55ac-4fa0-9bb3-80db61cfb341}</destination>
 			<destination>{a0ed3285-85a4-4730-bdd9-99a4c6571d8a}</destination>
+			<destination>{df1a85ca-55ac-4fa0-9bb3-80db61cfb341}</destination>
+			<destination>{40e2fba1-c086-4c70-8796-d68d91feb9a6}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{c32f9937-d0b0-40ab-99e4-3270c919cf88}</destination>
@@ -96,11 +96,11 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 	<object class="MarkerTrack" id="{bc9fd51d-e994-4c27-aefd-f9768ed81602}" />
 	<object class="GroupTrack" id="{022a8edb-46f3-451a-a7d0-b410b294e560}">
 		<relationship name="modules">
-			<destination>{93a6f844-4a28-4b22-afc3-e8e7697cce4c}</destination>
-			<destination>{4513583b-b095-4fc7-ba0e-35d324d3f68d}</destination>
-			<destination>{c6838457-18f6-45a4-b732-2a0e7a59d7b7}</destination>
-			<destination>{57d6318b-43b1-485f-81f4-1e464553d082}</destination>
 			<destination>{aeaa10a0-6384-4df8-97d5-9eb54e6b16a0}</destination>
+			<destination>{4513583b-b095-4fc7-ba0e-35d324d3f68d}</destination>
+			<destination>{57d6318b-43b1-485f-81f4-1e464553d082}</destination>
+			<destination>{93a6f844-4a28-4b22-afc3-e8e7697cce4c}</destination>
+			<destination>{c6838457-18f6-45a4-b732-2a0e7a59d7b7}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{1ad96a78-8ded-48c3-b1d8-752a1da491a2}</destination>
@@ -111,8 +111,8 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<destination>{4cd681fb-366d-411a-94a6-4f8e8c511e67}</destination>
 		</relationship>
 		<relationship name="modules">
-			<destination>{90fd93dc-caad-4412-b4a8-3bd5c68261d0}</destination>
 			<destination>{1360eca5-6959-43dc-8c69-ddcdde95a211}</destination>
+			<destination>{90fd93dc-caad-4412-b4a8-3bd5c68261d0}</destination>
 			<destination>{1aa262bd-6271-4a15-8177-65dc9fe37280}</destination>
 			<destination>{a3d6ffdc-3f16-4251-8425-3e8a1b023287}</destination>
 			<destination>{2142c66f-a12e-450b-89a9-6689f3d76051}</destination>
@@ -141,11 +141,11 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<destination>{0d2dd86c-6b12-45ac-a375-22e69464eb43}</destination>
 		</relationship>
 		<relationship name="modules">
-			<destination>{90c8bfaa-0b1e-4e9d-a555-06459799f505}</destination>
-			<destination>{852dd7cb-6d54-46c9-9a94-40822a5d4c02}</destination>
-			<destination>{094ba32c-7fe1-42d0-91ed-9d3b6c3362c2}</destination>
-			<destination>{544a9fd8-f23d-4ecf-bcbc-6d76b8ffea24}</destination>
 			<destination>{3cb45205-6169-4073-a2bc-da7e9cd85f58}</destination>
+			<destination>{852dd7cb-6d54-46c9-9a94-40822a5d4c02}</destination>
+			<destination>{544a9fd8-f23d-4ecf-bcbc-6d76b8ffea24}</destination>
+			<destination>{094ba32c-7fe1-42d0-91ed-9d3b6c3362c2}</destination>
+			<destination>{90c8bfaa-0b1e-4e9d-a555-06459799f505}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{f09d2d8f-a0a8-45c1-b853-ad68c4bcc9f6}</destination>
@@ -153,12 +153,12 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 	</object>
 	<object class="GroupTrack" id="{6c8a0665-23ab-401e-b9c5-2d0e14a03809}">
 		<relationship name="modules">
-			<destination>{41fa6d28-a5d9-4e10-9085-3fe2a15fcd04}</destination>
-			<destination>{00f03f46-a395-46f9-b12d-e3ee9e0fb308}</destination>
-			<destination>{654b7399-8dff-4f1d-80f1-3c23b67c2e70}</destination>
-			<destination>{1ec7cf1b-b796-4ae4-8557-0a575666dccc}</destination>
 			<destination>{ba0bfed7-8235-4ca5-8d06-d01af80916db}</destination>
+			<destination>{1ec7cf1b-b796-4ae4-8557-0a575666dccc}</destination>
+			<destination>{41fa6d28-a5d9-4e10-9085-3fe2a15fcd04}</destination>
 			<destination>{b25122c4-cbeb-4b4d-b38c-b98e7e02c8eb}</destination>
+			<destination>{654b7399-8dff-4f1d-80f1-3c23b67c2e70}</destination>
+			<destination>{00f03f46-a395-46f9-b12d-e3ee9e0fb308}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{44cbcf2c-a8ec-4155-92fa-a7b92bffbee5}</destination>
@@ -179,12 +179,12 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 	</object>
 	<object class="GroupTrack" id="{3b433042-0957-4a4e-a7e0-a6aff8605695}">
 		<relationship name="modules">
-			<destination>{dccd2b44-ad42-4be0-aa3b-ccb3090e4921}</destination>
-			<destination>{330fed7b-03fb-4619-92d4-d552ca43208c}</destination>
-			<destination>{1b873c36-ac51-4b17-abe4-a8c12ba69b0a}</destination>
-			<destination>{bf738222-da8c-4bb9-b4f7-c3974fb4f0d7}</destination>
-			<destination>{daa7de23-1e9f-4e1d-9489-650c7320d37e}</destination>
 			<destination>{03122f46-2165-48df-bfcc-96753a555a65}</destination>
+			<destination>{daa7de23-1e9f-4e1d-9489-650c7320d37e}</destination>
+			<destination>{330fed7b-03fb-4619-92d4-d552ca43208c}</destination>
+			<destination>{bf738222-da8c-4bb9-b4f7-c3974fb4f0d7}</destination>
+			<destination>{1b873c36-ac51-4b17-abe4-a8c12ba69b0a}</destination>
+			<destination>{dccd2b44-ad42-4be0-aa3b-ccb3090e4921}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{911c67e1-9edd-4bf1-9d53-52be41ccb12f}</destination>
@@ -192,10 +192,10 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 	</object>
 	<object class="GroupTrack" id="{6c060cbe-79bd-475f-ad36-684083e4d020}">
 		<relationship name="modules">
-			<destination>{979ec02f-0eda-41ed-a7e2-544abb446feb}</destination>
+			<destination>{3b95cb85-b830-4c0a-b00e-40cb0eb53488}</destination>
 			<destination>{551622f2-d742-4e42-a9ce-1c49be6f5df0}</destination>
 			<destination>{b129b9d4-87d5-41ab-a326-353b2ad743b6}</destination>
-			<destination>{3b95cb85-b830-4c0a-b00e-40cb0eb53488}</destination>
+			<destination>{979ec02f-0eda-41ed-a7e2-544abb446feb}</destination>
 			<destination>{572c5338-6312-48ce-8a2a-f783299156fa}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
@@ -231,11 +231,11 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<destination>{4f575697-bd9c-4c2f-9144-4b7759fe264f}</destination>
 		</relationship>
 		<relationship name="modules">
-			<destination>{8a522d89-ae0c-4106-9e38-e95c0fc26314}</destination>
 			<destination>{86f4a537-7f86-4b25-84eb-c01b426fb4cb}</destination>
+			<destination>{09df806f-0dc2-4397-8461-6baae44bb41f}</destination>
+			<destination>{8a522d89-ae0c-4106-9e38-e95c0fc26314}</destination>
 			<destination>{9b9ffec6-60ce-4029-a51d-2b458cb125eb}</destination>
 			<destination>{011b8288-fd8a-440f-8737-8a364b384eb9}</destination>
-			<destination>{09df806f-0dc2-4397-8461-6baae44bb41f}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{b1026299-9d95-40db-a4ef-a06e7b5d6188}</destination>
@@ -243,11 +243,11 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 	</object>
 	<object class="GroupTrack" id="{cd4721ea-fb88-451a-a160-dbddd67fae3f}">
 		<relationship name="modules">
+			<destination>{167fe62a-908f-490f-9874-f33c53a0d286}</destination>
 			<destination>{90e2ffd1-95b2-4e53-966e-8009a99df71b}</destination>
 			<destination>{30aff933-e958-44c7-8021-0c2dfc254137}</destination>
 			<destination>{d9fd0486-a45b-4b01-a663-037ade5da7af}</destination>
 			<destination>{956797a7-a792-4c7e-b45f-08065a4f80c9}</destination>
-			<destination>{167fe62a-908f-490f-9874-f33c53a0d286}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{c13a6960-2109-40ca-9dfd-acc6b5b84764}</destination>
@@ -261,9 +261,9 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 		<relationship name="modules">
 			<destination>{5b31468f-dda2-45d5-814c-ae95ff2bd341}</destination>
 			<destination>{10b3f105-5865-422b-a8f1-ae038a592411}</destination>
+			<destination>{29ed3e54-ce51-45a3-8f80-021dd0e2f194}</destination>
 			<destination>{46410561-3963-4057-aa5a-099873488147}</destination>
 			<destination>{ca96895a-7097-41d8-b159-58719e880c8c}</destination>
-			<destination>{29ed3e54-ce51-45a3-8f80-021dd0e2f194}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{c0cedee2-f5ba-48c1-8d24-d39e134fef5c}</destination>
@@ -286,10 +286,10 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 	</object>
 	<object class="GroupTrack" id="{07d4586b-d102-4f2a-bfbe-7b84967ae0fc}">
 		<relationship name="modules">
+			<destination>{a3f195db-16bf-4ead-9c3b-f7b67396a6a0}</destination>
 			<destination>{df3a55aa-7629-4af1-9660-76a5833e4967}</destination>
 			<destination>{d1e3f98f-8596-4b07-b7c9-6848c3e3768b}</destination>
 			<destination>{9b71fb9c-a4ef-4fa6-9062-67aed42f77ce}</destination>
-			<destination>{a3f195db-16bf-4ead-9c3b-f7b67396a6a0}</destination>
 			<destination>{c19169d4-6820-4cd3-9e5a-636f8e5c06db}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
@@ -298,11 +298,11 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 	</object>
 	<object class="GroupTrack" id="{47b55f37-27a0-4f74-9255-745e9b844d91}">
 		<relationship name="modules">
-			<destination>{1f0d47de-62e1-4a28-8010-4e76e345647c}</destination>
-			<destination>{0e6fa9ef-41bc-4208-b9ae-813ac52d8f7b}</destination>
-			<destination>{2a33e0a8-3ca7-4ec2-9d66-9fbac8e656c2}</destination>
-			<destination>{61842bb0-a693-4baa-849a-5d24b3db03fe}</destination>
 			<destination>{8befdd33-2374-4a83-baf1-47c62f45dfa5}</destination>
+			<destination>{0e6fa9ef-41bc-4208-b9ae-813ac52d8f7b}</destination>
+			<destination>{1f0d47de-62e1-4a28-8010-4e76e345647c}</destination>
+			<destination>{61842bb0-a693-4baa-849a-5d24b3db03fe}</destination>
+			<destination>{2a33e0a8-3ca7-4ec2-9d66-9fbac8e656c2}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{8c874e22-507e-4bd0-a843-f135af69d50d}</destination>
@@ -347,27 +347,27 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 	</object>
 	<object class="Timeline" id="{da75a521-1fff-440d-bd6d-c9d40b99f8ff}">
 		<relationship name="modules">
+			<destination>{ba0bfed7-8235-4ca5-8d06-d01af80916db}</destination>
+			<destination>{5b31468f-dda2-45d5-814c-ae95ff2bd341}</destination>
+			<destination>{4e668a1f-5bce-4daa-b647-2fbaae5388d4}</destination>
+			<destination>{916b8254-3f96-4513-a5cf-cbc344752082}</destination>
+			<destination>{f1da0de8-a86f-4c6f-8b81-e8c4f5cbefcd}</destination>
 			<destination>{90fd93dc-caad-4412-b4a8-3bd5c68261d0}</destination>
-			<destination>{b5a0e0fe-de67-4be5-a13a-669700cb67aa}</destination>
+			<destination>{330fed7b-03fb-4619-92d4-d552ca43208c}</destination>
+			<destination>{1f0d47de-62e1-4a28-8010-4e76e345647c}</destination>
 			<destination>{90c8bfaa-0b1e-4e9d-a555-06459799f505}</destination>
+			<destination>{b5a0e0fe-de67-4be5-a13a-669700cb67aa}</destination>
 			<destination>{4afe362f-20d8-4808-847f-5ce636ed9641}</destination>
 			<destination>{dccd2b44-ad42-4be0-aa3b-ccb3090e4921}</destination>
 			<destination>{90e2ffd1-95b2-4e53-966e-8009a99df71b}</destination>
 			<destination>{93a6f844-4a28-4b22-afc3-e8e7697cce4c}</destination>
-			<destination>{f1da0de8-a86f-4c6f-8b81-e8c4f5cbefcd}</destination>
 			<destination>{979ec02f-0eda-41ed-a7e2-544abb446feb}</destination>
-			<destination>{5b31468f-dda2-45d5-814c-ae95ff2bd341}</destination>
-			<destination>{1f0d47de-62e1-4a28-8010-4e76e345647c}</destination>
 			<destination>{df3a55aa-7629-4af1-9660-76a5833e4967}</destination>
 			<destination>{8a522d89-ae0c-4106-9e38-e95c0fc26314}</destination>
-			<destination>{4e668a1f-5bce-4daa-b647-2fbaae5388d4}</destination>
 			<destination>{f150d072-e7ad-4640-8bbb-1c219ca86aa0}</destination>
-			<destination>{330fed7b-03fb-4619-92d4-d552ca43208c}</destination>
-			<destination>{ba0bfed7-8235-4ca5-8d06-d01af80916db}</destination>
 			<destination>{b25122c4-cbeb-4b4d-b38c-b98e7e02c8eb}</destination>
 			<destination>{57c86e54-a9de-4433-9a19-0ab631c935e8}</destination>
 			<destination>{a914d685-d718-4b53-95f5-645cb5517d2b}</destination>
-			<destination>{916b8254-3f96-4513-a5cf-cbc344752082}</destination>
 		</relationship>
 		<relationship name="markers">
 			<destination>{3481f86e-37c2-4a14-bf3f-8cfbf52954df}</destination>
@@ -395,9 +395,9 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<value>0</value>
 		</property>
 	</object>
-	<object class="TransitionDestinationSound" id="{40e2fba1-c086-4c70-8796-d68d91feb9a6}">
+	<object class="TransitionDestinationSound" id="{a0ed3285-85a4-4730-bdd9-99a4c6571d8a}">
 		<property name="start">
-			<value>1.7898082205459112</value>
+			<value>1.0071995248937355</value>
 		</property>
 		<property name="length">
 			<value>0</value>
@@ -408,9 +408,9 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<value>0</value>
 		</property>
 	</object>
-	<object class="TransitionDestinationSound" id="{a0ed3285-85a4-4730-bdd9-99a4c6571d8a}">
+	<object class="TransitionDestinationSound" id="{40e2fba1-c086-4c70-8796-d68d91feb9a6}">
 		<property name="start">
-			<value>1.0071995248937355</value>
+			<value>1.7898082205459112</value>
 		</property>
 		<property name="length">
 			<value>0</value>
@@ -422,6 +422,24 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{5a4cb4a5-dc72-44b1-a18a-b97f7da36e22}" />
+	<object class="TransitionDestinationSound" id="{aeaa10a0-6384-4df8-97d5-9eb54e6b16a0}">
+		<property name="length">
+			<value>1.0071995248937355</value>
+		</property>
+	</object>
+	<object class="TransitionSourceSound" id="{4513583b-b095-4fc7-ba0e-35d324d3f68d}">
+		<property name="length">
+			<value>0.13043478260869565</value>
+		</property>
+		<relationship name="fadeOutCurve">
+			<destination>{a730c973-5b7b-4ef0-a2a4-8d94f2e6c464}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionSourceSound" id="{57d6318b-43b1-485f-81f4-1e464553d082}">
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
 	<object class="SingleSound" id="{93a6f844-4a28-4b22-afc3-e8e7697cce4c}">
 		<property name="start">
 			<value>23.702851698806779</value>
@@ -439,14 +457,6 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<destination>{51e7eeb2-5399-4762-9749-6c2053df18f2}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionSourceSound" id="{4513583b-b095-4fc7-ba0e-35d324d3f68d}">
-		<property name="length">
-			<value>0.13043478260869565</value>
-		</property>
-		<relationship name="fadeOutCurve">
-			<destination>{a730c973-5b7b-4ef0-a2a4-8d94f2e6c464}</destination>
-		</relationship>
-	</object>
 	<object class="TransitionDestinationSound" id="{c6838457-18f6-45a4-b732-2a0e7a59d7b7}">
 		<property name="length">
 			<value>1.7898082205459112</value>
@@ -454,16 +464,6 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 		<relationship name="fadeInCurve">
 			<destination>{f14b6afc-47ac-4bbc-9c27-48c51347cc48}</destination>
 		</relationship>
-	</object>
-	<object class="TransitionSourceSound" id="{57d6318b-43b1-485f-81f4-1e464553d082}">
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
-	<object class="TransitionDestinationSound" id="{aeaa10a0-6384-4df8-97d5-9eb54e6b16a0}">
-		<property name="length">
-			<value>1.0071995248937355</value>
-		</property>
 	</object>
 	<object class="EventMixerGroup" id="{1ad96a78-8ded-48c3-b1d8-752a1da491a2}">
 		<property name="volume">
@@ -487,6 +487,14 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<destination>{74e3c6b7-5d49-4a64-ae01-0ebd5013b2f8}</destination>
 		</relationship>
 	</object>
+	<object class="TransitionSourceSound" id="{1360eca5-6959-43dc-8c69-ddcdde95a211}">
+		<property name="length">
+			<value>0.065217391304347824</value>
+		</property>
+		<relationship name="fadeOutCurve">
+			<destination>{30cc70ba-481e-4646-9ecb-25f4c55be1dc}</destination>
+		</relationship>
+	</object>
 	<object class="SingleSound" id="{90fd93dc-caad-4412-b4a8-3bd5c68261d0}">
 		<property name="length">
 			<value>251.18111256837199</value>
@@ -499,14 +507,6 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 		</relationship>
 		<relationship name="audioFile">
 			<destination>{6883d7a9-5681-4710-baaf-2722b53d6300}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionSourceSound" id="{1360eca5-6959-43dc-8c69-ddcdde95a211}">
-		<property name="length">
-			<value>0.065217391304347824</value>
-		</property>
-		<relationship name="fadeOutCurve">
-			<destination>{30cc70ba-481e-4646-9ecb-25f4c55be1dc}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionDestinationSound" id="{1aa262bd-6271-4a15-8177-65dc9fe37280}">
@@ -629,18 +629,12 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<destination>{427bfee3-5c65-482a-9e28-84e32e730b6e}</destination>
 		</relationship>
 	</object>
-	<object class="SingleSound" id="{90c8bfaa-0b1e-4e9d-a555-06459799f505}">
-		<property name="start">
-			<value>23.869565217391305</value>
-		</property>
+	<object class="TransitionDestinationSound" id="{3cb45205-6169-4073-a2bc-da7e9cd85f58}">
 		<property name="length">
-			<value>227.31154735098067</value>
+			<value>1.0071995248937355</value>
 		</property>
-		<relationship name="fadeOutCurve">
-			<destination>{4e9c7b88-36f5-400f-8ae5-957dec18a9a9}</destination>
-		</relationship>
-		<relationship name="audioFile">
-			<destination>{ee87f0a9-81a7-47d2-8334-36c3dff2fd1f}</destination>
+		<relationship name="fadeInCurve">
+			<destination>{0cea504a-6fea-4b0d-8b4d-03ac5c2a76b5}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionSourceSound" id="{852dd7cb-6d54-46c9-9a94-40822a5d4c02}">
@@ -649,6 +643,14 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 		</property>
 		<relationship name="fadeOutCurve">
 			<destination>{4a0edcd4-f14d-4f0b-ae3f-5ac2becfbdca}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionSourceSound" id="{544a9fd8-f23d-4ecf-bcbc-6d76b8ffea24}">
+		<property name="length">
+			<value>0.39130434782608692</value>
+		</property>
+		<relationship name="fadeOutCurve">
+			<destination>{6ec12135-ae90-4188-a20a-de57da6c3506}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionDestinationSound" id="{094ba32c-7fe1-42d0-91ed-9d3b6c3362c2}">
@@ -662,20 +664,18 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<destination>{a3c6cb6e-edba-4f3c-86e3-9744a8442fc4}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionSourceSound" id="{544a9fd8-f23d-4ecf-bcbc-6d76b8ffea24}">
+	<object class="SingleSound" id="{90c8bfaa-0b1e-4e9d-a555-06459799f505}">
+		<property name="start">
+			<value>23.869565217391305</value>
+		</property>
 		<property name="length">
-			<value>0.39130434782608692</value>
+			<value>227.31154735098067</value>
 		</property>
 		<relationship name="fadeOutCurve">
-			<destination>{6ec12135-ae90-4188-a20a-de57da6c3506}</destination>
+			<destination>{4e9c7b88-36f5-400f-8ae5-957dec18a9a9}</destination>
 		</relationship>
-	</object>
-	<object class="TransitionDestinationSound" id="{3cb45205-6169-4073-a2bc-da7e9cd85f58}">
-		<property name="length">
-			<value>1.0071995248937355</value>
-		</property>
-		<relationship name="fadeInCurve">
-			<destination>{0cea504a-6fea-4b0d-8b4d-03ac5c2a76b5}</destination>
+		<relationship name="audioFile">
+			<destination>{ee87f0a9-81a7-47d2-8334-36c3dff2fd1f}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{f09d2d8f-a0a8-45c1-b853-ad68c4bcc9f6}">
@@ -698,38 +698,6 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<destination>{c32f9937-d0b0-40ab-99e4-3270c919cf88}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionSourceSound" id="{41fa6d28-a5d9-4e10-9085-3fe2a15fcd04}">
-		<property name="length">
-			<value>0.16304347826086957</value>
-		</property>
-		<relationship name="fadeOutCurve">
-			<destination>{23eef8a6-11cc-44cc-b0de-33f2b871a069}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionDestinationSound" id="{00f03f46-a395-46f9-b12d-e3ee9e0fb308}">
-		<property name="length">
-			<value>1.7898082205459112</value>
-		</property>
-		<relationship name="fadeInCurve">
-			<destination>{9601d17f-6bb4-4cd7-8e48-a3d557494b6d}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionSourceSound" id="{654b7399-8dff-4f1d-80f1-3c23b67c2e70}">
-		<property name="length">
-			<value>0.16863429925070908</value>
-		</property>
-		<relationship name="fadeOutCurve">
-			<destination>{1b3f86b6-b5dd-4365-806c-bbcebb226c17}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionDestinationSound" id="{1ec7cf1b-b796-4ae4-8557-0a575666dccc}">
-		<property name="start">
-			<value>1.0071995248937355</value>
-		</property>
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
 	<object class="SingleSound" id="{ba0bfed7-8235-4ca5-8d06-d01af80916db}">
 		<property name="start">
 			<value>50.433829959676387</value>
@@ -741,6 +709,22 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<destination>{aea2d369-6d12-45ca-9b2f-9338f1ef0454}</destination>
 		</relationship>
 	</object>
+	<object class="TransitionDestinationSound" id="{1ec7cf1b-b796-4ae4-8557-0a575666dccc}">
+		<property name="start">
+			<value>1.0071995248937355</value>
+		</property>
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionSourceSound" id="{41fa6d28-a5d9-4e10-9085-3fe2a15fcd04}">
+		<property name="length">
+			<value>0.16304347826086957</value>
+		</property>
+		<relationship name="fadeOutCurve">
+			<destination>{23eef8a6-11cc-44cc-b0de-33f2b871a069}</destination>
+		</relationship>
+	</object>
 	<object class="SingleSound" id="{b25122c4-cbeb-4b4d-b38c-b98e7e02c8eb}">
 		<property name="start">
 			<value>163.0235038727198</value>
@@ -750,6 +734,22 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 		</property>
 		<relationship name="audioFile">
 			<destination>{16aac7a6-3405-47c5-b6e6-bda079d9527f}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionSourceSound" id="{654b7399-8dff-4f1d-80f1-3c23b67c2e70}">
+		<property name="length">
+			<value>0.16863429925070908</value>
+		</property>
+		<relationship name="fadeOutCurve">
+			<destination>{1b3f86b6-b5dd-4365-806c-bbcebb226c17}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionDestinationSound" id="{00f03f46-a395-46f9-b12d-e3ee9e0fb308}">
+		<property name="length">
+			<value>1.7898082205459112</value>
+		</property>
+		<relationship name="fadeInCurve">
+			<destination>{9601d17f-6bb4-4cd7-8e48-a3d557494b6d}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{44cbcf2c-a8ec-4155-92fa-a7b92bffbee5}">
@@ -846,18 +846,20 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<destination>{c32f9937-d0b0-40ab-99e4-3270c919cf88}</destination>
 		</relationship>
 	</object>
-	<object class="SingleSound" id="{dccd2b44-ad42-4be0-aa3b-ccb3090e4921}">
+	<object class="TransitionDestinationSound" id="{03122f46-2165-48df-bfcc-96753a555a65}">
 		<property name="start">
-			<value>161.44198213358936</value>
+			<value>1.0071995248937355</value>
 		</property>
 		<property name="length">
-			<value>84.046360812284661</value>
+			<value>0</value>
 		</property>
-		<property name="timelockedOffset">
-			<value>1.3740473509806463</value>
+	</object>
+	<object class="TransitionSourceSound" id="{daa7de23-1e9f-4e1d-9489-650c7320d37e}">
+		<property name="length">
+			<value>0.16863429925070908</value>
 		</property>
-		<relationship name="audioFile">
-			<destination>{ec19f412-a70d-4cb7-bc66-87566f1fb831}</destination>
+		<relationship name="fadeOutCurve">
+			<destination>{7a9fe97d-145c-4652-8592-4b325cac6946}</destination>
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{330fed7b-03fb-4619-92d4-d552ca43208c}">
@@ -877,14 +879,6 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<destination>{ec19f412-a70d-4cb7-bc66-87566f1fb831}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionSourceSound" id="{1b873c36-ac51-4b17-abe4-a8c12ba69b0a}">
-		<property name="length">
-			<value>0.22826086956521738</value>
-		</property>
-		<relationship name="fadeOutCurve">
-			<destination>{0ed6aa9a-ff3c-4e70-a4e4-796b80464d71}</destination>
-		</relationship>
-	</object>
 	<object class="TransitionDestinationSound" id="{bf738222-da8c-4bb9-b4f7-c3974fb4f0d7}">
 		<property name="start">
 			<value>5.5511151231257827e-17</value>
@@ -896,21 +890,27 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<destination>{0fd0c8f0-f218-47a5-81de-27434bc96d52}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionSourceSound" id="{daa7de23-1e9f-4e1d-9489-650c7320d37e}">
+	<object class="TransitionSourceSound" id="{1b873c36-ac51-4b17-abe4-a8c12ba69b0a}">
 		<property name="length">
-			<value>0.16863429925070908</value>
+			<value>0.22826086956521738</value>
 		</property>
 		<relationship name="fadeOutCurve">
-			<destination>{7a9fe97d-145c-4652-8592-4b325cac6946}</destination>
+			<destination>{0ed6aa9a-ff3c-4e70-a4e4-796b80464d71}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionDestinationSound" id="{03122f46-2165-48df-bfcc-96753a555a65}">
+	<object class="SingleSound" id="{dccd2b44-ad42-4be0-aa3b-ccb3090e4921}">
 		<property name="start">
-			<value>1.0071995248937355</value>
+			<value>161.44198213358936</value>
 		</property>
 		<property name="length">
-			<value>0</value>
+			<value>84.046360812284661</value>
 		</property>
+		<property name="timelockedOffset">
+			<value>1.3740473509806463</value>
+		</property>
+		<relationship name="audioFile">
+			<destination>{ec19f412-a70d-4cb7-bc66-87566f1fb831}</destination>
+		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{911c67e1-9edd-4bf1-9d53-52be41ccb12f}">
 		<property name="volume">
@@ -929,16 +929,10 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<destination>{c32f9937-d0b0-40ab-99e4-3270c919cf88}</destination>
 		</relationship>
 	</object>
-	<object class="SingleSound" id="{979ec02f-0eda-41ed-a7e2-544abb446feb}">
-		<property name="start">
-			<value>22.826086956521742</value>
-		</property>
+	<object class="TransitionSourceSound" id="{3b95cb85-b830-4c0a-b00e-40cb0eb53488}">
 		<property name="length">
-			<value>198.09415604663286</value>
+			<value>0</value>
 		</property>
-		<relationship name="audioFile">
-			<destination>{acaa59d9-24e3-42fd-85a2-f55eeeb45838}</destination>
-		</relationship>
 	</object>
 	<object class="TransitionSourceSound" id="{551622f2-d742-4e42-a9ce-1c49be6f5df0}">
 		<property name="length">
@@ -953,10 +947,16 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<value>1.1102230246251565e-16</value>
 		</property>
 	</object>
-	<object class="TransitionSourceSound" id="{3b95cb85-b830-4c0a-b00e-40cb0eb53488}">
-		<property name="length">
-			<value>0</value>
+	<object class="SingleSound" id="{979ec02f-0eda-41ed-a7e2-544abb446feb}">
+		<property name="start">
+			<value>22.826086956521742</value>
 		</property>
+		<property name="length">
+			<value>198.09415604663286</value>
+		</property>
+		<relationship name="audioFile">
+			<destination>{acaa59d9-24e3-42fd-85a2-f55eeeb45838}</destination>
+		</relationship>
 	</object>
 	<object class="TransitionDestinationSound" id="{572c5338-6312-48ce-8a2a-f783299156fa}">
 		<property name="length">
@@ -1102,6 +1102,22 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<destination>{e25aacc8-6e43-4721-8e5d-22f3abf1360e}</destination>
 		</relationship>
 	</object>
+	<object class="TransitionSourceSound" id="{86f4a537-7f86-4b25-84eb-c01b426fb4cb}">
+		<property name="length">
+			<value>0.52173913043478259</value>
+		</property>
+		<relationship name="fadeOutCurve">
+			<destination>{56302260-d76a-4172-8843-2979edd883c3}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionDestinationSound" id="{09df806f-0dc2-4397-8461-6baae44bb41f}">
+		<property name="length">
+			<value>1.0071995248937355</value>
+		</property>
+		<relationship name="fadeInCurve">
+			<destination>{967617b8-f732-4741-a417-76616be00558}</destination>
+		</relationship>
+	</object>
 	<object class="SingleSound" id="{8a522d89-ae0c-4106-9e38-e95c0fc26314}">
 		<property name="start">
 			<value>22.826086956521742</value>
@@ -1111,14 +1127,6 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 		</property>
 		<relationship name="audioFile">
 			<destination>{a5dd1260-2df4-46bc-9eb3-639cbb62c738}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionSourceSound" id="{86f4a537-7f86-4b25-84eb-c01b426fb4cb}">
-		<property name="length">
-			<value>0.52173913043478259</value>
-		</property>
-		<relationship name="fadeOutCurve">
-			<destination>{56302260-d76a-4172-8843-2979edd883c3}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionDestinationSound" id="{9b9ffec6-60ce-4029-a51d-2b458cb125eb}">
@@ -1135,14 +1143,6 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 		</property>
 		<relationship name="fadeOutCurve">
 			<destination>{6931e0d4-b5df-4794-bff4-6911e6f8b3e4}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionDestinationSound" id="{09df806f-0dc2-4397-8461-6baae44bb41f}">
-		<property name="length">
-			<value>1.0071995248937355</value>
-		</property>
-		<relationship name="fadeInCurve">
-			<destination>{967617b8-f732-4741-a417-76616be00558}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{b1026299-9d95-40db-a4ef-a06e7b5d6188}">
@@ -1164,6 +1164,14 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 		<relationship name="output">
 			<destination>{c32f9937-d0b0-40ab-99e4-3270c919cf88}</destination>
 		</relationship>
+	</object>
+	<object class="TransitionDestinationSound" id="{167fe62a-908f-490f-9874-f33c53a0d286}">
+		<property name="start">
+			<value>1.0071995248937355</value>
+		</property>
+		<property name="length">
+			<value>0</value>
+		</property>
 	</object>
 	<object class="SingleSound" id="{90e2ffd1-95b2-4e53-966e-8009a99df71b}">
 		<property name="start">
@@ -1199,14 +1207,6 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 		<relationship name="fadeOutCurve">
 			<destination>{75ac1cd3-d4d6-455d-982e-eaa7bc08987c}</destination>
 		</relationship>
-	</object>
-	<object class="TransitionDestinationSound" id="{167fe62a-908f-490f-9874-f33c53a0d286}">
-		<property name="start">
-			<value>1.0071995248937355</value>
-		</property>
-		<property name="length">
-			<value>0</value>
-		</property>
 	</object>
 	<object class="EventMixerGroup" id="{c13a6960-2109-40ca-9dfd-acc6b5b84764}">
 		<property name="volume">
@@ -1254,6 +1254,14 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<destination>{440951a2-5570-4378-b412-ef800d4a2124}</destination>
 		</relationship>
 	</object>
+	<object class="TransitionDestinationSound" id="{29ed3e54-ce51-45a3-8f80-021dd0e2f194}">
+		<property name="length">
+			<value>1.0071995248937355</value>
+		</property>
+		<relationship name="fadeInCurve">
+			<destination>{b2d800b9-8159-4a0d-9836-446d474efc21}</destination>
+		</relationship>
+	</object>
 	<object class="TransitionDestinationSound" id="{46410561-3963-4057-aa5a-099873488147}">
 		<property name="start">
 			<value>6.9388939039072284e-18</value>
@@ -1271,14 +1279,6 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 		</property>
 		<relationship name="fadeOutCurve">
 			<destination>{741864e9-54a0-4ee8-9d8c-90f3dc813331}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionDestinationSound" id="{29ed3e54-ce51-45a3-8f80-021dd0e2f194}">
-		<property name="length">
-			<value>1.0071995248937355</value>
-		</property>
-		<relationship name="fadeInCurve">
-			<destination>{b2d800b9-8159-4a0d-9836-446d474efc21}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{c0cedee2-f5ba-48c1-8d24-d39e134fef5c}">
@@ -1354,6 +1354,14 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<destination>{c32f9937-d0b0-40ab-99e4-3270c919cf88}</destination>
 		</relationship>
 	</object>
+	<object class="TransitionSourceSound" id="{a3f195db-16bf-4ead-9c3b-f7b67396a6a0}">
+		<property name="length">
+			<value>0.039529399700006657</value>
+		</property>
+		<relationship name="fadeOutCurve">
+			<destination>{d9eccb28-18d4-491b-9d4a-acfd24129b76}</destination>
+		</relationship>
+	</object>
 	<object class="SingleSound" id="{df3a55aa-7629-4af1-9660-76a5833e4967}">
 		<property name="start">
 			<value>25.434782608695649</value>
@@ -1381,14 +1389,6 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<destination>{9e358c91-aff3-4347-b6e8-203518949635}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionSourceSound" id="{a3f195db-16bf-4ead-9c3b-f7b67396a6a0}">
-		<property name="length">
-			<value>0.039529399700006657</value>
-		</property>
-		<relationship name="fadeOutCurve">
-			<destination>{d9eccb28-18d4-491b-9d4a-acfd24129b76}</destination>
-		</relationship>
-	</object>
 	<object class="TransitionDestinationSound" id="{c19169d4-6820-4cd3-9e5a-636f8e5c06db}">
 		<property name="length">
 			<value>1.0071995248937355</value>
@@ -1411,6 +1411,22 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<destination>{c32f9937-d0b0-40ab-99e4-3270c919cf88}</destination>
 		</relationship>
 	</object>
+	<object class="TransitionDestinationSound" id="{8befdd33-2374-4a83-baf1-47c62f45dfa5}">
+		<property name="length">
+			<value>1.0071995248937355</value>
+		</property>
+		<relationship name="fadeInCurve">
+			<destination>{90f0d2c1-5a6e-41fc-a8e7-0db1164cf2c2}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionSourceSound" id="{0e6fa9ef-41bc-4208-b9ae-813ac52d8f7b}">
+		<property name="length">
+			<value>0.065217391304347824</value>
+		</property>
+		<relationship name="fadeOutCurve">
+			<destination>{9441993e-e4be-42a7-a4cb-94ed248f069f}</destination>
+		</relationship>
+	</object>
 	<object class="SingleSound" id="{1f0d47de-62e1-4a28-8010-4e76e345647c}">
 		<property name="start">
 			<value>25.141304347826086</value>
@@ -1425,22 +1441,6 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<destination>{849b3b6c-e79f-4889-9480-8220dbb91362}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionSourceSound" id="{0e6fa9ef-41bc-4208-b9ae-813ac52d8f7b}">
-		<property name="length">
-			<value>0.065217391304347824</value>
-		</property>
-		<relationship name="fadeOutCurve">
-			<destination>{9441993e-e4be-42a7-a4cb-94ed248f069f}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionDestinationSound" id="{2a33e0a8-3ca7-4ec2-9d66-9fbac8e656c2}">
-		<property name="length">
-			<value>1.7898082205459109</value>
-		</property>
-		<relationship name="fadeInCurve">
-			<destination>{d028401a-d96f-448f-9b63-634439baa62e}</destination>
-		</relationship>
-	</object>
 	<object class="TransitionSourceSound" id="{61842bb0-a693-4baa-849a-5d24b3db03fe}">
 		<property name="length">
 			<value>0.039529399700006657</value>
@@ -1449,12 +1449,12 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<destination>{01a75576-d373-4002-b586-7eb266b5fbf0}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionDestinationSound" id="{8befdd33-2374-4a83-baf1-47c62f45dfa5}">
+	<object class="TransitionDestinationSound" id="{2a33e0a8-3ca7-4ec2-9d66-9fbac8e656c2}">
 		<property name="length">
-			<value>1.0071995248937355</value>
+			<value>1.7898082205459109</value>
 		</property>
 		<relationship name="fadeInCurve">
-			<destination>{90f0d2c1-5a6e-41fc-a8e7-0db1164cf2c2}</destination>
+			<destination>{d028401a-d96f-448f-9b63-634439baa62e}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{8c874e22-507e-4bd0-a843-f135af69d50d}">
@@ -1722,14 +1722,6 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 	</object>
 	<object class="MixerBusPanner" id="{8c06bb42-f278-45f2-ae05-a3d6e870885e}" />
 	<object class="MixerBusFader" id="{bed2bc0e-c88f-4704-b9fd-3857ff237b28}" />
-	<object class="FadeCurve" id="{3df18efd-d967-4d0c-93d0-1c6553471177}">
-		<relationship name="startPoint">
-			<destination>{5e0401ee-c0b7-4faf-b612-33aa9808b127}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{f51473ea-1647-462d-9daf-944fa3b1333e}</destination>
-		</relationship>
-	</object>
 	<object class="TransitionSourceFadeOutCurve" id="{a730c973-5b7b-4ef0-a2a4-8d94f2e6c464}">
 		<relationship name="startPoint">
 			<destination>{2954e494-69a0-4d76-9df6-1f5cd68266eb}</destination>
@@ -1739,6 +1731,14 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 		</relationship>
 		<relationship name="relatedModule">
 			<destination>{c6838457-18f6-45a4-b732-2a0e7a59d7b7}</destination>
+		</relationship>
+	</object>
+	<object class="FadeCurve" id="{3df18efd-d967-4d0c-93d0-1c6553471177}">
+		<relationship name="startPoint">
+			<destination>{5e0401ee-c0b7-4faf-b612-33aa9808b127}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{f51473ea-1647-462d-9daf-944fa3b1333e}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionDestinationFadeInCurve" id="{f14b6afc-47ac-4bbc-9c27-48c51347cc48}">
@@ -1761,14 +1761,6 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{23e01c26-02c9-4d84-8f3e-3566025f244b}" />
-	<object class="FadeCurve" id="{55b34188-7684-4189-aa57-52bda55c2a74}">
-		<relationship name="startPoint">
-			<destination>{0a61c958-2821-48a4-a12b-f33661fa4b73}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{9499e39b-8c53-4a9c-8d6b-dc2b7c636733}</destination>
-		</relationship>
-	</object>
 	<object class="TransitionSourceFadeOutCurve" id="{30cc70ba-481e-4646-9ecb-25f4c55be1dc}">
 		<relationship name="startPoint">
 			<destination>{0b541a44-858f-4484-b81e-55252a86d464}</destination>
@@ -1778,6 +1770,14 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 		</relationship>
 		<relationship name="relatedModule">
 			<destination>{1aa262bd-6271-4a15-8177-65dc9fe37280}</destination>
+		</relationship>
+	</object>
+	<object class="FadeCurve" id="{55b34188-7684-4189-aa57-52bda55c2a74}">
+		<relationship name="startPoint">
+			<destination>{0a61c958-2821-48a4-a12b-f33661fa4b73}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{9499e39b-8c53-4a9c-8d6b-dc2b7c636733}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionDestinationFadeInCurve" id="{6c49e5e8-e87c-4503-91d0-05a8b6f55b31}">
@@ -1818,9 +1818,9 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<value>volume</value>
 		</property>
 		<relationship name="automationCurves">
+			<destination>{b792bc5d-9987-43be-a181-3c89c8c0ff9d}</destination>
 			<destination>{a215f5a8-8311-47cd-8832-9543f51f1bc1}</destination>
 			<destination>{4b32fccb-91c5-490b-a85a-ac518e677ac5}</destination>
-			<destination>{b792bc5d-9987-43be-a181-3c89c8c0ff9d}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{74ae2f87-da14-489f-8f03-fd8f0f35d82d}">
@@ -1907,12 +1907,15 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<value>-46</value>
 		</property>
 	</object>
-	<object class="FadeCurve" id="{4e9c7b88-36f5-400f-8ae5-957dec18a9a9}">
+	<object class="TransitionDestinationFadeInCurve" id="{0cea504a-6fea-4b0d-8b4d-03ac5c2a76b5}">
 		<relationship name="startPoint">
-			<destination>{4949b5f8-f556-46dd-8b02-e722e8e832eb}</destination>
+			<destination>{ccd5f616-93de-40fa-b592-b7b105d82f43}</destination>
 		</relationship>
 		<relationship name="endPoint">
-			<destination>{f5fdfcaf-7357-4e9d-bd9b-ff7f2755665f}</destination>
+			<destination>{a35582f9-6cb4-4ae8-a90c-b792a0a42839}</destination>
+		</relationship>
+		<relationship name="relatedModule">
+			<destination>{544a9fd8-f23d-4ecf-bcbc-6d76b8ffea24}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionSourceFadeOutCurve" id="{4a0edcd4-f14d-4f0b-ae3f-5ac2becfbdca}">
@@ -1926,17 +1929,6 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<destination>{094ba32c-7fe1-42d0-91ed-9d3b6c3362c2}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionDestinationFadeInCurve" id="{a3c6cb6e-edba-4f3c-86e3-9744a8442fc4}">
-		<relationship name="startPoint">
-			<destination>{4a7365b6-9c05-40ef-8347-68a3f0e823e8}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{fca5cd97-a622-4cc1-bb6c-175077870e2e}</destination>
-		</relationship>
-		<relationship name="relatedModule">
-			<destination>{852dd7cb-6d54-46c9-9a94-40822a5d4c02}</destination>
-		</relationship>
-	</object>
 	<object class="TransitionSourceFadeOutCurve" id="{6ec12135-ae90-4188-a20a-de57da6c3506}">
 		<relationship name="startPoint">
 			<destination>{c5e2bf6b-b4d5-42bf-a4b3-18da8da0b552}</destination>
@@ -1948,15 +1940,23 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<destination>{3cb45205-6169-4073-a2bc-da7e9cd85f58}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionDestinationFadeInCurve" id="{0cea504a-6fea-4b0d-8b4d-03ac5c2a76b5}">
+	<object class="TransitionDestinationFadeInCurve" id="{a3c6cb6e-edba-4f3c-86e3-9744a8442fc4}">
 		<relationship name="startPoint">
-			<destination>{ccd5f616-93de-40fa-b592-b7b105d82f43}</destination>
+			<destination>{4a7365b6-9c05-40ef-8347-68a3f0e823e8}</destination>
 		</relationship>
 		<relationship name="endPoint">
-			<destination>{a35582f9-6cb4-4ae8-a90c-b792a0a42839}</destination>
+			<destination>{fca5cd97-a622-4cc1-bb6c-175077870e2e}</destination>
 		</relationship>
 		<relationship name="relatedModule">
-			<destination>{544a9fd8-f23d-4ecf-bcbc-6d76b8ffea24}</destination>
+			<destination>{852dd7cb-6d54-46c9-9a94-40822a5d4c02}</destination>
+		</relationship>
+	</object>
+	<object class="FadeCurve" id="{4e9c7b88-36f5-400f-8ae5-957dec18a9a9}">
+		<relationship name="startPoint">
+			<destination>{4949b5f8-f556-46dd-8b02-e722e8e832eb}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{f5fdfcaf-7357-4e9d-bd9b-ff7f2755665f}</destination>
 		</relationship>
 	</object>
 	<object class="Automator" id="{427bfee3-5c65-482a-9e28-84e32e730b6e}">
@@ -1992,6 +1992,14 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<destination>{00f03f46-a395-46f9-b12d-e3ee9e0fb308}</destination>
 		</relationship>
 	</object>
+	<object class="TransitionSourceFadeOutCurve" id="{1b3f86b6-b5dd-4365-806c-bbcebb226c17}">
+		<relationship name="startPoint">
+			<destination>{546e2158-1cea-43df-bc56-a68501251ee5}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{616ffb75-55ac-42d2-9e03-b67fda577092}</destination>
+		</relationship>
+	</object>
 	<object class="TransitionDestinationFadeInCurve" id="{9601d17f-6bb4-4cd7-8e48-a3d557494b6d}">
 		<relationship name="startPoint">
 			<destination>{bccf1013-3e5a-4e41-9d9f-7469d6c29393}</destination>
@@ -2001,14 +2009,6 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 		</relationship>
 		<relationship name="relatedModule">
 			<destination>{41fa6d28-a5d9-4e10-9085-3fe2a15fcd04}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionSourceFadeOutCurve" id="{1b3f86b6-b5dd-4365-806c-bbcebb226c17}">
-		<relationship name="startPoint">
-			<destination>{546e2158-1cea-43df-bc56-a68501251ee5}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{616ffb75-55ac-42d2-9e03-b67fda577092}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{2fad914f-0b51-4bd9-a76c-f1a129948cf8}">
@@ -2061,23 +2061,20 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<value>100</value>
 		</property>
 	</object>
+	<object class="TransitionSourceFadeOutCurve" id="{7a9fe97d-145c-4652-8592-4b325cac6946}">
+		<relationship name="startPoint">
+			<destination>{07408c21-b31d-4db7-8b0e-2e3cc41ae45f}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{03314975-50dc-4e77-8f30-df352f620c38}</destination>
+		</relationship>
+	</object>
 	<object class="FadeCurve" id="{7442ead0-4257-4ead-8888-56a11686a4ad}">
 		<relationship name="startPoint">
 			<destination>{0734afd0-6155-413d-9252-4fde6c90d173}</destination>
 		</relationship>
 		<relationship name="endPoint">
 			<destination>{44a18037-1582-49a7-aa72-d4aa9c913856}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionSourceFadeOutCurve" id="{0ed6aa9a-ff3c-4e70-a4e4-796b80464d71}">
-		<relationship name="startPoint">
-			<destination>{680e6453-644b-4c21-9522-45ec7d0c9a22}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{19cb77d0-e1fa-4db7-af84-80b24c6ee287}</destination>
-		</relationship>
-		<relationship name="relatedModule">
-			<destination>{bf738222-da8c-4bb9-b4f7-c3974fb4f0d7}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionDestinationFadeInCurve" id="{0fd0c8f0-f218-47a5-81de-27434bc96d52}">
@@ -2091,12 +2088,15 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<destination>{1b873c36-ac51-4b17-abe4-a8c12ba69b0a}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionSourceFadeOutCurve" id="{7a9fe97d-145c-4652-8592-4b325cac6946}">
+	<object class="TransitionSourceFadeOutCurve" id="{0ed6aa9a-ff3c-4e70-a4e4-796b80464d71}">
 		<relationship name="startPoint">
-			<destination>{07408c21-b31d-4db7-8b0e-2e3cc41ae45f}</destination>
+			<destination>{680e6453-644b-4c21-9522-45ec7d0c9a22}</destination>
 		</relationship>
 		<relationship name="endPoint">
-			<destination>{03314975-50dc-4e77-8f30-df352f620c38}</destination>
+			<destination>{19cb77d0-e1fa-4db7-af84-80b24c6ee287}</destination>
+		</relationship>
+		<relationship name="relatedModule">
+			<destination>{bf738222-da8c-4bb9-b4f7-c3974fb4f0d7}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{f72dad83-8d64-464b-8097-d1c535775e1d}">
@@ -2174,6 +2174,17 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<destination>{9b9ffec6-60ce-4029-a51d-2b458cb125eb}</destination>
 		</relationship>
 	</object>
+	<object class="TransitionDestinationFadeInCurve" id="{967617b8-f732-4741-a417-76616be00558}">
+		<relationship name="startPoint">
+			<destination>{2731cbb2-d8c5-405a-bb85-c27913514705}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{5af65915-3e65-42ad-abc5-b89c4791dee7}</destination>
+		</relationship>
+		<relationship name="relatedModule">
+			<destination>{011b8288-fd8a-440f-8737-8a364b384eb9}</destination>
+		</relationship>
+	</object>
 	<object class="TransitionDestinationFadeInCurve" id="{2b815c2e-5664-40b6-9012-0e196f0a5872}">
 		<relationship name="startPoint">
 			<destination>{4918c945-3c8d-4db3-85e7-f619c9e4c1bd}</destination>
@@ -2194,17 +2205,6 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 		</relationship>
 		<relationship name="relatedModule">
 			<destination>{09df806f-0dc2-4397-8461-6baae44bb41f}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionDestinationFadeInCurve" id="{967617b8-f732-4741-a417-76616be00558}">
-		<relationship name="startPoint">
-			<destination>{2731cbb2-d8c5-405a-bb85-c27913514705}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{5af65915-3e65-42ad-abc5-b89c4791dee7}</destination>
-		</relationship>
-		<relationship name="relatedModule">
-			<destination>{011b8288-fd8a-440f-8737-8a364b384eb9}</destination>
 		</relationship>
 	</object>
 	<object class="Automator" id="{e25aacc8-6e43-4721-8e5d-22f3abf1360e}">
@@ -2273,6 +2273,17 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<destination>{46410561-3963-4057-aa5a-099873488147}</destination>
 		</relationship>
 	</object>
+	<object class="TransitionDestinationFadeInCurve" id="{b2d800b9-8159-4a0d-9836-446d474efc21}">
+		<relationship name="startPoint">
+			<destination>{922ef07c-b197-4bdf-8dbb-b6d6c46768df}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{f6e21411-e9ef-4889-8787-89837795b64d}</destination>
+		</relationship>
+		<relationship name="relatedModule">
+			<destination>{ca96895a-7097-41d8-b159-58719e880c8c}</destination>
+		</relationship>
+	</object>
 	<object class="TransitionDestinationFadeInCurve" id="{b08130ae-4143-438a-9700-c2be5cea93ae}">
 		<relationship name="startPoint">
 			<destination>{5c1871df-fcf5-4a05-89ab-cb86500a7457}</destination>
@@ -2293,17 +2304,6 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 		</relationship>
 		<relationship name="relatedModule">
 			<destination>{29ed3e54-ce51-45a3-8f80-021dd0e2f194}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionDestinationFadeInCurve" id="{b2d800b9-8159-4a0d-9836-446d474efc21}">
-		<relationship name="startPoint">
-			<destination>{922ef07c-b197-4bdf-8dbb-b6d6c46768df}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{f6e21411-e9ef-4889-8787-89837795b64d}</destination>
-		</relationship>
-		<relationship name="relatedModule">
-			<destination>{ca96895a-7097-41d8-b159-58719e880c8c}</destination>
 		</relationship>
 	</object>
 	<object class="Automator" id="{7e5bb11c-1c63-43ad-9d85-b1107f6da589}">
@@ -2328,8 +2328,8 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<value>volume</value>
 		</property>
 		<relationship name="automationCurves">
-			<destination>{cbde8171-b61c-4895-8d8e-8068479fc278}</destination>
 			<destination>{4a79317c-b77c-4bb0-997e-c445c911d961}</destination>
+			<destination>{cbde8171-b61c-4895-8d8e-8068479fc278}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{5add0776-f3d6-4594-b559-6e3349904f4b}">
@@ -2344,6 +2344,17 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 		<property name="stereoPan">
 			<value>54</value>
 		</property>
+	</object>
+	<object class="TransitionSourceFadeOutCurve" id="{d9eccb28-18d4-491b-9d4a-acfd24129b76}">
+		<relationship name="startPoint">
+			<destination>{4c2fa30a-1f95-4a5e-92ff-297eebabc8bf}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{aa024363-d66f-414f-8d90-f2914602fd47}</destination>
+		</relationship>
+		<relationship name="relatedModule">
+			<destination>{c19169d4-6820-4cd3-9e5a-636f8e5c06db}</destination>
+		</relationship>
 	</object>
 	<object class="TransitionSourceFadeOutCurve" id="{620e9462-da61-47aa-bad1-ba3af2489a17}">
 		<relationship name="startPoint">
@@ -2365,17 +2376,6 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 		</relationship>
 		<relationship name="relatedModule">
 			<destination>{d1e3f98f-8596-4b07-b7c9-6848c3e3768b}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionSourceFadeOutCurve" id="{d9eccb28-18d4-491b-9d4a-acfd24129b76}">
-		<relationship name="startPoint">
-			<destination>{4c2fa30a-1f95-4a5e-92ff-297eebabc8bf}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{aa024363-d66f-414f-8d90-f2914602fd47}</destination>
-		</relationship>
-		<relationship name="relatedModule">
-			<destination>{c19169d4-6820-4cd3-9e5a-636f8e5c06db}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionDestinationFadeInCurve" id="{cf284d7b-45fb-42e3-8f93-a9b8e847d5ca}">
@@ -2401,6 +2401,17 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<value>-56</value>
 		</property>
 	</object>
+	<object class="TransitionDestinationFadeInCurve" id="{90f0d2c1-5a6e-41fc-a8e7-0db1164cf2c2}">
+		<relationship name="startPoint">
+			<destination>{02c6342d-445d-4d98-86cb-9287449398c7}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{5297ffac-a20e-4cba-b4a5-056e4804c7b6}</destination>
+		</relationship>
+		<relationship name="relatedModule">
+			<destination>{61842bb0-a693-4baa-849a-5d24b3db03fe}</destination>
+		</relationship>
+	</object>
 	<object class="TransitionSourceFadeOutCurve" id="{9441993e-e4be-42a7-a4cb-94ed248f069f}">
 		<relationship name="startPoint">
 			<destination>{64855e0d-52c1-4bb8-8314-465fecf25e7a}</destination>
@@ -2410,17 +2421,6 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 		</relationship>
 		<relationship name="relatedModule">
 			<destination>{2a33e0a8-3ca7-4ec2-9d66-9fbac8e656c2}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionDestinationFadeInCurve" id="{d028401a-d96f-448f-9b63-634439baa62e}">
-		<relationship name="startPoint">
-			<destination>{56aa7122-3ffd-4629-b9c8-9ec2b5d36022}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{9d4a29ba-7372-4e72-8e41-3157afeb3f70}</destination>
-		</relationship>
-		<relationship name="relatedModule">
-			<destination>{0e6fa9ef-41bc-4208-b9ae-813ac52d8f7b}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionSourceFadeOutCurve" id="{01a75576-d373-4002-b586-7eb266b5fbf0}">
@@ -2434,15 +2434,15 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<destination>{8befdd33-2374-4a83-baf1-47c62f45dfa5}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionDestinationFadeInCurve" id="{90f0d2c1-5a6e-41fc-a8e7-0db1164cf2c2}">
+	<object class="TransitionDestinationFadeInCurve" id="{d028401a-d96f-448f-9b63-634439baa62e}">
 		<relationship name="startPoint">
-			<destination>{02c6342d-445d-4d98-86cb-9287449398c7}</destination>
+			<destination>{56aa7122-3ffd-4629-b9c8-9ec2b5d36022}</destination>
 		</relationship>
 		<relationship name="endPoint">
-			<destination>{5297ffac-a20e-4cba-b4a5-056e4804c7b6}</destination>
+			<destination>{9d4a29ba-7372-4e72-8e41-3157afeb3f70}</destination>
 		</relationship>
 		<relationship name="relatedModule">
-			<destination>{61842bb0-a693-4baa-849a-5d24b3db03fe}</destination>
+			<destination>{0e6fa9ef-41bc-4208-b9ae-813ac52d8f7b}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{54cb7661-c8a1-42e6-9039-b98f5b552cc7}">
@@ -2596,43 +2596,43 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<value>1.7898082205459112</value>
 		</property>
 		<relationship name="modules">
-			<destination>{4513583b-b095-4fc7-ba0e-35d324d3f68d}</destination>
-			<destination>{c6838457-18f6-45a4-b732-2a0e7a59d7b7}</destination>
+			<destination>{86f4a537-7f86-4b25-84eb-c01b426fb4cb}</destination>
+			<destination>{7aa2282b-f42d-4c95-ac0a-cbe8e1942da2}</destination>
 			<destination>{1360eca5-6959-43dc-8c69-ddcdde95a211}</destination>
-			<destination>{1aa262bd-6271-4a15-8177-65dc9fe37280}</destination>
-			<destination>{eeb01869-254f-46a5-9670-6538a05c3d79}</destination>
-			<destination>{da5f693e-00f8-40ad-a5f3-f90d0345c350}</destination>
-			<destination>{852dd7cb-6d54-46c9-9a94-40822a5d4c02}</destination>
-			<destination>{094ba32c-7fe1-42d0-91ed-9d3b6c3362c2}</destination>
+			<destination>{93ce4a40-f705-4cf6-8834-d6219cacc548}</destination>
 			<destination>{41fa6d28-a5d9-4e10-9085-3fe2a15fcd04}</destination>
-			<destination>{00f03f46-a395-46f9-b12d-e3ee9e0fb308}</destination>
-			<destination>{9a02631f-04cb-4191-b332-58f8171b32a6}</destination>
-			<destination>{888995a8-128c-4219-9089-3b1617c51c73}</destination>
-			<destination>{1b873c36-ac51-4b17-abe4-a8c12ba69b0a}</destination>
+			<destination>{0e6fa9ef-41bc-4208-b9ae-813ac52d8f7b}</destination>
+			<destination>{a3ec561e-917e-4e6c-8238-cfcbf69256b4}</destination>
+			<destination>{852dd7cb-6d54-46c9-9a94-40822a5d4c02}</destination>
+			<destination>{d1e3f98f-8596-4b07-b7c9-6848c3e3768b}</destination>
+			<destination>{b0671436-7589-4c19-9b1b-daf1296bc9e9}</destination>
+			<destination>{10b3f105-5865-422b-a8f1-ae038a592411}</destination>
+			<destination>{1ef83123-f2ec-44b3-aa58-7b7d2125a7db}</destination>
+			<destination>{5f397194-a90b-454f-893d-73438ca8008b}</destination>
+			<destination>{2c2c64e7-2374-4438-b455-dd694443c1bc}</destination>
+			<destination>{094ba32c-7fe1-42d0-91ed-9d3b6c3362c2}</destination>
+			<destination>{9b71fb9c-a4ef-4fa6-9062-67aed42f77ce}</destination>
+			<destination>{4513583b-b095-4fc7-ba0e-35d324d3f68d}</destination>
 			<destination>{bf738222-da8c-4bb9-b4f7-c3974fb4f0d7}</destination>
+			<destination>{67072f21-7a22-4363-a8f2-7020beaec282}</destination>
+			<destination>{1b873c36-ac51-4b17-abe4-a8c12ba69b0a}</destination>
+			<destination>{1aa262bd-6271-4a15-8177-65dc9fe37280}</destination>
+			<destination>{da5f693e-00f8-40ad-a5f3-f90d0345c350}</destination>
+			<destination>{3b09ebd4-97f9-43a7-848a-611cb5c0b141}</destination>
+			<destination>{888995a8-128c-4219-9089-3b1617c51c73}</destination>
+			<destination>{00f03f46-a395-46f9-b12d-e3ee9e0fb308}</destination>
+			<destination>{c6838457-18f6-45a4-b732-2a0e7a59d7b7}</destination>
+			<destination>{eeb01869-254f-46a5-9670-6538a05c3d79}</destination>
+			<destination>{9a02631f-04cb-4191-b332-58f8171b32a6}</destination>
 			<destination>{551622f2-d742-4e42-a9ce-1c49be6f5df0}</destination>
 			<destination>{b129b9d4-87d5-41ab-a326-353b2ad743b6}</destination>
-			<destination>{5f397194-a90b-454f-893d-73438ca8008b}</destination>
-			<destination>{a3ec561e-917e-4e6c-8238-cfcbf69256b4}</destination>
-			<destination>{86f4a537-7f86-4b25-84eb-c01b426fb4cb}</destination>
 			<destination>{9b9ffec6-60ce-4029-a51d-2b458cb125eb}</destination>
 			<destination>{30aff933-e958-44c7-8021-0c2dfc254137}</destination>
 			<destination>{d9fd0486-a45b-4b01-a663-037ade5da7af}</destination>
-			<destination>{10b3f105-5865-422b-a8f1-ae038a592411}</destination>
 			<destination>{46410561-3963-4057-aa5a-099873488147}</destination>
-			<destination>{67072f21-7a22-4363-a8f2-7020beaec282}</destination>
-			<destination>{3b09ebd4-97f9-43a7-848a-611cb5c0b141}</destination>
-			<destination>{d1e3f98f-8596-4b07-b7c9-6848c3e3768b}</destination>
-			<destination>{9b71fb9c-a4ef-4fa6-9062-67aed42f77ce}</destination>
-			<destination>{0e6fa9ef-41bc-4208-b9ae-813ac52d8f7b}</destination>
 			<destination>{2a33e0a8-3ca7-4ec2-9d66-9fbac8e656c2}</destination>
-			<destination>{93ce4a40-f705-4cf6-8834-d6219cacc548}</destination>
-			<destination>{b0671436-7589-4c19-9b1b-daf1296bc9e9}</destination>
 			<destination>{6ce30d5c-bcaa-4136-b7f4-c35286dc1661}</destination>
-			<destination>{1ef83123-f2ec-44b3-aa58-7b7d2125a7db}</destination>
-			<destination>{2c2c64e7-2374-4438-b455-dd694443c1bc}</destination>
 			<destination>{40e2fba1-c086-4c70-8796-d68d91feb9a6}</destination>
-			<destination>{7aa2282b-f42d-4c95-ac0a-cbe8e1942da2}</destination>
 			<destination>{3dd030b9-3024-4ec8-9d65-4a2f8388d3b0}</destination>
 		</relationship>
 	</object>
@@ -2647,44 +2647,44 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<value>1.0071995248937355</value>
 		</property>
 		<relationship name="modules">
-			<destination>{57d6318b-43b1-485f-81f4-1e464553d082}</destination>
-			<destination>{aeaa10a0-6384-4df8-97d5-9eb54e6b16a0}</destination>
-			<destination>{a3d6ffdc-3f16-4251-8425-3e8a1b023287}</destination>
-			<destination>{2142c66f-a12e-450b-89a9-6689f3d76051}</destination>
-			<destination>{f8c9ea08-cabc-48ea-a7c0-8f92cd462d07}</destination>
-			<destination>{4dac9353-d1d0-467b-9b0f-fb3a2a1ee0cb}</destination>
-			<destination>{544a9fd8-f23d-4ecf-bcbc-6d76b8ffea24}</destination>
-			<destination>{3cb45205-6169-4073-a2bc-da7e9cd85f58}</destination>
-			<destination>{654b7399-8dff-4f1d-80f1-3c23b67c2e70}</destination>
-			<destination>{1ec7cf1b-b796-4ae4-8557-0a575666dccc}</destination>
-			<destination>{c2bb13a1-7069-434b-a4fc-0dbc6e13d664}</destination>
-			<destination>{897e3a43-dbe4-4154-9b74-f7b14f5d2302}</destination>
-			<destination>{daa7de23-1e9f-4e1d-9489-650c7320d37e}</destination>
-			<destination>{03122f46-2165-48df-bfcc-96753a555a65}</destination>
-			<destination>{3b95cb85-b830-4c0a-b00e-40cb0eb53488}</destination>
-			<destination>{572c5338-6312-48ce-8a2a-f783299156fa}</destination>
-			<destination>{9cfb3068-eaec-4ad7-bf96-c0267571b248}</destination>
-			<destination>{b738c05e-654c-4003-bc63-2e87b382a485}</destination>
-			<destination>{011b8288-fd8a-440f-8737-8a364b384eb9}</destination>
-			<destination>{09df806f-0dc2-4397-8461-6baae44bb41f}</destination>
-			<destination>{956797a7-a792-4c7e-b45f-08065a4f80c9}</destination>
-			<destination>{167fe62a-908f-490f-9874-f33c53a0d286}</destination>
-			<destination>{ca96895a-7097-41d8-b159-58719e880c8c}</destination>
-			<destination>{29ed3e54-ce51-45a3-8f80-021dd0e2f194}</destination>
-			<destination>{566d8761-5521-4677-a62a-03d0a02a566f}</destination>
-			<destination>{0bd55ef2-8723-470e-9920-02a6d3f78808}</destination>
 			<destination>{a3f195db-16bf-4ead-9c3b-f7b67396a6a0}</destination>
-			<destination>{c19169d4-6820-4cd3-9e5a-636f8e5c06db}</destination>
-			<destination>{61842bb0-a693-4baa-849a-5d24b3db03fe}</destination>
+			<destination>{3cb45205-6169-4073-a2bc-da7e9cd85f58}</destination>
+			<destination>{03122f46-2165-48df-bfcc-96753a555a65}</destination>
 			<destination>{8befdd33-2374-4a83-baf1-47c62f45dfa5}</destination>
+			<destination>{f8c9ea08-cabc-48ea-a7c0-8f92cd462d07}</destination>
+			<destination>{1ec7cf1b-b796-4ae4-8557-0a575666dccc}</destination>
+			<destination>{09df806f-0dc2-4397-8461-6baae44bb41f}</destination>
 			<destination>{9c839ba7-7aea-4b61-9563-e44b36e68fc8}</destination>
-			<destination>{a04d609f-4ebc-4740-8769-4a61375c28ab}</destination>
-			<destination>{c7bb33cc-03e3-49d7-9afe-12b537bb2ebf}</destination>
+			<destination>{daa7de23-1e9f-4e1d-9489-650c7320d37e}</destination>
+			<destination>{544a9fd8-f23d-4ecf-bcbc-6d76b8ffea24}</destination>
+			<destination>{0bd55ef2-8723-470e-9920-02a6d3f78808}</destination>
 			<destination>{fefdab3c-ced9-4c66-bff4-aafbad7c004d}</destination>
-			<destination>{df1a85ca-55ac-4fa0-9bb3-80db61cfb341}</destination>
-			<destination>{a0ed3285-85a4-4730-bdd9-99a4c6571d8a}</destination>
-			<destination>{a97fc1ea-1d35-4b3c-aa79-0645035b3e7b}</destination>
 			<destination>{d53d82a4-1341-4eac-887d-c78a0e51912d}</destination>
+			<destination>{aeaa10a0-6384-4df8-97d5-9eb54e6b16a0}</destination>
+			<destination>{b738c05e-654c-4003-bc63-2e87b382a485}</destination>
+			<destination>{167fe62a-908f-490f-9874-f33c53a0d286}</destination>
+			<destination>{a0ed3285-85a4-4730-bdd9-99a4c6571d8a}</destination>
+			<destination>{3b95cb85-b830-4c0a-b00e-40cb0eb53488}</destination>
+			<destination>{df1a85ca-55ac-4fa0-9bb3-80db61cfb341}</destination>
+			<destination>{566d8761-5521-4677-a62a-03d0a02a566f}</destination>
+			<destination>{61842bb0-a693-4baa-849a-5d24b3db03fe}</destination>
+			<destination>{29ed3e54-ce51-45a3-8f80-021dd0e2f194}</destination>
+			<destination>{011b8288-fd8a-440f-8737-8a364b384eb9}</destination>
+			<destination>{c19169d4-6820-4cd3-9e5a-636f8e5c06db}</destination>
+			<destination>{654b7399-8dff-4f1d-80f1-3c23b67c2e70}</destination>
+			<destination>{c7bb33cc-03e3-49d7-9afe-12b537bb2ebf}</destination>
+			<destination>{c2bb13a1-7069-434b-a4fc-0dbc6e13d664}</destination>
+			<destination>{57d6318b-43b1-485f-81f4-1e464553d082}</destination>
+			<destination>{956797a7-a792-4c7e-b45f-08065a4f80c9}</destination>
+			<destination>{a97fc1ea-1d35-4b3c-aa79-0645035b3e7b}</destination>
+			<destination>{a04d609f-4ebc-4740-8769-4a61375c28ab}</destination>
+			<destination>{9cfb3068-eaec-4ad7-bf96-c0267571b248}</destination>
+			<destination>{a3d6ffdc-3f16-4251-8425-3e8a1b023287}</destination>
+			<destination>{4dac9353-d1d0-467b-9b0f-fb3a2a1ee0cb}</destination>
+			<destination>{572c5338-6312-48ce-8a2a-f783299156fa}</destination>
+			<destination>{ca96895a-7097-41d8-b159-58719e880c8c}</destination>
+			<destination>{897e3a43-dbe4-4154-9b74-f7b14f5d2302}</destination>
+			<destination>{2142c66f-a12e-450b-89a9-6689f3d76051}</destination>
 		</relationship>
 	</object>
 	<object class="LimiterEffect" id="{431a74a3-8f45-401d-a322-67162328f984}">
@@ -2698,25 +2698,6 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{3ffd141c-ae85-4a18-842c-368855bac7aa}" />
-	<object class="AutomationPoint" id="{5e0401ee-c0b7-4faf-b612-33aa9808b127}">
-		<property name="position">
-			<value>240.83598935226263</value>
-		</property>
-		<property name="value">
-			<value>1</value>
-		</property>
-		<property name="curveShape">
-			<value>0.519575119</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{f51473ea-1647-462d-9daf-944fa3b1333e}">
-		<property name="position">
-			<value>249.31425022182788</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-	</object>
 	<object class="AutomationPoint" id="{2954e494-69a0-4d76-9df6-1f5cd68266eb}">
 		<property name="position">
 			<value>0</value>
@@ -2731,6 +2712,25 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 	<object class="AutomationPoint" id="{bd04f76d-ffde-4115-ae48-298df0aedd43}">
 		<property name="position">
 			<value>0.13043478260869565</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{5e0401ee-c0b7-4faf-b612-33aa9808b127}">
+		<property name="position">
+			<value>240.83598935226263</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+		<property name="curveShape">
+			<value>0.519575119</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{f51473ea-1647-462d-9daf-944fa3b1333e}">
+		<property name="position">
+			<value>249.31425022182788</value>
 		</property>
 		<property name="value">
 			<value>0</value>
@@ -2785,6 +2785,25 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 	</object>
 	<object class="Sidechain" id="{eb2c2b78-0062-4061-87d4-f41f8db9f9cf}" />
 	<object class="MixerBusFader" id="{d4910b7a-b652-48ba-be35-92f71e089222}" />
+	<object class="AutomationPoint" id="{0b541a44-858f-4484-b81e-55252a86d464}">
+		<property name="position">
+			<value>5.5511151231257827e-17</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+		<property name="curveShape">
+			<value>0.25471893</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{9934097a-8ac1-4ec1-9189-92c11f7c6f88}">
+		<property name="position">
+			<value>0.065217391304347824</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
 	<object class="AutomationPoint" id="{0a61c958-2821-48a4-a12b-f33661fa4b73}">
 		<property name="position">
 			<value>241.78980822054592</value>
@@ -2802,25 +2821,6 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 	<object class="AutomationPoint" id="{9499e39b-8c53-4a9c-8d6b-dc2b7c636733}">
 		<property name="position">
 			<value>251.18111256837199</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{0b541a44-858f-4484-b81e-55252a86d464}">
-		<property name="position">
-			<value>5.5511151231257827e-17</value>
-		</property>
-		<property name="value">
-			<value>1</value>
-		</property>
-		<property name="curveShape">
-			<value>0.25471893</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{9934097a-8ac1-4ec1-9189-92c11f7c6f88}">
-		<property name="position">
-			<value>0.065217391304347824</value>
 		</property>
 		<property name="value">
 			<value>0</value>
@@ -2883,13 +2883,22 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<value>1</value>
 		</property>
 	</object>
+	<object class="AutomationCurve" id="{b792bc5d-9987-43be-a181-3c89c8c0ff9d}">
+		<relationship name="parameter">
+			<destination>{c47b3456-5155-4afd-b914-1abae5113e4c}</destination>
+		</relationship>
+		<relationship name="automationPoints">
+			<destination>{87471e10-c6de-4808-a6d8-f7513be2618e}</destination>
+			<destination>{a5edb230-a95c-4a42-bc05-4288b845cf3c}</destination>
+		</relationship>
+	</object>
 	<object class="AutomationCurve" id="{a215f5a8-8311-47cd-8832-9543f51f1bc1}">
 		<relationship name="parameter">
 			<destination>{033be65f-0955-40ff-8aef-1cbbaec6a39c}</destination>
 		</relationship>
 		<relationship name="automationPoints">
-			<destination>{2334a656-a014-454e-8d31-02dfe45b58c2}</destination>
 			<destination>{79b3c0e1-151d-4683-b198-8a3ca7659537}</destination>
+			<destination>{2334a656-a014-454e-8d31-02dfe45b58c2}</destination>
 		</relationship>
 	</object>
 	<object class="AutomationCurve" id="{4b32fccb-91c5-490b-a85a-ac518e677ac5}">
@@ -2899,15 +2908,6 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 		<relationship name="automationPoints">
 			<destination>{73d01051-6f94-4467-933f-f92f39e8ffbf}</destination>
 			<destination>{30e26c37-a6f2-41d9-9b30-369347a9880f}</destination>
-		</relationship>
-	</object>
-	<object class="AutomationCurve" id="{b792bc5d-9987-43be-a181-3c89c8c0ff9d}">
-		<relationship name="parameter">
-			<destination>{c47b3456-5155-4afd-b914-1abae5113e4c}</destination>
-		</relationship>
-		<relationship name="automationPoints">
-			<destination>{87471e10-c6de-4808-a6d8-f7513be2618e}</destination>
-			<destination>{a5edb230-a95c-4a42-bc05-4288b845cf3c}</destination>
 		</relationship>
 	</object>
 	<object class="CompressorEffect" id="{b9b87ab1-abd0-4d1b-b394-baf8f6c57977}">
@@ -3051,8 +3051,8 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<destination>{da75a521-1fff-440d-bd6d-c9d40b99f8ff}</destination>
 		</relationship>
 		<relationship name="automationPoints">
-			<destination>{1cff06cc-f4a6-42de-ada0-11d6a74e8f92}</destination>
 			<destination>{19e3d28c-a800-4589-b48e-403561f19ee9}</destination>
+			<destination>{1cff06cc-f4a6-42de-ada0-11d6a74e8f92}</destination>
 		</relationship>
 	</object>
 	<object class="MultibandEqEffect" id="{73690d1d-771e-4094-be82-c94216150aa1}">
@@ -3090,26 +3090,23 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 	</object>
 	<object class="Sidechain" id="{e5d3db2b-a086-466e-9759-e758c10dff4d}" />
 	<object class="MixerBusFader" id="{eeda08f0-b754-4409-b221-e030cdb6d508}" />
-	<object class="AutomationPoint" id="{4949b5f8-f556-46dd-8b02-e722e8e832eb}">
+	<object class="AutomationPoint" id="{ccd5f616-93de-40fa-b592-b7b105d82f43}">
 		<property name="position">
-			<value>241.78980822054592</value>
-		</property>
-		<property name="value">
-			<value>1</value>
-		</property>
-		<property name="curveShape">
-			<value>0.5</value>
-		</property>
-		<property name="isSCurve">
-			<value>true</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{f5fdfcaf-7357-4e9d-bd9b-ff7f2755665f}">
-		<property name="position">
-			<value>251.18111256837199</value>
+			<value>0</value>
 		</property>
 		<property name="value">
 			<value>0</value>
+		</property>
+		<property name="curveShape">
+			<value>-0.2547189</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{a35582f9-6cb4-4ae8-a90c-b792a0a42839}">
+		<property name="position">
+			<value>0.39130434782608692</value>
+		</property>
+		<property name="value">
+			<value>1</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{315d2d57-928e-4dd9-a2f6-af26be9d7d7c}">
@@ -3126,6 +3123,25 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 	<object class="AutomationPoint" id="{572c9237-7afe-4357-81af-8788eaaec205}">
 		<property name="position">
 			<value>0.16304347826086957</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{c5e2bf6b-b4d5-42bf-a4b3-18da8da0b552}">
+		<property name="position">
+			<value>0</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+		<property name="curveShape">
+			<value>0.25471893</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{9ef156e2-eff4-4982-a0bc-b195f2e1c42e}">
+		<property name="position">
+			<value>0.39130434782608692</value>
 		</property>
 		<property name="value">
 			<value>0</value>
@@ -3150,42 +3166,26 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<value>1</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{c5e2bf6b-b4d5-42bf-a4b3-18da8da0b552}">
+	<object class="AutomationPoint" id="{4949b5f8-f556-46dd-8b02-e722e8e832eb}">
 		<property name="position">
-			<value>0</value>
+			<value>241.78980822054592</value>
 		</property>
 		<property name="value">
 			<value>1</value>
 		</property>
 		<property name="curveShape">
-			<value>0.25471893</value>
+			<value>0.5</value>
+		</property>
+		<property name="isSCurve">
+			<value>true</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{9ef156e2-eff4-4982-a0bc-b195f2e1c42e}">
+	<object class="AutomationPoint" id="{f5fdfcaf-7357-4e9d-bd9b-ff7f2755665f}">
 		<property name="position">
-			<value>0.39130434782608692</value>
+			<value>251.18111256837199</value>
 		</property>
 		<property name="value">
 			<value>0</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{ccd5f616-93de-40fa-b592-b7b105d82f43}">
-		<property name="position">
-			<value>0</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-		<property name="curveShape">
-			<value>-0.2547189</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{a35582f9-6cb4-4ae8-a90c-b792a0a42839}">
-		<property name="position">
-			<value>0.39130434782608692</value>
-		</property>
-		<property name="value">
-			<value>1</value>
 		</property>
 	</object>
 	<object class="AutomationCurve" id="{00e2f198-6e9d-4104-9a2b-b773c09a1d90}">
@@ -3193,8 +3193,8 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<destination>{da75a521-1fff-440d-bd6d-c9d40b99f8ff}</destination>
 		</relationship>
 		<relationship name="automationPoints">
-			<destination>{6bcc8eba-9aa0-4e52-8595-973a69fab0b3}</destination>
 			<destination>{a6382f56-b136-4550-997c-fc3ab5846cc3}</destination>
+			<destination>{6bcc8eba-9aa0-4e52-8595-973a69fab0b3}</destination>
 		</relationship>
 	</object>
 	<object class="MultibandEqEffect" id="{10cc3bb2-dfda-46cb-b00a-4f2e00ac03cc}">
@@ -3251,25 +3251,6 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<value>0</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{bccf1013-3e5a-4e41-9d9f-7469d6c29393}">
-		<property name="position">
-			<value>0</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-		<property name="curveShape">
-			<value>-0.2547189</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{31806990-b309-403b-ad91-7cc8886de37e}">
-		<property name="position">
-			<value>0.16304347826086957</value>
-		</property>
-		<property name="value">
-			<value>1</value>
-		</property>
-	</object>
 	<object class="AutomationPoint" id="{546e2158-1cea-43df-bc56-a68501251ee5}">
 		<property name="position">
 			<value>0.089575499850695781</value>
@@ -3287,6 +3268,25 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 		</property>
 		<property name="value">
 			<value>0</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{bccf1013-3e5a-4e41-9d9f-7469d6c29393}">
+		<property name="position">
+			<value>0</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+		<property name="curveShape">
+			<value>-0.2547189</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{31806990-b309-403b-ad91-7cc8886de37e}">
+		<property name="position">
+			<value>0.16304347826086957</value>
+		</property>
+		<property name="value">
+			<value>1</value>
 		</property>
 	</object>
 	<object class="MixerSend" id="{a45dd5d9-1f7b-4d83-8fa9-328bc434ef32}">
@@ -3372,6 +3372,25 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 	</object>
 	<object class="Sidechain" id="{f02ba442-b85b-450f-b358-f136fc7f5d3c}" />
 	<object class="MixerBusFader" id="{9b65f048-bb55-4cd3-89e6-aa134cd2baee}" />
+	<object class="AutomationPoint" id="{07408c21-b31d-4db7-8b0e-2e3cc41ae45f}">
+		<property name="position">
+			<value>0.13043478260869565</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+		<property name="curveShape">
+			<value>0.25471893</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{03314975-50dc-4e77-8f30-df352f620c38}">
+		<property name="position">
+			<value>0.16863429925070908</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
 	<object class="AutomationPoint" id="{0734afd0-6155-413d-9252-4fde6c90d173}">
 		<property name="position">
 			<value>130.13763430750242</value>
@@ -3386,25 +3405,6 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 	<object class="AutomationPoint" id="{44a18037-1582-49a7-aa72-d4aa9c913856}">
 		<property name="position">
 			<value>132.79717290555033</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{680e6453-644b-4c21-9522-45ec7d0c9a22}">
-		<property name="position">
-			<value>5.5511151231257827e-17</value>
-		</property>
-		<property name="value">
-			<value>1</value>
-		</property>
-		<property name="curveShape">
-			<value>0.25471893</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{19cb77d0-e1fa-4db7-af84-80b24c6ee287}">
-		<property name="position">
-			<value>0.22826086956521738</value>
 		</property>
 		<property name="value">
 			<value>0</value>
@@ -3429,9 +3429,9 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<value>1</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{07408c21-b31d-4db7-8b0e-2e3cc41ae45f}">
+	<object class="AutomationPoint" id="{680e6453-644b-4c21-9522-45ec7d0c9a22}">
 		<property name="position">
-			<value>0.13043478260869565</value>
+			<value>5.5511151231257827e-17</value>
 		</property>
 		<property name="value">
 			<value>1</value>
@@ -3440,9 +3440,9 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<value>0.25471893</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{03314975-50dc-4e77-8f30-df352f620c38}">
+	<object class="AutomationPoint" id="{19cb77d0-e1fa-4db7-af84-80b24c6ee287}">
 		<property name="position">
-			<value>0.16863429925070908</value>
+			<value>0.22826086956521738</value>
 		</property>
 		<property name="value">
 			<value>0</value>
@@ -3564,6 +3564,25 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<value>0</value>
 		</property>
 	</object>
+	<object class="AutomationPoint" id="{2731cbb2-d8c5-405a-bb85-c27913514705}">
+		<property name="position">
+			<value>0</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+		<property name="curveShape">
+			<value>-0.2547189</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{5af65915-3e65-42ad-abc5-b89c4791dee7}">
+		<property name="position">
+			<value>1.0071995248937355</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+	</object>
 	<object class="AutomationPoint" id="{4918c945-3c8d-4db3-85e7-f619c9e4c1bd}">
 		<property name="position">
 			<value>0</value>
@@ -3600,25 +3619,6 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 		</property>
 		<property name="value">
 			<value>0</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{2731cbb2-d8c5-405a-bb85-c27913514705}">
-		<property name="position">
-			<value>0</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-		<property name="curveShape">
-			<value>-0.2547189</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{5af65915-3e65-42ad-abc5-b89c4791dee7}">
-		<property name="position">
-			<value>1.0071995248937355</value>
-		</property>
-		<property name="value">
-			<value>1</value>
 		</property>
 	</object>
 	<object class="AutomationCurve" id="{da1090c1-3943-4963-8a4f-bcd13c7cde15}">
@@ -3743,6 +3743,25 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<value>0</value>
 		</property>
 	</object>
+	<object class="AutomationPoint" id="{922ef07c-b197-4bdf-8dbb-b6d6c46768df}">
+		<property name="position">
+			<value>0</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+		<property name="curveShape">
+			<value>-0.2547189</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{f6e21411-e9ef-4889-8787-89837795b64d}">
+		<property name="position">
+			<value>1.0071995248937355</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+	</object>
 	<object class="AutomationPoint" id="{5c1871df-fcf5-4a05-89ab-cb86500a7457}">
 		<property name="position">
 			<value>6.9388939039072284e-18</value>
@@ -3781,25 +3800,6 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<value>0</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{922ef07c-b197-4bdf-8dbb-b6d6c46768df}">
-		<property name="position">
-			<value>0</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-		<property name="curveShape">
-			<value>-0.2547189</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{f6e21411-e9ef-4889-8787-89837795b64d}">
-		<property name="position">
-			<value>1.0071995248937355</value>
-		</property>
-		<property name="value">
-			<value>1</value>
-		</property>
-	</object>
 	<object class="AutomationCurve" id="{9c8abb6e-d069-4ead-97f6-198f5eade0f7}">
 		<relationship name="parameter">
 			<destination>{da75a521-1fff-440d-bd6d-c9d40b99f8ff}</destination>
@@ -3836,6 +3836,14 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<destination>{a503c31d-a8fa-4fd8-b797-061ac11495ba}</destination>
 		</relationship>
 	</object>
+	<object class="AutomationCurve" id="{4a79317c-b77c-4bb0-997e-c445c911d961}">
+		<relationship name="parameter">
+			<destination>{033be65f-0955-40ff-8aef-1cbbaec6a39c}</destination>
+		</relationship>
+		<relationship name="automationPoints">
+			<destination>{b3e051ae-5261-4fab-9e10-8bfacfdf8855}</destination>
+		</relationship>
+	</object>
 	<object class="AutomationCurve" id="{cbde8171-b61c-4895-8d8e-8068479fc278}">
 		<relationship name="parameter">
 			<destination>{da75a521-1fff-440d-bd6d-c9d40b99f8ff}</destination>
@@ -3843,14 +3851,6 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 		<relationship name="automationPoints">
 			<destination>{32435d38-fe20-49fe-906a-9dc87fcfd0f0}</destination>
 			<destination>{25931d6a-3e3c-4ad1-8a33-b81ea0b06240}</destination>
-		</relationship>
-	</object>
-	<object class="AutomationCurve" id="{4a79317c-b77c-4bb0-997e-c445c911d961}">
-		<relationship name="parameter">
-			<destination>{033be65f-0955-40ff-8aef-1cbbaec6a39c}</destination>
-		</relationship>
-		<relationship name="automationPoints">
-			<destination>{b3e051ae-5261-4fab-9e10-8bfacfdf8855}</destination>
 		</relationship>
 	</object>
 	<object class="MixerSend" id="{3185657e-0bea-421f-a032-84841e02038e}">
@@ -3877,6 +3877,25 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 	</object>
 	<object class="Sidechain" id="{aea9fc4f-cc50-4474-92f3-133b7d2d6d93}" />
 	<object class="MixerBusFader" id="{660f79c2-2df5-4030-a6ee-824235e51290}" />
+	<object class="AutomationPoint" id="{4c2fa30a-1f95-4a5e-92ff-297eebabc8bf}">
+		<property name="position">
+			<value>0</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+		<property name="curveShape">
+			<value>0.25471893</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{aa024363-d66f-414f-8d90-f2914602fd47}">
+		<property name="position">
+			<value>0.039529399700006657</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
 	<object class="AutomationPoint" id="{cc6b3b7d-efb2-4685-9d1e-e40f008a7067}">
 		<property name="position">
 			<value>0</value>
@@ -3915,25 +3934,6 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<value>1</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{4c2fa30a-1f95-4a5e-92ff-297eebabc8bf}">
-		<property name="position">
-			<value>0</value>
-		</property>
-		<property name="value">
-			<value>1</value>
-		</property>
-		<property name="curveShape">
-			<value>0.25471893</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{aa024363-d66f-414f-8d90-f2914602fd47}">
-		<property name="position">
-			<value>0.039529399700006657</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-	</object>
 	<object class="AutomationPoint" id="{52728d77-8c33-49d6-8df1-9fdf322619df}">
 		<property name="position">
 			<value>0</value>
@@ -3966,6 +3966,25 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 	</object>
 	<object class="Sidechain" id="{8772e864-e4ee-494f-ab33-7722581f956e}" />
 	<object class="MixerBusFader" id="{42b1315e-d789-4d3f-8c7a-600a887b9d8f}" />
+	<object class="AutomationPoint" id="{02c6342d-445d-4d98-86cb-9287449398c7}">
+		<property name="position">
+			<value>0</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+		<property name="curveShape">
+			<value>-0.2547189</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{5297ffac-a20e-4cba-b4a5-056e4804c7b6}">
+		<property name="position">
+			<value>0.039529399700006657</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+	</object>
 	<object class="AutomationPoint" id="{64855e0d-52c1-4bb8-8314-465fecf25e7a}">
 		<property name="position">
 			<value>0</value>
@@ -3983,25 +4002,6 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 		</property>
 		<property name="value">
 			<value>0</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{56aa7122-3ffd-4629-b9c8-9ec2b5d36022}">
-		<property name="position">
-			<value>0</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-		<property name="curveShape">
-			<value>-0.2547189</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{9d4a29ba-7372-4e72-8e41-3157afeb3f70}">
-		<property name="position">
-			<value>0.065217391304347824</value>
-		</property>
-		<property name="value">
-			<value>1</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{271d3851-e6cc-4c1d-82ce-c1af9ff6adf3}">
@@ -4023,7 +4023,7 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<value>0</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{02c6342d-445d-4d98-86cb-9287449398c7}">
+	<object class="AutomationPoint" id="{56aa7122-3ffd-4629-b9c8-9ec2b5d36022}">
 		<property name="position">
 			<value>0</value>
 		</property>
@@ -4034,9 +4034,9 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<value>-0.2547189</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{5297ffac-a20e-4cba-b4a5-056e4804c7b6}">
+	<object class="AutomationPoint" id="{9d4a29ba-7372-4e72-8e41-3157afeb3f70}">
 		<property name="position">
-			<value>0.039529399700006657</value>
+			<value>0.065217391304347824</value>
 		</property>
 		<property name="value">
 			<value>1</value>
@@ -4236,11 +4236,11 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<destination>{da75a521-1fff-440d-bd6d-c9d40b99f8ff}</destination>
 		</relationship>
 		<relationship name="automationPoints">
-			<destination>{b3cbc1c0-7661-4b5e-a5d9-7ab7d97e1c78}</destination>
-			<destination>{31be523c-b86a-4896-bdd5-d6e15436c999}</destination>
+			<destination>{f04d69ae-a370-459a-9d7d-5dc1802fe944}</destination>
 			<destination>{b4add871-7b60-4af5-a074-263a61ced30b}</destination>
 			<destination>{c4d58e08-45fe-4c10-86a3-673f7f27e3f2}</destination>
-			<destination>{f04d69ae-a370-459a-9d7d-5dc1802fe944}</destination>
+			<destination>{b3cbc1c0-7661-4b5e-a5d9-7ab7d97e1c78}</destination>
+			<destination>{31be523c-b86a-4896-bdd5-d6e15436c999}</destination>
 			<destination>{2dc69ad8-d790-4713-ab6d-230d6dd31f07}</destination>
 		</relationship>
 	</object>
@@ -4314,6 +4314,33 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{68ec0c20-f7be-48a5-b24a-7598e8ed7d8d}" />
+	<object class="AutomationPoint" id="{87471e10-c6de-4808-a6d8-f7513be2618e}">
+		<property name="position">
+			<value>1.0071995248937355</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{a5edb230-a95c-4a42-bc05-4288b845cf3c}">
+		<property name="position">
+			<value>0.0020380434782608695</value>
+		</property>
+		<property name="value">
+			<value>1.79999995</value>
+		</property>
+		<property name="curveShape">
+			<value>0.372241288</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{79b3c0e1-151d-4683-b198-8a3ca7659537}">
+		<property name="position">
+			<value>1.7898082205459112</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
 	<object class="AutomationPoint" id="{2334a656-a014-454e-8d31-02dfe45b58c2}">
 		<property name="position">
 			<value>0</value>
@@ -4323,14 +4350,6 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 		</property>
 		<property name="curveShape">
 			<value>0.683290005</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{79b3c0e1-151d-4683-b198-8a3ca7659537}">
-		<property name="position">
-			<value>1.7898082205459112</value>
-		</property>
-		<property name="value">
-			<value>0</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{73d01051-6f94-4467-933f-f92f39e8ffbf}">
@@ -4355,33 +4374,6 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<value>true</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{87471e10-c6de-4808-a6d8-f7513be2618e}">
-		<property name="position">
-			<value>1.0071995248937355</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{a5edb230-a95c-4a42-bc05-4288b845cf3c}">
-		<property name="position">
-			<value>0.0020380434782608695</value>
-		</property>
-		<property name="value">
-			<value>1.79999995</value>
-		</property>
-		<property name="curveShape">
-			<value>0.372241288</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{1cff06cc-f4a6-42de-ada0-11d6a74e8f92}">
-		<property name="position">
-			<value>50.235566275825299</value>
-		</property>
-		<property name="value">
-			<value>1</value>
-		</property>
-	</object>
 	<object class="AutomationPoint" id="{19e3d28c-a800-4589-b48e-403561f19ee9}">
 		<property name="position">
 			<value>49.528938655328517</value>
@@ -4390,7 +4382,7 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<value>2</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{6bcc8eba-9aa0-4e52-8595-973a69fab0b3}">
+	<object class="AutomationPoint" id="{1cff06cc-f4a6-42de-ada0-11d6a74e8f92}">
 		<property name="position">
 			<value>50.235566275825299</value>
 		</property>
@@ -4404,6 +4396,14 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 		</property>
 		<property name="value">
 			<value>2</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{6bcc8eba-9aa0-4e52-8595-973a69fab0b3}">
+		<property name="position">
+			<value>50.235566275825299</value>
+		</property>
+		<property name="value">
+			<value>1</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{78f56600-d992-40fc-a83e-ff7f3842a1f4}">
@@ -4447,6 +4447,14 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<destination>{3a760374-bdc9-4c73-b716-3a7a8ba66386}</destination>
 		</relationship>
 	</object>
+	<object class="AutomationPoint" id="{b3e051ae-5261-4fab-9e10-8bfacfdf8855}">
+		<property name="position">
+			<value>0.52173913043478259</value>
+		</property>
+		<property name="value">
+			<value>0.5</value>
+		</property>
+	</object>
 	<object class="AutomationPoint" id="{32435d38-fe20-49fe-906a-9dc87fcfd0f0}">
 		<property name="position">
 			<value>238.1711593616177</value>
@@ -4463,28 +4471,12 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<value>0.5</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{b3e051ae-5261-4fab-9e10-8bfacfdf8855}">
+	<object class="AutomationPoint" id="{f04d69ae-a370-459a-9d7d-5dc1802fe944}">
 		<property name="position">
-			<value>0.52173913043478259</value>
+			<value>125.65651899474894</value>
 		</property>
 		<property name="value">
-			<value>0.5</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{b3cbc1c0-7661-4b5e-a5d9-7ab7d97e1c78}">
-		<property name="position">
-			<value>50.235566275825299</value>
-		</property>
-		<property name="value">
-			<value>-5.5</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{31be523c-b86a-4896-bdd5-d6e15436c999}">
-		<property name="position">
-			<value>49.528938655328517</value>
-		</property>
-		<property name="value">
-			<value>-2</value>
+			<value>-3</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{b4add871-7b60-4af5-a074-263a61ced30b}">
@@ -4503,12 +4495,20 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<value>-5.50000381</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{f04d69ae-a370-459a-9d7d-5dc1802fe944}">
+	<object class="AutomationPoint" id="{b3cbc1c0-7661-4b5e-a5d9-7ab7d97e1c78}">
 		<property name="position">
-			<value>125.65651899474894</value>
+			<value>50.235566275825299</value>
 		</property>
 		<property name="value">
-			<value>-3</value>
+			<value>-5.5</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{31be523c-b86a-4896-bdd5-d6e15436c999}">
+		<property name="position">
+			<value>49.528938655328517</value>
+		</property>
+		<property name="value">
+			<value>-2</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{2dc69ad8-d790-4713-ab6d-230d6dd31f07}">
@@ -4524,10 +4524,10 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 			<destination>{da75a521-1fff-440d-bd6d-c9d40b99f8ff}</destination>
 		</relationship>
 		<relationship name="automationPoints">
+			<destination>{450db489-31d0-4106-960b-4f5785728015}</destination>
 			<destination>{07224d3a-c84a-485c-b102-6546f2e13584}</destination>
 			<destination>{76ef57dd-e877-410a-8f68-6495aea02283}</destination>
 			<destination>{adaa44b6-4899-4bb1-9a5d-ff88af7f4fdb}</destination>
-			<destination>{450db489-31d0-4106-960b-4f5785728015}</destination>
 			<destination>{121b4a08-476d-49cf-b0c9-b363d5a25e58}</destination>
 		</relationship>
 	</object>
@@ -4538,6 +4538,14 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 		<relationship name="automationPoints">
 			<destination>{03da98cd-592c-41e6-a77d-61274ee2739e}</destination>
 		</relationship>
+	</object>
+	<object class="AutomationPoint" id="{450db489-31d0-4106-960b-4f5785728015}">
+		<property name="position">
+			<value>238.1951941154982</value>
+		</property>
+		<property name="value">
+			<value>-30</value>
+		</property>
 	</object>
 	<object class="AutomationPoint" id="{07224d3a-c84a-485c-b102-6546f2e13584}">
 		<property name="position">
@@ -4567,14 +4575,6 @@ Down Under by Stefan Kartenberg (c) copyright 2020 Licensed under a Creative Com
 		</property>
 		<property name="isSCurve">
 			<value>true</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{450db489-31d0-4106-960b-4f5785728015}">
-		<property name="position">
-			<value>238.1951941154982</value>
-		</property>
-		<property name="value">
-			<value>-30</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{121b4a08-476d-49cf-b0c9-b363d5a25e58}">

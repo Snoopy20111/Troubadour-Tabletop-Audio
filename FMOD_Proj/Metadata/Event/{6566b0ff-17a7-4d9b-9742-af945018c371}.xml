@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{6566b0ff-17a7-4d9b-9742-af945018c371}">
 		<property name="note">
 			<value>Trobador by Javolenus (c) copyright 2024 Licensed under a Creative Commons Attribution Noncommercial (4.0) license. https://dig.ccmixter.org/files/Javolenus/67741 </value>
@@ -94,8 +94,8 @@
 	</object>
 	<object class="Timeline" id="{8cf04b18-6564-4fa7-aaba-93581e7b1894}">
 		<relationship name="modules">
-			<destination>{656bf633-ac13-4fde-b2f0-25fcb4eab5bb}</destination>
 			<destination>{2d9d3be0-3763-4f8d-8da0-dc497fa06bb3}</destination>
+			<destination>{656bf633-ac13-4fde-b2f0-25fcb4eab5bb}</destination>
 			<destination>{ff5d1081-3d5c-4924-ae27-b9cf94eb3424}</destination>
 		</relationship>
 		<relationship name="markers">

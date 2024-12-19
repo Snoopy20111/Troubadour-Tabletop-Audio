@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{6f66a71c-0a16-4c67-b1c4-29ff4c017aac}">
 		<property name="assetPath">
 			<value>_Examples/Music/CyanGranite/700P3D_CyanGranite_GIT-MonkeysPaw_01.flac</value>

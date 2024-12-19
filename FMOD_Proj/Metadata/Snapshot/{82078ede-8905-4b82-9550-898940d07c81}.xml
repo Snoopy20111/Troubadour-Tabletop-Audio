@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="Snapshot" id="{82078ede-8905-4b82-9550-898940d07c81}">
 		<property name="name">
 			<value>Test_Snapshot</value>

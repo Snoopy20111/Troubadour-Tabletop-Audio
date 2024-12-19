@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{ea9056ee-ffcd-4931-a76c-c8c3c2a9fb07}">
 		<property name="assetPath">
 			<value>_Examples/Music/Distill/jaspertine_Distill_Solo.flac</value>

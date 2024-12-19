@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{827ad2da-4f55-4122-856c-4e5b84fd7f63}">
 		<property name="assetPath">
 			<value>NonRelease/Music/KalimbaSongForTheWhales/mindmapthat_KalimbaSongForTheWhales_Melody.wav</value>

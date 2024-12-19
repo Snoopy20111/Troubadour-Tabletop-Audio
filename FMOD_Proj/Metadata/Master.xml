@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="MixerMaster" id="{0f296a96-e357-477a-b07e-fd6c61f98d80}">
 		<property name="note">
 			<value>Forced Stereo out! Everything should be routed into SubMaster so the Master channel receives and outputs only Stereo, but if not, Session Music Bot will have issues with the DSP callback.</value>

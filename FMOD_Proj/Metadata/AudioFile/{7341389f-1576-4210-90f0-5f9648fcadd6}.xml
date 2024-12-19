@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{7341389f-1576-4210-90f0-5f9648fcadd6}">
 		<property name="assetPath">
 			<value>NonRelease/Music/Resonance/airtone_Resonance_Vocal_01.mp3</value>

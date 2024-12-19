@@ -84,7 +84,7 @@ dpp::embed basicEmbed = dpp::embed()					// Generic embed with all the shared de
 
 //---FMOD and Audio Functions---//
 // Callback for stealing sample data from the Master Bus
-FMOD_RESULT F_CALLBACK captureDSPReadCallback(FMOD_DSP_STATE* dsp_state, float* inbuffer, float* outbuffer, unsigned int length, int inchannels, int* outchannels) {
+FMOD_RESULT F_CALL captureDSPReadCallback(FMOD_DSP_STATE* dsp_state, float* inbuffer, float* outbuffer, unsigned int length, int inchannels, int* outchannels) {
 
 	FMOD::DSP* thisdsp = (FMOD::DSP*)dsp_state->instance;
 
@@ -124,7 +124,7 @@ FMOD_RESULT F_CALLBACK captureDSPReadCallback(FMOD_DSP_STATE* dsp_state, float* 
 
 // Callback that triggers when an Event Instance is released
 // Despite the name, this callback will receive callbacks of all types, and so must filter them out
-static FMOD_RESULT F_CALLBACK eventInstanceDestroyedCallback(FMOD_STUDIO_EVENT_CALLBACK_TYPE type, FMOD_STUDIO_EVENTINSTANCE* event, void* parameters) {
+static FMOD_RESULT F_CALL eventInstanceDestroyedCallback(FMOD_STUDIO_EVENT_CALLBACK_TYPE type, FMOD_STUDIO_EVENTINSTANCE* event, void* parameters) {
 
 	FMOD::Studio::EventInstance* myEvent = (FMOD::Studio::EventInstance*)event;		// Cast approved by Firelight in the documentation
 

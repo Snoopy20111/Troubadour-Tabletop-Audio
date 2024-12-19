@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{615828fb-30ac-49c0-b100-4fe5c1f161c4}">
 		<property name="assetPath">
 			<value>_Examples/Music/Maya/Reiswerk_Maya_IndiaPercs2.mp3</value>

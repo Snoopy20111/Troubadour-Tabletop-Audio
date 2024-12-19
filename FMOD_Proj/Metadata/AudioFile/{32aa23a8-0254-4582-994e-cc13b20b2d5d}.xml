@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{32aa23a8-0254-4582-994e-cc13b20b2d5d}">
 		<property name="assetPath">
 			<value>_Examples/Music/CyanGranite/700P3D_CyanGranite_SYN-Filter_01.flac</value>

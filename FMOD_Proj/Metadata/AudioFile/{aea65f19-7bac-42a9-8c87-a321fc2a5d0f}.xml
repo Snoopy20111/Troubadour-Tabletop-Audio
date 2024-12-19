@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{aea65f19-7bac-42a9-8c87-a321fc2a5d0f}">
 		<property name="assetPath">
 			<value>NonRelease/Music/Greensleeves(Reinvented)/Paradigm_Greensleeves(reinvented).flac</value>

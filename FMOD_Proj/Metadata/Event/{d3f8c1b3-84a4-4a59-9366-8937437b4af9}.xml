@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{d3f8c1b3-84a4-4a59-9366-8937437b4af9}">
 		<property name="note">
 			<value>An original piece by Logan Hardin, aka Snoopy20111, the author :) Used in the game Roboxing, available for free on Itch.io, and OST on Bandcamp.
@@ -52,8 +52,8 @@ https://snoopy20111.bandcamp.com/album/roboxing</value>
 	</object>
 	<object class="MasterTrack" id="{004ad16f-5c8d-4ff8-889b-03282b9a8cd7}">
 		<relationship name="modules">
-			<destination>{29d6274c-1af3-41bd-b31c-762526f88f3e}</destination>
 			<destination>{99ee0c8b-a465-4a5f-97b1-51beff34c822}</destination>
+			<destination>{29d6274c-1af3-41bd-b31c-762526f88f3e}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{ed903b3e-baab-4917-b592-3a068a8e8f60}</destination>
@@ -88,10 +88,10 @@ https://snoopy20111.bandcamp.com/album/roboxing</value>
 	</object>
 	<object class="GroupTrack" id="{92d8c711-f337-424f-b6aa-c5336228248f}">
 		<relationship name="modules">
+			<destination>{b087f716-b9c6-4d18-905c-7be53392c6c4}</destination>
 			<destination>{b3e9e813-a3a3-4bc9-af07-47e0ecb623a9}</destination>
 			<destination>{35e249f1-4e73-4b7e-bbf1-b41b03d70f75}</destination>
 			<destination>{107a1463-a3f0-40c8-8b98-738ece2d62cb}</destination>
-			<destination>{b087f716-b9c6-4d18-905c-7be53392c6c4}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{de82a8a8-53ca-401c-9e55-0525bc818afb}</destination>
@@ -99,9 +99,9 @@ https://snoopy20111.bandcamp.com/album/roboxing</value>
 	</object>
 	<object class="GroupTrack" id="{369281ec-a77d-4d49-86dd-f6689877ce45}">
 		<relationship name="modules">
+			<destination>{549dfeb6-e4c6-4f57-af23-299bccbda7b0}</destination>
 			<destination>{a2a18e78-a94c-41eb-9150-ad12e096dcd3}</destination>
 			<destination>{49ad4b14-1816-47c1-8791-2806c7a81080}</destination>
-			<destination>{549dfeb6-e4c6-4f57-af23-299bccbda7b0}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{de30dd12-6c5d-43f3-87b6-6203acd15901}</destination>
@@ -118,10 +118,10 @@ https://snoopy20111.bandcamp.com/album/roboxing</value>
 	</object>
 	<object class="GroupTrack" id="{8f5eb490-c5af-466a-aee9-1645bfd3518e}">
 		<relationship name="modules">
+			<destination>{c94efead-3ddf-4e26-8c6a-8c6de673be17}</destination>
 			<destination>{8bc984a5-27ac-4d1f-9e90-4b4c4d9611fe}</destination>
 			<destination>{549647cc-4b74-43bb-bd52-c6fceb8be29a}</destination>
 			<destination>{efa0399e-e88d-41a0-a0c2-160c11947786}</destination>
-			<destination>{c94efead-3ddf-4e26-8c6a-8c6de673be17}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{bcd27b84-e7a2-4ae7-b613-ee23115c8519}</destination>
@@ -137,8 +137,8 @@ https://snoopy20111.bandcamp.com/album/roboxing</value>
 			<destination>{c94efead-3ddf-4e26-8c6a-8c6de673be17}</destination>
 		</relationship>
 		<relationship name="markers">
-			<destination>{816a41cd-9786-4032-8a7c-6d78221ef4ce}</destination>
 			<destination>{030bca00-f711-4785-8271-e64d0803136a}</destination>
+			<destination>{816a41cd-9786-4032-8a7c-6d78221ef4ce}</destination>
 		</relationship>
 	</object>
 	<object class="ParameterProxy" id="{922bcbd0-994b-4b62-9647-0983f63c376e}">
@@ -160,15 +160,15 @@ https://snoopy20111.bandcamp.com/album/roboxing</value>
 			<destination>{5e328302-489f-4b6a-97e2-c3dc9f061faa}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionSourceSound" id="{29d6274c-1af3-41bd-b31c-762526f88f3e}">
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
 	<object class="TransitionDestinationSound" id="{99ee0c8b-a465-4a5f-97b1-51beff34c822}">
 		<property name="start">
 			<value>0.098684210526315791</value>
 		</property>
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionSourceSound" id="{29d6274c-1af3-41bd-b31c-762526f88f3e}">
 		<property name="length">
 			<value>0</value>
 		</property>
@@ -220,6 +220,20 @@ https://snoopy20111.bandcamp.com/album/roboxing</value>
 			<destination>{b79f6de4-a59d-4bc4-a4a6-836b204923e8}</destination>
 		</relationship>
 	</object>
+	<object class="SingleSound" id="{b087f716-b9c6-4d18-905c-7be53392c6c4}">
+		<property name="start">
+			<value>12.624500955108411</value>
+		</property>
+		<property name="length">
+			<value>50.921052631578952</value>
+		</property>
+		<property name="timelockedOffset">
+			<value>0.40654660919093999</value>
+		</property>
+		<relationship name="audioFile">
+			<destination>{ae7520b2-6099-4dfb-9434-91491c26b0a7}</destination>
+		</relationship>
+	</object>
 	<object class="SingleSound" id="{b3e9e813-a3a3-4bc9-af07-47e0ecb623a9}">
 		<property name="start">
 			<value>12.217954345917471</value>
@@ -247,20 +261,6 @@ https://snoopy20111.bandcamp.com/album/roboxing</value>
 			<destination>{643620d1-db93-4012-8d85-be8bef5e3174}</destination>
 		</relationship>
 	</object>
-	<object class="SingleSound" id="{b087f716-b9c6-4d18-905c-7be53392c6c4}">
-		<property name="start">
-			<value>12.624500955108411</value>
-		</property>
-		<property name="length">
-			<value>50.921052631578952</value>
-		</property>
-		<property name="timelockedOffset">
-			<value>0.40654660919093999</value>
-		</property>
-		<relationship name="audioFile">
-			<destination>{ae7520b2-6099-4dfb-9434-91491c26b0a7}</destination>
-		</relationship>
-	</object>
 	<object class="EventMixerGroup" id="{de82a8a8-53ca-401c-9e55-0525bc818afb}">
 		<property name="color">
 			<value>Blue Light 1</value>
@@ -279,6 +279,14 @@ https://snoopy20111.bandcamp.com/album/roboxing</value>
 		</relationship>
 		<relationship name="output">
 			<destination>{b79f6de4-a59d-4bc4-a4a6-836b204923e8}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionDestinationSound" id="{549dfeb6-e4c6-4f57-af23-299bccbda7b0}">
+		<property name="length">
+			<value>0.098684210526315777</value>
+		</property>
+		<relationship name="fadeInCurve">
+			<destination>{f4e99f56-0376-44eb-aedb-0dc8f010130f}</destination>
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{a2a18e78-a94c-41eb-9150-ad12e096dcd3}">
@@ -301,14 +309,6 @@ https://snoopy20111.bandcamp.com/album/roboxing</value>
 		</property>
 		<relationship name="fadeOutCurve">
 			<destination>{4ad4955f-6201-4a80-96b8-aa0bdd54d71b}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionDestinationSound" id="{549dfeb6-e4c6-4f57-af23-299bccbda7b0}">
-		<property name="length">
-			<value>0.098684210526315777</value>
-		</property>
-		<relationship name="fadeInCurve">
-			<destination>{f4e99f56-0376-44eb-aedb-0dc8f010130f}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{de30dd12-6c5d-43f3-87b6-6203acd15901}">
@@ -364,6 +364,23 @@ https://snoopy20111.bandcamp.com/album/roboxing</value>
 			<destination>{ed903b3e-baab-4917-b592-3a068a8e8f60}</destination>
 		</relationship>
 	</object>
+	<object class="EventSound" id="{c94efead-3ddf-4e26-8c6a-8c6de673be17}">
+		<property name="start">
+			<value>12.52</value>
+		</property>
+		<property name="length">
+			<value>0.068286666062970625</value>
+		</property>
+		<relationship name="triggerConditions">
+			<destination>{01f089cc-45bb-499c-92b3-81d836642bb2}</destination>
+		</relationship>
+		<relationship name="parameters">
+			<destination>{da50f83d-498d-4d7c-a412-4e5478c41f6c}</destination>
+		</relationship>
+		<relationship name="event">
+			<destination>{7112ad5a-03b2-43e4-920d-b281c67b16fc}</destination>
+		</relationship>
+	</object>
 	<object class="TransitionSourceSound" id="{8bc984a5-27ac-4d1f-9e90-4b4c4d9611fe}">
 		<property name="length">
 			<value>0</value>
@@ -397,23 +414,6 @@ https://snoopy20111.bandcamp.com/album/roboxing</value>
 			<destination>{7112ad5a-03b2-43e4-920d-b281c67b16fc}</destination>
 		</relationship>
 	</object>
-	<object class="EventSound" id="{c94efead-3ddf-4e26-8c6a-8c6de673be17}">
-		<property name="start">
-			<value>12.52</value>
-		</property>
-		<property name="length">
-			<value>0.068286666062970625</value>
-		</property>
-		<relationship name="triggerConditions">
-			<destination>{01f089cc-45bb-499c-92b3-81d836642bb2}</destination>
-		</relationship>
-		<relationship name="parameters">
-			<destination>{da50f83d-498d-4d7c-a412-4e5478c41f6c}</destination>
-		</relationship>
-		<relationship name="event">
-			<destination>{7112ad5a-03b2-43e4-920d-b281c67b16fc}</destination>
-		</relationship>
-	</object>
 	<object class="EventMixerGroup" id="{bcd27b84-e7a2-4ae7-b613-ee23115c8519}">
 		<property name="color">
 			<value>Green</value>
@@ -431,20 +431,6 @@ https://snoopy20111.bandcamp.com/album/roboxing</value>
 			<destination>{ed903b3e-baab-4917-b592-3a068a8e8f60}</destination>
 		</relationship>
 	</object>
-	<object class="TempoMarker" id="{816a41cd-9786-4032-8a7c-6d78221ef4ce}">
-		<property name="position">
-			<value>12.624500955108411</value>
-		</property>
-		<property name="tempo">
-			<value>152</value>
-		</property>
-		<relationship name="timeline">
-			<destination>{b2b10599-8902-4f0f-8f31-8cdd0dc8a268}</destination>
-		</relationship>
-		<relationship name="markerTrack">
-			<destination>{166dab4c-cdb0-4169-9b55-13f629cca336}</destination>
-		</relationship>
-	</object>
 	<object class="LoopRegion" id="{030bca00-f711-4785-8271-e64d0803136a}">
 		<property name="position">
 			<value>12.624500955108411</value>
@@ -460,6 +446,20 @@ https://snoopy20111.bandcamp.com/album/roboxing</value>
 		</relationship>
 		<relationship name="transitionTimeline">
 			<destination>{18e26142-39e0-46e5-9526-a897bbda797d}</destination>
+		</relationship>
+	</object>
+	<object class="TempoMarker" id="{816a41cd-9786-4032-8a7c-6d78221ef4ce}">
+		<property name="position">
+			<value>12.624500955108411</value>
+		</property>
+		<property name="tempo">
+			<value>152</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{b2b10599-8902-4f0f-8f31-8cdd0dc8a268}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{166dab4c-cdb0-4169-9b55-13f629cca336}</destination>
 		</relationship>
 	</object>
 	<object class="ADSRModulator" id="{cabd5476-6d9c-444f-ae23-8c45cee830e9}">
@@ -545,6 +545,17 @@ https://snoopy20111.bandcamp.com/album/roboxing</value>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{b1602e49-4943-49dc-8a44-954dba5b69fe}" />
+	<object class="TransitionDestinationFadeInCurve" id="{f4e99f56-0376-44eb-aedb-0dc8f010130f}">
+		<relationship name="startPoint">
+			<destination>{8df158f8-b67c-4cc8-a714-35c3fea16881}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{90d0d76d-7362-4b30-983c-6eaac568114e}</destination>
+		</relationship>
+		<relationship name="relatedModule">
+			<destination>{49ad4b14-1816-47c1-8791-2806c7a81080}</destination>
+		</relationship>
+	</object>
 	<object class="FadeCurve" id="{5106a759-ee03-4b65-9888-7a571a157794}">
 		<relationship name="startPoint">
 			<destination>{4f7de9fd-e6f8-445f-83cf-136fea404e63}</destination>
@@ -562,17 +573,6 @@ https://snoopy20111.bandcamp.com/album/roboxing</value>
 		</relationship>
 		<relationship name="relatedModule">
 			<destination>{549dfeb6-e4c6-4f57-af23-299bccbda7b0}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionDestinationFadeInCurve" id="{f4e99f56-0376-44eb-aedb-0dc8f010130f}">
-		<relationship name="startPoint">
-			<destination>{8df158f8-b67c-4cc8-a714-35c3fea16881}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{90d0d76d-7362-4b30-983c-6eaac568114e}</destination>
-		</relationship>
-		<relationship name="relatedModule">
-			<destination>{49ad4b14-1816-47c1-8791-2806c7a81080}</destination>
 		</relationship>
 	</object>
 	<object class="Automator" id="{00a914a1-71fe-4cae-963c-0a39a0a4e4d9}">
@@ -596,22 +596,6 @@ https://snoopy20111.bandcamp.com/album/roboxing</value>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{a4659db1-c164-4fa7-8ba3-f208241030a2}" />
-	<object class="ParameterCondition" id="{055d5dcc-f936-4da3-a553-0310d9543a0c}">
-		<property name="minimum">
-			<value>0.0099999997764825821</value>
-		</property>
-		<property name="maximum">
-			<value>0.99000000953674316</value>
-		</property>
-		<relationship name="parameter">
-			<destination>{c6d2157d-adfc-4659-b78d-a9e37c1844c6}</destination>
-		</relationship>
-	</object>
-	<object class="ParameterProperty" id="{24343ec1-f444-4460-8df1-644a6d0a6842}">
-		<relationship name="parameter">
-			<destination>{c3c28158-115d-489a-af02-cd5f6b6f0a6e}</destination>
-		</relationship>
-	</object>
 	<object class="ParameterCondition" id="{01f089cc-45bb-499c-92b3-81d836642bb2}">
 		<property name="minimum">
 			<value>0</value>
@@ -628,6 +612,22 @@ https://snoopy20111.bandcamp.com/album/roboxing</value>
 			<destination>{c3c28158-115d-489a-af02-cd5f6b6f0a6e}</destination>
 		</relationship>
 	</object>
+	<object class="ParameterCondition" id="{055d5dcc-f936-4da3-a553-0310d9543a0c}">
+		<property name="minimum">
+			<value>0.0099999997764825821</value>
+		</property>
+		<property name="maximum">
+			<value>0.99000000953674316</value>
+		</property>
+		<relationship name="parameter">
+			<destination>{c6d2157d-adfc-4659-b78d-a9e37c1844c6}</destination>
+		</relationship>
+	</object>
+	<object class="ParameterProperty" id="{24343ec1-f444-4460-8df1-644a6d0a6842}">
+		<relationship name="parameter">
+			<destination>{c3c28158-115d-489a-af02-cd5f6b6f0a6e}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusEffectChain" id="{02d0ad3a-07a2-4535-89f8-b2dbc83de019}">
 		<relationship name="effects">
 			<destination>{057c7b50-22f8-4991-a416-1a54525355dd}</destination>
@@ -640,14 +640,14 @@ https://snoopy20111.bandcamp.com/album/roboxing</value>
 			<value>0.098684210526315791</value>
 		</property>
 		<relationship name="modules">
+			<destination>{99ee0c8b-a465-4a5f-97b1-51beff34c822}</destination>
+			<destination>{549dfeb6-e4c6-4f57-af23-299bccbda7b0}</destination>
 			<destination>{f71291f9-b6f6-4e1b-9720-8a89b66e6daf}</destination>
 			<destination>{eb6e0e1c-3f47-4e71-b49d-fe5e0266040c}</destination>
 			<destination>{35e249f1-4e73-4b7e-bbf1-b41b03d70f75}</destination>
 			<destination>{107a1463-a3f0-40c8-8b98-738ece2d62cb}</destination>
 			<destination>{49ad4b14-1816-47c1-8791-2806c7a81080}</destination>
-			<destination>{549dfeb6-e4c6-4f57-af23-299bccbda7b0}</destination>
 			<destination>{29d6274c-1af3-41bd-b31c-762526f88f3e}</destination>
-			<destination>{99ee0c8b-a465-4a5f-97b1-51beff34c822}</destination>
 			<destination>{8bc984a5-27ac-4d1f-9e90-4b4c4d9611fe}</destination>
 			<destination>{549647cc-4b74-43bb-bd52-c6fceb8be29a}</destination>
 			<destination>{5cfa194f-d39f-45fd-ba02-3ea1368b7041}</destination>
@@ -723,6 +723,25 @@ https://snoopy20111.bandcamp.com/album/roboxing</value>
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{52bda0df-26dc-48f2-af51-597e94d61e23}" />
+	<object class="AutomationPoint" id="{8df158f8-b67c-4cc8-a714-35c3fea16881}">
+		<property name="position">
+			<value>0</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+		<property name="curveShape">
+			<value>-0.2547189</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{90d0d76d-7362-4b30-983c-6eaac568114e}">
+		<property name="position">
+			<value>0.098684210526315791</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+	</object>
 	<object class="AutomationPoint" id="{4f7de9fd-e6f8-445f-83cf-136fea404e63}">
 		<property name="position">
 			<value>12.612691188022751</value>
@@ -759,25 +778,6 @@ https://snoopy20111.bandcamp.com/album/roboxing</value>
 		</property>
 		<property name="value">
 			<value>0</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{8df158f8-b67c-4cc8-a714-35c3fea16881}">
-		<property name="position">
-			<value>0</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-		<property name="curveShape">
-			<value>-0.2547189</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{90d0d76d-7362-4b30-983c-6eaac568114e}">
-		<property name="position">
-			<value>0.098684210526315791</value>
-		</property>
-		<property name="value">
-			<value>1</value>
 		</property>
 	</object>
 	<object class="AutomationCurve" id="{8a709f7c-478e-451b-a37c-514db11f4d16}">

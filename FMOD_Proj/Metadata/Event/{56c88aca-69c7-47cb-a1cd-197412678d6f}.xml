@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{56c88aca-69c7-47cb-a1cd-197412678d6f}">
 		<property name="note">
 			<value>Plays a looping mono sine wave at 1000 hz.</value>
@@ -207,12 +207,20 @@
 			<destination>{601a6277-ec79-4ade-acf8-e4ebdb1d75c1}</destination>
 		</relationship>
 		<relationship name="automationPoints">
-			<destination>{0786c48f-3e07-4138-a348-e4484db4d3da}</destination>
 			<destination>{23dc4382-73d5-484e-873a-a97aee98cfff}</destination>
+			<destination>{0786c48f-3e07-4138-a348-e4484db4d3da}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{bc350bf3-2062-4d7a-be72-e2afd6b96207}" />
 	<object class="MixerBusFader" id="{1f446a5e-0ec5-4088-a1e9-3575a688da06}" />
+	<object class="AutomationPoint" id="{23dc4382-73d5-484e-873a-a97aee98cfff}">
+		<property name="position">
+			<value>1</value>
+		</property>
+		<property name="value">
+			<value>3</value>
+		</property>
+	</object>
 	<object class="AutomationPoint" id="{0786c48f-3e07-4138-a348-e4484db4d3da}">
 		<property name="position">
 			<value>0</value>
@@ -225,14 +233,6 @@
 		</property>
 		<property name="isSCurve">
 			<value>true</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{23dc4382-73d5-484e-873a-a97aee98cfff}">
-		<property name="position">
-			<value>1</value>
-		</property>
-		<property name="value">
-			<value>3</value>
 		</property>
 	</object>
 </objects>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{a8693eb4-df24-4761-a8e9-626e1359c7ea}">
 		<property name="name">
 			<value>SCENE_Tavern</value>
@@ -77,8 +77,8 @@
 	</object>
 	<object class="Timeline" id="{41665bb3-505f-4654-bb81-6545bd5e2416}">
 		<relationship name="modules">
-			<destination>{0d04d607-1153-491a-8fae-364f95d7f9bd}</destination>
 			<destination>{3c38d23a-ec68-45bb-bcd6-8b8d0a00a1a7}</destination>
+			<destination>{0d04d607-1153-491a-8fae-364f95d7f9bd}</destination>
 		</relationship>
 		<relationship name="markers">
 			<destination>{120001fe-d8cd-458d-8006-58743485be3b}</destination>

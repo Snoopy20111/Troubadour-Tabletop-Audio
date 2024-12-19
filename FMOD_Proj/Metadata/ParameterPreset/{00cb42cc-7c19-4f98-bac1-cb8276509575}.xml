@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="ParameterPreset" id="{00cb42cc-7c19-4f98-bac1-cb8276509575}">
 		<property name="name">
 			<value>LastPlayed_A</value>

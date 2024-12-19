@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{8eaf1e0b-3113-40df-8618-35cda846e272}">
-		<property name="note" />
 		<property name="name">
 			<value>SCENE_Tavern_Music</value>
 		</property>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="MixerGroup" id="{ab0c2c17-5a98-43a0-9014-880b562c8be6}">
 		<property name="note">
 			<value>This group exists to squish everything down to stereo, so the DSP callback works appropriately (requires 2-channel stereo output to give to Discord)</value>

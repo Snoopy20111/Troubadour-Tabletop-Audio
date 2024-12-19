@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="ParameterPresetFolder" id="{b3d312ee-a46f-46be-9306-959e2d2862eb}">
 		<property name="name">
 			<value>MojaveScotch</value>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{4c492d9c-6e93-4e40-a9de-c08f0220f309}">
 		<property name="note">
 			<value>An evocative solo piece, great for travel, cowboys, open fields, etc.
@@ -231,19 +231,19 @@ Blue Sky Bolero by Javolenus (c) copyright 2022 Licensed under a Creative Common
 			<destination>{fb0a0508-c82b-4e9b-90ce-0a2e77cc3b33}</destination>
 		</relationship>
 		<relationship name="automationPoints">
+			<destination>{eb15c05f-6db5-454c-a352-156926b0fb7f}</destination>
+			<destination>{2329ebe6-1ac8-4312-9ece-86a7cf736e73}</destination>
+			<destination>{a8dabea0-06ef-4e30-89ad-33a659631313}</destination>
+			<destination>{5eba5fc9-379c-4ae8-8fcc-a789e8dba9b9}</destination>
 			<destination>{02c5a5cf-14b6-4710-b18c-0c8938a2281b}</destination>
 			<destination>{47547ede-15ec-48ac-a9d2-d0971beb1695}</destination>
 			<destination>{6b56410e-653e-4919-9612-31c948370d60}</destination>
 			<destination>{aac195af-0933-4b78-8d55-07ee27fd6a55}</destination>
 			<destination>{89af213a-5083-45ae-9c9d-6204faebfc93}</destination>
 			<destination>{9dc9e568-0954-45aa-bb88-420d63c39f0a}</destination>
-			<destination>{a8dabea0-06ef-4e30-89ad-33a659631313}</destination>
-			<destination>{2329ebe6-1ac8-4312-9ece-86a7cf736e73}</destination>
 			<destination>{57352129-3fdc-4dd5-8dac-81773663f398}</destination>
 			<destination>{bfebe47c-d690-44e8-80b9-de8c941858bb}</destination>
 			<destination>{42c8ce27-9fe8-436f-844c-8bf337b3dcf2}</destination>
-			<destination>{eb15c05f-6db5-454c-a352-156926b0fb7f}</destination>
-			<destination>{5eba5fc9-379c-4ae8-8fcc-a789e8dba9b9}</destination>
 		</relationship>
 	</object>
 	<object class="Automator" id="{7fb8b719-e039-4836-bb68-12a9f0e5caf6}">
@@ -253,6 +253,38 @@ Blue Sky Bolero by Javolenus (c) copyright 2022 Licensed under a Creative Common
 		<relationship name="automationCurves">
 			<destination>{6a7c71c4-b30f-4c90-ac31-1b2734690f6b}</destination>
 		</relationship>
+	</object>
+	<object class="AutomationPoint" id="{eb15c05f-6db5-454c-a352-156926b0fb7f}">
+		<property name="position">
+			<value>10</value>
+		</property>
+		<property name="value">
+			<value>10</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{2329ebe6-1ac8-4312-9ece-86a7cf736e73}">
+		<property name="position">
+			<value>7</value>
+		</property>
+		<property name="value">
+			<value>7</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{a8dabea0-06ef-4e30-89ad-33a659631313}">
+		<property name="position">
+			<value>5</value>
+		</property>
+		<property name="value">
+			<value>5</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{5eba5fc9-379c-4ae8-8fcc-a789e8dba9b9}">
+		<property name="position">
+			<value>12</value>
+		</property>
+		<property name="value">
+			<value>12</value>
+		</property>
 	</object>
 	<object class="AutomationPoint" id="{02c5a5cf-14b6-4710-b18c-0c8938a2281b}">
 		<property name="position">
@@ -302,22 +334,6 @@ Blue Sky Bolero by Javolenus (c) copyright 2022 Licensed under a Creative Common
 			<value>6</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{a8dabea0-06ef-4e30-89ad-33a659631313}">
-		<property name="position">
-			<value>5</value>
-		</property>
-		<property name="value">
-			<value>5</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{2329ebe6-1ac8-4312-9ece-86a7cf736e73}">
-		<property name="position">
-			<value>7</value>
-		</property>
-		<property name="value">
-			<value>7</value>
-		</property>
-	</object>
 	<object class="AutomationPoint" id="{57352129-3fdc-4dd5-8dac-81773663f398}">
 		<property name="position">
 			<value>9</value>
@@ -342,109 +358,29 @@ Blue Sky Bolero by Javolenus (c) copyright 2022 Licensed under a Creative Common
 			<value>11</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{eb15c05f-6db5-454c-a352-156926b0fb7f}">
-		<property name="position">
-			<value>10</value>
-		</property>
-		<property name="value">
-			<value>10</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{5eba5fc9-379c-4ae8-8fcc-a789e8dba9b9}">
-		<property name="position">
-			<value>12</value>
-		</property>
-		<property name="value">
-			<value>12</value>
-		</property>
-	</object>
 	<object class="AutomationCurve" id="{6a7c71c4-b30f-4c90-ac31-1b2734690f6b}">
 		<relationship name="parameter">
 			<destination>{fb0a0508-c82b-4e9b-90ce-0a2e77cc3b33}</destination>
 		</relationship>
 		<relationship name="automationPoints">
-			<destination>{14a39f20-da64-4b73-89cd-acd490910a40}</destination>
-			<destination>{bd211b87-30d9-489f-858a-0d84fd5b4c41}</destination>
+			<destination>{31d38bcc-f312-46de-96cc-4db6f061d998}</destination>
+			<destination>{c5d855cc-15ac-4a31-9661-9ad11736a6c2}</destination>
 			<destination>{61d60bc6-9c3a-4193-8819-6540226bfb4f}</destination>
+			<destination>{8add591e-4c2d-4914-a5f5-9c7eff29fa19}</destination>
+			<destination>{14a39f20-da64-4b73-89cd-acd490910a40}</destination>
+			<destination>{f3551e8a-c4ac-4d82-a348-837d829d4f88}</destination>
+			<destination>{917329c2-c4c6-4316-9281-97e1393518b9}</destination>
+			<destination>{e879a9ca-1df5-4abc-8483-7b54b7c93d4b}</destination>
+			<destination>{0110fcd2-0282-49df-8380-73b12e39e54a}</destination>
+			<destination>{80b2520a-03e2-430e-8c2b-62d106ecc1a1}</destination>
+			<destination>{bd211b87-30d9-489f-858a-0d84fd5b4c41}</destination>
 			<destination>{a3580ee0-a980-4558-a9a1-ed5a640b39b6}</destination>
 			<destination>{5a109c53-67ed-4fde-a0b7-e99967a8cd25}</destination>
-			<destination>{e879a9ca-1df5-4abc-8483-7b54b7c93d4b}</destination>
-			<destination>{80b2520a-03e2-430e-8c2b-62d106ecc1a1}</destination>
-			<destination>{f3551e8a-c4ac-4d82-a348-837d829d4f88}</destination>
-			<destination>{8add591e-4c2d-4914-a5f5-9c7eff29fa19}</destination>
-			<destination>{c5d855cc-15ac-4a31-9661-9ad11736a6c2}</destination>
-			<destination>{0110fcd2-0282-49df-8380-73b12e39e54a}</destination>
-			<destination>{917329c2-c4c6-4316-9281-97e1393518b9}</destination>
-			<destination>{31d38bcc-f312-46de-96cc-4db6f061d998}</destination>
 		</relationship>
 	</object>
-	<object class="AutomationPoint" id="{14a39f20-da64-4b73-89cd-acd490910a40}">
+	<object class="AutomationPoint" id="{31d38bcc-f312-46de-96cc-4db6f061d998}">
 		<property name="position">
-			<value>1</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{bd211b87-30d9-489f-858a-0d84fd5b4c41}">
-		<property name="position">
-			<value>0</value>
-		</property>
-		<property name="value">
-			<value>6</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{61d60bc6-9c3a-4193-8819-6540226bfb4f}">
-		<property name="position">
-			<value>12</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{a3580ee0-a980-4558-a9a1-ed5a640b39b6}">
-		<property name="position">
-			<value>11</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{5a109c53-67ed-4fde-a0b7-e99967a8cd25}">
-		<property name="position">
-			<value>10</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{e879a9ca-1df5-4abc-8483-7b54b7c93d4b}">
-		<property name="position">
-			<value>9</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{80b2520a-03e2-430e-8c2b-62d106ecc1a1}">
-		<property name="position">
-			<value>8</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{f3551e8a-c4ac-4d82-a348-837d829d4f88}">
-		<property name="position">
-			<value>7</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{8add591e-4c2d-4914-a5f5-9c7eff29fa19}">
-		<property name="position">
-			<value>6</value>
+			<value>2</value>
 		</property>
 		<property name="value">
 			<value>0</value>
@@ -458,9 +394,33 @@ Blue Sky Bolero by Javolenus (c) copyright 2022 Licensed under a Creative Common
 			<value>0</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{0110fcd2-0282-49df-8380-73b12e39e54a}">
+	<object class="AutomationPoint" id="{61d60bc6-9c3a-4193-8819-6540226bfb4f}">
 		<property name="position">
-			<value>4</value>
+			<value>12</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{8add591e-4c2d-4914-a5f5-9c7eff29fa19}">
+		<property name="position">
+			<value>6</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{14a39f20-da64-4b73-89cd-acd490910a40}">
+		<property name="position">
+			<value>1</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{f3551e8a-c4ac-4d82-a348-837d829d4f88}">
+		<property name="position">
+			<value>7</value>
 		</property>
 		<property name="value">
 			<value>0</value>
@@ -474,9 +434,49 @@ Blue Sky Bolero by Javolenus (c) copyright 2022 Licensed under a Creative Common
 			<value>0</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{31d38bcc-f312-46de-96cc-4db6f061d998}">
+	<object class="AutomationPoint" id="{e879a9ca-1df5-4abc-8483-7b54b7c93d4b}">
 		<property name="position">
-			<value>2</value>
+			<value>9</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{0110fcd2-0282-49df-8380-73b12e39e54a}">
+		<property name="position">
+			<value>4</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{80b2520a-03e2-430e-8c2b-62d106ecc1a1}">
+		<property name="position">
+			<value>8</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{bd211b87-30d9-489f-858a-0d84fd5b4c41}">
+		<property name="position">
+			<value>0</value>
+		</property>
+		<property name="value">
+			<value>6</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{a3580ee0-a980-4558-a9a1-ed5a640b39b6}">
+		<property name="position">
+			<value>11</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{5a109c53-67ed-4fde-a0b7-e99967a8cd25}">
+		<property name="position">
+			<value>10</value>
 		</property>
 		<property name="value">
 			<value>0</value>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{b408eae7-8dbd-4310-89b8-e6b776910f42}">
 		<property name="note">
 			<value>A track that's both intense, and laid back. Great for certain boss fights and confrontations.
@@ -225,19 +225,19 @@ Distill by jaspertine (c) copyright 2024 Licensed under a Creative Commons Attri
 			<destination>{fb0a0508-c82b-4e9b-90ce-0a2e77cc3b33}</destination>
 		</relationship>
 		<relationship name="automationPoints">
-			<destination>{a9cb818b-3755-4ffe-9d97-bad8bc60f79f}</destination>
+			<destination>{0c71e48a-0eb9-412f-bb79-501c5cd4f5de}</destination>
 			<destination>{bdbf10d6-2c9c-42dd-9002-aa3132225782}</destination>
+			<destination>{a771e8d0-c5a2-455d-9096-52d7c2dfb944}</destination>
 			<destination>{167d9f48-aa0d-4b74-a753-4d63ffb8fbc7}</destination>
+			<destination>{caa570e2-7b2d-40fd-9654-4d32759e5110}</destination>
+			<destination>{fa271857-3d2f-4959-b6b8-8acf54711a69}</destination>
+			<destination>{a9cb818b-3755-4ffe-9d97-bad8bc60f79f}</destination>
 			<destination>{97703ee6-ecd1-4f40-9800-bcaae59a3e47}</destination>
 			<destination>{11fb6f99-ac56-4df6-ae6b-db0f786b5dd4}</destination>
 			<destination>{339f34c2-ee35-4d5c-af1d-26e88a964512}</destination>
-			<destination>{fa271857-3d2f-4959-b6b8-8acf54711a69}</destination>
 			<destination>{83b9ce68-6210-447d-bc10-135f0fb4bced}</destination>
 			<destination>{98a0665d-2c46-481d-84bf-3039396c5b9d}</destination>
-			<destination>{a771e8d0-c5a2-455d-9096-52d7c2dfb944}</destination>
 			<destination>{f163a532-3239-4327-8614-9815c4391785}</destination>
-			<destination>{0c71e48a-0eb9-412f-bb79-501c5cd4f5de}</destination>
-			<destination>{caa570e2-7b2d-40fd-9654-4d32759e5110}</destination>
 		</relationship>
 	</object>
 	<object class="Automator" id="{25f60d62-938f-427e-9994-4a0071e133b8}">
@@ -248,12 +248,12 @@ Distill by jaspertine (c) copyright 2024 Licensed under a Creative Commons Attri
 			<destination>{02a5c400-3b3f-40d7-bad9-20cb1b4995b7}</destination>
 		</relationship>
 	</object>
-	<object class="AutomationPoint" id="{a9cb818b-3755-4ffe-9d97-bad8bc60f79f}">
+	<object class="AutomationPoint" id="{0c71e48a-0eb9-412f-bb79-501c5cd4f5de}">
 		<property name="position">
-			<value>0</value>
+			<value>9</value>
 		</property>
 		<property name="value">
-			<value>0</value>
+			<value>9</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{bdbf10d6-2c9c-42dd-9002-aa3132225782}">
@@ -264,12 +264,44 @@ Distill by jaspertine (c) copyright 2024 Licensed under a Creative Commons Attri
 			<value>2</value>
 		</property>
 	</object>
+	<object class="AutomationPoint" id="{a771e8d0-c5a2-455d-9096-52d7c2dfb944}">
+		<property name="position">
+			<value>11</value>
+		</property>
+		<property name="value">
+			<value>11</value>
+		</property>
+	</object>
 	<object class="AutomationPoint" id="{167d9f48-aa0d-4b74-a753-4d63ffb8fbc7}">
 		<property name="position">
 			<value>1</value>
 		</property>
 		<property name="value">
 			<value>1</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{caa570e2-7b2d-40fd-9654-4d32759e5110}">
+		<property name="position">
+			<value>10</value>
+		</property>
+		<property name="value">
+			<value>10</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{fa271857-3d2f-4959-b6b8-8acf54711a69}">
+		<property name="position">
+			<value>8</value>
+		</property>
+		<property name="value">
+			<value>8</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{a9cb818b-3755-4ffe-9d97-bad8bc60f79f}">
+		<property name="position">
+			<value>0</value>
+		</property>
+		<property name="value">
+			<value>0</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{97703ee6-ecd1-4f40-9800-bcaae59a3e47}">
@@ -296,14 +328,6 @@ Distill by jaspertine (c) copyright 2024 Licensed under a Creative Commons Attri
 			<value>5</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{fa271857-3d2f-4959-b6b8-8acf54711a69}">
-		<property name="position">
-			<value>8</value>
-		</property>
-		<property name="value">
-			<value>8</value>
-		</property>
-	</object>
 	<object class="AutomationPoint" id="{83b9ce68-6210-447d-bc10-135f0fb4bced}">
 		<property name="position">
 			<value>7</value>
@@ -320,14 +344,6 @@ Distill by jaspertine (c) copyright 2024 Licensed under a Creative Commons Attri
 			<value>6</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{a771e8d0-c5a2-455d-9096-52d7c2dfb944}">
-		<property name="position">
-			<value>11</value>
-		</property>
-		<property name="value">
-			<value>11</value>
-		</property>
-	</object>
 	<object class="AutomationPoint" id="{f163a532-3239-4327-8614-9815c4391785}">
 		<property name="position">
 			<value>12</value>
@@ -336,38 +352,14 @@ Distill by jaspertine (c) copyright 2024 Licensed under a Creative Commons Attri
 			<value>12</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{0c71e48a-0eb9-412f-bb79-501c5cd4f5de}">
-		<property name="position">
-			<value>9</value>
-		</property>
-		<property name="value">
-			<value>9</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{caa570e2-7b2d-40fd-9654-4d32759e5110}">
-		<property name="position">
-			<value>10</value>
-		</property>
-		<property name="value">
-			<value>10</value>
-		</property>
-	</object>
 	<object class="AutomationCurve" id="{02a5c400-3b3f-40d7-bad9-20cb1b4995b7}">
 		<relationship name="parameter">
 			<destination>{fb0a0508-c82b-4e9b-90ce-0a2e77cc3b33}</destination>
 		</relationship>
 		<relationship name="automationPoints">
-			<destination>{828918fe-3622-49ac-81ff-46cd106a3f0e}</destination>
 			<destination>{e3ea24e0-49b4-4a70-8258-bc2e55d7c92f}</destination>
+			<destination>{828918fe-3622-49ac-81ff-46cd106a3f0e}</destination>
 		</relationship>
-	</object>
-	<object class="AutomationPoint" id="{828918fe-3622-49ac-81ff-46cd106a3f0e}">
-		<property name="position">
-			<value>0</value>
-		</property>
-		<property name="value">
-			<value>4</value>
-		</property>
 	</object>
 	<object class="AutomationPoint" id="{e3ea24e0-49b4-4a70-8258-bc2e55d7c92f}">
 		<property name="position">
@@ -375,6 +367,14 @@ Distill by jaspertine (c) copyright 2024 Licensed under a Creative Commons Attri
 		</property>
 		<property name="value">
 			<value>0</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{828918fe-3622-49ac-81ff-46cd106a3f0e}">
+		<property name="position">
+			<value>0</value>
+		</property>
+		<property name="value">
+			<value>4</value>
 		</property>
 	</object>
 </objects>

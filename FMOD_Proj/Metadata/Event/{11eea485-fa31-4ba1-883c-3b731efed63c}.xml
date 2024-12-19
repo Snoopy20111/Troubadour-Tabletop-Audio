@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{11eea485-fa31-4ba1-883c-3b731efed63c}">
 		<property name="name">
 			<value>SCENE_Docks</value>
@@ -86,9 +86,9 @@
 	</object>
 	<object class="Timeline" id="{d0770f6a-05a2-458a-b389-a5df364d5858}">
 		<relationship name="modules">
+			<destination>{3025c88d-3e62-4597-9055-f2276a78528a}</destination>
 			<destination>{1043a17e-a234-407c-86cc-5a69486a8ba9}</destination>
 			<destination>{bcc23703-1110-4871-9dd7-14da66a4efd4}</destination>
-			<destination>{3025c88d-3e62-4597-9055-f2276a78528a}</destination>
 		</relationship>
 		<relationship name="markers">
 			<destination>{95018404-51af-471b-883c-f7242c385430}</destination>

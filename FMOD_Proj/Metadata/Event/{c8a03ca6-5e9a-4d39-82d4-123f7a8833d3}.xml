@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{c8a03ca6-5e9a-4d39-82d4-123f7a8833d3}">
 		<property name="name">
 			<value>AMB_Field</value>
@@ -86,8 +86,8 @@
 	</object>
 	<object class="Timeline" id="{4e5aee70-7ede-432e-b2a9-4e49f6466231}">
 		<relationship name="modules">
-			<destination>{f4eada16-659f-4686-8731-591c5373d524}</destination>
 			<destination>{cb336e4d-09e8-4f1b-9140-63ef815f2bab}</destination>
+			<destination>{f4eada16-659f-4686-8731-591c5373d524}</destination>
 			<destination>{9ac7086d-aca3-406a-b7fd-1ae5288ab9b1}</destination>
 		</relationship>
 		<relationship name="markers">

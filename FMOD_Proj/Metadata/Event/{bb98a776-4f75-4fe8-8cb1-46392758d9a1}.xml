@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{bb98a776-4f75-4fe8-8cb1-46392758d9a1}">
 		<property name="name">
 			<value>AMB_Docks</value>
@@ -92,9 +92,9 @@
 	</object>
 	<object class="Timeline" id="{f7e3831d-bb6c-4eb3-8a64-76eddc75fcd6}">
 		<relationship name="modules">
-			<destination>{369b7938-c4fe-4436-9cf0-b5fc910cba8f}</destination>
-			<destination>{b1a4bbe7-2f13-40bb-afb8-0d63f10ac5d3}</destination>
 			<destination>{06f7f1cb-a176-482c-9977-1ce2985c8b31}</destination>
+			<destination>{b1a4bbe7-2f13-40bb-afb8-0d63f10ac5d3}</destination>
+			<destination>{369b7938-c4fe-4436-9cf0-b5fc910cba8f}</destination>
 			<destination>{eb33fa3f-7bcd-42a3-a04b-a7f93a5233fc}</destination>
 		</relationship>
 		<relationship name="markers">

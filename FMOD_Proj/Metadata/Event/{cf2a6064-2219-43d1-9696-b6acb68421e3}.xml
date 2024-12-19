@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{cf2a6064-2219-43d1-9696-b6acb68421e3}">
 		<property name="note">
 			<value>A slow track that evokes a mix of peace and wistfulness, a love for home, warmth, and safety. Good for kind traditions, homesickness, players weathering storms, being emotionally close to each other, or other such cases.
@@ -61,69 +61,69 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 			<destination>{afacfcee-0be1-4f9b-bf24-b6e43e27a405}</destination>
 		</relationship>
 		<relationship name="modules">
+			<destination>{27c3e538-07c9-41d7-adde-69e0838fe52f}</destination>
+			<destination>{36595244-ba4d-4b70-8bf2-e174a5f27f5a}</destination>
+			<destination>{209b1b07-19a8-4b2a-acdd-a3ecf52a6f4b}</destination>
+			<destination>{ec8a4a33-1299-41e0-853a-16f1db4cc0a9}</destination>
+			<destination>{7a7dd8d7-97cf-42c0-b4de-afb07c85de39}</destination>
+			<destination>{3bfec9e6-33e4-49a6-8f99-0208971d6e99}</destination>
+			<destination>{b3bb1b5b-7e07-4ff7-979d-9c3c4a8897fa}</destination>
+			<destination>{6467cfd2-2a89-454e-8f30-a3886a29805a}</destination>
+			<destination>{01f9db1f-60e0-4464-956c-b0e3fff9ac63}</destination>
+			<destination>{3f943483-d952-4b8f-b35f-d02d287502bc}</destination>
+			<destination>{7d921aca-a521-4bca-8e01-6e9f75479647}</destination>
+			<destination>{d451cf01-0773-49ab-ba0e-c09bfb109fee}</destination>
+			<destination>{b1811a9b-aec5-4209-b248-ad17f4a77ebe}</destination>
+			<destination>{04471ad3-4d4c-4203-b3b8-b9338ecee977}</destination>
+			<destination>{b2fac74a-3d3f-419e-9447-a8cf6d6d8d07}</destination>
+			<destination>{de5a6d48-109a-4db4-91d1-07455e6fd533}</destination>
+			<destination>{36e519d8-cf27-4a5e-a0f1-17746aee5e01}</destination>
+			<destination>{af9dff54-8fcf-4a72-8f28-d6c2a665e245}</destination>
+			<destination>{3a3a658b-083b-4e38-9d03-6958c050b80b}</destination>
+			<destination>{5d69e1cf-182e-45c7-a2fb-2a90c44b8fa1}</destination>
+			<destination>{5fa05f36-4823-4631-959e-f3f6d1576039}</destination>
+			<destination>{37ffa7d0-99b4-4c17-90ed-f222339e58f4}</destination>
+			<destination>{dc89bbdc-8f59-4443-95d6-75234dd63d14}</destination>
+			<destination>{93b672d4-9d41-4903-98d5-5727608cb408}</destination>
+			<destination>{f25105de-db52-49e9-89f8-7a5f478911a0}</destination>
+			<destination>{6dad14c7-f2e0-4675-9e86-afcb75530488}</destination>
+			<destination>{1e20dbc6-5313-42a4-b81e-f379017736cc}</destination>
+			<destination>{0c2c4393-3647-493e-adc2-ea17918182c5}</destination>
+			<destination>{4c1e728b-51b4-4ccf-9e54-9936890cb70e}</destination>
+			<destination>{c41ec82f-2154-41e4-96fc-7972e6bdddb4}</destination>
+			<destination>{71267502-e9c8-4416-b01a-03f7967dc2af}</destination>
+			<destination>{dcbd8b1a-afcc-4ee6-88f3-f082508f49d0}</destination>
+			<destination>{22000b87-d081-4cd7-9021-508930d6060c}</destination>
+			<destination>{7804a8d8-53ef-499c-99da-762441db4f67}</destination>
+			<destination>{2165f80c-d4c1-4b29-9480-e10e2bfc6fee}</destination>
+			<destination>{b7691b82-b5d2-4ee5-9ea9-1c5c8647981c}</destination>
+			<destination>{09995b05-e9bd-43d9-a7bb-1255e2a58a18}</destination>
 			<destination>{49af8274-2c90-4ec7-80b0-865d35c1b308}</destination>
 			<destination>{0c7cbe23-ba43-49af-bddf-8ce69f57631f}</destination>
-			<destination>{af9dff54-8fcf-4a72-8f28-d6c2a665e245}</destination>
 			<destination>{a6ceabce-68c8-4c90-9303-21f20067a919}</destination>
-			<destination>{d451cf01-0773-49ab-ba0e-c09bfb109fee}</destination>
 			<destination>{0cf96278-0984-4e8d-9b71-1e5424c49ccc}</destination>
-			<destination>{0c2c4393-3647-493e-adc2-ea17918182c5}</destination>
-			<destination>{f25105de-db52-49e9-89f8-7a5f478911a0}</destination>
-			<destination>{209b1b07-19a8-4b2a-acdd-a3ecf52a6f4b}</destination>
 			<destination>{4f4eb356-513d-4825-84cb-18d16e39a99d}</destination>
 			<destination>{46b2afa5-8406-4237-af0e-13a42897d857}</destination>
-			<destination>{6467cfd2-2a89-454e-8f30-a3886a29805a}</destination>
 			<destination>{15805fa3-e22a-4141-8fb1-79161225b746}</destination>
-			<destination>{7804a8d8-53ef-499c-99da-762441db4f67}</destination>
-			<destination>{3f943483-d952-4b8f-b35f-d02d287502bc}</destination>
-			<destination>{3bfec9e6-33e4-49a6-8f99-0208971d6e99}</destination>
-			<destination>{22000b87-d081-4cd7-9021-508930d6060c}</destination>
 			<destination>{b3b9fefb-4f0f-4b7b-85fc-3a61a602ea43}</destination>
-			<destination>{b1811a9b-aec5-4209-b248-ad17f4a77ebe}</destination>
-			<destination>{27c3e538-07c9-41d7-adde-69e0838fe52f}</destination>
 			<destination>{cf6b54e5-2440-43a3-a968-e55fd1140421}</destination>
 			<destination>{9bf881c8-1761-4a7c-821e-69180e5ab674}</destination>
-			<destination>{3a3a658b-083b-4e38-9d03-6958c050b80b}</destination>
 			<destination>{6c0865af-dea0-4e63-94a1-3b0b45dd292e}</destination>
-			<destination>{1e20dbc6-5313-42a4-b81e-f379017736cc}</destination>
-			<destination>{09995b05-e9bd-43d9-a7bb-1255e2a58a18}</destination>
 			<destination>{1de53a96-978b-4a05-85d6-70008732059b}</destination>
 			<destination>{55249aad-da93-4106-9033-dc4804218f08}</destination>
 			<destination>{77371f12-c525-4c22-9932-c7e0c3e2bf51}</destination>
-			<destination>{dc89bbdc-8f59-4443-95d6-75234dd63d14}</destination>
-			<destination>{5fa05f36-4823-4631-959e-f3f6d1576039}</destination>
-			<destination>{b3bb1b5b-7e07-4ff7-979d-9c3c4a8897fa}</destination>
 			<destination>{dbb5864d-7a54-4f8b-9e84-2758a584ab1f}</destination>
-			<destination>{04471ad3-4d4c-4203-b3b8-b9338ecee977}</destination>
-			<destination>{b2fac74a-3d3f-419e-9447-a8cf6d6d8d07}</destination>
 			<destination>{a77dd24a-4ab3-476e-8af5-f6e08caebecf}</destination>
-			<destination>{b7691b82-b5d2-4ee5-9ea9-1c5c8647981c}</destination>
 			<destination>{0766dad0-ce8a-4bc4-ab54-293d9ab05fd8}</destination>
-			<destination>{01f9db1f-60e0-4464-956c-b0e3fff9ac63}</destination>
-			<destination>{36e519d8-cf27-4a5e-a0f1-17746aee5e01}</destination>
 			<destination>{1011df3f-b42b-44ed-a05f-017bf4d95bbc}</destination>
 			<destination>{89cadcae-15e7-45d4-b63e-6b0f994981fe}</destination>
-			<destination>{36595244-ba4d-4b70-8bf2-e174a5f27f5a}</destination>
 			<destination>{5e71c833-d20a-4769-86e3-a9b62588e0c5}</destination>
 			<destination>{1b50ca24-3d9e-43c7-9776-750142898064}</destination>
 			<destination>{e4cc3d03-5af2-4aaf-9ff1-c9d10a78361a}</destination>
 			<destination>{601fbab5-c3d1-4614-9d41-df8ccd6ccfba}</destination>
 			<destination>{4c7e392c-06d4-4d3f-af39-3566f673ca2d}</destination>
-			<destination>{71267502-e9c8-4416-b01a-03f7967dc2af}</destination>
-			<destination>{37ffa7d0-99b4-4c17-90ed-f222339e58f4}</destination>
-			<destination>{5d69e1cf-182e-45c7-a2fb-2a90c44b8fa1}</destination>
-			<destination>{7a7dd8d7-97cf-42c0-b4de-afb07c85de39}</destination>
 			<destination>{29ec5736-81ba-4967-a82f-7264a428556d}</destination>
-			<destination>{6dad14c7-f2e0-4675-9e86-afcb75530488}</destination>
-			<destination>{c41ec82f-2154-41e4-96fc-7972e6bdddb4}</destination>
-			<destination>{93b672d4-9d41-4903-98d5-5727608cb408}</destination>
-			<destination>{de5a6d48-109a-4db4-91d1-07455e6fd533}</destination>
-			<destination>{4c1e728b-51b4-4ccf-9e54-9936890cb70e}</destination>
-			<destination>{7d921aca-a521-4bca-8e01-6e9f75479647}</destination>
-			<destination>{ec8a4a33-1299-41e0-853a-16f1db4cc0a9}</destination>
-			<destination>{dcbd8b1a-afcc-4ee6-88f3-f082508f49d0}</destination>
 			<destination>{7a5826f8-64a7-4ffa-ac93-74a742febe80}</destination>
-			<destination>{2165f80c-d4c1-4b29-9480-e10e2bfc6fee}</destination>
 			<destination>{1c98b64c-dfd1-454d-a7ad-7beca07691e1}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
@@ -152,6 +152,9 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 	<object class="MarkerTrack" id="{bf7c44c4-40a6-4cab-a0f3-38e711d260d6}" />
 	<object class="GroupTrack" id="{7e399e5a-9568-4205-bda0-28cedd8315cc}">
 		<relationship name="modules">
+			<destination>{624ace01-db41-4795-87ba-eb04bb5b183b}</destination>
+			<destination>{71df0229-346a-43c5-ae1d-67fc146067d2}</destination>
+			<destination>{61820ded-392b-477c-99e6-ab7f95eb99fd}</destination>
 			<destination>{8d3fb9f8-7d3c-4fca-a3a0-877dec25aa4f}</destination>
 			<destination>{cc713a60-d961-4918-aa4f-bd355324f1a4}</destination>
 			<destination>{3eec2deb-c023-437a-a878-66c532403bac}</destination>
@@ -166,7 +169,6 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 			<destination>{5900bf3d-bc45-47d4-af6b-977cbead00b7}</destination>
 			<destination>{c8ec6cb5-89af-4f45-b627-2582a6e42e76}</destination>
 			<destination>{58bac016-df33-4185-ac8f-dc01de221b05}</destination>
-			<destination>{61820ded-392b-477c-99e6-ab7f95eb99fd}</destination>
 			<destination>{03a44648-d6b2-439c-b5a2-7a2c1b49e52b}</destination>
 			<destination>{48c4591b-4568-460d-841c-df7d6c31498f}</destination>
 			<destination>{5f2629bd-b091-4add-9a01-893ddd3d435d}</destination>
@@ -195,12 +197,10 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 			<destination>{d1146209-f332-4c60-9e86-84c248d6b07b}</destination>
 			<destination>{080ac49e-82e9-4b02-be57-bf03c054507a}</destination>
 			<destination>{1dd6b40a-9a3a-454a-8ad1-e6071e826795}</destination>
-			<destination>{71df0229-346a-43c5-ae1d-67fc146067d2}</destination>
 			<destination>{75ed812a-1dcd-4248-af0e-6fa255329010}</destination>
 			<destination>{159d103e-9569-4dd8-a9cb-2182782f3de9}</destination>
 			<destination>{41a3e79c-0643-4466-b6b0-8d040c85db1b}</destination>
 			<destination>{e9916bb0-2a1a-49d7-bb1b-d75e25ec3f6f}</destination>
-			<destination>{624ace01-db41-4795-87ba-eb04bb5b183b}</destination>
 			<destination>{2effdfc1-a07e-4d50-850d-977d2093898b}</destination>
 			<destination>{7b672aad-08a5-451d-b419-569c5de5946b}</destination>
 			<destination>{8bcdfb6a-618d-469d-b663-7544feed0ef4}</destination>
@@ -229,6 +229,18 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 	</object>
 	<object class="GroupTrack" id="{d057cf23-050f-432f-9041-fd67b92b9858}">
 		<relationship name="modules">
+			<destination>{058cceca-62bd-45c3-a8c3-b9be0885c3f5}</destination>
+			<destination>{c3389d47-4bb0-4199-b68d-c2c3700a0a3c}</destination>
+			<destination>{cb2432e5-7ed7-43bd-8629-9d413dc1bf87}</destination>
+			<destination>{f4b3c2f0-864e-4e70-9137-3ae7fc5260bc}</destination>
+			<destination>{6a1fbbe4-bb1b-46ab-91d4-224f4f89346d}</destination>
+			<destination>{b63033e6-b9b7-4e81-bb43-28cd4d497c5a}</destination>
+			<destination>{3aa3068d-608e-4d99-a406-e1faf3a9188b}</destination>
+			<destination>{f57eeb8c-6daf-4671-b5f0-7efafd2507a0}</destination>
+			<destination>{8e41504e-41bb-4bb6-9511-602fa08f0e9c}</destination>
+			<destination>{fc47e303-00ca-4237-b5d8-4bfd31175f02}</destination>
+			<destination>{a6e3ca39-3d8a-4606-b543-a04b020f08ce}</destination>
+			<destination>{f1610a6d-3df8-4b4d-a144-1e0ed03c568f}</destination>
 			<destination>{cf834127-2c4a-430e-a49a-8eba6f805b93}</destination>
 			<destination>{0950bd94-256a-4198-9382-bb94acf79b89}</destination>
 			<destination>{c7b94b26-984e-4e16-a07c-67a4af7d2dd6}</destination>
@@ -243,25 +255,19 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 			<destination>{6e716f7b-1220-401c-9312-16d8db6d53ea}</destination>
 			<destination>{1f417997-ca1a-44f9-bb7f-6403e22167c1}</destination>
 			<destination>{0b1391e4-3ca4-43d9-96c6-971ee6ba0285}</destination>
-			<destination>{3aa3068d-608e-4d99-a406-e1faf3a9188b}</destination>
-			<destination>{a6e3ca39-3d8a-4606-b543-a04b020f08ce}</destination>
 			<destination>{4f0971a9-df09-473a-8031-08f5fd725301}</destination>
 			<destination>{a5ffedf6-1a03-44a7-b4ea-c4092c82e8f2}</destination>
 			<destination>{2c2851fe-0091-4584-a790-4a66c58f3369}</destination>
 			<destination>{35db1aa4-651e-4328-9dd2-65162e519da0}</destination>
 			<destination>{fcf0ba9e-ceb7-4482-b7d2-45ced4fe1864}</destination>
-			<destination>{058cceca-62bd-45c3-a8c3-b9be0885c3f5}</destination>
 			<destination>{df04b2e3-2913-4fe0-b9eb-4d1b5669c591}</destination>
 			<destination>{3d021e70-b6f1-4252-bade-bed5608b6a5e}</destination>
 			<destination>{613e6ee1-d08d-4eca-b247-38ec28b89104}</destination>
-			<destination>{f57eeb8c-6daf-4671-b5f0-7efafd2507a0}</destination>
 			<destination>{7bef2ddb-f9d9-427a-873a-efca14c39c0d}</destination>
 			<destination>{9520e893-9b42-48c9-94f0-fde8513f94e1}</destination>
-			<destination>{c3389d47-4bb0-4199-b68d-c2c3700a0a3c}</destination>
 			<destination>{a7340e00-5e51-43eb-9ef0-f37013888bdc}</destination>
 			<destination>{dce37f80-b368-49d8-9789-98d29c1367df}</destination>
 			<destination>{2ab702bd-8904-4264-92b6-f75203ccdb56}</destination>
-			<destination>{f4b3c2f0-864e-4e70-9137-3ae7fc5260bc}</destination>
 			<destination>{5cb07328-0c57-49ed-9306-510b8ed0acea}</destination>
 			<destination>{5275ed86-0379-4bb8-ae60-22855485fde5}</destination>
 			<destination>{761da4eb-1537-47af-8d93-d3af120be9de}</destination>
@@ -275,8 +281,6 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 			<destination>{22eb7d26-0747-4009-939c-2d2f3a268a16}</destination>
 			<destination>{64d34f8a-8e17-40c6-b6f3-38896843b223}</destination>
 			<destination>{e0589ac9-0dea-456b-ba1f-52a5072a2856}</destination>
-			<destination>{cb2432e5-7ed7-43bd-8629-9d413dc1bf87}</destination>
-			<destination>{b63033e6-b9b7-4e81-bb43-28cd4d497c5a}</destination>
 			<destination>{1126ba01-55fd-4a24-917e-7e687a476b4a}</destination>
 			<destination>{5e6f9ea7-e9fa-4438-ae80-672534244b3b}</destination>
 			<destination>{0548d31f-6a28-47a7-9273-0907b005b38a}</destination>
@@ -285,14 +289,10 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 			<destination>{385aba77-aa76-4b7b-b2cb-ae0d380febcf}</destination>
 			<destination>{99eb42e5-5eb9-4620-927c-226d546e5686}</destination>
 			<destination>{ffbaabf0-032b-4542-b481-1052b5406578}</destination>
-			<destination>{6a1fbbe4-bb1b-46ab-91d4-224f4f89346d}</destination>
-			<destination>{fc47e303-00ca-4237-b5d8-4bfd31175f02}</destination>
 			<destination>{8afcf6f5-63c6-44b4-9e39-a0fef297c7b1}</destination>
 			<destination>{c4962e54-0835-4073-9578-fe595802affb}</destination>
 			<destination>{1a2f9281-2b54-49e3-8820-070e95a5e3a2}</destination>
-			<destination>{f1610a6d-3df8-4b4d-a144-1e0ed03c568f}</destination>
 			<destination>{eec04e59-b2a5-414d-9b42-6bebd4c82d6f}</destination>
-			<destination>{8e41504e-41bb-4bb6-9511-602fa08f0e9c}</destination>
 			<destination>{c8c69bc4-a52e-414d-8014-6977c9c19722}</destination>
 			<destination>{366a639f-ec68-436b-87c0-7ceab93ba0f0}</destination>
 			<destination>{7a2b54d8-0d6a-4248-ba23-9a76b8c999ca}</destination>
@@ -308,61 +308,61 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 	</object>
 	<object class="Timeline" id="{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}">
 		<relationship name="modules">
-			<destination>{8d3fb9f8-7d3c-4fca-a3a0-877dec25aa4f}</destination>
-			<destination>{cc713a60-d961-4918-aa4f-bd355324f1a4}</destination>
-			<destination>{3eec2deb-c023-437a-a878-66c532403bac}</destination>
-			<destination>{8f2f3f7a-c9cc-4144-a6ab-6a87ab618486}</destination>
-			<destination>{c4544ebc-0a6c-4863-b4c5-5ffb97e8ecc2}</destination>
-			<destination>{2e9fe08c-32e3-4344-a089-81cfda358bfb}</destination>
-			<destination>{cf834127-2c4a-430e-a49a-8eba6f805b93}</destination>
-			<destination>{bfe96ff6-1695-4f36-a00b-a3d969f99ee1}</destination>
 			<destination>{6022d96f-1b20-485f-861f-93473012e60d}</destination>
-			<destination>{2b171198-8aa1-4fc4-a9e2-be1e6ee27639}</destination>
+			<destination>{c4544ebc-0a6c-4863-b4c5-5ffb97e8ecc2}</destination>
 			<destination>{6d41de9d-4a8c-431b-9ed6-81578d04d295}</destination>
+			<destination>{cc713a60-d961-4918-aa4f-bd355324f1a4}</destination>
+			<destination>{bfe96ff6-1695-4f36-a00b-a3d969f99ee1}</destination>
 			<destination>{7286206e-6ca9-44f6-b71b-60d0a0e2e9ee}</destination>
 			<destination>{3be6965b-84f3-4fc1-8c3d-f0ece6342064}</destination>
+			<destination>{8d3fb9f8-7d3c-4fca-a3a0-877dec25aa4f}</destination>
+			<destination>{3eec2deb-c023-437a-a878-66c532403bac}</destination>
+			<destination>{8f2f3f7a-c9cc-4144-a6ab-6a87ab618486}</destination>
+			<destination>{2e9fe08c-32e3-4344-a089-81cfda358bfb}</destination>
+			<destination>{cf834127-2c4a-430e-a49a-8eba6f805b93}</destination>
+			<destination>{2b171198-8aa1-4fc4-a9e2-be1e6ee27639}</destination>
 			<destination>{6e716f7b-1220-401c-9312-16d8db6d53ea}</destination>
 		</relationship>
 		<relationship name="markers">
-			<destination>{2474c845-597c-4d92-b12a-e34f12405b4c}</destination>
+			<destination>{c846c3e7-2c85-4eb0-b01f-8c43cce16d77}</destination>
+			<destination>{2a7843cc-bb7d-4d14-95f7-11fdf23f8763}</destination>
+			<destination>{aa02f71d-654e-4baf-b9e5-e119b39eddb4}</destination>
+			<destination>{20435ac5-86c5-4e3f-b440-7c4ae0327eae}</destination>
+			<destination>{11b358b7-b69f-40f1-b032-eee51c49460a}</destination>
+			<destination>{cb744c39-0aa6-4332-9b5f-f9a0bab118c7}</destination>
+			<destination>{0b75be39-4ae5-48f3-9429-d7b23df7aca6}</destination>
+			<destination>{2e3cfe39-73f1-44c2-929a-edfe968bc783}</destination>
+			<destination>{13b72de6-bae0-4d4a-be60-0366ffc133f0}</destination>
+			<destination>{c3657caa-2afb-4e7f-a7e5-8cab8f84c565}</destination>
+			<destination>{3d68c69c-0973-4eed-938e-cb683ffb3b09}</destination>
+			<destination>{738937b5-c577-4748-8c0b-9a4d001f04e8}</destination>
+			<destination>{78e35b37-8373-4613-adbc-185ae097342e}</destination>
+			<destination>{e22a3518-ded2-4e5f-ab22-7b5b45cee4be}</destination>
 			<destination>{f84b9ada-7b35-4beb-8754-39c0b065b4dd}</destination>
+			<destination>{b27517b7-4fa1-44be-9d90-4f56615b43ab}</destination>
+			<destination>{5ff563b0-a68b-418e-834f-7c6bf3bd7d9e}</destination>
+			<destination>{0c9b46e7-873c-4462-a4e8-31d28a0224ba}</destination>
+			<destination>{e4399ae4-b3e5-4b3c-bc65-2bf88be39794}</destination>
+			<destination>{8c59e9f2-7912-4553-82ad-30e1bafb7544}</destination>
+			<destination>{f04f7817-5ff5-4dbf-8b55-8c6dac86e6b7}</destination>
+			<destination>{58ecb063-627b-4981-9fc4-db6ae7af0448}</destination>
+			<destination>{76949228-341b-486a-a0c6-9fd6f5a06ccb}</destination>
+			<destination>{36bf27dc-2c3d-4e9c-9de5-532499b8f51d}</destination>
+			<destination>{0168d549-d7b4-4906-995f-e1388677e1b6}</destination>
+			<destination>{b0d56179-3fe3-4caf-858f-767ce8f6829f}</destination>
+			<destination>{2324f13e-b162-4aaf-86a0-cf1d2ca22d2e}</destination>
+			<destination>{101781a4-23b8-43d3-94f4-cc0f10106478}</destination>
+			<destination>{9e6a01df-c60a-44f7-82a4-a71e0fba62df}</destination>
+			<destination>{3e0fceb1-5d53-46f3-9a53-bcf1806365f8}</destination>
+			<destination>{2003245d-4ddf-49d1-a555-7a5533b58905}</destination>
+			<destination>{0337ce13-4fcc-40b1-b701-e3389830c194}</destination>
+			<destination>{2474c845-597c-4d92-b12a-e34f12405b4c}</destination>
 			<destination>{91b83b85-feb3-4f85-8062-56e803f778da}</destination>
 			<destination>{467964cc-39ee-4a74-966d-78d05e4b85b3}</destination>
-			<destination>{78e35b37-8373-4613-adbc-185ae097342e}</destination>
-			<destination>{9e6a01df-c60a-44f7-82a4-a71e0fba62df}</destination>
-			<destination>{20435ac5-86c5-4e3f-b440-7c4ae0327eae}</destination>
-			<destination>{36bf27dc-2c3d-4e9c-9de5-532499b8f51d}</destination>
-			<destination>{e4399ae4-b3e5-4b3c-bc65-2bf88be39794}</destination>
-			<destination>{b0d56179-3fe3-4caf-858f-767ce8f6829f}</destination>
-			<destination>{aa02f71d-654e-4baf-b9e5-e119b39eddb4}</destination>
-			<destination>{c3657caa-2afb-4e7f-a7e5-8cab8f84c565}</destination>
 			<destination>{8292dc42-c010-4276-8105-d637fab83944}</destination>
-			<destination>{76949228-341b-486a-a0c6-9fd6f5a06ccb}</destination>
-			<destination>{738937b5-c577-4748-8c0b-9a4d001f04e8}</destination>
 			<destination>{0551fce1-2caa-4fb1-9016-f49d8a1f14fd}</destination>
-			<destination>{0b75be39-4ae5-48f3-9429-d7b23df7aca6}</destination>
-			<destination>{0168d549-d7b4-4906-995f-e1388677e1b6}</destination>
-			<destination>{0337ce13-4fcc-40b1-b701-e3389830c194}</destination>
-			<destination>{2e3cfe39-73f1-44c2-929a-edfe968bc783}</destination>
-			<destination>{b27517b7-4fa1-44be-9d90-4f56615b43ab}</destination>
 			<destination>{c13dba65-a62b-4835-a1b5-1f36cc92287d}</destination>
-			<destination>{101781a4-23b8-43d3-94f4-cc0f10106478}</destination>
-			<destination>{2324f13e-b162-4aaf-86a0-cf1d2ca22d2e}</destination>
-			<destination>{0c9b46e7-873c-4462-a4e8-31d28a0224ba}</destination>
-			<destination>{e22a3518-ded2-4e5f-ab22-7b5b45cee4be}</destination>
-			<destination>{58ecb063-627b-4981-9fc4-db6ae7af0448}</destination>
-			<destination>{8c59e9f2-7912-4553-82ad-30e1bafb7544}</destination>
 			<destination>{556cbb6f-0e94-4c90-a94c-bda559ee7046}</destination>
-			<destination>{3d68c69c-0973-4eed-938e-cb683ffb3b09}</destination>
-			<destination>{2003245d-4ddf-49d1-a555-7a5533b58905}</destination>
-			<destination>{2a7843cc-bb7d-4d14-95f7-11fdf23f8763}</destination>
-			<destination>{13b72de6-bae0-4d4a-be60-0366ffc133f0}</destination>
-			<destination>{c846c3e7-2c85-4eb0-b01f-8c43cce16d77}</destination>
-			<destination>{11b358b7-b69f-40f1-b032-eee51c49460a}</destination>
-			<destination>{5ff563b0-a68b-418e-834f-7c6bf3bd7d9e}</destination>
-			<destination>{f04f7817-5ff5-4dbf-8b55-8c6dac86e6b7}</destination>
-			<destination>{3e0fceb1-5d53-46f3-9a53-bcf1806365f8}</destination>
-			<destination>{cb744c39-0aa6-4332-9b5f-f9a0bab118c7}</destination>
 			<destination>{55ffb581-92c5-45d0-b237-ea39fded1658}</destination>
 			<destination>{e5a7c99e-47c3-48b7-8aee-1be17dd4c471}</destination>
 		</relationship>
@@ -391,6 +391,254 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 			<destination>{798f81f8-5dbd-46c4-99c3-7a8d98585377}</destination>
 		</relationship>
 	</object>
+	<object class="TransitionSourceSound" id="{27c3e538-07c9-41d7-adde-69e0838fe52f}">
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionDestinationSound" id="{36595244-ba4d-4b70-8bf2-e174a5f27f5a}">
+		<property name="start">
+			<value>1.4500000000000002</value>
+		</property>
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionDestinationSound" id="{209b1b07-19a8-4b2a-acdd-a3ecf52a6f4b}">
+		<property name="start">
+			<value>2.3499999999999996</value>
+		</property>
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionSourceSound" id="{ec8a4a33-1299-41e0-853a-16f1db4cc0a9}">
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionSourceSound" id="{7a7dd8d7-97cf-42c0-b4de-afb07c85de39}">
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionSourceSound" id="{3bfec9e6-33e4-49a6-8f99-0208971d6e99}">
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionSourceSound" id="{b3bb1b5b-7e07-4ff7-979d-9c3c4a8897fa}">
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionSourceSound" id="{6467cfd2-2a89-454e-8f30-a3886a29805a}">
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionDestinationSound" id="{01f9db1f-60e0-4464-956c-b0e3fff9ac63}">
+		<property name="start">
+			<value>1.6500000000000001</value>
+		</property>
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionDestinationSound" id="{3f943483-d952-4b8f-b35f-d02d287502bc}">
+		<property name="start">
+			<value>1.4000000000000001</value>
+		</property>
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionDestinationSound" id="{7d921aca-a521-4bca-8e01-6e9f75479647}">
+		<property name="start">
+			<value>14</value>
+		</property>
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionDestinationSound" id="{d451cf01-0773-49ab-ba0e-c09bfb109fee}">
+		<property name="start">
+			<value>2.3499999999999996</value>
+		</property>
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionDestinationSound" id="{b1811a9b-aec5-4209-b248-ad17f4a77ebe}">
+		<property name="start">
+			<value>1.3</value>
+		</property>
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionSourceSound" id="{04471ad3-4d4c-4203-b3b8-b9338ecee977}">
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionDestinationSound" id="{b2fac74a-3d3f-419e-9447-a8cf6d6d8d07}">
+		<property name="start">
+			<value>1.4000000000000001</value>
+		</property>
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionSourceSound" id="{de5a6d48-109a-4db4-91d1-07455e6fd533}">
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionSourceSound" id="{36e519d8-cf27-4a5e-a0f1-17746aee5e01}">
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionDestinationSound" id="{af9dff54-8fcf-4a72-8f28-d6c2a665e245}">
+		<property name="start">
+			<value>2.9000000000000004</value>
+		</property>
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionDestinationSound" id="{3a3a658b-083b-4e38-9d03-6958c050b80b}">
+		<property name="start">
+			<value>1.4000000000000001</value>
+		</property>
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionDestinationSound" id="{5d69e1cf-182e-45c7-a2fb-2a90c44b8fa1}">
+		<property name="start">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionDestinationSound" id="{5fa05f36-4823-4631-959e-f3f6d1576039}">
+		<property name="start">
+			<value>1.4500000000000002</value>
+		</property>
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionSourceSound" id="{37ffa7d0-99b4-4c17-90ed-f222339e58f4}">
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionSourceSound" id="{dc89bbdc-8f59-4443-95d6-75234dd63d14}">
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionSourceSound" id="{93b672d4-9d41-4903-98d5-5727608cb408}">
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionSourceSound" id="{f25105de-db52-49e9-89f8-7a5f478911a0}">
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionSourceSound" id="{6dad14c7-f2e0-4675-9e86-afcb75530488}">
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionDestinationSound" id="{1e20dbc6-5313-42a4-b81e-f379017736cc}">
+		<property name="start">
+			<value>1.3500000000000001</value>
+		</property>
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionDestinationSound" id="{0c2c4393-3647-493e-adc2-ea17918182c5}">
+		<property name="start">
+			<value>2.3499999999999996</value>
+		</property>
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionDestinationSound" id="{4c1e728b-51b4-4ccf-9e54-9936890cb70e}">
+		<property name="start">
+			<value>14</value>
+		</property>
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionDestinationSound" id="{c41ec82f-2154-41e4-96fc-7972e6bdddb4}">
+		<property name="start">
+			<value>0.90000000000000002</value>
+		</property>
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionDestinationSound" id="{71267502-e9c8-4416-b01a-03f7967dc2af}">
+		<property name="start">
+			<value>1.4500000000000002</value>
+		</property>
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionDestinationSound" id="{dcbd8b1a-afcc-4ee6-88f3-f082508f49d0}">
+		<property name="start">
+			<value>14</value>
+		</property>
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionDestinationSound" id="{22000b87-d081-4cd7-9021-508930d6060c}">
+		<property name="start">
+			<value>1.3500000000000001</value>
+		</property>
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionSourceSound" id="{7804a8d8-53ef-499c-99da-762441db4f67}">
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionDestinationSound" id="{2165f80c-d4c1-4b29-9480-e10e2bfc6fee}">
+		<property name="start">
+			<value>14</value>
+		</property>
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionDestinationSound" id="{b7691b82-b5d2-4ee5-9ea9-1c5c8647981c}">
+		<property name="start">
+			<value>1.6200000000000001</value>
+		</property>
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionSourceSound" id="{09995b05-e9bd-43d9-a7bb-1255e2a58a18}">
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
 	<object class="TransitionSourceSound" id="{49af8274-2c90-4ec7-80b0-865d35c1b308}">
 		<property name="length">
 			<value>0</value>
@@ -404,49 +652,12 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 			<value>0</value>
 		</property>
 	</object>
-	<object class="TransitionDestinationSound" id="{af9dff54-8fcf-4a72-8f28-d6c2a665e245}">
-		<property name="start">
-			<value>2.9000000000000004</value>
-		</property>
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
 	<object class="TransitionSourceSound" id="{a6ceabce-68c8-4c90-9303-21f20067a919}">
 		<property name="length">
 			<value>0</value>
 		</property>
 	</object>
-	<object class="TransitionDestinationSound" id="{d451cf01-0773-49ab-ba0e-c09bfb109fee}">
-		<property name="start">
-			<value>2.3499999999999996</value>
-		</property>
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
 	<object class="TransitionSourceSound" id="{0cf96278-0984-4e8d-9b71-1e5424c49ccc}">
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
-	<object class="TransitionDestinationSound" id="{0c2c4393-3647-493e-adc2-ea17918182c5}">
-		<property name="start">
-			<value>2.3499999999999996</value>
-		</property>
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
-	<object class="TransitionSourceSound" id="{f25105de-db52-49e9-89f8-7a5f478911a0}">
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
-	<object class="TransitionDestinationSound" id="{209b1b07-19a8-4b2a-acdd-a3ecf52a6f4b}">
-		<property name="start">
-			<value>2.3499999999999996</value>
-		</property>
 		<property name="length">
 			<value>0</value>
 		</property>
@@ -464,11 +675,6 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 			<value>0</value>
 		</property>
 	</object>
-	<object class="TransitionSourceSound" id="{6467cfd2-2a89-454e-8f30-a3886a29805a}">
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
 	<object class="TransitionDestinationSound" id="{15805fa3-e22a-4141-8fb1-79161225b746}">
 		<property name="start">
 			<value>1.4000000000000001</value>
@@ -477,46 +683,7 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 			<value>0</value>
 		</property>
 	</object>
-	<object class="TransitionSourceSound" id="{7804a8d8-53ef-499c-99da-762441db4f67}">
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
-	<object class="TransitionDestinationSound" id="{3f943483-d952-4b8f-b35f-d02d287502bc}">
-		<property name="start">
-			<value>1.4000000000000001</value>
-		</property>
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
-	<object class="TransitionSourceSound" id="{3bfec9e6-33e4-49a6-8f99-0208971d6e99}">
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
-	<object class="TransitionDestinationSound" id="{22000b87-d081-4cd7-9021-508930d6060c}">
-		<property name="start">
-			<value>1.3500000000000001</value>
-		</property>
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
 	<object class="TransitionSourceSound" id="{b3b9fefb-4f0f-4b7b-85fc-3a61a602ea43}">
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
-	<object class="TransitionDestinationSound" id="{b1811a9b-aec5-4209-b248-ad17f4a77ebe}">
-		<property name="start">
-			<value>1.3</value>
-		</property>
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
-	<object class="TransitionSourceSound" id="{27c3e538-07c9-41d7-adde-69e0838fe52f}">
 		<property name="length">
 			<value>0</value>
 		</property>
@@ -534,28 +701,7 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 			<value>0</value>
 		</property>
 	</object>
-	<object class="TransitionDestinationSound" id="{3a3a658b-083b-4e38-9d03-6958c050b80b}">
-		<property name="start">
-			<value>1.4000000000000001</value>
-		</property>
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
 	<object class="TransitionSourceSound" id="{6c0865af-dea0-4e63-94a1-3b0b45dd292e}">
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
-	<object class="TransitionDestinationSound" id="{1e20dbc6-5313-42a4-b81e-f379017736cc}">
-		<property name="start">
-			<value>1.3500000000000001</value>
-		</property>
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
-	<object class="TransitionSourceSound" id="{09995b05-e9bd-43d9-a7bb-1255e2a58a18}">
 		<property name="length">
 			<value>0</value>
 		</property>
@@ -581,40 +727,9 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 			<value>0</value>
 		</property>
 	</object>
-	<object class="TransitionSourceSound" id="{dc89bbdc-8f59-4443-95d6-75234dd63d14}">
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
-	<object class="TransitionDestinationSound" id="{5fa05f36-4823-4631-959e-f3f6d1576039}">
-		<property name="start">
-			<value>1.4500000000000002</value>
-		</property>
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
-	<object class="TransitionSourceSound" id="{b3bb1b5b-7e07-4ff7-979d-9c3c4a8897fa}">
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
 	<object class="TransitionDestinationSound" id="{dbb5864d-7a54-4f8b-9e84-2758a584ab1f}">
 		<property name="start">
 			<value>1.55</value>
-		</property>
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
-	<object class="TransitionSourceSound" id="{04471ad3-4d4c-4203-b3b8-b9338ecee977}">
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
-	<object class="TransitionDestinationSound" id="{b2fac74a-3d3f-419e-9447-a8cf6d6d8d07}">
-		<property name="start">
-			<value>1.4000000000000001</value>
 		</property>
 		<property name="length">
 			<value>0</value>
@@ -625,28 +740,7 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 			<value>0</value>
 		</property>
 	</object>
-	<object class="TransitionDestinationSound" id="{b7691b82-b5d2-4ee5-9ea9-1c5c8647981c}">
-		<property name="start">
-			<value>1.6200000000000001</value>
-		</property>
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
 	<object class="TransitionSourceSound" id="{0766dad0-ce8a-4bc4-ab54-293d9ab05fd8}">
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
-	<object class="TransitionDestinationSound" id="{01f9db1f-60e0-4464-956c-b0e3fff9ac63}">
-		<property name="start">
-			<value>1.6500000000000001</value>
-		</property>
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
-	<object class="TransitionSourceSound" id="{36e519d8-cf27-4a5e-a0f1-17746aee5e01}">
 		<property name="length">
 			<value>0</value>
 		</property>
@@ -660,14 +754,6 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 		</property>
 	</object>
 	<object class="TransitionSourceSound" id="{89cadcae-15e7-45d4-b63e-6b0f994981fe}">
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
-	<object class="TransitionDestinationSound" id="{36595244-ba4d-4b70-8bf2-e174a5f27f5a}">
-		<property name="start">
-			<value>1.4500000000000002</value>
-		</property>
 		<property name="length">
 			<value>0</value>
 		</property>
@@ -703,32 +789,6 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 			<value>0</value>
 		</property>
 	</object>
-	<object class="TransitionDestinationSound" id="{71267502-e9c8-4416-b01a-03f7967dc2af}">
-		<property name="start">
-			<value>1.4500000000000002</value>
-		</property>
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
-	<object class="TransitionSourceSound" id="{37ffa7d0-99b4-4c17-90ed-f222339e58f4}">
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
-	<object class="TransitionDestinationSound" id="{5d69e1cf-182e-45c7-a2fb-2a90c44b8fa1}">
-		<property name="start">
-			<value>1</value>
-		</property>
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
-	<object class="TransitionSourceSound" id="{7a7dd8d7-97cf-42c0-b4de-afb07c85de39}">
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
 	<object class="TransitionDestinationSound" id="{29ec5736-81ba-4967-a82f-7264a428556d}">
 		<property name="start">
 			<value>1</value>
@@ -737,67 +797,7 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 			<value>0</value>
 		</property>
 	</object>
-	<object class="TransitionSourceSound" id="{6dad14c7-f2e0-4675-9e86-afcb75530488}">
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
-	<object class="TransitionDestinationSound" id="{c41ec82f-2154-41e4-96fc-7972e6bdddb4}">
-		<property name="start">
-			<value>0.90000000000000002</value>
-		</property>
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
-	<object class="TransitionSourceSound" id="{93b672d4-9d41-4903-98d5-5727608cb408}">
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
-	<object class="TransitionSourceSound" id="{de5a6d48-109a-4db4-91d1-07455e6fd533}">
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
-	<object class="TransitionDestinationSound" id="{4c1e728b-51b4-4ccf-9e54-9936890cb70e}">
-		<property name="start">
-			<value>14</value>
-		</property>
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
-	<object class="TransitionDestinationSound" id="{7d921aca-a521-4bca-8e01-6e9f75479647}">
-		<property name="start">
-			<value>14</value>
-		</property>
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
-	<object class="TransitionSourceSound" id="{ec8a4a33-1299-41e0-853a-16f1db4cc0a9}">
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
-	<object class="TransitionDestinationSound" id="{dcbd8b1a-afcc-4ee6-88f3-f082508f49d0}">
-		<property name="start">
-			<value>14</value>
-		</property>
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
 	<object class="TransitionSourceSound" id="{7a5826f8-64a7-4ffa-ac93-74a742febe80}">
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
-	<object class="TransitionDestinationSound" id="{2165f80c-d4c1-4b29-9480-e10e2bfc6fee}">
-		<property name="start">
-			<value>14</value>
-		</property>
 		<property name="length">
 			<value>0</value>
 		</property>
@@ -813,6 +813,36 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{4f89fbeb-ee37-4107-af07-38192c60fe7c}" />
+	<object class="TransitionDestinationSound" id="{624ace01-db41-4795-87ba-eb04bb5b183b}">
+		<property name="start">
+			<value>0.95000000000000018</value>
+		</property>
+		<property name="length">
+			<value>0.5</value>
+		</property>
+		<relationship name="fadeInCurve">
+			<destination>{8558537e-e573-40ea-9617-db3e4981c497}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionSourceSound" id="{71df0229-346a-43c5-ae1d-67fc146067d2}">
+		<property name="length">
+			<value>1.6200000000000001</value>
+		</property>
+		<relationship name="fadeOutCurve">
+			<destination>{ba3b14f3-d499-4c36-bcc5-8e54da24f335}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionDestinationSound" id="{61820ded-392b-477c-99e6-ab7f95eb99fd}">
+		<property name="start">
+			<value>2.1800000000000002</value>
+		</property>
+		<property name="length">
+			<value>0.16999999999999948</value>
+		</property>
+		<relationship name="fadeInCurve">
+			<destination>{a546e884-07c8-4f87-ac27-ba811ef86aa2}</destination>
+		</relationship>
+	</object>
 	<object class="SingleSound" id="{8d3fb9f8-7d3c-4fca-a3a0-877dec25aa4f}">
 		<property name="length">
 			<value>17.600000000000001</value>
@@ -968,17 +998,6 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 		</property>
 		<relationship name="fadeOutCurve">
 			<destination>{a6246010-45d5-4f68-a529-7ce5a1443354}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionDestinationSound" id="{61820ded-392b-477c-99e6-ab7f95eb99fd}">
-		<property name="start">
-			<value>2.1800000000000002</value>
-		</property>
-		<property name="length">
-			<value>0.16999999999999948</value>
-		</property>
-		<relationship name="fadeInCurve">
-			<destination>{a546e884-07c8-4f87-ac27-ba811ef86aa2}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionSourceSound" id="{03a44648-d6b2-439c-b5a2-7a2c1b49e52b}">
@@ -1247,14 +1266,6 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 			<destination>{78f6a378-cc45-4bc6-aca2-0b6b9d3dc13a}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionSourceSound" id="{71df0229-346a-43c5-ae1d-67fc146067d2}">
-		<property name="length">
-			<value>1.6200000000000001</value>
-		</property>
-		<relationship name="fadeOutCurve">
-			<destination>{ba3b14f3-d499-4c36-bcc5-8e54da24f335}</destination>
-		</relationship>
-	</object>
 	<object class="TransitionDestinationSound" id="{75ed812a-1dcd-4248-af0e-6fa255329010}">
 		<property name="start">
 			<value>1.4800000000000006</value>
@@ -1291,17 +1302,6 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 		</property>
 		<relationship name="fadeOutCurve">
 			<destination>{3fca79f5-4811-44aa-b1aa-de1b12ec4087}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionDestinationSound" id="{624ace01-db41-4795-87ba-eb04bb5b183b}">
-		<property name="start">
-			<value>0.95000000000000018</value>
-		</property>
-		<property name="length">
-			<value>0.5</value>
-		</property>
-		<relationship name="fadeInCurve">
-			<destination>{8558537e-e573-40ea-9617-db3e4981c497}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionSourceSound" id="{2effdfc1-a07e-4d50-850d-977d2093898b}">
@@ -1498,6 +1498,81 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 			<destination>{b55e6ca4-ac5e-4428-8573-a3e58e74140e}</destination>
 		</relationship>
 	</object>
+	<object class="TransitionSourceSound" id="{058cceca-62bd-45c3-a8c3-b9be0885c3f5}">
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionDestinationSound" id="{c3389d47-4bb0-4199-b68d-c2c3700a0a3c}">
+		<property name="start">
+			<value>0.85000000000000009</value>
+		</property>
+		<property name="length">
+			<value>0.5</value>
+		</property>
+	</object>
+	<object class="TransitionDestinationSound" id="{cb2432e5-7ed7-43bd-8629-9d413dc1bf87}">
+		<property name="start">
+			<value>1.6500000000000001</value>
+		</property>
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionDestinationSound" id="{f4b3c2f0-864e-4e70-9137-3ae7fc5260bc}">
+		<property name="start">
+			<value>1.3500000000000001</value>
+		</property>
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionDestinationSound" id="{6a1fbbe4-bb1b-46ab-91d4-224f4f89346d}">
+		<property name="start">
+			<value>0.80000000000000016</value>
+		</property>
+		<property name="length">
+			<value>0.65000000000000002</value>
+		</property>
+	</object>
+	<object class="TransitionSourceSound" id="{b63033e6-b9b7-4e81-bb43-28cd4d497c5a}">
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionDestinationSound" id="{3aa3068d-608e-4d99-a406-e1faf3a9188b}">
+		<property name="start">
+			<value>2.3499999999999996</value>
+		</property>
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionSourceSound" id="{f57eeb8c-6daf-4671-b5f0-7efafd2507a0}">
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionSourceSound" id="{8e41504e-41bb-4bb6-9511-602fa08f0e9c}">
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionSourceSound" id="{fc47e303-00ca-4237-b5d8-4bfd31175f02}">
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionSourceSound" id="{a6e3ca39-3d8a-4606-b543-a04b020f08ce}">
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionSourceSound" id="{f1610a6d-3df8-4b4d-a144-1e0ed03c568f}">
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
 	<object class="CommandSound" id="{cf834127-2c4a-430e-a49a-8eba6f805b93}">
 		<property name="start">
 			<value>0.60000000000000009</value>
@@ -1667,19 +1742,6 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 			<value>0</value>
 		</property>
 	</object>
-	<object class="TransitionDestinationSound" id="{3aa3068d-608e-4d99-a406-e1faf3a9188b}">
-		<property name="start">
-			<value>2.3499999999999996</value>
-		</property>
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
-	<object class="TransitionSourceSound" id="{a6e3ca39-3d8a-4606-b543-a04b020f08ce}">
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
 	<object class="TransitionDestinationSound" id="{4f0971a9-df09-473a-8031-08f5fd725301}">
 		<property name="start">
 			<value>2.3499999999999996</value>
@@ -1714,11 +1776,6 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 			<value>0.50000000000000011</value>
 		</property>
 	</object>
-	<object class="TransitionSourceSound" id="{058cceca-62bd-45c3-a8c3-b9be0885c3f5}">
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
 	<object class="TransitionDestinationSound" id="{df04b2e3-2913-4fe0-b9eb-4d1b5669c591}">
 		<property name="start">
 			<value>1.4000000000000001</value>
@@ -1740,11 +1797,6 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 			<value>0</value>
 		</property>
 	</object>
-	<object class="TransitionSourceSound" id="{f57eeb8c-6daf-4671-b5f0-7efafd2507a0}">
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
 	<object class="TransitionDestinationSound" id="{7bef2ddb-f9d9-427a-873a-efca14c39c0d}">
 		<property name="start">
 			<value>1.3</value>
@@ -1756,14 +1808,6 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 	<object class="TransitionSourceSound" id="{9520e893-9b42-48c9-94f0-fde8513f94e1}">
 		<property name="length">
 			<value>0</value>
-		</property>
-	</object>
-	<object class="TransitionDestinationSound" id="{c3389d47-4bb0-4199-b68d-c2c3700a0a3c}">
-		<property name="start">
-			<value>0.85000000000000009</value>
-		</property>
-		<property name="length">
-			<value>0.5</value>
 		</property>
 	</object>
 	<object class="TransitionSourceSound" id="{a7340e00-5e51-43eb-9ef0-f37013888bdc}">
@@ -1780,14 +1824,6 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 		</property>
 	</object>
 	<object class="TransitionSourceSound" id="{2ab702bd-8904-4264-92b6-f75203ccdb56}">
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
-	<object class="TransitionDestinationSound" id="{f4b3c2f0-864e-4e70-9137-3ae7fc5260bc}">
-		<property name="start">
-			<value>1.3500000000000001</value>
-		</property>
 		<property name="length">
 			<value>0</value>
 		</property>
@@ -1875,19 +1911,6 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 			<value>0</value>
 		</property>
 	</object>
-	<object class="TransitionDestinationSound" id="{cb2432e5-7ed7-43bd-8629-9d413dc1bf87}">
-		<property name="start">
-			<value>1.6500000000000001</value>
-		</property>
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
-	<object class="TransitionSourceSound" id="{b63033e6-b9b7-4e81-bb43-28cd4d497c5a}">
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
 	<object class="TransitionDestinationSound" id="{1126ba01-55fd-4a24-917e-7e687a476b4a}">
 		<property name="start">
 			<value>1.4000000000000001</value>
@@ -1940,19 +1963,6 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 			<value>0</value>
 		</property>
 	</object>
-	<object class="TransitionDestinationSound" id="{6a1fbbe4-bb1b-46ab-91d4-224f4f89346d}">
-		<property name="start">
-			<value>0.80000000000000016</value>
-		</property>
-		<property name="length">
-			<value>0.65000000000000002</value>
-		</property>
-	</object>
-	<object class="TransitionSourceSound" id="{fc47e303-00ca-4237-b5d8-4bfd31175f02}">
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
 	<object class="TransitionDestinationSound" id="{8afcf6f5-63c6-44b4-9e39-a0fef297c7b1}">
 		<property name="start">
 			<value>1</value>
@@ -1974,20 +1984,10 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 			<value>0</value>
 		</property>
 	</object>
-	<object class="TransitionSourceSound" id="{f1610a6d-3df8-4b4d-a144-1e0ed03c568f}">
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
 	<object class="TransitionDestinationSound" id="{eec04e59-b2a5-414d-9b42-6bebd4c82d6f}">
 		<property name="start">
 			<value>0.90000000000000002</value>
 		</property>
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
-	<object class="TransitionSourceSound" id="{8e41504e-41bb-4bb6-9511-602fa08f0e9c}">
 		<property name="length">
 			<value>0</value>
 		</property>
@@ -2058,12 +2058,271 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 			<destination>{b55e6ca4-ac5e-4428-8573-a3e58e74140e}</destination>
 		</relationship>
 	</object>
-	<object class="NamedMarker" id="{2474c845-597c-4d92-b12a-e34f12405b4c}">
+	<object class="TransitionMarker" id="{c846c3e7-2c85-4eb0-b01f-8c43cce16d77}">
 		<property name="position">
+			<value>189.20000000000002</value>
+		</property>
+		<property name="triggerProbabilityEnabled">
+			<value>true</value>
+		</property>
+		<property name="triggerProbability">
+			<value>25</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{befa49b1-f16a-47f3-a117-211970d757e8}</destination>
+		</relationship>
+		<relationship name="transitionTimeline">
+			<destination>{c6594c29-1333-4ce9-a2cd-59357200f2a5}</destination>
+		</relationship>
+		<relationship name="destination">
+			<destination>{2474c845-597c-4d92-b12a-e34f12405b4c}</destination>
+		</relationship>
+		<relationship name="triggerConditions">
+			<destination>{daa44491-6f35-4428-b501-bb7d2ad08dfc}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionMarker" id="{2a7843cc-bb7d-4d14-95f7-11fdf23f8763}">
+		<property name="position">
+			<value>150.20000000000002</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{bf7c44c4-40a6-4cab-a0f3-38e711d260d6}</destination>
+		</relationship>
+		<relationship name="destination">
+			<destination>{20435ac5-86c5-4e3f-b440-7c4ae0327eae}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionMarker" id="{aa02f71d-654e-4baf-b9e5-e119b39eddb4}">
+		<property name="position">
+			<value>15.100000000000001</value>
+		</property>
+		<property name="triggerProbability">
 			<value>0</value>
 		</property>
+		<relationship name="timeline">
+			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{80d241d5-f9a4-4f96-9463-3230a9ab0c24}</destination>
+		</relationship>
+		<relationship name="transitionTimeline">
+			<destination>{3eee348f-f019-4ba1-bb3a-0b925280d217}</destination>
+		</relationship>
+		<relationship name="destination">
+			<destination>{91b83b85-feb3-4f85-8062-56e803f778da}</destination>
+		</relationship>
+		<relationship name="triggerConditions">
+			<destination>{cf36a67d-5ac4-4701-a65c-d4e5fa7fcbc2}</destination>
+			<destination>{2a606476-184a-4af3-ad29-04284bd12fd4}</destination>
+		</relationship>
+	</object>
+	<object class="NamedMarker" id="{20435ac5-86c5-4e3f-b440-7c4ae0327eae}">
+		<property name="position">
+			<value>210</value>
+		</property>
 		<property name="name">
-			<value>A1</value>
+			<value>Out</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{548e5c8d-79e5-459c-a98e-ec015e24d148}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionMarker" id="{11b358b7-b69f-40f1-b032-eee51c49460a}">
+		<property name="position">
+			<value>189.20000000000002</value>
+		</property>
+		<property name="triggerProbabilityEnabled">
+			<value>true</value>
+		</property>
+		<property name="triggerProbability">
+			<value>33.3333321</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{07a9ea8d-7268-4e77-86c0-a4431d2c97e2}</destination>
+		</relationship>
+		<relationship name="transitionTimeline">
+			<destination>{2215197f-63af-4b4b-aa29-4e667670cf4f}</destination>
+		</relationship>
+		<relationship name="destination">
+			<destination>{f84b9ada-7b35-4beb-8754-39c0b065b4dd}</destination>
+		</relationship>
+		<relationship name="triggerConditions">
+			<destination>{42d2e111-025f-499a-9fa1-548ed8c43ee7}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionMarker" id="{cb744c39-0aa6-4332-9b5f-f9a0bab118c7}">
+		<property name="position">
+			<value>26</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{bf7c44c4-40a6-4cab-a0f3-38e711d260d6}</destination>
+		</relationship>
+		<relationship name="transitionTimeline">
+			<destination>{9a729d80-0c25-4330-b992-b92717e24631}</destination>
+		</relationship>
+		<relationship name="destination">
+			<destination>{20435ac5-86c5-4e3f-b440-7c4ae0327eae}</destination>
+		</relationship>
+		<relationship name="triggerConditions">
+			<destination>{6b367275-ff60-4c8a-9742-f2dfb0b1c094}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionMarker" id="{0b75be39-4ae5-48f3-9429-d7b23df7aca6}">
+		<property name="position">
+			<value>40</value>
+		</property>
+		<property name="triggerProbability">
+			<value>0</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{548e5c8d-79e5-459c-a98e-ec015e24d148}</destination>
+		</relationship>
+		<relationship name="transitionTimeline">
+			<destination>{38247f57-e3c9-4dc5-88ef-f39542c7cdc6}</destination>
+		</relationship>
+		<relationship name="destination">
+			<destination>{9e6a01df-c60a-44f7-82a4-a71e0fba62df}</destination>
+		</relationship>
+		<relationship name="triggerConditions">
+			<destination>{7731740f-0ee9-41c7-b859-8bcacb9d707b}</destination>
+			<destination>{1f244d5a-0433-46ed-a483-f1cdb4752f1f}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionMarker" id="{2e3cfe39-73f1-44c2-929a-edfe968bc783}">
+		<property name="position">
+			<value>63</value>
+		</property>
+		<property name="triggerProbability">
+			<value>0</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{80d241d5-f9a4-4f96-9463-3230a9ab0c24}</destination>
+		</relationship>
+		<relationship name="transitionTimeline">
+			<destination>{ebb93058-18f0-46bb-9d66-fe1ea5fc6901}</destination>
+		</relationship>
+		<relationship name="destination">
+			<destination>{91b83b85-feb3-4f85-8062-56e803f778da}</destination>
+		</relationship>
+		<relationship name="triggerConditions">
+			<destination>{022eb440-86a0-4c99-b5e9-767593b224bd}</destination>
+			<destination>{11dd77e0-1a70-4d33-ae37-1c1394c61336}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionMarker" id="{13b72de6-bae0-4d4a-be60-0366ffc133f0}">
+		<property name="position">
+			<value>194.75530545591431</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{bf7c44c4-40a6-4cab-a0f3-38e711d260d6}</destination>
+		</relationship>
+		<relationship name="destination">
+			<destination>{20435ac5-86c5-4e3f-b440-7c4ae0327eae}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionMarker" id="{c3657caa-2afb-4e7f-a7e5-8cab8f84c565}">
+		<property name="position">
+			<value>15.100000000000001</value>
+		</property>
+		<property name="triggerProbability">
+			<value>0</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{548e5c8d-79e5-459c-a98e-ec015e24d148}</destination>
+		</relationship>
+		<relationship name="transitionTimeline">
+			<destination>{4a2eb983-2888-4b56-b8c9-90c6b5f1f94b}</destination>
+		</relationship>
+		<relationship name="destination">
+			<destination>{9e6a01df-c60a-44f7-82a4-a71e0fba62df}</destination>
+		</relationship>
+		<relationship name="triggerConditions">
+			<destination>{04c72094-a4f8-4f16-b29c-fc73cce0bc31}</destination>
+			<destination>{fa56d7b7-47cc-4bd6-ab32-66f4b95112dc}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionMarker" id="{3d68c69c-0973-4eed-938e-cb683ffb3b09}">
+		<property name="position">
+			<value>146</value>
+		</property>
+		<property name="triggerProbabilityEnabled">
+			<value>true</value>
+		</property>
+		<property name="triggerProbability">
+			<value>33.3333321</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{07a9ea8d-7268-4e77-86c0-a4431d2c97e2}</destination>
+		</relationship>
+		<relationship name="transitionTimeline">
+			<destination>{4062cb63-e88c-48c2-b5a0-fcb0b03a10df}</destination>
+		</relationship>
+		<relationship name="destination">
+			<destination>{f84b9ada-7b35-4beb-8754-39c0b065b4dd}</destination>
+		</relationship>
+		<relationship name="triggerConditions">
+			<destination>{382a771e-b68e-4b6f-b1ce-e8cd6734e07f}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionMarker" id="{738937b5-c577-4748-8c0b-9a4d001f04e8}">
+		<property name="position">
+			<value>40</value>
+		</property>
+		<property name="triggerProbability">
+			<value>0</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{b29f763f-1fd1-44ff-9f2f-a4e25efbae6f}</destination>
+		</relationship>
+		<relationship name="transitionTimeline">
+			<destination>{4e2d447c-fe68-4cae-8523-131afd95b038}</destination>
+		</relationship>
+		<relationship name="destination">
+			<destination>{78e35b37-8373-4613-adbc-185ae097342e}</destination>
+		</relationship>
+		<relationship name="triggerConditions">
+			<destination>{9458d801-7a49-4183-9b6b-101379598d1c}</destination>
+		</relationship>
+	</object>
+	<object class="NamedMarker" id="{78e35b37-8373-4613-adbc-185ae097342e}">
+		<property name="position">
+			<value>67.520922890978056</value>
+		</property>
+		<property name="name">
+			<value>A4</value>
 		</property>
 		<relationship name="timeline">
 			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
@@ -2072,12 +2331,452 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 			<destination>{cbaa23b1-f252-436b-812b-b3c5923dc252}</destination>
 		</relationship>
 	</object>
+	<object class="TransitionMarker" id="{e22a3518-ded2-4e5f-ab22-7b5b45cee4be}">
+		<property name="position">
+			<value>82.200000000000003</value>
+		</property>
+		<property name="triggerProbability">
+			<value>0</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{80d241d5-f9a4-4f96-9463-3230a9ab0c24}</destination>
+		</relationship>
+		<relationship name="transitionTimeline">
+			<destination>{ae96c6bd-a63c-42af-9d1c-0d7da75a476b}</destination>
+		</relationship>
+		<relationship name="destination">
+			<destination>{91b83b85-feb3-4f85-8062-56e803f778da}</destination>
+		</relationship>
+		<relationship name="triggerConditions">
+			<destination>{c5883136-aecc-4349-983c-8709e5b2f4bd}</destination>
+			<destination>{bdeb43e8-11f3-40f9-b453-404cb52dc22a}</destination>
+		</relationship>
+	</object>
 	<object class="NamedMarker" id="{f84b9ada-7b35-4beb-8754-39c0b065b4dd}">
 		<property name="position">
 			<value>25</value>
 		</property>
 		<property name="name">
 			<value>A2</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{cbaa23b1-f252-436b-812b-b3c5923dc252}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionMarker" id="{b27517b7-4fa1-44be-9d90-4f56615b43ab}">
+		<property name="position">
+			<value>63</value>
+		</property>
+		<property name="triggerProbability">
+			<value>0</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{548e5c8d-79e5-459c-a98e-ec015e24d148}</destination>
+		</relationship>
+		<relationship name="transitionTimeline">
+			<destination>{22fc5252-bab6-437a-b707-b9cd2e30181b}</destination>
+		</relationship>
+		<relationship name="destination">
+			<destination>{9e6a01df-c60a-44f7-82a4-a71e0fba62df}</destination>
+		</relationship>
+		<relationship name="triggerConditions">
+			<destination>{96f4b4bb-c2ee-445d-9b15-92dc5536e3e2}</destination>
+			<destination>{65cc192d-7dd2-4ae1-a717-4769d59afc8c}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionMarker" id="{5ff563b0-a68b-418e-834f-7c6bf3bd7d9e}">
+		<property name="position">
+			<value>189.20000000000002</value>
+		</property>
+		<property name="triggerProbabilityEnabled">
+			<value>true</value>
+		</property>
+		<property name="triggerProbability">
+			<value>50</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{b29f763f-1fd1-44ff-9f2f-a4e25efbae6f}</destination>
+		</relationship>
+		<relationship name="transitionTimeline">
+			<destination>{ff513a93-aa8c-4a1d-820e-3709cb0a19f1}</destination>
+		</relationship>
+		<relationship name="destination">
+			<destination>{467964cc-39ee-4a74-966d-78d05e4b85b3}</destination>
+		</relationship>
+		<relationship name="triggerConditions">
+			<destination>{b62c5a64-c913-4c8e-92b4-e705e17638eb}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionMarker" id="{0c9b46e7-873c-4462-a4e8-31d28a0224ba}">
+		<property name="position">
+			<value>82.200000000000003</value>
+		</property>
+		<property name="triggerProbability">
+			<value>0</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{b29f763f-1fd1-44ff-9f2f-a4e25efbae6f}</destination>
+		</relationship>
+		<relationship name="transitionTimeline">
+			<destination>{58a35595-189e-4b76-b1f3-924738631fd4}</destination>
+		</relationship>
+		<relationship name="destination">
+			<destination>{467964cc-39ee-4a74-966d-78d05e4b85b3}</destination>
+		</relationship>
+		<relationship name="triggerConditions">
+			<destination>{71e2011f-e75b-4b2e-a114-abd1dd007e84}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionMarker" id="{e4399ae4-b3e5-4b3c-bc65-2bf88be39794}">
+		<property name="position">
+			<value>15.100000000000001</value>
+		</property>
+		<property name="triggerProbabilityEnabled">
+			<value>true</value>
+		</property>
+		<property name="triggerProbability">
+			<value>50</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{07a9ea8d-7268-4e77-86c0-a4431d2c97e2}</destination>
+		</relationship>
+		<relationship name="transitionTimeline">
+			<destination>{667a332e-541e-4447-bc56-60555723af69}</destination>
+		</relationship>
+		<relationship name="destination">
+			<destination>{467964cc-39ee-4a74-966d-78d05e4b85b3}</destination>
+		</relationship>
+		<relationship name="triggerConditions">
+			<destination>{0060c649-9bf5-4acc-b028-4ebc40a2842e}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionMarker" id="{8c59e9f2-7912-4553-82ad-30e1bafb7544}">
+		<property name="position">
+			<value>146</value>
+		</property>
+		<property name="triggerProbability">
+			<value>0</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{7d15454d-2a9b-4616-b69a-1357d369348b}</destination>
+		</relationship>
+		<relationship name="transitionTimeline">
+			<destination>{69a4dcb4-9f35-48a2-886b-383ba890ef62}</destination>
+		</relationship>
+		<relationship name="destination">
+			<destination>{78e35b37-8373-4613-adbc-185ae097342e}</destination>
+		</relationship>
+		<relationship name="triggerConditions">
+			<destination>{08ce7168-f0d7-4b97-80aa-43f46bb4ef91}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionMarker" id="{f04f7817-5ff5-4dbf-8b55-8c6dac86e6b7}">
+		<property name="position">
+			<value>189.20000000000002</value>
+		</property>
+		<property name="triggerProbability">
+			<value>0</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{7d15454d-2a9b-4616-b69a-1357d369348b}</destination>
+		</relationship>
+		<relationship name="transitionTimeline">
+			<destination>{7e8a0905-8dc4-4004-8eb4-60d7af78a645}</destination>
+		</relationship>
+		<relationship name="destination">
+			<destination>{78e35b37-8373-4613-adbc-185ae097342e}</destination>
+		</relationship>
+		<relationship name="triggerConditions">
+			<destination>{cdc45800-07a0-4cca-ba8b-e316d05406a2}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionMarker" id="{58ecb063-627b-4981-9fc4-db6ae7af0448}">
+		<property name="position">
+			<value>82.200000000000003</value>
+		</property>
+		<property name="triggerProbability">
+			<value>0</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{548e5c8d-79e5-459c-a98e-ec015e24d148}</destination>
+		</relationship>
+		<relationship name="transitionTimeline">
+			<destination>{b0a0b2b6-1eab-40fc-a4b3-2ff9618b9ed0}</destination>
+		</relationship>
+		<relationship name="destination">
+			<destination>{9e6a01df-c60a-44f7-82a4-a71e0fba62df}</destination>
+		</relationship>
+		<relationship name="triggerConditions">
+			<destination>{3561d9b3-f62b-4680-ba96-3eca0ede2f84}</destination>
+			<destination>{86688fb3-e740-421d-ab5a-5240109813b9}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionMarker" id="{76949228-341b-486a-a0c6-9fd6f5a06ccb}">
+		<property name="position">
+			<value>40</value>
+		</property>
+		<property name="triggerProbabilityEnabled">
+			<value>true</value>
+		</property>
+		<property name="triggerProbability">
+			<value>50</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{07a9ea8d-7268-4e77-86c0-a4431d2c97e2}</destination>
+		</relationship>
+		<relationship name="transitionTimeline">
+			<destination>{b087ddb4-ca0a-4227-97e6-1cb988e4ada1}</destination>
+		</relationship>
+		<relationship name="destination">
+			<destination>{467964cc-39ee-4a74-966d-78d05e4b85b3}</destination>
+		</relationship>
+		<relationship name="triggerConditions">
+			<destination>{a8adf152-51c8-4022-9461-850c9671d962}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionMarker" id="{36bf27dc-2c3d-4e9c-9de5-532499b8f51d}">
+		<property name="position">
+			<value>15.100000000000001</value>
+		</property>
+		<property name="triggerProbabilityEnabled">
+			<value>true</value>
+		</property>
+		<property name="triggerProbability">
+			<value>33.3333321</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{befa49b1-f16a-47f3-a117-211970d757e8}</destination>
+		</relationship>
+		<relationship name="transitionTimeline">
+			<destination>{188dff90-bedb-4b6d-a3c2-3c172abeb4c1}</destination>
+		</relationship>
+		<relationship name="destination">
+			<destination>{f84b9ada-7b35-4beb-8754-39c0b065b4dd}</destination>
+		</relationship>
+		<relationship name="triggerConditions">
+			<destination>{8bffa3f6-68b6-423e-933e-3c2b29369ccd}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionMarker" id="{0168d549-d7b4-4906-995f-e1388677e1b6}">
+		<property name="position">
+			<value>63</value>
+		</property>
+		<property name="triggerProbabilityEnabled">
+			<value>true</value>
+		</property>
+		<property name="triggerProbability">
+			<value>33.3333321</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{befa49b1-f16a-47f3-a117-211970d757e8}</destination>
+		</relationship>
+		<relationship name="transitionTimeline">
+			<destination>{3d56ad46-8270-4c5e-ab28-6da2c35a9781}</destination>
+		</relationship>
+		<relationship name="destination">
+			<destination>{2474c845-597c-4d92-b12a-e34f12405b4c}</destination>
+		</relationship>
+		<relationship name="triggerConditions">
+			<destination>{3c133eb5-49eb-4189-b74f-e229bb75ac9b}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionMarker" id="{b0d56179-3fe3-4caf-858f-767ce8f6829f}">
+		<property name="position">
+			<value>15.100000000000001</value>
+		</property>
+		<property name="triggerProbability">
+			<value>0</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{b29f763f-1fd1-44ff-9f2f-a4e25efbae6f}</destination>
+		</relationship>
+		<relationship name="transitionTimeline">
+			<destination>{b271cd0a-7577-41db-806b-3874184f75d5}</destination>
+		</relationship>
+		<relationship name="destination">
+			<destination>{78e35b37-8373-4613-adbc-185ae097342e}</destination>
+		</relationship>
+		<relationship name="triggerConditions">
+			<destination>{57a865c7-6138-4a4c-ad1c-83df355bc481}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionMarker" id="{2324f13e-b162-4aaf-86a0-cf1d2ca22d2e}">
+		<property name="position">
+			<value>82.200000000000003</value>
+		</property>
+		<property name="triggerProbability">
+			<value>50</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{07a9ea8d-7268-4e77-86c0-a4431d2c97e2}</destination>
+		</relationship>
+		<relationship name="transitionTimeline">
+			<destination>{8b547614-ddda-426e-9142-28deab5cea61}</destination>
+		</relationship>
+		<relationship name="destination">
+			<destination>{f84b9ada-7b35-4beb-8754-39c0b065b4dd}</destination>
+		</relationship>
+		<relationship name="triggerConditions">
+			<destination>{236f93f7-365d-4e44-9177-f5d34a1ae903}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionMarker" id="{101781a4-23b8-43d3-94f4-cc0f10106478}">
+		<property name="position">
+			<value>82.200000000000003</value>
+		</property>
+		<property name="triggerProbabilityEnabled">
+			<value>true</value>
+		</property>
+		<property name="triggerProbability">
+			<value>33.3333321</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{befa49b1-f16a-47f3-a117-211970d757e8}</destination>
+		</relationship>
+		<relationship name="transitionTimeline">
+			<destination>{64fe5680-25b9-46f7-8801-3d27939e0015}</destination>
+		</relationship>
+		<relationship name="destination">
+			<destination>{2474c845-597c-4d92-b12a-e34f12405b4c}</destination>
+		</relationship>
+		<relationship name="triggerConditions">
+			<destination>{c040a692-eb84-4c3b-b973-b1d87df3f942}</destination>
+		</relationship>
+	</object>
+	<object class="NamedMarker" id="{9e6a01df-c60a-44f7-82a4-a71e0fba62df}">
+		<property name="position">
+			<value>154.63664583333335</value>
+		</property>
+		<property name="name">
+			<value>B2</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{cbaa23b1-f252-436b-812b-b3c5923dc252}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionMarker" id="{3e0fceb1-5d53-46f3-9a53-bcf1806365f8}">
+		<property name="position">
+			<value>1.8524024442538689</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{bf7c44c4-40a6-4cab-a0f3-38e711d260d6}</destination>
+		</relationship>
+		<relationship name="transitionTimeline">
+			<destination>{6be64d64-90e7-4c8c-8e61-7e3c819cdd47}</destination>
+		</relationship>
+		<relationship name="destination">
+			<destination>{20435ac5-86c5-4e3f-b440-7c4ae0327eae}</destination>
+		</relationship>
+		<relationship name="triggerConditions">
+			<destination>{45674d97-cd3d-4a99-861e-405634d09d58}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionMarker" id="{2003245d-4ddf-49d1-a555-7a5533b58905}">
+		<property name="position">
+			<value>146</value>
+		</property>
+		<property name="triggerProbabilityEnabled">
+			<value>true</value>
+		</property>
+		<property name="triggerProbability">
+			<value>50</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{b29f763f-1fd1-44ff-9f2f-a4e25efbae6f}</destination>
+		</relationship>
+		<relationship name="transitionTimeline">
+			<destination>{396a6895-d5aa-401e-aee7-f71ea096f909}</destination>
+		</relationship>
+		<relationship name="destination">
+			<destination>{467964cc-39ee-4a74-966d-78d05e4b85b3}</destination>
+		</relationship>
+		<relationship name="triggerConditions">
+			<destination>{448a61cd-0d49-4d73-9b51-90721e4c4051}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionMarker" id="{0337ce13-4fcc-40b1-b701-e3389830c194}">
+		<property name="position">
+			<value>63</value>
+		</property>
+		<property name="triggerProbability">
+			<value>0</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{b29f763f-1fd1-44ff-9f2f-a4e25efbae6f}</destination>
+		</relationship>
+		<relationship name="transitionTimeline">
+			<destination>{691defd0-ebcd-4492-9644-716a5fbfb85c}</destination>
+		</relationship>
+		<relationship name="destination">
+			<destination>{78e35b37-8373-4613-adbc-185ae097342e}</destination>
+		</relationship>
+		<relationship name="triggerConditions">
+			<destination>{beb4f6ca-d805-4f31-9f9e-34dff2e29607}</destination>
+		</relationship>
+	</object>
+	<object class="NamedMarker" id="{2474c845-597c-4d92-b12a-e34f12405b4c}">
+		<property name="position">
+			<value>0</value>
+		</property>
+		<property name="name">
+			<value>A1</value>
 		</property>
 		<relationship name="timeline">
 			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
@@ -2114,171 +2813,6 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 			<destination>{cbaa23b1-f252-436b-812b-b3c5923dc252}</destination>
 		</relationship>
 	</object>
-	<object class="NamedMarker" id="{78e35b37-8373-4613-adbc-185ae097342e}">
-		<property name="position">
-			<value>67.520922890978056</value>
-		</property>
-		<property name="name">
-			<value>A4</value>
-		</property>
-		<relationship name="timeline">
-			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
-		</relationship>
-		<relationship name="markerTrack">
-			<destination>{cbaa23b1-f252-436b-812b-b3c5923dc252}</destination>
-		</relationship>
-	</object>
-	<object class="NamedMarker" id="{9e6a01df-c60a-44f7-82a4-a71e0fba62df}">
-		<property name="position">
-			<value>154.63664583333335</value>
-		</property>
-		<property name="name">
-			<value>B2</value>
-		</property>
-		<relationship name="timeline">
-			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
-		</relationship>
-		<relationship name="markerTrack">
-			<destination>{cbaa23b1-f252-436b-812b-b3c5923dc252}</destination>
-		</relationship>
-	</object>
-	<object class="NamedMarker" id="{20435ac5-86c5-4e3f-b440-7c4ae0327eae}">
-		<property name="position">
-			<value>210</value>
-		</property>
-		<property name="name">
-			<value>Out</value>
-		</property>
-		<relationship name="timeline">
-			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
-		</relationship>
-		<relationship name="markerTrack">
-			<destination>{548e5c8d-79e5-459c-a98e-ec015e24d148}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionMarker" id="{36bf27dc-2c3d-4e9c-9de5-532499b8f51d}">
-		<property name="position">
-			<value>15.100000000000001</value>
-		</property>
-		<property name="triggerProbabilityEnabled">
-			<value>true</value>
-		</property>
-		<property name="triggerProbability">
-			<value>33.3333321</value>
-		</property>
-		<relationship name="timeline">
-			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
-		</relationship>
-		<relationship name="markerTrack">
-			<destination>{befa49b1-f16a-47f3-a117-211970d757e8}</destination>
-		</relationship>
-		<relationship name="transitionTimeline">
-			<destination>{188dff90-bedb-4b6d-a3c2-3c172abeb4c1}</destination>
-		</relationship>
-		<relationship name="destination">
-			<destination>{f84b9ada-7b35-4beb-8754-39c0b065b4dd}</destination>
-		</relationship>
-		<relationship name="triggerConditions">
-			<destination>{8bffa3f6-68b6-423e-933e-3c2b29369ccd}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionMarker" id="{e4399ae4-b3e5-4b3c-bc65-2bf88be39794}">
-		<property name="position">
-			<value>15.100000000000001</value>
-		</property>
-		<property name="triggerProbabilityEnabled">
-			<value>true</value>
-		</property>
-		<property name="triggerProbability">
-			<value>50</value>
-		</property>
-		<relationship name="timeline">
-			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
-		</relationship>
-		<relationship name="markerTrack">
-			<destination>{07a9ea8d-7268-4e77-86c0-a4431d2c97e2}</destination>
-		</relationship>
-		<relationship name="transitionTimeline">
-			<destination>{667a332e-541e-4447-bc56-60555723af69}</destination>
-		</relationship>
-		<relationship name="destination">
-			<destination>{467964cc-39ee-4a74-966d-78d05e4b85b3}</destination>
-		</relationship>
-		<relationship name="triggerConditions">
-			<destination>{0060c649-9bf5-4acc-b028-4ebc40a2842e}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionMarker" id="{b0d56179-3fe3-4caf-858f-767ce8f6829f}">
-		<property name="position">
-			<value>15.100000000000001</value>
-		</property>
-		<property name="triggerProbability">
-			<value>0</value>
-		</property>
-		<relationship name="timeline">
-			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
-		</relationship>
-		<relationship name="markerTrack">
-			<destination>{b29f763f-1fd1-44ff-9f2f-a4e25efbae6f}</destination>
-		</relationship>
-		<relationship name="transitionTimeline">
-			<destination>{b271cd0a-7577-41db-806b-3874184f75d5}</destination>
-		</relationship>
-		<relationship name="destination">
-			<destination>{78e35b37-8373-4613-adbc-185ae097342e}</destination>
-		</relationship>
-		<relationship name="triggerConditions">
-			<destination>{57a865c7-6138-4a4c-ad1c-83df355bc481}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionMarker" id="{aa02f71d-654e-4baf-b9e5-e119b39eddb4}">
-		<property name="position">
-			<value>15.100000000000001</value>
-		</property>
-		<property name="triggerProbability">
-			<value>0</value>
-		</property>
-		<relationship name="timeline">
-			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
-		</relationship>
-		<relationship name="markerTrack">
-			<destination>{80d241d5-f9a4-4f96-9463-3230a9ab0c24}</destination>
-		</relationship>
-		<relationship name="transitionTimeline">
-			<destination>{3eee348f-f019-4ba1-bb3a-0b925280d217}</destination>
-		</relationship>
-		<relationship name="destination">
-			<destination>{91b83b85-feb3-4f85-8062-56e803f778da}</destination>
-		</relationship>
-		<relationship name="triggerConditions">
-			<destination>{cf36a67d-5ac4-4701-a65c-d4e5fa7fcbc2}</destination>
-			<destination>{2a606476-184a-4af3-ad29-04284bd12fd4}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionMarker" id="{c3657caa-2afb-4e7f-a7e5-8cab8f84c565}">
-		<property name="position">
-			<value>15.100000000000001</value>
-		</property>
-		<property name="triggerProbability">
-			<value>0</value>
-		</property>
-		<relationship name="timeline">
-			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
-		</relationship>
-		<relationship name="markerTrack">
-			<destination>{548e5c8d-79e5-459c-a98e-ec015e24d148}</destination>
-		</relationship>
-		<relationship name="transitionTimeline">
-			<destination>{4a2eb983-2888-4b56-b8c9-90c6b5f1f94b}</destination>
-		</relationship>
-		<relationship name="destination">
-			<destination>{9e6a01df-c60a-44f7-82a4-a71e0fba62df}</destination>
-		</relationship>
-		<relationship name="triggerConditions">
-			<destination>{04c72094-a4f8-4f16-b29c-fc73cce0bc31}</destination>
-			<destination>{fa56d7b7-47cc-4bd6-ab32-66f4b95112dc}</destination>
-		</relationship>
-	</object>
 	<object class="TransitionMarker" id="{8292dc42-c010-4276-8105-d637fab83944}">
 		<property name="position">
 			<value>40</value>
@@ -2305,55 +2839,6 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 			<destination>{72ae1d60-59cc-4777-966f-567dc8d0d9f7}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionMarker" id="{76949228-341b-486a-a0c6-9fd6f5a06ccb}">
-		<property name="position">
-			<value>40</value>
-		</property>
-		<property name="triggerProbabilityEnabled">
-			<value>true</value>
-		</property>
-		<property name="triggerProbability">
-			<value>50</value>
-		</property>
-		<relationship name="timeline">
-			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
-		</relationship>
-		<relationship name="markerTrack">
-			<destination>{07a9ea8d-7268-4e77-86c0-a4431d2c97e2}</destination>
-		</relationship>
-		<relationship name="transitionTimeline">
-			<destination>{b087ddb4-ca0a-4227-97e6-1cb988e4ada1}</destination>
-		</relationship>
-		<relationship name="destination">
-			<destination>{467964cc-39ee-4a74-966d-78d05e4b85b3}</destination>
-		</relationship>
-		<relationship name="triggerConditions">
-			<destination>{a8adf152-51c8-4022-9461-850c9671d962}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionMarker" id="{738937b5-c577-4748-8c0b-9a4d001f04e8}">
-		<property name="position">
-			<value>40</value>
-		</property>
-		<property name="triggerProbability">
-			<value>0</value>
-		</property>
-		<relationship name="timeline">
-			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
-		</relationship>
-		<relationship name="markerTrack">
-			<destination>{b29f763f-1fd1-44ff-9f2f-a4e25efbae6f}</destination>
-		</relationship>
-		<relationship name="transitionTimeline">
-			<destination>{4e2d447c-fe68-4cae-8523-131afd95b038}</destination>
-		</relationship>
-		<relationship name="destination">
-			<destination>{78e35b37-8373-4613-adbc-185ae097342e}</destination>
-		</relationship>
-		<relationship name="triggerConditions">
-			<destination>{9458d801-7a49-4183-9b6b-101379598d1c}</destination>
-		</relationship>
-	</object>
 	<object class="TransitionMarker" id="{0551fce1-2caa-4fb1-9016-f49d8a1f14fd}">
 		<property name="position">
 			<value>40</value>
@@ -2376,127 +2861,6 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 		<relationship name="triggerConditions">
 			<destination>{26e845f3-5efe-431d-9f0c-97a3fce549f1}</destination>
 			<destination>{3ac829b1-73da-475d-ad48-4f8e3d0c1fdf}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionMarker" id="{0b75be39-4ae5-48f3-9429-d7b23df7aca6}">
-		<property name="position">
-			<value>40</value>
-		</property>
-		<property name="triggerProbability">
-			<value>0</value>
-		</property>
-		<relationship name="timeline">
-			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
-		</relationship>
-		<relationship name="markerTrack">
-			<destination>{548e5c8d-79e5-459c-a98e-ec015e24d148}</destination>
-		</relationship>
-		<relationship name="transitionTimeline">
-			<destination>{38247f57-e3c9-4dc5-88ef-f39542c7cdc6}</destination>
-		</relationship>
-		<relationship name="destination">
-			<destination>{9e6a01df-c60a-44f7-82a4-a71e0fba62df}</destination>
-		</relationship>
-		<relationship name="triggerConditions">
-			<destination>{7731740f-0ee9-41c7-b859-8bcacb9d707b}</destination>
-			<destination>{1f244d5a-0433-46ed-a483-f1cdb4752f1f}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionMarker" id="{0168d549-d7b4-4906-995f-e1388677e1b6}">
-		<property name="position">
-			<value>63</value>
-		</property>
-		<property name="triggerProbabilityEnabled">
-			<value>true</value>
-		</property>
-		<property name="triggerProbability">
-			<value>33.3333321</value>
-		</property>
-		<relationship name="timeline">
-			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
-		</relationship>
-		<relationship name="markerTrack">
-			<destination>{befa49b1-f16a-47f3-a117-211970d757e8}</destination>
-		</relationship>
-		<relationship name="transitionTimeline">
-			<destination>{3d56ad46-8270-4c5e-ab28-6da2c35a9781}</destination>
-		</relationship>
-		<relationship name="destination">
-			<destination>{2474c845-597c-4d92-b12a-e34f12405b4c}</destination>
-		</relationship>
-		<relationship name="triggerConditions">
-			<destination>{3c133eb5-49eb-4189-b74f-e229bb75ac9b}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionMarker" id="{0337ce13-4fcc-40b1-b701-e3389830c194}">
-		<property name="position">
-			<value>63</value>
-		</property>
-		<property name="triggerProbability">
-			<value>0</value>
-		</property>
-		<relationship name="timeline">
-			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
-		</relationship>
-		<relationship name="markerTrack">
-			<destination>{b29f763f-1fd1-44ff-9f2f-a4e25efbae6f}</destination>
-		</relationship>
-		<relationship name="transitionTimeline">
-			<destination>{691defd0-ebcd-4492-9644-716a5fbfb85c}</destination>
-		</relationship>
-		<relationship name="destination">
-			<destination>{78e35b37-8373-4613-adbc-185ae097342e}</destination>
-		</relationship>
-		<relationship name="triggerConditions">
-			<destination>{beb4f6ca-d805-4f31-9f9e-34dff2e29607}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionMarker" id="{2e3cfe39-73f1-44c2-929a-edfe968bc783}">
-		<property name="position">
-			<value>63</value>
-		</property>
-		<property name="triggerProbability">
-			<value>0</value>
-		</property>
-		<relationship name="timeline">
-			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
-		</relationship>
-		<relationship name="markerTrack">
-			<destination>{80d241d5-f9a4-4f96-9463-3230a9ab0c24}</destination>
-		</relationship>
-		<relationship name="transitionTimeline">
-			<destination>{ebb93058-18f0-46bb-9d66-fe1ea5fc6901}</destination>
-		</relationship>
-		<relationship name="destination">
-			<destination>{91b83b85-feb3-4f85-8062-56e803f778da}</destination>
-		</relationship>
-		<relationship name="triggerConditions">
-			<destination>{022eb440-86a0-4c99-b5e9-767593b224bd}</destination>
-			<destination>{11dd77e0-1a70-4d33-ae37-1c1394c61336}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionMarker" id="{b27517b7-4fa1-44be-9d90-4f56615b43ab}">
-		<property name="position">
-			<value>63</value>
-		</property>
-		<property name="triggerProbability">
-			<value>0</value>
-		</property>
-		<relationship name="timeline">
-			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
-		</relationship>
-		<relationship name="markerTrack">
-			<destination>{548e5c8d-79e5-459c-a98e-ec015e24d148}</destination>
-		</relationship>
-		<relationship name="transitionTimeline">
-			<destination>{22fc5252-bab6-437a-b707-b9cd2e30181b}</destination>
-		</relationship>
-		<relationship name="destination">
-			<destination>{9e6a01df-c60a-44f7-82a4-a71e0fba62df}</destination>
-		</relationship>
-		<relationship name="triggerConditions">
-			<destination>{96f4b4bb-c2ee-445d-9b15-92dc5536e3e2}</destination>
-			<destination>{65cc192d-7dd2-4ae1-a717-4769d59afc8c}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionMarker" id="{c13dba65-a62b-4835-a1b5-1f36cc92287d}">
@@ -2525,149 +2889,6 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 			<destination>{9d01f83f-263a-47a6-8905-1fa9ce792042}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionMarker" id="{101781a4-23b8-43d3-94f4-cc0f10106478}">
-		<property name="position">
-			<value>82.200000000000003</value>
-		</property>
-		<property name="triggerProbabilityEnabled">
-			<value>true</value>
-		</property>
-		<property name="triggerProbability">
-			<value>33.3333321</value>
-		</property>
-		<relationship name="timeline">
-			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
-		</relationship>
-		<relationship name="markerTrack">
-			<destination>{befa49b1-f16a-47f3-a117-211970d757e8}</destination>
-		</relationship>
-		<relationship name="transitionTimeline">
-			<destination>{64fe5680-25b9-46f7-8801-3d27939e0015}</destination>
-		</relationship>
-		<relationship name="destination">
-			<destination>{2474c845-597c-4d92-b12a-e34f12405b4c}</destination>
-		</relationship>
-		<relationship name="triggerConditions">
-			<destination>{c040a692-eb84-4c3b-b973-b1d87df3f942}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionMarker" id="{2324f13e-b162-4aaf-86a0-cf1d2ca22d2e}">
-		<property name="position">
-			<value>82.200000000000003</value>
-		</property>
-		<property name="triggerProbability">
-			<value>50</value>
-		</property>
-		<relationship name="timeline">
-			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
-		</relationship>
-		<relationship name="markerTrack">
-			<destination>{07a9ea8d-7268-4e77-86c0-a4431d2c97e2}</destination>
-		</relationship>
-		<relationship name="transitionTimeline">
-			<destination>{8b547614-ddda-426e-9142-28deab5cea61}</destination>
-		</relationship>
-		<relationship name="destination">
-			<destination>{f84b9ada-7b35-4beb-8754-39c0b065b4dd}</destination>
-		</relationship>
-		<relationship name="triggerConditions">
-			<destination>{236f93f7-365d-4e44-9177-f5d34a1ae903}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionMarker" id="{0c9b46e7-873c-4462-a4e8-31d28a0224ba}">
-		<property name="position">
-			<value>82.200000000000003</value>
-		</property>
-		<property name="triggerProbability">
-			<value>0</value>
-		</property>
-		<relationship name="timeline">
-			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
-		</relationship>
-		<relationship name="markerTrack">
-			<destination>{b29f763f-1fd1-44ff-9f2f-a4e25efbae6f}</destination>
-		</relationship>
-		<relationship name="transitionTimeline">
-			<destination>{58a35595-189e-4b76-b1f3-924738631fd4}</destination>
-		</relationship>
-		<relationship name="destination">
-			<destination>{467964cc-39ee-4a74-966d-78d05e4b85b3}</destination>
-		</relationship>
-		<relationship name="triggerConditions">
-			<destination>{71e2011f-e75b-4b2e-a114-abd1dd007e84}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionMarker" id="{e22a3518-ded2-4e5f-ab22-7b5b45cee4be}">
-		<property name="position">
-			<value>82.200000000000003</value>
-		</property>
-		<property name="triggerProbability">
-			<value>0</value>
-		</property>
-		<relationship name="timeline">
-			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
-		</relationship>
-		<relationship name="markerTrack">
-			<destination>{80d241d5-f9a4-4f96-9463-3230a9ab0c24}</destination>
-		</relationship>
-		<relationship name="transitionTimeline">
-			<destination>{ae96c6bd-a63c-42af-9d1c-0d7da75a476b}</destination>
-		</relationship>
-		<relationship name="destination">
-			<destination>{91b83b85-feb3-4f85-8062-56e803f778da}</destination>
-		</relationship>
-		<relationship name="triggerConditions">
-			<destination>{c5883136-aecc-4349-983c-8709e5b2f4bd}</destination>
-			<destination>{bdeb43e8-11f3-40f9-b453-404cb52dc22a}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionMarker" id="{58ecb063-627b-4981-9fc4-db6ae7af0448}">
-		<property name="position">
-			<value>82.200000000000003</value>
-		</property>
-		<property name="triggerProbability">
-			<value>0</value>
-		</property>
-		<relationship name="timeline">
-			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
-		</relationship>
-		<relationship name="markerTrack">
-			<destination>{548e5c8d-79e5-459c-a98e-ec015e24d148}</destination>
-		</relationship>
-		<relationship name="transitionTimeline">
-			<destination>{b0a0b2b6-1eab-40fc-a4b3-2ff9618b9ed0}</destination>
-		</relationship>
-		<relationship name="destination">
-			<destination>{9e6a01df-c60a-44f7-82a4-a71e0fba62df}</destination>
-		</relationship>
-		<relationship name="triggerConditions">
-			<destination>{3561d9b3-f62b-4680-ba96-3eca0ede2f84}</destination>
-			<destination>{86688fb3-e740-421d-ab5a-5240109813b9}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionMarker" id="{8c59e9f2-7912-4553-82ad-30e1bafb7544}">
-		<property name="position">
-			<value>146</value>
-		</property>
-		<property name="triggerProbability">
-			<value>0</value>
-		</property>
-		<relationship name="timeline">
-			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
-		</relationship>
-		<relationship name="markerTrack">
-			<destination>{7d15454d-2a9b-4616-b69a-1357d369348b}</destination>
-		</relationship>
-		<relationship name="transitionTimeline">
-			<destination>{69a4dcb4-9f35-48a2-886b-383ba890ef62}</destination>
-		</relationship>
-		<relationship name="destination">
-			<destination>{78e35b37-8373-4613-adbc-185ae097342e}</destination>
-		</relationship>
-		<relationship name="triggerConditions">
-			<destination>{08ce7168-f0d7-4b97-80aa-43f46bb4ef91}</destination>
-		</relationship>
-	</object>
 	<object class="TransitionMarker" id="{556cbb6f-0e94-4c90-a94c-bda559ee7046}">
 		<property name="position">
 			<value>146</value>
@@ -2692,227 +2913,6 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 		</relationship>
 		<relationship name="triggerConditions">
 			<destination>{14fefbca-efdc-421d-ac61-70d8ca2b0ee3}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionMarker" id="{3d68c69c-0973-4eed-938e-cb683ffb3b09}">
-		<property name="position">
-			<value>146</value>
-		</property>
-		<property name="triggerProbabilityEnabled">
-			<value>true</value>
-		</property>
-		<property name="triggerProbability">
-			<value>33.3333321</value>
-		</property>
-		<relationship name="timeline">
-			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
-		</relationship>
-		<relationship name="markerTrack">
-			<destination>{07a9ea8d-7268-4e77-86c0-a4431d2c97e2}</destination>
-		</relationship>
-		<relationship name="transitionTimeline">
-			<destination>{4062cb63-e88c-48c2-b5a0-fcb0b03a10df}</destination>
-		</relationship>
-		<relationship name="destination">
-			<destination>{f84b9ada-7b35-4beb-8754-39c0b065b4dd}</destination>
-		</relationship>
-		<relationship name="triggerConditions">
-			<destination>{382a771e-b68e-4b6f-b1ce-e8cd6734e07f}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionMarker" id="{2003245d-4ddf-49d1-a555-7a5533b58905}">
-		<property name="position">
-			<value>146</value>
-		</property>
-		<property name="triggerProbabilityEnabled">
-			<value>true</value>
-		</property>
-		<property name="triggerProbability">
-			<value>50</value>
-		</property>
-		<relationship name="timeline">
-			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
-		</relationship>
-		<relationship name="markerTrack">
-			<destination>{b29f763f-1fd1-44ff-9f2f-a4e25efbae6f}</destination>
-		</relationship>
-		<relationship name="transitionTimeline">
-			<destination>{396a6895-d5aa-401e-aee7-f71ea096f909}</destination>
-		</relationship>
-		<relationship name="destination">
-			<destination>{467964cc-39ee-4a74-966d-78d05e4b85b3}</destination>
-		</relationship>
-		<relationship name="triggerConditions">
-			<destination>{448a61cd-0d49-4d73-9b51-90721e4c4051}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionMarker" id="{2a7843cc-bb7d-4d14-95f7-11fdf23f8763}">
-		<property name="position">
-			<value>150.20000000000002</value>
-		</property>
-		<relationship name="timeline">
-			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
-		</relationship>
-		<relationship name="markerTrack">
-			<destination>{bf7c44c4-40a6-4cab-a0f3-38e711d260d6}</destination>
-		</relationship>
-		<relationship name="destination">
-			<destination>{20435ac5-86c5-4e3f-b440-7c4ae0327eae}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionMarker" id="{13b72de6-bae0-4d4a-be60-0366ffc133f0}">
-		<property name="position">
-			<value>194.75530545591431</value>
-		</property>
-		<relationship name="timeline">
-			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
-		</relationship>
-		<relationship name="markerTrack">
-			<destination>{bf7c44c4-40a6-4cab-a0f3-38e711d260d6}</destination>
-		</relationship>
-		<relationship name="destination">
-			<destination>{20435ac5-86c5-4e3f-b440-7c4ae0327eae}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionMarker" id="{c846c3e7-2c85-4eb0-b01f-8c43cce16d77}">
-		<property name="position">
-			<value>189.20000000000002</value>
-		</property>
-		<property name="triggerProbabilityEnabled">
-			<value>true</value>
-		</property>
-		<property name="triggerProbability">
-			<value>25</value>
-		</property>
-		<relationship name="timeline">
-			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
-		</relationship>
-		<relationship name="markerTrack">
-			<destination>{befa49b1-f16a-47f3-a117-211970d757e8}</destination>
-		</relationship>
-		<relationship name="transitionTimeline">
-			<destination>{c6594c29-1333-4ce9-a2cd-59357200f2a5}</destination>
-		</relationship>
-		<relationship name="destination">
-			<destination>{2474c845-597c-4d92-b12a-e34f12405b4c}</destination>
-		</relationship>
-		<relationship name="triggerConditions">
-			<destination>{daa44491-6f35-4428-b501-bb7d2ad08dfc}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionMarker" id="{11b358b7-b69f-40f1-b032-eee51c49460a}">
-		<property name="position">
-			<value>189.20000000000002</value>
-		</property>
-		<property name="triggerProbabilityEnabled">
-			<value>true</value>
-		</property>
-		<property name="triggerProbability">
-			<value>33.3333321</value>
-		</property>
-		<relationship name="timeline">
-			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
-		</relationship>
-		<relationship name="markerTrack">
-			<destination>{07a9ea8d-7268-4e77-86c0-a4431d2c97e2}</destination>
-		</relationship>
-		<relationship name="transitionTimeline">
-			<destination>{2215197f-63af-4b4b-aa29-4e667670cf4f}</destination>
-		</relationship>
-		<relationship name="destination">
-			<destination>{f84b9ada-7b35-4beb-8754-39c0b065b4dd}</destination>
-		</relationship>
-		<relationship name="triggerConditions">
-			<destination>{42d2e111-025f-499a-9fa1-548ed8c43ee7}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionMarker" id="{5ff563b0-a68b-418e-834f-7c6bf3bd7d9e}">
-		<property name="position">
-			<value>189.20000000000002</value>
-		</property>
-		<property name="triggerProbabilityEnabled">
-			<value>true</value>
-		</property>
-		<property name="triggerProbability">
-			<value>50</value>
-		</property>
-		<relationship name="timeline">
-			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
-		</relationship>
-		<relationship name="markerTrack">
-			<destination>{b29f763f-1fd1-44ff-9f2f-a4e25efbae6f}</destination>
-		</relationship>
-		<relationship name="transitionTimeline">
-			<destination>{ff513a93-aa8c-4a1d-820e-3709cb0a19f1}</destination>
-		</relationship>
-		<relationship name="destination">
-			<destination>{467964cc-39ee-4a74-966d-78d05e4b85b3}</destination>
-		</relationship>
-		<relationship name="triggerConditions">
-			<destination>{b62c5a64-c913-4c8e-92b4-e705e17638eb}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionMarker" id="{f04f7817-5ff5-4dbf-8b55-8c6dac86e6b7}">
-		<property name="position">
-			<value>189.20000000000002</value>
-		</property>
-		<property name="triggerProbability">
-			<value>0</value>
-		</property>
-		<relationship name="timeline">
-			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
-		</relationship>
-		<relationship name="markerTrack">
-			<destination>{7d15454d-2a9b-4616-b69a-1357d369348b}</destination>
-		</relationship>
-		<relationship name="transitionTimeline">
-			<destination>{7e8a0905-8dc4-4004-8eb4-60d7af78a645}</destination>
-		</relationship>
-		<relationship name="destination">
-			<destination>{78e35b37-8373-4613-adbc-185ae097342e}</destination>
-		</relationship>
-		<relationship name="triggerConditions">
-			<destination>{cdc45800-07a0-4cca-ba8b-e316d05406a2}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionMarker" id="{3e0fceb1-5d53-46f3-9a53-bcf1806365f8}">
-		<property name="position">
-			<value>1.8524024442538689</value>
-		</property>
-		<relationship name="timeline">
-			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
-		</relationship>
-		<relationship name="markerTrack">
-			<destination>{bf7c44c4-40a6-4cab-a0f3-38e711d260d6}</destination>
-		</relationship>
-		<relationship name="transitionTimeline">
-			<destination>{6be64d64-90e7-4c8c-8e61-7e3c819cdd47}</destination>
-		</relationship>
-		<relationship name="destination">
-			<destination>{20435ac5-86c5-4e3f-b440-7c4ae0327eae}</destination>
-		</relationship>
-		<relationship name="triggerConditions">
-			<destination>{45674d97-cd3d-4a99-861e-405634d09d58}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionMarker" id="{cb744c39-0aa6-4332-9b5f-f9a0bab118c7}">
-		<property name="position">
-			<value>26</value>
-		</property>
-		<relationship name="timeline">
-			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
-		</relationship>
-		<relationship name="markerTrack">
-			<destination>{bf7c44c4-40a6-4cab-a0f3-38e711d260d6}</destination>
-		</relationship>
-		<relationship name="transitionTimeline">
-			<destination>{9a729d80-0c25-4330-b992-b92717e24631}</destination>
-		</relationship>
-		<relationship name="destination">
-			<destination>{20435ac5-86c5-4e3f-b440-7c4ae0327eae}</destination>
-		</relationship>
-		<relationship name="triggerConditions">
-			<destination>{6b367275-ff60-4c8a-9742-f2dfb0b1c094}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionMarker" id="{55ffb581-92c5-45d0-b237-ea39fded1658}">
@@ -2993,6 +2993,30 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 	</object>
 	<object class="MixerBusPanner" id="{3d829766-8147-45ee-822a-0359b18f1ef5}" />
 	<object class="MixerBusFader" id="{1dc31dd9-7608-44e2-91e1-5384f2bd32cb}" />
+	<object class="TransitionDestinationFadeInCurve" id="{8558537e-e573-40ea-9617-db3e4981c497}">
+		<relationship name="startPoint">
+			<destination>{80fa391b-66fe-449f-a608-1e8a56111f14}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{b73143ea-7a09-45af-ada8-2d8ac7ef4ac7}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionSourceFadeOutCurve" id="{ba3b14f3-d499-4c36-bcc5-8e54da24f335}">
+		<relationship name="startPoint">
+			<destination>{65a207c8-9e50-4e88-a2d6-05296b323755}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{4ae046e9-5314-476e-82b9-9151ef5bfaf9}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionDestinationFadeInCurve" id="{a546e884-07c8-4f87-ac27-ba811ef86aa2}">
+		<relationship name="startPoint">
+			<destination>{23c32e41-d0db-4db3-a962-d627455a9411}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{946981a8-37de-4423-9270-6f01671be418}</destination>
+		</relationship>
+	</object>
 	<object class="FadeCurve" id="{5fa498fc-f7a8-4ceb-be82-3d25597e8eff}">
 		<relationship name="startPoint">
 			<destination>{f1792eec-7f9b-46e3-842c-07b7d1d734f3}</destination>
@@ -3075,14 +3099,6 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 		</relationship>
 		<relationship name="relatedModule">
 			<destination>{c8ec6cb5-89af-4f45-b627-2582a6e42e76}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionDestinationFadeInCurve" id="{a546e884-07c8-4f87-ac27-ba811ef86aa2}">
-		<relationship name="startPoint">
-			<destination>{23c32e41-d0db-4db3-a962-d627455a9411}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{946981a8-37de-4423-9270-6f01671be418}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionSourceFadeOutCurve" id="{f8c66e7e-d583-408e-839a-cf17b262afe1}">
@@ -3321,14 +3337,6 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 			<destination>{92888205-9501-4bff-bc22-83d19d4b6078}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionSourceFadeOutCurve" id="{ba3b14f3-d499-4c36-bcc5-8e54da24f335}">
-		<relationship name="startPoint">
-			<destination>{65a207c8-9e50-4e88-a2d6-05296b323755}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{4ae046e9-5314-476e-82b9-9151ef5bfaf9}</destination>
-		</relationship>
-	</object>
 	<object class="TransitionDestinationFadeInCurve" id="{ddc0b25d-eb63-49fa-8479-21abf8d32ba9}">
 		<relationship name="startPoint">
 			<destination>{72737908-99d5-4130-a12c-429502451a83}</destination>
@@ -3359,14 +3367,6 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 		</relationship>
 		<relationship name="endPoint">
 			<destination>{e579bded-b64e-4fd1-826f-6f76a40d61b1}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionDestinationFadeInCurve" id="{8558537e-e573-40ea-9617-db3e4981c497}">
-		<relationship name="startPoint">
-			<destination>{80fa391b-66fe-449f-a608-1e8a56111f14}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{b73143ea-7a09-45af-ada8-2d8ac7ef4ac7}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionSourceFadeOutCurve" id="{bdc2a7f6-2328-43c4-8355-00ed160ccd6d}">
@@ -3563,88 +3563,30 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{1414c0ab-ca2e-4142-9e17-cfbd42c2464b}" />
-	<object class="TransitionTimeline" id="{188dff90-bedb-4b6d-a3c2-3c172abeb4c1}">
+	<object class="TransitionTimeline" id="{c6594c29-1333-4ce9-a2cd-59357200f2a5}">
 		<property name="length">
-			<value>2</value>
+			<value>1.4500000000000002</value>
 		</property>
 		<relationship name="modules">
-			<destination>{104d88bb-6868-4533-83da-b498dd623315}</destination>
-			<destination>{29945f3e-f4ce-45c5-a072-34982be7db07}</destination>
-			<destination>{0950bd94-256a-4198-9382-bb94acf79b89}</destination>
-			<destination>{c7b94b26-984e-4e16-a07c-67a4af7d2dd6}</destination>
-			<destination>{49af8274-2c90-4ec7-80b0-865d35c1b308}</destination>
-			<destination>{0c7cbe23-ba43-49af-bddf-8ce69f57631f}</destination>
+			<destination>{6a1fbbe4-bb1b-46ab-91d4-224f4f89346d}</destination>
+			<destination>{fc47e303-00ca-4237-b5d8-4bfd31175f02}</destination>
+			<destination>{37ffa7d0-99b4-4c17-90ed-f222339e58f4}</destination>
+			<destination>{a21bd2a4-39b9-407a-b091-8df72238ff6e}</destination>
+			<destination>{6180f503-d0ff-48b0-90a0-2a8c7d44bd83}</destination>
+			<destination>{71267502-e9c8-4416-b01a-03f7967dc2af}</destination>
 		</relationship>
 	</object>
-	<object class="ParameterCondition" id="{8bffa3f6-68b6-423e-933e-3c2b29369ccd}">
-		<property name="minimum">
-			<value>0</value>
-		</property>
-		<property name="maximum">
-			<value>1</value>
-		</property>
-		<relationship name="parameter">
-			<destination>{3921e63a-f1cf-4efd-9055-24dc92a8da14}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionTimeline" id="{667a332e-541e-4447-bc56-60555723af69}">
-		<property name="length">
-			<value>2.9000000000000004</value>
-		</property>
-		<relationship name="modules">
-			<destination>{e973ba5d-a881-4247-a0d9-bc8e9903ecff}</destination>
-			<destination>{0df6f9e0-4476-4377-a6ba-9d0559d733a5}</destination>
-			<destination>{f5d67a56-f3af-495c-b54a-c32545075227}</destination>
-			<destination>{e34556ba-9f49-4591-b382-ebfbdfce50ea}</destination>
-			<destination>{a6ceabce-68c8-4c90-9303-21f20067a919}</destination>
-			<destination>{af9dff54-8fcf-4a72-8f28-d6c2a665e245}</destination>
-		</relationship>
-	</object>
-	<object class="ParameterCondition" id="{0060c649-9bf5-4acc-b028-4ebc40a2842e}">
-		<property name="minimum">
-			<value>0</value>
-		</property>
-		<property name="maximum">
-			<value>1</value>
-		</property>
-		<relationship name="parameter">
-			<destination>{3921e63a-f1cf-4efd-9055-24dc92a8da14}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionTimeline" id="{b271cd0a-7577-41db-806b-3874184f75d5}">
-		<property name="length">
-			<value>2.3499999999999996</value>
-		</property>
-		<relationship name="modules">
-			<destination>{5900bf3d-bc45-47d4-af6b-977cbead00b7}</destination>
-			<destination>{0b23ec04-701b-4849-b913-543e9af44fd2}</destination>
-			<destination>{0b1391e4-3ca4-43d9-96c6-971ee6ba0285}</destination>
-			<destination>{1f417997-ca1a-44f9-bb7f-6403e22167c1}</destination>
-			<destination>{0cf96278-0984-4e8d-9b71-1e5424c49ccc}</destination>
-			<destination>{d451cf01-0773-49ab-ba0e-c09bfb109fee}</destination>
-		</relationship>
-	</object>
-	<object class="ParameterCondition" id="{57a865c7-6138-4a4c-ad1c-83df355bc481}">
-		<property name="minimum">
-			<value>0</value>
-		</property>
-		<property name="maximum">
-			<value>1</value>
-		</property>
-		<relationship name="parameter">
-			<destination>{3921e63a-f1cf-4efd-9055-24dc92a8da14}</destination>
-		</relationship>
-	</object>
+	<object class="EventCondition" id="{daa44491-6f35-4428-b501-bb7d2ad08dfc}" />
 	<object class="TransitionTimeline" id="{3eee348f-f019-4ba1-bb3a-0b925280d217}">
 		<property name="length">
 			<value>2.3499999999999996</value>
 		</property>
 		<relationship name="modules">
-			<destination>{58bac016-df33-4185-ac8f-dc01de221b05}</destination>
 			<destination>{c8ec6cb5-89af-4f45-b627-2582a6e42e76}</destination>
-			<destination>{a6e3ca39-3d8a-4606-b543-a04b020f08ce}</destination>
 			<destination>{3aa3068d-608e-4d99-a406-e1faf3a9188b}</destination>
+			<destination>{a6e3ca39-3d8a-4606-b543-a04b020f08ce}</destination>
 			<destination>{f25105de-db52-49e9-89f8-7a5f478911a0}</destination>
+			<destination>{58bac016-df33-4185-ac8f-dc01de221b05}</destination>
 			<destination>{0c2c4393-3647-493e-adc2-ea17918182c5}</destination>
 		</relationship>
 	</object>
@@ -3670,17 +3612,116 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 			<destination>{86cb5307-a63e-45f0-807c-9ddf929a3f55}</destination>
 		</relationship>
 	</object>
+	<object class="TransitionTimeline" id="{2215197f-63af-4b4b-aa29-4e667670cf4f}">
+		<relationship name="modules">
+			<destination>{e635bee9-f2d6-4ffd-9d77-38c4135a7255}</destination>
+			<destination>{7a7dd8d7-97cf-42c0-b4de-afb07c85de39}</destination>
+			<destination>{c4962e54-0835-4073-9578-fe595802affb}</destination>
+			<destination>{5d69e1cf-182e-45c7-a2fb-2a90c44b8fa1}</destination>
+			<destination>{8afcf6f5-63c6-44b4-9e39-a0fef297c7b1}</destination>
+			<destination>{c69a8a90-0540-4ee5-884c-cb4b63a24dc8}</destination>
+		</relationship>
+	</object>
+	<object class="EventCondition" id="{42d2e111-025f-499a-9fa1-548ed8c43ee7}" />
+	<object class="TransitionTimeline" id="{9a729d80-0c25-4330-b992-b92717e24631}">
+		<property name="length">
+			<value>14</value>
+		</property>
+		<relationship name="modules">
+			<destination>{ec8a4a33-1299-41e0-853a-16f1db4cc0a9}</destination>
+			<destination>{f006c956-2294-48c0-a41d-8332b5d7fe0a}</destination>
+			<destination>{91f15495-a508-41dc-aaa3-d8440caf3160}</destination>
+			<destination>{43ef5df7-4de0-45a3-af36-c41030c2612d}</destination>
+			<destination>{7a2b54d8-0d6a-4248-ba23-9a76b8c999ca}</destination>
+			<destination>{7d921aca-a521-4bca-8e01-6e9f75479647}</destination>
+		</relationship>
+	</object>
+	<object class="EventCondition" id="{6b367275-ff60-4c8a-9742-f2dfb0b1c094}">
+		<property name="eventState">
+			<value>1</value>
+		</property>
+	</object>
+	<object class="TransitionTimeline" id="{38247f57-e3c9-4dc5-88ef-f39542c7cdc6}">
+		<property name="length">
+			<value>1.3</value>
+		</property>
+		<relationship name="modules">
+			<destination>{27c3e538-07c9-41d7-adde-69e0838fe52f}</destination>
+			<destination>{f1c1554a-753a-4eb5-9319-6b2be52e15ba}</destination>
+			<destination>{b1811a9b-aec5-4209-b248-ad17f4a77ebe}</destination>
+			<destination>{7bef2ddb-f9d9-427a-873a-efca14c39c0d}</destination>
+			<destination>{9520e893-9b42-48c9-94f0-fde8513f94e1}</destination>
+			<destination>{67d2aee4-dac9-4195-833e-5f5b0cf63a61}</destination>
+		</relationship>
+	</object>
+	<object class="ParameterCondition" id="{7731740f-0ee9-41c7-b859-8bcacb9d707b}">
+		<property name="minimum">
+			<value>2</value>
+		</property>
+		<property name="maximum">
+			<value>6</value>
+		</property>
+		<relationship name="parameter">
+			<destination>{3921e63a-f1cf-4efd-9055-24dc92a8da14}</destination>
+		</relationship>
+	</object>
+	<object class="ParameterCondition" id="{1f244d5a-0433-46ed-a483-f1cdb4752f1f}">
+		<property name="minimum">
+			<value>1</value>
+		</property>
+		<property name="maximum">
+			<value>1</value>
+		</property>
+		<relationship name="parameter">
+			<destination>{86cb5307-a63e-45f0-807c-9ddf929a3f55}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionTimeline" id="{ebb93058-18f0-46bb-9d66-fe1ea5fc6901}">
+		<property name="length">
+			<value>1.3500000000000001</value>
+		</property>
+		<relationship name="modules">
+			<destination>{f4b3c2f0-864e-4e70-9137-3ae7fc5260bc}</destination>
+			<destination>{1339e17e-6a6e-4be5-a9b5-cd122164d943}</destination>
+			<destination>{60633fff-da82-48b8-a474-c0b936aab4cf}</destination>
+			<destination>{5cb07328-0c57-49ed-9306-510b8ed0acea}</destination>
+			<destination>{09995b05-e9bd-43d9-a7bb-1255e2a58a18}</destination>
+			<destination>{1e20dbc6-5313-42a4-b81e-f379017736cc}</destination>
+		</relationship>
+	</object>
+	<object class="ParameterCondition" id="{022eb440-86a0-4c99-b5e9-767593b224bd}">
+		<property name="minimum">
+			<value>2</value>
+		</property>
+		<property name="maximum">
+			<value>6</value>
+		</property>
+		<relationship name="parameter">
+			<destination>{3921e63a-f1cf-4efd-9055-24dc92a8da14}</destination>
+		</relationship>
+	</object>
+	<object class="ParameterCondition" id="{11dd77e0-1a70-4d33-ae37-1c1394c61336}">
+		<property name="minimum">
+			<value>0</value>
+		</property>
+		<property name="maximum">
+			<value>0</value>
+		</property>
+		<relationship name="parameter">
+			<destination>{86cb5307-a63e-45f0-807c-9ddf929a3f55}</destination>
+		</relationship>
+	</object>
 	<object class="TransitionTimeline" id="{4a2eb983-2888-4b56-b8c9-90c6b5f1f94b}">
 		<property name="length">
 			<value>2.3499999999999996</value>
 		</property>
 		<relationship name="modules">
-			<destination>{03a44648-d6b2-439c-b5a2-7a2c1b49e52b}</destination>
 			<destination>{61820ded-392b-477c-99e6-ab7f95eb99fd}</destination>
-			<destination>{a5ffedf6-1a03-44a7-b4ea-c4092c82e8f2}</destination>
+			<destination>{209b1b07-19a8-4b2a-acdd-a3ecf52a6f4b}</destination>
+			<destination>{03a44648-d6b2-439c-b5a2-7a2c1b49e52b}</destination>
 			<destination>{4f0971a9-df09-473a-8031-08f5fd725301}</destination>
 			<destination>{4f4eb356-513d-4825-84cb-18d16e39a99d}</destination>
-			<destination>{209b1b07-19a8-4b2a-acdd-a3ecf52a6f4b}</destination>
+			<destination>{a5ffedf6-1a03-44a7-b4ea-c4092c82e8f2}</destination>
 		</relationship>
 	</object>
 	<object class="ParameterCondition" id="{04c72094-a4f8-4f16-b29c-fc73cce0bc31}">
@@ -3705,20 +3746,34 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 			<destination>{86cb5307-a63e-45f0-807c-9ddf929a3f55}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionTimeline" id="{33b5f801-d5b4-4dff-aa0f-752bfd753809}">
+	<object class="TransitionTimeline" id="{4062cb63-e88c-48c2-b5a0-fcb0b03a10df}">
 		<property name="length">
-			<value>1.3500000000000001</value>
+			<value>1.55</value>
 		</property>
 		<relationship name="modules">
-			<destination>{5f2629bd-b091-4add-9a01-893ddd3d435d}</destination>
-			<destination>{48c4591b-4568-460d-841c-df7d6c31498f}</destination>
-			<destination>{35db1aa4-651e-4328-9dd2-65162e519da0}</destination>
-			<destination>{2c2851fe-0091-4584-a790-4a66c58f3369}</destination>
-			<destination>{6467cfd2-2a89-454e-8f30-a3886a29805a}</destination>
-			<destination>{46b2afa5-8406-4237-af0e-13a42897d857}</destination>
+			<destination>{8bcdfb6a-618d-469d-b663-7544feed0ef4}</destination>
+			<destination>{7b672aad-08a5-451d-b419-569c5de5946b}</destination>
+			<destination>{385aba77-aa76-4b7b-b2cb-ae0d380febcf}</destination>
+			<destination>{14825a46-fd1d-4fbe-80b5-4cbab367999e}</destination>
+			<destination>{e4cc3d03-5af2-4aaf-9ff1-c9d10a78361a}</destination>
+			<destination>{1b50ca24-3d9e-43c7-9776-750142898064}</destination>
 		</relationship>
 	</object>
-	<object class="ParameterCondition" id="{72ae1d60-59cc-4777-966f-567dc8d0d9f7}">
+	<object class="EventCondition" id="{382a771e-b68e-4b6f-b1ce-e8cd6734e07f}" />
+	<object class="TransitionTimeline" id="{4e2d447c-fe68-4cae-8523-131afd95b038}">
+		<property name="length">
+			<value>1.4000000000000001</value>
+		</property>
+		<relationship name="modules">
+			<destination>{3bfec9e6-33e4-49a6-8f99-0208971d6e99}</destination>
+			<destination>{3f943483-d952-4b8f-b35f-d02d287502bc}</destination>
+			<destination>{3d021e70-b6f1-4252-bade-bed5608b6a5e}</destination>
+			<destination>{d620198f-a68b-48b2-a85b-b041e8f89a79}</destination>
+			<destination>{598bdd41-6d28-4468-bfbf-a1e758b8ec1a}</destination>
+			<destination>{df04b2e3-2913-4fe0-b9eb-4d1b5669c591}</destination>
+		</relationship>
+	</object>
+	<object class="ParameterCondition" id="{9458d801-7a49-4183-9b6b-101379598d1c}">
 		<property name="minimum">
 			<value>0</value>
 		</property>
@@ -3729,14 +3784,206 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 			<destination>{3921e63a-f1cf-4efd-9055-24dc92a8da14}</destination>
 		</relationship>
 	</object>
+	<object class="TransitionTimeline" id="{ae96c6bd-a63c-42af-9d1c-0d7da75a476b}">
+		<property name="length">
+			<value>1.6200000000000001</value>
+		</property>
+		<relationship name="modules">
+			<destination>{71df0229-346a-43c5-ae1d-67fc146067d2}</destination>
+			<destination>{1dd6b40a-9a3a-454a-8ad1-e6071e826795}</destination>
+			<destination>{e0589ac9-0dea-456b-ba1f-52a5072a2856}</destination>
+			<destination>{b7691b82-b5d2-4ee5-9ea9-1c5c8647981c}</destination>
+			<destination>{0766dad0-ce8a-4bc4-ab54-293d9ab05fd8}</destination>
+			<destination>{64d34f8a-8e17-40c6-b6f3-38896843b223}</destination>
+		</relationship>
+	</object>
+	<object class="ParameterCondition" id="{c5883136-aecc-4349-983c-8709e5b2f4bd}">
+		<property name="minimum">
+			<value>2</value>
+		</property>
+		<property name="maximum">
+			<value>6</value>
+		</property>
+		<relationship name="parameter">
+			<destination>{3921e63a-f1cf-4efd-9055-24dc92a8da14}</destination>
+		</relationship>
+	</object>
+	<object class="ParameterCondition" id="{bdeb43e8-11f3-40f9-b453-404cb52dc22a}">
+		<property name="minimum">
+			<value>0</value>
+		</property>
+		<property name="maximum">
+			<value>0</value>
+		</property>
+		<relationship name="parameter">
+			<destination>{86cb5307-a63e-45f0-807c-9ddf929a3f55}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionTimeline" id="{22fc5252-bab6-437a-b707-b9cd2e30181b}">
+		<property name="length">
+			<value>1.3</value>
+		</property>
+		<relationship name="modules">
+			<destination>{403d352f-4dd2-4a49-9662-c0db59d2fc03}</destination>
+			<destination>{55249aad-da93-4106-9033-dc4804218f08}</destination>
+			<destination>{761da4eb-1537-47af-8d93-d3af120be9de}</destination>
+			<destination>{1de53a96-978b-4a05-85d6-70008732059b}</destination>
+			<destination>{66fc902f-789c-4256-8b3e-b1d3bc35a835}</destination>
+			<destination>{5275ed86-0379-4bb8-ae60-22855485fde5}</destination>
+		</relationship>
+	</object>
+	<object class="ParameterCondition" id="{96f4b4bb-c2ee-445d-9b15-92dc5536e3e2}">
+		<property name="minimum">
+			<value>2</value>
+		</property>
+		<property name="maximum">
+			<value>6</value>
+		</property>
+		<relationship name="parameter">
+			<destination>{3921e63a-f1cf-4efd-9055-24dc92a8da14}</destination>
+		</relationship>
+	</object>
+	<object class="ParameterCondition" id="{65cc192d-7dd2-4ae1-a717-4769d59afc8c}">
+		<property name="minimum">
+			<value>1</value>
+		</property>
+		<property name="maximum">
+			<value>1</value>
+		</property>
+		<relationship name="parameter">
+			<destination>{86cb5307-a63e-45f0-807c-9ddf929a3f55}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionTimeline" id="{ff513a93-aa8c-4a1d-820e-3709cb0a19f1}">
+		<relationship name="modules">
+			<destination>{8176b4c9-19e1-4ce8-850f-e7798266877b}</destination>
+			<destination>{1ded08ef-3240-4900-b638-9fccefbcbad5}</destination>
+			<destination>{f1610a6d-3df8-4b4d-a144-1e0ed03c568f}</destination>
+			<destination>{1a2f9281-2b54-49e3-8820-070e95a5e3a2}</destination>
+			<destination>{6dad14c7-f2e0-4675-9e86-afcb75530488}</destination>
+			<destination>{29ec5736-81ba-4967-a82f-7264a428556d}</destination>
+		</relationship>
+	</object>
+	<object class="EventCondition" id="{b62c5a64-c913-4c8e-92b4-e705e17638eb}" />
+	<object class="TransitionTimeline" id="{58a35595-189e-4b76-b1f3-924738631fd4}">
+		<property name="length">
+			<value>1.4000000000000001</value>
+		</property>
+		<relationship name="modules">
+			<destination>{b2fac74a-3d3f-419e-9447-a8cf6d6d8d07}</destination>
+			<destination>{22eb7d26-0747-4009-939c-2d2f3a268a16}</destination>
+			<destination>{d1146209-f332-4c60-9e86-84c248d6b07b}</destination>
+			<destination>{a77dd24a-4ab3-476e-8af5-f6e08caebecf}</destination>
+			<destination>{080ac49e-82e9-4b02-be57-bf03c054507a}</destination>
+			<destination>{a94ed857-2554-43df-a894-e1f523b05d4f}</destination>
+		</relationship>
+	</object>
+	<object class="ParameterCondition" id="{71e2011f-e75b-4b2e-a114-abd1dd007e84}">
+		<property name="minimum">
+			<value>0</value>
+		</property>
+		<property name="maximum">
+			<value>1</value>
+		</property>
+		<relationship name="parameter">
+			<destination>{3921e63a-f1cf-4efd-9055-24dc92a8da14}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionTimeline" id="{667a332e-541e-4447-bc56-60555723af69}">
+		<property name="length">
+			<value>2.9000000000000004</value>
+		</property>
+		<relationship name="modules">
+			<destination>{af9dff54-8fcf-4a72-8f28-d6c2a665e245}</destination>
+			<destination>{e34556ba-9f49-4591-b382-ebfbdfce50ea}</destination>
+			<destination>{e973ba5d-a881-4247-a0d9-bc8e9903ecff}</destination>
+			<destination>{0df6f9e0-4476-4377-a6ba-9d0559d733a5}</destination>
+			<destination>{a6ceabce-68c8-4c90-9303-21f20067a919}</destination>
+			<destination>{f5d67a56-f3af-495c-b54a-c32545075227}</destination>
+		</relationship>
+	</object>
+	<object class="ParameterCondition" id="{0060c649-9bf5-4acc-b028-4ebc40a2842e}">
+		<property name="minimum">
+			<value>0</value>
+		</property>
+		<property name="maximum">
+			<value>1</value>
+		</property>
+		<relationship name="parameter">
+			<destination>{3921e63a-f1cf-4efd-9055-24dc92a8da14}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionTimeline" id="{69a4dcb4-9f35-48a2-886b-383ba890ef62}">
+		<property name="length">
+			<value>1.4000000000000001</value>
+		</property>
+		<relationship name="modules">
+			<destination>{41a3e79c-0643-4466-b6b0-8d040c85db1b}</destination>
+			<destination>{e9916bb0-2a1a-49d7-bb1b-d75e25ec3f6f}</destination>
+			<destination>{5e6f9ea7-e9fa-4438-ae80-672534244b3b}</destination>
+			<destination>{1126ba01-55fd-4a24-917e-7e687a476b4a}</destination>
+			<destination>{89cadcae-15e7-45d4-b63e-6b0f994981fe}</destination>
+			<destination>{1011df3f-b42b-44ed-a05f-017bf4d95bbc}</destination>
+		</relationship>
+	</object>
+	<object class="EventCondition" id="{08ce7168-f0d7-4b97-80aa-43f46bb4ef91}" />
+	<object class="TransitionTimeline" id="{7e8a0905-8dc4-4004-8eb4-60d7af78a645}">
+		<property name="length">
+			<value>0.90000000000000002</value>
+		</property>
+		<relationship name="modules">
+			<destination>{d28dedff-6158-4dd7-9551-fbc42fa7b17f}</destination>
+			<destination>{8e41504e-41bb-4bb6-9511-602fa08f0e9c}</destination>
+			<destination>{93b672d4-9d41-4903-98d5-5727608cb408}</destination>
+			<destination>{786164b8-25e7-42fa-a623-4e26abdc5a67}</destination>
+			<destination>{c41ec82f-2154-41e4-96fc-7972e6bdddb4}</destination>
+			<destination>{eec04e59-b2a5-414d-9b42-6bebd4c82d6f}</destination>
+		</relationship>
+	</object>
+	<object class="EventCondition" id="{cdc45800-07a0-4cca-ba8b-e316d05406a2}" />
+	<object class="TransitionTimeline" id="{b0a0b2b6-1eab-40fc-a4b3-2ff9618b9ed0}">
+		<property name="length">
+			<value>1.6500000000000001</value>
+		</property>
+		<relationship name="modules">
+			<destination>{cb2432e5-7ed7-43bd-8629-9d413dc1bf87}</destination>
+			<destination>{b63033e6-b9b7-4e81-bb43-28cd4d497c5a}</destination>
+			<destination>{01f9db1f-60e0-4464-956c-b0e3fff9ac63}</destination>
+			<destination>{36e519d8-cf27-4a5e-a0f1-17746aee5e01}</destination>
+			<destination>{159d103e-9569-4dd8-a9cb-2182782f3de9}</destination>
+			<destination>{75ed812a-1dcd-4248-af0e-6fa255329010}</destination>
+		</relationship>
+	</object>
+	<object class="ParameterCondition" id="{3561d9b3-f62b-4680-ba96-3eca0ede2f84}">
+		<property name="minimum">
+			<value>2</value>
+		</property>
+		<property name="maximum">
+			<value>6</value>
+		</property>
+		<relationship name="parameter">
+			<destination>{3921e63a-f1cf-4efd-9055-24dc92a8da14}</destination>
+		</relationship>
+	</object>
+	<object class="ParameterCondition" id="{86688fb3-e740-421d-ab5a-5240109813b9}">
+		<property name="minimum">
+			<value>1</value>
+		</property>
+		<property name="maximum">
+			<value>1</value>
+		</property>
+		<relationship name="parameter">
+			<destination>{86cb5307-a63e-45f0-807c-9ddf929a3f55}</destination>
+		</relationship>
+	</object>
 	<object class="TransitionTimeline" id="{b087ddb4-ca0a-4227-97e6-1cb988e4ada1}">
 		<property name="length">
 			<value>1.4000000000000001</value>
 		</property>
 		<relationship name="modules">
+			<destination>{058cceca-62bd-45c3-a8c3-b9be0885c3f5}</destination>
 			<destination>{3c99c14e-abc7-4d54-abe7-5cbe48b9e783}</destination>
 			<destination>{657fe991-193d-4dc8-b3e1-502789e29798}</destination>
-			<destination>{058cceca-62bd-45c3-a8c3-b9be0885c3f5}</destination>
 			<destination>{fcf0ba9e-ceb7-4482-b7d2-45ced4fe1864}</destination>
 			<destination>{7804a8d8-53ef-499c-99da-762441db4f67}</destination>
 			<destination>{15805fa3-e22a-4141-8fb1-79161225b746}</destination>
@@ -3753,20 +4000,196 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 			<destination>{3921e63a-f1cf-4efd-9055-24dc92a8da14}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionTimeline" id="{4e2d447c-fe68-4cae-8523-131afd95b038}">
+	<object class="TransitionTimeline" id="{188dff90-bedb-4b6d-a3c2-3c172abeb4c1}">
+		<property name="length">
+			<value>2</value>
+		</property>
+		<relationship name="modules">
+			<destination>{104d88bb-6868-4533-83da-b498dd623315}</destination>
+			<destination>{29945f3e-f4ce-45c5-a072-34982be7db07}</destination>
+			<destination>{49af8274-2c90-4ec7-80b0-865d35c1b308}</destination>
+			<destination>{0c7cbe23-ba43-49af-bddf-8ce69f57631f}</destination>
+			<destination>{0950bd94-256a-4198-9382-bb94acf79b89}</destination>
+			<destination>{c7b94b26-984e-4e16-a07c-67a4af7d2dd6}</destination>
+		</relationship>
+	</object>
+	<object class="ParameterCondition" id="{8bffa3f6-68b6-423e-933e-3c2b29369ccd}">
+		<property name="minimum">
+			<value>0</value>
+		</property>
+		<property name="maximum">
+			<value>1</value>
+		</property>
+		<relationship name="parameter">
+			<destination>{3921e63a-f1cf-4efd-9055-24dc92a8da14}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionTimeline" id="{3d56ad46-8270-4c5e-ab28-6da2c35a9781}">
+		<property name="length">
+			<value>1.3500000000000001</value>
+		</property>
+		<relationship name="modules">
+			<destination>{c3389d47-4bb0-4199-b68d-c2c3700a0a3c}</destination>
+			<destination>{8c8247ea-75ff-4126-8e11-e42c9f6517f8}</destination>
+			<destination>{225fc9e9-0cc3-4921-82ff-d704562f503e}</destination>
+			<destination>{a7340e00-5e51-43eb-9ef0-f37013888bdc}</destination>
+			<destination>{9bf881c8-1761-4a7c-821e-69180e5ab674}</destination>
+			<destination>{cf6b54e5-2440-43a3-a968-e55fd1140421}</destination>
+		</relationship>
+	</object>
+	<object class="ParameterCondition" id="{3c133eb5-49eb-4189-b74f-e229bb75ac9b}">
+		<property name="minimum">
+			<value>0</value>
+		</property>
+		<property name="maximum">
+			<value>1</value>
+		</property>
+		<relationship name="parameter">
+			<destination>{3921e63a-f1cf-4efd-9055-24dc92a8da14}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionTimeline" id="{b271cd0a-7577-41db-806b-3874184f75d5}">
+		<property name="length">
+			<value>2.3499999999999996</value>
+		</property>
+		<relationship name="modules">
+			<destination>{d451cf01-0773-49ab-ba0e-c09bfb109fee}</destination>
+			<destination>{0b23ec04-701b-4849-b913-543e9af44fd2}</destination>
+			<destination>{5900bf3d-bc45-47d4-af6b-977cbead00b7}</destination>
+			<destination>{0b1391e4-3ca4-43d9-96c6-971ee6ba0285}</destination>
+			<destination>{1f417997-ca1a-44f9-bb7f-6403e22167c1}</destination>
+			<destination>{0cf96278-0984-4e8d-9b71-1e5424c49ccc}</destination>
+		</relationship>
+	</object>
+	<object class="ParameterCondition" id="{57a865c7-6138-4a4c-ad1c-83df355bc481}">
+		<property name="minimum">
+			<value>0</value>
+		</property>
+		<property name="maximum">
+			<value>1</value>
+		</property>
+		<relationship name="parameter">
+			<destination>{3921e63a-f1cf-4efd-9055-24dc92a8da14}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionTimeline" id="{8b547614-ddda-426e-9142-28deab5cea61}">
+		<property name="length">
+			<value>1.55</value>
+		</property>
+		<relationship name="modules">
+			<destination>{04471ad3-4d4c-4203-b3b8-b9338ecee977}</destination>
+			<destination>{c3a70874-e90f-4e2d-b061-4d57bab8e6c3}</destination>
+			<destination>{7378d614-de54-45cc-900e-8775fdd7b58f}</destination>
+			<destination>{dbb5864d-7a54-4f8b-9e84-2758a584ab1f}</destination>
+			<destination>{4b4bd5e4-c2a5-4b7c-952c-221d92567db1}</destination>
+			<destination>{161d0360-a8e2-4756-ac51-8c0c33db7621}</destination>
+		</relationship>
+	</object>
+	<object class="ParameterCondition" id="{236f93f7-365d-4e44-9177-f5d34a1ae903}">
+		<property name="minimum">
+			<value>0</value>
+		</property>
+		<property name="maximum">
+			<value>1</value>
+		</property>
+		<relationship name="parameter">
+			<destination>{3921e63a-f1cf-4efd-9055-24dc92a8da14}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionTimeline" id="{64fe5680-25b9-46f7-8801-3d27939e0015}">
+		<property name="length">
+			<value>1.4500000000000002</value>
+		</property>
+		<relationship name="modules">
+			<destination>{6505038e-6aa0-41c6-9709-203bf34f499d}</destination>
+			<destination>{ed36796f-9043-43e9-8e72-2b8e5f49cdff}</destination>
+			<destination>{e7d9dd17-6f09-4d3f-9646-8258d24ca9f6}</destination>
+			<destination>{3da8ea01-cdea-474f-b33f-5a1eb9a0b9d9}</destination>
+			<destination>{b3bb1b5b-7e07-4ff7-979d-9c3c4a8897fa}</destination>
+			<destination>{5fa05f36-4823-4631-959e-f3f6d1576039}</destination>
+		</relationship>
+	</object>
+	<object class="ParameterCondition" id="{c040a692-eb84-4c3b-b973-b1d87df3f942}">
+		<property name="minimum">
+			<value>0</value>
+		</property>
+		<property name="maximum">
+			<value>1</value>
+		</property>
+		<relationship name="parameter">
+			<destination>{3921e63a-f1cf-4efd-9055-24dc92a8da14}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionTimeline" id="{6be64d64-90e7-4c8c-8e61-7e3c819cdd47}">
+		<property name="length">
+			<value>14</value>
+		</property>
+		<relationship name="modules">
+			<destination>{eba9387e-612f-488b-88fa-0064a01f5ccb}</destination>
+			<destination>{b25401cd-395c-4ff5-9384-77bb1be9a514}</destination>
+			<destination>{c8c69bc4-a52e-414d-8014-6977c9c19722}</destination>
+			<destination>{366a639f-ec68-436b-87c0-7ceab93ba0f0}</destination>
+			<destination>{de5a6d48-109a-4db4-91d1-07455e6fd533}</destination>
+			<destination>{4c1e728b-51b4-4ccf-9e54-9936890cb70e}</destination>
+		</relationship>
+	</object>
+	<object class="EventCondition" id="{45674d97-cd3d-4a99-861e-405634d09d58}">
+		<property name="eventState">
+			<value>1</value>
+		</property>
+	</object>
+	<object class="TransitionTimeline" id="{396a6895-d5aa-401e-aee7-f71ea096f909}">
 		<property name="length">
 			<value>1.4000000000000001</value>
 		</property>
 		<relationship name="modules">
-			<destination>{d620198f-a68b-48b2-a85b-b041e8f89a79}</destination>
-			<destination>{598bdd41-6d28-4468-bfbf-a1e758b8ec1a}</destination>
-			<destination>{3d021e70-b6f1-4252-bade-bed5608b6a5e}</destination>
-			<destination>{df04b2e3-2913-4fe0-b9eb-4d1b5669c591}</destination>
-			<destination>{3bfec9e6-33e4-49a6-8f99-0208971d6e99}</destination>
-			<destination>{3f943483-d952-4b8f-b35f-d02d287502bc}</destination>
+			<destination>{ffbaabf0-032b-4542-b481-1052b5406578}</destination>
+			<destination>{01f75e60-c72d-4e34-91d8-860732169ca2}</destination>
+			<destination>{fb94b56d-a078-4e7e-ab29-231b9b4cd584}</destination>
+			<destination>{99eb42e5-5eb9-4620-927c-226d546e5686}</destination>
+			<destination>{4c7e392c-06d4-4d3f-af39-3566f673ca2d}</destination>
+			<destination>{601fbab5-c3d1-4614-9d41-df8ccd6ccfba}</destination>
 		</relationship>
 	</object>
-	<object class="ParameterCondition" id="{9458d801-7a49-4183-9b6b-101379598d1c}">
+	<object class="EventCondition" id="{448a61cd-0d49-4d73-9b51-90721e4c4051}" />
+	<object class="TransitionTimeline" id="{691defd0-ebcd-4492-9644-716a5fbfb85c}">
+		<property name="length">
+			<value>1.4000000000000001</value>
+		</property>
+		<relationship name="modules">
+			<destination>{2ab702bd-8904-4264-92b6-f75203ccdb56}</destination>
+			<destination>{3a3a658b-083b-4e38-9d03-6958c050b80b}</destination>
+			<destination>{d34e0e2f-6421-4974-a8fc-4fb5d5225964}</destination>
+			<destination>{a9432d3e-de07-40e3-abb4-eeece23788da}</destination>
+			<destination>{dce37f80-b368-49d8-9789-98d29c1367df}</destination>
+			<destination>{6c0865af-dea0-4e63-94a1-3b0b45dd292e}</destination>
+		</relationship>
+	</object>
+	<object class="ParameterCondition" id="{beb4f6ca-d805-4f31-9f9e-34dff2e29607}">
+		<property name="minimum">
+			<value>0</value>
+		</property>
+		<property name="maximum">
+			<value>1</value>
+		</property>
+		<relationship name="parameter">
+			<destination>{3921e63a-f1cf-4efd-9055-24dc92a8da14}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionTimeline" id="{33b5f801-d5b4-4dff-aa0f-752bfd753809}">
+		<property name="length">
+			<value>1.3500000000000001</value>
+		</property>
+		<relationship name="modules">
+			<destination>{6467cfd2-2a89-454e-8f30-a3886a29805a}</destination>
+			<destination>{35db1aa4-651e-4328-9dd2-65162e519da0}</destination>
+			<destination>{48c4591b-4568-460d-841c-df7d6c31498f}</destination>
+			<destination>{5f2629bd-b091-4add-9a01-893ddd3d435d}</destination>
+			<destination>{2c2851fe-0091-4584-a790-4a66c58f3369}</destination>
+			<destination>{46b2afa5-8406-4237-af0e-13a42897d857}</destination>
+		</relationship>
+	</object>
+	<object class="ParameterCondition" id="{72ae1d60-59cc-4777-966f-567dc8d0d9f7}">
 		<property name="minimum">
 			<value>0</value>
 		</property>
@@ -3812,168 +4235,15 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 			<destination>{86cb5307-a63e-45f0-807c-9ddf929a3f55}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionTimeline" id="{38247f57-e3c9-4dc5-88ef-f39542c7cdc6}">
-		<property name="length">
-			<value>1.3</value>
-		</property>
-		<relationship name="modules">
-			<destination>{67d2aee4-dac9-4195-833e-5f5b0cf63a61}</destination>
-			<destination>{f1c1554a-753a-4eb5-9319-6b2be52e15ba}</destination>
-			<destination>{9520e893-9b42-48c9-94f0-fde8513f94e1}</destination>
-			<destination>{7bef2ddb-f9d9-427a-873a-efca14c39c0d}</destination>
-			<destination>{27c3e538-07c9-41d7-adde-69e0838fe52f}</destination>
-			<destination>{b1811a9b-aec5-4209-b248-ad17f4a77ebe}</destination>
-		</relationship>
-	</object>
-	<object class="ParameterCondition" id="{7731740f-0ee9-41c7-b859-8bcacb9d707b}">
-		<property name="minimum">
-			<value>2</value>
-		</property>
-		<property name="maximum">
-			<value>6</value>
-		</property>
-		<relationship name="parameter">
-			<destination>{3921e63a-f1cf-4efd-9055-24dc92a8da14}</destination>
-		</relationship>
-	</object>
-	<object class="ParameterCondition" id="{1f244d5a-0433-46ed-a483-f1cdb4752f1f}">
-		<property name="minimum">
-			<value>1</value>
-		</property>
-		<property name="maximum">
-			<value>1</value>
-		</property>
-		<relationship name="parameter">
-			<destination>{86cb5307-a63e-45f0-807c-9ddf929a3f55}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionTimeline" id="{3d56ad46-8270-4c5e-ab28-6da2c35a9781}">
-		<property name="length">
-			<value>1.3500000000000001</value>
-		</property>
-		<relationship name="modules">
-			<destination>{8c8247ea-75ff-4126-8e11-e42c9f6517f8}</destination>
-			<destination>{225fc9e9-0cc3-4921-82ff-d704562f503e}</destination>
-			<destination>{a7340e00-5e51-43eb-9ef0-f37013888bdc}</destination>
-			<destination>{c3389d47-4bb0-4199-b68d-c2c3700a0a3c}</destination>
-			<destination>{9bf881c8-1761-4a7c-821e-69180e5ab674}</destination>
-			<destination>{cf6b54e5-2440-43a3-a968-e55fd1140421}</destination>
-		</relationship>
-	</object>
-	<object class="ParameterCondition" id="{3c133eb5-49eb-4189-b74f-e229bb75ac9b}">
-		<property name="minimum">
-			<value>0</value>
-		</property>
-		<property name="maximum">
-			<value>1</value>
-		</property>
-		<relationship name="parameter">
-			<destination>{3921e63a-f1cf-4efd-9055-24dc92a8da14}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionTimeline" id="{691defd0-ebcd-4492-9644-716a5fbfb85c}">
-		<property name="length">
-			<value>1.4000000000000001</value>
-		</property>
-		<relationship name="modules">
-			<destination>{a9432d3e-de07-40e3-abb4-eeece23788da}</destination>
-			<destination>{d34e0e2f-6421-4974-a8fc-4fb5d5225964}</destination>
-			<destination>{2ab702bd-8904-4264-92b6-f75203ccdb56}</destination>
-			<destination>{dce37f80-b368-49d8-9789-98d29c1367df}</destination>
-			<destination>{6c0865af-dea0-4e63-94a1-3b0b45dd292e}</destination>
-			<destination>{3a3a658b-083b-4e38-9d03-6958c050b80b}</destination>
-		</relationship>
-	</object>
-	<object class="ParameterCondition" id="{beb4f6ca-d805-4f31-9f9e-34dff2e29607}">
-		<property name="minimum">
-			<value>0</value>
-		</property>
-		<property name="maximum">
-			<value>1</value>
-		</property>
-		<relationship name="parameter">
-			<destination>{3921e63a-f1cf-4efd-9055-24dc92a8da14}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionTimeline" id="{ebb93058-18f0-46bb-9d66-fe1ea5fc6901}">
-		<property name="length">
-			<value>1.3500000000000001</value>
-		</property>
-		<relationship name="modules">
-			<destination>{60633fff-da82-48b8-a474-c0b936aab4cf}</destination>
-			<destination>{1339e17e-6a6e-4be5-a9b5-cd122164d943}</destination>
-			<destination>{5cb07328-0c57-49ed-9306-510b8ed0acea}</destination>
-			<destination>{f4b3c2f0-864e-4e70-9137-3ae7fc5260bc}</destination>
-			<destination>{09995b05-e9bd-43d9-a7bb-1255e2a58a18}</destination>
-			<destination>{1e20dbc6-5313-42a4-b81e-f379017736cc}</destination>
-		</relationship>
-	</object>
-	<object class="ParameterCondition" id="{022eb440-86a0-4c99-b5e9-767593b224bd}">
-		<property name="minimum">
-			<value>2</value>
-		</property>
-		<property name="maximum">
-			<value>6</value>
-		</property>
-		<relationship name="parameter">
-			<destination>{3921e63a-f1cf-4efd-9055-24dc92a8da14}</destination>
-		</relationship>
-	</object>
-	<object class="ParameterCondition" id="{11dd77e0-1a70-4d33-ae37-1c1394c61336}">
-		<property name="minimum">
-			<value>0</value>
-		</property>
-		<property name="maximum">
-			<value>0</value>
-		</property>
-		<relationship name="parameter">
-			<destination>{86cb5307-a63e-45f0-807c-9ddf929a3f55}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionTimeline" id="{22fc5252-bab6-437a-b707-b9cd2e30181b}">
-		<property name="length">
-			<value>1.3</value>
-		</property>
-		<relationship name="modules">
-			<destination>{403d352f-4dd2-4a49-9662-c0db59d2fc03}</destination>
-			<destination>{66fc902f-789c-4256-8b3e-b1d3bc35a835}</destination>
-			<destination>{761da4eb-1537-47af-8d93-d3af120be9de}</destination>
-			<destination>{5275ed86-0379-4bb8-ae60-22855485fde5}</destination>
-			<destination>{55249aad-da93-4106-9033-dc4804218f08}</destination>
-			<destination>{1de53a96-978b-4a05-85d6-70008732059b}</destination>
-		</relationship>
-	</object>
-	<object class="ParameterCondition" id="{96f4b4bb-c2ee-445d-9b15-92dc5536e3e2}">
-		<property name="minimum">
-			<value>2</value>
-		</property>
-		<property name="maximum">
-			<value>6</value>
-		</property>
-		<relationship name="parameter">
-			<destination>{3921e63a-f1cf-4efd-9055-24dc92a8da14}</destination>
-		</relationship>
-	</object>
-	<object class="ParameterCondition" id="{65cc192d-7dd2-4ae1-a717-4769d59afc8c}">
-		<property name="minimum">
-			<value>1</value>
-		</property>
-		<property name="maximum">
-			<value>1</value>
-		</property>
-		<relationship name="parameter">
-			<destination>{86cb5307-a63e-45f0-807c-9ddf929a3f55}</destination>
-		</relationship>
-	</object>
 	<object class="TransitionTimeline" id="{bdb968dc-5d9e-4b5a-82c1-a969d0f70b83}">
 		<property name="length">
 			<value>2</value>
 		</property>
 		<relationship name="modules">
+			<destination>{f2a8dafd-41d4-4dc9-aa0a-7a8e6f4d9679}</destination>
 			<destination>{8e312260-7c3f-4b30-af99-6a966aaee83f}</destination>
 			<destination>{6ce2d827-e2d3-4494-8277-4ae799a0d299}</destination>
 			<destination>{fc0dfc63-3299-45c4-9557-6e4c61b8a486}</destination>
-			<destination>{f2a8dafd-41d4-4dc9-aa0a-7a8e6f4d9679}</destination>
 			<destination>{dc89bbdc-8f59-4443-95d6-75234dd63d14}</destination>
 			<destination>{77371f12-c525-4c22-9932-c7e0c3e2bf51}</destination>
 		</relationship>
@@ -3989,169 +4259,13 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 			<destination>{3921e63a-f1cf-4efd-9055-24dc92a8da14}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionTimeline" id="{64fe5680-25b9-46f7-8801-3d27939e0015}">
-		<property name="length">
-			<value>1.4500000000000002</value>
-		</property>
-		<relationship name="modules">
-			<destination>{6505038e-6aa0-41c6-9709-203bf34f499d}</destination>
-			<destination>{ed36796f-9043-43e9-8e72-2b8e5f49cdff}</destination>
-			<destination>{e7d9dd17-6f09-4d3f-9646-8258d24ca9f6}</destination>
-			<destination>{3da8ea01-cdea-474f-b33f-5a1eb9a0b9d9}</destination>
-			<destination>{b3bb1b5b-7e07-4ff7-979d-9c3c4a8897fa}</destination>
-			<destination>{5fa05f36-4823-4631-959e-f3f6d1576039}</destination>
-		</relationship>
-	</object>
-	<object class="ParameterCondition" id="{c040a692-eb84-4c3b-b973-b1d87df3f942}">
-		<property name="minimum">
-			<value>0</value>
-		</property>
-		<property name="maximum">
-			<value>1</value>
-		</property>
-		<relationship name="parameter">
-			<destination>{3921e63a-f1cf-4efd-9055-24dc92a8da14}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionTimeline" id="{8b547614-ddda-426e-9142-28deab5cea61}">
-		<property name="length">
-			<value>1.55</value>
-		</property>
-		<relationship name="modules">
-			<destination>{4b4bd5e4-c2a5-4b7c-952c-221d92567db1}</destination>
-			<destination>{7378d614-de54-45cc-900e-8775fdd7b58f}</destination>
-			<destination>{c3a70874-e90f-4e2d-b061-4d57bab8e6c3}</destination>
-			<destination>{161d0360-a8e2-4756-ac51-8c0c33db7621}</destination>
-			<destination>{04471ad3-4d4c-4203-b3b8-b9338ecee977}</destination>
-			<destination>{dbb5864d-7a54-4f8b-9e84-2758a584ab1f}</destination>
-		</relationship>
-	</object>
-	<object class="ParameterCondition" id="{236f93f7-365d-4e44-9177-f5d34a1ae903}">
-		<property name="minimum">
-			<value>0</value>
-		</property>
-		<property name="maximum">
-			<value>1</value>
-		</property>
-		<relationship name="parameter">
-			<destination>{3921e63a-f1cf-4efd-9055-24dc92a8da14}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionTimeline" id="{58a35595-189e-4b76-b1f3-924738631fd4}">
-		<property name="length">
-			<value>1.4000000000000001</value>
-		</property>
-		<relationship name="modules">
-			<destination>{080ac49e-82e9-4b02-be57-bf03c054507a}</destination>
-			<destination>{d1146209-f332-4c60-9e86-84c248d6b07b}</destination>
-			<destination>{22eb7d26-0747-4009-939c-2d2f3a268a16}</destination>
-			<destination>{a94ed857-2554-43df-a894-e1f523b05d4f}</destination>
-			<destination>{a77dd24a-4ab3-476e-8af5-f6e08caebecf}</destination>
-			<destination>{b2fac74a-3d3f-419e-9447-a8cf6d6d8d07}</destination>
-		</relationship>
-	</object>
-	<object class="ParameterCondition" id="{71e2011f-e75b-4b2e-a114-abd1dd007e84}">
-		<property name="minimum">
-			<value>0</value>
-		</property>
-		<property name="maximum">
-			<value>1</value>
-		</property>
-		<relationship name="parameter">
-			<destination>{3921e63a-f1cf-4efd-9055-24dc92a8da14}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionTimeline" id="{ae96c6bd-a63c-42af-9d1c-0d7da75a476b}">
-		<property name="length">
-			<value>1.6200000000000001</value>
-		</property>
-		<relationship name="modules">
-			<destination>{71df0229-346a-43c5-ae1d-67fc146067d2}</destination>
-			<destination>{1dd6b40a-9a3a-454a-8ad1-e6071e826795}</destination>
-			<destination>{e0589ac9-0dea-456b-ba1f-52a5072a2856}</destination>
-			<destination>{64d34f8a-8e17-40c6-b6f3-38896843b223}</destination>
-			<destination>{0766dad0-ce8a-4bc4-ab54-293d9ab05fd8}</destination>
-			<destination>{b7691b82-b5d2-4ee5-9ea9-1c5c8647981c}</destination>
-		</relationship>
-	</object>
-	<object class="ParameterCondition" id="{c5883136-aecc-4349-983c-8709e5b2f4bd}">
-		<property name="minimum">
-			<value>2</value>
-		</property>
-		<property name="maximum">
-			<value>6</value>
-		</property>
-		<relationship name="parameter">
-			<destination>{3921e63a-f1cf-4efd-9055-24dc92a8da14}</destination>
-		</relationship>
-	</object>
-	<object class="ParameterCondition" id="{bdeb43e8-11f3-40f9-b453-404cb52dc22a}">
-		<property name="minimum">
-			<value>0</value>
-		</property>
-		<property name="maximum">
-			<value>0</value>
-		</property>
-		<relationship name="parameter">
-			<destination>{86cb5307-a63e-45f0-807c-9ddf929a3f55}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionTimeline" id="{b0a0b2b6-1eab-40fc-a4b3-2ff9618b9ed0}">
-		<property name="length">
-			<value>1.6500000000000001</value>
-		</property>
-		<relationship name="modules">
-			<destination>{159d103e-9569-4dd8-a9cb-2182782f3de9}</destination>
-			<destination>{75ed812a-1dcd-4248-af0e-6fa255329010}</destination>
-			<destination>{b63033e6-b9b7-4e81-bb43-28cd4d497c5a}</destination>
-			<destination>{cb2432e5-7ed7-43bd-8629-9d413dc1bf87}</destination>
-			<destination>{36e519d8-cf27-4a5e-a0f1-17746aee5e01}</destination>
-			<destination>{01f9db1f-60e0-4464-956c-b0e3fff9ac63}</destination>
-		</relationship>
-	</object>
-	<object class="ParameterCondition" id="{3561d9b3-f62b-4680-ba96-3eca0ede2f84}">
-		<property name="minimum">
-			<value>2</value>
-		</property>
-		<property name="maximum">
-			<value>6</value>
-		</property>
-		<relationship name="parameter">
-			<destination>{3921e63a-f1cf-4efd-9055-24dc92a8da14}</destination>
-		</relationship>
-	</object>
-	<object class="ParameterCondition" id="{86688fb3-e740-421d-ab5a-5240109813b9}">
-		<property name="minimum">
-			<value>1</value>
-		</property>
-		<property name="maximum">
-			<value>1</value>
-		</property>
-		<relationship name="parameter">
-			<destination>{86cb5307-a63e-45f0-807c-9ddf929a3f55}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionTimeline" id="{69a4dcb4-9f35-48a2-886b-383ba890ef62}">
-		<property name="length">
-			<value>1.4000000000000001</value>
-		</property>
-		<relationship name="modules">
-			<destination>{e9916bb0-2a1a-49d7-bb1b-d75e25ec3f6f}</destination>
-			<destination>{41a3e79c-0643-4466-b6b0-8d040c85db1b}</destination>
-			<destination>{5e6f9ea7-e9fa-4438-ae80-672534244b3b}</destination>
-			<destination>{1126ba01-55fd-4a24-917e-7e687a476b4a}</destination>
-			<destination>{89cadcae-15e7-45d4-b63e-6b0f994981fe}</destination>
-			<destination>{1011df3f-b42b-44ed-a05f-017bf4d95bbc}</destination>
-		</relationship>
-	</object>
-	<object class="EventCondition" id="{08ce7168-f0d7-4b97-80aa-43f46bb4ef91}" />
 	<object class="TransitionTimeline" id="{90b0edb8-47d3-45b5-a58b-93f5c35cffcb}">
 		<property name="length">
 			<value>1.4500000000000002</value>
 		</property>
 		<relationship name="modules">
-			<destination>{2effdfc1-a07e-4d50-850d-977d2093898b}</destination>
 			<destination>{624ace01-db41-4795-87ba-eb04bb5b183b}</destination>
+			<destination>{2effdfc1-a07e-4d50-850d-977d2093898b}</destination>
 			<destination>{0bcbc81b-0d4d-403f-ad7f-d1eca6888943}</destination>
 			<destination>{0548d31f-6a28-47a7-9273-0907b005b38a}</destination>
 			<destination>{5e71c833-d20a-4769-86e3-a9b62588e0c5}</destination>
@@ -4159,131 +4273,17 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 		</relationship>
 	</object>
 	<object class="EventCondition" id="{14fefbca-efdc-421d-ac61-70d8ca2b0ee3}" />
-	<object class="TransitionTimeline" id="{4062cb63-e88c-48c2-b5a0-fcb0b03a10df}">
-		<property name="length">
-			<value>1.55</value>
-		</property>
-		<relationship name="modules">
-			<destination>{8bcdfb6a-618d-469d-b663-7544feed0ef4}</destination>
-			<destination>{7b672aad-08a5-451d-b419-569c5de5946b}</destination>
-			<destination>{385aba77-aa76-4b7b-b2cb-ae0d380febcf}</destination>
-			<destination>{14825a46-fd1d-4fbe-80b5-4cbab367999e}</destination>
-			<destination>{e4cc3d03-5af2-4aaf-9ff1-c9d10a78361a}</destination>
-			<destination>{1b50ca24-3d9e-43c7-9776-750142898064}</destination>
-		</relationship>
-	</object>
-	<object class="EventCondition" id="{382a771e-b68e-4b6f-b1ce-e8cd6734e07f}" />
-	<object class="TransitionTimeline" id="{396a6895-d5aa-401e-aee7-f71ea096f909}">
-		<property name="length">
-			<value>1.4000000000000001</value>
-		</property>
-		<relationship name="modules">
-			<destination>{01f75e60-c72d-4e34-91d8-860732169ca2}</destination>
-			<destination>{fb94b56d-a078-4e7e-ab29-231b9b4cd584}</destination>
-			<destination>{ffbaabf0-032b-4542-b481-1052b5406578}</destination>
-			<destination>{99eb42e5-5eb9-4620-927c-226d546e5686}</destination>
-			<destination>{4c7e392c-06d4-4d3f-af39-3566f673ca2d}</destination>
-			<destination>{601fbab5-c3d1-4614-9d41-df8ccd6ccfba}</destination>
-		</relationship>
-	</object>
-	<object class="EventCondition" id="{448a61cd-0d49-4d73-9b51-90721e4c4051}" />
-	<object class="TransitionTimeline" id="{c6594c29-1333-4ce9-a2cd-59357200f2a5}">
-		<property name="length">
-			<value>1.4500000000000002</value>
-		</property>
-		<relationship name="modules">
-			<destination>{a21bd2a4-39b9-407a-b091-8df72238ff6e}</destination>
-			<destination>{6180f503-d0ff-48b0-90a0-2a8c7d44bd83}</destination>
-			<destination>{fc47e303-00ca-4237-b5d8-4bfd31175f02}</destination>
-			<destination>{6a1fbbe4-bb1b-46ab-91d4-224f4f89346d}</destination>
-			<destination>{37ffa7d0-99b4-4c17-90ed-f222339e58f4}</destination>
-			<destination>{71267502-e9c8-4416-b01a-03f7967dc2af}</destination>
-		</relationship>
-	</object>
-	<object class="EventCondition" id="{daa44491-6f35-4428-b501-bb7d2ad08dfc}" />
-	<object class="TransitionTimeline" id="{2215197f-63af-4b4b-aa29-4e667670cf4f}">
-		<relationship name="modules">
-			<destination>{e635bee9-f2d6-4ffd-9d77-38c4135a7255}</destination>
-			<destination>{c69a8a90-0540-4ee5-884c-cb4b63a24dc8}</destination>
-			<destination>{c4962e54-0835-4073-9578-fe595802affb}</destination>
-			<destination>{8afcf6f5-63c6-44b4-9e39-a0fef297c7b1}</destination>
-			<destination>{7a7dd8d7-97cf-42c0-b4de-afb07c85de39}</destination>
-			<destination>{5d69e1cf-182e-45c7-a2fb-2a90c44b8fa1}</destination>
-		</relationship>
-	</object>
-	<object class="EventCondition" id="{42d2e111-025f-499a-9fa1-548ed8c43ee7}" />
-	<object class="TransitionTimeline" id="{ff513a93-aa8c-4a1d-820e-3709cb0a19f1}">
-		<relationship name="modules">
-			<destination>{8176b4c9-19e1-4ce8-850f-e7798266877b}</destination>
-			<destination>{1ded08ef-3240-4900-b638-9fccefbcbad5}</destination>
-			<destination>{f1610a6d-3df8-4b4d-a144-1e0ed03c568f}</destination>
-			<destination>{1a2f9281-2b54-49e3-8820-070e95a5e3a2}</destination>
-			<destination>{6dad14c7-f2e0-4675-9e86-afcb75530488}</destination>
-			<destination>{29ec5736-81ba-4967-a82f-7264a428556d}</destination>
-		</relationship>
-	</object>
-	<object class="EventCondition" id="{b62c5a64-c913-4c8e-92b4-e705e17638eb}" />
-	<object class="TransitionTimeline" id="{7e8a0905-8dc4-4004-8eb4-60d7af78a645}">
-		<property name="length">
-			<value>0.90000000000000002</value>
-		</property>
-		<relationship name="modules">
-			<destination>{786164b8-25e7-42fa-a623-4e26abdc5a67}</destination>
-			<destination>{d28dedff-6158-4dd7-9551-fbc42fa7b17f}</destination>
-			<destination>{8e41504e-41bb-4bb6-9511-602fa08f0e9c}</destination>
-			<destination>{eec04e59-b2a5-414d-9b42-6bebd4c82d6f}</destination>
-			<destination>{93b672d4-9d41-4903-98d5-5727608cb408}</destination>
-			<destination>{c41ec82f-2154-41e4-96fc-7972e6bdddb4}</destination>
-		</relationship>
-	</object>
-	<object class="EventCondition" id="{cdc45800-07a0-4cca-ba8b-e316d05406a2}" />
-	<object class="TransitionTimeline" id="{6be64d64-90e7-4c8c-8e61-7e3c819cdd47}">
-		<property name="length">
-			<value>14</value>
-		</property>
-		<relationship name="modules">
-			<destination>{eba9387e-612f-488b-88fa-0064a01f5ccb}</destination>
-			<destination>{b25401cd-395c-4ff5-9384-77bb1be9a514}</destination>
-			<destination>{c8c69bc4-a52e-414d-8014-6977c9c19722}</destination>
-			<destination>{366a639f-ec68-436b-87c0-7ceab93ba0f0}</destination>
-			<destination>{de5a6d48-109a-4db4-91d1-07455e6fd533}</destination>
-			<destination>{4c1e728b-51b4-4ccf-9e54-9936890cb70e}</destination>
-		</relationship>
-	</object>
-	<object class="EventCondition" id="{45674d97-cd3d-4a99-861e-405634d09d58}">
-		<property name="eventState">
-			<value>1</value>
-		</property>
-	</object>
-	<object class="TransitionTimeline" id="{9a729d80-0c25-4330-b992-b92717e24631}">
-		<property name="length">
-			<value>14</value>
-		</property>
-		<relationship name="modules">
-			<destination>{91f15495-a508-41dc-aaa3-d8440caf3160}</destination>
-			<destination>{f006c956-2294-48c0-a41d-8332b5d7fe0a}</destination>
-			<destination>{43ef5df7-4de0-45a3-af36-c41030c2612d}</destination>
-			<destination>{7a2b54d8-0d6a-4248-ba23-9a76b8c999ca}</destination>
-			<destination>{ec8a4a33-1299-41e0-853a-16f1db4cc0a9}</destination>
-			<destination>{7d921aca-a521-4bca-8e01-6e9f75479647}</destination>
-		</relationship>
-	</object>
-	<object class="EventCondition" id="{6b367275-ff60-4c8a-9742-f2dfb0b1c094}">
-		<property name="eventState">
-			<value>1</value>
-		</property>
-	</object>
 	<object class="TransitionTimeline" id="{77e79a59-0455-4454-b01d-f3860dd1b5c3}">
 		<property name="length">
 			<value>14</value>
 		</property>
 		<relationship name="modules">
 			<destination>{54a5a979-8e61-410a-95b8-2eeaa6e52ffd}</destination>
-			<destination>{6e754a5d-993f-4fe5-8a8b-c36effa3f88f}</destination>
-			<destination>{674dfb45-9695-4126-9d65-ed2d9c339a40}</destination>
 			<destination>{1b2cbbbb-f6a7-4692-be0a-250df1f8f434}</destination>
-			<destination>{7a5826f8-64a7-4ffa-ac93-74a742febe80}</destination>
 			<destination>{dcbd8b1a-afcc-4ee6-88f3-f082508f49d0}</destination>
+			<destination>{674dfb45-9695-4126-9d65-ed2d9c339a40}</destination>
+			<destination>{7a5826f8-64a7-4ffa-ac93-74a742febe80}</destination>
+			<destination>{6e754a5d-993f-4fe5-8a8b-c36effa3f88f}</destination>
 		</relationship>
 	</object>
 	<object class="EventCondition" id="{8bf907f6-e257-499f-b456-91bdb211a888}">
@@ -4296,12 +4296,12 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 			<value>14</value>
 		</property>
 		<relationship name="modules">
+			<destination>{3a28a4ce-e33f-46da-aea2-ed1cd192dd39}</destination>
 			<destination>{c2a808a6-9009-4732-b19e-5a3cfd539525}</destination>
+			<destination>{2165f80c-d4c1-4b29-9480-e10e2bfc6fee}</destination>
 			<destination>{e398fd5f-34de-4233-a9e0-ec246a134748}</destination>
 			<destination>{58dc39bc-5316-4889-9f94-eda84014e4ff}</destination>
-			<destination>{3a28a4ce-e33f-46da-aea2-ed1cd192dd39}</destination>
 			<destination>{1c98b64c-dfd1-454d-a7ad-7beca07691e1}</destination>
-			<destination>{2165f80c-d4c1-4b29-9480-e10e2bfc6fee}</destination>
 		</relationship>
 	</object>
 	<object class="EventCondition" id="{d7df460f-eb9a-4e8f-8401-b3ebfb466825}">
@@ -4331,6 +4331,63 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{4db30052-7052-4d60-a27e-076218e909f3}" />
+	<object class="AutomationPoint" id="{80fa391b-66fe-449f-a608-1e8a56111f14}">
+		<property name="position">
+			<value>0.95000000000000018</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+		<property name="curveShape">
+			<value>-0.2547189</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{b73143ea-7a09-45af-ada8-2d8ac7ef4ac7}">
+		<property name="position">
+			<value>1.1000000000000001</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{65a207c8-9e50-4e88-a2d6-05296b323755}">
+		<property name="position">
+			<value>0.77000000000000002</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+		<property name="curveShape">
+			<value>1</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{4ae046e9-5314-476e-82b9-9151ef5bfaf9}">
+		<property name="position">
+			<value>1.6200000000000001</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{23c32e41-d0db-4db3-a962-d627455a9411}">
+		<property name="position">
+			<value>2.1800000000000002</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+		<property name="curveShape">
+			<value>-0.2547189</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{946981a8-37de-4423-9270-6f01671be418}">
+		<property name="position">
+			<value>2.3000000000000003</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+	</object>
 	<object class="AutomationPoint" id="{f1792eec-7f9b-46e3-842c-07b7d1d734f3}">
 		<property name="position">
 			<value>149</value>
@@ -4500,25 +4557,6 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 		</property>
 		<property name="value">
 			<value>0</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{23c32e41-d0db-4db3-a962-d627455a9411}">
-		<property name="position">
-			<value>2.1800000000000002</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-		<property name="curveShape">
-			<value>-0.2547189</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{946981a8-37de-4423-9270-6f01671be418}">
-		<property name="position">
-			<value>2.3000000000000003</value>
-		</property>
-		<property name="value">
-			<value>1</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{d1127c13-fcdc-4607-baf1-67577a63b77d}">
@@ -5053,25 +5091,6 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 			<value>1</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{65a207c8-9e50-4e88-a2d6-05296b323755}">
-		<property name="position">
-			<value>0.77000000000000002</value>
-		</property>
-		<property name="value">
-			<value>1</value>
-		</property>
-		<property name="curveShape">
-			<value>1</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{4ae046e9-5314-476e-82b9-9151ef5bfaf9}">
-		<property name="position">
-			<value>1.6200000000000001</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-	</object>
 	<object class="AutomationPoint" id="{72737908-99d5-4130-a12c-429502451a83}">
 		<property name="position">
 			<value>1.4800000000000006</value>
@@ -5146,25 +5165,6 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 		</property>
 		<property name="value">
 			<value>0</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{80fa391b-66fe-449f-a608-1e8a56111f14}">
-		<property name="position">
-			<value>0.95000000000000018</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-		<property name="curveShape">
-			<value>-0.2547189</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{b73143ea-7a09-45af-ada8-2d8ac7ef4ac7}">
-		<property name="position">
-			<value>1.1000000000000001</value>
-		</property>
-		<property name="value">
-			<value>1</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{16dbf9f9-1d0b-4679-b673-cfd0e4f82464}">
@@ -5535,8 +5535,8 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
 		</relationship>
 		<relationship name="automationPoints">
-			<destination>{01728f91-6f3c-4e58-ba9b-193bad058279}</destination>
 			<destination>{4e2bb9f3-09c3-4e1d-9212-00edcd0d0bae}</destination>
+			<destination>{01728f91-6f3c-4e58-ba9b-193bad058279}</destination>
 		</relationship>
 	</object>
 	<object class="AutomationCurve" id="{25e8297b-5483-4fdf-9755-bb55da0e35a6}">
@@ -5544,17 +5544,9 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 			<destination>{494eb912-4f0b-4c2e-afbe-7f15b7f14a70}</destination>
 		</relationship>
 		<relationship name="automationPoints">
-			<destination>{8c8a9d5c-b8da-49a4-9a1e-cdcf88d8734b}</destination>
 			<destination>{5ad41b54-16ef-47ff-9d5a-afd6816da5eb}</destination>
+			<destination>{8c8a9d5c-b8da-49a4-9a1e-cdcf88d8734b}</destination>
 		</relationship>
-	</object>
-	<object class="AutomationPoint" id="{01728f91-6f3c-4e58-ba9b-193bad058279}">
-		<property name="position">
-			<value>93.760062178387614</value>
-		</property>
-		<property name="value">
-			<value>8559.99902</value>
-		</property>
 	</object>
 	<object class="AutomationPoint" id="{4e2bb9f3-09c3-4e1d-9212-00edcd0d0bae}">
 		<property name="position">
@@ -5564,12 +5556,12 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 			<value>39999.9961</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{8c8a9d5c-b8da-49a4-9a1e-cdcf88d8734b}">
+	<object class="AutomationPoint" id="{01728f91-6f3c-4e58-ba9b-193bad058279}">
 		<property name="position">
-			<value>99.68774999999998</value>
+			<value>93.760062178387614</value>
 		</property>
 		<property name="value">
-			<value>-80</value>
+			<value>8559.99902</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{5ad41b54-16ef-47ff-9d5a-afd6816da5eb}">
@@ -5578,6 +5570,14 @@ To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed 
 		</property>
 		<property name="value">
 			<value>0</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{8c8a9d5c-b8da-49a4-9a1e-cdcf88d8734b}">
+		<property name="position">
+			<value>99.68774999999998</value>
+		</property>
+		<property name="value">
+			<value>-80</value>
 		</property>
 	</object>
 </objects>

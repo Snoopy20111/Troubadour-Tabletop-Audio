@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{6c31e492-0635-4a93-bf27-30bef7690f2a}">
 		<property name="note">
 			<value>A fairly short looping track kept intense by the pulsing bass but atmospheric by the synths. Good for moments of foreboding or dread, and places that might contain such feelings like dungeons.
@@ -47,8 +47,8 @@ Space Main Menu (Trailer) by LightMister -- https://freesound.org/s/690294/ -- L
 	</object>
 	<object class="MasterTrack" id="{baddf508-d8da-45fc-9672-9fd85cf6db27}">
 		<relationship name="modules">
-			<destination>{f0f43358-bf51-40d0-a031-ae3f33a64627}</destination>
 			<destination>{a92b612e-bdf1-48dd-a9f9-78cddabc3fc4}</destination>
+			<destination>{f0f43358-bf51-40d0-a031-ae3f33a64627}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{4090b73f-c93d-4b8f-8900-332fa040bfb2}</destination>
@@ -69,9 +69,9 @@ Space Main Menu (Trailer) by LightMister -- https://freesound.org/s/690294/ -- L
 	<object class="MarkerTrack" id="{15d9836a-aca5-4089-b98f-2b6dbed4ed8b}" />
 	<object class="GroupTrack" id="{5c5b29fd-9b58-4846-ba6f-5928187a0f28}">
 		<relationship name="modules">
+			<destination>{94543719-65e5-43ac-97d6-ca5f47327e6c}</destination>
 			<destination>{c57971db-fdd8-43f4-a924-b0b2e3d69d2a}</destination>
 			<destination>{600ef246-546a-496e-a820-dd2f25be1083}</destination>
-			<destination>{94543719-65e5-43ac-97d6-ca5f47327e6c}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{2ba4f8e0-33c3-47d7-a4d7-f99ba98b2acc}</destination>
@@ -99,15 +99,15 @@ Space Main Menu (Trailer) by LightMister -- https://freesound.org/s/690294/ -- L
 			<destination>{cd7875ef-1311-4aab-8ac6-1875078be799}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionSourceSound" id="{f0f43358-bf51-40d0-a031-ae3f33a64627}">
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
 	<object class="TransitionDestinationSound" id="{a92b612e-bdf1-48dd-a9f9-78cddabc3fc4}">
 		<property name="start">
 			<value>1</value>
 		</property>
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionSourceSound" id="{f0f43358-bf51-40d0-a031-ae3f33a64627}">
 		<property name="length">
 			<value>0</value>
 		</property>
@@ -118,6 +118,14 @@ Space Main Menu (Trailer) by LightMister -- https://freesound.org/s/690294/ -- L
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{fd849c6b-51f2-4723-b257-a45c46cc59b6}" />
+	<object class="TransitionDestinationSound" id="{94543719-65e5-43ac-97d6-ca5f47327e6c}">
+		<property name="length">
+			<value>1.2000000000000002</value>
+		</property>
+		<relationship name="fadeInCurve">
+			<destination>{226f410d-01d4-4418-9f21-2695250609e0}</destination>
+		</relationship>
+	</object>
 	<object class="SingleSound" id="{c57971db-fdd8-43f4-a924-b0b2e3d69d2a}">
 		<property name="length">
 			<value>56.039999999999999</value>
@@ -129,14 +137,6 @@ Space Main Menu (Trailer) by LightMister -- https://freesound.org/s/690294/ -- L
 	<object class="TransitionSourceSound" id="{600ef246-546a-496e-a820-dd2f25be1083}">
 		<relationship name="fadeOutCurve">
 			<destination>{ae4ce9cc-ca25-41db-8989-e6e38882320d}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionDestinationSound" id="{94543719-65e5-43ac-97d6-ca5f47327e6c}">
-		<property name="length">
-			<value>1.2000000000000002</value>
-		</property>
-		<relationship name="fadeInCurve">
-			<destination>{226f410d-01d4-4418-9f21-2695250609e0}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{2ba4f8e0-33c3-47d7-a4d7-f99ba98b2acc}">
@@ -212,17 +212,6 @@ Space Main Menu (Trailer) by LightMister -- https://freesound.org/s/690294/ -- L
 	</object>
 	<object class="MixerBusPanner" id="{3a24ac71-af9c-4e6a-b0cd-e691f94170ee}" />
 	<object class="MixerBusFader" id="{73c1e0a9-0493-4e7b-999e-760ca1e7f578}" />
-	<object class="TransitionSourceFadeOutCurve" id="{ae4ce9cc-ca25-41db-8989-e6e38882320d}">
-		<relationship name="startPoint">
-			<destination>{9fb68fb2-5ba8-42b4-9272-fa59a5e7b018}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{24028ede-325d-4f08-91aa-69ce00eed309}</destination>
-		</relationship>
-		<relationship name="relatedModule">
-			<destination>{94543719-65e5-43ac-97d6-ca5f47327e6c}</destination>
-		</relationship>
-	</object>
 	<object class="TransitionDestinationFadeInCurve" id="{226f410d-01d4-4418-9f21-2695250609e0}">
 		<relationship name="startPoint">
 			<destination>{ac7a20fe-c4d0-4f58-8a64-6ed57d1e6b46}</destination>
@@ -232,6 +221,17 @@ Space Main Menu (Trailer) by LightMister -- https://freesound.org/s/690294/ -- L
 		</relationship>
 		<relationship name="relatedModule">
 			<destination>{600ef246-546a-496e-a820-dd2f25be1083}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionSourceFadeOutCurve" id="{ae4ce9cc-ca25-41db-8989-e6e38882320d}">
+		<relationship name="startPoint">
+			<destination>{9fb68fb2-5ba8-42b4-9272-fa59a5e7b018}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{24028ede-325d-4f08-91aa-69ce00eed309}</destination>
+		</relationship>
+		<relationship name="relatedModule">
+			<destination>{94543719-65e5-43ac-97d6-ca5f47327e6c}</destination>
 		</relationship>
 	</object>
 	<object class="LFOModulator" id="{6abee96d-7805-4dac-9d49-a0bbf474d549}">
@@ -259,32 +259,13 @@ Space Main Menu (Trailer) by LightMister -- https://freesound.org/s/690294/ -- L
 	<object class="MixerBusPanner" id="{638769d0-5302-48b4-959f-45adb567d182}" />
 	<object class="TransitionTimeline" id="{956079b5-bb5c-4c86-a7d2-3ad0a145b912}">
 		<relationship name="modules">
-			<destination>{600ef246-546a-496e-a820-dd2f25be1083}</destination>
-			<destination>{94543719-65e5-43ac-97d6-ca5f47327e6c}</destination>
-			<destination>{f0f43358-bf51-40d0-a031-ae3f33a64627}</destination>
 			<destination>{a92b612e-bdf1-48dd-a9f9-78cddabc3fc4}</destination>
+			<destination>{94543719-65e5-43ac-97d6-ca5f47327e6c}</destination>
+			<destination>{600ef246-546a-496e-a820-dd2f25be1083}</destination>
+			<destination>{f0f43358-bf51-40d0-a031-ae3f33a64627}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{217b652b-aa21-4251-80a8-d1e0eb91b2c1}" />
-	<object class="AutomationPoint" id="{9fb68fb2-5ba8-42b4-9272-fa59a5e7b018}">
-		<property name="position">
-			<value>0</value>
-		</property>
-		<property name="value">
-			<value>1</value>
-		</property>
-		<property name="curveShape">
-			<value>0.25471893</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{24028ede-325d-4f08-91aa-69ce00eed309}">
-		<property name="position">
-			<value>1</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-	</object>
 	<object class="AutomationPoint" id="{ac7a20fe-c4d0-4f58-8a64-6ed57d1e6b46}">
 		<property name="position">
 			<value>0</value>
@@ -302,6 +283,25 @@ Space Main Menu (Trailer) by LightMister -- https://freesound.org/s/690294/ -- L
 		</property>
 		<property name="value">
 			<value>1</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{9fb68fb2-5ba8-42b4-9272-fa59a5e7b018}">
+		<property name="position">
+			<value>0</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+		<property name="curveShape">
+			<value>0.25471893</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{24028ede-325d-4f08-91aa-69ce00eed309}">
+		<property name="position">
+			<value>1</value>
+		</property>
+		<property name="value">
+			<value>0</value>
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{336ba7ae-0057-4cf3-b480-f1537bd94e46}" />

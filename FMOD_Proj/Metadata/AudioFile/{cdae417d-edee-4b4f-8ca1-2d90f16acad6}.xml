@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{cdae417d-edee-4b4f-8ca1-2d90f16acad6}">
 		<property name="assetPath">
 			<value>NonRelease/Music/Spacedust/airtone_spacedust_bass.mp3</value>

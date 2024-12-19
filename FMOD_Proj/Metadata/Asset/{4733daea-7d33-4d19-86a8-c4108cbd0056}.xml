@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="EncodableAsset" id="{4733daea-7d33-4d19-86a8-c4108cbd0056}">
 		<property name="assetPath">
 			<value>_Examples/Music_Diegetic/</value>

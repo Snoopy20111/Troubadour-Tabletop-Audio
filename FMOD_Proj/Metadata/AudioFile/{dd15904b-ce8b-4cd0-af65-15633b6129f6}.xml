@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{dd15904b-ce8b-4cd0-af65-15633b6129f6}">
 		<property name="assetPath">
 			<value>NonRelease/Music/Bsides/airtone_Bsides_Drums.mp3</value>

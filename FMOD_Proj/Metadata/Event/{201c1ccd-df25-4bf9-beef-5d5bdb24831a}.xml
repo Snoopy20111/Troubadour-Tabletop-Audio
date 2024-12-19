@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{201c1ccd-df25-4bf9-beef-5d5bdb24831a}">
 		<property name="note">
 			<value>A fairly simple improvised tune, good for tavern ambience or other hearthside and homely places.
@@ -57,6 +57,7 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 	</object>
 	<object class="MasterTrack" id="{f344553f-deab-43fd-9873-5b6939cddefa}">
 		<relationship name="modules">
+			<destination>{739179d7-904a-4d45-bf07-4123e323b69d}</destination>
 			<destination>{4e789e63-2e86-4184-ac1c-a8d17434717f}</destination>
 			<destination>{c176397f-5cb5-45c9-8a41-c8690fd93d54}</destination>
 			<destination>{4cf199d7-daba-407f-9e73-48b6af3e8ada}</destination>
@@ -70,7 +71,6 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 			<destination>{e12b0bd6-5292-492a-aa79-2c41596fd6ca}</destination>
 			<destination>{68055a76-3165-42ff-ab38-3dcc274465ef}</destination>
 			<destination>{7dea149c-cfec-4977-b0e6-597afdd58403}</destination>
-			<destination>{739179d7-904a-4d45-bf07-4123e323b69d}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{fdf659f3-2b7b-49b6-b2d0-cba06ce85597}</destination>
@@ -98,20 +98,20 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 			<destination>{84b21629-ecd4-42ba-aa77-2d97ef9550dd}</destination>
 		</relationship>
 		<relationship name="modules">
-			<destination>{d8f83ca0-5cfd-46a3-a6e7-ec25b14f8c5d}</destination>
 			<destination>{f2922c57-538c-4bfa-9190-665b5aafbbf4}</destination>
-			<destination>{714bc0ae-d775-44f9-a1aa-58a0cf94c7ba}</destination>
+			<destination>{50d5d20a-820c-4246-9475-df6fdbc91506}</destination>
+			<destination>{00a0a788-994f-485f-95f3-e83d4b00cce1}</destination>
 			<destination>{6b8a96a7-1093-4575-a6a5-35f9ce14ad36}</destination>
+			<destination>{070d268b-ae36-44a2-b972-5d4c0c191f34}</destination>
+			<destination>{d8f83ca0-5cfd-46a3-a6e7-ec25b14f8c5d}</destination>
+			<destination>{714bc0ae-d775-44f9-a1aa-58a0cf94c7ba}</destination>
 			<destination>{3109e8c3-16e7-46e2-96c3-fbcf318b3529}</destination>
 			<destination>{7fe10da7-e7d1-4a5a-baae-741c97319b41}</destination>
-			<destination>{070d268b-ae36-44a2-b972-5d4c0c191f34}</destination>
 			<destination>{de774607-9097-4439-b619-3239742db143}</destination>
-			<destination>{50d5d20a-820c-4246-9475-df6fdbc91506}</destination>
 			<destination>{15a5aeb7-d655-4ff7-b944-3eb455b45388}</destination>
 			<destination>{437e36ec-6821-4861-a9cc-8e53b136c4e3}</destination>
 			<destination>{2ba12a3a-41cd-4369-80bc-972c4e471ca8}</destination>
 			<destination>{c243f8d1-842d-44db-a391-40d2e4d11fa6}</destination>
-			<destination>{00a0a788-994f-485f-95f3-e83d4b00cce1}</destination>
 			<destination>{44e97bb3-4f1d-4e6a-94c6-3028ac3e5c2e}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
@@ -121,20 +121,20 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 	<object class="GroupTrack" id="{6653add9-d0d4-4d70-8e35-1c69a8a4c4c7}">
 		<relationship name="modules">
 			<destination>{33bb142c-d3ab-46b3-bbe1-7e207ea4bffd}</destination>
-			<destination>{f45f190b-72fc-4c65-a63d-7b5a26a74df4}</destination>
-			<destination>{a400d9aa-d136-49a4-b992-50a5997755a4}</destination>
-			<destination>{ee9c4422-8f3f-4c3c-9b1d-072fbd0f3183}</destination>
-			<destination>{97ef18ab-e260-49f8-ba03-9759c233c931}</destination>
-			<destination>{9ff8b1bd-6daa-4806-bd8f-811a12033903}</destination>
-			<destination>{e61b13ec-e998-4041-a983-56c9f47d701e}</destination>
 			<destination>{f6301979-8704-4b24-938e-aaa0423eeee2}</destination>
-			<destination>{bb2910d2-4ce7-4000-acc5-d4c787624954}</destination>
 			<destination>{9e21d24e-28c8-438f-8148-1eacea7126b3}</destination>
-			<destination>{a939906c-ffd0-4c8d-a808-d42730091a62}</destination>
-			<destination>{cb9fd602-44f0-45a6-9757-93c0df394dfc}</destination>
-			<destination>{8371ef25-e058-43b1-8b96-f0fcb9154377}</destination>
-			<destination>{8d97e612-62b6-4227-a074-b8ef5bc4b592}</destination>
+			<destination>{9ff8b1bd-6daa-4806-bd8f-811a12033903}</destination>
 			<destination>{af12d4be-bf6a-4559-b904-3ce9e3318b37}</destination>
+			<destination>{8371ef25-e058-43b1-8b96-f0fcb9154377}</destination>
+			<destination>{cb9fd602-44f0-45a6-9757-93c0df394dfc}</destination>
+			<destination>{e61b13ec-e998-4041-a983-56c9f47d701e}</destination>
+			<destination>{97ef18ab-e260-49f8-ba03-9759c233c931}</destination>
+			<destination>{f45f190b-72fc-4c65-a63d-7b5a26a74df4}</destination>
+			<destination>{a939906c-ffd0-4c8d-a808-d42730091a62}</destination>
+			<destination>{8d97e612-62b6-4227-a074-b8ef5bc4b592}</destination>
+			<destination>{ee9c4422-8f3f-4c3c-9b1d-072fbd0f3183}</destination>
+			<destination>{bb2910d2-4ce7-4000-acc5-d4c787624954}</destination>
+			<destination>{a400d9aa-d136-49a4-b992-50a5997755a4}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{05264201-93ee-415c-a094-b01bc40eb596}</destination>
@@ -143,24 +143,24 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 	<object class="GroupTrack" id="{6621f919-620d-4d73-b098-19b48c8a6f0f}">
 		<relationship name="modules">
 			<destination>{6abb6fcd-75b1-4c5c-ba70-e65421e91214}</destination>
-			<destination>{6844b10f-dbd2-4577-b7b0-e23a3d821a44}</destination>
-			<destination>{5dd617f4-415e-4b8d-b2f9-2ab41ae76315}</destination>
-			<destination>{42106f10-56ca-4cb2-8379-574a8639ebd3}</destination>
-			<destination>{9c978aa1-e5ba-4216-bcab-2f0ff09b96f8}</destination>
-			<destination>{ecb189ff-b380-4fbe-8c62-6e22b6121d95}</destination>
-			<destination>{8d208abb-a572-482a-a2a3-cd445850dd94}</destination>
-			<destination>{299cd2e8-193c-47b6-a5ff-9c98d8e06d9c}</destination>
-			<destination>{ba405bad-5b43-44fe-be7a-1733653b0b0c}</destination>
-			<destination>{bce03fa8-00ff-4091-9b51-a205860a9bd0}</destination>
-			<destination>{dfec9cf6-b339-4961-a2d2-50eca8b98ea7}</destination>
-			<destination>{1f9b7c53-4f8b-4bd5-b987-5c63b707dbf5}</destination>
-			<destination>{dbf90a50-5a03-444c-b76b-a7d9b85da0da}</destination>
-			<destination>{9859202d-2abc-4801-99ed-ff1a223e4305}</destination>
-			<destination>{be56425e-1113-4c57-8af0-e86761c3538b}</destination>
-			<destination>{b39c22d2-e3d8-4fcc-a9b9-94014ac7983a}</destination>
-			<destination>{fe43abb8-a2dc-43af-8440-aa2daa05d560}</destination>
-			<destination>{ef15df3c-586b-489e-89a1-2a694c05e091}</destination>
 			<destination>{1cf8e57a-a352-48ab-95d2-faa9740e46af}</destination>
+			<destination>{fe43abb8-a2dc-43af-8440-aa2daa05d560}</destination>
+			<destination>{9c978aa1-e5ba-4216-bcab-2f0ff09b96f8}</destination>
+			<destination>{299cd2e8-193c-47b6-a5ff-9c98d8e06d9c}</destination>
+			<destination>{6844b10f-dbd2-4577-b7b0-e23a3d821a44}</destination>
+			<destination>{bce03fa8-00ff-4091-9b51-a205860a9bd0}</destination>
+			<destination>{9859202d-2abc-4801-99ed-ff1a223e4305}</destination>
+			<destination>{dbf90a50-5a03-444c-b76b-a7d9b85da0da}</destination>
+			<destination>{8d208abb-a572-482a-a2a3-cd445850dd94}</destination>
+			<destination>{5dd617f4-415e-4b8d-b2f9-2ab41ae76315}</destination>
+			<destination>{1f9b7c53-4f8b-4bd5-b987-5c63b707dbf5}</destination>
+			<destination>{ba405bad-5b43-44fe-be7a-1733653b0b0c}</destination>
+			<destination>{be56425e-1113-4c57-8af0-e86761c3538b}</destination>
+			<destination>{42106f10-56ca-4cb2-8379-574a8639ebd3}</destination>
+			<destination>{b39c22d2-e3d8-4fcc-a9b9-94014ac7983a}</destination>
+			<destination>{ecb189ff-b380-4fbe-8c62-6e22b6121d95}</destination>
+			<destination>{ef15df3c-586b-489e-89a1-2a694c05e091}</destination>
+			<destination>{dfec9cf6-b339-4961-a2d2-50eca8b98ea7}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{91c961bd-ae80-45c6-ad00-b4688215872f}</destination>
@@ -195,30 +195,30 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 	</object>
 	<object class="Timeline" id="{dd961081-6345-4cdb-801f-ec2d7bb743fc}">
 		<relationship name="modules">
-			<destination>{d8f83ca0-5cfd-46a3-a6e7-ec25b14f8c5d}</destination>
 			<destination>{33bb142c-d3ab-46b3-bbe1-7e207ea4bffd}</destination>
 			<destination>{6abb6fcd-75b1-4c5c-ba70-e65421e91214}</destination>
-			<destination>{5c8d35b9-f01a-40fb-bc63-6a6429fce7f7}</destination>
+			<destination>{9c978aa1-e5ba-4216-bcab-2f0ff09b96f8}</destination>
 			<destination>{6844b10f-dbd2-4577-b7b0-e23a3d821a44}</destination>
 			<destination>{5dd617f4-415e-4b8d-b2f9-2ab41ae76315}</destination>
+			<destination>{5c8d35b9-f01a-40fb-bc63-6a6429fce7f7}</destination>
+			<destination>{d8f83ca0-5cfd-46a3-a6e7-ec25b14f8c5d}</destination>
 			<destination>{42106f10-56ca-4cb2-8379-574a8639ebd3}</destination>
-			<destination>{9c978aa1-e5ba-4216-bcab-2f0ff09b96f8}</destination>
 		</relationship>
 		<relationship name="markers">
-			<destination>{3b9c5ef6-e9b5-4937-b7bd-6391562bb8f9}</destination>
-			<destination>{0cb8740a-501e-4ff2-8f27-37dd36ab5e2d}</destination>
-			<destination>{7b1fecc1-ef79-4ed4-aba5-b836d1d875ad}</destination>
 			<destination>{80d62a3d-0289-4b59-9607-8870b785e6fe}</destination>
+			<destination>{7b1fecc1-ef79-4ed4-aba5-b836d1d875ad}</destination>
 			<destination>{74c6bad1-3a21-4d40-b8d7-0c039af8afaa}</destination>
-			<destination>{e96c1057-481e-4c78-b423-d2010090db0d}</destination>
-			<destination>{790670d2-4517-467a-bb16-913a7372e5ab}</destination>
-			<destination>{e74c7b2a-2fdc-4d16-abe2-57f6c41e80a0}</destination>
-			<destination>{18d8e5a8-5b9a-44b8-8573-505820ba6ae8}</destination>
-			<destination>{9023df56-5026-4994-a66d-1b3bade2e44e}</destination>
 			<destination>{ab05e267-bd51-433b-8a2f-1461f54ab042}</destination>
 			<destination>{0c1081df-6064-437d-8646-0a5a23927c32}</destination>
-			<destination>{a1a8e47b-8f9c-4594-bd84-4cdb569c831b}</destination>
+			<destination>{e74c7b2a-2fdc-4d16-abe2-57f6c41e80a0}</destination>
 			<destination>{84c518e1-92ff-4022-89f6-047344db0631}</destination>
+			<destination>{a1a8e47b-8f9c-4594-bd84-4cdb569c831b}</destination>
+			<destination>{3b9c5ef6-e9b5-4937-b7bd-6391562bb8f9}</destination>
+			<destination>{0cb8740a-501e-4ff2-8f27-37dd36ab5e2d}</destination>
+			<destination>{e96c1057-481e-4c78-b423-d2010090db0d}</destination>
+			<destination>{790670d2-4517-467a-bb16-913a7372e5ab}</destination>
+			<destination>{18d8e5a8-5b9a-44b8-8573-505820ba6ae8}</destination>
+			<destination>{9023df56-5026-4994-a66d-1b3bade2e44e}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{fdf659f3-2b7b-49b6-b2d0-cba06ce85597}">
@@ -231,6 +231,11 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 		<relationship name="mixer">
 			<destination>{a0430958-c11e-4f76-8417-cc29f52739a9}</destination>
 		</relationship>
+	</object>
+	<object class="TransitionSourceSound" id="{739179d7-904a-4d45-bf07-4123e323b69d}">
+		<property name="length">
+			<value>0</value>
+		</property>
 	</object>
 	<object class="TransitionSourceSound" id="{4e789e63-2e86-4184-ac1c-a8d17434717f}">
 		<property name="length">
@@ -297,11 +302,6 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 			<value>2.6785714285714288</value>
 		</property>
 	</object>
-	<object class="TransitionSourceSound" id="{739179d7-904a-4d45-bf07-4123e323b69d}">
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
 	<object class="MixerBusEffectChain" id="{8e2fed94-7ad9-4208-a4b6-4f1d64ebc58b}">
 		<relationship name="effects">
 			<destination>{8030bd18-dee5-4dd8-93bf-d3e3fe476d3d}</destination>
@@ -313,20 +313,55 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 			<destination>{acc6e719-43fd-4d23-89ce-b206e3f3e200}</destination>
 		</relationship>
 	</object>
-	<object class="SingleSound" id="{d8f83ca0-5cfd-46a3-a6e7-ec25b14f8c5d}">
-		<property name="length">
-			<value>156.43470833333333</value>
-		</property>
-		<relationship name="audioFile">
-			<destination>{539d0d9a-c226-400e-b3a1-7bf52ba3048f}</destination>
-		</relationship>
-	</object>
 	<object class="TransitionSourceSound" id="{f2922c57-538c-4bfa-9190-665b5aafbbf4}">
 		<property name="length">
 			<value>1.7075892857142856</value>
 		</property>
 		<relationship name="fadeOutCurve">
 			<destination>{1ae2038a-0f31-4e7e-902a-e9af33e398e1}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionSourceSound" id="{50d5d20a-820c-4246-9475-df6fdbc91506}">
+		<property name="length">
+			<value>1.5401785714285714</value>
+		</property>
+		<relationship name="fadeOutCurve">
+			<destination>{9296271c-7495-45ef-b5dc-6487d3b630df}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionDestinationSound" id="{00a0a788-994f-485f-95f3-e83d4b00cce1}">
+		<property name="start">
+			<value>0.80357142857142771</value>
+		</property>
+		<property name="length">
+			<value>1.8750000000000007</value>
+		</property>
+		<relationship name="fadeInCurve">
+			<destination>{4b2a3ce6-6af4-49c6-a731-fa4d16e1def6}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionSourceSound" id="{6b8a96a7-1093-4575-a6a5-35f9ce14ad36}">
+		<property name="length">
+			<value>1.5401785714285714</value>
+		</property>
+		<relationship name="fadeOutCurve">
+			<destination>{61bd96ba-6b32-4be7-a79d-582d8e0f93f3}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionSourceSound" id="{070d268b-ae36-44a2-b972-5d4c0c191f34}">
+		<property name="length">
+			<value>1.5401785714285714</value>
+		</property>
+		<relationship name="fadeOutCurve">
+			<destination>{261d5f59-a062-43c2-a842-944305673549}</destination>
+		</relationship>
+	</object>
+	<object class="SingleSound" id="{d8f83ca0-5cfd-46a3-a6e7-ec25b14f8c5d}">
+		<property name="length">
+			<value>156.43470833333333</value>
+		</property>
+		<relationship name="audioFile">
+			<destination>{539d0d9a-c226-400e-b3a1-7bf52ba3048f}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionDestinationSound" id="{714bc0ae-d775-44f9-a1aa-58a0cf94c7ba}">
@@ -338,14 +373,6 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 		</property>
 		<relationship name="fadeInCurve">
 			<destination>{5ac6c4fd-7e61-49ea-ae4f-3619aee3f295}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionSourceSound" id="{6b8a96a7-1093-4575-a6a5-35f9ce14ad36}">
-		<property name="length">
-			<value>1.5401785714285714</value>
-		</property>
-		<relationship name="fadeOutCurve">
-			<destination>{61bd96ba-6b32-4be7-a79d-582d8e0f93f3}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionDestinationSound" id="{3109e8c3-16e7-46e2-96c3-fbcf318b3529}">
@@ -370,14 +397,6 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 			<destination>{977275be-799e-462c-89d2-861b425e838e}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionSourceSound" id="{070d268b-ae36-44a2-b972-5d4c0c191f34}">
-		<property name="length">
-			<value>1.5401785714285714</value>
-		</property>
-		<relationship name="fadeOutCurve">
-			<destination>{261d5f59-a062-43c2-a842-944305673549}</destination>
-		</relationship>
-	</object>
 	<object class="TransitionDestinationSound" id="{de774607-9097-4439-b619-3239742db143}">
 		<property name="start">
 			<value>0.8035714285714286</value>
@@ -387,14 +406,6 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 		</property>
 		<relationship name="fadeInCurve">
 			<destination>{a3f4f637-fc6b-4bdb-ad52-c7609a7d9051}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionSourceSound" id="{50d5d20a-820c-4246-9475-df6fdbc91506}">
-		<property name="length">
-			<value>1.5401785714285714</value>
-		</property>
-		<relationship name="fadeOutCurve">
-			<destination>{9296271c-7495-45ef-b5dc-6487d3b630df}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionDestinationSound" id="{15a5aeb7-d655-4ff7-b944-3eb455b45388}">
@@ -435,17 +446,6 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 			<destination>{efb1f4df-6795-4ada-8fd2-082ffb32d311}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionDestinationSound" id="{00a0a788-994f-485f-95f3-e83d4b00cce1}">
-		<property name="start">
-			<value>0.80357142857142771</value>
-		</property>
-		<property name="length">
-			<value>1.8750000000000007</value>
-		</property>
-		<relationship name="fadeInCurve">
-			<destination>{4b2a3ce6-6af4-49c6-a731-fa4d16e1def6}</destination>
-		</relationship>
-	</object>
 	<object class="TransitionSourceSound" id="{44e97bb3-4f1d-4e6a-94c6-3028ac3e5c2e}">
 		<property name="length">
 			<value>1.5401785714285714</value>
@@ -482,63 +482,6 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 			<destination>{1fed80c8-8f3b-4190-b35f-2b67ac673fdc}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionSourceSound" id="{f45f190b-72fc-4c65-a63d-7b5a26a74df4}">
-		<property name="length">
-			<value>1.7745535714285714</value>
-		</property>
-		<relationship name="fadeOutCurve">
-			<destination>{7eee91f8-4a5a-4266-8771-e0470f386f6b}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionDestinationSound" id="{a400d9aa-d136-49a4-b992-50a5997755a4}">
-		<property name="start">
-			<value>1.2053571428571428</value>
-		</property>
-		<property name="length">
-			<value>2.0089285714285721</value>
-		</property>
-		<relationship name="fadeInCurve">
-			<destination>{83bcce26-0d67-4bd7-8cb8-f75bb5fa7178}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionSourceSound" id="{ee9c4422-8f3f-4c3c-9b1d-072fbd0f3183}">
-		<property name="length">
-			<value>1.5401785714285714</value>
-		</property>
-		<relationship name="fadeOutCurve">
-			<destination>{924c5e7c-7f56-4ebc-ac77-695f5cccfb3f}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionDestinationSound" id="{97ef18ab-e260-49f8-ba03-9759c233c931}">
-		<property name="start">
-			<value>0.6696428571428571</value>
-		</property>
-		<property name="length">
-			<value>2.544642857142859</value>
-		</property>
-		<relationship name="fadeInCurve">
-			<destination>{60c67ca3-e4e4-4635-b9e1-6d21406393d1}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionDestinationSound" id="{9ff8b1bd-6daa-4806-bd8f-811a12033903}">
-		<property name="start">
-			<value>0.66964285714285632</value>
-		</property>
-		<property name="length">
-			<value>2.0089285714285738</value>
-		</property>
-		<relationship name="fadeInCurve">
-			<destination>{f76e236a-1a2f-4ae6-bb31-66efc95422bc}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionSourceSound" id="{e61b13ec-e998-4041-a983-56c9f47d701e}">
-		<property name="length">
-			<value>1.5401785714285714</value>
-		</property>
-		<relationship name="fadeOutCurve">
-			<destination>{eae084f7-b3ac-4cb2-8123-76a8dfaa49cc}</destination>
-		</relationship>
-	</object>
 	<object class="TransitionDestinationSound" id="{f6301979-8704-4b24-938e-aaa0423eeee2}">
 		<property name="start">
 			<value>0.6696428571428571</value>
@@ -548,14 +491,6 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 		</property>
 		<relationship name="fadeInCurve">
 			<destination>{bbc43ef5-216f-462e-9d93-ece1ef4fb25e}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionSourceSound" id="{bb2910d2-4ce7-4000-acc5-d4c787624954}">
-		<property name="length">
-			<value>2.1428571428571428</value>
-		</property>
-		<relationship name="fadeOutCurve">
-			<destination>{5983540c-df04-4161-bdea-4893ece3ba85}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionDestinationSound" id="{9e21d24e-28c8-438f-8148-1eacea7126b3}">
@@ -569,12 +504,31 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 			<destination>{84deec6b-c9e5-4a92-ad42-f3f5ea585e0f}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionSourceSound" id="{a939906c-ffd0-4c8d-a808-d42730091a62}">
+	<object class="TransitionDestinationSound" id="{9ff8b1bd-6daa-4806-bd8f-811a12033903}">
+		<property name="start">
+			<value>0.66964285714285632</value>
+		</property>
+		<property name="length">
+			<value>2.0089285714285738</value>
+		</property>
+		<relationship name="fadeInCurve">
+			<destination>{f76e236a-1a2f-4ae6-bb31-66efc95422bc}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionSourceSound" id="{af12d4be-bf6a-4559-b904-3ce9e3318b37}">
 		<property name="length">
 			<value>1.5401785714285714</value>
 		</property>
 		<relationship name="fadeOutCurve">
-			<destination>{fdcf8e33-a009-47cf-ac31-3c5158d3f4f7}</destination>
+			<destination>{06546f16-8b0f-4a71-8ad1-be0177a6047f}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionSourceSound" id="{8371ef25-e058-43b1-8b96-f0fcb9154377}">
+		<property name="length">
+			<value>1.5401785714285714</value>
+		</property>
+		<relationship name="fadeOutCurve">
+			<destination>{0a6474c0-647a-43c4-a6ca-dc109b09e084}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionDestinationSound" id="{cb9fd602-44f0-45a6-9757-93c0df394dfc}">
@@ -588,12 +542,39 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 			<destination>{e0f1d870-bf58-44c5-b17b-da24f72a6c6f}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionSourceSound" id="{8371ef25-e058-43b1-8b96-f0fcb9154377}">
+	<object class="TransitionSourceSound" id="{e61b13ec-e998-4041-a983-56c9f47d701e}">
 		<property name="length">
 			<value>1.5401785714285714</value>
 		</property>
 		<relationship name="fadeOutCurve">
-			<destination>{0a6474c0-647a-43c4-a6ca-dc109b09e084}</destination>
+			<destination>{eae084f7-b3ac-4cb2-8123-76a8dfaa49cc}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionDestinationSound" id="{97ef18ab-e260-49f8-ba03-9759c233c931}">
+		<property name="start">
+			<value>0.6696428571428571</value>
+		</property>
+		<property name="length">
+			<value>2.544642857142859</value>
+		</property>
+		<relationship name="fadeInCurve">
+			<destination>{60c67ca3-e4e4-4635-b9e1-6d21406393d1}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionSourceSound" id="{f45f190b-72fc-4c65-a63d-7b5a26a74df4}">
+		<property name="length">
+			<value>1.7745535714285714</value>
+		</property>
+		<relationship name="fadeOutCurve">
+			<destination>{7eee91f8-4a5a-4266-8771-e0470f386f6b}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionSourceSound" id="{a939906c-ffd0-4c8d-a808-d42730091a62}">
+		<property name="length">
+			<value>1.5401785714285714</value>
+		</property>
+		<relationship name="fadeOutCurve">
+			<destination>{fdcf8e33-a009-47cf-ac31-3c5158d3f4f7}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionDestinationSound" id="{8d97e612-62b6-4227-a074-b8ef5bc4b592}">
@@ -607,12 +588,31 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 			<destination>{e3003d80-6aa8-41f3-b74e-82c29d7a23d3}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionSourceSound" id="{af12d4be-bf6a-4559-b904-3ce9e3318b37}">
+	<object class="TransitionSourceSound" id="{ee9c4422-8f3f-4c3c-9b1d-072fbd0f3183}">
 		<property name="length">
 			<value>1.5401785714285714</value>
 		</property>
 		<relationship name="fadeOutCurve">
-			<destination>{06546f16-8b0f-4a71-8ad1-be0177a6047f}</destination>
+			<destination>{924c5e7c-7f56-4ebc-ac77-695f5cccfb3f}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionSourceSound" id="{bb2910d2-4ce7-4000-acc5-d4c787624954}">
+		<property name="length">
+			<value>2.1428571428571428</value>
+		</property>
+		<relationship name="fadeOutCurve">
+			<destination>{5983540c-df04-4161-bdea-4893ece3ba85}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionDestinationSound" id="{a400d9aa-d136-49a4-b992-50a5997755a4}">
+		<property name="start">
+			<value>1.2053571428571428</value>
+		</property>
+		<property name="length">
+			<value>2.0089285714285721</value>
+		</property>
+		<relationship name="fadeInCurve">
+			<destination>{83bcce26-0d67-4bd7-8cb8-f75bb5fa7178}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{05264201-93ee-415c-a094-b01bc40eb596}">
@@ -643,37 +643,20 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 			<destination>{7804ce3f-cb85-42ec-b855-71675f6e4684}</destination>
 		</relationship>
 	</object>
-	<object class="SingleSound" id="{6844b10f-dbd2-4577-b7b0-e23a3d821a44}">
-		<property name="start">
-			<value>40.747767857142861</value>
-		</property>
+	<object class="TransitionSourceSound" id="{1cf8e57a-a352-48ab-95d2-faa9740e46af}">
 		<property name="length">
-			<value>34.285714285714292</value>
+			<value>1.5401785714285714</value>
 		</property>
-		<relationship name="audioFile">
-			<destination>{7804ce3f-cb85-42ec-b855-71675f6e4684}</destination>
+		<relationship name="fadeOutCurve">
+			<destination>{be6c0f39-1b93-46bf-8c6c-599ce8640918}</destination>
 		</relationship>
 	</object>
-	<object class="SingleSound" id="{5dd617f4-415e-4b8d-b2f9-2ab41ae76315}">
-		<property name="start">
-			<value>75.033482142857153</value>
-		</property>
+	<object class="TransitionSourceSound" id="{fe43abb8-a2dc-43af-8440-aa2daa05d560}">
 		<property name="length">
-			<value>34.285714285714292</value>
+			<value>2.6785714285714284</value>
 		</property>
-		<relationship name="audioFile">
-			<destination>{7804ce3f-cb85-42ec-b855-71675f6e4684}</destination>
-		</relationship>
-	</object>
-	<object class="SingleSound" id="{42106f10-56ca-4cb2-8379-574a8639ebd3}">
-		<property name="start">
-			<value>109.31919642857144</value>
-		</property>
-		<property name="length">
-			<value>39.481750000000019</value>
-		</property>
-		<relationship name="audioFile">
-			<destination>{7804ce3f-cb85-42ec-b855-71675f6e4684}</destination>
+		<relationship name="fadeOutCurve">
+			<destination>{f0b5ed6b-e2d0-4126-8613-19de44b561c4}</destination>
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{9c978aa1-e5ba-4216-bcab-2f0ff09b96f8}">
@@ -690,25 +673,6 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 			<destination>{7804ce3f-cb85-42ec-b855-71675f6e4684}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionSourceSound" id="{ecb189ff-b380-4fbe-8c62-6e22b6121d95}">
-		<property name="length">
-			<value>1.7745535714285714</value>
-		</property>
-		<relationship name="fadeOutCurve">
-			<destination>{234554a1-f411-491d-94d4-73a0258dbb79}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionDestinationSound" id="{8d208abb-a572-482a-a2a3-cd445850dd94}">
-		<property name="start">
-			<value>0.4017857142857143</value>
-		</property>
-		<property name="length">
-			<value>2.8124999999999991</value>
-		</property>
-		<relationship name="fadeInCurve">
-			<destination>{1009f74d-27a3-4aa6-b756-d464b1d95c09}</destination>
-		</relationship>
-	</object>
 	<object class="TransitionSourceSound" id="{299cd2e8-193c-47b6-a5ff-9c98d8e06d9c}">
 		<property name="length">
 			<value>1.5401785714285714</value>
@@ -717,15 +681,15 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 			<destination>{62c7d518-f9c7-46c7-8a9b-b7a7198de20c}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionDestinationSound" id="{ba405bad-5b43-44fe-be7a-1733653b0b0c}">
+	<object class="SingleSound" id="{6844b10f-dbd2-4577-b7b0-e23a3d821a44}">
 		<property name="start">
-			<value>0.4017857142857143</value>
+			<value>40.747767857142861</value>
 		</property>
 		<property name="length">
-			<value>2.8125000000000018</value>
+			<value>34.285714285714292</value>
 		</property>
-		<relationship name="fadeInCurve">
-			<destination>{d8bec068-70cf-4e1c-8944-c9dace8230b0}</destination>
+		<relationship name="audioFile">
+			<destination>{7804ce3f-cb85-42ec-b855-71675f6e4684}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionDestinationSound" id="{bce03fa8-00ff-4091-9b51-a205860a9bd0}">
@@ -739,12 +703,45 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 			<destination>{4006244f-6b41-48c9-a913-445daf78219f}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionSourceSound" id="{dfec9cf6-b339-4961-a2d2-50eca8b98ea7}">
+	<object class="TransitionDestinationSound" id="{9859202d-2abc-4801-99ed-ff1a223e4305}">
+		<property name="start">
+			<value>0.13392857142857142</value>
+		</property>
 		<property name="length">
-			<value>1.5401785714285714</value>
+			<value>1.4062500000000011</value>
+		</property>
+		<relationship name="fadeInCurve">
+			<destination>{5898336b-c8fe-4a2b-8984-499c7d02ba76}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionSourceSound" id="{dbf90a50-5a03-444c-b76b-a7d9b85da0da}">
+		<property name="length">
+			<value>3.2142857142857149</value>
 		</property>
 		<relationship name="fadeOutCurve">
-			<destination>{c65f0ccb-f848-40c2-9ce9-775e1bc02042}</destination>
+			<destination>{1534f7e6-2bc8-4f4c-8226-33ae560ace65}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionDestinationSound" id="{8d208abb-a572-482a-a2a3-cd445850dd94}">
+		<property name="start">
+			<value>0.4017857142857143</value>
+		</property>
+		<property name="length">
+			<value>2.8124999999999991</value>
+		</property>
+		<relationship name="fadeInCurve">
+			<destination>{1009f74d-27a3-4aa6-b756-d464b1d95c09}</destination>
+		</relationship>
+	</object>
+	<object class="SingleSound" id="{5dd617f4-415e-4b8d-b2f9-2ab41ae76315}">
+		<property name="start">
+			<value>75.033482142857153</value>
+		</property>
+		<property name="length">
+			<value>34.285714285714292</value>
+		</property>
+		<relationship name="audioFile">
+			<destination>{7804ce3f-cb85-42ec-b855-71675f6e4684}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionDestinationSound" id="{1f9b7c53-4f8b-4bd5-b987-5c63b707dbf5}">
@@ -758,23 +755,15 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 			<destination>{494e5cd1-eac5-415d-83b1-2d7daeefa60a}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionSourceSound" id="{dbf90a50-5a03-444c-b76b-a7d9b85da0da}">
-		<property name="length">
-			<value>3.2142857142857149</value>
-		</property>
-		<relationship name="fadeOutCurve">
-			<destination>{1534f7e6-2bc8-4f4c-8226-33ae560ace65}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionDestinationSound" id="{9859202d-2abc-4801-99ed-ff1a223e4305}">
+	<object class="TransitionDestinationSound" id="{ba405bad-5b43-44fe-be7a-1733653b0b0c}">
 		<property name="start">
-			<value>0.13392857142857142</value>
+			<value>0.4017857142857143</value>
 		</property>
 		<property name="length">
-			<value>1.4062500000000011</value>
+			<value>2.8125000000000018</value>
 		</property>
 		<relationship name="fadeInCurve">
-			<destination>{5898336b-c8fe-4a2b-8984-499c7d02ba76}</destination>
+			<destination>{d8bec068-70cf-4e1c-8944-c9dace8230b0}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionSourceSound" id="{be56425e-1113-4c57-8af0-e86761c3538b}">
@@ -783,6 +772,17 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 		</property>
 		<relationship name="fadeOutCurve">
 			<destination>{1e13ecb7-2b13-4076-8ea3-3005bdb7fec8}</destination>
+		</relationship>
+	</object>
+	<object class="SingleSound" id="{42106f10-56ca-4cb2-8379-574a8639ebd3}">
+		<property name="start">
+			<value>109.31919642857144</value>
+		</property>
+		<property name="length">
+			<value>39.481750000000019</value>
+		</property>
+		<relationship name="audioFile">
+			<destination>{7804ce3f-cb85-42ec-b855-71675f6e4684}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionDestinationSound" id="{b39c22d2-e3d8-4fcc-a9b9-94014ac7983a}">
@@ -796,12 +796,12 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 			<destination>{ea58b5fc-a452-4a22-baad-bcfe36cb97ca}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionSourceSound" id="{fe43abb8-a2dc-43af-8440-aa2daa05d560}">
+	<object class="TransitionSourceSound" id="{ecb189ff-b380-4fbe-8c62-6e22b6121d95}">
 		<property name="length">
-			<value>2.6785714285714284</value>
+			<value>1.7745535714285714</value>
 		</property>
 		<relationship name="fadeOutCurve">
-			<destination>{f0b5ed6b-e2d0-4126-8613-19de44b561c4}</destination>
+			<destination>{234554a1-f411-491d-94d4-73a0258dbb79}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionDestinationSound" id="{ef15df3c-586b-489e-89a1-2a694c05e091}">
@@ -815,12 +815,12 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 			<destination>{2d519053-c835-4072-a7a9-cd8282cf8f4e}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionSourceSound" id="{1cf8e57a-a352-48ab-95d2-faa9740e46af}">
+	<object class="TransitionSourceSound" id="{dfec9cf6-b339-4961-a2d2-50eca8b98ea7}">
 		<property name="length">
 			<value>1.5401785714285714</value>
 		</property>
 		<relationship name="fadeOutCurve">
-			<destination>{be6c0f39-1b93-46bf-8c6c-599ce8640918}</destination>
+			<destination>{c65f0ccb-f848-40c2-9ce9-775e1bc02042}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{91c961bd-ae80-45c6-ad00-b4688215872f}">
@@ -1012,48 +1012,6 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 			<destination>{fdf659f3-2b7b-49b6-b2d0-cba06ce85597}</destination>
 		</relationship>
 	</object>
-	<object class="TempoMarker" id="{3b9c5ef6-e9b5-4937-b7bd-6391562bb8f9}">
-		<property name="position">
-			<value>6.4620535714285721</value>
-		</property>
-		<property name="tempo">
-			<value>112</value>
-		</property>
-		<relationship name="timeline">
-			<destination>{dd961081-6345-4cdb-801f-ec2d7bb743fc}</destination>
-		</relationship>
-		<relationship name="markerTrack">
-			<destination>{75976a10-4a2e-4e25-a715-717d3242d436}</destination>
-		</relationship>
-	</object>
-	<object class="NamedMarker" id="{0cb8740a-501e-4ff2-8f27-37dd36ab5e2d}">
-		<property name="position">
-			<value>0</value>
-		</property>
-		<property name="name">
-			<value>Intro</value>
-		</property>
-		<relationship name="timeline">
-			<destination>{dd961081-6345-4cdb-801f-ec2d7bb743fc}</destination>
-		</relationship>
-		<relationship name="markerTrack">
-			<destination>{dcf5d3cb-e9f8-49c6-8add-e7838a869ca7}</destination>
-		</relationship>
-	</object>
-	<object class="NamedMarker" id="{7b1fecc1-ef79-4ed4-aba5-b836d1d875ad}">
-		<property name="position">
-			<value>147.890625</value>
-		</property>
-		<property name="name">
-			<value>Outro</value>
-		</property>
-		<relationship name="timeline">
-			<destination>{dd961081-6345-4cdb-801f-ec2d7bb743fc}</destination>
-		</relationship>
-		<relationship name="markerTrack">
-			<destination>{95090457-8998-4b09-9b2d-2dddbcd95d9f}</destination>
-		</relationship>
-	</object>
 	<object class="TransitionRegion" id="{80d62a3d-0289-4b59-9607-8870b785e6fe}">
 		<property name="position">
 			<value>7.5334821428571432</value>
@@ -1080,6 +1038,20 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 			<destination>{4dd92e1c-86a1-427e-8f61-59b6a95d8066}</destination>
 		</relationship>
 	</object>
+	<object class="NamedMarker" id="{7b1fecc1-ef79-4ed4-aba5-b836d1d875ad}">
+		<property name="position">
+			<value>147.890625</value>
+		</property>
+		<property name="name">
+			<value>Outro</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{dd961081-6345-4cdb-801f-ec2d7bb743fc}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{95090457-8998-4b09-9b2d-2dddbcd95d9f}</destination>
+		</relationship>
+	</object>
 	<object class="TransitionMarker" id="{74c6bad1-3a21-4d40-b8d7-0c039af8afaa}">
 		<property name="position">
 			<value>40.747767857142861</value>
@@ -1104,6 +1076,116 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 		</relationship>
 		<relationship name="triggerConditions">
 			<destination>{e4cbfd7c-7feb-4ecf-9fa7-8ec6c35c99e7}</destination>
+		</relationship>
+	</object>
+	<object class="NamedMarker" id="{ab05e267-bd51-433b-8a2f-1461f54ab042}">
+		<property name="position">
+			<value>6.4620535714285721</value>
+		</property>
+		<property name="name">
+			<value>A</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{dd961081-6345-4cdb-801f-ec2d7bb743fc}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{95090457-8998-4b09-9b2d-2dddbcd95d9f}</destination>
+		</relationship>
+	</object>
+	<object class="NamedMarker" id="{0c1081df-6064-437d-8646-0a5a23927c32}">
+		<property name="position">
+			<value>40.747767857142861</value>
+		</property>
+		<property name="name">
+			<value>B</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{dd961081-6345-4cdb-801f-ec2d7bb743fc}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{dcf5d3cb-e9f8-49c6-8add-e7838a869ca7}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionMarker" id="{e74c7b2a-2fdc-4d16-abe2-57f6c41e80a0}">
+		<property name="position">
+			<value>75.033482142857153</value>
+		</property>
+		<property name="triggerProbabilityEnabled">
+			<value>true</value>
+		</property>
+		<property name="triggerProbability">
+			<value>50</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{dd961081-6345-4cdb-801f-ec2d7bb743fc}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{f1f10f80-e651-49e5-9e35-2461d7acb492}</destination>
+		</relationship>
+		<relationship name="transitionTimeline">
+			<destination>{2831d064-bcad-43b5-8b78-438d22c2ecad}</destination>
+		</relationship>
+		<relationship name="destination">
+			<destination>{84c518e1-92ff-4022-89f6-047344db0631}</destination>
+		</relationship>
+		<relationship name="triggerConditions">
+			<destination>{4688fd99-8cfd-461e-aace-351918ec56c0}</destination>
+		</relationship>
+	</object>
+	<object class="NamedMarker" id="{84c518e1-92ff-4022-89f6-047344db0631}">
+		<property name="position">
+			<value>109.31919642857144</value>
+		</property>
+		<property name="name">
+			<value>D</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{dd961081-6345-4cdb-801f-ec2d7bb743fc}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{dcf5d3cb-e9f8-49c6-8add-e7838a869ca7}</destination>
+		</relationship>
+	</object>
+	<object class="NamedMarker" id="{a1a8e47b-8f9c-4594-bd84-4cdb569c831b}">
+		<property name="position">
+			<value>75.033482142857153</value>
+		</property>
+		<property name="name">
+			<value>C</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{dd961081-6345-4cdb-801f-ec2d7bb743fc}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{dcf5d3cb-e9f8-49c6-8add-e7838a869ca7}</destination>
+		</relationship>
+	</object>
+	<object class="TempoMarker" id="{3b9c5ef6-e9b5-4937-b7bd-6391562bb8f9}">
+		<property name="position">
+			<value>6.4620535714285721</value>
+		</property>
+		<property name="tempo">
+			<value>112</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{dd961081-6345-4cdb-801f-ec2d7bb743fc}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{75976a10-4a2e-4e25-a715-717d3242d436}</destination>
+		</relationship>
+	</object>
+	<object class="NamedMarker" id="{0cb8740a-501e-4ff2-8f27-37dd36ab5e2d}">
+		<property name="position">
+			<value>0</value>
+		</property>
+		<property name="name">
+			<value>Intro</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{dd961081-6345-4cdb-801f-ec2d7bb743fc}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{dcf5d3cb-e9f8-49c6-8add-e7838a869ca7}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionMarker" id="{e96c1057-481e-4c78-b423-d2010090db0d}">
@@ -1158,32 +1240,6 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 			<destination>{dc05b96d-6a15-450a-915c-5102fa7b1601}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionMarker" id="{e74c7b2a-2fdc-4d16-abe2-57f6c41e80a0}">
-		<property name="position">
-			<value>75.033482142857153</value>
-		</property>
-		<property name="triggerProbabilityEnabled">
-			<value>true</value>
-		</property>
-		<property name="triggerProbability">
-			<value>50</value>
-		</property>
-		<relationship name="timeline">
-			<destination>{dd961081-6345-4cdb-801f-ec2d7bb743fc}</destination>
-		</relationship>
-		<relationship name="markerTrack">
-			<destination>{f1f10f80-e651-49e5-9e35-2461d7acb492}</destination>
-		</relationship>
-		<relationship name="transitionTimeline">
-			<destination>{2831d064-bcad-43b5-8b78-438d22c2ecad}</destination>
-		</relationship>
-		<relationship name="destination">
-			<destination>{84c518e1-92ff-4022-89f6-047344db0631}</destination>
-		</relationship>
-		<relationship name="triggerConditions">
-			<destination>{4688fd99-8cfd-461e-aace-351918ec56c0}</destination>
-		</relationship>
-	</object>
 	<object class="TransitionMarker" id="{18d8e5a8-5b9a-44b8-8573-505820ba6ae8}">
 		<property name="position">
 			<value>109.31919642857144</value>
@@ -1236,62 +1292,6 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 			<destination>{a3ac3948-118f-487b-a9f1-bca034c3bb35}</destination>
 		</relationship>
 	</object>
-	<object class="NamedMarker" id="{ab05e267-bd51-433b-8a2f-1461f54ab042}">
-		<property name="position">
-			<value>6.4620535714285721</value>
-		</property>
-		<property name="name">
-			<value>A</value>
-		</property>
-		<relationship name="timeline">
-			<destination>{dd961081-6345-4cdb-801f-ec2d7bb743fc}</destination>
-		</relationship>
-		<relationship name="markerTrack">
-			<destination>{95090457-8998-4b09-9b2d-2dddbcd95d9f}</destination>
-		</relationship>
-	</object>
-	<object class="NamedMarker" id="{0c1081df-6064-437d-8646-0a5a23927c32}">
-		<property name="position">
-			<value>40.747767857142861</value>
-		</property>
-		<property name="name">
-			<value>B</value>
-		</property>
-		<relationship name="timeline">
-			<destination>{dd961081-6345-4cdb-801f-ec2d7bb743fc}</destination>
-		</relationship>
-		<relationship name="markerTrack">
-			<destination>{dcf5d3cb-e9f8-49c6-8add-e7838a869ca7}</destination>
-		</relationship>
-	</object>
-	<object class="NamedMarker" id="{a1a8e47b-8f9c-4594-bd84-4cdb569c831b}">
-		<property name="position">
-			<value>75.033482142857153</value>
-		</property>
-		<property name="name">
-			<value>C</value>
-		</property>
-		<relationship name="timeline">
-			<destination>{dd961081-6345-4cdb-801f-ec2d7bb743fc}</destination>
-		</relationship>
-		<relationship name="markerTrack">
-			<destination>{dcf5d3cb-e9f8-49c6-8add-e7838a869ca7}</destination>
-		</relationship>
-	</object>
-	<object class="NamedMarker" id="{84c518e1-92ff-4022-89f6-047344db0631}">
-		<property name="position">
-			<value>109.31919642857144</value>
-		</property>
-		<property name="name">
-			<value>D</value>
-		</property>
-		<relationship name="timeline">
-			<destination>{dd961081-6345-4cdb-801f-ec2d7bb743fc}</destination>
-		</relationship>
-		<relationship name="markerTrack">
-			<destination>{dcf5d3cb-e9f8-49c6-8add-e7838a869ca7}</destination>
-		</relationship>
-	</object>
 	<object class="MixerBusEffectChain" id="{c4444a21-e369-4639-a9ae-22c0bf0b9dd0}">
 		<relationship name="effects">
 			<destination>{44cef8d9-74a2-4f25-98e2-5c4474c0cb56}</destination>
@@ -1310,15 +1310,26 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 			<destination>{714bc0ae-d775-44f9-a1aa-58a0cf94c7ba}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionDestinationFadeInCurve" id="{5ac6c4fd-7e61-49ea-ae4f-3619aee3f295}">
+	<object class="TransitionSourceFadeOutCurve" id="{9296271c-7495-45ef-b5dc-6487d3b630df}">
 		<relationship name="startPoint">
-			<destination>{8894852e-6b57-4132-bcdc-1c0a7202d414}</destination>
+			<destination>{41f2c502-acef-4a5a-9849-d4149fbdbff5}</destination>
 		</relationship>
 		<relationship name="endPoint">
-			<destination>{73fc857c-adff-4b27-b923-757d4217f9aa}</destination>
+			<destination>{e0546729-dacb-4c8c-a3b9-2a0dec820d9f}</destination>
 		</relationship>
 		<relationship name="relatedModule">
-			<destination>{f2922c57-538c-4bfa-9190-665b5aafbbf4}</destination>
+			<destination>{de774607-9097-4439-b619-3239742db143}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionDestinationFadeInCurve" id="{4b2a3ce6-6af4-49c6-a731-fa4d16e1def6}">
+		<relationship name="startPoint">
+			<destination>{809bf2bc-64ed-4bdc-b14b-667f132aea55}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{d060526d-44be-4459-8719-e3935e3b3498}</destination>
+		</relationship>
+		<relationship name="relatedModule">
+			<destination>{44e97bb3-4f1d-4e6a-94c6-3028ac3e5c2e}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionSourceFadeOutCurve" id="{61bd96ba-6b32-4be7-a79d-582d8e0f93f3}">
@@ -1330,6 +1341,28 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 		</relationship>
 		<relationship name="relatedModule">
 			<destination>{3109e8c3-16e7-46e2-96c3-fbcf318b3529}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionSourceFadeOutCurve" id="{261d5f59-a062-43c2-a842-944305673549}">
+		<relationship name="startPoint">
+			<destination>{c416ef2f-51cc-4f62-a9e5-ef79150ddf57}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{a31e4380-cc55-4d0d-b24a-311a6d2b8d29}</destination>
+		</relationship>
+		<relationship name="relatedModule">
+			<destination>{7fe10da7-e7d1-4a5a-baae-741c97319b41}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionDestinationFadeInCurve" id="{5ac6c4fd-7e61-49ea-ae4f-3619aee3f295}">
+		<relationship name="startPoint">
+			<destination>{8894852e-6b57-4132-bcdc-1c0a7202d414}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{73fc857c-adff-4b27-b923-757d4217f9aa}</destination>
+		</relationship>
+		<relationship name="relatedModule">
+			<destination>{f2922c57-538c-4bfa-9190-665b5aafbbf4}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionDestinationFadeInCurve" id="{f9e4fe55-67b0-4ab8-bdc6-1113ecb68a67}">
@@ -1354,17 +1387,6 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 			<destination>{070d268b-ae36-44a2-b972-5d4c0c191f34}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionSourceFadeOutCurve" id="{261d5f59-a062-43c2-a842-944305673549}">
-		<relationship name="startPoint">
-			<destination>{c416ef2f-51cc-4f62-a9e5-ef79150ddf57}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{a31e4380-cc55-4d0d-b24a-311a6d2b8d29}</destination>
-		</relationship>
-		<relationship name="relatedModule">
-			<destination>{7fe10da7-e7d1-4a5a-baae-741c97319b41}</destination>
-		</relationship>
-	</object>
 	<object class="TransitionDestinationFadeInCurve" id="{a3f4f637-fc6b-4bdb-ad52-c7609a7d9051}">
 		<relationship name="startPoint">
 			<destination>{db72189f-bd47-4754-b15d-5cff50780208}</destination>
@@ -1374,17 +1396,6 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 		</relationship>
 		<relationship name="relatedModule">
 			<destination>{50d5d20a-820c-4246-9475-df6fdbc91506}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionSourceFadeOutCurve" id="{9296271c-7495-45ef-b5dc-6487d3b630df}">
-		<relationship name="startPoint">
-			<destination>{41f2c502-acef-4a5a-9849-d4149fbdbff5}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{e0546729-dacb-4c8c-a3b9-2a0dec820d9f}</destination>
-		</relationship>
-		<relationship name="relatedModule">
-			<destination>{de774607-9097-4439-b619-3239742db143}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionDestinationFadeInCurve" id="{e38754b4-9678-4ff3-b06a-7058d7f2aefe}">
@@ -1431,17 +1442,6 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 			<destination>{2ba12a3a-41cd-4369-80bc-972c4e471ca8}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionDestinationFadeInCurve" id="{4b2a3ce6-6af4-49c6-a731-fa4d16e1def6}">
-		<relationship name="startPoint">
-			<destination>{809bf2bc-64ed-4bdc-b14b-667f132aea55}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{d060526d-44be-4459-8719-e3935e3b3498}</destination>
-		</relationship>
-		<relationship name="relatedModule">
-			<destination>{44e97bb3-4f1d-4e6a-94c6-3028ac3e5c2e}</destination>
-		</relationship>
-	</object>
 	<object class="TransitionSourceFadeOutCurve" id="{f2cfab31-56b3-451a-a046-a7e2d0966acb}">
 		<relationship name="startPoint">
 			<destination>{c7e94275-be63-4eba-a095-7f08cd0e480c}</destination>
@@ -1468,72 +1468,6 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{fb1d3361-ba57-4aab-b999-400898ade97d}" />
-	<object class="TransitionSourceFadeOutCurve" id="{7eee91f8-4a5a-4266-8771-e0470f386f6b}">
-		<relationship name="startPoint">
-			<destination>{1591285b-0737-4c0b-9a07-e28a83427f96}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{22db99bb-a2f5-4d3f-b0cd-5f38aacbc3dc}</destination>
-		</relationship>
-		<relationship name="relatedModule">
-			<destination>{a400d9aa-d136-49a4-b992-50a5997755a4}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionDestinationFadeInCurve" id="{83bcce26-0d67-4bd7-8cb8-f75bb5fa7178}">
-		<relationship name="startPoint">
-			<destination>{a8631768-be82-4ce0-a097-a7a33bc7a82a}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{cedbbc83-88ac-4a40-9ace-45eab25ef0f8}</destination>
-		</relationship>
-		<relationship name="relatedModule">
-			<destination>{f45f190b-72fc-4c65-a63d-7b5a26a74df4}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionSourceFadeOutCurve" id="{924c5e7c-7f56-4ebc-ac77-695f5cccfb3f}">
-		<relationship name="startPoint">
-			<destination>{a48c29bb-b502-4484-a423-831920cb2db9}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{cc6ce992-7622-482e-9a7e-cd5b14f1bfa7}</destination>
-		</relationship>
-		<relationship name="relatedModule">
-			<destination>{97ef18ab-e260-49f8-ba03-9759c233c931}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionDestinationFadeInCurve" id="{60c67ca3-e4e4-4635-b9e1-6d21406393d1}">
-		<relationship name="startPoint">
-			<destination>{eb3ae43b-33d4-4322-95e6-07db5733c973}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{a38ef306-2b2d-404a-a81a-729b69d4e248}</destination>
-		</relationship>
-		<relationship name="relatedModule">
-			<destination>{ee9c4422-8f3f-4c3c-9b1d-072fbd0f3183}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionDestinationFadeInCurve" id="{f76e236a-1a2f-4ae6-bb31-66efc95422bc}">
-		<relationship name="startPoint">
-			<destination>{68b15533-dffc-4339-9cfe-0dbc10f6b018}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{e2bffbe4-2c72-4626-b638-46952e2561c0}</destination>
-		</relationship>
-		<relationship name="relatedModule">
-			<destination>{e61b13ec-e998-4041-a983-56c9f47d701e}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionSourceFadeOutCurve" id="{eae084f7-b3ac-4cb2-8123-76a8dfaa49cc}">
-		<relationship name="startPoint">
-			<destination>{126426be-ef81-4ca5-b022-886e7c3a38bb}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{6083f689-bebf-47b5-b25f-b0654063eb8f}</destination>
-		</relationship>
-		<relationship name="relatedModule">
-			<destination>{9ff8b1bd-6daa-4806-bd8f-811a12033903}</destination>
-		</relationship>
-	</object>
 	<object class="TransitionDestinationFadeInCurve" id="{bbc43ef5-216f-462e-9d93-ece1ef4fb25e}">
 		<relationship name="startPoint">
 			<destination>{75cf061e-1482-4c77-a617-56bcee9cfa8c}</destination>
@@ -1543,17 +1477,6 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 		</relationship>
 		<relationship name="relatedModule">
 			<destination>{bb2910d2-4ce7-4000-acc5-d4c787624954}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionSourceFadeOutCurve" id="{5983540c-df04-4161-bdea-4893ece3ba85}">
-		<relationship name="startPoint">
-			<destination>{0aceafed-5f4d-4cf4-9c97-6b16b943350c}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{de9de103-f77a-4619-9e24-161cd6e36800}</destination>
-		</relationship>
-		<relationship name="relatedModule">
-			<destination>{f6301979-8704-4b24-938e-aaa0423eeee2}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionDestinationFadeInCurve" id="{84deec6b-c9e5-4a92-ad42-f3f5ea585e0f}">
@@ -1567,48 +1490,15 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 			<destination>{a939906c-ffd0-4c8d-a808-d42730091a62}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionSourceFadeOutCurve" id="{fdcf8e33-a009-47cf-ac31-3c5158d3f4f7}">
+	<object class="TransitionDestinationFadeInCurve" id="{f76e236a-1a2f-4ae6-bb31-66efc95422bc}">
 		<relationship name="startPoint">
-			<destination>{478e7886-e578-4b2b-9cde-aca0023142fe}</destination>
+			<destination>{68b15533-dffc-4339-9cfe-0dbc10f6b018}</destination>
 		</relationship>
 		<relationship name="endPoint">
-			<destination>{3b7e326d-71ba-496c-ada1-d527bd200208}</destination>
+			<destination>{e2bffbe4-2c72-4626-b638-46952e2561c0}</destination>
 		</relationship>
 		<relationship name="relatedModule">
-			<destination>{9e21d24e-28c8-438f-8148-1eacea7126b3}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionDestinationFadeInCurve" id="{e0f1d870-bf58-44c5-b17b-da24f72a6c6f}">
-		<relationship name="startPoint">
-			<destination>{4cf157f6-cf5c-499b-8d84-2f14be3f8dc5}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{1be97221-d796-45f3-a7a0-f1c2c59a2267}</destination>
-		</relationship>
-		<relationship name="relatedModule">
-			<destination>{8371ef25-e058-43b1-8b96-f0fcb9154377}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionSourceFadeOutCurve" id="{0a6474c0-647a-43c4-a6ca-dc109b09e084}">
-		<relationship name="startPoint">
-			<destination>{fdc81c34-7fbb-44a1-bcd1-365e8a6be45d}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{3c10cea0-0ae7-4cac-96ed-0bad5e35b1a5}</destination>
-		</relationship>
-		<relationship name="relatedModule">
-			<destination>{cb9fd602-44f0-45a6-9757-93c0df394dfc}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionDestinationFadeInCurve" id="{e3003d80-6aa8-41f3-b74e-82c29d7a23d3}">
-		<relationship name="startPoint">
-			<destination>{2cbff54b-b469-4287-a847-b265eb85ed31}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{b595f0e6-e7b4-4683-9e8c-d4f150fee6ff}</destination>
-		</relationship>
-		<relationship name="relatedModule">
-			<destination>{af12d4be-bf6a-4559-b904-3ce9e3318b37}</destination>
+			<destination>{e61b13ec-e998-4041-a983-56c9f47d701e}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionSourceFadeOutCurve" id="{06546f16-8b0f-4a71-8ad1-be0177a6047f}">
@@ -1622,6 +1512,116 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 			<destination>{8d97e612-62b6-4227-a074-b8ef5bc4b592}</destination>
 		</relationship>
 	</object>
+	<object class="TransitionSourceFadeOutCurve" id="{0a6474c0-647a-43c4-a6ca-dc109b09e084}">
+		<relationship name="startPoint">
+			<destination>{fdc81c34-7fbb-44a1-bcd1-365e8a6be45d}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{3c10cea0-0ae7-4cac-96ed-0bad5e35b1a5}</destination>
+		</relationship>
+		<relationship name="relatedModule">
+			<destination>{cb9fd602-44f0-45a6-9757-93c0df394dfc}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionDestinationFadeInCurve" id="{e0f1d870-bf58-44c5-b17b-da24f72a6c6f}">
+		<relationship name="startPoint">
+			<destination>{4cf157f6-cf5c-499b-8d84-2f14be3f8dc5}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{1be97221-d796-45f3-a7a0-f1c2c59a2267}</destination>
+		</relationship>
+		<relationship name="relatedModule">
+			<destination>{8371ef25-e058-43b1-8b96-f0fcb9154377}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionSourceFadeOutCurve" id="{eae084f7-b3ac-4cb2-8123-76a8dfaa49cc}">
+		<relationship name="startPoint">
+			<destination>{126426be-ef81-4ca5-b022-886e7c3a38bb}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{6083f689-bebf-47b5-b25f-b0654063eb8f}</destination>
+		</relationship>
+		<relationship name="relatedModule">
+			<destination>{9ff8b1bd-6daa-4806-bd8f-811a12033903}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionDestinationFadeInCurve" id="{60c67ca3-e4e4-4635-b9e1-6d21406393d1}">
+		<relationship name="startPoint">
+			<destination>{eb3ae43b-33d4-4322-95e6-07db5733c973}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{a38ef306-2b2d-404a-a81a-729b69d4e248}</destination>
+		</relationship>
+		<relationship name="relatedModule">
+			<destination>{ee9c4422-8f3f-4c3c-9b1d-072fbd0f3183}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionSourceFadeOutCurve" id="{7eee91f8-4a5a-4266-8771-e0470f386f6b}">
+		<relationship name="startPoint">
+			<destination>{1591285b-0737-4c0b-9a07-e28a83427f96}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{22db99bb-a2f5-4d3f-b0cd-5f38aacbc3dc}</destination>
+		</relationship>
+		<relationship name="relatedModule">
+			<destination>{a400d9aa-d136-49a4-b992-50a5997755a4}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionSourceFadeOutCurve" id="{fdcf8e33-a009-47cf-ac31-3c5158d3f4f7}">
+		<relationship name="startPoint">
+			<destination>{478e7886-e578-4b2b-9cde-aca0023142fe}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{3b7e326d-71ba-496c-ada1-d527bd200208}</destination>
+		</relationship>
+		<relationship name="relatedModule">
+			<destination>{9e21d24e-28c8-438f-8148-1eacea7126b3}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionDestinationFadeInCurve" id="{e3003d80-6aa8-41f3-b74e-82c29d7a23d3}">
+		<relationship name="startPoint">
+			<destination>{2cbff54b-b469-4287-a847-b265eb85ed31}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{b595f0e6-e7b4-4683-9e8c-d4f150fee6ff}</destination>
+		</relationship>
+		<relationship name="relatedModule">
+			<destination>{af12d4be-bf6a-4559-b904-3ce9e3318b37}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionSourceFadeOutCurve" id="{924c5e7c-7f56-4ebc-ac77-695f5cccfb3f}">
+		<relationship name="startPoint">
+			<destination>{a48c29bb-b502-4484-a423-831920cb2db9}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{cc6ce992-7622-482e-9a7e-cd5b14f1bfa7}</destination>
+		</relationship>
+		<relationship name="relatedModule">
+			<destination>{97ef18ab-e260-49f8-ba03-9759c233c931}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionSourceFadeOutCurve" id="{5983540c-df04-4161-bdea-4893ece3ba85}">
+		<relationship name="startPoint">
+			<destination>{0aceafed-5f4d-4cf4-9c97-6b16b943350c}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{de9de103-f77a-4619-9e24-161cd6e36800}</destination>
+		</relationship>
+		<relationship name="relatedModule">
+			<destination>{f6301979-8704-4b24-938e-aaa0423eeee2}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionDestinationFadeInCurve" id="{83bcce26-0d67-4bd7-8cb8-f75bb5fa7178}">
+		<relationship name="startPoint">
+			<destination>{a8631768-be82-4ce0-a097-a7a33bc7a82a}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{cedbbc83-88ac-4a40-9ace-45eab25ef0f8}</destination>
+		</relationship>
+		<relationship name="relatedModule">
+			<destination>{f45f190b-72fc-4c65-a63d-7b5a26a74df4}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusEffectChain" id="{46b9fba0-19db-47bf-840a-4587f5e06363}">
 		<relationship name="effects">
 			<destination>{6e20b466-7a25-49e2-8763-0ab7e746ba28}</destination>
@@ -1629,26 +1629,26 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{f99464da-085e-429e-a22c-8af9a31bb2a7}" />
-	<object class="TransitionSourceFadeOutCurve" id="{234554a1-f411-491d-94d4-73a0258dbb79}">
+	<object class="TransitionSourceFadeOutCurve" id="{be6c0f39-1b93-46bf-8c6c-599ce8640918}">
 		<relationship name="startPoint">
-			<destination>{23e8232e-5cb0-4116-9330-c3b055feeafe}</destination>
+			<destination>{7849d7b6-4e1a-4cb6-94cc-ade44663afaa}</destination>
 		</relationship>
 		<relationship name="endPoint">
-			<destination>{84953865-056e-4fdd-91d2-d3feffee394c}</destination>
+			<destination>{70cc8b47-66e6-4a06-ae3f-a0cd156f5889}</destination>
 		</relationship>
 		<relationship name="relatedModule">
-			<destination>{8d208abb-a572-482a-a2a3-cd445850dd94}</destination>
+			<destination>{ef15df3c-586b-489e-89a1-2a694c05e091}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionDestinationFadeInCurve" id="{1009f74d-27a3-4aa6-b756-d464b1d95c09}">
+	<object class="TransitionSourceFadeOutCurve" id="{f0b5ed6b-e2d0-4126-8613-19de44b561c4}">
 		<relationship name="startPoint">
-			<destination>{54c06a1d-7d73-47c6-914e-57ea42766f12}</destination>
+			<destination>{17cf9c31-ed93-471b-9d75-8d0e857a0793}</destination>
 		</relationship>
 		<relationship name="endPoint">
-			<destination>{7a411de3-7c6d-4c8b-92e8-312f0d9ae055}</destination>
+			<destination>{d93e3d6c-73c8-472d-a138-a085ae01b3c6}</destination>
 		</relationship>
 		<relationship name="relatedModule">
-			<destination>{ecb189ff-b380-4fbe-8c62-6e22b6121d95}</destination>
+			<destination>{b39c22d2-e3d8-4fcc-a9b9-94014ac7983a}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionSourceFadeOutCurve" id="{62c7d518-f9c7-46c7-8a9b-b7a7198de20c}">
@@ -1662,17 +1662,6 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 			<destination>{ba405bad-5b43-44fe-be7a-1733653b0b0c}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionDestinationFadeInCurve" id="{d8bec068-70cf-4e1c-8944-c9dace8230b0}">
-		<relationship name="startPoint">
-			<destination>{84c9fb54-fbb3-420a-a998-e73247b1e192}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{9778398d-ca3a-4e71-bd8a-3dfee63ae239}</destination>
-		</relationship>
-		<relationship name="relatedModule">
-			<destination>{299cd2e8-193c-47b6-a5ff-9c98d8e06d9c}</destination>
-		</relationship>
-	</object>
 	<object class="TransitionDestinationFadeInCurve" id="{4006244f-6b41-48c9-a913-445daf78219f}">
 		<relationship name="startPoint">
 			<destination>{cfdaf30a-363c-48a5-bc80-82312617b9fb}</destination>
@@ -1684,26 +1673,15 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 			<destination>{dfec9cf6-b339-4961-a2d2-50eca8b98ea7}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionSourceFadeOutCurve" id="{c65f0ccb-f848-40c2-9ce9-775e1bc02042}">
+	<object class="TransitionDestinationFadeInCurve" id="{5898336b-c8fe-4a2b-8984-499c7d02ba76}">
 		<relationship name="startPoint">
-			<destination>{480522ec-8f43-4698-a18a-013f18629846}</destination>
+			<destination>{18d0961c-1557-485a-a2e8-0bdd85f5971a}</destination>
 		</relationship>
 		<relationship name="endPoint">
-			<destination>{4dae2943-0759-4248-8fc6-90ddffaf1ba4}</destination>
+			<destination>{0abd2996-114c-4b38-9866-c500e36169f7}</destination>
 		</relationship>
 		<relationship name="relatedModule">
-			<destination>{bce03fa8-00ff-4091-9b51-a205860a9bd0}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionDestinationFadeInCurve" id="{494e5cd1-eac5-415d-83b1-2d7daeefa60a}">
-		<relationship name="startPoint">
-			<destination>{3b191c98-0a47-4a62-8c1f-462cf5e94cc8}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{9423e2ed-5111-4bf3-bc2d-24bd9fafcde8}</destination>
-		</relationship>
-		<relationship name="relatedModule">
-			<destination>{dbf90a50-5a03-444c-b76b-a7d9b85da0da}</destination>
+			<destination>{be56425e-1113-4c57-8af0-e86761c3538b}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionSourceFadeOutCurve" id="{1534f7e6-2bc8-4f4c-8226-33ae560ace65}">
@@ -1717,15 +1695,37 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 			<destination>{1f9b7c53-4f8b-4bd5-b987-5c63b707dbf5}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionDestinationFadeInCurve" id="{5898336b-c8fe-4a2b-8984-499c7d02ba76}">
+	<object class="TransitionDestinationFadeInCurve" id="{1009f74d-27a3-4aa6-b756-d464b1d95c09}">
 		<relationship name="startPoint">
-			<destination>{18d0961c-1557-485a-a2e8-0bdd85f5971a}</destination>
+			<destination>{54c06a1d-7d73-47c6-914e-57ea42766f12}</destination>
 		</relationship>
 		<relationship name="endPoint">
-			<destination>{0abd2996-114c-4b38-9866-c500e36169f7}</destination>
+			<destination>{7a411de3-7c6d-4c8b-92e8-312f0d9ae055}</destination>
 		</relationship>
 		<relationship name="relatedModule">
-			<destination>{be56425e-1113-4c57-8af0-e86761c3538b}</destination>
+			<destination>{ecb189ff-b380-4fbe-8c62-6e22b6121d95}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionDestinationFadeInCurve" id="{494e5cd1-eac5-415d-83b1-2d7daeefa60a}">
+		<relationship name="startPoint">
+			<destination>{3b191c98-0a47-4a62-8c1f-462cf5e94cc8}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{9423e2ed-5111-4bf3-bc2d-24bd9fafcde8}</destination>
+		</relationship>
+		<relationship name="relatedModule">
+			<destination>{dbf90a50-5a03-444c-b76b-a7d9b85da0da}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionDestinationFadeInCurve" id="{d8bec068-70cf-4e1c-8944-c9dace8230b0}">
+		<relationship name="startPoint">
+			<destination>{84c9fb54-fbb3-420a-a998-e73247b1e192}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{9778398d-ca3a-4e71-bd8a-3dfee63ae239}</destination>
+		</relationship>
+		<relationship name="relatedModule">
+			<destination>{299cd2e8-193c-47b6-a5ff-9c98d8e06d9c}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionSourceFadeOutCurve" id="{1e13ecb7-2b13-4076-8ea3-3005bdb7fec8}">
@@ -1750,15 +1750,15 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 			<destination>{fe43abb8-a2dc-43af-8440-aa2daa05d560}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionSourceFadeOutCurve" id="{f0b5ed6b-e2d0-4126-8613-19de44b561c4}">
+	<object class="TransitionSourceFadeOutCurve" id="{234554a1-f411-491d-94d4-73a0258dbb79}">
 		<relationship name="startPoint">
-			<destination>{17cf9c31-ed93-471b-9d75-8d0e857a0793}</destination>
+			<destination>{23e8232e-5cb0-4116-9330-c3b055feeafe}</destination>
 		</relationship>
 		<relationship name="endPoint">
-			<destination>{d93e3d6c-73c8-472d-a138-a085ae01b3c6}</destination>
+			<destination>{84953865-056e-4fdd-91d2-d3feffee394c}</destination>
 		</relationship>
 		<relationship name="relatedModule">
-			<destination>{b39c22d2-e3d8-4fcc-a9b9-94014ac7983a}</destination>
+			<destination>{8d208abb-a572-482a-a2a3-cd445850dd94}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionDestinationFadeInCurve" id="{2d519053-c835-4072-a7a9-cd8282cf8f4e}">
@@ -1772,15 +1772,15 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 			<destination>{1cf8e57a-a352-48ab-95d2-faa9740e46af}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionSourceFadeOutCurve" id="{be6c0f39-1b93-46bf-8c6c-599ce8640918}">
+	<object class="TransitionSourceFadeOutCurve" id="{c65f0ccb-f848-40c2-9ce9-775e1bc02042}">
 		<relationship name="startPoint">
-			<destination>{7849d7b6-4e1a-4cb6-94cc-ade44663afaa}</destination>
+			<destination>{480522ec-8f43-4698-a18a-013f18629846}</destination>
 		</relationship>
 		<relationship name="endPoint">
-			<destination>{70cc8b47-66e6-4a06-ae3f-a0cd156f5889}</destination>
+			<destination>{4dae2943-0759-4248-8fc6-90ddffaf1ba4}</destination>
 		</relationship>
 		<relationship name="relatedModule">
-			<destination>{ef15df3c-586b-489e-89a1-2a694c05e091}</destination>
+			<destination>{bce03fa8-00ff-4091-9b51-a205860a9bd0}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{4778d3d1-162c-43bf-861e-b4e092b6c215}">
@@ -1955,15 +1955,15 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 		</property>
 		<relationship name="modules">
 			<destination>{f2922c57-538c-4bfa-9190-665b5aafbbf4}</destination>
-			<destination>{714bc0ae-d775-44f9-a1aa-58a0cf94c7ba}</destination>
-			<destination>{f45f190b-72fc-4c65-a63d-7b5a26a74df4}</destination>
-			<destination>{a400d9aa-d136-49a4-b992-50a5997755a4}</destination>
-			<destination>{ecb189ff-b380-4fbe-8c62-6e22b6121d95}</destination>
+			<destination>{5c82610c-deef-424f-8314-64aa8facc1d7}</destination>
 			<destination>{8d208abb-a572-482a-a2a3-cd445850dd94}</destination>
 			<destination>{69e57a4e-9db1-4a96-88e8-5f64b46078c7}</destination>
-			<destination>{5c82610c-deef-424f-8314-64aa8facc1d7}</destination>
-			<destination>{4e789e63-2e86-4184-ac1c-a8d17434717f}</destination>
 			<destination>{c176397f-5cb5-45c9-8a41-c8690fd93d54}</destination>
+			<destination>{714bc0ae-d775-44f9-a1aa-58a0cf94c7ba}</destination>
+			<destination>{f45f190b-72fc-4c65-a63d-7b5a26a74df4}</destination>
+			<destination>{4e789e63-2e86-4184-ac1c-a8d17434717f}</destination>
+			<destination>{a400d9aa-d136-49a4-b992-50a5997755a4}</destination>
+			<destination>{ecb189ff-b380-4fbe-8c62-6e22b6121d95}</destination>
 		</relationship>
 	</object>
 	<object class="EventCondition" id="{4dd92e1c-86a1-427e-8f61-59b6a95d8066}">
@@ -1977,33 +1977,51 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 		</property>
 		<relationship name="modules">
 			<destination>{6b8a96a7-1093-4575-a6a5-35f9ce14ad36}</destination>
+			<destination>{299cd2e8-193c-47b6-a5ff-9c98d8e06d9c}</destination>
+			<destination>{f0cc4ae7-7cc7-4c07-bfe5-aba35a875aae}</destination>
+			<destination>{82746451-e2a7-43f3-9002-77529e120269}</destination>
 			<destination>{3109e8c3-16e7-46e2-96c3-fbcf318b3529}</destination>
 			<destination>{ee9c4422-8f3f-4c3c-9b1d-072fbd0f3183}</destination>
 			<destination>{97ef18ab-e260-49f8-ba03-9759c233c931}</destination>
-			<destination>{299cd2e8-193c-47b6-a5ff-9c98d8e06d9c}</destination>
 			<destination>{ba405bad-5b43-44fe-be7a-1733653b0b0c}</destination>
 			<destination>{9ef75313-3d96-47f8-afe0-97c8d8eaf4bf}</destination>
-			<destination>{82746451-e2a7-43f3-9002-77529e120269}</destination>
 			<destination>{4cf199d7-daba-407f-9e73-48b6af3e8ada}</destination>
-			<destination>{f0cc4ae7-7cc7-4c07-bfe5-aba35a875aae}</destination>
 		</relationship>
 	</object>
 	<object class="EventCondition" id="{e4cbfd7c-7feb-4ecf-9fa7-8ec6c35c99e7}" />
+	<object class="TransitionTimeline" id="{2831d064-bcad-43b5-8b78-438d22c2ecad}">
+		<property name="length">
+			<value>1.5401785714285714</value>
+		</property>
+		<relationship name="modules">
+			<destination>{fe9021ae-db33-4262-be64-4c8b0d7b5c09}</destination>
+			<destination>{9e21d24e-28c8-438f-8148-1eacea7126b3}</destination>
+			<destination>{9859202d-2abc-4801-99ed-ff1a223e4305}</destination>
+			<destination>{ab1ffa78-1d76-46f6-ba2a-15f20cd7fdda}</destination>
+			<destination>{1f9aa9c5-c34f-47af-b258-3cc6c17e4957}</destination>
+			<destination>{437e36ec-6821-4861-a9cc-8e53b136c4e3}</destination>
+			<destination>{15a5aeb7-d655-4ff7-b944-3eb455b45388}</destination>
+			<destination>{a939906c-ffd0-4c8d-a808-d42730091a62}</destination>
+			<destination>{be56425e-1113-4c57-8af0-e86761c3538b}</destination>
+			<destination>{1032d76c-88ea-430d-877b-cceaea6c272c}</destination>
+		</relationship>
+	</object>
+	<object class="EventCondition" id="{4688fd99-8cfd-461e-aace-351918ec56c0}" />
 	<object class="TransitionTimeline" id="{8c7e9f6c-0772-4f0c-8925-14191d100c93}">
 		<property name="length">
 			<value>2.6785714285714284</value>
 		</property>
 		<relationship name="modules">
 			<destination>{070d268b-ae36-44a2-b972-5d4c0c191f34}</destination>
-			<destination>{7fe10da7-e7d1-4a5a-baae-741c97319b41}</destination>
-			<destination>{e61b13ec-e998-4041-a983-56c9f47d701e}</destination>
-			<destination>{9ff8b1bd-6daa-4806-bd8f-811a12033903}</destination>
-			<destination>{dfec9cf6-b339-4961-a2d2-50eca8b98ea7}</destination>
-			<destination>{bce03fa8-00ff-4091-9b51-a205860a9bd0}</destination>
 			<destination>{91162f0d-7ba8-47c4-b988-d069601a0253}</destination>
-			<destination>{6915cdd6-69e6-4e0a-97d1-4d1a281a50f6}</destination>
+			<destination>{bce03fa8-00ff-4091-9b51-a205860a9bd0}</destination>
 			<destination>{5cdcdb9b-4d22-45c1-8125-20c9969aad41}</destination>
 			<destination>{a7d9c175-357b-4adf-8b52-a49202e06b66}</destination>
+			<destination>{9ff8b1bd-6daa-4806-bd8f-811a12033903}</destination>
+			<destination>{e61b13ec-e998-4041-a983-56c9f47d701e}</destination>
+			<destination>{7fe10da7-e7d1-4a5a-baae-741c97319b41}</destination>
+			<destination>{dfec9cf6-b339-4961-a2d2-50eca8b98ea7}</destination>
+			<destination>{6915cdd6-69e6-4e0a-97d1-4d1a281a50f6}</destination>
 		</relationship>
 	</object>
 	<object class="EventCondition" id="{2209c23e-a2e2-457d-a5d9-8a8c6aea70e1}" />
@@ -2013,48 +2031,30 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 		</property>
 		<relationship name="modules">
 			<destination>{50d5d20a-820c-4246-9475-df6fdbc91506}</destination>
-			<destination>{de774607-9097-4439-b619-3239742db143}</destination>
-			<destination>{bb2910d2-4ce7-4000-acc5-d4c787624954}</destination>
 			<destination>{f6301979-8704-4b24-938e-aaa0423eeee2}</destination>
-			<destination>{dbf90a50-5a03-444c-b76b-a7d9b85da0da}</destination>
-			<destination>{1f9b7c53-4f8b-4bd5-b987-5c63b707dbf5}</destination>
-			<destination>{9fa84a56-dc8f-4428-8d00-79ae5cbe438d}</destination>
 			<destination>{43694885-954d-4bff-9294-c131977c56d3}</destination>
 			<destination>{d480aad9-18de-4be6-b150-554d71e80dae}</destination>
 			<destination>{19c130f3-e75d-4384-8006-68105ffa8d75}</destination>
+			<destination>{dbf90a50-5a03-444c-b76b-a7d9b85da0da}</destination>
+			<destination>{1f9b7c53-4f8b-4bd5-b987-5c63b707dbf5}</destination>
+			<destination>{9fa84a56-dc8f-4428-8d00-79ae5cbe438d}</destination>
+			<destination>{de774607-9097-4439-b619-3239742db143}</destination>
+			<destination>{bb2910d2-4ce7-4000-acc5-d4c787624954}</destination>
 		</relationship>
 	</object>
 	<object class="EventCondition" id="{dc05b96d-6a15-450a-915c-5102fa7b1601}" />
-	<object class="TransitionTimeline" id="{2831d064-bcad-43b5-8b78-438d22c2ecad}">
-		<property name="length">
-			<value>1.5401785714285714</value>
-		</property>
-		<relationship name="modules">
-			<destination>{437e36ec-6821-4861-a9cc-8e53b136c4e3}</destination>
-			<destination>{15a5aeb7-d655-4ff7-b944-3eb455b45388}</destination>
-			<destination>{a939906c-ffd0-4c8d-a808-d42730091a62}</destination>
-			<destination>{9e21d24e-28c8-438f-8148-1eacea7126b3}</destination>
-			<destination>{be56425e-1113-4c57-8af0-e86761c3538b}</destination>
-			<destination>{9859202d-2abc-4801-99ed-ff1a223e4305}</destination>
-			<destination>{1f9aa9c5-c34f-47af-b258-3cc6c17e4957}</destination>
-			<destination>{fe9021ae-db33-4262-be64-4c8b0d7b5c09}</destination>
-			<destination>{1032d76c-88ea-430d-877b-cceaea6c272c}</destination>
-			<destination>{ab1ffa78-1d76-46f6-ba2a-15f20cd7fdda}</destination>
-		</relationship>
-	</object>
-	<object class="EventCondition" id="{4688fd99-8cfd-461e-aace-351918ec56c0}" />
 	<object class="TransitionTimeline" id="{07eb5e7d-d05a-47a6-b367-e7984326c6c0}">
 		<property name="length">
 			<value>3.2142857142857149</value>
 		</property>
 		<relationship name="modules">
+			<destination>{00113e5b-07a3-4fd6-bb5d-9100f5d1e2be}</destination>
+			<destination>{fe43abb8-a2dc-43af-8440-aa2daa05d560}</destination>
 			<destination>{c243f8d1-842d-44db-a391-40d2e4d11fa6}</destination>
 			<destination>{2ba12a3a-41cd-4369-80bc-972c4e471ca8}</destination>
 			<destination>{8371ef25-e058-43b1-8b96-f0fcb9154377}</destination>
 			<destination>{cb9fd602-44f0-45a6-9757-93c0df394dfc}</destination>
-			<destination>{fe43abb8-a2dc-43af-8440-aa2daa05d560}</destination>
 			<destination>{b39c22d2-e3d8-4fcc-a9b9-94014ac7983a}</destination>
-			<destination>{00113e5b-07a3-4fd6-bb5d-9100f5d1e2be}</destination>
 			<destination>{78d06fba-c7a7-4d25-99df-cf7269c2e071}</destination>
 			<destination>{68055a76-3165-42ff-ab38-3dcc274465ef}</destination>
 			<destination>{e12b0bd6-5292-492a-aa79-2c41596fd6ca}</destination>
@@ -2066,16 +2066,16 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 			<value>2.6785714285714284</value>
 		</property>
 		<relationship name="modules">
-			<destination>{44e97bb3-4f1d-4e6a-94c6-3028ac3e5c2e}</destination>
-			<destination>{00a0a788-994f-485f-95f3-e83d4b00cce1}</destination>
-			<destination>{af12d4be-bf6a-4559-b904-3ce9e3318b37}</destination>
-			<destination>{8d97e612-62b6-4227-a074-b8ef5bc4b592}</destination>
+			<destination>{739179d7-904a-4d45-bf07-4123e323b69d}</destination>
 			<destination>{1cf8e57a-a352-48ab-95d2-faa9740e46af}</destination>
+			<destination>{00a0a788-994f-485f-95f3-e83d4b00cce1}</destination>
+			<destination>{7dea149c-cfec-4977-b0e6-597afdd58403}</destination>
+			<destination>{2ecec6da-8f8e-44ef-862b-d540653abe8e}</destination>
+			<destination>{af12d4be-bf6a-4559-b904-3ce9e3318b37}</destination>
+			<destination>{44e97bb3-4f1d-4e6a-94c6-3028ac3e5c2e}</destination>
+			<destination>{8d97e612-62b6-4227-a074-b8ef5bc4b592}</destination>
 			<destination>{ef15df3c-586b-489e-89a1-2a694c05e091}</destination>
 			<destination>{e759de4c-bebb-4fa2-a1cb-e6bda628f6c6}</destination>
-			<destination>{2ecec6da-8f8e-44ef-862b-d540653abe8e}</destination>
-			<destination>{739179d7-904a-4d45-bf07-4123e323b69d}</destination>
-			<destination>{7dea149c-cfec-4977-b0e6-597afdd58403}</destination>
 		</relationship>
 	</object>
 	<object class="EventCondition" id="{a3ac3948-118f-487b-a9f1-bca034c3bb35}" />
@@ -2099,9 +2099,28 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 			<value>0</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{8894852e-6b57-4132-bcdc-1c0a7202d414}">
+	<object class="AutomationPoint" id="{41f2c502-acef-4a5a-9849-d4149fbdbff5}">
 		<property name="position">
 			<value>0.8035714285714286</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+		<property name="curveShape">
+			<value>0.25471893</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{e0546729-dacb-4c8c-a3b9-2a0dec820d9f}">
+		<property name="position">
+			<value>1.5401785714285714</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{809bf2bc-64ed-4bdc-b14b-667f132aea55}">
+		<property name="position">
+			<value>0.80357142857142771</value>
 		</property>
 		<property name="value">
 			<value>0</value>
@@ -2110,9 +2129,9 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 			<value>-0.2547189</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{73fc857c-adff-4b27-b923-757d4217f9aa}">
+	<object class="AutomationPoint" id="{d060526d-44be-4459-8719-e3935e3b3498}">
 		<property name="position">
-			<value>1.7075892857142856</value>
+			<value>1.5401785714285714</value>
 		</property>
 		<property name="value">
 			<value>1</value>
@@ -2135,6 +2154,44 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 		</property>
 		<property name="value">
 			<value>0</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{c416ef2f-51cc-4f62-a9e5-ef79150ddf57}">
+		<property name="position">
+			<value>0.80357142857142771</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+		<property name="curveShape">
+			<value>0.25471893</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{a31e4380-cc55-4d0d-b24a-311a6d2b8d29}">
+		<property name="position">
+			<value>1.5401785714285714</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{8894852e-6b57-4132-bcdc-1c0a7202d414}">
+		<property name="position">
+			<value>0.8035714285714286</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+		<property name="curveShape">
+			<value>-0.2547189</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{73fc857c-adff-4b27-b923-757d4217f9aa}">
+		<property name="position">
+			<value>1.7075892857142856</value>
+		</property>
+		<property name="value">
+			<value>1</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{b811dd75-ec4b-40ad-8b89-5a074a3cdcb9}">
@@ -2175,25 +2232,6 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 			<value>1</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{c416ef2f-51cc-4f62-a9e5-ef79150ddf57}">
-		<property name="position">
-			<value>0.80357142857142771</value>
-		</property>
-		<property name="value">
-			<value>1</value>
-		</property>
-		<property name="curveShape">
-			<value>0.25471893</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{a31e4380-cc55-4d0d-b24a-311a6d2b8d29}">
-		<property name="position">
-			<value>1.5401785714285714</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-	</object>
 	<object class="AutomationPoint" id="{db72189f-bd47-4754-b15d-5cff50780208}">
 		<property name="position">
 			<value>0.8035714285714286</value>
@@ -2211,25 +2249,6 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 		</property>
 		<property name="value">
 			<value>1</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{41f2c502-acef-4a5a-9849-d4149fbdbff5}">
-		<property name="position">
-			<value>0.8035714285714286</value>
-		</property>
-		<property name="value">
-			<value>1</value>
-		</property>
-		<property name="curveShape">
-			<value>0.25471893</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{e0546729-dacb-4c8c-a3b9-2a0dec820d9f}">
-		<property name="position">
-			<value>1.5401785714285714</value>
-		</property>
-		<property name="value">
-			<value>0</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{636dbba1-8ada-467d-8a65-53750a4535be}">
@@ -2308,25 +2327,6 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 			<value>0</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{809bf2bc-64ed-4bdc-b14b-667f132aea55}">
-		<property name="position">
-			<value>0.80357142857142771</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-		<property name="curveShape">
-			<value>-0.2547189</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{d060526d-44be-4459-8719-e3935e3b3498}">
-		<property name="position">
-			<value>1.5401785714285714</value>
-		</property>
-		<property name="value">
-			<value>1</value>
-		</property>
-	</object>
 	<object class="AutomationPoint" id="{c7e94275-be63-4eba-a095-7f08cd0e480c}">
 		<property name="position">
 			<value>0.80357142857142771</value>
@@ -2353,8 +2353,8 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 		<relationship name="automationPoints">
 			<destination>{d6191d4c-6058-466a-85f8-3e467471bd7c}</destination>
 			<destination>{646bdb82-7d66-400d-b1af-a48b994be58f}</destination>
-			<destination>{149f2207-3941-41f5-b1eb-b6645aafbc51}</destination>
 			<destination>{cbd96363-bcd8-46ae-b4c7-cca0c6d107df}</destination>
+			<destination>{149f2207-3941-41f5-b1eb-b6645aafbc51}</destination>
 		</relationship>
 	</object>
 	<object class="MixerSend" id="{749401d9-5584-4793-97da-2b4b24389b1e}">
@@ -2369,64 +2369,7 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{ddf7697c-78cd-4af8-81fa-259fd9630062}" />
-	<object class="AutomationPoint" id="{1591285b-0737-4c0b-9a07-e28a83427f96}">
-		<property name="position">
-			<value>1.2053571428571428</value>
-		</property>
-		<property name="value">
-			<value>1</value>
-		</property>
-		<property name="curveShape">
-			<value>0.25471893</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{22db99bb-a2f5-4d3f-b0cd-5f38aacbc3dc}">
-		<property name="position">
-			<value>1.7745535714285714</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{a8631768-be82-4ce0-a097-a7a33bc7a82a}">
-		<property name="position">
-			<value>1.2053571428571428</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-		<property name="curveShape">
-			<value>-0.2547189</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{cedbbc83-88ac-4a40-9ace-45eab25ef0f8}">
-		<property name="position">
-			<value>1.7745535714285714</value>
-		</property>
-		<property name="value">
-			<value>1</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{a48c29bb-b502-4484-a423-831920cb2db9}">
-		<property name="position">
-			<value>0.6696428571428571</value>
-		</property>
-		<property name="value">
-			<value>1</value>
-		</property>
-		<property name="curveShape">
-			<value>0.25471893</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{cc6ce992-7622-482e-9a7e-cd5b14f1bfa7}">
-		<property name="position">
-			<value>1.5401785714285714</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{eb3ae43b-33d4-4322-95e6-07db5733c973}">
+	<object class="AutomationPoint" id="{75cf061e-1482-4c77-a617-56bcee9cfa8c}">
 		<property name="position">
 			<value>0.6696428571428571</value>
 		</property>
@@ -2437,7 +2380,26 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 			<value>-0.2547189</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{a38ef306-2b2d-404a-a81a-729b69d4e248}">
+	<object class="AutomationPoint" id="{b6cb22ad-2ca0-4803-a2b2-150da614417f}">
+		<property name="position">
+			<value>2.1428571428571428</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{d20175a1-13bd-41d4-a1a5-7e5209627baa}">
+		<property name="position">
+			<value>0.60267857142857073</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+		<property name="curveShape">
+			<value>-0.2547189</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{056ab7d7-d91c-48c5-b4c2-fed242864e51}">
 		<property name="position">
 			<value>1.5401785714285714</value>
 		</property>
@@ -2464,7 +2426,7 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 			<value>1</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{126426be-ef81-4ca5-b022-886e7c3a38bb}">
+	<object class="AutomationPoint" id="{1ba364d5-32a3-492f-9fae-df5ef9a9b8c7}">
 		<property name="position">
 			<value>0.66964285714285632</value>
 		</property>
@@ -2475,7 +2437,7 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 			<value>0.25471893</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{6083f689-bebf-47b5-b25f-b0654063eb8f}">
+	<object class="AutomationPoint" id="{0e6fec0b-c400-4338-bf3f-d4da4eb705e5}">
 		<property name="position">
 			<value>1.5401785714285714</value>
 		</property>
@@ -2483,26 +2445,7 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 			<value>0</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{75cf061e-1482-4c77-a617-56bcee9cfa8c}">
-		<property name="position">
-			<value>0.6696428571428571</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-		<property name="curveShape">
-			<value>-0.2547189</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{b6cb22ad-2ca0-4803-a2b2-150da614417f}">
-		<property name="position">
-			<value>2.1428571428571428</value>
-		</property>
-		<property name="value">
-			<value>1</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{0aceafed-5f4d-4cf4-9c97-6b16b943350c}">
+	<object class="AutomationPoint" id="{fdc81c34-7fbb-44a1-bcd1-365e8a6be45d}">
 		<property name="position">
 			<value>0.6696428571428571</value>
 		</property>
@@ -2513,45 +2456,7 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 			<value>0.25471893</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{de9de103-f77a-4619-9e24-161cd6e36800}">
-		<property name="position">
-			<value>2.1428571428571428</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{d20175a1-13bd-41d4-a1a5-7e5209627baa}">
-		<property name="position">
-			<value>0.60267857142857073</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-		<property name="curveShape">
-			<value>-0.2547189</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{056ab7d7-d91c-48c5-b4c2-fed242864e51}">
-		<property name="position">
-			<value>1.5401785714285714</value>
-		</property>
-		<property name="value">
-			<value>1</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{478e7886-e578-4b2b-9cde-aca0023142fe}">
-		<property name="position">
-			<value>0.60267857142857073</value>
-		</property>
-		<property name="value">
-			<value>1</value>
-		</property>
-		<property name="curveShape">
-			<value>0.25471893</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{3b7e326d-71ba-496c-ada1-d527bd200208}">
+	<object class="AutomationPoint" id="{3c10cea0-0ae7-4cac-96ed-0bad5e35b1a5}">
 		<property name="position">
 			<value>1.5401785714285714</value>
 		</property>
@@ -2578,9 +2483,9 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 			<value>1</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{fdc81c34-7fbb-44a1-bcd1-365e8a6be45d}">
+	<object class="AutomationPoint" id="{126426be-ef81-4ca5-b022-886e7c3a38bb}">
 		<property name="position">
-			<value>0.6696428571428571</value>
+			<value>0.66964285714285632</value>
 		</property>
 		<property name="value">
 			<value>1</value>
@@ -2589,7 +2494,64 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 			<value>0.25471893</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{3c10cea0-0ae7-4cac-96ed-0bad5e35b1a5}">
+	<object class="AutomationPoint" id="{6083f689-bebf-47b5-b25f-b0654063eb8f}">
+		<property name="position">
+			<value>1.5401785714285714</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{eb3ae43b-33d4-4322-95e6-07db5733c973}">
+		<property name="position">
+			<value>0.6696428571428571</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+		<property name="curveShape">
+			<value>-0.2547189</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{a38ef306-2b2d-404a-a81a-729b69d4e248}">
+		<property name="position">
+			<value>1.5401785714285714</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{1591285b-0737-4c0b-9a07-e28a83427f96}">
+		<property name="position">
+			<value>1.2053571428571428</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+		<property name="curveShape">
+			<value>0.25471893</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{22db99bb-a2f5-4d3f-b0cd-5f38aacbc3dc}">
+		<property name="position">
+			<value>1.7745535714285714</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{478e7886-e578-4b2b-9cde-aca0023142fe}">
+		<property name="position">
+			<value>0.60267857142857073</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+		<property name="curveShape">
+			<value>0.25471893</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{3b7e326d-71ba-496c-ada1-d527bd200208}">
 		<property name="position">
 			<value>1.5401785714285714</value>
 		</property>
@@ -2616,9 +2578,9 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 			<value>1</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{1ba364d5-32a3-492f-9fae-df5ef9a9b8c7}">
+	<object class="AutomationPoint" id="{a48c29bb-b502-4484-a423-831920cb2db9}">
 		<property name="position">
-			<value>0.66964285714285632</value>
+			<value>0.6696428571428571</value>
 		</property>
 		<property name="value">
 			<value>1</value>
@@ -2627,12 +2589,50 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 			<value>0.25471893</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{0e6fec0b-c400-4338-bf3f-d4da4eb705e5}">
+	<object class="AutomationPoint" id="{cc6ce992-7622-482e-9a7e-cd5b14f1bfa7}">
 		<property name="position">
 			<value>1.5401785714285714</value>
 		</property>
 		<property name="value">
 			<value>0</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{0aceafed-5f4d-4cf4-9c97-6b16b943350c}">
+		<property name="position">
+			<value>0.6696428571428571</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+		<property name="curveShape">
+			<value>0.25471893</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{de9de103-f77a-4619-9e24-161cd6e36800}">
+		<property name="position">
+			<value>2.1428571428571428</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{a8631768-be82-4ce0-a097-a7a33bc7a82a}">
+		<property name="position">
+			<value>1.2053571428571428</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+		<property name="curveShape">
+			<value>-0.2547189</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{cedbbc83-88ac-4a40-9ace-45eab25ef0f8}">
+		<property name="position">
+			<value>1.7745535714285714</value>
+		</property>
+		<property name="value">
+			<value>1</value>
 		</property>
 	</object>
 	<object class="MixerSend" id="{6e20b466-7a25-49e2-8763-0ab7e746ba28}">
@@ -2647,7 +2647,26 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{bdb11bf8-6bde-4b45-9df8-2a97a7568af3}" />
-	<object class="AutomationPoint" id="{23e8232e-5cb0-4116-9330-c3b055feeafe}">
+	<object class="AutomationPoint" id="{7849d7b6-4e1a-4cb6-94cc-ade44663afaa}">
+		<property name="position">
+			<value>0.40178571428571352</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+		<property name="curveShape">
+			<value>0.25471893</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{70cc8b47-66e6-4a06-ae3f-a0cd156f5889}">
+		<property name="position">
+			<value>1.5401785714285714</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{17cf9c31-ed93-471b-9d75-8d0e857a0793}">
 		<property name="position">
 			<value>0.4017857142857143</value>
 		</property>
@@ -2658,31 +2677,12 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 			<value>0.25471893</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{84953865-056e-4fdd-91d2-d3feffee394c}">
+	<object class="AutomationPoint" id="{d93e3d6c-73c8-472d-a138-a085ae01b3c6}">
 		<property name="position">
-			<value>1.7745535714285714</value>
+			<value>2.6785714285714284</value>
 		</property>
 		<property name="value">
 			<value>0</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{54c06a1d-7d73-47c6-914e-57ea42766f12}">
-		<property name="position">
-			<value>0.4017857142857143</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-		<property name="curveShape">
-			<value>-0.2547189</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{7a411de3-7c6d-4c8b-92e8-312f0d9ae055}">
-		<property name="position">
-			<value>1.7745535714285714</value>
-		</property>
-		<property name="value">
-			<value>1</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{3cabfea3-fbd7-45d3-99d3-144bbcac016f}">
@@ -2704,25 +2704,6 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 			<value>0</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{84c9fb54-fbb3-420a-a998-e73247b1e192}">
-		<property name="position">
-			<value>0.4017857142857143</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-		<property name="curveShape">
-			<value>-0.2547189</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{9778398d-ca3a-4e71-bd8a-3dfee63ae239}">
-		<property name="position">
-			<value>1.5401785714285714</value>
-		</property>
-		<property name="value">
-			<value>1</value>
-		</property>
-	</object>
 	<object class="AutomationPoint" id="{cfdaf30a-363c-48a5-bc80-82312617b9fb}">
 		<property name="position">
 			<value>0.40178571428571352</value>
@@ -2742,39 +2723,20 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 			<value>1</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{480522ec-8f43-4698-a18a-013f18629846}">
+	<object class="AutomationPoint" id="{18d0961c-1557-485a-a2e8-0bdd85f5971a}">
 		<property name="position">
-			<value>0.40178571428571352</value>
+			<value>0.13392857142857142</value>
 		</property>
 		<property name="value">
-			<value>1</value>
+			<value>0</value>
 		</property>
 		<property name="curveShape">
-			<value>0.25471893</value>
+			<value>-0.355151415</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{4dae2943-0759-4248-8fc6-90ddffaf1ba4}">
+	<object class="AutomationPoint" id="{0abd2996-114c-4b38-9866-c500e36169f7}">
 		<property name="position">
 			<value>1.5401785714285714</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{3b191c98-0a47-4a62-8c1f-462cf5e94cc8}">
-		<property name="position">
-			<value>0.4017857142857143</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-		<property name="curveShape">
-			<value>-0.2547189</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{9423e2ed-5111-4bf3-bc2d-24bd9fafcde8}">
-		<property name="position">
-			<value>3.2142857142857149</value>
 		</property>
 		<property name="value">
 			<value>1</value>
@@ -2799,18 +2761,56 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 			<value>0</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{18d0961c-1557-485a-a2e8-0bdd85f5971a}">
+	<object class="AutomationPoint" id="{54c06a1d-7d73-47c6-914e-57ea42766f12}">
 		<property name="position">
-			<value>0.13392857142857142</value>
+			<value>0.4017857142857143</value>
 		</property>
 		<property name="value">
 			<value>0</value>
 		</property>
 		<property name="curveShape">
-			<value>-0.355151415</value>
+			<value>-0.2547189</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{0abd2996-114c-4b38-9866-c500e36169f7}">
+	<object class="AutomationPoint" id="{7a411de3-7c6d-4c8b-92e8-312f0d9ae055}">
+		<property name="position">
+			<value>1.7745535714285714</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{3b191c98-0a47-4a62-8c1f-462cf5e94cc8}">
+		<property name="position">
+			<value>0.4017857142857143</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+		<property name="curveShape">
+			<value>-0.2547189</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{9423e2ed-5111-4bf3-bc2d-24bd9fafcde8}">
+		<property name="position">
+			<value>3.2142857142857149</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{84c9fb54-fbb3-420a-a998-e73247b1e192}">
+		<property name="position">
+			<value>0.4017857142857143</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+		<property name="curveShape">
+			<value>-0.2547189</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{9778398d-ca3a-4e71-bd8a-3dfee63ae239}">
 		<property name="position">
 			<value>1.5401785714285714</value>
 		</property>
@@ -2856,7 +2856,7 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 			<value>1</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{17cf9c31-ed93-471b-9d75-8d0e857a0793}">
+	<object class="AutomationPoint" id="{23e8232e-5cb0-4116-9330-c3b055feeafe}">
 		<property name="position">
 			<value>0.4017857142857143</value>
 		</property>
@@ -2867,9 +2867,9 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 			<value>0.25471893</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{d93e3d6c-73c8-472d-a138-a085ae01b3c6}">
+	<object class="AutomationPoint" id="{84953865-056e-4fdd-91d2-d3feffee394c}">
 		<property name="position">
-			<value>2.6785714285714284</value>
+			<value>1.7745535714285714</value>
 		</property>
 		<property name="value">
 			<value>0</value>
@@ -2894,7 +2894,7 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 			<value>1</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{7849d7b6-4e1a-4cb6-94cc-ade44663afaa}">
+	<object class="AutomationPoint" id="{480522ec-8f43-4698-a18a-013f18629846}">
 		<property name="position">
 			<value>0.40178571428571352</value>
 		</property>
@@ -2905,7 +2905,7 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 			<value>0.25471893</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{70cc8b47-66e6-4a06-ae3f-a0cd156f5889}">
+	<object class="AutomationPoint" id="{4dae2943-0759-4248-8fc6-90ddffaf1ba4}">
 		<property name="position">
 			<value>1.5401785714285714</value>
 		</property>
@@ -3240,20 +3240,20 @@ Ephemeral Solace by Javolenus (c) copyright 2024 Licensed under a Creative Commo
 			<value>-0.999996185</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{149f2207-3941-41f5-b1eb-b6645aafbc51}">
-		<property name="position">
-			<value>3.7713419670773964</value>
-		</property>
-		<property name="value">
-			<value>0.5</value>
-		</property>
-	</object>
 	<object class="AutomationPoint" id="{cbd96363-bcd8-46ae-b4c7-cca0c6d107df}">
 		<property name="position">
 			<value>3.3056039530708503</value>
 		</property>
 		<property name="value">
 			<value>2</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{149f2207-3941-41f5-b1eb-b6645aafbc51}">
+		<property name="position">
+			<value>3.7713419670773964</value>
+		</property>
+		<property name="value">
+			<value>0.5</value>
 		</property>
 	</object>
 </objects>

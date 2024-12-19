@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{3647560e-1add-4807-8a84-3d18fdef72c3}">
 		<property name="assetPath">
 			<value>_Examples/Music/DownUnder/JeffSpeed68_DownUnder_Djembes2.mp3</value>

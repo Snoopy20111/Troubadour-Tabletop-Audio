@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{2d1a1cc5-681a-428f-a524-d0d8744273e2}">
 		<property name="name">
 			<value>SCENE_Cave</value>
@@ -77,8 +77,8 @@
 	</object>
 	<object class="Timeline" id="{f57667c8-7bdb-4d5c-b03a-d7249bf89057}">
 		<relationship name="modules">
-			<destination>{0be6becd-7301-47ae-9a07-e196f0f5683f}</destination>
 			<destination>{e13bfdaf-78e2-479d-85ab-614ecc95b3fd}</destination>
+			<destination>{0be6becd-7301-47ae-9a07-e196f0f5683f}</destination>
 		</relationship>
 		<relationship name="markers">
 			<destination>{bf2d909a-1de6-46af-bc27-e0a0c9fc9617}</destination>

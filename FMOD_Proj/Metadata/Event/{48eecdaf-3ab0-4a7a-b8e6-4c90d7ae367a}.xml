@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{48eecdaf-3ab0-4a7a-b8e6-4c90d7ae367a}">
 		<property name="note">
 			<value>A version of the traditional English folk song. Good for taverns, generally peaceful villages, and other homely places.
@@ -57,9 +57,9 @@ Blackwaterside (Trad.) by Javolenus (c) copyright 2024 Licensed under a Creative
 	<object class="MasterTrack" id="{d4a72410-ebb2-421a-910c-d8683ac0402f}">
 		<relationship name="modules">
 			<destination>{90c3da7d-ec6f-4198-affa-71102d7b4957}</destination>
-			<destination>{c1d8ade6-4d2b-48fc-be39-90d0cf11b14e}</destination>
 			<destination>{b60b5893-de3c-4975-bc37-bdb8ca233108}</destination>
 			<destination>{38070d79-dcbd-4788-89ac-afaf929c8b3e}</destination>
+			<destination>{c1d8ade6-4d2b-48fc-be39-90d0cf11b14e}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{8059abff-061c-4205-ac53-d1a528acc38a}</destination>
@@ -82,12 +82,12 @@ Blackwaterside (Trad.) by Javolenus (c) copyright 2024 Licensed under a Creative
 	<object class="MarkerTrack" id="{10d5b0d4-4dab-4ba5-b61c-529b4600c0eb}" />
 	<object class="GroupTrack" id="{04b32313-1396-47ca-b0fb-586f88f9a73f}">
 		<relationship name="modules">
-			<destination>{99605b44-4693-41b7-96f0-c0d1bb789246}</destination>
+			<destination>{d7ceab49-611d-438a-8443-acb2619588a0}</destination>
 			<destination>{908926fe-88c9-4f10-a627-4dfb5e67efce}</destination>
 			<destination>{5624c212-abf2-4dcb-8cd2-d0ffd4450dc9}</destination>
-			<destination>{57e5e830-8484-4873-980b-d8a60770f113}</destination>
-			<destination>{d7ceab49-611d-438a-8443-acb2619588a0}</destination>
 			<destination>{9bea1860-9c68-4576-8501-da7b6a26d0bd}</destination>
+			<destination>{99605b44-4693-41b7-96f0-c0d1bb789246}</destination>
+			<destination>{57e5e830-8484-4873-980b-d8a60770f113}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{1ddff146-c67b-4a21-b576-65cbe2047d2f}</destination>
@@ -97,8 +97,8 @@ Blackwaterside (Trad.) by Javolenus (c) copyright 2024 Licensed under a Creative
 		<relationship name="modules">
 			<destination>{34c49b42-5f1d-4373-9942-1d5ba1fbdd51}</destination>
 			<destination>{6701232f-5dd3-4a90-89c1-f6b4e949ee6a}</destination>
-			<destination>{f2cb2ce3-1e0c-4b4c-9a59-3f5287a70cc6}</destination>
 			<destination>{be7ba2b1-321c-44f3-b8cd-50788394884e}</destination>
+			<destination>{f2cb2ce3-1e0c-4b4c-9a59-3f5287a70cc6}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{48a5d28b-8b9a-45f2-86bd-1596fbb6fbcf}</destination>
@@ -106,11 +106,11 @@ Blackwaterside (Trad.) by Javolenus (c) copyright 2024 Licensed under a Creative
 	</object>
 	<object class="GroupTrack" id="{35a6001a-a174-46ce-aa80-be14655d2b46}">
 		<relationship name="modules">
-			<destination>{43b18a96-dd52-44fc-96b0-3e3f20f81033}</destination>
+			<destination>{4a7aa7cc-f3e0-44f1-83e6-f47065f9c22a}</destination>
 			<destination>{b03d7a21-5e4e-4864-826d-c022e1f4dc08}</destination>
+			<destination>{43b18a96-dd52-44fc-96b0-3e3f20f81033}</destination>
 			<destination>{48442c85-026d-4ad9-8011-cb6c4e15a398}</destination>
 			<destination>{815ee98f-9604-4047-80f1-7a6cba5bb741}</destination>
-			<destination>{4a7aa7cc-f3e0-44f1-83e6-f47065f9c22a}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{0578bad6-bfbf-455c-861e-5e519cacc749}</destination>
@@ -118,9 +118,9 @@ Blackwaterside (Trad.) by Javolenus (c) copyright 2024 Licensed under a Creative
 	</object>
 	<object class="GroupTrack" id="{51e0f721-687e-4b61-88ee-c836b5b2ab28}">
 		<relationship name="modules">
+			<destination>{e7e717c2-12b0-423f-8a25-fab34dc893a0}</destination>
 			<destination>{0a62bed3-4aa8-4aa6-813a-c67029fbf59f}</destination>
 			<destination>{af939baf-f149-45cd-97b8-40784fd01523}</destination>
-			<destination>{e7e717c2-12b0-423f-8a25-fab34dc893a0}</destination>
 			<destination>{344d7dbf-d529-4ee4-b16d-4a8d68884781}</destination>
 			<destination>{c947583e-a7d1-40b6-8853-40676b1f93bb}</destination>
 		</relationship>
@@ -130,11 +130,11 @@ Blackwaterside (Trad.) by Javolenus (c) copyright 2024 Licensed under a Creative
 	</object>
 	<object class="GroupTrack" id="{e850f0a3-6501-4b0a-b4e5-72292bf088bd}">
 		<relationship name="modules">
-			<destination>{877b6a8a-b212-4d52-b7c5-3e6260918383}</destination>
-			<destination>{ff34cbb0-28b5-4b45-97c5-8e4c13ccb431}</destination>
 			<destination>{2c5f0255-e2e9-4e9f-9765-e229dfaa0c4e}</destination>
-			<destination>{19c3552e-6c82-4a5f-a1ca-0f599c2a3d17}</destination>
 			<destination>{f5c433c4-86ac-4fcf-9c6e-3bf3e9869e51}</destination>
+			<destination>{ff34cbb0-28b5-4b45-97c5-8e4c13ccb431}</destination>
+			<destination>{877b6a8a-b212-4d52-b7c5-3e6260918383}</destination>
+			<destination>{19c3552e-6c82-4a5f-a1ca-0f599c2a3d17}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{eea31fc9-39f8-474a-b8d4-60a65be82ab2}</destination>
@@ -176,11 +176,6 @@ Blackwaterside (Trad.) by Javolenus (c) copyright 2024 Licensed under a Creative
 			<value>0</value>
 		</property>
 	</object>
-	<object class="TransitionDestinationSound" id="{c1d8ade6-4d2b-48fc-be39-90d0cf11b14e}">
-		<property name="length">
-			<value>4.0909090909090908</value>
-		</property>
-	</object>
 	<object class="TransitionSourceSound" id="{b60b5893-de3c-4975-bc37-bdb8ca233108}">
 		<property name="length">
 			<value>0</value>
@@ -194,21 +189,26 @@ Blackwaterside (Trad.) by Javolenus (c) copyright 2024 Licensed under a Creative
 			<value>0</value>
 		</property>
 	</object>
+	<object class="TransitionDestinationSound" id="{c1d8ade6-4d2b-48fc-be39-90d0cf11b14e}">
+		<property name="length">
+			<value>4.0909090909090908</value>
+		</property>
+	</object>
 	<object class="MixerBusEffectChain" id="{33e618bb-b006-44bf-8a06-875d91569e90}">
 		<relationship name="effects">
 			<destination>{d6a1e4b4-dddb-4c64-9836-0c609908add7}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{1c1e3d1c-8d6e-4e40-933c-ad5cb8852e65}" />
-	<object class="SingleSound" id="{99605b44-4693-41b7-96f0-c0d1bb789246}">
-		<property name="length">
-			<value>309.04836613407468</value>
+	<object class="TransitionDestinationSound" id="{d7ceab49-611d-438a-8443-acb2619588a0}">
+		<property name="start">
+			<value>0.51136363636363635</value>
 		</property>
-		<relationship name="fadeOutCurve">
-			<destination>{8b917403-56d1-40e9-a892-8867f533c6e2}</destination>
-		</relationship>
-		<relationship name="audioFile">
-			<destination>{2f5b5353-2dfa-4bab-a314-8c12076e4494}</destination>
+		<property name="length">
+			<value>2.2159090909090908</value>
+		</property>
+		<relationship name="fadeInCurve">
+			<destination>{4e868e51-0a9d-427a-9aa0-5deb4e8477cc}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionSourceSound" id="{908926fe-88c9-4f10-a627-4dfb5e67efce}">
@@ -224,25 +224,6 @@ Blackwaterside (Trad.) by Javolenus (c) copyright 2024 Licensed under a Creative
 			<value>3.0681818181818188</value>
 		</property>
 	</object>
-	<object class="TransitionSourceSound" id="{57e5e830-8484-4873-980b-d8a60770f113}">
-		<property name="length">
-			<value>0.85227272727272718</value>
-		</property>
-		<relationship name="fadeOutCurve">
-			<destination>{20b52107-5d5e-440e-942a-5281b429c761}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionDestinationSound" id="{d7ceab49-611d-438a-8443-acb2619588a0}">
-		<property name="start">
-			<value>0.51136363636363635</value>
-		</property>
-		<property name="length">
-			<value>2.2159090909090908</value>
-		</property>
-		<relationship name="fadeInCurve">
-			<destination>{4e868e51-0a9d-427a-9aa0-5deb4e8477cc}</destination>
-		</relationship>
-	</object>
 	<object class="SingleSound" id="{9bea1860-9c68-4576-8501-da7b6a26d0bd}">
 		<property name="start">
 			<value>309.54907636134743</value>
@@ -255,6 +236,25 @@ Blackwaterside (Trad.) by Javolenus (c) copyright 2024 Licensed under a Creative
 		</property>
 		<relationship name="audioFile">
 			<destination>{2f5b5353-2dfa-4bab-a314-8c12076e4494}</destination>
+		</relationship>
+	</object>
+	<object class="SingleSound" id="{99605b44-4693-41b7-96f0-c0d1bb789246}">
+		<property name="length">
+			<value>309.04836613407468</value>
+		</property>
+		<relationship name="fadeOutCurve">
+			<destination>{8b917403-56d1-40e9-a892-8867f533c6e2}</destination>
+		</relationship>
+		<relationship name="audioFile">
+			<destination>{2f5b5353-2dfa-4bab-a314-8c12076e4494}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionSourceSound" id="{57e5e830-8484-4873-980b-d8a60770f113}">
+		<property name="length">
+			<value>0.85227272727272718</value>
+		</property>
+		<relationship name="fadeOutCurve">
+			<destination>{20b52107-5d5e-440e-942a-5281b429c761}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{1ddff146-c67b-4a21-b576-65cbe2047d2f}">
@@ -290,15 +290,15 @@ Blackwaterside (Trad.) by Javolenus (c) copyright 2024 Licensed under a Creative
 			<value>0</value>
 		</property>
 	</object>
-	<object class="TransitionSourceSound" id="{f2cb2ce3-1e0c-4b4c-9a59-3f5287a70cc6}">
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
 	<object class="TransitionDestinationSound" id="{be7ba2b1-321c-44f3-b8cd-50788394884e}">
 		<property name="start">
 			<value>2.7272727272727271</value>
 		</property>
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionSourceSound" id="{f2cb2ce3-1e0c-4b4c-9a59-3f5287a70cc6}">
 		<property name="length">
 			<value>0</value>
 		</property>
@@ -320,6 +320,25 @@ Blackwaterside (Trad.) by Javolenus (c) copyright 2024 Licensed under a Creative
 			<destination>{8059abff-061c-4205-ac53-d1a528acc38a}</destination>
 		</relationship>
 	</object>
+	<object class="TransitionDestinationSound" id="{4a7aa7cc-f3e0-44f1-83e6-f47065f9c22a}">
+		<property name="start">
+			<value>0.2130681818181818</value>
+		</property>
+		<property name="length">
+			<value>2.514204545454545</value>
+		</property>
+		<relationship name="fadeInCurve">
+			<destination>{258c2459-bb8f-498d-978a-0133dad7a772}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionSourceSound" id="{b03d7a21-5e4e-4864-826d-c022e1f4dc08}">
+		<property name="length">
+			<value>3.7499999999999996</value>
+		</property>
+		<relationship name="fadeOutCurve">
+			<destination>{3d259526-a091-4f94-8441-8f6a3c5a3c0c}</destination>
+		</relationship>
+	</object>
 	<object class="SingleSound" id="{43b18a96-dd52-44fc-96b0-3e3f20f81033}">
 		<property name="start">
 			<value>5.7420000000000009</value>
@@ -329,14 +348,6 @@ Blackwaterside (Trad.) by Javolenus (c) copyright 2024 Licensed under a Creative
 		</property>
 		<relationship name="audioFile">
 			<destination>{7023e4e9-570b-4f1a-8024-a6a2ec8a8252}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionSourceSound" id="{b03d7a21-5e4e-4864-826d-c022e1f4dc08}">
-		<property name="length">
-			<value>3.7499999999999996</value>
-		</property>
-		<relationship name="fadeOutCurve">
-			<destination>{3d259526-a091-4f94-8441-8f6a3c5a3c0c}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionDestinationSound" id="{48442c85-026d-4ad9-8011-cb6c4e15a398}">
@@ -358,17 +369,6 @@ Blackwaterside (Trad.) by Javolenus (c) copyright 2024 Licensed under a Creative
 			<destination>{12bf9852-6dcc-46d8-8e40-2f83721cafc7}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionDestinationSound" id="{4a7aa7cc-f3e0-44f1-83e6-f47065f9c22a}">
-		<property name="start">
-			<value>0.2130681818181818</value>
-		</property>
-		<property name="length">
-			<value>2.514204545454545</value>
-		</property>
-		<relationship name="fadeInCurve">
-			<destination>{258c2459-bb8f-498d-978a-0133dad7a772}</destination>
-		</relationship>
-	</object>
 	<object class="EventMixerGroup" id="{0578bad6-bfbf-455c-861e-5e519cacc749}">
 		<property name="color">
 			<value>Red Light 1</value>
@@ -384,6 +384,17 @@ Blackwaterside (Trad.) by Javolenus (c) copyright 2024 Licensed under a Creative
 		</relationship>
 		<relationship name="output">
 			<destination>{48a5d28b-8b9a-45f2-86bd-1596fbb6fbcf}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionDestinationSound" id="{e7e717c2-12b0-423f-8a25-fab34dc893a0}">
+		<property name="start">
+			<value>2.8977272727272725</value>
+		</property>
+		<property name="length">
+			<value>1.1931818181818188</value>
+		</property>
+		<relationship name="fadeInCurve">
+			<destination>{93083551-2248-4bf7-980f-e8c31113a7c9}</destination>
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{0a62bed3-4aa8-4aa6-813a-c67029fbf59f}">
@@ -403,17 +414,6 @@ Blackwaterside (Trad.) by Javolenus (c) copyright 2024 Licensed under a Creative
 		</property>
 		<relationship name="fadeOutCurve">
 			<destination>{14094586-4238-4570-b996-cf08b9de1423}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionDestinationSound" id="{e7e717c2-12b0-423f-8a25-fab34dc893a0}">
-		<property name="start">
-			<value>2.8977272727272725</value>
-		</property>
-		<property name="length">
-			<value>1.1931818181818188</value>
-		</property>
-		<relationship name="fadeInCurve">
-			<destination>{93083551-2248-4bf7-980f-e8c31113a7c9}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionSourceSound" id="{344d7dbf-d529-4ee4-b16d-4a8d68884781}">
@@ -452,25 +452,6 @@ Blackwaterside (Trad.) by Javolenus (c) copyright 2024 Licensed under a Creative
 			<destination>{48a5d28b-8b9a-45f2-86bd-1596fbb6fbcf}</destination>
 		</relationship>
 	</object>
-	<object class="SingleSound" id="{877b6a8a-b212-4d52-b7c5-3e6260918383}">
-		<property name="start">
-			<value>6.7110000000000003</value>
-		</property>
-		<property name="length">
-			<value>305.57600249771104</value>
-		</property>
-		<relationship name="audioFile">
-			<destination>{8c1c2754-3209-4b1d-a384-32bfcbfad0b1}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionSourceSound" id="{ff34cbb0-28b5-4b45-97c5-8e4c13ccb431}">
-		<property name="length">
-			<value>2.8977272727272725</value>
-		</property>
-		<relationship name="fadeOutCurve">
-			<destination>{2a26597e-3a78-478d-a91e-ef4489f8ac0c}</destination>
-		</relationship>
-	</object>
 	<object class="TransitionDestinationSound" id="{2c5f0255-e2e9-4e9f-9765-e229dfaa0c4e}">
 		<property name="start">
 			<value>2.0454545454545454</value>
@@ -482,14 +463,6 @@ Blackwaterside (Trad.) by Javolenus (c) copyright 2024 Licensed under a Creative
 			<destination>{eff1792d-8a08-44ee-8df3-8e5af7e4f9da}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionSourceSound" id="{19c3552e-6c82-4a5f-a1ca-0f599c2a3d17}">
-		<property name="length">
-			<value>2.7272727272727271</value>
-		</property>
-		<relationship name="fadeOutCurve">
-			<destination>{45b13af2-3563-458f-83ed-719848ea6632}</destination>
-		</relationship>
-	</object>
 	<object class="TransitionDestinationSound" id="{f5c433c4-86ac-4fcf-9c6e-3bf3e9869e51}">
 		<property name="start">
 			<value>1.0227272727272727</value>
@@ -499,6 +472,33 @@ Blackwaterside (Trad.) by Javolenus (c) copyright 2024 Licensed under a Creative
 		</property>
 		<relationship name="fadeInCurve">
 			<destination>{a382dc38-6532-48fd-aaf1-9c14f87bea4d}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionSourceSound" id="{ff34cbb0-28b5-4b45-97c5-8e4c13ccb431}">
+		<property name="length">
+			<value>2.8977272727272725</value>
+		</property>
+		<relationship name="fadeOutCurve">
+			<destination>{2a26597e-3a78-478d-a91e-ef4489f8ac0c}</destination>
+		</relationship>
+	</object>
+	<object class="SingleSound" id="{877b6a8a-b212-4d52-b7c5-3e6260918383}">
+		<property name="start">
+			<value>6.7110000000000003</value>
+		</property>
+		<property name="length">
+			<value>305.57600249771104</value>
+		</property>
+		<relationship name="audioFile">
+			<destination>{8c1c2754-3209-4b1d-a384-32bfcbfad0b1}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionSourceSound" id="{19c3552e-6c82-4a5f-a1ca-0f599c2a3d17}">
+		<property name="length">
+			<value>2.7272727272727271</value>
+		</property>
+		<relationship name="fadeOutCurve">
+			<destination>{45b13af2-3563-458f-83ed-719848ea6632}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{eea31fc9-39f8-474a-b8d4-60a65be82ab2}">
@@ -623,6 +623,17 @@ Blackwaterside (Trad.) by Javolenus (c) copyright 2024 Licensed under a Creative
 	</object>
 	<object class="MixerBusPanner" id="{3ebca0a9-5a3f-47a4-8764-cb5aefa47d9d}" />
 	<object class="MixerBusFader" id="{d6a1e4b4-dddb-4c64-9836-0c609908add7}" />
+	<object class="TransitionDestinationFadeInCurve" id="{4e868e51-0a9d-427a-9aa0-5deb4e8477cc}">
+		<relationship name="startPoint">
+			<destination>{54d9a651-0477-485f-af41-d41e1d34b296}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{29cc09df-5dd1-4e72-8bba-7a05eec67b9d}</destination>
+		</relationship>
+		<relationship name="relatedModule">
+			<destination>{57e5e830-8484-4873-980b-d8a60770f113}</destination>
+		</relationship>
+	</object>
 	<object class="FadeCurve" id="{8b917403-56d1-40e9-a892-8867f533c6e2}">
 		<relationship name="startPoint">
 			<destination>{6ab38f9d-36f1-4bef-9c8e-08a87428b030}</destination>
@@ -642,17 +653,6 @@ Blackwaterside (Trad.) by Javolenus (c) copyright 2024 Licensed under a Creative
 			<destination>{d7ceab49-611d-438a-8443-acb2619588a0}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionDestinationFadeInCurve" id="{4e868e51-0a9d-427a-9aa0-5deb4e8477cc}">
-		<relationship name="startPoint">
-			<destination>{54d9a651-0477-485f-af41-d41e1d34b296}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{29cc09df-5dd1-4e72-8bba-7a05eec67b9d}</destination>
-		</relationship>
-		<relationship name="relatedModule">
-			<destination>{57e5e830-8484-4873-980b-d8a60770f113}</destination>
-		</relationship>
-	</object>
 	<object class="MixerBusEffectChain" id="{4cea88ac-7c87-427f-b91c-d3050f9a0185}">
 		<relationship name="effects">
 			<destination>{6f67eaeb-99a0-4e8a-b6bb-efc0e22410c8}</destination>
@@ -669,6 +669,14 @@ Blackwaterside (Trad.) by Javolenus (c) copyright 2024 Licensed under a Creative
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{928967ed-d138-4dbd-a965-09e0a7b79c1f}" />
+	<object class="TransitionDestinationFadeInCurve" id="{258c2459-bb8f-498d-978a-0133dad7a772}">
+		<relationship name="startPoint">
+			<destination>{47016590-8d2c-47d1-a409-0faed358abad}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{8a040cc1-8a81-4ff0-a315-e82807a77fa4}</destination>
+		</relationship>
+	</object>
 	<object class="TransitionSourceFadeOutCurve" id="{3d259526-a091-4f94-8441-8f6a3c5a3c0c}">
 		<relationship name="startPoint">
 			<destination>{7705abc0-cacf-4bae-ae8f-aac101898887}</destination>
@@ -693,14 +701,6 @@ Blackwaterside (Trad.) by Javolenus (c) copyright 2024 Licensed under a Creative
 			<destination>{baac3a55-5b11-4292-8824-5397b7cf8274}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionDestinationFadeInCurve" id="{258c2459-bb8f-498d-978a-0133dad7a772}">
-		<relationship name="startPoint">
-			<destination>{47016590-8d2c-47d1-a409-0faed358abad}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{8a040cc1-8a81-4ff0-a315-e82807a77fa4}</destination>
-		</relationship>
-	</object>
 	<object class="MixerBusEffectChain" id="{7c4b2fe3-3dc0-416b-8f7b-1cf8f7d7255f}">
 		<relationship name="effects">
 			<destination>{7eccdb52-1ab5-4e1b-a0bb-55fa686d4475}</destination>
@@ -709,17 +709,6 @@ Blackwaterside (Trad.) by Javolenus (c) copyright 2024 Licensed under a Creative
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{ece99d32-6048-43fc-bb10-03ca1af71291}" />
-	<object class="TransitionSourceFadeOutCurve" id="{14094586-4238-4570-b996-cf08b9de1423}">
-		<relationship name="startPoint">
-			<destination>{c15c1f38-aa01-4291-97e4-f4218c1abd33}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{2faab4cb-bdc8-4331-801f-b2e836761c58}</destination>
-		</relationship>
-		<relationship name="relatedModule">
-			<destination>{e7e717c2-12b0-423f-8a25-fab34dc893a0}</destination>
-		</relationship>
-	</object>
 	<object class="TransitionDestinationFadeInCurve" id="{93083551-2248-4bf7-980f-e8c31113a7c9}">
 		<relationship name="startPoint">
 			<destination>{94fa4567-9996-4000-a0ec-5c1d1562d43e}</destination>
@@ -729,6 +718,17 @@ Blackwaterside (Trad.) by Javolenus (c) copyright 2024 Licensed under a Creative
 		</relationship>
 		<relationship name="relatedModule">
 			<destination>{af939baf-f149-45cd-97b8-40784fd01523}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionSourceFadeOutCurve" id="{14094586-4238-4570-b996-cf08b9de1423}">
+		<relationship name="startPoint">
+			<destination>{c15c1f38-aa01-4291-97e4-f4218c1abd33}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{2faab4cb-bdc8-4331-801f-b2e836761c58}</destination>
+		</relationship>
+		<relationship name="relatedModule">
+			<destination>{e7e717c2-12b0-423f-8a25-fab34dc893a0}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionSourceFadeOutCurve" id="{4bce5ea9-2049-4f57-9510-edb1d6f53fa8}">
@@ -759,17 +759,6 @@ Blackwaterside (Trad.) by Javolenus (c) copyright 2024 Licensed under a Creative
 			<value>1</value>
 		</property>
 	</object>
-	<object class="TransitionSourceFadeOutCurve" id="{2a26597e-3a78-478d-a91e-ef4489f8ac0c}">
-		<relationship name="startPoint">
-			<destination>{b192efa8-7d6c-4aa0-bdf1-39a6832425b7}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{1aa72940-db51-4082-bfdb-adf3b1e65e10}</destination>
-		</relationship>
-		<relationship name="relatedModule">
-			<destination>{2c5f0255-e2e9-4e9f-9765-e229dfaa0c4e}</destination>
-		</relationship>
-	</object>
 	<object class="TransitionDestinationFadeInCurve" id="{eff1792d-8a08-44ee-8df3-8e5af7e4f9da}">
 		<relationship name="startPoint">
 			<destination>{0d7a3621-bc9f-46f6-847b-19df048c7b93}</destination>
@@ -781,20 +770,31 @@ Blackwaterside (Trad.) by Javolenus (c) copyright 2024 Licensed under a Creative
 			<destination>{ff34cbb0-28b5-4b45-97c5-8e4c13ccb431}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionSourceFadeOutCurve" id="{45b13af2-3563-458f-83ed-719848ea6632}">
-		<relationship name="startPoint">
-			<destination>{5856f36f-2f33-4cc2-844a-6dbd9aae38c4}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{7d4b4bd8-c4ec-4d59-b873-87f0da883ff1}</destination>
-		</relationship>
-	</object>
 	<object class="TransitionDestinationFadeInCurve" id="{a382dc38-6532-48fd-aaf1-9c14f87bea4d}">
 		<relationship name="startPoint">
 			<destination>{d8b0201d-9bdd-4c1d-83fb-7e858587d108}</destination>
 		</relationship>
 		<relationship name="endPoint">
 			<destination>{ee2c8a13-7007-4214-9507-788fb946136d}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionSourceFadeOutCurve" id="{2a26597e-3a78-478d-a91e-ef4489f8ac0c}">
+		<relationship name="startPoint">
+			<destination>{b192efa8-7d6c-4aa0-bdf1-39a6832425b7}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{1aa72940-db51-4082-bfdb-adf3b1e65e10}</destination>
+		</relationship>
+		<relationship name="relatedModule">
+			<destination>{2c5f0255-e2e9-4e9f-9765-e229dfaa0c4e}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionSourceFadeOutCurve" id="{45b13af2-3563-458f-83ed-719848ea6632}">
+		<relationship name="startPoint">
+			<destination>{5856f36f-2f33-4cc2-844a-6dbd9aae38c4}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{7d4b4bd8-c4ec-4d59-b873-87f0da883ff1}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{3b214a20-0bfa-45ac-ac75-74ba3a12ac53}">
@@ -819,17 +819,17 @@ Blackwaterside (Trad.) by Javolenus (c) copyright 2024 Licensed under a Creative
 			<value>4.0909090909090908</value>
 		</property>
 		<relationship name="modules">
+			<destination>{e7e717c2-12b0-423f-8a25-fab34dc893a0}</destination>
+			<destination>{34c49b42-5f1d-4373-9942-1d5ba1fbdd51}</destination>
+			<destination>{90c3da7d-ec6f-4198-affa-71102d7b4957}</destination>
+			<destination>{b03d7a21-5e4e-4864-826d-c022e1f4dc08}</destination>
+			<destination>{6701232f-5dd3-4a90-89c1-f6b4e949ee6a}</destination>
+			<destination>{48442c85-026d-4ad9-8011-cb6c4e15a398}</destination>
 			<destination>{908926fe-88c9-4f10-a627-4dfb5e67efce}</destination>
 			<destination>{5624c212-abf2-4dcb-8cd2-d0ffd4450dc9}</destination>
-			<destination>{b03d7a21-5e4e-4864-826d-c022e1f4dc08}</destination>
-			<destination>{48442c85-026d-4ad9-8011-cb6c4e15a398}</destination>
-			<destination>{af939baf-f149-45cd-97b8-40784fd01523}</destination>
-			<destination>{e7e717c2-12b0-423f-8a25-fab34dc893a0}</destination>
-			<destination>{ff34cbb0-28b5-4b45-97c5-8e4c13ccb431}</destination>
 			<destination>{2c5f0255-e2e9-4e9f-9765-e229dfaa0c4e}</destination>
-			<destination>{34c49b42-5f1d-4373-9942-1d5ba1fbdd51}</destination>
-			<destination>{6701232f-5dd3-4a90-89c1-f6b4e949ee6a}</destination>
-			<destination>{90c3da7d-ec6f-4198-affa-71102d7b4957}</destination>
+			<destination>{ff34cbb0-28b5-4b45-97c5-8e4c13ccb431}</destination>
+			<destination>{af939baf-f149-45cd-97b8-40784fd01523}</destination>
 			<destination>{c1d8ade6-4d2b-48fc-be39-90d0cf11b14e}</destination>
 		</relationship>
 	</object>
@@ -838,17 +838,17 @@ Blackwaterside (Trad.) by Javolenus (c) copyright 2024 Licensed under a Creative
 			<value>2.7272727272727271</value>
 		</property>
 		<relationship name="modules">
-			<destination>{57e5e830-8484-4873-980b-d8a60770f113}</destination>
-			<destination>{d7ceab49-611d-438a-8443-acb2619588a0}</destination>
-			<destination>{815ee98f-9604-4047-80f1-7a6cba5bb741}</destination>
 			<destination>{4a7aa7cc-f3e0-44f1-83e6-f47065f9c22a}</destination>
-			<destination>{344d7dbf-d529-4ee4-b16d-4a8d68884781}</destination>
+			<destination>{d7ceab49-611d-438a-8443-acb2619588a0}</destination>
 			<destination>{c947583e-a7d1-40b6-8853-40676b1f93bb}</destination>
+			<destination>{b60b5893-de3c-4975-bc37-bdb8ca233108}</destination>
+			<destination>{57e5e830-8484-4873-980b-d8a60770f113}</destination>
+			<destination>{815ee98f-9604-4047-80f1-7a6cba5bb741}</destination>
+			<destination>{344d7dbf-d529-4ee4-b16d-4a8d68884781}</destination>
 			<destination>{19c3552e-6c82-4a5f-a1ca-0f599c2a3d17}</destination>
 			<destination>{f5c433c4-86ac-4fcf-9c6e-3bf3e9869e51}</destination>
 			<destination>{f2cb2ce3-1e0c-4b4c-9a59-3f5287a70cc6}</destination>
 			<destination>{be7ba2b1-321c-44f3-b8cd-50788394884e}</destination>
-			<destination>{b60b5893-de3c-4975-bc37-bdb8ca233108}</destination>
 			<destination>{38070d79-dcbd-4788-89ac-afaf929c8b3e}</destination>
 		</relationship>
 	</object>
@@ -866,6 +866,25 @@ Blackwaterside (Trad.) by Javolenus (c) copyright 2024 Licensed under a Creative
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{f2451e2e-00db-4a71-967f-c117ca325ceb}" />
+	<object class="AutomationPoint" id="{54d9a651-0477-485f-af41-d41e1d34b296}">
+		<property name="position">
+			<value>0.51136363636363635</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+		<property name="curveShape">
+			<value>-0.2547189</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{29cc09df-5dd1-4e72-8bba-7a05eec67b9d}">
+		<property name="position">
+			<value>0.85227272727272718</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+	</object>
 	<object class="AutomationPoint" id="{6ab38f9d-36f1-4bef-9c8e-08a87428b030}">
 		<property name="position">
 			<value>308.81561710680882</value>
@@ -904,25 +923,6 @@ Blackwaterside (Trad.) by Javolenus (c) copyright 2024 Licensed under a Creative
 			<value>0</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{54d9a651-0477-485f-af41-d41e1d34b296}">
-		<property name="position">
-			<value>0.51136363636363635</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-		<property name="curveShape">
-			<value>-0.2547189</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{29cc09df-5dd1-4e72-8bba-7a05eec67b9d}">
-		<property name="position">
-			<value>0.85227272727272718</value>
-		</property>
-		<property name="value">
-			<value>1</value>
-		</property>
-	</object>
 	<object class="MixerSend" id="{6f67eaeb-99a0-4e8a-b6bb-efc0e22410c8}">
 		<property name="level">
 			<value>0</value>
@@ -949,6 +949,25 @@ Blackwaterside (Trad.) by Javolenus (c) copyright 2024 Licensed under a Creative
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{d9aa9d6a-6188-4c5f-807e-d48db30139fd}" />
+	<object class="AutomationPoint" id="{47016590-8d2c-47d1-a409-0faed358abad}">
+		<property name="position">
+			<value>0.2130681818181818</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+		<property name="curveShape">
+			<value>0.384727985</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{8a040cc1-8a81-4ff0-a315-e82807a77fa4}">
+		<property name="position">
+			<value>0.25568181818181818</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+	</object>
 	<object class="AutomationPoint" id="{7705abc0-cacf-4bae-ae8f-aac101898887}">
 		<property name="position">
 			<value>1.3636363636363635</value>
@@ -1015,25 +1034,6 @@ Blackwaterside (Trad.) by Javolenus (c) copyright 2024 Licensed under a Creative
 			<value>0</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{47016590-8d2c-47d1-a409-0faed358abad}">
-		<property name="position">
-			<value>0.2130681818181818</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-		<property name="curveShape">
-			<value>0.384727985</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{8a040cc1-8a81-4ff0-a315-e82807a77fa4}">
-		<property name="position">
-			<value>0.25568181818181818</value>
-		</property>
-		<property name="value">
-			<value>1</value>
-		</property>
-	</object>
 	<object class="PannerEffect" id="{7eccdb52-1ab5-4e1b-a0bb-55fa686d4475}">
 		<property name="stereoPan">
 			<value>-60</value>
@@ -1054,25 +1054,6 @@ Blackwaterside (Trad.) by Javolenus (c) copyright 2024 Licensed under a Creative
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{446f78e9-9c18-4ece-82f8-50464afc2b26}" />
-	<object class="AutomationPoint" id="{c15c1f38-aa01-4291-97e4-f4218c1abd33}">
-		<property name="position">
-			<value>2.8977272727272725</value>
-		</property>
-		<property name="value">
-			<value>1</value>
-		</property>
-		<property name="curveShape">
-			<value>0.25471893</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{2faab4cb-bdc8-4331-801f-b2e836761c58}">
-		<property name="position">
-			<value>3.7499999999999996</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-	</object>
 	<object class="AutomationPoint" id="{94fa4567-9996-4000-a0ec-5c1d1562d43e}">
 		<property name="position">
 			<value>2.8977272727272725</value>
@@ -1090,6 +1071,25 @@ Blackwaterside (Trad.) by Javolenus (c) copyright 2024 Licensed under a Creative
 		</property>
 		<property name="value">
 			<value>1</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{c15c1f38-aa01-4291-97e4-f4218c1abd33}">
+		<property name="position">
+			<value>2.8977272727272725</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+		<property name="curveShape">
+			<value>0.25471893</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{2faab4cb-bdc8-4331-801f-b2e836761c58}">
+		<property name="position">
+			<value>3.7499999999999996</value>
+		</property>
+		<property name="value">
+			<value>0</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{5a76c28b-d4de-4814-beff-5bfc45ed6aeb}">
@@ -1153,25 +1153,6 @@ Blackwaterside (Trad.) by Javolenus (c) copyright 2024 Licensed under a Creative
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{be1374ec-ab16-4617-aae5-a53cee436415}" />
-	<object class="AutomationPoint" id="{b192efa8-7d6c-4aa0-bdf1-39a6832425b7}">
-		<property name="position">
-			<value>2.0454545454545454</value>
-		</property>
-		<property name="value">
-			<value>1</value>
-		</property>
-		<property name="curveShape">
-			<value>0.25471893</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{1aa72940-db51-4082-bfdb-adf3b1e65e10}">
-		<property name="position">
-			<value>2.8977272727272725</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-	</object>
 	<object class="AutomationPoint" id="{0d7a3621-bc9f-46f6-847b-19df048c7b93}">
 		<property name="position">
 			<value>2.0454545454545454</value>
@@ -1189,6 +1170,44 @@ Blackwaterside (Trad.) by Javolenus (c) copyright 2024 Licensed under a Creative
 		</property>
 		<property name="value">
 			<value>1</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{d8b0201d-9bdd-4c1d-83fb-7e858587d108}">
+		<property name="position">
+			<value>1.0227272727272727</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+		<property name="curveShape">
+			<value>0.232945263</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{ee2c8a13-7007-4214-9507-788fb946136d}">
+		<property name="position">
+			<value>1.2352317511360469</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{b192efa8-7d6c-4aa0-bdf1-39a6832425b7}">
+		<property name="position">
+			<value>2.0454545454545454</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+		<property name="curveShape">
+			<value>0.25471893</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{1aa72940-db51-4082-bfdb-adf3b1e65e10}">
+		<property name="position">
+			<value>2.8977272727272725</value>
+		</property>
+		<property name="value">
+			<value>0</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{5856f36f-2f33-4cc2-844a-6dbd9aae38c4}">
@@ -1211,25 +1230,6 @@ Blackwaterside (Trad.) by Javolenus (c) copyright 2024 Licensed under a Creative
 		</property>
 		<property name="value">
 			<value>0</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{d8b0201d-9bdd-4c1d-83fb-7e858587d108}">
-		<property name="position">
-			<value>1.0227272727272727</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-		<property name="curveShape">
-			<value>0.232945263</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{ee2c8a13-7007-4214-9507-788fb946136d}">
-		<property name="position">
-			<value>1.2352317511360469</value>
-		</property>
-		<property name="value">
-			<value>1</value>
 		</property>
 	</object>
 	<object class="PannerEffect" id="{5eb398a8-1cb0-4f1a-816e-9ae3bf5b7889}">
@@ -1283,8 +1283,8 @@ Blackwaterside (Trad.) by Javolenus (c) copyright 2024 Licensed under a Creative
 			<value>120</value>
 		</property>
 		<relationship name="sidechains">
-			<destination>{372e3b1b-2108-438b-b20b-299884cf594b}</destination>
 			<destination>{0fc7107e-aeeb-44e7-8523-d259bcf0b296}</destination>
+			<destination>{372e3b1b-2108-438b-b20b-299884cf594b}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{4c7f4500-376f-41d8-abc9-31dd8c92257c}" />

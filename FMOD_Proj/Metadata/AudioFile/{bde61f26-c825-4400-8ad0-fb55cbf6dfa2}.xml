@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{bde61f26-c825-4400-8ad0-fb55cbf6dfa2}">
 		<property name="assetPath">
 			<value>_Examples/Music/GrandCircles/AntSurvila_GrandCircles.mp3</value>

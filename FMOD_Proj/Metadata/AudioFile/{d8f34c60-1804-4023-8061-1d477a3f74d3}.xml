@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{d8f34c60-1804-4023-8061-1d477a3f74d3}">
 		<property name="assetPath">
 			<value>_Examples/Music/FareTheeWell/airtone_FareTheeWell_NoGuitar.flac</value>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{a54cc32b-fa86-4f62-9470-9da86e18ed8b}">
 		<property name="name">
 			<value>AMB_Cave</value>

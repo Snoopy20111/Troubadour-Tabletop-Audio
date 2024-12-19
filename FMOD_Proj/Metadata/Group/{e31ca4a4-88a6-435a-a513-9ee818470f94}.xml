@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="MixerGroup" id="{e31ca4a4-88a6-435a-a513-9ee818470f94}">
 		<property name="note">
 			<value>No events in here should be playing by themselves. Only as Event Instruments, routed through the other groups.</value>

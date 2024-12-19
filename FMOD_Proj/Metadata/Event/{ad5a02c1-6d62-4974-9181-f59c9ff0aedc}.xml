@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{ad5a02c1-6d62-4974-9181-f59c9ff0aedc}">
 		<property name="note">
 			<value>An ambient track with darker tones, more spooky and mysterious. Excellent for Temples, but also for dark dungeons and the deep places of the earth.
@@ -279,10 +279,10 @@ Multiple Meditative Gongs, Puja 1 by GeeArtriasRose (c) copyright 2024 Licensed 
 			<value>4</value>
 		</property>
 		<relationship name="modules">
-			<destination>{6790a12f-c974-4022-bca0-4c3f5dd5a523}</destination>
-			<destination>{c8988df2-f86f-4de0-8bac-855737200479}</destination>
 			<destination>{4a53d221-32cc-4339-bd1d-bb13f9499f12}</destination>
 			<destination>{35e963f9-93ea-4c05-b723-824896cdcab5}</destination>
+			<destination>{6790a12f-c974-4022-bca0-4c3f5dd5a523}</destination>
+			<destination>{c8988df2-f86f-4de0-8bac-855737200479}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusFader" id="{562d3699-7618-42fe-86e7-c619167dfaba}" />

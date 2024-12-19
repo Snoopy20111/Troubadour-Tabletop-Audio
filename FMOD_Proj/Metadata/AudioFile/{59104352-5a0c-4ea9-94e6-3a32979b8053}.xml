@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="AudioFile" id="{59104352-5a0c-4ea9-94e6-3a32979b8053}">
 		<property name="assetPath">
 			<value>NonRelease/Music/Sinewaves/airtone_sinewaves_synth_01.flac</value>

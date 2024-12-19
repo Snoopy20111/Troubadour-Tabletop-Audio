@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<objects serializationModel="Studio.02.02.00">
+<objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{d07b80c4-ea4f-4354-b799-6556df8f3afd}">
 		<property name="note">
 			<value>A grooving track heavy with percussion. Useful for country bumpkins, farms, possibly halflings, and general downhome shenanigans. 
@@ -64,12 +64,12 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 	</object>
 	<object class="MasterTrack" id="{39471fce-5126-4ea4-81ac-f7eba2d84ca9}">
 		<relationship name="modules">
-			<destination>{22004317-12be-4df7-bcde-1194c70a404c}</destination>
 			<destination>{b0c32e39-070a-447f-b471-b69df8922d7f}</destination>
-			<destination>{d2de9ae2-091b-4ea9-a9e4-8851fbb2d65c}</destination>
-			<destination>{5343257a-9c25-4591-aad6-8c37a4e2c169}</destination>
-			<destination>{fec72e26-205d-4d34-8558-da451233ec6e}</destination>
 			<destination>{21e2bb4d-d3d5-41b1-9c09-8e4d41cdec11}</destination>
+			<destination>{22004317-12be-4df7-bcde-1194c70a404c}</destination>
+			<destination>{fec72e26-205d-4d34-8558-da451233ec6e}</destination>
+			<destination>{5343257a-9c25-4591-aad6-8c37a4e2c169}</destination>
+			<destination>{d2de9ae2-091b-4ea9-a9e4-8851fbb2d65c}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{baf4fb3b-e19f-4d60-b6ef-de7e995db927}</destination>
@@ -93,13 +93,13 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 	<object class="MarkerTrack" id="{33e38d90-9e22-4a7b-afb2-a9259d32db51}" />
 	<object class="GroupTrack" id="{803d279f-7d4c-4c47-a081-025cb461eca3}">
 		<relationship name="modules">
+			<destination>{c7a971fe-14ba-4963-bade-b1ddbd539e14}</destination>
+			<destination>{3935106a-1adb-49cf-97a9-e8b0facda53e}</destination>
+			<destination>{0342dc62-0574-45db-9ebe-f6baf2059056}</destination>
 			<destination>{daa79bda-5993-4030-9aba-1d3cbf451ed4}</destination>
 			<destination>{2bc7d72a-9cca-4d5f-86e6-0063d55b32d9}</destination>
 			<destination>{d984bc00-f142-4551-98a1-bdde2e652dd1}</destination>
-			<destination>{c7a971fe-14ba-4963-bade-b1ddbd539e14}</destination>
 			<destination>{ce657257-a543-4b39-9bbf-bcac315d67a3}</destination>
-			<destination>{3935106a-1adb-49cf-97a9-e8b0facda53e}</destination>
-			<destination>{0342dc62-0574-45db-9ebe-f6baf2059056}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{67499c58-e4ed-473f-a884-bf5ccbfd5010}</destination>
@@ -107,12 +107,12 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 	</object>
 	<object class="GroupTrack" id="{8305e31f-f0c5-4dcb-af4b-00fc43b64a15}">
 		<relationship name="modules">
-			<destination>{0101a863-a447-4325-92db-d612ae8c26ed}</destination>
-			<destination>{694dd877-19fc-405e-b428-385bfa7ec873}</destination>
+			<destination>{fc6dfc80-cceb-46a7-a61c-c88e49012a17}</destination>
 			<destination>{c8f10757-8bb0-4ea9-a741-6d7bc3e0b728}</destination>
 			<destination>{a1fb6212-bf84-49cf-ab48-1234f258c446}</destination>
+			<destination>{0101a863-a447-4325-92db-d612ae8c26ed}</destination>
 			<destination>{953ddd3d-973b-4969-9ce8-cfb27ff0b172}</destination>
-			<destination>{fc6dfc80-cceb-46a7-a61c-c88e49012a17}</destination>
+			<destination>{694dd877-19fc-405e-b428-385bfa7ec873}</destination>
 			<destination>{0171955c-9120-4ff2-b812-912dda3c94b1}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
@@ -121,13 +121,13 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 	</object>
 	<object class="GroupTrack" id="{8d80e8e4-2ad2-43a9-be56-52d340d25c3b}">
 		<relationship name="modules">
+			<destination>{8ad54f33-190a-401e-88a7-41b49dea91c6}</destination>
+			<destination>{af4cd63e-3b3f-44b0-a9e5-c3f2252eb9d2}</destination>
 			<destination>{65cadd4d-30e5-40aa-8a0f-69f79ef10742}</destination>
 			<destination>{196f29f3-b357-4bc9-8550-3d752446fbb7}</destination>
-			<destination>{8ad54f33-190a-401e-88a7-41b49dea91c6}</destination>
-			<destination>{f7fd6793-99ff-46a8-98dc-89493ea4d293}</destination>
-			<destination>{af4cd63e-3b3f-44b0-a9e5-c3f2252eb9d2}</destination>
-			<destination>{7987c856-da6e-4b4d-be07-1ffac728accb}</destination>
 			<destination>{c61528b6-7fb7-48ed-a070-6f34819d10e4}</destination>
+			<destination>{f7fd6793-99ff-46a8-98dc-89493ea4d293}</destination>
+			<destination>{7987c856-da6e-4b4d-be07-1ffac728accb}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{3fb399cf-9e13-4274-a376-4859652a4e58}</destination>
@@ -137,10 +137,10 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 		<relationship name="modules">
 			<destination>{f435b67a-4e74-4a26-8257-3931f62b8a6d}</destination>
 			<destination>{6ed0fc8e-19cd-4c23-a76c-ee11080494b6}</destination>
-			<destination>{52f1c183-867e-47be-90dd-fd46a60a66d9}</destination>
-			<destination>{154d4a69-4080-4a07-af93-07606606bcb6}</destination>
-			<destination>{50bf409f-6048-4aab-9e78-370dbf7912ac}</destination>
 			<destination>{425da6bf-e633-43ec-a401-e7fc967cace0}</destination>
+			<destination>{52f1c183-867e-47be-90dd-fd46a60a66d9}</destination>
+			<destination>{50bf409f-6048-4aab-9e78-370dbf7912ac}</destination>
+			<destination>{154d4a69-4080-4a07-af93-07606606bcb6}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{b7ca01ed-2eea-4746-8d07-80a250bbafab}</destination>
@@ -162,10 +162,10 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 	</object>
 	<object class="GroupTrack" id="{a4c0709a-4638-4639-bace-b4f5581994ae}">
 		<relationship name="modules">
+			<destination>{ed06d42b-c578-4f11-967a-b998cf1bfafa}</destination>
 			<destination>{3a28b701-1506-464c-b73c-2898c896faea}</destination>
 			<destination>{036d5e17-eb9f-4f66-9875-feea5cc85c51}</destination>
 			<destination>{78f3e86d-5c7b-4d00-9ca4-7a6c7fd80f03}</destination>
-			<destination>{ed06d42b-c578-4f11-967a-b998cf1bfafa}</destination>
 			<destination>{1049557a-6521-4d3d-b51f-c0eede3b3f0d}</destination>
 			<destination>{e56cf9ec-69aa-40fe-927e-f7653dd0f2f2}</destination>
 			<destination>{f6e61460-9fbe-4088-aaaa-81a24a6acfda}</destination>
@@ -176,12 +176,12 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 	</object>
 	<object class="GroupTrack" id="{4546961f-f25a-46ee-9526-e2d7da7b21fe}">
 		<relationship name="modules">
+			<destination>{3746065f-f905-4766-95a0-7da6a751c0a5}</destination>
+			<destination>{4ab1ad1d-adf9-4209-ad2d-719efe23bb54}</destination>
+			<destination>{1c9d5b2e-69c6-4c11-a913-67046100cf47}</destination>
 			<destination>{06d54bfb-9b2d-4344-97e6-999071cdee3d}</destination>
 			<destination>{a88a8522-86b3-4221-853b-079c6e2e357a}</destination>
 			<destination>{caf971a7-c433-49e9-9701-10ab33baccb5}</destination>
-			<destination>{1c9d5b2e-69c6-4c11-a913-67046100cf47}</destination>
-			<destination>{4ab1ad1d-adf9-4209-ad2d-719efe23bb54}</destination>
-			<destination>{3746065f-f905-4766-95a0-7da6a751c0a5}</destination>
 			<destination>{77b3cd1f-93a5-469f-89fe-dbf06dd1d97c}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
@@ -191,12 +191,12 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 	<object class="GroupTrack" id="{fb0a5661-e937-4f9b-aa54-a8016ccad9cc}">
 		<relationship name="modules">
 			<destination>{0a4c8b33-6c3c-49d4-be09-1f05298f2e7e}</destination>
+			<destination>{c4558bb9-8ee9-447a-926c-d05684eb8b35}</destination>
+			<destination>{7ef0c3d4-a23e-4658-976b-48a6394ad76e}</destination>
 			<destination>{5dfa5eee-4b85-4df4-b3f6-53f124f57d27}</destination>
 			<destination>{ec680c69-da59-4378-84ed-9e340da3d9d2}</destination>
-			<destination>{7ef0c3d4-a23e-4658-976b-48a6394ad76e}</destination>
 			<destination>{e6d03e8e-d3ba-48ab-9785-d06e27589413}</destination>
 			<destination>{cbd61805-3b9f-4d2a-a9d7-a25bbc493347}</destination>
-			<destination>{c4558bb9-8ee9-447a-926c-d05684eb8b35}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{1ebecbf2-76ff-47dc-bee4-f9fb00aa9f9f}</destination>
@@ -204,13 +204,13 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 	</object>
 	<object class="GroupTrack" id="{70d3ebae-5702-4190-9d4f-96228e165acd}">
 		<relationship name="modules">
-			<destination>{7e4f9dbe-aded-4b56-824f-c29b0e0fef42}</destination>
-			<destination>{1b6da049-69a5-46be-b211-41bfd1f3b9fe}</destination>
 			<destination>{b4737a4d-8de3-4767-8ba9-bb3e9fdc1ecc}</destination>
-			<destination>{9b45ffbd-74c0-431b-853f-d023bc0fb994}</destination>
 			<destination>{129d513d-0bf1-482f-822e-783917241c0e}</destination>
 			<destination>{0f439bec-66e5-4d4e-9ee3-0bcc2d6bd804}</destination>
+			<destination>{9b45ffbd-74c0-431b-853f-d023bc0fb994}</destination>
 			<destination>{42dcffe6-d668-415e-b07e-20361140bf2e}</destination>
+			<destination>{7e4f9dbe-aded-4b56-824f-c29b0e0fef42}</destination>
+			<destination>{1b6da049-69a5-46be-b211-41bfd1f3b9fe}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{95408995-01c6-43b3-a793-48806a8357a1}</destination>
@@ -219,12 +219,12 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 	<object class="GroupTrack" id="{48afffe8-4fcf-46a5-94a8-040f2aaf0578}">
 		<relationship name="modules">
 			<destination>{43d374e4-9b9e-4f96-91d5-c643264e43bf}</destination>
-			<destination>{00d7755b-31d5-4ccb-affc-5b2eca044a00}</destination>
-			<destination>{2eb1b98f-6a35-4402-b8a3-7a562f97055d}</destination>
+			<destination>{8d43f649-15e0-4c05-ab05-966135cc9af7}</destination>
 			<destination>{737e1d0b-7ec0-4bf0-b568-3d74fb9e6976}</destination>
 			<destination>{1470c5a1-2d48-46f5-9541-f1c35e1c6d2b}</destination>
-			<destination>{8d43f649-15e0-4c05-ab05-966135cc9af7}</destination>
 			<destination>{870eafce-1b6e-4478-9ad4-d2c416ec32d4}</destination>
+			<destination>{2eb1b98f-6a35-4402-b8a3-7a562f97055d}</destination>
+			<destination>{00d7755b-31d5-4ccb-affc-5b2eca044a00}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{6ddf381a-dbab-44de-bfdd-873d659b8025}</destination>
@@ -232,12 +232,12 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 	</object>
 	<object class="GroupTrack" id="{dcfa6105-503f-4d37-8824-26f824376368}">
 		<relationship name="modules">
+			<destination>{1f2d6428-c7de-4df3-bddf-bf437b63b6c9}</destination>
+			<destination>{d160cc45-b9a7-456d-a69f-adb8452862e2}</destination>
+			<destination>{35d9462e-e68f-4ea3-83b5-d18ebd1f0e7d}</destination>
+			<destination>{1cb4d8c6-a34c-491f-b1ff-12f5c9bd9aa4}</destination>
 			<destination>{90d3339f-ec31-47c5-9290-9f966472f516}</destination>
 			<destination>{d42cb892-20e4-4d5c-8abf-8989dc323890}</destination>
-			<destination>{1f2d6428-c7de-4df3-bddf-bf437b63b6c9}</destination>
-			<destination>{35d9462e-e68f-4ea3-83b5-d18ebd1f0e7d}</destination>
-			<destination>{d160cc45-b9a7-456d-a69f-adb8452862e2}</destination>
-			<destination>{1cb4d8c6-a34c-491f-b1ff-12f5c9bd9aa4}</destination>
 			<destination>{9d1a6fcd-a327-4542-aeb5-c0bfa436ddb5}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
@@ -246,12 +246,12 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 	</object>
 	<object class="GroupTrack" id="{6c0faf34-eb7c-4f17-a6c9-df47a6171ffa}">
 		<relationship name="modules">
+			<destination>{7845bea5-8616-458f-ad79-99456fecdb80}</destination>
+			<destination>{41816ef4-608b-4a8f-9177-10e3202f980a}</destination>
+			<destination>{aa60a578-7137-40fc-b4e8-574a4d18d424}</destination>
 			<destination>{5b8fc68d-42ac-46ab-be4f-710e51fd952b}</destination>
 			<destination>{cf4effd4-972e-433a-9653-195a93cbdd29}</destination>
 			<destination>{33f2151c-c858-4ca0-8f8d-175a77a8677d}</destination>
-			<destination>{41816ef4-608b-4a8f-9177-10e3202f980a}</destination>
-			<destination>{aa60a578-7137-40fc-b4e8-574a4d18d424}</destination>
-			<destination>{7845bea5-8616-458f-ad79-99456fecdb80}</destination>
 			<destination>{3cf5bc3f-cdf9-46f0-8493-b667fd97f2a7}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
@@ -274,25 +274,25 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 	</object>
 	<object class="Timeline" id="{316618c0-b25a-4f03-80c2-453c13f8c27e}">
 		<relationship name="modules">
-			<destination>{daa79bda-5993-4030-9aba-1d3cbf451ed4}</destination>
-			<destination>{0101a863-a447-4325-92db-d612ae8c26ed}</destination>
-			<destination>{4ac59dca-1641-4b3f-9f19-d415bb99fae2}</destination>
-			<destination>{3a28b701-1506-464c-b73c-2898c896faea}</destination>
-			<destination>{90d3339f-ec31-47c5-9290-9f966472f516}</destination>
-			<destination>{5b8fc68d-42ac-46ab-be4f-710e51fd952b}</destination>
-			<destination>{77b3cd1f-93a5-469f-89fe-dbf06dd1d97c}</destination>
 			<destination>{c4558bb9-8ee9-447a-926c-d05684eb8b35}</destination>
-			<destination>{870eafce-1b6e-4478-9ad4-d2c416ec32d4}</destination>
-			<destination>{286ae1ad-a122-4ada-bd87-798696752111}</destination>
-			<destination>{c61528b6-7fb7-48ed-a070-6f34819d10e4}</destination>
 			<destination>{42dcffe6-d668-415e-b07e-20361140bf2e}</destination>
+			<destination>{3a28b701-1506-464c-b73c-2898c896faea}</destination>
+			<destination>{77b3cd1f-93a5-469f-89fe-dbf06dd1d97c}</destination>
+			<destination>{286ae1ad-a122-4ada-bd87-798696752111}</destination>
+			<destination>{5b8fc68d-42ac-46ab-be4f-710e51fd952b}</destination>
+			<destination>{c61528b6-7fb7-48ed-a070-6f34819d10e4}</destination>
+			<destination>{0101a863-a447-4325-92db-d612ae8c26ed}</destination>
+			<destination>{870eafce-1b6e-4478-9ad4-d2c416ec32d4}</destination>
+			<destination>{4ac59dca-1641-4b3f-9f19-d415bb99fae2}</destination>
+			<destination>{90d3339f-ec31-47c5-9290-9f966472f516}</destination>
+			<destination>{daa79bda-5993-4030-9aba-1d3cbf451ed4}</destination>
 		</relationship>
 		<relationship name="markers">
-			<destination>{28874ab3-bf9f-4e26-925a-3ec0bcd91291}</destination>
-			<destination>{e717dcdd-deb0-479e-91e7-1391ad8ad88b}</destination>
-			<destination>{51971b17-88f2-4534-a5aa-6bed6190efe1}</destination>
 			<destination>{2c95b6f5-6ae3-4a87-8d3e-5259afcf50a2}</destination>
+			<destination>{51971b17-88f2-4534-a5aa-6bed6190efe1}</destination>
 			<destination>{8586cb54-d00d-4c0a-9422-1b561c04b397}</destination>
+			<destination>{e717dcdd-deb0-479e-91e7-1391ad8ad88b}</destination>
+			<destination>{28874ab3-bf9f-4e26-925a-3ec0bcd91291}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{baf4fb3b-e19f-4d60-b6ef-de7e995db927}">
@@ -306,25 +306,17 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<destination>{3f08d3ee-f78c-4a2a-9254-96f7e8d74d3d}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionSourceSound" id="{22004317-12be-4df7-bcde-1194c70a404c}">
-		<property name="length">
-			<value>0</value>
-		</property>
-	</object>
 	<object class="TransitionDestinationSound" id="{b0c32e39-070a-447f-b471-b69df8922d7f}">
 		<property name="length">
 			<value>1.9834710743801653</value>
 		</property>
 	</object>
-	<object class="TransitionSourceSound" id="{d2de9ae2-091b-4ea9-a9e4-8851fbb2d65c}">
+	<object class="TransitionSourceSound" id="{21e2bb4d-d3d5-41b1-9c09-8e4d41cdec11}">
 		<property name="length">
 			<value>0</value>
 		</property>
 	</object>
-	<object class="TransitionDestinationSound" id="{5343257a-9c25-4591-aad6-8c37a4e2c169}">
-		<property name="start">
-			<value>1.9834710743801653</value>
-		</property>
+	<object class="TransitionSourceSound" id="{22004317-12be-4df7-bcde-1194c70a404c}">
 		<property name="length">
 			<value>0</value>
 		</property>
@@ -337,7 +329,15 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<value>0</value>
 		</property>
 	</object>
-	<object class="TransitionSourceSound" id="{21e2bb4d-d3d5-41b1-9c09-8e4d41cdec11}">
+	<object class="TransitionDestinationSound" id="{5343257a-9c25-4591-aad6-8c37a4e2c169}">
+		<property name="start">
+			<value>1.9834710743801653</value>
+		</property>
+		<property name="length">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="TransitionSourceSound" id="{d2de9ae2-091b-4ea9-a9e4-8851fbb2d65c}">
 		<property name="length">
 			<value>0</value>
 		</property>
@@ -348,6 +348,30 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{02b1d0e8-a5f0-4756-8ea3-0d2d703afa7c}" />
+	<object class="TransitionSourceSound" id="{c7a971fe-14ba-4963-bade-b1ddbd539e14}">
+		<property name="length">
+			<value>0.49586776859504134</value>
+		</property>
+		<relationship name="fadeOutCurve">
+			<destination>{b504d7a4-806c-4dc5-adc1-dfbbed56e8e6}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionDestinationSound" id="{3935106a-1adb-49cf-97a9-e8b0facda53e}">
+		<property name="length">
+			<value>3.9669421487603316</value>
+		</property>
+		<relationship name="fadeInCurve">
+			<destination>{a56427ff-1450-4f1c-ae40-94de373cb71a}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionSourceSound" id="{0342dc62-0574-45db-9ebe-f6baf2059056}">
+		<property name="length">
+			<value>0.49586776859504134</value>
+		</property>
+		<relationship name="fadeOutCurve">
+			<destination>{812a0d14-3b88-4e96-b801-059df522b23e}</destination>
+		</relationship>
+	</object>
 	<object class="SingleSound" id="{daa79bda-5993-4030-9aba-1d3cbf451ed4}">
 		<property name="start">
 			<value>0.24793388429752206</value>
@@ -384,36 +408,12 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<destination>{030fb65a-3e90-4406-b83e-12c891e470f2}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionSourceSound" id="{c7a971fe-14ba-4963-bade-b1ddbd539e14}">
-		<property name="length">
-			<value>0.49586776859504134</value>
-		</property>
-		<relationship name="fadeOutCurve">
-			<destination>{b504d7a4-806c-4dc5-adc1-dfbbed56e8e6}</destination>
-		</relationship>
-	</object>
 	<object class="TransitionDestinationSound" id="{ce657257-a543-4b39-9bbf-bcac315d67a3}">
 		<property name="length">
 			<value>1.9834710743801656</value>
 		</property>
 		<relationship name="fadeInCurve">
 			<destination>{11356e07-aee1-4a99-bc4e-4f6b1a324c85}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionDestinationSound" id="{3935106a-1adb-49cf-97a9-e8b0facda53e}">
-		<property name="length">
-			<value>3.9669421487603316</value>
-		</property>
-		<relationship name="fadeInCurve">
-			<destination>{a56427ff-1450-4f1c-ae40-94de373cb71a}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionSourceSound" id="{0342dc62-0574-45db-9ebe-f6baf2059056}">
-		<property name="length">
-			<value>0.49586776859504134</value>
-		</property>
-		<relationship name="fadeOutCurve">
-			<destination>{812a0d14-3b88-4e96-b801-059df522b23e}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{67499c58-e4ed-473f-a884-bf5ccbfd5010}">
@@ -431,6 +431,33 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 		</relationship>
 		<relationship name="output">
 			<destination>{baf4fb3b-e19f-4d60-b6ef-de7e995db927}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionDestinationSound" id="{fc6dfc80-cceb-46a7-a61c-c88e49012a17}">
+		<property name="start">
+			<value>0.12396694214876033</value>
+		</property>
+		<property name="length">
+			<value>3.8429752066115719</value>
+		</property>
+		<relationship name="fadeInCurve">
+			<destination>{c34d824a-ca7e-47f5-95f8-6e054b57dd6d}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionDestinationSound" id="{c8f10757-8bb0-4ea9-a741-6d7bc3e0b728}">
+		<property name="start">
+			<value>0.49586776859504134</value>
+		</property>
+		<property name="length">
+			<value>1.4876033057851246</value>
+		</property>
+	</object>
+	<object class="TransitionSourceSound" id="{a1fb6212-bf84-49cf-ab48-1234f258c446}">
+		<property name="length">
+			<value>0.27892561983471076</value>
+		</property>
+		<relationship name="fadeOutCurve">
+			<destination>{3cf01df2-f10b-4308-9577-a6ada3b3d6f7}</destination>
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{0101a863-a447-4325-92db-d612ae8c26ed}">
@@ -453,27 +480,6 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<destination>{7f89ebf1-8ebd-4379-ac11-1667f6d4320c}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionSourceSound" id="{694dd877-19fc-405e-b428-385bfa7ec873}">
-		<property name="length">
-			<value>0.49586776859504134</value>
-		</property>
-	</object>
-	<object class="TransitionDestinationSound" id="{c8f10757-8bb0-4ea9-a741-6d7bc3e0b728}">
-		<property name="start">
-			<value>0.49586776859504134</value>
-		</property>
-		<property name="length">
-			<value>1.4876033057851246</value>
-		</property>
-	</object>
-	<object class="TransitionSourceSound" id="{a1fb6212-bf84-49cf-ab48-1234f258c446}">
-		<property name="length">
-			<value>0.27892561983471076</value>
-		</property>
-		<relationship name="fadeOutCurve">
-			<destination>{3cf01df2-f10b-4308-9577-a6ada3b3d6f7}</destination>
-		</relationship>
-	</object>
 	<object class="TransitionDestinationSound" id="{953ddd3d-973b-4969-9ce8-cfb27ff0b172}">
 		<property name="start">
 			<value>0.12396694214876033</value>
@@ -485,16 +491,10 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<destination>{10403eaa-cdc5-47b8-9d54-835891d457dc}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionDestinationSound" id="{fc6dfc80-cceb-46a7-a61c-c88e49012a17}">
-		<property name="start">
-			<value>0.12396694214876033</value>
-		</property>
+	<object class="TransitionSourceSound" id="{694dd877-19fc-405e-b428-385bfa7ec873}">
 		<property name="length">
-			<value>3.8429752066115719</value>
+			<value>0.49586776859504134</value>
 		</property>
-		<relationship name="fadeInCurve">
-			<destination>{c34d824a-ca7e-47f5-95f8-6e054b57dd6d}</destination>
-		</relationship>
 	</object>
 	<object class="TransitionSourceSound" id="{0171955c-9120-4ff2-b812-912dda3c94b1}">
 		<property name="length">
@@ -521,36 +521,12 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<destination>{baf4fb3b-e19f-4d60-b6ef-de7e995db927}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionSourceSound" id="{65cadd4d-30e5-40aa-8a0f-69f79ef10742}">
-		<property name="length">
-			<value>1.2805263092126182</value>
-		</property>
-	</object>
-	<object class="TransitionDestinationSound" id="{196f29f3-b357-4bc9-8550-3d752446fbb7}">
-		<property name="start">
-			<value>1.2805263092126182</value>
-		</property>
-		<property name="length">
-			<value>0.70294476516754711</value>
-		</property>
-	</object>
 	<object class="TransitionSourceSound" id="{8ad54f33-190a-401e-88a7-41b49dea91c6}">
 		<property name="length">
 			<value>0.6198347107438017</value>
 		</property>
 		<relationship name="fadeOutCurve">
 			<destination>{fe3b3b7a-327c-4528-a8b7-d738877d3fd6}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionDestinationSound" id="{f7fd6793-99ff-46a8-98dc-89493ea4d293}">
-		<property name="start">
-			<value>0.49586776859504134</value>
-		</property>
-		<property name="length">
-			<value>1.4876033057851239</value>
-		</property>
-		<relationship name="fadeInCurve">
-			<destination>{1262b6e1-7b97-457c-aae5-a0a0d22d3a57}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionDestinationSound" id="{af4cd63e-3b3f-44b0-a9e5-c3f2252eb9d2}">
@@ -564,13 +540,18 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<destination>{2003176d-96ab-4ec7-84ca-2fa33ccfcbd2}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionSourceSound" id="{7987c856-da6e-4b4d-be07-1ffac728accb}">
+	<object class="TransitionSourceSound" id="{65cadd4d-30e5-40aa-8a0f-69f79ef10742}">
 		<property name="length">
-			<value>0.6198347107438017</value>
+			<value>1.2805263092126182</value>
 		</property>
-		<relationship name="fadeOutCurve">
-			<destination>{0399bbe7-30c6-46e5-a67b-615deea9e6a1}</destination>
-		</relationship>
+	</object>
+	<object class="TransitionDestinationSound" id="{196f29f3-b357-4bc9-8550-3d752446fbb7}">
+		<property name="start">
+			<value>1.2805263092126182</value>
+		</property>
+		<property name="length">
+			<value>0.70294476516754711</value>
+		</property>
 	</object>
 	<object class="SingleSound" id="{c61528b6-7fb7-48ed-a070-6f34819d10e4}">
 		<property name="start">
@@ -587,6 +568,25 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 		</relationship>
 		<relationship name="audioFile">
 			<destination>{f3fb3828-bd58-4569-8675-51de07824899}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionDestinationSound" id="{f7fd6793-99ff-46a8-98dc-89493ea4d293}">
+		<property name="start">
+			<value>0.49586776859504134</value>
+		</property>
+		<property name="length">
+			<value>1.4876033057851239</value>
+		</property>
+		<relationship name="fadeInCurve">
+			<destination>{1262b6e1-7b97-457c-aae5-a0a0d22d3a57}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionSourceSound" id="{7987c856-da6e-4b4d-be07-1ffac728accb}">
+		<property name="length">
+			<value>0.6198347107438017</value>
+		</property>
+		<relationship name="fadeOutCurve">
+			<destination>{0399bbe7-30c6-46e5-a67b-615deea9e6a1}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{3fb399cf-9e13-4274-a376-4859652a4e58}">
@@ -616,15 +616,12 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<value>0</value>
 		</property>
 	</object>
-	<object class="TransitionSourceSound" id="{52f1c183-867e-47be-90dd-fd46a60a66d9}">
+	<object class="TransitionSourceSound" id="{425da6bf-e633-43ec-a401-e7fc967cace0}">
 		<property name="length">
 			<value>0</value>
 		</property>
 	</object>
-	<object class="TransitionDestinationSound" id="{154d4a69-4080-4a07-af93-07606606bcb6}">
-		<property name="start">
-			<value>1.9834710743801653</value>
-		</property>
+	<object class="TransitionSourceSound" id="{52f1c183-867e-47be-90dd-fd46a60a66d9}">
 		<property name="length">
 			<value>0</value>
 		</property>
@@ -637,7 +634,10 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<value>0</value>
 		</property>
 	</object>
-	<object class="TransitionSourceSound" id="{425da6bf-e633-43ec-a401-e7fc967cace0}">
+	<object class="TransitionDestinationSound" id="{154d4a69-4080-4a07-af93-07606606bcb6}">
+		<property name="start">
+			<value>1.9834710743801653</value>
+		</property>
 		<property name="length">
 			<value>0</value>
 		</property>
@@ -741,6 +741,14 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<destination>{b7ca01ed-2eea-4746-8d07-80a250bbafab}</destination>
 		</relationship>
 	</object>
+	<object class="TransitionSourceSound" id="{ed06d42b-c578-4f11-967a-b998cf1bfafa}">
+		<property name="length">
+			<value>0.085227272727272735</value>
+		</property>
+		<relationship name="fadeOutCurve">
+			<destination>{a0f6ca4f-49de-413b-8445-1ef0731b33f2}</destination>
+		</relationship>
+	</object>
 	<object class="SingleSound" id="{3a28b701-1506-464c-b73c-2898c896faea}">
 		<property name="start">
 			<value>0.24793388429752206</value>
@@ -770,14 +778,6 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 		<property name="length">
 			<value>1.4876033057851235</value>
 		</property>
-	</object>
-	<object class="TransitionSourceSound" id="{ed06d42b-c578-4f11-967a-b998cf1bfafa}">
-		<property name="length">
-			<value>0.085227272727272735</value>
-		</property>
-		<relationship name="fadeOutCurve">
-			<destination>{a0f6ca4f-49de-413b-8445-1ef0731b33f2}</destination>
-		</relationship>
 	</object>
 	<object class="TransitionDestinationSound" id="{1049557a-6521-4d3d-b51f-c0eede3b3f0d}">
 		<property name="length">
@@ -823,6 +823,30 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<destination>{b7ca01ed-2eea-4746-8d07-80a250bbafab}</destination>
 		</relationship>
 	</object>
+	<object class="TransitionSourceSound" id="{3746065f-f905-4766-95a0-7da6a751c0a5}">
+		<property name="length">
+			<value>0.080217669052049606</value>
+		</property>
+		<relationship name="fadeOutCurve">
+			<destination>{8b62a988-8d34-4c8b-ab4c-86d5c05076c0}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionDestinationSound" id="{4ab1ad1d-adf9-4209-ad2d-719efe23bb54}">
+		<property name="length">
+			<value>3.9669421487603316</value>
+		</property>
+		<relationship name="fadeInCurve">
+			<destination>{bff72a67-8ac4-447c-8473-58233db9e512}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionDestinationSound" id="{1c9d5b2e-69c6-4c11-a913-67046100cf47}">
+		<property name="length">
+			<value>1.9834710743801653</value>
+		</property>
+		<relationship name="fadeInCurve">
+			<destination>{3a3cd430-08e7-442c-8de8-dee05c88cf26}</destination>
+		</relationship>
+	</object>
 	<object class="TransitionSourceSound" id="{06d54bfb-9b2d-4344-97e6-999071cdee3d}">
 		<property name="length">
 			<value>0.49586776859504134</value>
@@ -848,30 +872,6 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 		</property>
 		<relationship name="fadeOutCurve">
 			<destination>{180f454a-b165-4db1-bc52-98cc4bf9549e}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionDestinationSound" id="{1c9d5b2e-69c6-4c11-a913-67046100cf47}">
-		<property name="length">
-			<value>1.9834710743801653</value>
-		</property>
-		<relationship name="fadeInCurve">
-			<destination>{3a3cd430-08e7-442c-8de8-dee05c88cf26}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionDestinationSound" id="{4ab1ad1d-adf9-4209-ad2d-719efe23bb54}">
-		<property name="length">
-			<value>3.9669421487603316</value>
-		</property>
-		<relationship name="fadeInCurve">
-			<destination>{bff72a67-8ac4-447c-8473-58233db9e512}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionSourceSound" id="{3746065f-f905-4766-95a0-7da6a751c0a5}">
-		<property name="length">
-			<value>0.080217669052049606</value>
-		</property>
-		<relationship name="fadeOutCurve">
-			<destination>{8b62a988-8d34-4c8b-ab4c-86d5c05076c0}</destination>
 		</relationship>
 	</object>
 	<object class="SingleSound" id="{77b3cd1f-93a5-469f-89fe-dbf06dd1d97c}">
@@ -916,6 +916,31 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<value>0.99173553719008267</value>
 		</property>
 	</object>
+	<object class="SingleSound" id="{c4558bb9-8ee9-447a-926c-d05684eb8b35}">
+		<property name="start">
+			<value>0.24793388429752206</value>
+		</property>
+		<property name="length">
+			<value>129.14793223140501</value>
+		</property>
+		<property name="timelockedOffset">
+			<value>1.7960677685950444</value>
+		</property>
+		<relationship name="fadeInCurve">
+			<destination>{20c4354a-6377-4fcc-8cee-2d537eb48aa3}</destination>
+		</relationship>
+		<relationship name="audioFile">
+			<destination>{eecf9315-bf36-4320-9ec9-55e18ee6ad2b}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionDestinationSound" id="{7ef0c3d4-a23e-4658-976b-48a6394ad76e}">
+		<property name="length">
+			<value>1.9834710743801653</value>
+		</property>
+		<relationship name="fadeInCurve">
+			<destination>{1457df80-677f-4276-b61c-08fcf72511c4}</destination>
+		</relationship>
+	</object>
 	<object class="TransitionDestinationSound" id="{5dfa5eee-4b85-4df4-b3f6-53f124f57d27}">
 		<property name="start">
 			<value>0.99173553719008267</value>
@@ -932,14 +957,6 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<destination>{2c5cc55f-e2eb-42a5-9171-59bcef309079}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionDestinationSound" id="{7ef0c3d4-a23e-4658-976b-48a6394ad76e}">
-		<property name="length">
-			<value>1.9834710743801653</value>
-		</property>
-		<relationship name="fadeInCurve">
-			<destination>{1457df80-677f-4276-b61c-08fcf72511c4}</destination>
-		</relationship>
-	</object>
 	<object class="TransitionDestinationSound" id="{e6d03e8e-d3ba-48ab-9785-d06e27589413}">
 		<property name="length">
 			<value>3.9669421487603316</value>
@@ -954,23 +971,6 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 		</property>
 		<relationship name="fadeOutCurve">
 			<destination>{eef18dc3-41c1-442c-b0cb-baf2a575e287}</destination>
-		</relationship>
-	</object>
-	<object class="SingleSound" id="{c4558bb9-8ee9-447a-926c-d05684eb8b35}">
-		<property name="start">
-			<value>0.24793388429752206</value>
-		</property>
-		<property name="length">
-			<value>129.14793223140501</value>
-		</property>
-		<property name="timelockedOffset">
-			<value>1.7960677685950444</value>
-		</property>
-		<relationship name="fadeInCurve">
-			<destination>{20c4354a-6377-4fcc-8cee-2d537eb48aa3}</destination>
-		</relationship>
-		<relationship name="audioFile">
-			<destination>{eecf9315-bf36-4320-9ec9-55e18ee6ad2b}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{1ebecbf2-76ff-47dc-bee4-f9fb00aa9f9f}">
@@ -993,36 +993,12 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<destination>{b7ca01ed-2eea-4746-8d07-80a250bbafab}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionSourceSound" id="{7e4f9dbe-aded-4b56-824f-c29b0e0fef42}">
-		<property name="length">
-			<value>0.073665803530213264</value>
-		</property>
-		<relationship name="fadeOutCurve">
-			<destination>{d98db336-0348-49f5-9b80-cba2f3bc2806}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionDestinationSound" id="{1b6da049-69a5-46be-b211-41bfd1f3b9fe}">
-		<property name="length">
-			<value>1.9834710743801658</value>
-		</property>
-		<relationship name="fadeInCurve">
-			<destination>{97a51ea0-3cc8-414c-8a31-0265327e2840}</destination>
-		</relationship>
-	</object>
 	<object class="TransitionSourceSound" id="{b4737a4d-8de3-4767-8ba9-bb3e9fdc1ecc}">
 		<property name="length">
 			<value>0.085227272727272735</value>
 		</property>
 		<relationship name="fadeOutCurve">
 			<destination>{f652eaf1-4896-4181-93ec-0fefc8e14e5a}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionDestinationSound" id="{9b45ffbd-74c0-431b-853f-d023bc0fb994}">
-		<property name="length">
-			<value>1.9834710743801653</value>
-		</property>
-		<relationship name="fadeInCurve">
-			<destination>{dc51c3ce-cf37-4f2f-969f-ebcd2a9569af}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionDestinationSound" id="{129d513d-0bf1-482f-822e-783917241c0e}">
@@ -1041,6 +1017,14 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<destination>{29158437-2eaf-47a7-8999-642ba586d07f}</destination>
 		</relationship>
 	</object>
+	<object class="TransitionDestinationSound" id="{9b45ffbd-74c0-431b-853f-d023bc0fb994}">
+		<property name="length">
+			<value>1.9834710743801653</value>
+		</property>
+		<relationship name="fadeInCurve">
+			<destination>{dc51c3ce-cf37-4f2f-969f-ebcd2a9569af}</destination>
+		</relationship>
+	</object>
 	<object class="SingleSound" id="{42dcffe6-d668-415e-b07e-20361140bf2e}">
 		<property name="start">
 			<value>0.24793388429752206</value>
@@ -1056,6 +1040,22 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 		</relationship>
 		<relationship name="audioFile">
 			<destination>{eb03855e-4bec-46d0-8595-d6be8b3a73a5}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionSourceSound" id="{7e4f9dbe-aded-4b56-824f-c29b0e0fef42}">
+		<property name="length">
+			<value>0.073665803530213264</value>
+		</property>
+		<relationship name="fadeOutCurve">
+			<destination>{d98db336-0348-49f5-9b80-cba2f3bc2806}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionDestinationSound" id="{1b6da049-69a5-46be-b211-41bfd1f3b9fe}">
+		<property name="length">
+			<value>1.9834710743801658</value>
+		</property>
+		<relationship name="fadeInCurve">
+			<destination>{97a51ea0-3cc8-414c-8a31-0265327e2840}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{95408995-01c6-43b3-a793-48806a8357a1}">
@@ -1086,20 +1086,12 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<destination>{baa99a7a-9a16-4fe3-839a-fa71185fdec7}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionDestinationSound" id="{00d7755b-31d5-4ccb-affc-5b2eca044a00}">
+	<object class="TransitionSourceSound" id="{8d43f649-15e0-4c05-ab05-966135cc9af7}">
 		<property name="length">
-			<value>1.9834710743801653</value>
-		</property>
-		<relationship name="fadeInCurve">
-			<destination>{3352b457-b56e-4d2b-b6b4-f3c6aa9161e0}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionSourceSound" id="{2eb1b98f-6a35-4402-b8a3-7a562f97055d}">
-		<property name="length">
-			<value>0.085227272727272735</value>
+			<value>0.080217669052049606</value>
 		</property>
 		<relationship name="fadeOutCurve">
-			<destination>{54c6178c-bc78-428b-916d-232c2d7217db}</destination>
+			<destination>{0516f532-4875-4ddb-8bf7-a5e9f7306b4b}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionDestinationSound" id="{737e1d0b-7ec0-4bf0-b568-3d74fb9e6976}">
@@ -1118,14 +1110,6 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<destination>{b7b01238-9fe9-4b96-a031-983980dc42c7}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionSourceSound" id="{8d43f649-15e0-4c05-ab05-966135cc9af7}">
-		<property name="length">
-			<value>0.080217669052049606</value>
-		</property>
-		<relationship name="fadeOutCurve">
-			<destination>{0516f532-4875-4ddb-8bf7-a5e9f7306b4b}</destination>
-		</relationship>
-	</object>
 	<object class="SingleSound" id="{870eafce-1b6e-4478-9ad4-d2c416ec32d4}">
 		<property name="start">
 			<value>0.24793388429752206</value>
@@ -1141,6 +1125,22 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 		</relationship>
 		<relationship name="audioFile">
 			<destination>{5bf5116a-671e-4e73-ab01-e9086bf2fc7f}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionSourceSound" id="{2eb1b98f-6a35-4402-b8a3-7a562f97055d}">
+		<property name="length">
+			<value>0.085227272727272735</value>
+		</property>
+		<relationship name="fadeOutCurve">
+			<destination>{54c6178c-bc78-428b-916d-232c2d7217db}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionDestinationSound" id="{00d7755b-31d5-4ccb-affc-5b2eca044a00}">
+		<property name="length">
+			<value>1.9834710743801653</value>
+		</property>
+		<relationship name="fadeInCurve">
+			<destination>{3352b457-b56e-4d2b-b6b4-f3c6aa9161e0}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{6ddf381a-dbab-44de-bfdd-873d659b8025}">
@@ -1163,6 +1163,35 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<destination>{b7ca01ed-2eea-4746-8d07-80a250bbafab}</destination>
 		</relationship>
 	</object>
+	<object class="TransitionDestinationSound" id="{1f2d6428-c7de-4df3-bddf-bf437b63b6c9}">
+		<property name="start">
+			<value>0.12396694214876033</value>
+		</property>
+		<property name="length">
+			<value>1.8595041322314052</value>
+		</property>
+	</object>
+	<object class="TransitionDestinationSound" id="{d160cc45-b9a7-456d-a69f-adb8452862e2}">
+		<property name="length">
+			<value>1.9834710743801653</value>
+		</property>
+		<relationship name="fadeInCurve">
+			<destination>{b4f96e42-1cf6-4911-8478-c9b60cee6c03}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionSourceSound" id="{35d9462e-e68f-4ea3-83b5-d18ebd1f0e7d}">
+		<property name="length">
+			<value>0.085227272727272735</value>
+		</property>
+		<relationship name="fadeOutCurve">
+			<destination>{7847948a-d846-40c2-a6fe-75a77b7e9f26}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionDestinationSound" id="{1cb4d8c6-a34c-491f-b1ff-12f5c9bd9aa4}">
+		<property name="length">
+			<value>3.9669421487603307</value>
+		</property>
+	</object>
 	<object class="SingleSound" id="{90d3339f-ec31-47c5-9290-9f966472f516}">
 		<property name="start">
 			<value>0.24793388429752206</value>
@@ -1183,35 +1212,6 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 	<object class="TransitionSourceSound" id="{d42cb892-20e4-4d5c-8abf-8989dc323890}">
 		<property name="length">
 			<value>0.12396694214876033</value>
-		</property>
-	</object>
-	<object class="TransitionDestinationSound" id="{1f2d6428-c7de-4df3-bddf-bf437b63b6c9}">
-		<property name="start">
-			<value>0.12396694214876033</value>
-		</property>
-		<property name="length">
-			<value>1.8595041322314052</value>
-		</property>
-	</object>
-	<object class="TransitionSourceSound" id="{35d9462e-e68f-4ea3-83b5-d18ebd1f0e7d}">
-		<property name="length">
-			<value>0.085227272727272735</value>
-		</property>
-		<relationship name="fadeOutCurve">
-			<destination>{7847948a-d846-40c2-a6fe-75a77b7e9f26}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionDestinationSound" id="{d160cc45-b9a7-456d-a69f-adb8452862e2}">
-		<property name="length">
-			<value>1.9834710743801653</value>
-		</property>
-		<relationship name="fadeInCurve">
-			<destination>{b4f96e42-1cf6-4911-8478-c9b60cee6c03}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionDestinationSound" id="{1cb4d8c6-a34c-491f-b1ff-12f5c9bd9aa4}">
-		<property name="length">
-			<value>3.9669421487603307</value>
 		</property>
 	</object>
 	<object class="TransitionSourceSound" id="{9d1a6fcd-a327-4542-aeb5-c0bfa436ddb5}">
@@ -1239,6 +1239,27 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<destination>{b7ca01ed-2eea-4746-8d07-80a250bbafab}</destination>
 		</relationship>
 	</object>
+	<object class="TransitionDestinationSound" id="{7845bea5-8616-458f-ad79-99456fecdb80}">
+		<property name="length">
+			<value>3.9669421487603316</value>
+		</property>
+	</object>
+	<object class="TransitionSourceSound" id="{41816ef4-608b-4a8f-9177-10e3202f980a}">
+		<property name="length">
+			<value>0.085227272727272735</value>
+		</property>
+		<relationship name="fadeOutCurve">
+			<destination>{0d887021-f85a-4a7a-985a-7b70c47030ec}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionDestinationSound" id="{aa60a578-7137-40fc-b4e8-574a4d18d424}">
+		<property name="length">
+			<value>1.9834710743801653</value>
+		</property>
+		<relationship name="fadeInCurve">
+			<destination>{a6bda204-d94e-4849-bb34-e8d0a9dcb4bd}</destination>
+		</relationship>
+	</object>
 	<object class="SingleSound" id="{5b8fc68d-42ac-46ab-be4f-710e51fd952b}">
 		<property name="start">
 			<value>0.24793388429752206</value>
@@ -1264,27 +1285,6 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 	<object class="TransitionDestinationSound" id="{33f2151c-c858-4ca0-8f8d-175a77a8677d}">
 		<property name="length">
 			<value>1.9834710743801653</value>
-		</property>
-	</object>
-	<object class="TransitionSourceSound" id="{41816ef4-608b-4a8f-9177-10e3202f980a}">
-		<property name="length">
-			<value>0.085227272727272735</value>
-		</property>
-		<relationship name="fadeOutCurve">
-			<destination>{0d887021-f85a-4a7a-985a-7b70c47030ec}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionDestinationSound" id="{aa60a578-7137-40fc-b4e8-574a4d18d424}">
-		<property name="length">
-			<value>1.9834710743801653</value>
-		</property>
-		<relationship name="fadeInCurve">
-			<destination>{a6bda204-d94e-4849-bb34-e8d0a9dcb4bd}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionDestinationSound" id="{7845bea5-8616-458f-ad79-99456fecdb80}">
-		<property name="length">
-			<value>3.9669421487603316</value>
 		</property>
 	</object>
 	<object class="TransitionSourceSound" id="{3cf5bc3f-cdf9-46f0-8493-b667fd97f2a7}">
@@ -1400,54 +1400,6 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<destination>{b7ca01ed-2eea-4746-8d07-80a250bbafab}</destination>
 		</relationship>
 	</object>
-	<object class="TempoMarker" id="{28874ab3-bf9f-4e26-925a-3ec0bcd91291}">
-		<property name="position">
-			<value>4.462809917355373</value>
-		</property>
-		<property name="tempo">
-			<value>121</value>
-		</property>
-		<relationship name="timeline">
-			<destination>{316618c0-b25a-4f03-80c2-453c13f8c27e}</destination>
-		</relationship>
-		<relationship name="markerTrack">
-			<destination>{a6a1ea68-9e51-45bd-ba2c-fe170eec1ef3}</destination>
-		</relationship>
-	</object>
-	<object class="LoopRegion" id="{e717dcdd-deb0-479e-91e7-1391ad8ad88b}">
-		<property name="position">
-			<value>0.49586776859504145</value>
-		</property>
-		<property name="length">
-			<value>124.95867768595042</value>
-		</property>
-		<relationship name="timeline">
-			<destination>{316618c0-b25a-4f03-80c2-453c13f8c27e}</destination>
-		</relationship>
-		<relationship name="markerTrack">
-			<destination>{cfc0f66d-0b12-4aac-a802-679ab5620d22}</destination>
-		</relationship>
-		<relationship name="triggerConditions">
-			<destination>{0987bf40-2973-44d5-9efc-21a4609c5e53}</destination>
-		</relationship>
-		<relationship name="transitionTimeline">
-			<destination>{af1282d8-0945-4e89-b354-996a1bac13d4}</destination>
-		</relationship>
-	</object>
-	<object class="NamedMarker" id="{51971b17-88f2-4534-a5aa-6bed6190efe1}">
-		<property name="position">
-			<value>123.47107438016531</value>
-		</property>
-		<property name="name">
-			<value>Out</value>
-		</property>
-		<relationship name="timeline">
-			<destination>{316618c0-b25a-4f03-80c2-453c13f8c27e}</destination>
-		</relationship>
-		<relationship name="markerTrack">
-			<destination>{3434fc3c-c210-453a-b373-3696776dc2e3}</destination>
-		</relationship>
-	</object>
 	<object class="TransitionRegion" id="{2c95b6f5-6ae3-4a87-8d3e-5259afcf50a2}">
 		<property name="position">
 			<value>2.9752066115702482</value>
@@ -1474,6 +1426,20 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<destination>{0e132253-1d40-4803-85b8-2e6eb0bc9972}</destination>
 		</relationship>
 	</object>
+	<object class="NamedMarker" id="{51971b17-88f2-4534-a5aa-6bed6190efe1}">
+		<property name="position">
+			<value>123.47107438016531</value>
+		</property>
+		<property name="name">
+			<value>Out</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{316618c0-b25a-4f03-80c2-453c13f8c27e}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{3434fc3c-c210-453a-b373-3696776dc2e3}</destination>
+		</relationship>
+	</object>
 	<object class="TransitionMarker" id="{8586cb54-d00d-4c0a-9422-1b561c04b397}">
 		<property name="position">
 			<value>123.47107438016531</value>
@@ -1494,6 +1460,40 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<destination>{81ed936a-37c0-4382-a927-05e394f620b8}</destination>
 		</relationship>
 	</object>
+	<object class="LoopRegion" id="{e717dcdd-deb0-479e-91e7-1391ad8ad88b}">
+		<property name="position">
+			<value>0.49586776859504145</value>
+		</property>
+		<property name="length">
+			<value>124.95867768595042</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{316618c0-b25a-4f03-80c2-453c13f8c27e}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{cfc0f66d-0b12-4aac-a802-679ab5620d22}</destination>
+		</relationship>
+		<relationship name="triggerConditions">
+			<destination>{0987bf40-2973-44d5-9efc-21a4609c5e53}</destination>
+		</relationship>
+		<relationship name="transitionTimeline">
+			<destination>{af1282d8-0945-4e89-b354-996a1bac13d4}</destination>
+		</relationship>
+	</object>
+	<object class="TempoMarker" id="{28874ab3-bf9f-4e26-925a-3ec0bcd91291}">
+		<property name="position">
+			<value>4.462809917355373</value>
+		</property>
+		<property name="tempo">
+			<value>121</value>
+		</property>
+		<relationship name="timeline">
+			<destination>{316618c0-b25a-4f03-80c2-453c13f8c27e}</destination>
+		</relationship>
+		<relationship name="markerTrack">
+			<destination>{a6a1ea68-9e51-45bd-ba2c-fe170eec1ef3}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusEffectChain" id="{c91b969c-231d-4714-b0bc-292768d8169c}">
 		<relationship name="effects">
 			<destination>{003329d4-5fb6-4fd4-8808-bd4f159479b3}</destination>
@@ -1501,6 +1501,39 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 	</object>
 	<object class="MixerBusPanner" id="{a5704f43-24f8-4a85-9eaa-67f88fe50652}" />
 	<object class="MixerBusFader" id="{ab81a385-b25f-4c2d-993d-b4813a80e8d3}" />
+	<object class="TransitionSourceFadeOutCurve" id="{b504d7a4-806c-4dc5-adc1-dfbbed56e8e6}">
+		<relationship name="startPoint">
+			<destination>{c75bdacb-a19e-43c7-8968-fab61bd40543}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{56fc2dbd-e31b-4f0b-99fa-cfcc728dccd4}</destination>
+		</relationship>
+		<relationship name="relatedModule">
+			<destination>{ce657257-a543-4b39-9bbf-bcac315d67a3}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionDestinationFadeInCurve" id="{a56427ff-1450-4f1c-ae40-94de373cb71a}">
+		<relationship name="startPoint">
+			<destination>{fc635192-1117-4073-af9d-bf70f54c2c2c}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{fa7086ea-79af-4781-aa7d-9235d84bbf33}</destination>
+		</relationship>
+		<relationship name="relatedModule">
+			<destination>{0342dc62-0574-45db-9ebe-f6baf2059056}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionSourceFadeOutCurve" id="{812a0d14-3b88-4e96-b801-059df522b23e}">
+		<relationship name="startPoint">
+			<destination>{8de9c247-e453-4692-ba3f-3331d75dac9a}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{e8ec1bb2-f0b1-415e-8977-3f982146401c}</destination>
+		</relationship>
+		<relationship name="relatedModule">
+			<destination>{3935106a-1adb-49cf-97a9-e8b0facda53e}</destination>
+		</relationship>
+	</object>
 	<object class="FadeCurve" id="{523d09cd-4785-4e68-b5a2-3da5274f3c50}">
 		<relationship name="startPoint">
 			<destination>{d74357fc-eb35-4dc7-8999-03ff0fece6a2}</destination>
@@ -1531,17 +1564,6 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<destination>{2bc7d72a-9cca-4d5f-86e6-0063d55b32d9}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionSourceFadeOutCurve" id="{b504d7a4-806c-4dc5-adc1-dfbbed56e8e6}">
-		<relationship name="startPoint">
-			<destination>{c75bdacb-a19e-43c7-8968-fab61bd40543}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{56fc2dbd-e31b-4f0b-99fa-cfcc728dccd4}</destination>
-		</relationship>
-		<relationship name="relatedModule">
-			<destination>{ce657257-a543-4b39-9bbf-bcac315d67a3}</destination>
-		</relationship>
-	</object>
 	<object class="TransitionDestinationFadeInCurve" id="{11356e07-aee1-4a99-bc4e-4f6b1a324c85}">
 		<relationship name="startPoint">
 			<destination>{2b01f904-8656-45b0-b79d-e130c04e4e83}</destination>
@@ -1553,28 +1575,6 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<destination>{c7a971fe-14ba-4963-bade-b1ddbd539e14}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionDestinationFadeInCurve" id="{a56427ff-1450-4f1c-ae40-94de373cb71a}">
-		<relationship name="startPoint">
-			<destination>{fc635192-1117-4073-af9d-bf70f54c2c2c}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{fa7086ea-79af-4781-aa7d-9235d84bbf33}</destination>
-		</relationship>
-		<relationship name="relatedModule">
-			<destination>{0342dc62-0574-45db-9ebe-f6baf2059056}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionSourceFadeOutCurve" id="{812a0d14-3b88-4e96-b801-059df522b23e}">
-		<relationship name="startPoint">
-			<destination>{8de9c247-e453-4692-ba3f-3331d75dac9a}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{e8ec1bb2-f0b1-415e-8977-3f982146401c}</destination>
-		</relationship>
-		<relationship name="relatedModule">
-			<destination>{3935106a-1adb-49cf-97a9-e8b0facda53e}</destination>
-		</relationship>
-	</object>
 	<object class="MixerBusEffectChain" id="{d6d9334c-72f3-4dc3-bbe6-7ec126f9108a}">
 		<relationship name="effects">
 			<destination>{43260ee4-d5cb-423b-925b-2d570fd0b203}</destination>
@@ -1582,6 +1582,28 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{39d33057-9db1-40a9-b2d8-a713f805467e}" />
+	<object class="TransitionDestinationFadeInCurve" id="{c34d824a-ca7e-47f5-95f8-6e054b57dd6d}">
+		<relationship name="startPoint">
+			<destination>{29b0b22d-bfdf-4c99-a6c4-f8abd67ae784}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{90caf744-1315-4c2c-9e58-560217b6797f}</destination>
+		</relationship>
+		<relationship name="relatedModule">
+			<destination>{0171955c-9120-4ff2-b812-912dda3c94b1}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionSourceFadeOutCurve" id="{3cf01df2-f10b-4308-9577-a6ada3b3d6f7}">
+		<relationship name="startPoint">
+			<destination>{86041713-bd0b-4baf-8910-91bb8fe89bfd}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{958c8186-921f-4d2c-b133-80cc99f29593}</destination>
+		</relationship>
+		<relationship name="relatedModule">
+			<destination>{953ddd3d-973b-4969-9ce8-cfb27ff0b172}</destination>
+		</relationship>
+	</object>
 	<object class="FadeCurve" id="{18eeb420-4327-4879-a79c-9e6e6b7d5c5e}">
 		<relationship name="startPoint">
 			<destination>{b95e7f15-ae5f-432f-8c26-f9fef7278692}</destination>
@@ -1598,17 +1620,6 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<destination>{28115aeb-58b2-48ba-8051-99dc5aa1289e}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionSourceFadeOutCurve" id="{3cf01df2-f10b-4308-9577-a6ada3b3d6f7}">
-		<relationship name="startPoint">
-			<destination>{86041713-bd0b-4baf-8910-91bb8fe89bfd}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{958c8186-921f-4d2c-b133-80cc99f29593}</destination>
-		</relationship>
-		<relationship name="relatedModule">
-			<destination>{953ddd3d-973b-4969-9ce8-cfb27ff0b172}</destination>
-		</relationship>
-	</object>
 	<object class="TransitionDestinationFadeInCurve" id="{10403eaa-cdc5-47b8-9d54-835891d457dc}">
 		<relationship name="startPoint">
 			<destination>{6d0729c7-b72a-4905-bcd0-76bc2c0ee2c5}</destination>
@@ -1618,17 +1629,6 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 		</relationship>
 		<relationship name="relatedModule">
 			<destination>{a1fb6212-bf84-49cf-ab48-1234f258c446}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionDestinationFadeInCurve" id="{c34d824a-ca7e-47f5-95f8-6e054b57dd6d}">
-		<relationship name="startPoint">
-			<destination>{29b0b22d-bfdf-4c99-a6c4-f8abd67ae784}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{90caf744-1315-4c2c-9e58-560217b6797f}</destination>
-		</relationship>
-		<relationship name="relatedModule">
-			<destination>{0171955c-9120-4ff2-b812-912dda3c94b1}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionSourceFadeOutCurve" id="{53b98a94-16b6-46d9-8501-e5145a0301a0}">
@@ -1663,17 +1663,6 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<destination>{f7fd6793-99ff-46a8-98dc-89493ea4d293}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionDestinationFadeInCurve" id="{1262b6e1-7b97-457c-aae5-a0a0d22d3a57}">
-		<relationship name="startPoint">
-			<destination>{5c948e3a-a131-45d6-9b86-92b857044d9d}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{04ee612f-57df-4e80-8c6a-7f151a75e592}</destination>
-		</relationship>
-		<relationship name="relatedModule">
-			<destination>{8ad54f33-190a-401e-88a7-41b49dea91c6}</destination>
-		</relationship>
-	</object>
 	<object class="TransitionDestinationFadeInCurve" id="{2003176d-96ab-4ec7-84ca-2fa33ccfcbd2}">
 		<relationship name="startPoint">
 			<destination>{5abdd5a9-ce53-45c7-ba3f-ee3a1fc2caf4}</destination>
@@ -1685,6 +1674,25 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<destination>{7987c856-da6e-4b4d-be07-1ffac728accb}</destination>
 		</relationship>
 	</object>
+	<object class="FadeCurve" id="{cc32d0a9-824b-46b5-8d08-8d1927deb322}">
+		<relationship name="startPoint">
+			<destination>{4162b36e-d04d-4836-958b-7401b05e4762}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{0b04be22-c8cc-472f-b041-62d8407f3d44}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionDestinationFadeInCurve" id="{1262b6e1-7b97-457c-aae5-a0a0d22d3a57}">
+		<relationship name="startPoint">
+			<destination>{5c948e3a-a131-45d6-9b86-92b857044d9d}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{04ee612f-57df-4e80-8c6a-7f151a75e592}</destination>
+		</relationship>
+		<relationship name="relatedModule">
+			<destination>{8ad54f33-190a-401e-88a7-41b49dea91c6}</destination>
+		</relationship>
+	</object>
 	<object class="TransitionSourceFadeOutCurve" id="{0399bbe7-30c6-46e5-a67b-615deea9e6a1}">
 		<relationship name="startPoint">
 			<destination>{22772f78-d6c8-4efc-9bac-0f2b5a2ae70a}</destination>
@@ -1694,14 +1702,6 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 		</relationship>
 		<relationship name="relatedModule">
 			<destination>{af4cd63e-3b3f-44b0-a9e5-c3f2252eb9d2}</destination>
-		</relationship>
-	</object>
-	<object class="FadeCurve" id="{cc32d0a9-824b-46b5-8d08-8d1927deb322}">
-		<relationship name="startPoint">
-			<destination>{4162b36e-d04d-4836-958b-7401b05e4762}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{0b04be22-c8cc-472f-b041-62d8407f3d44}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{e2fdbbfb-3177-4a86-b6b9-fe9f44f57986}">
@@ -1784,14 +1784,6 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<value>-34</value>
 		</property>
 	</object>
-	<object class="FadeCurve" id="{d77bbf5d-34e2-4c10-bfec-87b0a959afb8}">
-		<relationship name="startPoint">
-			<destination>{2b48e866-39f5-48a0-9a6e-d69e6738d58b}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{67998dd5-1fc6-44e9-a97c-c9264c822a67}</destination>
-		</relationship>
-	</object>
 	<object class="TransitionSourceFadeOutCurve" id="{a0f6ca4f-49de-413b-8445-1ef0731b33f2}">
 		<relationship name="startPoint">
 			<destination>{2f1f5b3b-fe66-4a3d-bdf3-370ce215589f}</destination>
@@ -1801,6 +1793,14 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 		</relationship>
 		<relationship name="relatedModule">
 			<destination>{1049557a-6521-4d3d-b51f-c0eede3b3f0d}</destination>
+		</relationship>
+	</object>
+	<object class="FadeCurve" id="{d77bbf5d-34e2-4c10-bfec-87b0a959afb8}">
+		<relationship name="startPoint">
+			<destination>{2b48e866-39f5-48a0-9a6e-d69e6738d58b}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{67998dd5-1fc6-44e9-a97c-c9264c822a67}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionDestinationFadeInCurve" id="{145897a2-0fe0-468f-aaf7-4957f4cc5b95}">
@@ -1846,6 +1846,39 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<value>58</value>
 		</property>
 	</object>
+	<object class="TransitionSourceFadeOutCurve" id="{8b62a988-8d34-4c8b-ab4c-86d5c05076c0}">
+		<relationship name="startPoint">
+			<destination>{cc1a59bd-9bd0-4d3b-a54d-71770a5e09aa}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{adbfa8c2-566c-4011-8958-dd77a7a2d773}</destination>
+		</relationship>
+		<relationship name="relatedModule">
+			<destination>{4ab1ad1d-adf9-4209-ad2d-719efe23bb54}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionDestinationFadeInCurve" id="{bff72a67-8ac4-447c-8473-58233db9e512}">
+		<relationship name="startPoint">
+			<destination>{7cd8d45c-5122-4de5-b3ea-9763413f757e}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{725f9e95-97c7-4b2e-a9cd-f5e3f5880fdf}</destination>
+		</relationship>
+		<relationship name="relatedModule">
+			<destination>{3746065f-f905-4766-95a0-7da6a751c0a5}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionDestinationFadeInCurve" id="{3a3cd430-08e7-442c-8de8-dee05c88cf26}">
+		<relationship name="startPoint">
+			<destination>{412636b7-0400-4a29-8cc0-0be51ae623e1}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{b0a47396-5abb-47ba-9570-a1d3c6290961}</destination>
+		</relationship>
+		<relationship name="relatedModule">
+			<destination>{caf971a7-c433-49e9-9701-10ab33baccb5}</destination>
+		</relationship>
+	</object>
 	<object class="TransitionSourceFadeOutCurve" id="{c925d63d-3dd4-4c1f-97bd-2f9054fa8ad5}">
 		<relationship name="startPoint">
 			<destination>{c7d6cabc-0d59-4e60-b814-1b0a2aa358f1}</destination>
@@ -1879,39 +1912,6 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<destination>{1c9d5b2e-69c6-4c11-a913-67046100cf47}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionDestinationFadeInCurve" id="{3a3cd430-08e7-442c-8de8-dee05c88cf26}">
-		<relationship name="startPoint">
-			<destination>{412636b7-0400-4a29-8cc0-0be51ae623e1}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{b0a47396-5abb-47ba-9570-a1d3c6290961}</destination>
-		</relationship>
-		<relationship name="relatedModule">
-			<destination>{caf971a7-c433-49e9-9701-10ab33baccb5}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionDestinationFadeInCurve" id="{bff72a67-8ac4-447c-8473-58233db9e512}">
-		<relationship name="startPoint">
-			<destination>{7cd8d45c-5122-4de5-b3ea-9763413f757e}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{725f9e95-97c7-4b2e-a9cd-f5e3f5880fdf}</destination>
-		</relationship>
-		<relationship name="relatedModule">
-			<destination>{3746065f-f905-4766-95a0-7da6a751c0a5}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionSourceFadeOutCurve" id="{8b62a988-8d34-4c8b-ab4c-86d5c05076c0}">
-		<relationship name="startPoint">
-			<destination>{cc1a59bd-9bd0-4d3b-a54d-71770a5e09aa}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{adbfa8c2-566c-4011-8958-dd77a7a2d773}</destination>
-		</relationship>
-		<relationship name="relatedModule">
-			<destination>{4ab1ad1d-adf9-4209-ad2d-719efe23bb54}</destination>
-		</relationship>
-	</object>
 	<object class="FadeCurve" id="{d1ba43f4-f5eb-4892-8d5f-887a56b17bd3}">
 		<relationship name="startPoint">
 			<destination>{c08cdd4f-9f72-46ea-b2cc-24b37157907f}</destination>
@@ -1930,15 +1930,12 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<value>-80</value>
 		</property>
 	</object>
-	<object class="TransitionSourceFadeOutCurve" id="{2c5cc55f-e2eb-42a5-9171-59bcef309079}">
+	<object class="FadeCurve" id="{20c4354a-6377-4fcc-8cee-2d537eb48aa3}">
 		<relationship name="startPoint">
-			<destination>{8915be53-3be0-4523-8580-542bb12cf5dd}</destination>
+			<destination>{115da640-492c-428d-90c6-324553f91e9d}</destination>
 		</relationship>
 		<relationship name="endPoint">
-			<destination>{0d447934-c8c7-4462-a418-c78b254aba02}</destination>
-		</relationship>
-		<relationship name="relatedModule">
-			<destination>{7ef0c3d4-a23e-4658-976b-48a6394ad76e}</destination>
+			<destination>{f4128b71-dee6-4db2-b0ae-3f509bdf973a}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionDestinationFadeInCurve" id="{1457df80-677f-4276-b61c-08fcf72511c4}">
@@ -1950,6 +1947,17 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 		</relationship>
 		<relationship name="relatedModule">
 			<destination>{ec680c69-da59-4378-84ed-9e340da3d9d2}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionSourceFadeOutCurve" id="{2c5cc55f-e2eb-42a5-9171-59bcef309079}">
+		<relationship name="startPoint">
+			<destination>{8915be53-3be0-4523-8580-542bb12cf5dd}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{0d447934-c8c7-4462-a418-c78b254aba02}</destination>
+		</relationship>
+		<relationship name="relatedModule">
+			<destination>{7ef0c3d4-a23e-4658-976b-48a6394ad76e}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionDestinationFadeInCurve" id="{231446ec-a6d0-4246-89a7-2cb0ce958874}">
@@ -1974,14 +1982,6 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<destination>{e6d03e8e-d3ba-48ab-9785-d06e27589413}</destination>
 		</relationship>
 	</object>
-	<object class="FadeCurve" id="{20c4354a-6377-4fcc-8cee-2d537eb48aa3}">
-		<relationship name="startPoint">
-			<destination>{115da640-492c-428d-90c6-324553f91e9d}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{f4128b71-dee6-4db2-b0ae-3f509bdf973a}</destination>
-		</relationship>
-	</object>
 	<object class="MixerBusEffectChain" id="{b4b04173-09be-4383-bb88-1ca386e0108a}">
 		<relationship name="effects">
 			<destination>{0f12a004-4476-4351-9d28-db51282386fe}</destination>
@@ -1992,28 +1992,6 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<value>80</value>
 		</property>
 	</object>
-	<object class="TransitionSourceFadeOutCurve" id="{d98db336-0348-49f5-9b80-cba2f3bc2806}">
-		<relationship name="startPoint">
-			<destination>{cb0d1dff-2ec2-470c-b5a9-7c1efd8eb74a}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{6e024f77-8b94-4d01-bf38-42746c3f1ddd}</destination>
-		</relationship>
-		<relationship name="relatedModule">
-			<destination>{1b6da049-69a5-46be-b211-41bfd1f3b9fe}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionDestinationFadeInCurve" id="{97a51ea0-3cc8-414c-8a31-0265327e2840}">
-		<relationship name="startPoint">
-			<destination>{f18b83f3-2ee6-4012-a199-e2d29c8c6200}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{945db711-bffe-42bd-9d16-92c7d718b778}</destination>
-		</relationship>
-		<relationship name="relatedModule">
-			<destination>{7e4f9dbe-aded-4b56-824f-c29b0e0fef42}</destination>
-		</relationship>
-	</object>
 	<object class="TransitionSourceFadeOutCurve" id="{f652eaf1-4896-4181-93ec-0fefc8e14e5a}">
 		<relationship name="startPoint">
 			<destination>{bb6c03ce-920a-497c-9546-076b9b809149}</destination>
@@ -2023,17 +2001,6 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 		</relationship>
 		<relationship name="relatedModule">
 			<destination>{9b45ffbd-74c0-431b-853f-d023bc0fb994}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionDestinationFadeInCurve" id="{dc51c3ce-cf37-4f2f-969f-ebcd2a9569af}">
-		<relationship name="startPoint">
-			<destination>{99dbea3e-c448-4885-b2cd-ce75cac9d858}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{2f352bb0-508e-4500-aeb3-a3147b2b3772}</destination>
-		</relationship>
-		<relationship name="relatedModule">
-			<destination>{b4737a4d-8de3-4767-8ba9-bb3e9fdc1ecc}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionDestinationFadeInCurve" id="{b746a8c9-472a-414e-8536-b56dc3ea8833}">
@@ -2058,12 +2025,45 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<destination>{129d513d-0bf1-482f-822e-783917241c0e}</destination>
 		</relationship>
 	</object>
+	<object class="TransitionDestinationFadeInCurve" id="{dc51c3ce-cf37-4f2f-969f-ebcd2a9569af}">
+		<relationship name="startPoint">
+			<destination>{99dbea3e-c448-4885-b2cd-ce75cac9d858}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{2f352bb0-508e-4500-aeb3-a3147b2b3772}</destination>
+		</relationship>
+		<relationship name="relatedModule">
+			<destination>{b4737a4d-8de3-4767-8ba9-bb3e9fdc1ecc}</destination>
+		</relationship>
+	</object>
 	<object class="FadeCurve" id="{f1980412-a9b9-41c8-a049-bdc5fdbd203f}">
 		<relationship name="startPoint">
 			<destination>{5eeec0ea-5ebc-4b9b-b99d-3d15f6425b71}</destination>
 		</relationship>
 		<relationship name="endPoint">
 			<destination>{17ab70ac-1c92-406a-ab92-a57a4d0ec715}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionSourceFadeOutCurve" id="{d98db336-0348-49f5-9b80-cba2f3bc2806}">
+		<relationship name="startPoint">
+			<destination>{cb0d1dff-2ec2-470c-b5a9-7c1efd8eb74a}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{6e024f77-8b94-4d01-bf38-42746c3f1ddd}</destination>
+		</relationship>
+		<relationship name="relatedModule">
+			<destination>{1b6da049-69a5-46be-b211-41bfd1f3b9fe}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionDestinationFadeInCurve" id="{97a51ea0-3cc8-414c-8a31-0265327e2840}">
+		<relationship name="startPoint">
+			<destination>{f18b83f3-2ee6-4012-a199-e2d29c8c6200}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{945db711-bffe-42bd-9d16-92c7d718b778}</destination>
+		</relationship>
+		<relationship name="relatedModule">
+			<destination>{7e4f9dbe-aded-4b56-824f-c29b0e0fef42}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{319940d1-f58a-474f-8ba7-21c6bfe0d822}">
@@ -2087,26 +2087,15 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<destination>{00d7755b-31d5-4ccb-affc-5b2eca044a00}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionDestinationFadeInCurve" id="{3352b457-b56e-4d2b-b6b4-f3c6aa9161e0}">
+	<object class="TransitionSourceFadeOutCurve" id="{0516f532-4875-4ddb-8bf7-a5e9f7306b4b}">
 		<relationship name="startPoint">
-			<destination>{43a69ddf-d83b-4a86-b38e-89a1765d7414}</destination>
+			<destination>{53cd5a1e-3f1c-4966-94ab-be17f78c50cf}</destination>
 		</relationship>
 		<relationship name="endPoint">
-			<destination>{1c012be9-3874-4403-9b73-5a5ab74e3c9a}</destination>
+			<destination>{74d33b7e-2729-41b5-a91e-7a0e5a00ce32}</destination>
 		</relationship>
 		<relationship name="relatedModule">
-			<destination>{43d374e4-9b9e-4f96-91d5-c643264e43bf}</destination>
-		</relationship>
-	</object>
-	<object class="TransitionSourceFadeOutCurve" id="{54c6178c-bc78-428b-916d-232c2d7217db}">
-		<relationship name="startPoint">
-			<destination>{ca64c123-1197-47cb-b2fb-59c8658aa527}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{6fdd7b62-e1e0-41f5-8fb4-b88d6ad5900b}</destination>
-		</relationship>
-		<relationship name="relatedModule">
-			<destination>{737e1d0b-7ec0-4bf0-b568-3d74fb9e6976}</destination>
+			<destination>{1470c5a1-2d48-46f5-9541-f1c35e1c6d2b}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionDestinationFadeInCurve" id="{28669b9f-5053-4c0f-970b-321b68ff478f}">
@@ -2131,23 +2120,34 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<destination>{8d43f649-15e0-4c05-ab05-966135cc9af7}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionSourceFadeOutCurve" id="{0516f532-4875-4ddb-8bf7-a5e9f7306b4b}">
-		<relationship name="startPoint">
-			<destination>{53cd5a1e-3f1c-4966-94ab-be17f78c50cf}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{74d33b7e-2729-41b5-a91e-7a0e5a00ce32}</destination>
-		</relationship>
-		<relationship name="relatedModule">
-			<destination>{1470c5a1-2d48-46f5-9541-f1c35e1c6d2b}</destination>
-		</relationship>
-	</object>
 	<object class="FadeCurve" id="{08e6d91d-1b0d-4e65-a32f-19e927b71293}">
 		<relationship name="startPoint">
 			<destination>{e647d57a-e61b-44f4-a66d-e4dcd2d9383a}</destination>
 		</relationship>
 		<relationship name="endPoint">
 			<destination>{e144082f-3086-4708-9e55-bf6f63c4d7c2}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionSourceFadeOutCurve" id="{54c6178c-bc78-428b-916d-232c2d7217db}">
+		<relationship name="startPoint">
+			<destination>{ca64c123-1197-47cb-b2fb-59c8658aa527}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{6fdd7b62-e1e0-41f5-8fb4-b88d6ad5900b}</destination>
+		</relationship>
+		<relationship name="relatedModule">
+			<destination>{737e1d0b-7ec0-4bf0-b568-3d74fb9e6976}</destination>
+		</relationship>
+	</object>
+	<object class="TransitionDestinationFadeInCurve" id="{3352b457-b56e-4d2b-b6b4-f3c6aa9161e0}">
+		<relationship name="startPoint">
+			<destination>{43a69ddf-d83b-4a86-b38e-89a1765d7414}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{1c012be9-3874-4403-9b73-5a5ab74e3c9a}</destination>
+		</relationship>
+		<relationship name="relatedModule">
+			<destination>{43d374e4-9b9e-4f96-91d5-c643264e43bf}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{a2dc5d71-1b1a-4d95-bea3-bb99012286cc}">
@@ -2160,12 +2160,15 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<value>36</value>
 		</property>
 	</object>
-	<object class="FadeCurve" id="{51f6be1a-d91a-45f6-94d2-8444574ec074}">
+	<object class="TransitionDestinationFadeInCurve" id="{b4f96e42-1cf6-4911-8478-c9b60cee6c03}">
 		<relationship name="startPoint">
-			<destination>{6d067f62-5766-40e5-beb7-a4b193837ef3}</destination>
+			<destination>{5eb71706-ecdd-42c3-ab30-49f6556309fa}</destination>
 		</relationship>
 		<relationship name="endPoint">
-			<destination>{3639774e-94e5-4179-91b2-cf7fab003e19}</destination>
+			<destination>{9c61d5bb-e355-4b3e-b2b0-e162ee87f389}</destination>
+		</relationship>
+		<relationship name="relatedModule">
+			<destination>{35d9462e-e68f-4ea3-83b5-d18ebd1f0e7d}</destination>
 		</relationship>
 	</object>
 	<object class="TransitionSourceFadeOutCurve" id="{7847948a-d846-40c2-a6fe-75a77b7e9f26}">
@@ -2179,15 +2182,12 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<destination>{d160cc45-b9a7-456d-a69f-adb8452862e2}</destination>
 		</relationship>
 	</object>
-	<object class="TransitionDestinationFadeInCurve" id="{b4f96e42-1cf6-4911-8478-c9b60cee6c03}">
+	<object class="FadeCurve" id="{51f6be1a-d91a-45f6-94d2-8444574ec074}">
 		<relationship name="startPoint">
-			<destination>{5eb71706-ecdd-42c3-ab30-49f6556309fa}</destination>
+			<destination>{6d067f62-5766-40e5-beb7-a4b193837ef3}</destination>
 		</relationship>
 		<relationship name="endPoint">
-			<destination>{9c61d5bb-e355-4b3e-b2b0-e162ee87f389}</destination>
-		</relationship>
-		<relationship name="relatedModule">
-			<destination>{35d9462e-e68f-4ea3-83b5-d18ebd1f0e7d}</destination>
+			<destination>{3639774e-94e5-4179-91b2-cf7fab003e19}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{23257e38-f1b9-422d-b088-2bc0b0ffd44d}">
@@ -2199,14 +2199,6 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 		<property name="stereoPan">
 			<value>-28</value>
 		</property>
-	</object>
-	<object class="FadeCurve" id="{ae1ffe53-1fe4-481d-a72a-b88e6e20e563}">
-		<relationship name="startPoint">
-			<destination>{42bd6db0-840a-4f8a-bbf6-2c0a27fa0c55}</destination>
-		</relationship>
-		<relationship name="endPoint">
-			<destination>{62fa8185-6b89-4197-ae96-16ad0cb277ad}</destination>
-		</relationship>
 	</object>
 	<object class="TransitionSourceFadeOutCurve" id="{0d887021-f85a-4a7a-985a-7b70c47030ec}">
 		<relationship name="startPoint">
@@ -2228,6 +2220,14 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 		</relationship>
 		<relationship name="relatedModule">
 			<destination>{41816ef4-608b-4a8f-9177-10e3202f980a}</destination>
+		</relationship>
+	</object>
+	<object class="FadeCurve" id="{ae1ffe53-1fe4-481d-a72a-b88e6e20e563}">
+		<relationship name="startPoint">
+			<destination>{42bd6db0-840a-4f8a-bbf6-2c0a27fa0c55}</destination>
+		</relationship>
+		<relationship name="endPoint">
+			<destination>{62fa8185-6b89-4197-ae96-16ad0cb277ad}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusEffectChain" id="{dfd8022c-e66b-45ce-be58-8917757ab200}">
@@ -2320,75 +2320,39 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{8b45c07a-f822-403b-a649-0fea0e60ed02}" />
-	<object class="EventCondition" id="{0987bf40-2973-44d5-9efc-21a4609c5e53}" />
-	<object class="TransitionTimeline" id="{af1282d8-0945-4e89-b354-996a1bac13d4}">
-		<property name="length">
-			<value>1.9834710743801653</value>
-		</property>
-		<relationship name="modules">
-			<destination>{2bc7d72a-9cca-4d5f-86e6-0063d55b32d9}</destination>
-			<destination>{d984bc00-f142-4551-98a1-bdde2e652dd1}</destination>
-			<destination>{694dd877-19fc-405e-b428-385bfa7ec873}</destination>
-			<destination>{c8f10757-8bb0-4ea9-a741-6d7bc3e0b728}</destination>
-			<destination>{65cadd4d-30e5-40aa-8a0f-69f79ef10742}</destination>
-			<destination>{196f29f3-b357-4bc9-8550-3d752446fbb7}</destination>
-			<destination>{f435b67a-4e74-4a26-8257-3931f62b8a6d}</destination>
-			<destination>{6ed0fc8e-19cd-4c23-a76c-ee11080494b6}</destination>
-			<destination>{c4280591-5f22-4c63-90ec-47d192e35356}</destination>
-			<destination>{495b2491-ca96-4d40-9189-d156c7fa833f}</destination>
-			<destination>{036d5e17-eb9f-4f66-9875-feea5cc85c51}</destination>
-			<destination>{78f3e86d-5c7b-4d00-9ca4-7a6c7fd80f03}</destination>
-			<destination>{06d54bfb-9b2d-4344-97e6-999071cdee3d}</destination>
-			<destination>{a88a8522-86b3-4221-853b-079c6e2e357a}</destination>
-			<destination>{0a4c8b33-6c3c-49d4-be09-1f05298f2e7e}</destination>
-			<destination>{5dfa5eee-4b85-4df4-b3f6-53f124f57d27}</destination>
-			<destination>{7e4f9dbe-aded-4b56-824f-c29b0e0fef42}</destination>
-			<destination>{1b6da049-69a5-46be-b211-41bfd1f3b9fe}</destination>
-			<destination>{43d374e4-9b9e-4f96-91d5-c643264e43bf}</destination>
-			<destination>{00d7755b-31d5-4ccb-affc-5b2eca044a00}</destination>
-			<destination>{d42cb892-20e4-4d5c-8abf-8989dc323890}</destination>
-			<destination>{1f2d6428-c7de-4df3-bddf-bf437b63b6c9}</destination>
-			<destination>{cf4effd4-972e-433a-9653-195a93cbdd29}</destination>
-			<destination>{33f2151c-c858-4ca0-8f8d-175a77a8677d}</destination>
-			<destination>{68c5aa91-e8cc-4dbc-b3e6-f0abaa4d2ad7}</destination>
-			<destination>{a6bf68ad-0e78-42fd-9453-6650442bdd7d}</destination>
-			<destination>{22004317-12be-4df7-bcde-1194c70a404c}</destination>
-			<destination>{b0c32e39-070a-447f-b471-b69df8922d7f}</destination>
-		</relationship>
-	</object>
 	<object class="TransitionTimeline" id="{3f081c49-e77e-4a60-a1ed-f31c96c26df6}">
 		<property name="length">
 			<value>1.9834710743801653</value>
 		</property>
 		<relationship name="modules">
-			<destination>{c7a971fe-14ba-4963-bade-b1ddbd539e14}</destination>
-			<destination>{ce657257-a543-4b39-9bbf-bcac315d67a3}</destination>
-			<destination>{a1fb6212-bf84-49cf-ab48-1234f258c446}</destination>
-			<destination>{953ddd3d-973b-4969-9ce8-cfb27ff0b172}</destination>
-			<destination>{8ad54f33-190a-401e-88a7-41b49dea91c6}</destination>
-			<destination>{f7fd6793-99ff-46a8-98dc-89493ea4d293}</destination>
-			<destination>{52f1c183-867e-47be-90dd-fd46a60a66d9}</destination>
-			<destination>{154d4a69-4080-4a07-af93-07606606bcb6}</destination>
-			<destination>{69baf7fa-6cac-4073-9f26-39a3361e9bbf}</destination>
-			<destination>{370d6e51-d25d-4048-992d-1ac4ec565917}</destination>
-			<destination>{ed06d42b-c578-4f11-967a-b998cf1bfafa}</destination>
-			<destination>{1049557a-6521-4d3d-b51f-c0eede3b3f0d}</destination>
-			<destination>{caf971a7-c433-49e9-9701-10ab33baccb5}</destination>
-			<destination>{1c9d5b2e-69c6-4c11-a913-67046100cf47}</destination>
-			<destination>{ec680c69-da59-4378-84ed-9e340da3d9d2}</destination>
-			<destination>{7ef0c3d4-a23e-4658-976b-48a6394ad76e}</destination>
 			<destination>{b4737a4d-8de3-4767-8ba9-bb3e9fdc1ecc}</destination>
+			<destination>{8ad54f33-190a-401e-88a7-41b49dea91c6}</destination>
+			<destination>{ed06d42b-c578-4f11-967a-b998cf1bfafa}</destination>
+			<destination>{7ef0c3d4-a23e-4658-976b-48a6394ad76e}</destination>
 			<destination>{9b45ffbd-74c0-431b-853f-d023bc0fb994}</destination>
-			<destination>{2eb1b98f-6a35-4402-b8a3-7a562f97055d}</destination>
-			<destination>{737e1d0b-7ec0-4bf0-b568-3d74fb9e6976}</destination>
-			<destination>{35d9462e-e68f-4ea3-83b5-d18ebd1f0e7d}</destination>
 			<destination>{d160cc45-b9a7-456d-a69f-adb8452862e2}</destination>
+			<destination>{1c9d5b2e-69c6-4c11-a913-67046100cf47}</destination>
 			<destination>{41816ef4-608b-4a8f-9177-10e3202f980a}</destination>
+			<destination>{c7a971fe-14ba-4963-bade-b1ddbd539e14}</destination>
+			<destination>{35d9462e-e68f-4ea3-83b5-d18ebd1f0e7d}</destination>
 			<destination>{aa60a578-7137-40fc-b4e8-574a4d18d424}</destination>
+			<destination>{a1fb6212-bf84-49cf-ab48-1234f258c446}</destination>
+			<destination>{370d6e51-d25d-4048-992d-1ac4ec565917}</destination>
+			<destination>{737e1d0b-7ec0-4bf0-b568-3d74fb9e6976}</destination>
+			<destination>{1049557a-6521-4d3d-b51f-c0eede3b3f0d}</destination>
+			<destination>{52f1c183-867e-47be-90dd-fd46a60a66d9}</destination>
 			<destination>{33a67c03-67ac-41e0-941c-4ba0587cac47}</destination>
 			<destination>{1f010b13-62ee-4c66-8dec-0e30e3e0b786}</destination>
-			<destination>{d2de9ae2-091b-4ea9-a9e4-8851fbb2d65c}</destination>
+			<destination>{ce657257-a543-4b39-9bbf-bcac315d67a3}</destination>
 			<destination>{5343257a-9c25-4591-aad6-8c37a4e2c169}</destination>
+			<destination>{953ddd3d-973b-4969-9ce8-cfb27ff0b172}</destination>
+			<destination>{2eb1b98f-6a35-4402-b8a3-7a562f97055d}</destination>
+			<destination>{69baf7fa-6cac-4073-9f26-39a3361e9bbf}</destination>
+			<destination>{154d4a69-4080-4a07-af93-07606606bcb6}</destination>
+			<destination>{d2de9ae2-091b-4ea9-a9e4-8851fbb2d65c}</destination>
+			<destination>{ec680c69-da59-4378-84ed-9e340da3d9d2}</destination>
+			<destination>{f7fd6793-99ff-46a8-98dc-89493ea4d293}</destination>
+			<destination>{caf971a7-c433-49e9-9701-10ab33baccb5}</destination>
 		</relationship>
 	</object>
 	<object class="EventCondition" id="{0e132253-1d40-4803-85b8-2e6eb0bc9972}">
@@ -2401,33 +2365,33 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<value>3.9669421487603316</value>
 		</property>
 		<relationship name="modules">
-			<destination>{0342dc62-0574-45db-9ebe-f6baf2059056}</destination>
-			<destination>{3935106a-1adb-49cf-97a9-e8b0facda53e}</destination>
-			<destination>{0171955c-9120-4ff2-b812-912dda3c94b1}</destination>
+			<destination>{7845bea5-8616-458f-ad79-99456fecdb80}</destination>
+			<destination>{3746065f-f905-4766-95a0-7da6a751c0a5}</destination>
+			<destination>{4ab1ad1d-adf9-4209-ad2d-719efe23bb54}</destination>
 			<destination>{fc6dfc80-cceb-46a7-a61c-c88e49012a17}</destination>
-			<destination>{7987c856-da6e-4b4d-be07-1ffac728accb}</destination>
+			<destination>{129d513d-0bf1-482f-822e-783917241c0e}</destination>
+			<destination>{21e2bb4d-d3d5-41b1-9c09-8e4d41cdec11}</destination>
+			<destination>{0f439bec-66e5-4d4e-9ee3-0bcc2d6bd804}</destination>
+			<destination>{cbd61805-3b9f-4d2a-a9d7-a25bbc493347}</destination>
+			<destination>{8d43f649-15e0-4c05-ab05-966135cc9af7}</destination>
+			<destination>{3935106a-1adb-49cf-97a9-e8b0facda53e}</destination>
 			<destination>{af4cd63e-3b3f-44b0-a9e5-c3f2252eb9d2}</destination>
+			<destination>{0342dc62-0574-45db-9ebe-f6baf2059056}</destination>
+			<destination>{0171955c-9120-4ff2-b812-912dda3c94b1}</destination>
+			<destination>{7987c856-da6e-4b4d-be07-1ffac728accb}</destination>
 			<destination>{425da6bf-e633-43ec-a401-e7fc967cace0}</destination>
 			<destination>{50bf409f-6048-4aab-9e78-370dbf7912ac}</destination>
 			<destination>{ef3d6011-d324-47e0-8e1b-83c22979cf43}</destination>
 			<destination>{06789023-bdfa-49c3-b1e9-7394facac665}</destination>
 			<destination>{f6e61460-9fbe-4088-aaaa-81a24a6acfda}</destination>
 			<destination>{e56cf9ec-69aa-40fe-927e-f7653dd0f2f2}</destination>
-			<destination>{3746065f-f905-4766-95a0-7da6a751c0a5}</destination>
-			<destination>{4ab1ad1d-adf9-4209-ad2d-719efe23bb54}</destination>
-			<destination>{cbd61805-3b9f-4d2a-a9d7-a25bbc493347}</destination>
 			<destination>{e6d03e8e-d3ba-48ab-9785-d06e27589413}</destination>
-			<destination>{0f439bec-66e5-4d4e-9ee3-0bcc2d6bd804}</destination>
-			<destination>{129d513d-0bf1-482f-822e-783917241c0e}</destination>
-			<destination>{8d43f649-15e0-4c05-ab05-966135cc9af7}</destination>
 			<destination>{1470c5a1-2d48-46f5-9541-f1c35e1c6d2b}</destination>
 			<destination>{9d1a6fcd-a327-4542-aeb5-c0bfa436ddb5}</destination>
 			<destination>{1cb4d8c6-a34c-491f-b1ff-12f5c9bd9aa4}</destination>
 			<destination>{3cf5bc3f-cdf9-46f0-8493-b667fd97f2a7}</destination>
-			<destination>{7845bea5-8616-458f-ad79-99456fecdb80}</destination>
 			<destination>{86558afb-db6f-4a6c-a401-28beaf2e348a}</destination>
 			<destination>{d12dfcc3-4020-46a2-b31b-58f2566c3926}</destination>
-			<destination>{21e2bb4d-d3d5-41b1-9c09-8e4d41cdec11}</destination>
 			<destination>{fec72e26-205d-4d34-8558-da451233ec6e}</destination>
 		</relationship>
 	</object>
@@ -2436,7 +2400,100 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<value>1</value>
 		</property>
 	</object>
+	<object class="EventCondition" id="{0987bf40-2973-44d5-9efc-21a4609c5e53}" />
+	<object class="TransitionTimeline" id="{af1282d8-0945-4e89-b354-996a1bac13d4}">
+		<property name="length">
+			<value>1.9834710743801653</value>
+		</property>
+		<relationship name="modules">
+			<destination>{0a4c8b33-6c3c-49d4-be09-1f05298f2e7e}</destination>
+			<destination>{1f2d6428-c7de-4df3-bddf-bf437b63b6c9}</destination>
+			<destination>{c4280591-5f22-4c63-90ec-47d192e35356}</destination>
+			<destination>{b0c32e39-070a-447f-b471-b69df8922d7f}</destination>
+			<destination>{c8f10757-8bb0-4ea9-a741-6d7bc3e0b728}</destination>
+			<destination>{43d374e4-9b9e-4f96-91d5-c643264e43bf}</destination>
+			<destination>{06d54bfb-9b2d-4344-97e6-999071cdee3d}</destination>
+			<destination>{f435b67a-4e74-4a26-8257-3931f62b8a6d}</destination>
+			<destination>{036d5e17-eb9f-4f66-9875-feea5cc85c51}</destination>
+			<destination>{65cadd4d-30e5-40aa-8a0f-69f79ef10742}</destination>
+			<destination>{6ed0fc8e-19cd-4c23-a76c-ee11080494b6}</destination>
+			<destination>{5dfa5eee-4b85-4df4-b3f6-53f124f57d27}</destination>
+			<destination>{22004317-12be-4df7-bcde-1194c70a404c}</destination>
+			<destination>{196f29f3-b357-4bc9-8550-3d752446fbb7}</destination>
+			<destination>{495b2491-ca96-4d40-9189-d156c7fa833f}</destination>
+			<destination>{68c5aa91-e8cc-4dbc-b3e6-f0abaa4d2ad7}</destination>
+			<destination>{cf4effd4-972e-433a-9653-195a93cbdd29}</destination>
+			<destination>{a88a8522-86b3-4221-853b-079c6e2e357a}</destination>
+			<destination>{78f3e86d-5c7b-4d00-9ca4-7a6c7fd80f03}</destination>
+			<destination>{33f2151c-c858-4ca0-8f8d-175a77a8677d}</destination>
+			<destination>{d42cb892-20e4-4d5c-8abf-8989dc323890}</destination>
+			<destination>{2bc7d72a-9cca-4d5f-86e6-0063d55b32d9}</destination>
+			<destination>{d984bc00-f142-4551-98a1-bdde2e652dd1}</destination>
+			<destination>{694dd877-19fc-405e-b428-385bfa7ec873}</destination>
+			<destination>{7e4f9dbe-aded-4b56-824f-c29b0e0fef42}</destination>
+			<destination>{1b6da049-69a5-46be-b211-41bfd1f3b9fe}</destination>
+			<destination>{00d7755b-31d5-4ccb-affc-5b2eca044a00}</destination>
+			<destination>{a6bf68ad-0e78-42fd-9453-6650442bdd7d}</destination>
+		</relationship>
+	</object>
 	<object class="MixerBusFader" id="{003329d4-5fb6-4fd4-8808-bd4f159479b3}" />
+	<object class="AutomationPoint" id="{c75bdacb-a19e-43c7-8968-fab61bd40543}">
+		<property name="position">
+			<value>0</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+		<property name="curveShape">
+			<value>0.25471893</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{56fc2dbd-e31b-4f0b-99fa-cfcc728dccd4}">
+		<property name="position">
+			<value>0.49586776859504134</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{fc635192-1117-4073-af9d-bf70f54c2c2c}">
+		<property name="position">
+			<value>0</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+		<property name="curveShape">
+			<value>-0.2547189</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{fa7086ea-79af-4781-aa7d-9235d84bbf33}">
+		<property name="position">
+			<value>0.49586776859504134</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{8de9c247-e453-4692-ba3f-3331d75dac9a}">
+		<property name="position">
+			<value>0</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+		<property name="curveShape">
+			<value>0.25471893</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{e8ec1bb2-f0b1-415e-8977-3f982146401c}">
+		<property name="position">
+			<value>0.49586776859504134</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
 	<object class="AutomationPoint" id="{d74357fc-eb35-4dc7-8999-03ff0fece6a2}">
 		<property name="position">
 			<value>0.24793388429752206</value>
@@ -2494,25 +2551,6 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<value>1</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{c75bdacb-a19e-43c7-8968-fab61bd40543}">
-		<property name="position">
-			<value>0</value>
-		</property>
-		<property name="value">
-			<value>1</value>
-		</property>
-		<property name="curveShape">
-			<value>0.25471893</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{56fc2dbd-e31b-4f0b-99fa-cfcc728dccd4}">
-		<property name="position">
-			<value>0.49586776859504134</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-	</object>
 	<object class="AutomationPoint" id="{2b01f904-8656-45b0-b79d-e130c04e4e83}">
 		<property name="position">
 			<value>0</value>
@@ -2532,44 +2570,6 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<value>1</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{fc635192-1117-4073-af9d-bf70f54c2c2c}">
-		<property name="position">
-			<value>0</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-		<property name="curveShape">
-			<value>-0.2547189</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{fa7086ea-79af-4781-aa7d-9235d84bbf33}">
-		<property name="position">
-			<value>0.49586776859504134</value>
-		</property>
-		<property name="value">
-			<value>1</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{8de9c247-e453-4692-ba3f-3331d75dac9a}">
-		<property name="position">
-			<value>0</value>
-		</property>
-		<property name="value">
-			<value>1</value>
-		</property>
-		<property name="curveShape">
-			<value>0.25471893</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{e8ec1bb2-f0b1-415e-8977-3f982146401c}">
-		<property name="position">
-			<value>0.49586776859504134</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-	</object>
 	<object class="MultibandEqEffect" id="{43260ee4-d5cb-423b-925b-2d570fd0b203}">
 		<property name="filterTypeA">
 			<value>9</value>
@@ -2585,6 +2585,44 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{d22bd649-b349-4bcd-b7f9-c97e2f1acd41}" />
+	<object class="AutomationPoint" id="{29b0b22d-bfdf-4c99-a6c4-f8abd67ae784}">
+		<property name="position">
+			<value>0.12396694214876033</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+		<property name="curveShape">
+			<value>-0.2547189</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{90caf744-1315-4c2c-9e58-560217b6797f}">
+		<property name="position">
+			<value>0.29019987152747928</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{86041713-bd0b-4baf-8910-91bb8fe89bfd}">
+		<property name="position">
+			<value>0.12396694214876033</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+		<property name="curveShape">
+			<value>0.25471893</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{958c8186-921f-4d2c-b133-80cc99f29593}">
+		<property name="position">
+			<value>0.27892561983471076</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
 	<object class="AutomationPoint" id="{b95e7f15-ae5f-432f-8c26-f9fef7278692}">
 		<property name="position">
 			<value>0.24793388429752206</value>
@@ -2623,25 +2661,6 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<value>0</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{86041713-bd0b-4baf-8910-91bb8fe89bfd}">
-		<property name="position">
-			<value>0.12396694214876033</value>
-		</property>
-		<property name="value">
-			<value>1</value>
-		</property>
-		<property name="curveShape">
-			<value>0.25471893</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{958c8186-921f-4d2c-b133-80cc99f29593}">
-		<property name="position">
-			<value>0.27892561983471076</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-	</object>
 	<object class="AutomationPoint" id="{6d0729c7-b72a-4905-bcd0-76bc2c0ee2c5}">
 		<property name="position">
 			<value>0.12396694214876033</value>
@@ -2656,25 +2675,6 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 	<object class="AutomationPoint" id="{0db76b1b-5b4d-4650-84a7-338ccbeb5795}">
 		<property name="position">
 			<value>0.27892561983471076</value>
-		</property>
-		<property name="value">
-			<value>1</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{29b0b22d-bfdf-4c99-a6c4-f8abd67ae784}">
-		<property name="position">
-			<value>0.12396694214876033</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-		<property name="curveShape">
-			<value>-0.2547189</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{90caf744-1315-4c2c-9e58-560217b6797f}">
-		<property name="position">
-			<value>0.29019987152747928</value>
 		</property>
 		<property name="value">
 			<value>1</value>
@@ -2719,25 +2719,6 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<value>0</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{5c948e3a-a131-45d6-9b86-92b857044d9d}">
-		<property name="position">
-			<value>0.49586776859504134</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-		<property name="curveShape">
-			<value>-0.2547189</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{04ee612f-57df-4e80-8c6a-7f151a75e592}">
-		<property name="position">
-			<value>0.6198347107438017</value>
-		</property>
-		<property name="value">
-			<value>1</value>
-		</property>
-	</object>
 	<object class="AutomationPoint" id="{5abdd5a9-ce53-45c7-ba3f-ee3a1fc2caf4}">
 		<property name="position">
 			<value>0.49586776859504134</value>
@@ -2750,6 +2731,44 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{24a3d6f6-b372-45b0-9a69-7f2f9f6ad448}">
+		<property name="position">
+			<value>0.6198347107438017</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{4162b36e-d04d-4836-958b-7401b05e4762}">
+		<property name="position">
+			<value>0.24793388429752206</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+		<property name="curveShape">
+			<value>-0.2547189</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{0b04be22-c8cc-472f-b041-62d8407f3d44}">
+		<property name="position">
+			<value>0.31</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{5c948e3a-a131-45d6-9b86-92b857044d9d}">
+		<property name="position">
+			<value>0.49586776859504134</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+		<property name="curveShape">
+			<value>-0.2547189</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{04ee612f-57df-4e80-8c6a-7f151a75e592}">
 		<property name="position">
 			<value>0.6198347107438017</value>
 		</property>
@@ -2774,25 +2793,6 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 		</property>
 		<property name="value">
 			<value>0</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{4162b36e-d04d-4836-958b-7401b05e4762}">
-		<property name="position">
-			<value>0.24793388429752206</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-		<property name="curveShape">
-			<value>-0.2547189</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{0b04be22-c8cc-472f-b041-62d8407f3d44}">
-		<property name="position">
-			<value>0.31</value>
-		</property>
-		<property name="value">
-			<value>1</value>
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{f896399f-c4ea-4133-a083-60837f118924}" />
@@ -2921,25 +2921,6 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{5f3e536d-b545-4ed9-98a3-064b4b77dbda}" />
-	<object class="AutomationPoint" id="{2b48e866-39f5-48a0-9a6e-d69e6738d58b}">
-		<property name="position">
-			<value>0.24793388429752206</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-		<property name="curveShape">
-			<value>-0.2547189</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{67998dd5-1fc6-44e9-a97c-c9264c822a67}">
-		<property name="position">
-			<value>0.30991735537190213</value>
-		</property>
-		<property name="value">
-			<value>1</value>
-		</property>
-	</object>
 	<object class="AutomationPoint" id="{2f1f5b3b-fe66-4a3d-bdf3-370ce215589f}">
 		<property name="position">
 			<value>0</value>
@@ -2957,6 +2938,25 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 		</property>
 		<property name="value">
 			<value>0</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{2b48e866-39f5-48a0-9a6e-d69e6738d58b}">
+		<property name="position">
+			<value>0.24793388429752206</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+		<property name="curveShape">
+			<value>-0.2547189</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{67998dd5-1fc6-44e9-a97c-c9264c822a67}">
+		<property name="position">
+			<value>0.30991735537190213</value>
+		</property>
+		<property name="value">
+			<value>1</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{a5169172-0552-420c-b21d-05ce676c0feb}">
@@ -3017,6 +3017,63 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{ac6f9d9c-6a92-4b88-bbc9-db23c42c939f}" />
+	<object class="AutomationPoint" id="{cc1a59bd-9bd0-4d3b-a54d-71770a5e09aa}">
+		<property name="position">
+			<value>0</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+		<property name="curveShape">
+			<value>0.25471893</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{adbfa8c2-566c-4011-8958-dd77a7a2d773}">
+		<property name="position">
+			<value>0.080217669052049606</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{7cd8d45c-5122-4de5-b3ea-9763413f757e}">
+		<property name="position">
+			<value>0</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+		<property name="curveShape">
+			<value>-0.2547189</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{725f9e95-97c7-4b2e-a9cd-f5e3f5880fdf}">
+		<property name="position">
+			<value>0.080217669052049606</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{412636b7-0400-4a29-8cc0-0be51ae623e1}">
+		<property name="position">
+			<value>0</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+		<property name="curveShape">
+			<value>-0.2547189</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{b0a47396-5abb-47ba-9570-a1d3c6290961}">
+		<property name="position">
+			<value>0.085227272727272735</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+	</object>
 	<object class="AutomationPoint" id="{c7d6cabc-0d59-4e60-b814-1b0a2aa358f1}">
 		<property name="position">
 			<value>0.37190082644628097</value>
@@ -3074,63 +3131,6 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<value>0</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{412636b7-0400-4a29-8cc0-0be51ae623e1}">
-		<property name="position">
-			<value>0</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-		<property name="curveShape">
-			<value>-0.2547189</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{b0a47396-5abb-47ba-9570-a1d3c6290961}">
-		<property name="position">
-			<value>0.085227272727272735</value>
-		</property>
-		<property name="value">
-			<value>1</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{7cd8d45c-5122-4de5-b3ea-9763413f757e}">
-		<property name="position">
-			<value>0</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-		<property name="curveShape">
-			<value>-0.2547189</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{725f9e95-97c7-4b2e-a9cd-f5e3f5880fdf}">
-		<property name="position">
-			<value>0.080217669052049606</value>
-		</property>
-		<property name="value">
-			<value>1</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{cc1a59bd-9bd0-4d3b-a54d-71770a5e09aa}">
-		<property name="position">
-			<value>0</value>
-		</property>
-		<property name="value">
-			<value>1</value>
-		</property>
-		<property name="curveShape">
-			<value>0.25471893</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{adbfa8c2-566c-4011-8958-dd77a7a2d773}">
-		<property name="position">
-			<value>0.080217669052049606</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-	</object>
 	<object class="AutomationPoint" id="{c08cdd4f-9f72-46ea-b2cc-24b37157907f}">
 		<property name="position">
 			<value>0.24793388429752206</value>
@@ -3151,23 +3151,23 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 		</property>
 	</object>
 	<object class="MixerBusFader" id="{8f099f18-8fe2-46af-b745-4767270f724c}" />
-	<object class="AutomationPoint" id="{8915be53-3be0-4523-8580-542bb12cf5dd}">
+	<object class="AutomationPoint" id="{115da640-492c-428d-90c6-324553f91e9d}">
 		<property name="position">
+			<value>0.24793388429752206</value>
+		</property>
+		<property name="value">
 			<value>0</value>
+		</property>
+		<property name="curveShape">
+			<value>-0.2547189</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{f4128b71-dee6-4db2-b0ae-3f509bdf973a}">
+		<property name="position">
+			<value>0.31</value>
 		</property>
 		<property name="value">
 			<value>1</value>
-		</property>
-		<property name="curveShape">
-			<value>0.25471893</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{0d447934-c8c7-4462-a418-c78b254aba02}">
-		<property name="position">
-			<value>0.085227272727272735</value>
-		</property>
-		<property name="value">
-			<value>0</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{2c1ae8a6-7026-4064-8c51-a5199ab4f86c}">
@@ -3187,6 +3187,25 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 		</property>
 		<property name="value">
 			<value>1</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{8915be53-3be0-4523-8580-542bb12cf5dd}">
+		<property name="position">
+			<value>0</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+		<property name="curveShape">
+			<value>0.25471893</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{0d447934-c8c7-4462-a418-c78b254aba02}">
+		<property name="position">
+			<value>0.085227272727272735</value>
+		</property>
+		<property name="value">
+			<value>0</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{2a4ad85b-01f5-470e-8a1f-ef1cb17cfaeb}">
@@ -3227,64 +3246,7 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<value>0</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{115da640-492c-428d-90c6-324553f91e9d}">
-		<property name="position">
-			<value>0.24793388429752206</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-		<property name="curveShape">
-			<value>-0.2547189</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{f4128b71-dee6-4db2-b0ae-3f509bdf973a}">
-		<property name="position">
-			<value>0.31</value>
-		</property>
-		<property name="value">
-			<value>1</value>
-		</property>
-	</object>
 	<object class="MixerBusFader" id="{0f12a004-4476-4351-9d28-db51282386fe}" />
-	<object class="AutomationPoint" id="{cb0d1dff-2ec2-470c-b5a9-7c1efd8eb74a}">
-		<property name="position">
-			<value>0</value>
-		</property>
-		<property name="value">
-			<value>1</value>
-		</property>
-		<property name="curveShape">
-			<value>0.25471893</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{6e024f77-8b94-4d01-bf38-42746c3f1ddd}">
-		<property name="position">
-			<value>0.073665803530213264</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{f18b83f3-2ee6-4012-a199-e2d29c8c6200}">
-		<property name="position">
-			<value>0</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-		<property name="curveShape">
-			<value>-0.2547189</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{945db711-bffe-42bd-9d16-92c7d718b778}">
-		<property name="position">
-			<value>0.073665803530213264</value>
-		</property>
-		<property name="value">
-			<value>1</value>
-		</property>
-	</object>
 	<object class="AutomationPoint" id="{bb6c03ce-920a-497c-9546-076b9b809149}">
 		<property name="position">
 			<value>0</value>
@@ -3302,25 +3264,6 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 		</property>
 		<property name="value">
 			<value>0</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{99dbea3e-c448-4885-b2cd-ce75cac9d858}">
-		<property name="position">
-			<value>0</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-		<property name="curveShape">
-			<value>-0.2547189</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{2f352bb0-508e-4500-aeb3-a3147b2b3772}">
-		<property name="position">
-			<value>0.085227272727272735</value>
-		</property>
-		<property name="value">
-			<value>1</value>
 		</property>
 	</object>
 	<object class="AutomationPoint" id="{a995ed1e-6796-484c-b224-040cf7d8ba14}">
@@ -3361,6 +3304,25 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<value>0</value>
 		</property>
 	</object>
+	<object class="AutomationPoint" id="{99dbea3e-c448-4885-b2cd-ce75cac9d858}">
+		<property name="position">
+			<value>0</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+		<property name="curveShape">
+			<value>-0.2547189</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{2f352bb0-508e-4500-aeb3-a3147b2b3772}">
+		<property name="position">
+			<value>0.085227272727272735</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+	</object>
 	<object class="AutomationPoint" id="{5eeec0ea-5ebc-4b9b-b99d-3d15f6425b71}">
 		<property name="position">
 			<value>0.24793388429752206</value>
@@ -3375,6 +3337,44 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 	<object class="AutomationPoint" id="{17ab70ac-1c92-406a-ab92-a57a4d0ec715}">
 		<property name="position">
 			<value>0.31</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{cb0d1dff-2ec2-470c-b5a9-7c1efd8eb74a}">
+		<property name="position">
+			<value>0</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+		<property name="curveShape">
+			<value>0.25471893</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{6e024f77-8b94-4d01-bf38-42746c3f1ddd}">
+		<property name="position">
+			<value>0.073665803530213264</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{f18b83f3-2ee6-4012-a199-e2d29c8c6200}">
+		<property name="position">
+			<value>0</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+		<property name="curveShape">
+			<value>-0.2547189</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{945db711-bffe-42bd-9d16-92c7d718b778}">
+		<property name="position">
+			<value>0.073665803530213264</value>
 		</property>
 		<property name="value">
 			<value>1</value>
@@ -3400,26 +3400,7 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<value>0</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{43a69ddf-d83b-4a86-b38e-89a1765d7414}">
-		<property name="position">
-			<value>0</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-		<property name="curveShape">
-			<value>-0.2547189</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{1c012be9-3874-4403-9b73-5a5ab74e3c9a}">
-		<property name="position">
-			<value>0.073665803530213264</value>
-		</property>
-		<property name="value">
-			<value>1</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{ca64c123-1197-47cb-b2fb-59c8658aa527}">
+	<object class="AutomationPoint" id="{53cd5a1e-3f1c-4966-94ab-be17f78c50cf}">
 		<property name="position">
 			<value>0</value>
 		</property>
@@ -3430,9 +3411,9 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<value>0.25471893</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{6fdd7b62-e1e0-41f5-8fb4-b88d6ad5900b}">
+	<object class="AutomationPoint" id="{74d33b7e-2729-41b5-a91e-7a0e5a00ce32}">
 		<property name="position">
-			<value>0.085227272727272735</value>
+			<value>0.080217669052049606</value>
 		</property>
 		<property name="value">
 			<value>0</value>
@@ -3476,25 +3457,6 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<value>1</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{53cd5a1e-3f1c-4966-94ab-be17f78c50cf}">
-		<property name="position">
-			<value>0</value>
-		</property>
-		<property name="value">
-			<value>1</value>
-		</property>
-		<property name="curveShape">
-			<value>0.25471893</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{74d33b7e-2729-41b5-a91e-7a0e5a00ce32}">
-		<property name="position">
-			<value>0.080217669052049606</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-	</object>
 	<object class="AutomationPoint" id="{e647d57a-e61b-44f4-a66d-e4dcd2d9383a}">
 		<property name="position">
 			<value>0.24793388429752206</value>
@@ -3514,10 +3476,28 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<value>1</value>
 		</property>
 	</object>
-	<object class="MixerBusFader" id="{2a938b3d-0ca2-4464-aef6-b3088729fe1b}" />
-	<object class="AutomationPoint" id="{6d067f62-5766-40e5-beb7-a4b193837ef3}">
+	<object class="AutomationPoint" id="{ca64c123-1197-47cb-b2fb-59c8658aa527}">
 		<property name="position">
-			<value>0.24793388429752206</value>
+			<value>0</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+		<property name="curveShape">
+			<value>0.25471893</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{6fdd7b62-e1e0-41f5-8fb4-b88d6ad5900b}">
+		<property name="position">
+			<value>0.085227272727272735</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{43a69ddf-d83b-4a86-b38e-89a1765d7414}">
+		<property name="position">
+			<value>0</value>
 		</property>
 		<property name="value">
 			<value>0</value>
@@ -3526,9 +3506,29 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<value>-0.2547189</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{3639774e-94e5-4179-91b2-cf7fab003e19}">
+	<object class="AutomationPoint" id="{1c012be9-3874-4403-9b73-5a5ab74e3c9a}">
 		<property name="position">
-			<value>0.30991735537190213</value>
+			<value>0.073665803530213264</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+	</object>
+	<object class="MixerBusFader" id="{2a938b3d-0ca2-4464-aef6-b3088729fe1b}" />
+	<object class="AutomationPoint" id="{5eb71706-ecdd-42c3-ab30-49f6556309fa}">
+		<property name="position">
+			<value>0</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+		<property name="curveShape">
+			<value>-0.2547189</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{9c61d5bb-e355-4b3e-b2b0-e162ee87f389}">
+		<property name="position">
+			<value>0.085227272727272735</value>
 		</property>
 		<property name="value">
 			<value>1</value>
@@ -3553,27 +3553,7 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<value>0</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{5eb71706-ecdd-42c3-ab30-49f6556309fa}">
-		<property name="position">
-			<value>0</value>
-		</property>
-		<property name="value">
-			<value>0</value>
-		</property>
-		<property name="curveShape">
-			<value>-0.2547189</value>
-		</property>
-	</object>
-	<object class="AutomationPoint" id="{9c61d5bb-e355-4b3e-b2b0-e162ee87f389}">
-		<property name="position">
-			<value>0.085227272727272735</value>
-		</property>
-		<property name="value">
-			<value>1</value>
-		</property>
-	</object>
-	<object class="MixerBusFader" id="{ff3d5c9c-45a2-465e-881e-462535233392}" />
-	<object class="AutomationPoint" id="{42bd6db0-840a-4f8a-bbf6-2c0a27fa0c55}">
+	<object class="AutomationPoint" id="{6d067f62-5766-40e5-beb7-a4b193837ef3}">
 		<property name="position">
 			<value>0.24793388429752206</value>
 		</property>
@@ -3584,7 +3564,7 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<value>-0.2547189</value>
 		</property>
 	</object>
-	<object class="AutomationPoint" id="{62fa8185-6b89-4197-ae96-16ad0cb277ad}">
+	<object class="AutomationPoint" id="{3639774e-94e5-4179-91b2-cf7fab003e19}">
 		<property name="position">
 			<value>0.30991735537190213</value>
 		</property>
@@ -3592,6 +3572,7 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 			<value>1</value>
 		</property>
 	</object>
+	<object class="MixerBusFader" id="{ff3d5c9c-45a2-465e-881e-462535233392}" />
 	<object class="AutomationPoint" id="{350d174c-eb82-49a4-8103-12aca9b0b3bb}">
 		<property name="position">
 			<value>0</value>
@@ -3625,6 +3606,25 @@ Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative C
 	<object class="AutomationPoint" id="{7bb3b31c-8ad2-4f81-aafe-90db4b373d7a}">
 		<property name="position">
 			<value>0.085227272727272735</value>
+		</property>
+		<property name="value">
+			<value>1</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{42bd6db0-840a-4f8a-bbf6-2c0a27fa0c55}">
+		<property name="position">
+			<value>0.24793388429752206</value>
+		</property>
+		<property name="value">
+			<value>0</value>
+		</property>
+		<property name="curveShape">
+			<value>-0.2547189</value>
+		</property>
+	</object>
+	<object class="AutomationPoint" id="{62fa8185-6b89-4197-ae96-16ad0cb277ad}">
+		<property name="position">
+			<value>0.30991735537190213</value>
 		</property>
 		<property name="value">
 			<value>1</value>
