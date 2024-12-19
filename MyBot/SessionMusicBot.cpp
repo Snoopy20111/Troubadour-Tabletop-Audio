@@ -124,7 +124,7 @@ FMOD_RESULT F_CALLBACK captureDSPReadCallback(FMOD_DSP_STATE* dsp_state, float* 
 
 // Callback that triggers when an Event Instance is released
 // Despite the name, this callback will receive callbacks of all types, and so must filter them out
-FMOD_RESULT F_CALLBACK eventInstanceDestroyedCallback(FMOD_STUDIO_EVENT_CALLBACK_TYPE type, FMOD_STUDIO_EVENTINSTANCE* event, void* parameters) {
+static FMOD_RESULT F_CALLBACK eventInstanceDestroyedCallback(FMOD_STUDIO_EVENT_CALLBACK_TYPE type, FMOD_STUDIO_EVENTINSTANCE* event, void* parameters) {
 
 	FMOD::Studio::EventInstance* myEvent = (FMOD::Studio::EventInstance*)event;		// Cast approved by Firelight in the documentation
 
@@ -161,13 +161,13 @@ FMOD_RESULT F_CALLBACK eventInstanceDestroyedCallback(FMOD_STUDIO_EVENT_CALLBACK
 //---Bot Functions---//
 
 // Simple ping, responds in chat and output log
-void ping(const dpp::slashcommand_t& event) {
+static void ping(const dpp::slashcommand_t& event) {
 	event.reply(dpp::message("Pong! I'm alive!").set_flags(dpp::m_ephemeral));
 	std::cout << "Responding to Ping command." << std::endl;
 }
 
 // Base function, called on startup and when requested by List Banks command
-void banks() {
+static void banks() {
 
 	std::cout << "Checking Banks path: " << bank_dir_path.string() << std::endl;
 	std::string output = "- Master.bank\n- Master.strings.bank\n";				//Ensures Master and Strings banks are always in list
@@ -262,7 +262,7 @@ void banks() {
 }
 
 // Indexes and Prints all valid .bank files
-void banks(const dpp::slashcommand_t& event) {
+static void banks(const dpp::slashcommand_t& event) {
 
 	if (pEventInstances.size() > 0) {							// Unsafe to load/unload banks while events are active
 		event.reply(dpp::message("It's dangerous to mess with banks while the bot is playing audio! Please stop all events first.").set_flags(dpp::m_ephemeral));
@@ -299,7 +299,7 @@ void banks(const dpp::slashcommand_t& event) {
 }
 
 // Indexes all Events, Busses, VCAs, Snapshots, etc. on Startup ONLY.
-void index() {
+static void index() {
 	// Make sure vectors and maps are clear
 	eventPaths.clear();
 	busPaths.clear();
@@ -412,7 +412,7 @@ void index() {
 
 		// Is it a parameter? (will be addressed after this loop)
 		else if (pathString.find(paramPath) == 0) {
-			std::cout << "   Skipped as Parameter: " << pathString << "\n";
+			std::cout << "   Skipped as Parameter: " << pathString << " -- See below for Global Parameters." << "\n";
 		}
 
 		// Is it a bank? (We don't care here, just for Cout data)
@@ -448,7 +448,7 @@ void index() {
 }
 
 // Prints all currently indexed Events, Snapshots, Global Parameters, Busses, and VCAs.
-void list(const dpp::slashcommand_t& event) {
+static void list(const dpp::slashcommand_t& event) {
 	dpp::command_interaction cmd_data = event.command.get_command_interaction();
 
 	// Check the input variables are good
@@ -638,7 +638,7 @@ void list(const dpp::slashcommand_t& event) {
 }
 
 // Base function, called when requested by Playable command
-void playable() {
+static void playable() {
 	// Get the number of strings in the Master Strings bank
 	int count = 0;
 	ERRCHECK_HARD(pMasterStringsBank->getStringCount(&count));
@@ -759,7 +759,7 @@ void playable() {
 }
 
 // Indexes and Prints all playable Event Descriptions & Parameters
-void playable(const dpp::slashcommand_t& event) {
+static void playable(const dpp::slashcommand_t& event) {
 
 	if (!pMasterStringsBank->isValid() || pMasterStringsBank == nullptr) {
 		std::cout << "Master Strings bank is invalid or nullptr. Bad juju!" << std::endl;
@@ -843,7 +843,7 @@ void playable(const dpp::slashcommand_t& event) {
 }
 
 // Play Sub-Command: create a new Instance of an event
-void play_event(const dpp::slashcommand_t& event, std::string eventToPlay, std::string inputName) {
+static void play_event(const dpp::slashcommand_t& event, std::string eventToPlay, std::string inputName) {
 
 	std::string newName = inputName;
 	std::string cleanName = newName;
@@ -884,7 +884,7 @@ void play_event(const dpp::slashcommand_t& event, std::string eventToPlay, std::
 }
 
 // Play Sub-Command: create a new Instance of a snapshot
-void play_snapshot(const dpp::slashcommand_t& event, std::string eventToPlay, std::string inputName) {
+static void play_snapshot(const dpp::slashcommand_t& event, std::string eventToPlay, std::string inputName) {
 
 	std::string newName = inputName;
 	std::string cleanName = newName;
@@ -921,7 +921,7 @@ void play_snapshot(const dpp::slashcommand_t& event, std::string eventToPlay, st
 }
 
 // Creates and starts a new Event Instance
-void play(const dpp::slashcommand_t& event) {
+static void play(const dpp::slashcommand_t& event) {
 	// Command and Subcommand data
 	dpp::command_interaction cmd_data = event.command.get_command_interaction();
 	dpp::command_data_option subcommand = cmd_data.options[0];
@@ -971,7 +971,7 @@ void play(const dpp::slashcommand_t& event) {
 }
 
 // Pauses Event with given name in events playing list
-void pause(const dpp::slashcommand_t& event) {
+static void pause(const dpp::slashcommand_t& event) {
 	//Very similar to Unpause and Stop
 	dpp::command_interaction cmd_data = event.command.get_command_interaction();
 	int count = (int)cmd_data.options.size();
@@ -1001,7 +1001,7 @@ void pause(const dpp::slashcommand_t& event) {
 	}
 }
 
-void unpause(const dpp::slashcommand_t& event) {
+static void unpause(const dpp::slashcommand_t& event) {
 	//Very similar to Pause and Stop
 	dpp::command_interaction cmd_data = event.command.get_command_interaction();
 	int count = (int)cmd_data.options.size();
@@ -1032,7 +1032,7 @@ void unpause(const dpp::slashcommand_t& event) {
 }
 
 // Key Off for the given Event Instance
-void keyoff(const dpp::slashcommand_t& event) {
+static void keyoff(const dpp::slashcommand_t& event) {
 	//Very similar to Pause, Unpause, and Stop.
 	dpp::command_interaction cmd_data = event.command.get_command_interaction();
 	int count = (int)cmd_data.options.size();
@@ -1068,7 +1068,7 @@ void keyoff(const dpp::slashcommand_t& event) {
 }
 
 // Stops Event or Snapshot with given name in events playing list
-void stop(const dpp::slashcommand_t& event) {
+static void stop(const dpp::slashcommand_t& event) {
 	// Very similar to Pause and Unpause
 	dpp::command_interaction cmd_data = event.command.get_command_interaction();
 	int count = (int)cmd_data.options.size();
@@ -1106,7 +1106,7 @@ void stop(const dpp::slashcommand_t& event) {
 }
 
 // Base function, called in a few places as part of other methods like quit()
-void stopall_events() {
+static void stopall_events() {
 	std::cout << "Stopping all events...";
 	//For each instance in events playing list, stop_now
 	for (const auto& [niceName, sessionEventInstance] : pEventInstances) {
@@ -1116,7 +1116,7 @@ void stopall_events() {
 }
 
 // Base function, stops all snapshots.
-void stopall_snapshots() {
+static void stopall_snapshots() {
 	std::cout << "Stopping Snapshots...";
 	for (const auto& [niceName, snapshotInstance] : pSnapshotInstances) {
 		snapshotInstance->stop(FMOD_STUDIO_STOP_IMMEDIATE);
@@ -1125,19 +1125,19 @@ void stopall_snapshots() {
 }
 
 // Base function, stops all events and snapshots.
-void stopall() {
+static void stopall() {
 	stopall_events();
 	stopall_snapshots();
 }
 
 // Stops all playing events and/or snapshots in the list.
-void stopall(const dpp::slashcommand_t& event) {
+static void stopall(const dpp::slashcommand_t& event) {
 	stopall();
 	event.reply(dpp::message("All events stopped.").set_flags(dpp::m_ephemeral));
 }
 
 // Param Sub-Command: Sets parameter with given name and value, globally
-void param_global(const dpp::slashcommand_t& event, dpp::command_data_option subcommand) {
+static void param_global(const dpp::slashcommand_t& event, dpp::command_data_option subcommand) {
 	int count = (int)subcommand.options.size();
 	if (count < 2) {
 		std::cout << "Set Parameter command arrived with no arguments. Bad juju!" << std::endl;
@@ -1162,7 +1162,7 @@ void param_global(const dpp::slashcommand_t& event, dpp::command_data_option sub
 }
 
 // Param Sub-Command: Sets parameter with given name and value on given Event Instance
-void param_event(const dpp::slashcommand_t& event, dpp::command_data_option subcommand) {
+static void param_event(const dpp::slashcommand_t& event, dpp::command_data_option subcommand) {
 	dpp::command_interaction cmd_data = event.command.get_command_interaction();
 	int count = (int)cmd_data.options.size();
 	if (count < 3) {
@@ -1203,7 +1203,7 @@ void param_event(const dpp::slashcommand_t& event, dpp::command_data_option subc
 }
 
 // Sets parameter with given name and value, either Globally or on an Event Instance
-void param(const dpp::slashcommand_t& event) {
+static void param(const dpp::slashcommand_t& event) {
 	dpp::command_interaction cmd_data = event.command.get_command_interaction();
 	dpp::command_data_option subcommand = cmd_data.options[0];
 	if (subcommand.name == "event") { param_event(event, subcommand); }
@@ -1211,7 +1211,7 @@ void param(const dpp::slashcommand_t& event) {
 }
 
 // Sets the volume of a given Bus or VCA
-void volume(const dpp::slashcommand_t& event) {
+static void volume(const dpp::slashcommand_t& event) {
 	dpp::command_interaction cmd_data = event.command.get_command_interaction();
 	int count = (int)cmd_data.options.size();
 	if (count < 2) {
@@ -1242,7 +1242,7 @@ void volume(const dpp::slashcommand_t& event) {
 	}
 }
 
-void join(const dpp::slashcommand_t& event) {
+static void join(const dpp::slashcommand_t& event) {
 	dpp::guild* guild = dpp::find_guild(event.command.guild_id);						//Get the Guild aka Server
 	dpp::voiceconn* currentVC = event.from->get_voice(event.command.guild_id);			//Get the bot's current voice channel
 	bool join_vc = true;
@@ -1275,7 +1275,7 @@ void join(const dpp::slashcommand_t& event) {
 
 // Leaves the current voice channel
 // Cannot separate base and "command" function due to needing event object, so optional "respond" param included
-void leave(const dpp::slashcommand_t& event, bool eventRespond = true) {
+static void leave(const dpp::slashcommand_t& event, bool eventRespond = true) {
 	dpp::voiceconn* currentVC = event.from->get_voice(event.command.guild_id);
 	if (currentVC) {
 		std::cout << "Leaving voice channel." << std::endl;
@@ -1299,7 +1299,7 @@ void leave(const dpp::slashcommand_t& event, bool eventRespond = true) {
 }
 
 // Quit the program, leaving the voice channel if we're in one
-void quit(const dpp::slashcommand_t& event) {
+static void quit(const dpp::slashcommand_t& event) {
 	if (isConnected && (currentClient != nullptr)) {
 		leave(event, false);		//Leave voice, but don't reply to the event
 	}
@@ -1392,7 +1392,7 @@ static void init_session() {
 	std::cout << std::endl;
 }
 
-void onBotAppGet(const dpp::confirmation_callback_t& callbackObj) {
+static void onBotAppGet(const dpp::confirmation_callback_t& callbackObj) {
 	if (!callbackObj.is_error()) {
 		botapp = callbackObj.get<dpp::application>();
 		std::cout << "Owner added with Username: " << botapp.owner.username << " and Snowflake ID: " << botapp.owner.id << std::endl;
@@ -1402,6 +1402,16 @@ void onBotAppGet(const dpp::confirmation_callback_t& callbackObj) {
 		std::cout << "Error getting bot application object: " << callbackObj.get_error().human_readable << std::endl;
 		exit(0);
 	}
+}
+
+static void releaseFMOD() {
+	// Remove DSP from master channel group, and release the DSP
+	pMasterBusGroup->removeDSP(mCaptureDSP);
+	mCaptureDSP->release();
+
+	// Unload and release FMOD Studio System
+	pSystem->unloadAll();
+	pSystem->release();
 }
 
 int main() {
@@ -1418,6 +1428,7 @@ int main() {
 	bot.on_log(dpp::utility::cout_logger());
 
 	// Get the bot application, and add the Owner to the Owning Users list (for permissions)
+	// Fake blocking function to make debug output coherent
 	bot.current_application_get(onBotAppGet);
 
 	/* Register slash command here in on_ready */
@@ -1586,7 +1597,16 @@ int main() {
 	});
 
 	/* Start the bot */
-	bot.start();
+	try {
+		bot.start();
+	}
+	catch (dpp::exception ex) {
+		std::cout << "\n\nException " << ex.code() << "when starting Bot:\n    " << ex.what() << "\n";
+		std::cout << "Also make sure your token.txt file has your Bot Token in it, and that the Token is correct!\n";
+		std::cout << "Quitting for safety." << std::endl;
+		releaseFMOD();
+		exit(ex.code());
+	}
 
 	/* Program loop */
 	while (!exitRequested) {
@@ -1611,13 +1631,7 @@ int main() {
 
 	// Todo: If in voice, leave chat before dying?
 
-	// Remove DSP from master channel group, and release the DSP
-	pMasterBusGroup->removeDSP(mCaptureDSP);
-	mCaptureDSP->release();
-
-	// Unload and release FMOD Studio System
-	pSystem->unloadAll();
-	pSystem->release();
+	releaseFMOD();
 
 	// Todo: Any cleanup necessary for the bot?
 
