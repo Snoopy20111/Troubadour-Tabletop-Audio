@@ -48,9 +48,9 @@ int16_t floatToPCM(float inSample) {
 // Best to use in places where continuing will without a doubt cause weirder issues, corrupt data, etc.
 void ERRCHECK_HARD(FMOD_RESULT result) {
 	if (result != FMOD_OK) {
-		std::cout << std::endl << std::endl;
+		std::cout << "\n\n";
 		printf("FMOD Error! (%d) %s\n", result, FMOD_ErrorString(result));
-		std::cout << std::endl << std::endl;
+		std::cout << "\n" << std::endl;
 		exit(result);								//Gives the FMOD error code again
 	}
 }
@@ -58,9 +58,9 @@ void ERRCHECK_HARD(FMOD_RESULT result) {
 // Soft FMOD Error Check, will simply print the result. More like a warning.
 void ERRCHECK_SOFT(FMOD_RESULT result) {
 	if (result != FMOD_OK) {
-		std::cout << std::endl << std::endl;
+		std::cout << "\n\n";
 		printf("FMOD Error! (%d) %s\n", result, FMOD_ErrorString(result));
-		std::cout << std::endl << std::endl;
+		std::cout << "\n" << std::endl;
 	}
 }
 

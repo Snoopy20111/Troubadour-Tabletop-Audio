@@ -86,7 +86,7 @@ dpp::embed basicEmbed = dpp::embed()					// Generic embed with all the shared de
 // Callback for stealing sample data from the Master Bus
 FMOD_RESULT F_CALL captureDSPReadCallback(FMOD_DSP_STATE* dsp_state, float* inbuffer, float* outbuffer, unsigned int length, int inchannels, int* outchannels) {
 
-	FMOD::DSP* thisdsp = (FMOD::DSP*)dsp_state->instance;
+	//FMOD::DSP* thisdsp = (FMOD::DSP*)dsp_state->instance;
 
 	if (isConnected) {
 		switch (inchannels) {
@@ -99,7 +99,7 @@ FMOD_RESULT F_CALL captureDSPReadCallback(FMOD_DSP_STATE* dsp_state, float* inbu
 					}
 				}
 				else {
-					std::cout << "Mono in, not mono out!" << std::endl;
+					std::cout << "Capture DSP Read Error: Mono in, but not mono out!" << std::endl;
 				}
 				break;
 
@@ -114,7 +114,7 @@ FMOD_RESULT F_CALL captureDSPReadCallback(FMOD_DSP_STATE* dsp_state, float* inbu
 			//Add cases here for other input channel configurations. Ultimately, all must mix down to stereo.
 
 			default:
-				std::cout << "DSP needs mono or stereo in and out!" << std::endl;
+				std::cout << "Capture DSP Read needs mono or stereo in and out!" << std::endl;
 				return FMOD_ERR_DSP_DONTPROCESS;
 				break;
 		}
@@ -1330,7 +1330,7 @@ static void init() {
 	std::cout << "Done." << std::endl;
 
 	// Load Master Bank and Master Strings
-	std::cout << "Loading Master banks...\n";
+	std::cout << "Loading Master banks...";
 	ERRCHECK_HARD(pSystem->loadBankFile((bank_dir_path.string() + "\\" + master_bank).c_str(), FMOD_STUDIO_LOAD_BANK_NORMAL, &pMasterBank));
 	ERRCHECK_HARD(pSystem->loadBankFile((bank_dir_path.string() + "\\" + masterstrings_bank).c_str(), FMOD_STUDIO_LOAD_BANK_NORMAL, &pMasterStringsBank));
 	std::cout << "Done." << std::endl;
@@ -1436,16 +1436,16 @@ int main() {
 		/* Wrap command registration in run_once to make sure it doesnt run on every full reconnection */
 		if (dpp::run_once<struct register_bot_commands>()) {
 			std::vector<dpp::slashcommand> commands {
-				{ "playable", "List all playable events, their parameters, and snapshots.", bot.me.id},
-				{ "list", "Show all playing event instances and their parameters.", bot.me.id},
-				{ "play", "Create a new Event Instance (or Snapshot).", bot.me.id},
-				{ "pause", "Pause a currently playing Event Instance.", bot.me.id},
-				{ "unpause", "Resume a currently playing Event Instance.", bot.me.id},
-				{ "keyoff", "Key off a sustain point, if the Event Instance has any.", bot.me.id},
-				{ "stop", "Stop a currently playing Event Instance.", bot.me.id},
-				{ "stopall", "Stop all Event Instances and Snapshots immediately.", bot.me.id},
-				{ "param", "Set a parameter, Globally or on an Event Instance.", bot.me.id},
-				{ "volume", "Set the volume of a bus or VCA.", bot.me.id},
+				{ "playable", "List all playable Events, their Parameters, and Snapshots.", bot.me.id},
+				{ "list", "Show all playing Event instances and their Parameters.", bot.me.id},
+				{ "play", "Play a new Event or Snapshot.", bot.me.id},
+				{ "pause", "Pause a currently playing Event.", bot.me.id},
+				{ "unpause", "Resume a currently paused Event.", bot.me.id},
+				{ "keyoff", "Key off a sustain point, if the Event has any.", bot.me.id},
+				{ "stop", "Stop a currently playing Event or Snapshot.", bot.me.id},
+				{ "stopall", "Stop all Events and Snapshots immediately.", bot.me.id},
+				{ "param", "Set a Parameter, globally or on an Event instance.", bot.me.id},
+				{ "volume", "Set the volume of a Bus or VCA.", bot.me.id},
 				{ "ping", "Ping the bot to ensure it's alive.", bot.me.id },
 				{ "banks", "List all banks in the Soundbanks folder.", bot.me.id},
 				{ "join", "Join your current voice channel.", bot.me.id},
@@ -1466,34 +1466,35 @@ int main() {
 			// Play options
 			// Sub-Command: Play Event
 			dpp::command_option playEventSubCmd = dpp::command_option(dpp::co_sub_command, "event", "Create a new Event Instance.");
-			playEventSubCmd.add_option(dpp::command_option(dpp::co_string, "event-name", "The Event you wish to play.", true));
+			playEventSubCmd.add_option(dpp::command_option(dpp::co_string, "event-name", "The Event you wish to play.", true).set_auto_complete(true));
 			playEventSubCmd.add_option(dpp::command_option(dpp::co_string, "instance-name", "Optional: name used for interactions with this new Instance. Defaults to the name of the Event.", false));
 			commands[2].add_option(playEventSubCmd);
 
 			// Sub-Command: Play Snapshot
 			dpp::command_option playSnapshotSubCmd = dpp::command_option(dpp::co_sub_command, "snapshot", "Create a new Snapshot.");
-			playSnapshotSubCmd.add_option(dpp::command_option(dpp::co_string, "snapshot-name", "The Snapshot you wish to activate.", true));
+			playSnapshotSubCmd.add_option(dpp::command_option(dpp::co_string, "snapshot-name", "The Snapshot you wish to activate.", true).set_auto_complete(true));
 			playSnapshotSubCmd.add_option(dpp::command_option(dpp::co_string, "instance-name", "Optional: name used for interactions with this new Instance. Defaults to the name of the Snapshot.", false));
 			commands[2].add_option(playSnapshotSubCmd);
 
+
 			// Pause options
 			commands[3].add_option(
-				dpp::command_option(dpp::co_string, "instance-name", "The name of the Instance to pause.", true)
+				dpp::command_option(dpp::co_string, "instance-name", "The name of the Instance to pause.", true).set_auto_complete(true)
 			);
 
 			// Unpause options
 			commands[4].add_option(
-				dpp::command_option(dpp::co_string, "instance-name", "The name of the Instance to unpause.", true)
+				dpp::command_option(dpp::co_string, "instance-name", "The name of the Instance to unpause.", true).set_auto_complete(true)
 			);
 
 			// KeyOff options
 			commands[5].add_option(
-				dpp::command_option(dpp::co_string, "instance-name", "The name of the Instance to key off.", true)
+				dpp::command_option(dpp::co_string, "instance-name", "The name of the Instance to key off.", true).set_auto_complete(true)
 			);
 
 			// Stop options
 			commands[6].add_option(
-				dpp::command_option(dpp::co_string, "instance-name", "The name of the Instance to stop.", true)
+				dpp::command_option(dpp::co_string, "instance-name", "The name of the Instance to stop. May be an Event or Snapshot.", true).set_auto_complete(true)
 			);
 			commands[6].add_option(
 				dpp::command_option(dpp::co_boolean, "stop-immediately", "Optional: stop the Instance NOW, without fadeouts?", false)
@@ -1507,24 +1508,24 @@ int main() {
 			// Param options
 			// Sub-Command: Event Instance
 			dpp::command_option eventInstSubCmd = dpp::command_option(dpp::co_sub_command, "event", "Set a local parameter.");
-			eventInstSubCmd.add_option(dpp::command_option(dpp::co_string, "instance-name", "The name of the event instance to set parameters on.", true));
-			eventInstSubCmd.add_option(dpp::command_option(dpp::co_string, "parameter-name", "The name of the parameter to set.", true));
-			eventInstSubCmd.add_option(dpp::command_option(dpp::co_number, "value", "What you want the parameter to be.", true));
+			eventInstSubCmd.add_option(dpp::command_option(dpp::co_string, "instance-name", "The name of the event instance to set parameters on.", true).set_auto_complete(true));
+			eventInstSubCmd.add_option(dpp::command_option(dpp::co_string, "parameter-name", "The name of the parameter to set.", true).set_auto_complete(true));
+			eventInstSubCmd.add_option(dpp::command_option(dpp::co_number, "value", "What you want the parameter to be.", true).set_auto_complete(true));
 			commands[8].add_option(eventInstSubCmd);
 
 			// Sub-Command: Global
 			dpp::command_option globalSubCmd = dpp::command_option(dpp::co_sub_command, "global", "Set a Global parameter.");
-			globalSubCmd.add_option(dpp::command_option(dpp::co_string, "parameter-name", "The name of the parameter to set.", true));
-			globalSubCmd.add_option(dpp::command_option(dpp::co_number, "value", "What you want the parameter to be.", true));
+			globalSubCmd.add_option(dpp::command_option(dpp::co_string, "parameter-name", "The name of the parameter to set.", true).set_auto_complete(true));
+			globalSubCmd.add_option(dpp::command_option(dpp::co_number, "value", "What you want the parameter to be.", true).set_auto_complete(true));
 			commands[8].add_option(globalSubCmd);
 
 			// Sub-commands for Volume
 			commands[9].add_option(
-				dpp::command_option(dpp::co_string, "bus-or-vca-name", "The name of the Bus or VCA to adjust the volume of.", true)
+				dpp::command_option(dpp::co_string, "bus-or-vca-name", "The name of the Bus or VCA to adjust the volume of.", true).set_auto_complete(true)
 			);
 			commands[9].add_option(
 				dpp::command_option(dpp::co_number, "value",
-					"The target volume in dB. Values above +10 will be assumed negative, for your ears' sake.", true)
+					"The target volume in dB. Values above +10 will be assumed negative, for your ears' sake.", true).set_auto_complete(true)
 			);
 
 			// Permissions. Show commands for only those who can use slash commands in a server.
@@ -1552,10 +1553,11 @@ int main() {
 			//std::cout << "cmdSender: " << cmdSender.str() << " || owningUser: " << owningUsers[i] << std::endl;
 			if (owningUsers[i] == cmdSender) {
 				canRun = true;
+				break;
 			}
 		}
 		if (!canRun) {
-			event.reply(dpp::message("Sorry, only the bot owner can run commands for me.").set_flags(dpp::m_ephemeral));
+			event.reply(dpp::message("Sorry, only the bot owner can run commands for me (for now).").set_flags(dpp::m_ephemeral));
 		}
 		else {
 			if (event.command.get_command_name() == "playable") { playable(event); }
@@ -1574,12 +1576,71 @@ int main() {
 			else if (event.command.get_command_name() == "leave") { leave(event); }
 			else if (event.command.get_command_name() == "quit") { quit(event); }
 			else {
-				std::string enteredname = event.command.get_command_name();
-				event.reply(dpp::message("Sorry, " + enteredname + " isn't a command I understand. Apologies.").set_flags(dpp::m_ephemeral));
+				event.reply(dpp::message("Sorry, " + event.command.get_command_name()
+					+ " isn't a command I understand. Apologies.").set_flags(dpp::m_ephemeral));
 			}
 		}
 	});
 
+	/* Handle Auto-Complete for relevant commands */
+	bot.on_autocomplete([&bot](const dpp::autocomplete_t& event) {
+		// First because it's likely the most often used
+		// Todo: handle subcommands with autocomplete...
+		if (event.name == "play") {
+			for (auto& opt : event.options) {
+
+			}
+		}
+		// Pause, Unpause, and KeyOff all use the same list of Event Instances
+		else if (event.name == "pause"
+			|| event.name == "unpause"
+			|| event.name == "keyoff") {
+			for (auto& opt : event.options) {
+				if (opt.focused) {
+					std::string uservalue = std::get<std::string>(opt.value);
+					dpp::interaction_response eventInstanceList(dpp::ir_autocomplete_reply);
+
+					// For each Event Instance (Events, not Snapshots)
+					for (std::map<std::string, sessionEventInstance>::iterator it = pEventInstances.begin(); it != pEventInstances.end(); ++it) {
+						std::string path = it->first;
+						eventInstanceList.add_autocomplete_choice(dpp::command_option_choice(path, path + " second"));
+					}
+
+					bot.interaction_response_create(event.command.id, event.command.token, eventInstanceList);
+				}
+			}
+		}
+		// Stop applies to both Event and Snapshot Instances
+		else if (event.command.get_command_name() == "stop") {
+			for (auto& opt : event.options) {
+				if (opt.focused) {
+					std::string uservalue = std::get<std::string>(opt.value);
+					dpp::interaction_response eventInstanceList(dpp::ir_autocomplete_reply);
+
+					// For each Event Instance (Events, not Snapshots)
+					for (std::map<std::string, sessionEventInstance>::iterator it = pEventInstances.begin(); it != pEventInstances.end(); ++it) {
+						std::string path = it->first;
+						eventInstanceList.add_autocomplete_choice(dpp::command_option_choice(path, path));
+					}
+
+					// and For each Snapshot Instance
+					for (std::map<std::string, FMOD::Studio::EventInstance*>::iterator it = pSnapshotInstances.begin(); it != pSnapshotInstances.end(); ++it) {
+						std::string path = it->first;
+						eventInstanceList.add_autocomplete_choice(dpp::command_option_choice(path, path));
+					}
+
+					bot.interaction_response_create(event.command.id, event.command.token, eventInstanceList);
+				}
+			}
+		}
+		else if (event.command.get_command_name() == "param") {
+
+		}
+		else if (event.command.get_command_name() == "volume") {
+
+		}
+	});
+	
 	/* Set currentClient and tell the program we're connected */
 	bot.on_voice_ready([&bot](const dpp::voice_ready_t& event) {
 		std::cout << "Voice Ready" << std::endl;
@@ -1601,9 +1662,9 @@ int main() {
 		bot.start();
 	}
 	catch (dpp::exception ex) {
-		std::cout << "\n\nException " << ex.code() << "when starting Bot:\n    " << ex.what() << "\n";
-		std::cout << "Also make sure your token.txt file has your Bot Token in it, and that the Token is correct!\n";
-		std::cout << "Quitting for safety." << std::endl;
+		std::cout << "\n\nException " << ex.code() << " when starting Bot:\n    " << ex.what() << "\n";
+		std::cout << "    Also make sure your token.txt file has your Bot Token in it, and that the Token is correct!\n";
+		std::cout << "    Quitting for safety." << std::endl;
 		releaseFMOD();
 		exit(ex.code());
 	}
