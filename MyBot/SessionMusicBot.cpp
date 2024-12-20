@@ -327,7 +327,7 @@ static void index() {
 		// Is it an event?
 		if ((pathString.find("event:/", 0) == 0)) {
 			// Skip it if not in the Master folder.
-			if ((pathString.find(callableEventPath, 0) != 0)) {
+			if (pathString.find(callableEventPath, 0) != 0) {
 				std::cout << "   Skipped as Event: " << pathString << " -- Not in Master folder." << "\n";
 				continue;
 			}
@@ -952,7 +952,6 @@ static void play(const dpp::slashcommand_t& event) {
 	}
 
 	std::string eventToPlay = std::get<std::string>(event.get_parameter(subcommand.options[0].name));
-	std::cout << "Event To Play: " << eventToPlay << std::endl;
 
 	// Checking the Instance name
 	// If the user gave a name in the command, use that
@@ -1308,13 +1307,25 @@ static void quit(const dpp::slashcommand_t& event) {
 	event.reply(dpp::message("Shutting down. Bye bye! I hope I played good sounds!").set_flags(dpp::m_ephemeral));
 }
 
+static void onBotAppGet(const dpp::confirmation_callback_t& callbackObj) {
+	if (!callbackObj.is_error()) {
+		botapp = callbackObj.get<dpp::application>();
+		std::cout << "Owner added with Username: " << botapp.owner.username << " and Snowflake ID: " << botapp.owner.id << std::endl;
+		owningUsers.push_back(botapp.owner.id);
+	}
+	else {
+		std::cout << "Error getting bot application object: " << callbackObj.get_error().human_readable << std::endl;
+		exit(0);
+	}
+}
+
 // Initialize FMOD, DSP, and filepaths for later reference
 static void init() {
-	std::cout << "###########################" << std::endl;
-	std::cout << "###                     ###" << std::endl;
-	std::cout << "###  Session Music Bot  ###" << std::endl;
-	std::cout << "###                     ###" << std::endl;
-	std::cout << "###########################" << std::endl;
+	std::cout << "###########################" << "\n";
+	std::cout << "###                     ###" << "\n";
+	std::cout << "###  Session Music Bot  ###" << "\n";
+	std::cout << "###                     ###" << "\n";
+	std::cout << "###########################" << "\n";
 	std::cout << std::endl;
 
 	// file paths
@@ -1340,13 +1351,14 @@ static void init() {
 	ERRCHECK_HARD(pSystem->getBus("bus:/", &pMasterBus));
 	ERRCHECK_HARD(pMasterBus->setVolume(dBToFloat(DISCORD_MASTERBUS_VOLOFFSET)));
 	ERRCHECK_HARD(pMasterBus->lockChannelGroup());					// Tell the Master Channel Group to always exist even when events arn't playing...
-	ERRCHECK_HARD(pSystem->flushCommands());							// And wait until all previous commands are done (ensuring Channel Group exists)...
+	ERRCHECK_HARD(pSystem->flushCommands());						// And wait until all previous commands are done (ensuring Channel Group exists)...
 	ERRCHECK_HARD(pMasterBus->getChannelGroup(&pMasterBusGroup));	// Or else this fails immediately, and we'll have DSP problems.
 	std::cout << "Done." << std::endl;
 	
 
 	// Define and create our capture DSP on the Master Channel Group.
 	// Copied from FMOD's examples, unsure why this works and why it must be in brackets.
+	std::cout << "Setting up Capture DSP...";
 	{
 		FMOD_DSP_DESCRIPTION dspdesc;
 		memset(&dspdesc, 0, sizeof(dspdesc));
@@ -1358,6 +1370,7 @@ static void init() {
 		ERRCHECK_HARD(pCoreSystem->createDSP(&dspdesc, &mCaptureDSP));
 	}
 	ERRCHECK_HARD(pMasterBusGroup->addDSP(FMOD_CHANNELCONTROL_DSP_TAIL, mCaptureDSP));		// Adds the newly defined dsp
+	std::cout << "Done." << std::endl;
 
 	// Setting Listener positioning for 3D, in case it's used 
 	std::cout << "Setting up Listener...";
@@ -1371,37 +1384,25 @@ static void init() {
 	int samplerate; FMOD_SPEAKERMODE speakermode; int numrawspeakers;
 	ERRCHECK_HARD(pCoreSystem->getSoftwareFormat(&samplerate, &speakermode, &numrawspeakers));
 	ERRCHECK_HARD(pSystem->flushCommands());
-	std::cout << std::endl;
-	std::cout << "###########################" << std::endl << std::endl;
+	std::cout << "\n";
+	std::cout << "###########################\n\n";
 	std::cout << "FMOD System Info:\n  Sample Rate- " << samplerate << "\n  Speaker Mode- " << speakermode
-		<< "\n  Num Raw Speakers- " << numrawspeakers << std::endl;
+		<< "\n  Num Raw Speakers- " << numrawspeakers << "\n";
 	std::cout << std::endl;
 }
 
 // Init function specifically for user-defined needs (loading banks, indexing events & params, etc)
 static void init_session() {
-	std::cout << "###########################" << std::endl << std::endl;
-	std::cout << "Loading and Indexing all other banks..." << std::endl;
+	std::cout << "###########################\n\n";
+	std::cout << "Loading and Indexing all other banks...\n";
 	banks();
-	std::cout << "...Done!" << std::endl << std::endl;
+	std::cout << "...Done!\n" << std::endl;
 
-	std::cout << "Indexing Objects..." << std::endl;
+	std::cout << "Indexing Objects...\n";
 	index();
-	std::cout << "...Done!" << std::endl << std::endl;
-	std::cout << "###########################" << std::endl;
+	std::cout << "...Done!\n\n";
+	std::cout << "###########################\n";
 	std::cout << std::endl;
-}
-
-static void onBotAppGet(const dpp::confirmation_callback_t& callbackObj) {
-	if (!callbackObj.is_error()) {
-		botapp = callbackObj.get<dpp::application>();
-		std::cout << "Owner added with Username: " << botapp.owner.username << " and Snowflake ID: " << botapp.owner.id << std::endl;
-		owningUsers.push_back(botapp.owner.id);
-	}
-	else {
-		std::cout << "Error getting bot application object: " << callbackObj.get_error().human_readable << std::endl;
-		exit(0);
-	}
 }
 
 static void releaseFMOD() {
@@ -1419,7 +1420,7 @@ int main() {
 	init();
 	init_session();
 
-	std::cout << "Starting Bot..." << std::endl << std::endl;
+	std::cout << "Starting Bot...\n" << std::endl;
 
 	/* Create bot cluster */
 	dpp::cluster bot(getBotToken());
@@ -1428,7 +1429,6 @@ int main() {
 	bot.on_log(dpp::utility::cout_logger());
 
 	// Get the bot application, and add the Owner to the Owning Users list (for permissions)
-	// Fake blocking function to make debug output coherent
 	bot.current_application_get(onBotAppGet);
 
 	/* Register slash command here in on_ready */
@@ -1510,13 +1510,13 @@ int main() {
 			dpp::command_option eventInstSubCmd = dpp::command_option(dpp::co_sub_command, "event", "Set a local parameter.");
 			eventInstSubCmd.add_option(dpp::command_option(dpp::co_string, "instance-name", "The name of the event instance to set parameters on.", true).set_auto_complete(true));
 			eventInstSubCmd.add_option(dpp::command_option(dpp::co_string, "parameter-name", "The name of the parameter to set.", true).set_auto_complete(true));
-			eventInstSubCmd.add_option(dpp::command_option(dpp::co_number, "value", "What you want the parameter to be.", true).set_auto_complete(true));
+			eventInstSubCmd.add_option(dpp::command_option(dpp::co_number, "value", "What you want the parameter to be.", true));
 			commands[8].add_option(eventInstSubCmd);
 
 			// Sub-Command: Global
 			dpp::command_option globalSubCmd = dpp::command_option(dpp::co_sub_command, "global", "Set a Global parameter.");
 			globalSubCmd.add_option(dpp::command_option(dpp::co_string, "parameter-name", "The name of the parameter to set.", true).set_auto_complete(true));
-			globalSubCmd.add_option(dpp::command_option(dpp::co_number, "value", "What you want the parameter to be.", true).set_auto_complete(true));
+			globalSubCmd.add_option(dpp::command_option(dpp::co_number, "value", "What you want the parameter to be.", true));
 			commands[8].add_option(globalSubCmd);
 
 			// Sub-commands for Volume
@@ -1525,7 +1525,7 @@ int main() {
 			);
 			commands[9].add_option(
 				dpp::command_option(dpp::co_number, "value",
-					"The target volume in dB. Values above +10 will be assumed negative, for your ears' sake.", true).set_auto_complete(true)
+					"The target volume in dB. Values above +10 will be assumed negative, for your ears' sake.", true)
 			);
 
 			// Permissions. Show commands for only those who can use slash commands in a server.
@@ -1585,12 +1585,47 @@ int main() {
 	/* Handle Auto-Complete for relevant commands */
 	bot.on_autocomplete([&bot](const dpp::autocomplete_t& event) {
 		// First because it's likely the most often used
-		// Todo: handle subcommands with autocomplete...
 		if (event.name == "play") {
-			for (auto& opt : event.options) {
+			// Determine between the sub-commands to determine which list to pull from
+			auto& subcmd = event.options[0];
 
+			if (subcmd.name == "event") {
+				for (auto& opt : subcmd.options) {
+					// For each Event Description in our list, if the user's typed text exists in the name,
+					// add it as an autocomplete option. Probably some clever way to cache this?
+					if (opt.focused) {
+						std::string uservalue = std::get<std::string>(opt.value);
+						dpp::interaction_response eventDescList(dpp::ir_autocomplete_reply);
+						// Add all the events in the prepared list
+						for (int i = 0; i < eventPaths.size(); i++) {
+							std::string pathOption = truncateEventPath(eventPaths.at(i));
+							// Only list matching event names; if empty, list all
+							if ((pathOption.find(uservalue, 0) != std::string::npos) || (uservalue == "")) {
+								eventDescList.add_autocomplete_choice(dpp::command_option_choice(pathOption, pathOption));
+							}
+						}
+						bot.interaction_response_create(event.command.id, event.command.token, eventDescList);
+					}
+				}
+			}
+			else /*if (subcmd.name == "snapshot")*/ {
+				for (auto& opt : subcmd.options) {
+					// Same but for Snapshot Descriptions
+					if (opt.focused) {
+						std::string uservalue = std::get<std::string>(opt.value);
+						dpp::interaction_response snapshotDescList(dpp::ir_autocomplete_reply);
+						for (int i = 0; i < snapshotPaths.size(); i++) {
+							std::string pathOption = truncateSnapshotPath(snapshotPaths.at(i));
+							if ((pathOption.find(uservalue, 0) != std::string::npos) || (uservalue == "")) {
+								snapshotDescList.add_autocomplete_choice(dpp::command_option_choice(pathOption, pathOption));
+							}
+						}
+						bot.interaction_response_create(event.command.id, event.command.token, snapshotDescList);
+					}
+				}
 			}
 		}
+
 		// Pause, Unpause, and KeyOff all use the same list of Event Instances
 		else if (event.name == "pause"
 			|| event.name == "unpause"
@@ -1602,42 +1637,130 @@ int main() {
 
 					// For each Event Instance (Events, not Snapshots)
 					for (std::map<std::string, sessionEventInstance>::iterator it = pEventInstances.begin(); it != pEventInstances.end(); ++it) {
-						std::string path = it->first;
-						eventInstanceList.add_autocomplete_choice(dpp::command_option_choice(path, path + " second"));
+						std::string pathOption = it->first;
+						if ((pathOption.find(uservalue, 0) != std::string::npos) || (uservalue == "")) {
+							eventInstanceList.add_autocomplete_choice(dpp::command_option_choice(pathOption, pathOption));
+						}
 					}
 
 					bot.interaction_response_create(event.command.id, event.command.token, eventInstanceList);
 				}
 			}
 		}
+
 		// Stop applies to both Event and Snapshot Instances
-		else if (event.command.get_command_name() == "stop") {
+		else if (event.name == "stop") {
 			for (auto& opt : event.options) {
 				if (opt.focused) {
+					std::string uservalue = std::get<std::string>(opt.value);
+					dpp::interaction_response eventInstanceList(dpp::ir_autocomplete_reply);
+					std::cout << "Test01" << std::endl;
+
+					// For each Event Instance (Events, not Snapshots)
+					for (std::map<std::string, sessionEventInstance>::iterator it = pEventInstances.begin(); it != pEventInstances.end(); ++it) {
+						std::cout << "Test02\n";
+						std::string pathOption = it->first;
+						if ((pathOption.find(uservalue, 0) != std::string::npos) || (uservalue == "")) {
+							std::cout << "    Test03\n";
+							eventInstanceList.add_autocomplete_choice(dpp::command_option_choice(pathOption, pathOption));
+						}
+					}
+					std::cout << "Test04\n";
+					// and For each Snapshot Instance
+					for (std::map<std::string, FMOD::Studio::EventInstance*>::iterator it = pSnapshotInstances.begin(); it != pSnapshotInstances.end(); ++it) {
+						std::cout << "Test05\n";
+						std::string pathOption = it->first;
+						if ((pathOption.find(uservalue, 0) != std::string::npos) || (uservalue == "")) {
+							std::cout << "    Test06\n";
+							eventInstanceList.add_autocomplete_choice(dpp::command_option_choice(pathOption, pathOption));
+						}
+					}
+
+					bot.interaction_response_create(event.command.id, event.command.token, eventInstanceList);
+				}
+			}
+		}
+
+		// Param covers both Global (in a list) and Local (dependent on the Event Instance)
+		else if (event.name == "param") {
+			auto& subcmd = event.options[0];
+			bool isGlobal = (subcmd.name == "global") ? true : false;
+			// Covering both possible subcommands in one swoop, since they're so similar
+			for (auto& opt : subcmd.options) {
+				// Don't autocomplete options the user isn't looking at
+				if (!opt.focused) { continue; }
+
+				// Instance Name only applies to Local parameters
+				if (opt.name == "instance-name" && !isGlobal) {
 					std::string uservalue = std::get<std::string>(opt.value);
 					dpp::interaction_response eventInstanceList(dpp::ir_autocomplete_reply);
 
 					// For each Event Instance (Events, not Snapshots)
 					for (std::map<std::string, sessionEventInstance>::iterator it = pEventInstances.begin(); it != pEventInstances.end(); ++it) {
-						std::string path = it->first;
-						eventInstanceList.add_autocomplete_choice(dpp::command_option_choice(path, path));
+						std::string pathOption = it->first;
+						if (pathOption.find(uservalue, 0) != 0) {
+							eventInstanceList.add_autocomplete_choice(dpp::command_option_choice(pathOption, pathOption));
+						}
 					}
-
-					// and For each Snapshot Instance
-					for (std::map<std::string, FMOD::Studio::EventInstance*>::iterator it = pSnapshotInstances.begin(); it != pSnapshotInstances.end(); ++it) {
-						std::string path = it->first;
-						eventInstanceList.add_autocomplete_choice(dpp::command_option_choice(path, path));
-					}
-
 					bot.interaction_response_create(event.command.id, event.command.token, eventInstanceList);
+				}
+				else if (opt.name == "parameter-name") {
+					std::string uservalue = std::get<std::string>(opt.value);
+					dpp::interaction_response paramList(dpp::ir_autocomplete_reply);
+
+					// If Parameter is Global, simply pull from the Global list, otherwise if Local dig deeper from that instance's list
+					if (isGlobal) {
+						for (int i = 0; i < globalParamNames.size(); i++) {
+							std::string pathOption = globalParamNames.at(i);
+							if ((pathOption.find(uservalue, 0) != std::string::npos) || (uservalue == "")) {
+								paramList.add_autocomplete_choice(dpp::command_option_choice(pathOption, pathOption));
+							}
+						}
+					}
+					else {
+						// Should probably find a more robust way to make sure we're getting the value of instance-name specifically
+						auto& instanceNameCmdOption = subcmd.options.at(0);
+
+						try {
+							std::vector<FMOD_STUDIO_PARAMETER_DESCRIPTION>& params = pEventInstances.at(instanceNameCmdOption.name).params;
+							for (int i = 0; i < params.size(); i++) {
+								std::string pathOption = params.at(i).name;
+								if ((pathOption.find(uservalue, 0) != std::string::npos) || (uservalue == "")) {
+									paramList.add_autocomplete_choice(dpp::command_option_choice(pathOption, pathOption));
+								}
+							}
+						}
+						catch (std::out_of_range ex) {
+							std::cout << "Out of Range Exception! " << ex.what() << "\n";
+							std::cout << "Most likely caused by no event found in pEventInstances with the name: " << instanceNameCmdOption.name << std::endl;
+						}
+					}
+					bot.interaction_response_create(event.command.id, event.command.token, paramList);
 				}
 			}
 		}
-		else if (event.command.get_command_name() == "param") {
 
-		}
-		else if (event.command.get_command_name() == "volume") {
-
+		// Volume uniquely covers all Busses and VCAs from a list, similar to Stop
+		else if (event.name == "volume") {
+			for (auto& opt : event.options) {
+				if (opt.focused) {
+					std::string uservalue = std::get<std::string>(opt.value);
+					dpp::interaction_response busVcaList(dpp::ir_autocomplete_reply);
+					for (int i = 0; i < busPaths.size(); i++) {
+						std::string pathOption = truncateBusPath(busPaths.at(i));
+						if ((pathOption.find(uservalue, 0) != 0) || (uservalue == "")) {
+							busVcaList.add_autocomplete_choice(dpp::command_option_choice(pathOption, pathOption));
+						}
+					}
+					for (int i = 0; i < vcaPaths.size(); i++) {
+						std::string pathOption = truncateVCAPath(vcaPaths.at(i));
+						if ((pathOption.find(uservalue, 0) != 0) || (uservalue == "")) {
+							busVcaList.add_autocomplete_choice(dpp::command_option_choice(pathOption, pathOption));
+						}
+					}
+					bot.interaction_response_create(event.command.id, event.command.token, busVcaList);
+				}
+			}
 		}
 	});
 	
@@ -1663,8 +1786,7 @@ int main() {
 	}
 	catch (dpp::exception ex) {
 		std::cout << "\n\nException " << ex.code() << " when starting Bot:\n    " << ex.what() << "\n";
-		std::cout << "    Also make sure your token.txt file has your Bot Token in it, and that the Token is correct!\n";
-		std::cout << "    Quitting for safety." << std::endl;
+		std::cout << "    Please also make sure your token.txt file has your Bot Token in it, and that the Token is correct!\n";
 		releaseFMOD();
 		exit(ex.code());
 	}
