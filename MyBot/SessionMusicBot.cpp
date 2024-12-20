@@ -494,7 +494,7 @@ static void list(const dpp::slashcommand_t& event) {
 
 				if (!inst.second.params.empty()) {			// If this Instance has any parameters associated...
 					std::string paramOutString = " - source event: " + instDescName + "\n";	// add in the event name
-					for (int i = 0; i < inst.second.params.size(); i++) {
+					for (unsigned int i = 0; i < inst.second.params.size(); i++) {
 						// get current parameter name & value
 						std::string paramName(inst.second.params[i].name);
 						float paramVal = 0; float paramFinalVal = 0;
@@ -679,12 +679,12 @@ static void playable() {
 		// on those lists is no longer available (removed during Live Connect?)
 		if (!eventPaths.empty()) {
 			bool alreadyExistsEvent = false;
-			for (int j = 0; i < eventPaths.size(); j++) {
+			for (unsigned int j = 0; i < (int)eventPaths.size(); j++) {
 				if (eventPaths[i] == pathString) { alreadyExistsEvent = true; break; }
 			}
 			if (alreadyExistsEvent) {
 				std::cout << "   Skipped: " << pathString << " -- Event already listed." << std::endl;
-				for (int k = 0; k < existingEvents.size(); k++) {
+				for (unsigned int k = 0; k < existingEvents.size(); k++) {
 					if (pathString == existingEvents[k]) {
 						existingEvents.erase(existingEvents.begin() + k);
 					}
@@ -695,12 +695,12 @@ static void playable() {
 
 		if (!snapshotPaths.empty()) {
 			bool alreadyExistsSnapshot = false;
-			for (int j = 0; i < snapshotPaths.size(); j++) {
+			for (unsigned int j = 0; i < (int)snapshotPaths.size(); j++) {
 				if (snapshotPaths[i] == pathString) { alreadyExistsSnapshot = true; break; }
 			}
 			if (alreadyExistsSnapshot) {
 				std::cout << "   Skipped: " << pathString << " -- Snapshot already listed." << std::endl;
-				for (int k = 0; k < existingSnapshots.size(); k++) {
+				for (unsigned int k = 0; k < existingSnapshots.size(); k++) {
 					if (pathString == existingSnapshots[k]) {
 						existingSnapshots.erase(existingSnapshots.begin() + k);
 					}
@@ -771,7 +771,7 @@ static void playable(const dpp::slashcommand_t& event) {
 	dpp::command_interaction cmd_data = event.command.get_command_interaction();
 
 	// Check the input variables are good
-	int count = (int)cmd_data.options.size();
+	unsigned int count = cmd_data.options.size();
 	if (count > 1) {
 		std::cout << "Playable command received with too many arguments." << std::endl;
 		event.reply(dpp::message("Playable command received with too many arguments.").set_flags(dpp::m_ephemeral));
@@ -781,7 +781,7 @@ static void playable(const dpp::slashcommand_t& event) {
 	event.thinking(true, [event](const dpp::confirmation_callback_t& callback) {
 
 		// Get whether the command came with the optional "reindex" parameter
-		int count = (int)event.command.get_command_interaction().options.size();
+		unsigned int count = event.command.get_command_interaction().options.size();
 		bool reindex = false;
 		if (count > 0) {
 			reindex = std::get<bool>(event.get_parameter(event.command.get_command_interaction().options[0].name));
@@ -1530,7 +1530,7 @@ int main() {
 
 			// Permissions. Show commands for only those who can use slash commands in a server.
 			// Only the Owner will be allowed to enact commands, but that'll be checked locally.
-			for (int i = 0; i > commands.size(); i++) {
+			for (unsigned int i = 0; i > commands.size(); i++) {
 				commands[i].default_member_permissions.has(dpp::permissions::p_use_application_commands);
 			}
 
@@ -1549,7 +1549,7 @@ int main() {
 		// ().username << " with snowflake " << cmdSender << std::endl;
 		bool canRun = false;
 		//std::cout << "owningUsers size: " << owningUsers.size() << std::endl;
-		for (int i = 0; i < owningUsers.size(); i++) {
+		for (unsigned int i = 0; i < owningUsers.size(); i++) {
 			//std::cout << "cmdSender: " << cmdSender.str() << " || owningUser: " << owningUsers[i] << std::endl;
 			if (owningUsers[i] == cmdSender) {
 				canRun = true;
@@ -1597,7 +1597,7 @@ int main() {
 						std::string uservalue = std::get<std::string>(opt.value);
 						dpp::interaction_response eventDescList(dpp::ir_autocomplete_reply);
 						// Add all the events in the prepared list
-						for (int i = 0; i < eventPaths.size(); i++) {
+						for (unsigned int i = 0; i < eventPaths.size(); i++) {
 							std::string pathOption = truncateEventPath(eventPaths.at(i));
 							// Only list matching event names; if empty, list all
 							if ((pathOption.find(uservalue, 0) != std::string::npos) || (uservalue == "")) {
@@ -1614,7 +1614,7 @@ int main() {
 					if (opt.focused) {
 						std::string uservalue = std::get<std::string>(opt.value);
 						dpp::interaction_response snapshotDescList(dpp::ir_autocomplete_reply);
-						for (int i = 0; i < snapshotPaths.size(); i++) {
+						for (unsigned int i = 0; i < snapshotPaths.size(); i++) {
 							std::string pathOption = truncateSnapshotPath(snapshotPaths.at(i));
 							if ((pathOption.find(uservalue, 0) != std::string::npos) || (uservalue == "")) {
 								snapshotDescList.add_autocomplete_choice(dpp::command_option_choice(pathOption, pathOption));
@@ -1627,9 +1627,7 @@ int main() {
 		}
 
 		// Pause, Unpause, and KeyOff all use the same list of Event Instances
-		else if (event.name == "pause"
-			|| event.name == "unpause"
-			|| event.name == "keyoff") {
+		else if (event.name == "pause" || event.name == "unpause" || event.name == "keyoff") {
 			for (auto& opt : event.options) {
 				if (opt.focused) {
 					std::string uservalue = std::get<std::string>(opt.value);
@@ -1710,7 +1708,7 @@ int main() {
 
 					// If Parameter is Global, simply pull from the Global list, otherwise if Local dig deeper from that instance's list
 					if (isGlobal) {
-						for (int i = 0; i < globalParamNames.size(); i++) {
+						for (unsigned int i = 0; i < globalParamNames.size(); i++) {
 							std::string pathOption = globalParamNames.at(i);
 							if ((pathOption.find(uservalue, 0) != std::string::npos) || (uservalue == "")) {
 								paramList.add_autocomplete_choice(dpp::command_option_choice(pathOption, pathOption));
@@ -1723,7 +1721,7 @@ int main() {
 
 						try {
 							std::vector<FMOD_STUDIO_PARAMETER_DESCRIPTION>& params = pEventInstances.at(instanceNameCmdOption.name).params;
-							for (int i = 0; i < params.size(); i++) {
+							for (unsigned int i = 0; i < params.size(); i++) {
 								std::string pathOption = params.at(i).name;
 								if ((pathOption.find(uservalue, 0) != std::string::npos) || (uservalue == "")) {
 									paramList.add_autocomplete_choice(dpp::command_option_choice(pathOption, pathOption));
@@ -1746,13 +1744,13 @@ int main() {
 				if (opt.focused) {
 					std::string uservalue = std::get<std::string>(opt.value);
 					dpp::interaction_response busVcaList(dpp::ir_autocomplete_reply);
-					for (int i = 0; i < busPaths.size(); i++) {
+					for (unsigned int i = 0; i < busPaths.size(); i++) {
 						std::string pathOption = truncateBusPath(busPaths.at(i));
 						if ((pathOption.find(uservalue, 0) != 0) || (uservalue == "")) {
 							busVcaList.add_autocomplete_choice(dpp::command_option_choice(pathOption, pathOption));
 						}
 					}
-					for (int i = 0; i < vcaPaths.size(); i++) {
+					for (unsigned int i = 0; i < vcaPaths.size(); i++) {
 						std::string pathOption = truncateVCAPath(vcaPaths.at(i));
 						if ((pathOption.find(uservalue, 0) != 0) || (uservalue == "")) {
 							busVcaList.add_autocomplete_choice(dpp::command_option_choice(pathOption, pathOption));
