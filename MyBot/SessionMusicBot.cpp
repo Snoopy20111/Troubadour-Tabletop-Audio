@@ -34,9 +34,11 @@ FMOD::Studio::Bank* pMasterBank = nullptr;							//Master Bank, always loads fir
 std::string master_bank = "Master.bank";
 FMOD::Studio::Bank* pMasterStringsBank = nullptr;					//Master Strings, allows us to refer to events by name instead of GUID
 std::string masterstrings_bank = "Master.strings.bank";
+std::string bankPath = "bank:/";
 std::vector<FMOD::Studio::Bank*> pBanks;							// Vector of all other banks
 std::vector<std::filesystem::path> bankPaths;						// Vector of paths to the respective .bank files (at time of load)
 
+const std::string eventPath = "event:/";
 const std::string callableEventPath = "event:/Master/";				// The FMOD-internal path where our callable events exist
 std::map<std::string, sessionEventDesc> pEventDescriptions;			// Map of all Event Descriptions and their parameters
 std::vector<std::string> eventPaths;								// Vector of FMOD-internal paths the user can call
@@ -169,29 +171,37 @@ static void ping(const dpp::slashcommand_t& event) {
 // Base function, called on startup and when requested by List Banks command
 static void banks() {
 
-	std::cout << "Checking Banks path: " << bank_dir_path.string() << std::endl;
-	std::string output = "- Master.bank\n- Master.strings.bank\n";				//Ensures Master and Strings banks are always in list
+	std::cout << "Checking Banks path: " << bank_dir_path.string() << "\n\n";
 
-	//Form list of .bank files in the soundbanks folder
+	std::set<std::filesystem::path> sortedOutput;
+
+	//Form set of .bank files from the soundbanks folder
 	for (const auto& entry : std::filesystem::directory_iterator(bank_dir_path)) {		// For every entry found in the banks folder
 		if (entry.is_directory()) {														// Skip if directory...
-			std::cout << "   Skipped: " << entry.path().string() << " -- is a directory." << std::endl;
+			std::cout << "   Skipped: " << entry.path().string() << " -- is a directory." << "\n";
 			continue;
 		}
-		else if (entry.path().extension() != ".bank") {									// Skip if not a bank...
+		else if (entry.path().extension() != ".bank") {				// Skip if not a bank...
 			std::cout << "   Skipped: " << entry.path().string() << " -- Extension is "
-				<< entry.path().extension() << " which isn't an FMOD bank." << std::endl;
+				<< entry.path().extension() << " which isn't an FMOD bank." << "\n";
 			continue;
 		}
-		else if ((entry.path().filename() == "Master.bank")								// Skip if Master or Strings...
+		else if ((entry.path().filename() == "Master.bank")			// Skip if Master or Strings...
 			|| (entry.path().filename() == "Master.strings.bank")) {
-			std::cout << "   Skipped: " << entry.path().string() << " -- is Master or Strings bank." << std::endl;
+			std::cout << "   Skipped: " << entry.path().string() << " -- is Master or Strings bank." << "\n";
 		}
 		else {
-			std::cout << "   Accepted: " << entry.path().string() << std::endl;			// Accepted!
-			bankPaths.push_back(entry.path());
+			std::cout << "   Accepted: " << entry.path().string() << "\n";			// Accepted!
+			sortedOutput.insert(sortedOutput.end(), entry.path());
 		}
 	}
+	// Now, for each key pass to the bank Paths vector
+	// We do this to automatically sort, by virtue of how std::set works
+	for (auto & key : sortedOutput) {
+		bankPaths.push_back(key);
+	}
+
+	std::cout << std::endl;
 
 	//Get list of already loaded banks
 	int count = 0;
@@ -199,6 +209,8 @@ static void banks() {
 	std::vector<FMOD::Studio::Bank*> loadedBanks; loadedBanks.resize(count);
 	int writtenCount = 0;
 	ERRCHECK_HARD(pSystem->getBankList(loadedBanks.data(), count, &writtenCount));
+
+	std::cout << "Loading Banks...\n";
 
 	// For every accepted bank path, add to output list, and load if not loaded already
 	for (int i = 0; i < (int)bankPaths.size(); i++) {					// For every accepted bank path
@@ -222,10 +234,11 @@ static void banks() {
 			FMOD::Studio::Bank* newBank = nullptr;						// Load, if bank qualifies
 			ERRCHECK_HARD(pSystem->loadBankFile(bankPaths[i].string().c_str(), FMOD_STUDIO_LOAD_BANK_NORMAL, &newBank));
 			pBanks.push_back(newBank);
-			std::cout << "   Loaded: " << bankPaths[i].string() << std::endl;
+			std::cout << "   Loaded: " << bankPaths[i].string() << "\n";
 		}
-		else { std::cout << "   Skipped Load: " << bankPaths[i].string() << std::endl; }
+		else { std::cout << "   Skipped Load: " << bankPaths[i].string() << "\n"; }
 	}
+	std::cout << std::endl;
 
 	// Cleanup! Unload unused banks
 	int offset = 0;
@@ -249,14 +262,14 @@ static void banks() {
 			}
 		}
 		if (!foundInList) {									// If not found in list
-			std::cout << "Unload & Delete: " << pathString << std::endl;
+			std::cout << "Unload & Delete: " << pathString << "\n";
 			pBanks[i + offset]->unload();					// Unload, then erase that element
 			pBanks.erase(pBanks.begin() + i);
 			offset--;
 		}
 		else { i++; }
 		if (i >= INT16_MAX || offset <= INT16_MIN) {		// Emergency cutoff switch to prevent infinite loop...assuming no user will have 32767+ banks.
-			break;											// Probably wasteful, but makes me sleep better at night.
+			break;											// Probably wasteful to keep checkings, but makes me sleep better at night.
 		}
 	}
 }
@@ -264,25 +277,25 @@ static void banks() {
 // Indexes and Prints all valid .bank files
 static void banks(const dpp::slashcommand_t& event) {
 
-	if (pEventInstances.size() > 0) {							// Unsafe to load/unload banks while events are active
+	if (pEventInstances.size() > 0) {	// Unsafe to load/unload banks while events are active
 		event.reply(dpp::message("It's dangerous to mess with banks while the bot is playing audio! Please stop all events first.").set_flags(dpp::m_ephemeral));
 		return;
 	}
 	
-	bankPaths.clear();											// Clear current Bank vector
+	bankPaths.clear();		// Clear current Bank vector
 
 	//Show "Thinking..." while putting the list together
 	event.thinking(true, [event](const dpp::confirmation_callback_t& callback) {
-		banks();													// Re-list what banks exist, load new ones
+		banks();					// Re-list what banks exist, load new ones
 
-		dpp::embed bankListEmbed = basicEmbed;						// Create the embed and set non-standard details
+		dpp::embed bankListEmbed = basicEmbed;		// Create the embed and set non-standard details
 		bankListEmbed.set_title("Found FMOD Banks");
 
 		// Known banks, program fails if these don't load / exist
 		bankListEmbed.add_field("Required Banks", "- Master.bank\n- Master.strings.bank");
 
 		std::string bankPathsOutput = "";
-		std::cout << "BankPaths size: " << std::to_string(bankPaths.size()) << std::endl;
+		std::cout << "BankPaths size: " << std::to_string(bankPaths.size()) << "\n";
 
 		// For every additional bank, add the shortened path as a field
 		for (int i = 0; i < (int)bankPaths.size(); i++) {					// For every path
@@ -314,135 +327,166 @@ static void index() {
 		return;
 	}
 
+	// Dump each section into sets to sort them, then we'll print after
+	std::set<std::string> eventSet;
+	std::set<std::string> busSet;
+	std::set<std::string> vcaSet;
+	std::set<std::string> snapshotSet;
+	std::set<std::string> paramSet;
+	std::set<std::string> bankSet;
+	std::set<std::string> unrecognizedSet;
+
 	// Loop through every entry
 	for (int i = 0; i < count; i++) {
 		FMOD_GUID pathGUID;
 		char pathStringChars[256];
 		char* pathStringCharsptr = pathStringChars;
-		int retreived;
 
-		ERRCHECK_HARD(pMasterStringsBank->getStringInfo(i, &pathGUID, pathStringCharsptr, 256, &retreived));
+		ERRCHECK_HARD(pMasterStringsBank->getStringInfo(i, &pathGUID, pathStringCharsptr, 256, nullptr));
 		std::string pathString(pathStringCharsptr);
 
 		// Is it an event?
-		if ((pathString.find("event:/", 0) == 0)) {
-			// Skip it if not in the Master folder.
-			if (pathString.find(callableEventPath, 0) != 0) {
-				std::cout << "   Skipped as Event: " << pathString << " -- Not in Master folder." << "\n";
-				continue;
-			}
-
-			// What's left should be good for our eventPaths vector
-			std::cout << "   Accepted as Event: " << pathString << "\n";
-			eventPaths.push_back(pathString);
-
-			// Grab associated Event Description
-			FMOD::Studio::EventDescription* newEventDesc = nullptr;
-			ERRCHECK_HARD(pSystem->getEvent(pathString.c_str(), &newEventDesc));
-			sessionEventDesc newSessionEventDesc; newSessionEventDesc.description = newEventDesc;
-
-			// Grab the name of each associated non-built-in parameter
-			int descParamCount = 0;
-			newSessionEventDesc.description->getParameterDescriptionCount(&descParamCount);
-
-			for (int i = 0; i < descParamCount; i++) {
-				FMOD_STUDIO_PARAMETER_DESCRIPTION parameter;
-				newSessionEventDesc.description->getParameterDescriptionByIndex(i, &parameter);
-				if (parameter.type == FMOD_STUDIO_PARAMETER_GAME_CONTROLLED) {
-					std::string paramName(parameter.name);
-					std::string coutString = "      ";
-
-					coutString.append(" - Parameter: " + paramName);
-					coutString.append(" " + paramMinMaxString(parameter));
-					coutString.append(" " + paramAttributesString(parameter));
-#ifndef NDEBUG
-					coutString.append(" with flag: " + std::to_string(parameter.flags));
-#endif
-					std::cout << coutString;
-					newSessionEventDesc.params.push_back(parameter);
-				}
-			}
-			pEventDescriptions.insert({ truncateEventPath(pathString), newSessionEventDesc });	// Add to map, connected to a trimmed "easy" path name
+		if ((pathString.find(eventPath, 0) == 0)) {
+			eventSet.insert(eventSet.end(), pathString);
 		}
 
 		// Is it a bus?
-		else if ((pathString.find(busPath, 0) == 0)) {
-			if (pathString == busPath) {		//The Master Bus is just "bus:/"
-				std::cout << "   Accepted as Master Bus: " << pathString << "\n";
-			}
-			else {
-				// Get the Bus and add it to the map
-				FMOD::Studio::Bus* newBus = nullptr;
-				ERRCHECK_HARD(pSystem->getBus(pathString.c_str(), &newBus));
-				pBusses.insert({ truncateBusPath(pathString), newBus });
-				busPaths.push_back(pathString);
-				std::cout << "   Accepted as Bus: " << pathString << " || Nice Name: " << truncateBusPath(pathString) << "\n";
-			}
-		}
+		else if ((pathString.find(busPath, 0) == 0)) { busSet.insert(busSet.end(), pathString); }
 
 		// Is it a VCA?
-		else if ((pathString.find(vcaPath, 0) == 0)) {
-			// Get the VCA and add it to the map
-			FMOD::Studio::VCA* newVCA = nullptr;
-			ERRCHECK_HARD(pSystem->getVCA(pathString.c_str(), &newVCA));
-			pVCAs.insert({ truncateVCAPath(pathString), newVCA });
-
-			vcaPaths.push_back(pathString);
-			std::cout << "   Accepted as VCA: " << pathString << " || Nice Name: " << truncateVCAPath(pathString) << "\n";
-		}
+		else if ((pathString.find(vcaPath, 0) == 0)) { vcaSet.insert(vcaSet.end(), pathString); }
 
 		// Is it a Snapshot?
-		else if ((pathString.find(snapshotPath, 0) == 0)) {
-
-			// Get the Snapshot and add it to the map
-			FMOD::Studio::EventDescription* newSnapshot = nullptr;
-			ERRCHECK_HARD(pSystem->getEvent(pathString.c_str(), &newSnapshot));
-
-			bool isSnapshot = false;
-			newSnapshot->isSnapshot(&isSnapshot);
-			if (!isSnapshot) {		//If this event description isn't actually a Snapshot
-				std::cout << "   Skipped as Snapshot: " << pathString << " -- Not actually a snapshot!" << "\n";
-			}
-			else {
-				pSnapshots.insert({ truncateSnapshotPath(pathString), newSnapshot });
-				snapshotPaths.push_back(pathString);
-				std::cout << "   Accepted as Snapshot: " << pathString << " || Nice Name: " << truncateSnapshotPath(pathString) << "\n";
-			}
-		}
+		else if ((pathString.find(snapshotPath, 0) == 0)) { snapshotSet.insert(snapshotSet.end(), pathString); }
 
 		// Is it a parameter? (will be addressed after this loop)
-		else if (pathString.find(paramPath) == 0) {
-			std::cout << "   Skipped as Parameter: " << pathString << " -- See below for Global Parameters." << "\n";
-		}
+		else if (pathString.find(paramPath) == 0) { paramSet.insert(paramSet.end(), pathString); }
 
 		// Is it a bank? (We don't care here, just for Cout data)
-		else if (pathString.find("bank:/", 0) == 0) {
-			std::cout << "   Skipped as Bank: " << pathString << " -- Is a Bank." << "\n";
-		}
+		else if (pathString.find(bankPath, 0) == 0) { bankSet.insert(bankSet.end(), pathString); }
 		
 		// If it's none of the above, then we have NO idea what this thing is.
-		else { std::cout << "   Skipped: " << pathString << " -- Unrecognized string." << "\n"; }
+		else { unrecognizedSet.insert(unrecognizedSet.end(), pathString); }
+	}
+
+	std::cout << "Events:\n";
+	for (auto& entry : eventSet) {
+		// Skip it if not in the Master folder.
+		if (entry.find(callableEventPath, 0) != 0) {
+			std::cout << "   Skipped as Event: " << entry << " -- Not in Master folder." << "\n";
+			continue;
+		}
+
+		// What's left should be good for our eventPaths vector
+		std::cout << "   Accepted as Event: " << entry << "\n";
+		eventPaths.push_back(entry);
+
+		// Grab associated Event Description
+		FMOD::Studio::EventDescription* newEventDesc = nullptr;
+		ERRCHECK_HARD(pSystem->getEvent(entry.c_str(), &newEventDesc));
+		sessionEventDesc newSessionEventDesc; newSessionEventDesc.description = newEventDesc;
+
+		// Grab the name of each associated non-built-in parameter
+		int descParamCount = 0;
+		newSessionEventDesc.description->getParameterDescriptionCount(&descParamCount);
+
+		for (int i = 0; i < descParamCount; i++) {
+			FMOD_STUDIO_PARAMETER_DESCRIPTION parameter;
+			newSessionEventDesc.description->getParameterDescriptionByIndex(i, &parameter);
+			if (parameter.type == FMOD_STUDIO_PARAMETER_GAME_CONTROLLED) {
+				std::string paramName(parameter.name);
+				std::string coutString = "      ";
+
+				coutString.append(" - Parameter: " + paramName);
+				coutString.append(" " + paramMinMaxString(parameter));
+				coutString.append(" " + paramAttributesString(parameter));
+#ifndef NDEBUG
+				coutString.append(" with flag: " + std::to_string(parameter.flags));
+#endif
+				std::cout << coutString;
+				newSessionEventDesc.params.push_back(parameter);
+			}
+		}
+		pEventDescriptions.insert({ truncateEventPath(entry), newSessionEventDesc });	// Add to map, connected to a trimmed "easy" path name
+	}
+	
+	std::cout << "Busses:\n";
+	for (auto& entry : busSet) {
+		if (entry == busPath) {		//The Master Bus is just "bus:/"
+			std::cout << "   Accepted as Bus: " << entry << " -- Is Master Bus.\n";
+		}
+		else {
+			// Get the Bus and add it to the map
+			FMOD::Studio::Bus* newBus = nullptr;
+			ERRCHECK_HARD(pSystem->getBus(entry.c_str(), &newBus));
+			pBusses.insert({ truncateBusPath(entry), newBus });
+			busPaths.push_back(entry);
+			std::cout << "   Accepted as Bus: " << entry << " || Nice Name: " << truncateBusPath(entry) << "\n";
+		}
+	}
+	
+	std::cout << "VCAs:\n";
+	for (auto& entry : vcaSet) {
+		// Get the VCA and add it to the map
+		FMOD::Studio::VCA* newVCA = nullptr;
+		ERRCHECK_HARD(pSystem->getVCA(entry.c_str(), &newVCA));
+		pVCAs.insert({ truncateVCAPath(entry), newVCA });
+
+		vcaPaths.push_back(entry);
+		std::cout << "   Accepted as VCA: " << entry << " || Nice Name: " << truncateVCAPath(entry) << "\n";
+	}
+	
+	std::cout << "Snapshots:\n";
+	for (auto& entry : snapshotSet) {
+		// Get the Snapshot and add it to the map
+		FMOD::Studio::EventDescription* newSnapshot = nullptr;
+		ERRCHECK_HARD(pSystem->getEvent(entry.c_str(), &newSnapshot));
+
+		bool isSnapshot = false;
+		newSnapshot->isSnapshot(&isSnapshot);
+		if (!isSnapshot) {		//If this event description isn't actually a Snapshot
+			std::cout << "   Skipped as Snapshot: " << entry << " -- Not actually a snapshot!" << "\n";
+		}
+		else {
+			pSnapshots.insert({ truncateSnapshotPath(entry), newSnapshot });
+			snapshotPaths.push_back(entry);
+			std::cout << "   Accepted as Snapshot: " << entry << " || Nice Name: " << truncateSnapshotPath(entry) << "\n";
+		}
+	}
+	
+	std::cout << "Skipped:\n";
+	for (auto& entry : paramSet) {
+		std::cout << "   Skipped as Parameter: " << entry << " -- See below for Global Parameters.\n";
+	}
+	for (auto& entry : bankSet) {
+		std::cout << "   Skipped as Bank: " << entry << " -- Is a Bank." << "\n";
+	}
+	for (auto& entry : unrecognizedSet) {
+		std::cout << "   Skipped: " << entry << " -- Unrecognized string." << "\n";
 	}
 
 	std::cout << std::endl;
 
 	// Seperately, get the list of Global Parameters
-	FMOD_STUDIO_PARAMETER_DESCRIPTION paramArray[100];	// Very unlikely to go past this amount
-	FMOD_STUDIO_PARAMETER_DESCRIPTION* paramArrayPtr = paramArray;
+	// TODO: size and reuse a Vector here
+	std::vector<FMOD_STUDIO_PARAMETER_DESCRIPTION> paramVector;
+	FMOD_STUDIO_PARAMETER_DESCRIPTION* paramVectorPtr = nullptr;
 	int paramCount = 0;
-	pSystem->getParameterDescriptionList(paramArrayPtr, 100, &paramCount);
+	paramVector.resize(paramCount);
+	paramVectorPtr = paramVector.data();
+	pSystem->getParameterDescriptionList(paramVectorPtr, paramCount, nullptr);
 
 	// Add them to the vector, one-by-one
-	std::cout << "   Global Parameters:" << std::endl;
+	std::cout << "   Global Parameters:\n";
 	for (int i = 0; i < paramCount; i++) {
-		globalParamNames.push_back(paramArray[i].name);
-		pGlobalParams.insert({ paramArray[i].name, paramArray[i] });
+		globalParamNames.push_back(paramVector[i].name);
+		pGlobalParams.insert({ paramVector[i].name, paramVector[i] });
 
 		std::string coutString = "      - ";
-		coutString.append(paramArray[i].name);
-		coutString.append(" " + paramMinMaxString(paramArray[i]));
-		coutString.append(" " + paramAttributesString(paramArray[i], false));
-		std::cout << coutString << std::endl;
+		coutString.append(paramVector[i].name);
+		coutString.append(" " + paramMinMaxString(paramVector[i]));
+		coutString.append(" " + paramAttributesString(paramVector[i], false));
+		std::cout << coutString << "\n";
 	}
 
 }
@@ -454,7 +498,7 @@ static void list(const dpp::slashcommand_t& event) {
 	// Check the input variables are good
 	int count = (int)cmd_data.options.size();
 	if (count > 2) {
-		std::cout << "List command received with too many arguments." << std::endl;
+		std::cout << "List command received with too many arguments.\n";
 		event.reply(dpp::message("List command received with too many arguments.").set_flags(dpp::m_ephemeral));
 		return;
 	}
@@ -468,7 +512,7 @@ static void list(const dpp::slashcommand_t& event) {
 
 		// Event Instances
 		if (pEventInstances.empty()) {
-			std::cout << "   No playing Event Instances." << std::endl;
+			std::cout << "   No playing Event Instances.\n";
 			listEmbed.add_field("Active Events", "- No active events");
 		}
 		else {
@@ -486,7 +530,7 @@ static void list(const dpp::slashcommand_t& event) {
 				char pathchars[256];						// Hope we don't need longer paths than this...
 				char* pathptr = pathchars;
 				int retrieved = 0;
-				ERRCHECK_HARD(instDesc->getPath(pathptr, 512, &retrieved));	// Get the path as char*
+				ERRCHECK_SOFT(instDesc->getPath(pathptr, 256, &retrieved));	// Get the path as char*
 				std::string instDescName(pathptr);							// Make string, then format
 				instDescName = truncateEventPath(instDescName);
 
@@ -664,12 +708,12 @@ static void playable() {
 		std::string pathString(pathStringCharsptr);
 
 		// Discard if this string isn't an event or snapshot
-		if ((pathString.find("event:/", 0) != 0) && (pathString.find("snapshot:/", 0) != 0)) {	// Skip if not Event or Snapshot...
+		if ((pathString.find(eventPath, 0) != 0) && (pathString.find(snapshotPath, 0) != 0)) {	// Skip if not Event or Snapshot...
 			std::cout << "   Skipped: " << pathString << " -- Not Event or Snapshot." << std::endl;
 			continue;
 		}
 		// Discard if it's an event outside the Master folder
-		if ((pathString.find("event:/", 0) == 0) && (pathString.find(callableEventPath, 0) != 0)) {								// Skip if not in Master folder...
+		if ((pathString.find(eventPath, 0) == 0) && (pathString.find(callableEventPath, 0) != 0)) {								// Skip if not in Master folder...
 			std::cout << "   Skipped: " << pathString << " -- Event not in Master folder." << std::endl;
 			continue;
 		}
@@ -712,7 +756,7 @@ static void playable() {
 		// What's left should be good for our vectors
 		
 		// Events
-		if ((pathString.find("event:/", 0) == 0)) {
+		if ((pathString.find(eventPath, 0) == 0)) {
 			std::cout << "   Accepted as Event: " << pathString << std::endl;
 			eventPaths.push_back(pathString);
 
@@ -771,7 +815,7 @@ static void playable(const dpp::slashcommand_t& event) {
 	dpp::command_interaction cmd_data = event.command.get_command_interaction();
 
 	// Check the input variables are good
-	unsigned int count = cmd_data.options.size();
+	unsigned int count = (unsigned int)cmd_data.options.size();
 	if (count > 1) {
 		std::cout << "Playable command received with too many arguments." << std::endl;
 		event.reply(dpp::message("Playable command received with too many arguments.").set_flags(dpp::m_ephemeral));
@@ -781,7 +825,7 @@ static void playable(const dpp::slashcommand_t& event) {
 	event.thinking(true, [event](const dpp::confirmation_callback_t& callback) {
 
 		// Get whether the command came with the optional "reindex" parameter
-		unsigned int count = event.command.get_command_interaction().options.size();
+		unsigned int count = (unsigned int)event.command.get_command_interaction().options.size();
 		bool reindex = false;
 		if (count > 0) {
 			reindex = std::get<bool>(event.get_parameter(event.command.get_command_interaction().options[0].name));
@@ -1307,6 +1351,7 @@ static void quit(const dpp::slashcommand_t& event) {
 	event.reply(dpp::message("Shutting down. Bye bye! I hope I played good sounds!").set_flags(dpp::m_ephemeral));
 }
 
+// Callback function called when bot's Application object is acquired
 static void onBotAppGet(const dpp::confirmation_callback_t& callbackObj) {
 	if (!callbackObj.is_error()) {
 		botapp = callbackObj.get<dpp::application>();
@@ -1394,7 +1439,7 @@ static void init() {
 // Init function specifically for user-defined needs (loading banks, indexing events & params, etc)
 static void init_session() {
 	std::cout << "###########################\n\n";
-	std::cout << "Loading and Indexing all other banks...\n";
+	std::cout << "Loading and Indexing all other banks...\n\n";
 	banks();
 	std::cout << "...Done!\n" << std::endl;
 
@@ -1405,6 +1450,7 @@ static void init_session() {
 	std::cout << std::endl;
 }
 
+// Exit function to release FMOD resources before quitting the program
 static void releaseFMOD() {
 	// Remove DSP from master channel group, and release the DSP
 	pMasterBusGroup->removeDSP(mCaptureDSP);
@@ -1779,9 +1825,7 @@ int main() {
 	});
 
 	/* Start the bot */
-	try {
-		bot.start();
-	}
+	try { bot.start(); }
 	catch (dpp::exception ex) {
 		std::cout << "\n\nException " << ex.code() << " when starting Bot:\n    " << ex.what() << "\n";
 		std::cout << "    Please also make sure your token.txt file has your Bot Token in it, and that the Token is correct!\n";

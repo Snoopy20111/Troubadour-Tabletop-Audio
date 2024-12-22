@@ -3,7 +3,7 @@
 //---UTILS---//
 
 // Gets the location of the program executable.
-// If porting away from Windows this is the first (maybe last?) code change you should have to make.
+// If porting away from Windows this is the first code change you should have to make.
 std::filesystem::path getExecutablePath() {
     TCHAR path[MAX_PATH];
     DWORD length = GetModuleFileName(NULL, path, MAX_PATH);
