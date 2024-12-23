@@ -38,6 +38,7 @@ std::string bankPath = "bank:/";
 std::vector<FMOD::Studio::Bank*> pBanks;							// Vector of all other banks
 std::vector<std::filesystem::path> bankPaths;						// Vector of paths to the respective .bank files (at time of load)
 
+// Events
 const std::string eventPath = "event:/";
 const std::string callableEventPath = "event:/Master/";				// The FMOD-internal path where our callable events exist
 std::map<std::string, sessionEventDesc> pEventDescriptions;			// Map of all Event Descriptions and their parameters
@@ -80,11 +81,10 @@ dpp::embed basicEmbed = dpp::embed()					// Generic embed with all the shared de
 	.set_color(dpp::colors::construction_cone_orange)
 	.set_timestamp(time(0));
 
-#ifndef NDEBUG
-//---Extra Variables only present in Debug mode, for extra data---//
-#endif
+
 
 //---FMOD and Audio Functions---//
+
 // Callback for stealing sample data from the Master Bus
 FMOD_RESULT F_CALL captureDSPReadCallback(FMOD_DSP_STATE* dsp_state, float* inbuffer, float* outbuffer, unsigned int length, int inchannels, int* outchannels) {
 
@@ -160,12 +160,54 @@ static FMOD_RESULT F_CALL eventInstanceDestroyedCallback(FMOD_STUDIO_EVENT_CALLB
 	return FMOD_OK;
 }
 
+
 //---Bot Functions---//
 
 // Simple ping, responds in chat and output log
 static void ping(const dpp::slashcommand_t& event) {
 	event.reply(dpp::message("Pong! I'm alive!").set_flags(dpp::m_ephemeral));
 	std::cout << "Responding to Ping command." << std::endl;
+}
+
+static void help(const dpp::slashcommand_t& event) {
+
+	// Command and Subcommand data
+	dpp::command_interaction cmd_data = event.command.get_command_interaction();
+	bool isPublic = false;
+
+	// Check the input variables are good
+	unsigned int count = cmd_data.options.size();
+	if (count > 2) {
+		std::cout << "Help command arrived with too many arguments. Bad juju!" << std::endl;
+		event.reply(dpp::message("Help command sent with too many arguments. That shouldn't happen.").set_flags(dpp::m_ephemeral));
+		return;
+	}
+
+	isPublic = std::get<bool>(cmd_data.options.at(0).value);
+
+	dpp::embed helpEmbed = basicEmbed;		// Create the embed and set non-standard details
+	helpEmbed.set_title("Available Commands")
+		.set_description("A bot to make audio for Tabletop Games more interesting through Discord, using Game Audio tools and techniques.")
+
+		.add_field("/ping", "Ping the bot to ensure it's alive.")
+		.add_field("/playable", "List all playable Events, their Parameters, and Snapshots.")
+		.add_field("/list", "Show all playing Event and Snapshot instances, as well as their Parameters.")
+		.add_field("/play", "Play a new Event or Snapshot.")
+		.add_field("/pause", "Pause a currently playing Event.")
+		.add_field("/unpause", "Resume a currently paused Event.")
+		.add_field("/keyoff", "Key off a sustain point, if the Event has any.")
+		.add_field("/stop", "Stop a currently playing Event or Snapshot.")
+		.add_field("/stopall", "Stop all Events and Snapshots immediately.")
+		.add_field("/param", "Set a Parameter, globally or on an Event instance.")
+		.add_field("/volume", "Set the volume of a Bus or VCA.")
+		.add_field("/banks", "List all banks in the Soundbanks folder.")
+		.add_field("/join", "Join your current voice channel.")
+		.add_field("/leave", "Leave the current voice channel.")
+		.add_field("/quit", "Leave voice and exit the program.")
+		.add_field("/help", "Show this message again!");
+
+	if (isPublic) { event.reply(dpp::message(helpEmbed)); }
+	else { event.reply(dpp::message(helpEmbed).set_flags(dpp::m_ephemeral)); }
 }
 
 // Base function, called on startup and when requested by List Banks command
@@ -517,7 +559,7 @@ static void list(const dpp::slashcommand_t& event) {
 	dpp::command_interaction cmd_data = event.command.get_command_interaction();
 
 	// Check the input variables are good
-	int count = (int)cmd_data.options.size();
+	unsigned int count = cmd_data.options.size();
 	if (count > 2) {
 		std::cout << "List command received with too many arguments.\n";
 		event.reply(dpp::message("List command received with too many arguments.").set_flags(dpp::m_ephemeral));
@@ -1361,7 +1403,6 @@ static void join(const dpp::slashcommand_t& event) {
 }
 
 // Leaves the current voice channel
-// Cannot separate base and "command" function due to needing event object, so optional "respond" param included
 static void leave(const dpp::slashcommand_t& event, bool eventRespond = true) {
 	dpp::voiceconn* currentVC = event.from->get_voice(event.command.guild_id);
 	if (currentVC) {
@@ -1540,7 +1581,8 @@ int main() {
 				{ "banks", "List all banks in the Soundbanks folder.", bot.me.id},
 				{ "join", "Join your current voice channel.", bot.me.id},
 				{ "leave", "Leave the current voice channel.", bot.me.id},
-				{ "quit", "Leave voice and exit the program.", bot.me.id}
+				{ "quit", "Leave voice and exit the program.", bot.me.id},
+				{ "help", "List available commands and other info.", bot.me.id}
 			};
 
 			// Playable options
@@ -1618,6 +1660,11 @@ int main() {
 					"The target volume in dB. Values above +10 will be assumed negative, for your ears' sake.", true)
 			);
 
+			commands[15].add_option(
+				dpp::command_option(dpp::co_boolean, "post-publicly",
+					"Whether to post the help message for everyone in the channel, or just for you.", false)
+			);
+
 			// Permissions. Show commands for only those who can use slash commands in a server.
 			// Only the Owner will be allowed to enact commands, but that'll be checked locally.
 			for (unsigned int i = 0; i > commands.size(); i++) {
@@ -1665,6 +1712,7 @@ int main() {
 			else if (event.command.get_command_name() == "join") { join(event); }
 			else if (event.command.get_command_name() == "leave") { leave(event); }
 			else if (event.command.get_command_name() == "quit") { quit(event); }
+			else if (event.command.get_command_name() == "help") { help(event); }
 			else {
 				event.reply(dpp::message("Sorry, " + event.command.get_command_name()
 					+ " isn't a command I understand. Apologies.").set_flags(dpp::m_ephemeral));
