@@ -217,15 +217,21 @@ static void banks() {
 		bool canLoad = true;
 		// Check the bank isn't already loaded
 		for (int j = 0; j < count; j++) {								// For each loaded bank
-			char pathchars[256];						// Hope we don't need longer paths than this...
-			char* pathptr = pathchars;
+
+			std::vector<char> pathChars(256);
+			char* pathptr = pathChars.data();
 			int retrieved = 0;
-			ERRCHECK_HARD(loadedBanks[j]->getPath(pathptr, 256, &retrieved));// Get the path as char*
-
-			std::string pathString(pathptr);							// Make string, then format
+			FMOD_RESULT result = loadedBanks[j]->getPath(pathptr, 256, &retrieved);	// Get the path as char*
+			if (result != FMOD_OK) {
+				if (result == FMOD_ERR_TRUNCATED) {
+					pathChars.resize(retrieved);
+					pathptr = pathChars.data();
+				}
+				else { ERRCHECK_HARD(result); }
+			}
+			std::string pathString(pathptr);					// Make string, then format
 			pathString = formatBankToFilepath(pathString, bank_dir_path);
-
-			if (bankPaths[i].string() == pathString) {					// If the paths match, disqualify
+			if (bankPaths[i].string() == pathString) {			// If the paths match, disqualify
 				canLoad = false;
 			}
 		}
@@ -245,18 +251,24 @@ static void banks() {
 	int i = 0;
 
 	// This is probably going to break. Have to try it with a bunch of banks and remove a few.
-	while (i < (int)pBanks.size()) {							// For each loaded bank
+	while (i < (int)pBanks.size()) {				// For each loaded bank
 
-		bool foundInList = false;							// Get the path ("bank:/")
-		char pathchars[256];
-		char* pathptr = pathchars;
+		bool foundInList = false;					// Get the path ("bank:/...")
+		std::vector<char> pathchars(256);
+		char* pathptr = pathchars.data();
 		int retrieved = 0;
-		ERRCHECK_HARD(pBanks[i + offset]->getPath(pathptr, 256, &retrieved));
-
-		std::string pathString(pathptr);					// Make string, then format to filepath
+		FMOD_RESULT result = pBanks[i + offset]->getPath(pathptr, 256, &retrieved);
+		if (result != FMOD_OK) {
+			if (result == FMOD_ERR_TRUNCATED) {
+				pathchars.resize(retrieved);
+				pathptr = pathchars.data();
+			}
+			else { ERRCHECK_HARD(result); }
+		}
+		std::string pathString(pathptr);			// Make string, then format to filepath
 		pathString = formatBankToFilepath(pathString, bank_dir_path);
 
-		for (int j = 0; j < (int)bankPaths.size(); j++) {		// For each Bank filepath we know of
+		for (int j = 0; j < (int)bankPaths.size(); j++) {	// For each Bank filepath we know of
 			if (pathString == bankPaths[j]) {				// check if found in paths list
 				foundInList = true;
 			}
@@ -269,7 +281,7 @@ static void banks() {
 		}
 		else { i++; }
 		if (i >= INT16_MAX || offset <= INT16_MIN) {		// Emergency cutoff switch to prevent infinite loop...assuming no user will have 32767+ banks.
-			break;											// Probably wasteful to keep checkings, but makes me sleep better at night.
+			break;											// Probably wasteful to keep checking, but makes me sleep better at night.
 		}
 	}
 }
@@ -339,10 +351,19 @@ static void index() {
 	// Loop through every entry
 	for (int i = 0; i < count; i++) {
 		FMOD_GUID pathGUID;
-		char pathStringChars[256];
-		char* pathStringCharsptr = pathStringChars;
+		std::vector<char> pathStringChars(256);
+		char* pathStringCharsptr = pathStringChars.data();
+		int retrieved = 0;
 
-		ERRCHECK_HARD(pMasterStringsBank->getStringInfo(i, &pathGUID, pathStringCharsptr, 256, nullptr));
+		FMOD_RESULT result = pMasterStringsBank->getStringInfo(i, &pathGUID, pathStringCharsptr, 256, &retrieved);
+		if (result != FMOD_OK) {
+			if (result == FMOD_ERR_TRUNCATED) {
+				pathStringChars.resize(retrieved);
+				pathStringCharsptr = pathStringChars.data();
+			}
+			else { ERRCHECK_HARD(result); }
+		}
+
 		std::string pathString(pathStringCharsptr);
 
 		// Is it an event?
@@ -462,19 +483,19 @@ static void index() {
 		std::cout << "   Skipped as Bank: " << entry << " -- Is a Bank." << "\n";
 	}
 	for (auto& entry : unrecognizedSet) {
-		std::cout << "   Skipped: " << entry << " -- Unrecognized string." << "\n";
+		std::cout << "   Skipped as unrecognized string: " << entry << "\n";
 	}
 
 	std::cout << std::endl;
 
 	// Seperately, get the list of Global Parameters
-	// TODO: size and reuse a Vector here
-	std::vector<FMOD_STUDIO_PARAMETER_DESCRIPTION> paramVector;
-	FMOD_STUDIO_PARAMETER_DESCRIPTION* paramVectorPtr = nullptr;
+	std::vector<FMOD_STUDIO_PARAMETER_DESCRIPTION> paramVector(1);
+	FMOD_STUDIO_PARAMETER_DESCRIPTION* paramVectorPtr = paramVector.data();
 	int paramCount = 0;
+	ERRCHECK_HARD(pSystem->getParameterDescriptionCount(&paramCount));
 	paramVector.resize(paramCount);
 	paramVectorPtr = paramVector.data();
-	pSystem->getParameterDescriptionList(paramVectorPtr, paramCount, nullptr);
+	ERRCHECK_HARD(pSystem->getParameterDescriptionList(paramVectorPtr, paramCount, &paramCount));
 
 	// Add them to the vector, one-by-one
 	std::cout << "   Global Parameters:\n";
@@ -527,11 +548,19 @@ static void list(const dpp::slashcommand_t& event) {
 				inst.second.instance->getDescription(&instDesc);
 
 				// Get the Event Description's name
-				char pathchars[256];						// Hope we don't need longer paths than this...
-				char* pathptr = pathchars;
+				std::vector<char> pathchars(256);
+				char* pathptr = pathchars.data();
 				int retrieved = 0;
-				ERRCHECK_SOFT(instDesc->getPath(pathptr, 256, &retrieved));	// Get the path as char*
-				std::string instDescName(pathptr);							// Make string, then format
+				FMOD_RESULT result = instDesc->getPath(pathptr, 256, &retrieved);
+				if (result != FMOD_OK) {
+					if (result == FMOD_ERR_TRUNCATED) {
+						pathchars.resize(retrieved);
+						pathptr = pathchars.data();
+					}
+					else { ERRCHECK_SOFT(result); }
+				}
+
+				std::string instDescName(pathptr);					// Make string, then format
 				instDescName = truncateEventPath(instDescName);
 
 				eventInstanceList.append("- __" + instName + "__");	// Append the event Instance name
@@ -610,10 +639,18 @@ static void list(const dpp::slashcommand_t& event) {
 				snapshot.second->getDescription(&instDesc);
 
 				// Get the Event Description's name
-				char pathchars[256];						// Hope we don't need longer paths than this...
-				char* pathptr = pathchars;
+				std::vector<char> pathchars(256);
+				char* pathptr = pathchars.data();
 				int retrieved = 0;
-				ERRCHECK_HARD(instDesc->getPath(pathptr, 512, &retrieved));	// Get the path as char*
+				FMOD_RESULT result = instDesc->getPath(pathptr, 256, &retrieved);
+				if (result != FMOD_OK) {
+					if (result == FMOD_ERR_TRUNCATED) {
+						pathchars.resize(retrieved);
+						pathptr = pathchars.data();
+					}
+					else { ERRCHECK_SOFT(result); }
+				}
+
 				std::string instDescName(pathptr);							// Make string, then format
 				instDescName = truncateEventPath(instDescName);
 				snapshotsList.append("- " + snapName + "\n");	// Append the event Instance name
@@ -700,11 +737,18 @@ static void playable() {
 
 	// For every entry
 	for (int i = 0; i < count; i++) {
-		FMOD_GUID pathGUID;
-		char pathStringChars[256];
-		char* pathStringCharsptr = pathStringChars;
-		int retreived;
-		ERRCHECK_HARD(pMasterStringsBank->getStringInfo(i, &pathGUID, pathStringCharsptr, 256, &retreived));
+		// Get the Event Description's name and details
+		std::vector<char> pathStringChars(256);
+		char* pathStringCharsptr = pathStringChars.data();
+		int retrieved = 0;
+		FMOD_RESULT result = pMasterStringsBank->getStringInfo(i, nullptr, pathStringCharsptr, 256, &retrieved);
+		if (result != FMOD_OK) {
+			if (result == FMOD_ERR_TRUNCATED) {
+				pathStringChars.resize(retrieved);
+				pathStringCharsptr = pathStringChars.data();
+			}
+			else { ERRCHECK_HARD(result); }
+		}
 		std::string pathString(pathStringCharsptr);
 
 		// Discard if this string isn't an event or snapshot
