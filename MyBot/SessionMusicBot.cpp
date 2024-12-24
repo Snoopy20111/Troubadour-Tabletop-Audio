@@ -76,7 +76,7 @@ dpp::discord_voice_client* currentClient = nullptr;		// Current Voice Client of 
 std::vector<int16_t> myPCMData;							// Main buffer of PCM audio data, which FMOD adds to and D++ cuts "frames" from
 bool exitRequested = false;								// Set to "true" when you want off Mr. Bones Wild Tunes.
 bool isConnected = false;								// Set to "true" when bot is connected to a Voice Channel.
-std::vector<dpp::snowflake> owningUsers;				// Vector of the bot's owner and whitelisted users (todo: whitelisting). Owner is always first value.
+std::set<dpp::snowflake> authorizedUsers;					// Whitelisted users, including Owner.
 dpp::embed basicEmbed = dpp::embed()					// Generic embed with all the shared details
 	.set_color(dpp::colors::construction_cone_orange)
 	.set_timestamp(time(0));
@@ -176,7 +176,7 @@ static void help(const dpp::slashcommand_t& event) {
 	bool isPublic = false;
 
 	// Check the input variables are good
-	unsigned int count = cmd_data.options.size();
+	unsigned int count = (unsigned int)cmd_data.options.size();
 	if (count > 2) {
 		std::cout << "Help command arrived with too many arguments. Bad juju!" << std::endl;
 		event.reply(dpp::message("Help command sent with too many arguments. That shouldn't happen.").set_flags(dpp::m_ephemeral));
@@ -559,7 +559,7 @@ static void list(const dpp::slashcommand_t& event) {
 	dpp::command_interaction cmd_data = event.command.get_command_interaction();
 
 	// Check the input variables are good
-	unsigned int count = cmd_data.options.size();
+	unsigned int count = (unsigned int)cmd_data.options.size();
 	if (count > 2) {
 		std::cout << "List command received with too many arguments.\n";
 		event.reply(dpp::message("List command received with too many arguments.").set_flags(dpp::m_ephemeral));
@@ -1440,8 +1440,11 @@ static void quit(const dpp::slashcommand_t& event) {
 static void onBotAppGet(const dpp::confirmation_callback_t& callbackObj) {
 	if (!callbackObj.is_error()) {
 		botapp = callbackObj.get<dpp::application>();
-		std::cout << "Owner added with Username: " << botapp.owner.username << " and Snowflake ID: " << botapp.owner.id << std::endl;
-		owningUsers.push_back(botapp.owner.id);
+		std::cout << "Owner added with Username: " << botapp.owner.username << " and Snowflake ID: " << botapp.owner.id << "\n";
+		addAuthorizedUser(botapp.owner.id, true);
+		authorizedUsers.insert(authorizedUsers.end(), botapp.owner.id);
+		// Get other authorized users
+
 	}
 	else {
 		std::cout << "Error getting bot application object: " << callbackObj.get_error().human_readable << std::endl;
@@ -1679,22 +1682,15 @@ int main() {
 	bot.on_slashcommand([&bot](const dpp::slashcommand_t& event) {
 
 		// Filter out non-Owners from enacting commands
-		//std::cout << "Command received" << std::endl;
-		//dpp::snowflake cmdSender = std::get<dpp::snowflake>(event.get_parameter("user"));
-		dpp::snowflake cmdSender = event.command.get_issuing_user().id;
-		//std::cout << "Command sent by " << event.command.get_issuing_user
-		// ().username << " with snowflake " << cmdSender << std::endl;
-		bool canRun = false;
-		//std::cout << "owningUsers size: " << owningUsers.size() << std::endl;
-		for (unsigned int i = 0; i < owningUsers.size(); i++) {
-			//std::cout << "cmdSender: " << cmdSender.str() << " || owningUser: " << owningUsers[i] << std::endl;
-			if (owningUsers[i] == cmdSender) {
-				canRun = true;
-				break;
-			}
-		}
-		if (!canRun) {
-			event.reply(dpp::message("Sorry, only the bot owner can run commands for me (for now).").set_flags(dpp::m_ephemeral));
+		std::cout << "Command received" << std::endl;
+		dpp::user cmdSender = event.command.get_issuing_user();
+
+		std::cout << "Command sent by " << cmdSender.username << "with Snowflake ID: " << cmdSender.id << "\n";
+		std::cout << "authorizedUser snowflakes: \n";
+		for (auto& user : authorizedUsers) { std::cout << "   " << user.str() << "\n"; }
+
+		if (!authorizedUsers.contains(cmdSender.id)) {
+			event.reply(dpp::message("Sorry, only authorized users can run commands for me.").set_flags(dpp::m_ephemeral));
 		}
 		else {
 			if (event.command.get_command_name() == "playable") { playable(event); }

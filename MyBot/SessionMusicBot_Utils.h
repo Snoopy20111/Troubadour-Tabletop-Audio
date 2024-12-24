@@ -78,91 +78,103 @@ std::string getBotToken() {
 	return token;
 }
 
-/*std::map<dpp::snowflake, std::string> getOwners() {
-	// Read from config file and grab the Discord username, as well as username
-	std::ifstream myfile("owner.config");
+std::set<dpp::snowflake> getAuthorizedUsers() {
+	// Read from config file, grab each Discord username,
+	// and return them to be added as authorized users
+	std::ifstream myfile("users.config");
 
-	std::map<dpp::snowflake, std::string> owners;
+	std::set<dpp::snowflake> authUsers;
+	std::string line;
 	
-
 	if (myfile.is_open()) {
+		unsigned int currentLine = 0;
+		while (std::getline(myfile, line)) {
+			std::cout << "Line read in: " << line << "\n";
+			currentLine++;
 
-		int numOfCharsRead = 0;
-		bool isInSpace = true;
-		char ch;
-
-		dpp::snowflake newSnowflake; uint64_t newSnowflakeNum;
-		std::string newOwner;
-
-		bool isSnowflake = true;
-		int digitCount = 0;
-
-		// Iterate through each character, doing additional steps along the way when the right bits are encountered
-		// Assumes that myfile.get() will follow the same iterator that >> does
-		while (myfile.get(ch)) {
-
-			// If it's not alphanumeric or punctuation, we don't want it
-			if (!std::isalnum(ch) || !std::ispunct(ch)) { continue; }
-		}
-
-		if (isSnowflake) {		// Snowflake
-			// uint64 has 20 characters at most
-			// todo: add checks here, because I'm not convinced it'll always compute
-			myfile >> newSnowflakeNum;
-			std::cout << newSnowflakeNum << std::endl;
-			isSnowflake = false;
-		}
-		else {					// Username
-
-		}
-
-		while (myfile.get(ch)) {
-			numOfCharsRead++;
-
-			
-
-			//Number
-			//Letter
-			//Blank (tab or space)
-			//Space (tab, space, or escape char)
-			//Control (tab, escape char, NUL, DEL, control codes, etc)
-
-			//This process is to put together a 64-bit number, followed by some spaces, and then the Username
-			//Expected sequence: snowflake, username, snowflake, username
-
-			// Is it a number?
-			if (std::isdigit(ch)) {
-
+			// Check all the characters for anything invalid
+			// Currently that's only non-numbers and non-null
+			char ch; bool isValid = true;
+			for (unsigned int i = 0; i < line.length(); i++) {
+				ch = line.at(i);
+				//todo: if null terminator, not just null
+				if (!std::isdigit(ch) && ch != NULL) {
+					isValid = false;
+					std::cout << "Invalid character: "<< ch << " in users.config at line: " << currentLine << "\n";
+				}
 			}
 
-			// Is it a character?
-			//else if ()
-
-			if (std::isspace(ch, myfile.getloc())) {
-				isInSpace = true;
+			//If it's good, add to our set
+			//String -> char*[] -> unsigned int -> dpp::snowflake
+			if (isValid) {
+				dpp::snowflake snowflake(atoi(line.c_str()));
+				std::cout << "Accepting Snowflake: " << snowflake.str() << "\n";
+				authUsers.insert(authUsers.end(), snowflake);
 			}
-			else if (isInSpace) {
-				isInSpace = false;
-			}
-
+			std::cout << std::endl;
 		}
-
+		myfile.close();
 	}
 	else {
-		std::cout << "Owner not established in owner.config file. Ensure the file is in the correct location and not corrupted." << std::endl;
-		exit(-1);
+		std::cout << "Owner.config file unable to be opened for reading." << std::endl;
+		//exit(-1);
 	}
-	myfile.close();
-	return owners;
+	return authUsers;
 }
 
-bool addOwners() {
+bool addAuthorizedUser(dpp::snowflake newAuth, bool checkAgainstFile = false) {
+	if (checkAgainstFile) {
+		std::set<dpp::snowflake> authUsers = getAuthorizedUsers();
+		if (authUsers.contains(newAuth)) {
+			std::cout << "User already exists in users.config, not adding." << std::endl;
+			return false;
+		}
+	}
+
+	std::ofstream myfile("users.config");
+	if (myfile.is_open()) {
+		myfile << newAuth.str() << std::endl;
+		myfile.close();
+	}
+	else {
+		std::cout << "Owner.config file unable to be opened for writing to." << std::endl;
+		return false;
+	}
 	return true;
 }
 
-bool removeOwners() {
-	return true;
+bool addAuthorizedUser(dpp::snowflake newAuth, std::set<dpp::snowflake> userSet) {
+	if (!userSet.contains(newAuth)) {
+		return addAuthorizedUser(newAuth);
+	}
+	std::cout << "User already exists in authorized users set, not adding." << std::endl;
+	return false;
+}
+
+/*bool addAuthorizedUser(unsigned int newAuth) {
+	return addAuthorizedUser(dpp::snowflake(newAuth));
+}
+
+bool addAuthorizedUser(std::string newAuth) {
+	return addAuthorizedUser(dpp::snowflake(atoi(newAuth.c_str())));
 }*/
+
+bool removeAuthorizedUsers() {
+	// Read from config file, grab each Discord username,
+	// and return them to be added as authorized users
+	std::ifstream myfile("users.config");
+
+	std::set<dpp::snowflake> authUsers;
+	std::string line;
+
+	if (myfile.is_open()) {
+	}
+	else {
+		std::cout << "Owner.config file unable to be opened." << std::endl;
+		return false;
+	}
+	return true;
+}
 
 
 // Turns paths of FMOD format ("bank:/") to the filepath it would've loaded from
