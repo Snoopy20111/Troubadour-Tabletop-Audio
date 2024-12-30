@@ -1,0 +1,3 @@
+If compiling yourself:
+1) Rename this file to "users.config"
+2) Paste one Snowflake ID to this file per-line, or simply add them with the /user command

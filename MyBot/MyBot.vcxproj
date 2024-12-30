@@ -77,6 +77,8 @@
     <LibraryPath>dependencies\32\debug\lib\dpp-10.0;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)Builds\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(Platform)\$(Configuration)\</IntDir>
+    <CustomBuildAfterTargets>
+    </CustomBuildAfterTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -84,6 +86,8 @@
     <LibraryPath>dependencies\32\release\lib\dpp-10.0;$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86)</LibraryPath>
     <IntDir>$(Platform)\$(Configuration)\</IntDir>
     <OutDir>$(SolutionDir)Builds\$(Platform)\$(Configuration)\</OutDir>
+    <CustomBuildAfterTargets>
+    </CustomBuildAfterTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -98,6 +102,8 @@
     <IncludePath>dependencies\include\dpp-10.0;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
     <LibraryPath>dependencies\64\release\lib\dpp-10.0;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64)</LibraryPath>
     <OutDir>$(SolutionDir)Builds\$(Platform)\$(Configuration)\</OutDir>
+    <CustomBuildAfterTargets>
+    </CustomBuildAfterTargets>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -117,19 +123,33 @@
       <AdditionalLibraryDirectories>C:\Program Files %28x86%29\FMOD SoundSystem\FMOD Studio API Windows\api\core\lib\x86;C:\Program Files %28x86%29\FMOD SoundSystem\FMOD Studio API Windows\api\studio\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>copy /y "$(ProjectDir)dependencies\32\debug\bin\*.dll" "$(OutDir)"
-copy /y "C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\core\lib\x86\*.dll" "$(OutDir)"
-copy /y "C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\studio\lib\x86\*.dll" "$(OutDir)"
-for /r "$(MSBuildProjectDirectory)\soundbanks" %%D in (*) do xcopy /y /d /f /i "%%D" "$(OutDir)soundbanks\"
-copy /y "$(MSBuildProjectDirectory)\token.config" "$(OutDir)token.config"</Command>
+      <Command>for /r "$(MSBuildProjectDirectory)\soundbanks" %%D in (*) do xcopy /y /d /f /i "%%D" "$(OutDir)soundbanks\"
+copy /y "$(MSBuildProjectDirectory)\token.config" "$(OutDir)token.config"
+copy /y "$(MSBuildProjectDirectory)\users.config" "$(OutDir)users.config"</Command>
     </PostBuildEvent>
     <PostBuildEvent>
-      <Message>Copy 32 Bit Debug DLLs, Soundbanks, and Bot Token to Build</Message>
+      <Message>Copying Soundbanks and config files to Build</Message>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>
       </Command>
     </PreBuildEvent>
+    <CustomBuildStep>
+      <Command>
+      </Command>
+    </CustomBuildStep>
+    <CustomBuildStep>
+      <Message>
+      </Message>
+    </CustomBuildStep>
+    <PreLinkEvent>
+      <Command>copy /y "$(ProjectDir)dependencies\32\debug\bin\*.dll" "$(OutDir)"
+copy /y "C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\core\lib\x86\*.dll" "$(OutDir)"
+copy /y "C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\studio\lib\x86\*.dll" "$(OutDir)"</Command>
+    </PreLinkEvent>
+    <PreLinkEvent>
+      <Message>Copy 32 Bit Debug DLLs</Message>
+    </PreLinkEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -153,19 +173,33 @@ copy /y "$(MSBuildProjectDirectory)\token.config" "$(OutDir)token.config"</Comma
       <AdditionalLibraryDirectories>C:\Program Files %28x86%29\FMOD SoundSystem\FMOD Studio API Windows\api\core\lib\x86;C:\Program Files %28x86%29\FMOD SoundSystem\FMOD Studio API Windows\api\studio\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>copy /y "$(ProjectDir)dependencies\32\release\bin\*.dll" "$(OutDir)"
-copy /y "C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\core\lib\x86\*.dll" "$(OutDir)"
-copy /y "C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\studio\lib\x86\*.dll" "$(OutDir)"
-for /r "$(MSBuildProjectDirectory)\soundbanks" %%D in (*) do xcopy /y /d /f /i "%%D" "$(OutDir)soundbanks\"
-copy /y "$(MSBuildProjectDirectory)\token.config" "$(OutDir)token.config"</Command>
+      <Command>for /r "$(MSBuildProjectDirectory)\soundbanks" %%D in (*) do xcopy /y /d /f /i "%%D" "$(OutDir)soundbanks\"
+copy /y "$(MSBuildProjectDirectory)\token.config" "$(OutDir)token.config"
+copy /y "$(MSBuildProjectDirectory)\users.config" "$(OutDir)users.config"</Command>
     </PostBuildEvent>
     <PostBuildEvent>
-      <Message>Copy 32 Bit Release DLLs, Soundbanks, and Bot Token to Build</Message>
+      <Message>Copying Soundbanks and config files to Build</Message>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>
       </Command>
     </PreBuildEvent>
+    <CustomBuildStep>
+      <Command>
+      </Command>
+    </CustomBuildStep>
+    <CustomBuildStep>
+      <Message>
+      </Message>
+    </CustomBuildStep>
+    <PreLinkEvent>
+      <Command>copy /y "$(ProjectDir)dependencies\32\release\bin\*.dll" "$(OutDir)"
+copy /y "C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\core\lib\x86\*.dll" "$(OutDir)"
+copy /y "C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\studio\lib\x86\*.dll" "$(OutDir)"</Command>
+    </PreLinkEvent>
+    <PreLinkEvent>
+      <Message>Copy 32 Bit Release DLLs</Message>
+    </PreLinkEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -185,19 +219,31 @@ copy /y "$(MSBuildProjectDirectory)\token.config" "$(OutDir)token.config"</Comma
       <AdditionalLibraryDirectories>C:\Program Files %28x86%29\FMOD SoundSystem\FMOD Studio API Windows\api\core\lib\x64;C:\Program Files %28x86%29\FMOD SoundSystem\FMOD Studio API Windows\api\studio\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>copy /y "$(ProjectDir)dependencies\64\debug\bin\*.dll" "$(OutDir)"
-copy /y "C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\core\lib\x64\*.dll" "$(OutDir)"
-copy /y "C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\studio\lib\x64\*.dll" "$(OutDir)"
-for /r "$(MSBuildProjectDirectory)\soundbanks" %%D in (*) do xcopy /y /d /f /i "%%D" "$(OutDir)soundbanks\"
-copy /y "$(MSBuildProjectDirectory)\token.config" "$(OutDir)token.config"</Command>
+      <Command>for /r "$(MSBuildProjectDirectory)\soundbanks" %%D in (*) do xcopy /y /d /f /i "%%D" "$(OutDir)soundbanks\"
+copy /y "$(MSBuildProjectDirectory)\token.config" "$(OutDir)token.config"
+copy /y "$(MSBuildProjectDirectory)\users.config" "$(OutDir)users.config"</Command>
     </PostBuildEvent>
     <PostBuildEvent>
-      <Message>Copy 64 Bit Debug DLLs, Soundbanks, and Bot Token to Build</Message>
+      <Message>Copying Soundbanks and config files to Build</Message>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>
       </Command>
     </PreBuildEvent>
+    <CustomBuildStep>
+      <Command>
+      </Command>
+    </CustomBuildStep>
+    <CustomBuildStep>
+      <Message>
+      </Message>
+    </CustomBuildStep>
+    <PreLinkEvent>
+      <Command>copy /y "$(ProjectDir)dependencies\64\debug\bin\*.dll" "$(OutDir)"
+copy /y "C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\core\lib\x64\*.dll" "$(OutDir)"
+copy /y "C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\studio\lib\x64\*.dll" "$(OutDir)"</Command>
+      <Message>Copy 64 Bit Debug DLLs</Message>
+    </PreLinkEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -221,19 +267,33 @@ copy /y "$(MSBuildProjectDirectory)\token.config" "$(OutDir)token.config"</Comma
       <AdditionalLibraryDirectories>C:\Program Files %28x86%29\FMOD SoundSystem\FMOD Studio API Windows\api\core\lib\x64;C:\Program Files %28x86%29\FMOD SoundSystem\FMOD Studio API Windows\api\studio\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>copy /y "$(ProjectDir)dependencies\64\release\bin\*.dll" "$(OutDir)"
-copy /y "C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\core\lib\x64\*.dll" "$(OutDir)"
-copy /y "C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\studio\lib\x64\*.dll" "$(OutDir)"
-for /r "$(MSBuildProjectDirectory)\soundbanks" %%D in (*) do xcopy /y /d /f /i "%%D" "$(OutDir)soundbanks\"
-copy /y "$(MSBuildProjectDirectory)\token.config" "$(OutDir)token.config"</Command>
+      <Command>for /r "$(MSBuildProjectDirectory)\soundbanks" %%D in (*) do xcopy /y /d /f /i "%%D" "$(OutDir)soundbanks\"
+copy /y "$(MSBuildProjectDirectory)\token.config" "$(OutDir)token.config"
+copy /y "$(MSBuildProjectDirectory)\users.config" "$(OutDir)users.config"</Command>
     </PostBuildEvent>
     <PostBuildEvent>
-      <Message>Copy 64 Bit Release DLLs, Soundbanks, and Bot Token to Build</Message>
+      <Message>Copying Soundbanks and config files to Build</Message>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>
       </Command>
     </PreBuildEvent>
+    <CustomBuildStep>
+      <Command>
+      </Command>
+    </CustomBuildStep>
+    <CustomBuildStep>
+      <Message>
+      </Message>
+    </CustomBuildStep>
+    <PreLinkEvent>
+      <Command>copy /y "$(ProjectDir)dependencies\64\release\bin\*.dll" "$(OutDir)"
+copy /y "C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\core\lib\x64\*.dll" "$(OutDir)"
+copy /y "C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\studio\lib\x64\*.dll" "$(OutDir)"</Command>
+    </PreLinkEvent>
+    <PreLinkEvent>
+      <Message>Copy 64 Bit Release DLLs</Message>
+    </PreLinkEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="SessionMusicBot.cpp" />

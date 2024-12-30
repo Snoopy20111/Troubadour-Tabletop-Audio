@@ -76,7 +76,7 @@ dpp::discord_voice_client* currentClient = nullptr;		// Current Voice Client of 
 std::vector<int16_t> myPCMData;							// Main buffer of PCM audio data, which FMOD adds to and D++ cuts "frames" from
 bool exitRequested = false;								// Set to "true" when you want off Mr. Bones Wild Tunes.
 bool isConnected = false;								// Set to "true" when bot is connected to a Voice Channel.
-std::vector<dpp::snowflake> owningUsers;				// Vector of the bot's owner and whitelisted users (todo: whitelisting). Owner is always first value.
+std::set<dpp::snowflake> authorizedUsers;					// Whitelisted users, including Owner.
 dpp::embed basicEmbed = dpp::embed()					// Generic embed with all the shared details
 	.set_color(dpp::colors::construction_cone_orange)
 	.set_timestamp(time(0));
@@ -169,6 +169,7 @@ static void ping(const dpp::slashcommand_t& event) {
 	std::cout << "Responding to Ping command." << std::endl;
 }
 
+// Simple Help function, meant to list all commands. Must be manually updated.
 static void help(const dpp::slashcommand_t& event) {
 
 	// Command and Subcommand data
@@ -176,7 +177,7 @@ static void help(const dpp::slashcommand_t& event) {
 	bool isPublic = false;
 
 	// Check the input variables are good
-	unsigned int count = cmd_data.options.size();
+	unsigned int count = (unsigned int)cmd_data.options.size();
 	if (count > 2) {
 		std::cout << "Help command arrived with too many arguments. Bad juju!" << std::endl;
 		event.reply(dpp::message("Help command sent with too many arguments. That shouldn't happen.").set_flags(dpp::m_ephemeral));
@@ -203,6 +204,7 @@ static void help(const dpp::slashcommand_t& event) {
 		.add_field("/banks", "List all banks in the Soundbanks folder.")
 		.add_field("/join", "Join your current voice channel.")
 		.add_field("/leave", "Leave the current voice channel.")
+		.add_field("/user", "List, Add, or Remove user permissions.")
 		.add_field("/quit", "Leave voice and exit the program.")
 		.add_field("/help", "Show this message again!");
 
@@ -559,7 +561,7 @@ static void list(const dpp::slashcommand_t& event) {
 	dpp::command_interaction cmd_data = event.command.get_command_interaction();
 
 	// Check the input variables are good
-	unsigned int count = cmd_data.options.size();
+	unsigned int count = (unsigned int)cmd_data.options.size();
 	if (count > 2) {
 		std::cout << "List command received with too many arguments.\n";
 		event.reply(dpp::message("List command received with too many arguments.").set_flags(dpp::m_ephemeral));
@@ -1436,12 +1438,133 @@ static void quit(const dpp::slashcommand_t& event) {
 	event.reply(dpp::message("Shutting down. Bye bye! I hope I played good sounds!").set_flags(dpp::m_ephemeral));
 }
 
+static void user_list(const dpp::slashcommand_t& event, dpp::command_data_option subcommand) {
+	std::set<dpp::snowflake> authorizedList = getAuthorizedUsers();
+	dpp::embed userListEmbed = basicEmbed;
+
+	userListEmbed.set_title("Authorized Users");
+
+	if (authorizedList.size() > 0) {
+		for (auto& snowflake : authorizedList) {
+			dpp::user *test = dpp::find_user(snowflake);
+			if (test != nullptr) {
+				userListEmbed.add_field(test->username, snowflake.str());
+			}
+			else {
+				userListEmbed.add_field("(Unresolved Username)", snowflake.str());
+			}
+		}
+	}
+	else {
+		userListEmbed.set_description("No Authorized Users found...this shouldn't be possible.");
+	}
+
+	event.reply(dpp::message(event.command.channel_id, userListEmbed).set_flags(dpp::m_ephemeral));
+}
+
+static void user_add(const dpp::slashcommand_t& event, dpp::command_data_option subcommand) {
+
+	int subcount = (int)subcommand.options.size();
+	if (subcount < 1) {
+		std::cout << "Play " << subcommand.name << " command arrived without enough arguments.Bad juju!" << std::endl;
+		event.reply(dpp::message("Play " + subcommand.name + " command sent without enough arguments. Bad juju!").set_flags(dpp::m_ephemeral));
+		return;
+	}
+	else if (subcount > 2) {
+		std::cout << "Play " << subcommand.name << " command arrived with too many arguments. Bad juju!" << std::endl;
+		event.reply(dpp::message("Play " + subcommand.name + " command sent with too many arguments. Bad juju!").set_flags(dpp::m_ephemeral));
+		return;
+	}
+
+	dpp::snowflake snowflakeToAdd = std::get<dpp::snowflake>(subcommand.options[0].value);
+	dpp::user* userToAdd = dpp::find_user(snowflakeToAdd);
+
+	if (userToAdd != nullptr) {
+		if (addAuthorizedUser(snowflakeToAdd)) {
+			std::cout << "Added user to Authorized Users list: " << userToAdd->username << std::endl;
+			event.reply(dpp::message("Added user " + userToAdd->username + " with Snowflake ID " + snowflakeToAdd.str() + " to Authorized Users list.").set_flags(dpp::m_ephemeral));
+		}
+		else {
+			std::cout << "Some error occured with adding the Authorized User." << std::endl;
+			event.reply(dpp::message("Some error occured with adding the Authorized User: " + userToAdd->username).set_flags(dpp::m_ephemeral));
+
+		}
+	}
+	else {
+		std::cout << "Adding uncached user with Snowflake ID: " << snowflakeToAdd.str() << "\n";
+		if (addAuthorizedUser(snowflakeToAdd)) {
+			std::cout << "Added user to Authorized Users list." << std::endl;
+			event.reply(dpp::message("Added user (unresolved) with Snowflake ID " + snowflakeToAdd.str() + " to Authorized Users list.").set_flags(dpp::m_ephemeral));
+		}
+		else {
+			std::cout << "Some error occured with adding the Authorized User." << std::endl;
+			event.reply(dpp::message("Some error occured with adding the Authorized User.").set_flags(dpp::m_ephemeral));
+		}
+	}
+}
+
+static void user_remove(const dpp::slashcommand_t& event, dpp::command_data_option subcommand) {
+
+	dpp::snowflake snowflakeToAdd = std::get<dpp::snowflake>(subcommand.options[0].value);
+	dpp::user* userToAdd = dpp::find_user(snowflakeToAdd);
+
+	if (userToAdd != nullptr) {
+		std::cout << "Removing Authorized User " << userToAdd->username << " with Snowflake ID: " << snowflakeToAdd << "\n";
+		dpp::snowflake ownerSnowflake(botapp.owner.id);
+		if (removeAuthorizedUser(snowflakeToAdd, authorizedUsers, ownerSnowflake)) {
+			std::cout << "User removed successfully." << std::endl;
+			event.reply(dpp::message("User " + userToAdd->username + " removed successfully.").set_flags(dpp::m_ephemeral));
+		}
+		else {
+			std::cout << "User removal failed. User may not exist in the list, or there may have been a failure in removal." << std::endl;
+			event.reply(dpp::message("An error occured with removing the Authorized User: " + userToAdd->username).set_flags(dpp::m_ephemeral));
+		}
+	}
+	else {
+		std::cout << "Removing Authorized User with Snowflake ID: " << snowflakeToAdd << "\n";
+		if (removeAuthorizedUser(snowflakeToAdd, authorizedUsers)) {
+			std::cout << "User removed successfully." << std::endl;
+			event.reply(dpp::message("User successfully removed.").set_flags(dpp::m_ephemeral));
+		}
+		else {
+			std::cout << "User removal failed. User may not exist in the list, or there may have been a failure in removal." << std::endl;
+			event.reply(dpp::message("An error occured with removing the Authorized User.").set_flags(dpp::m_ephemeral));
+		}
+	}
+}
+
+static void user(const dpp::slashcommand_t& event) {
+	dpp::command_interaction cmd_data = event.command.get_command_interaction();
+
+	// Check the input variables are good
+	int count = (int)cmd_data.options.size();
+	if (count < 1) {
+		std::cout << "Play command arrived with no arguments or subcommands. Bad juju!" << std::endl;
+		event.reply(dpp::message("Play command sent with no arguments or subcommands. Bad juju!").set_flags(dpp::m_ephemeral));
+		return;
+	}
+	else if (count > 2) {
+		std::cout << "Play command arrived with too many arguments. Bad juju!" << std::endl;
+		event.reply(dpp::message("Play command sent with too many arguments. Bad juju!").set_flags(dpp::m_ephemeral));
+		return;
+	}
+
+	dpp::command_data_option subcommand = cmd_data.options[0];
+
+	if (subcommand.name == "list") { user_list(event, subcommand); }
+	else if (subcommand.name == "add") { user_add(event, subcommand); }
+	else if (subcommand.name == "remove") { user_remove(event, subcommand); }
+}
+
 // Callback function called when bot's Application object is acquired
 static void onBotAppGet(const dpp::confirmation_callback_t& callbackObj) {
 	if (!callbackObj.is_error()) {
 		botapp = callbackObj.get<dpp::application>();
-		std::cout << "Owner added with Username: " << botapp.owner.username << " and Snowflake ID: " << botapp.owner.id << std::endl;
-		owningUsers.push_back(botapp.owner.id);
+		std::cout << "Owner added with Username: " << botapp.owner.username << " and Snowflake ID: " << botapp.owner.id << "\n";
+		addAuthorizedUser(botapp.owner.id, true);
+		authorizedUsers.insert(authorizedUsers.end(), botapp.owner.id);
+		// Get other authorized users
+
 	}
 	else {
 		std::cout << "Error getting bot application object: " << callbackObj.get_error().human_readable << std::endl;
@@ -1582,6 +1705,7 @@ int main() {
 				{ "join", "Join your current voice channel.", bot.me.id},
 				{ "leave", "Leave the current voice channel.", bot.me.id},
 				{ "quit", "Leave voice and exit the program.", bot.me.id},
+				{ "user", "Add or Remove user permissions.", bot.me.id},
 				{ "help", "List available commands and other info.", bot.me.id}
 			};
 
@@ -1660,13 +1784,29 @@ int main() {
 					"The target volume in dB. Values above +10 will be assumed negative, for your ears' sake.", true)
 			);
 
-			commands[15].add_option(
+			// User options
+			// Sub-Command: List
+			dpp::command_option listUsersSubCmd = dpp::command_option(dpp::co_sub_command, "list", "List current authorized users.");
+			commands[15].add_option(listUsersSubCmd);
+
+			// Sub-Command: Add
+			dpp::command_option addUsersSubCmd = dpp::command_option(dpp::co_sub_command, "add", "Add a user to the Authorized list.");
+			addUsersSubCmd.add_option(dpp::command_option(dpp::co_mentionable, "user", "The user to add. Will automatically grab their Snowflake ID.", true));
+			commands[15].add_option(addUsersSubCmd);
+
+			// Sub-Command: Remove
+			dpp::command_option removeUsersSubCmd = dpp::command_option(dpp::co_sub_command, "remove", "Remove a user from the Authorized list.");
+			removeUsersSubCmd.add_option(dpp::command_option(dpp::co_mentionable, "user", "The user to remove. Will automatically grab their Snowflake ID.", true));
+			commands[15].add_option(removeUsersSubCmd);
+
+			// Help
+			commands[16].add_option(
 				dpp::command_option(dpp::co_boolean, "post-publicly",
 					"Whether to post the help message for everyone in the channel, or just for you.", false)
 			);
 
 			// Permissions. Show commands for only those who can use slash commands in a server.
-			// Only the Owner will be allowed to enact commands, but that'll be checked locally.
+			// Permission to _run_ the commands will be checked locally.
 			for (unsigned int i = 0; i > commands.size(); i++) {
 				commands[i].default_member_permissions.has(dpp::permissions::p_use_application_commands);
 			}
@@ -1679,22 +1819,15 @@ int main() {
 	bot.on_slashcommand([&bot](const dpp::slashcommand_t& event) {
 
 		// Filter out non-Owners from enacting commands
-		//std::cout << "Command received" << std::endl;
-		//dpp::snowflake cmdSender = std::get<dpp::snowflake>(event.get_parameter("user"));
-		dpp::snowflake cmdSender = event.command.get_issuing_user().id;
-		//std::cout << "Command sent by " << event.command.get_issuing_user
-		// ().username << " with snowflake " << cmdSender << std::endl;
-		bool canRun = false;
-		//std::cout << "owningUsers size: " << owningUsers.size() << std::endl;
-		for (unsigned int i = 0; i < owningUsers.size(); i++) {
-			//std::cout << "cmdSender: " << cmdSender.str() << " || owningUser: " << owningUsers[i] << std::endl;
-			if (owningUsers[i] == cmdSender) {
-				canRun = true;
-				break;
-			}
-		}
-		if (!canRun) {
-			event.reply(dpp::message("Sorry, only the bot owner can run commands for me (for now).").set_flags(dpp::m_ephemeral));
+		std::cout << "Command received" << std::endl;
+		dpp::user cmdSender = event.command.get_issuing_user();
+
+		std::cout << "Command sent by " << cmdSender.username << " with Snowflake ID: " << cmdSender.id << "\n";
+		std::cout << "authorizedUser snowflakes: \n";
+		for (auto& user : authorizedUsers) { std::cout << "   " << user.str() << "\n"; }
+		
+		if (!authorizedUsers.contains(cmdSender.id)) {
+			event.reply(dpp::message("Sorry, only authorized users can run commands for me.").set_flags(dpp::m_ephemeral));
 		}
 		else {
 			if (event.command.get_command_name() == "playable") { playable(event); }
@@ -1712,6 +1845,7 @@ int main() {
 			else if (event.command.get_command_name() == "join") { join(event); }
 			else if (event.command.get_command_name() == "leave") { leave(event); }
 			else if (event.command.get_command_name() == "quit") { quit(event); }
+			else if (event.command.get_command_name() == "user") { user(event); }
 			else if (event.command.get_command_name() == "help") { help(event); }
 			else {
 				event.reply(dpp::message("Sorry, " + event.command.get_command_name()

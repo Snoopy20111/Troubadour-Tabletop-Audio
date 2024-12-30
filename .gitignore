@@ -9,8 +9,11 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
-#Files with contents we don't want public
+#Files with contents we don't want public or don't want to accidentally push
 MyBot/token.config
+MyBot/users.config
+MyBot/users.config.old
+MyBot/users.config.temp
 Packages/
 Builds/
 
