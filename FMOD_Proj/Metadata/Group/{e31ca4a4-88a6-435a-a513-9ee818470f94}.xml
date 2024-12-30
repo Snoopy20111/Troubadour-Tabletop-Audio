@@ -4,8 +4,14 @@
 		<property name="note">
 			<value>No events in here should be playing by themselves. Only as Event Instruments, routed through the other groups.</value>
 		</property>
+		<property name="color">
+			<value>Green</value>
+		</property>
 		<property name="volume">
 			<value>-80</value>
+		</property>
+		<property name="overridingInputFormat">
+			<value>1</value>
 		</property>
 		<property name="name">
 			<value>Source</value>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="MixerGroup" id="{0878badc-cedb-4930-8d15-eb5c90d7d3a8}">
+		<property name="note">
+			<value>A bus that exists purely for routing FMOD Core file playback through.</value>
+		</property>
+		<property name="color">
+			<value>Blue</value>
+		</property>
+		<property name="name">
+			<value>Files</value>
+		</property>
+		<relationship name="effectChain">
+			<destination>{d44e3834-27d7-435e-a621-1ec3f62e56f0}</destination>
+		</relationship>
+		<relationship name="panner">
+			<destination>{3f72c77e-5ada-48da-9874-76c4bffb52f6}</destination>
+		</relationship>
+		<relationship name="output">
+			<destination>{ab0c2c17-5a98-43a0-9014-880b562c8be6}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusEffectChain" id="{d44e3834-27d7-435e-a621-1ec3f62e56f0}">
+		<relationship name="effects">
+			<destination>{e6021db7-dd34-4e74-9e3e-37f80258bdf9}</destination>
+		</relationship>
+	</object>
+	<object class="MixerBusPanner" id="{3f72c77e-5ada-48da-9874-76c4bffb52f6}" />
+	<object class="MixerBusFader" id="{e6021db7-dd34-4e74-9e3e-37f80258bdf9}" />
+</objects>
