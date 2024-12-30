@@ -46,7 +46,7 @@ int16_t floatToPCM(float inSample) {
 
 // Hard FMOD Error Check, will quit program if encountered
 // Best to use in places where continuing will without a doubt cause weirder issues, corrupt data, etc.
-void ERRCHECK_HARD(FMOD_RESULT result) {
+void errorCheckFMODHard(FMOD_RESULT result) {
 	if (result != FMOD_OK) {
 		std::cout << "\n\n";
 		printf("FMOD Error! (%d) %s\n", result, FMOD_ErrorString(result));
@@ -56,7 +56,7 @@ void ERRCHECK_HARD(FMOD_RESULT result) {
 }
 
 // Soft FMOD Error Check, will simply print the result. More like a warning.
-void ERRCHECK_SOFT(FMOD_RESULT result) {
+void errorCheckFMODSoft(FMOD_RESULT result) {
 	if (result != FMOD_OK) {
 		std::cout << "\n\n";
 		printf("FMOD Error! (%d) %s\n", result, FMOD_ErrorString(result));
@@ -211,10 +211,19 @@ bool removeAuthorizedUser(dpp::snowflake& authToRemove, std::set<dpp::snowflake>
 
 
 // Turns paths of FMOD format ("bank:/") to the filepath it would've loaded from
-std::string formatBankToFilepath(std::string bankPath, std::filesystem::path bank_dir_path) {
+std::string formatBankToFilepath(std::string bankPath, const std::filesystem::path& bank_dir_path) {
 	bankPath.erase(0, 6);										// Remove "bank:/" at start
 	bankPath.append(".bank");									// Add ".bank" at end
 	bankPath = bank_dir_path.string() + "\\" + bankPath;		// Add banks directory path at start
+	
+	// Find and replace forward slashes
+	// Windows only, needs replacement if porting to other platforms
+	size_t pos = bankPath.find("/");
+	while (pos != std::string::npos) {
+		bankPath.replace(pos, 1, "\\");
+		pos = bankPath.find("/", pos + 1);
+	}
+
 	return bankPath;
 }
 

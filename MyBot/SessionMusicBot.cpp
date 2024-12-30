@@ -215,7 +215,7 @@ static void help(const dpp::slashcommand_t& event) {
 // Base function, called on startup and when requested by List Banks command
 static void banks() {
 
-	std::cout << "Checking Banks path: " << bank_dir_path.string() << "\n\n";
+	std::cout << "Checking Banks path: " << bank_dir_path.string() << "\n";
 
 	std::set<std::filesystem::path> sortedOutput;
 
@@ -249,85 +249,36 @@ static void banks() {
 
 	//Get list of already loaded banks
 	int count = 0;
-	ERRCHECK_HARD(pSystem->getBankCount(&count));
+	errorCheckFMODHard(pSystem->getBankCount(&count));
 	std::vector<FMOD::Studio::Bank*> loadedBanks; loadedBanks.resize(count);
 	int writtenCount = 0;
-	ERRCHECK_HARD(pSystem->getBankList(loadedBanks.data(), count, &writtenCount));
+	errorCheckFMODHard(pSystem->getBankList(loadedBanks.data(), count, &writtenCount));
 
 	std::cout << "Loading Banks...\n";
 
-	// For every accepted bank path, add to output list, and load if not loaded already
+	// For every accepted bank path, add to output list, and attempt to load
 	for (int i = 0; i < (int)bankPaths.size(); i++) {					// For every accepted bank path
-		bool canLoad = true;
-		// Check the bank isn't already loaded
-		for (int j = 0; j < count; j++) {								// For each loaded bank
 
-			std::vector<char> pathChars(256);
-			char* pathptr = pathChars.data();
-			int retrieved = 0;
-			FMOD_RESULT result = loadedBanks[j]->getPath(pathptr, 256, &retrieved);	// Get the path as char*
-			if (result != FMOD_OK) {
-				if (result == FMOD_ERR_TRUNCATED) {
-					pathChars.resize(retrieved);
-					pathptr = pathChars.data();
-				}
-				else { ERRCHECK_HARD(result); }
-			}
-			std::string pathString(pathptr);					// Make string, then format
-			pathString = formatBankToFilepath(pathString, bank_dir_path);
-			if (bankPaths[i].string() == pathString) {			// If the paths match, disqualify
-				canLoad = false;
-			}
-		}
-
-		if (canLoad) {
-			FMOD::Studio::Bank* newBank = nullptr;						// Load, if bank qualifies
-			ERRCHECK_HARD(pSystem->loadBankFile(bankPaths[i].string().c_str(), FMOD_STUDIO_LOAD_BANK_NORMAL, &newBank));
+		FMOD::Studio::Bank* newBank = nullptr;						// Load, if bank qualifies
+		FMOD_RESULT result = pSystem->loadBankFile(bankPaths[i].string().c_str(), FMOD_STUDIO_LOAD_BANK_NORMAL, &newBank);
+		if (result == FMOD_OK) {
 			pBanks.push_back(newBank);
 			std::cout << "   Loaded: " << bankPaths[i].string() << "\n";
 		}
-		else { std::cout << "   Skipped Load: " << bankPaths[i].string() << "\n"; }
+		else if (result == FMOD_ERR_EVENT_ALREADY_LOADED) {
+			std::cout << "   Skipped Load (bank already loaded in FMOD Studio): " << bankPaths[i].string() << "\n";
+		}
+		else {
+			errorCheckFMODHard(result);
+		}
 	}
 	std::cout << std::endl;
 
-	// Cleanup! Unload unused banks
-	int offset = 0;
-	int i = 0;
-
-	// This is probably going to break. Have to try it with a bunch of banks and remove a few.
-	while (i < (int)pBanks.size()) {				// For each loaded bank
-
-		bool foundInList = false;					// Get the path ("bank:/...")
-		std::vector<char> pathchars(256);
-		char* pathptr = pathchars.data();
-		int retrieved = 0;
-		FMOD_RESULT result = pBanks[i + offset]->getPath(pathptr, 256, &retrieved);
-		if (result != FMOD_OK) {
-			if (result == FMOD_ERR_TRUNCATED) {
-				pathchars.resize(retrieved);
-				pathptr = pathchars.data();
-			}
-			else { ERRCHECK_HARD(result); }
-		}
-		std::string pathString(pathptr);			// Make string, then format to filepath
-		pathString = formatBankToFilepath(pathString, bank_dir_path);
-
-		for (int j = 0; j < (int)bankPaths.size(); j++) {	// For each Bank filepath we know of
-			if (pathString == bankPaths[j]) {				// check if found in paths list
-				foundInList = true;
-			}
-		}
-		if (!foundInList) {									// If not found in list
-			std::cout << "Unload & Delete: " << pathString << "\n";
-			pBanks[i + offset]->unload();					// Unload, then erase that element
-			pBanks.erase(pBanks.begin() + i);
-			offset--;
-		}
-		else { i++; }
-		if (i >= INT16_MAX || offset <= INT16_MIN) {		// Emergency cutoff switch to prevent infinite loop...assuming no user will have 32767+ banks.
-			break;											// Probably wasteful to keep checking, but makes me sleep better at night.
-		}
-	}
+	// We deliberately don't unload banks that are no longer used.
+	// This can be a problem over a long runtime if the user is adding and removing a ton of banks,
+	// especially if they want to load a _new_ bank with the same name as a previous bank,
+	// but it's an exceptionally hard problem to solve that can be fixed by simply restarting.
+	// If that changes in the future...unload unused banks here!
 }
 
 // Indexes and Prints all valid .bank files
@@ -376,7 +327,7 @@ static void index() {
 	snapshotPaths.clear();
 
 	int count = 0;
-	ERRCHECK_HARD(pMasterStringsBank->getStringCount(&count));
+	errorCheckFMODHard(pMasterStringsBank->getStringCount(&count));
 	if (count <= 0) {
 		std::cout << "Invalid strings count of " << count << ", that's a problem." << std::endl;
 		std::cout << "Double check the Master.strings.bank file was loaded properly." << std::endl;
@@ -405,7 +356,7 @@ static void index() {
 				pathStringChars.resize(retrieved);
 				pathStringCharsptr = pathStringChars.data();
 			}
-			else { ERRCHECK_HARD(result); }
+			else { errorCheckFMODHard(result); }
 		}
 
 		std::string pathString(pathStringCharsptr);
@@ -448,7 +399,7 @@ static void index() {
 
 		// Grab associated Event Description
 		FMOD::Studio::EventDescription* newEventDesc = nullptr;
-		ERRCHECK_HARD(pSystem->getEvent(entry.c_str(), &newEventDesc));
+		errorCheckFMODHard(pSystem->getEvent(entry.c_str(), &newEventDesc));
 		sessionEventDesc newSessionEventDesc; newSessionEventDesc.description = newEventDesc;
 
 		// Grab the name of each associated non-built-in parameter
@@ -483,7 +434,7 @@ static void index() {
 		else {
 			// Get the Bus and add it to the map
 			FMOD::Studio::Bus* newBus = nullptr;
-			ERRCHECK_HARD(pSystem->getBus(entry.c_str(), &newBus));
+			errorCheckFMODHard(pSystem->getBus(entry.c_str(), &newBus));
 			pBusses.insert({ truncateBusPath(entry), newBus });
 			busPaths.push_back(entry);
 			std::cout << "   Accepted as Bus: " << entry << " || Nice Name: " << truncateBusPath(entry) << "\n";
@@ -494,7 +445,7 @@ static void index() {
 	for (auto& entry : vcaSet) {
 		// Get the VCA and add it to the map
 		FMOD::Studio::VCA* newVCA = nullptr;
-		ERRCHECK_HARD(pSystem->getVCA(entry.c_str(), &newVCA));
+		errorCheckFMODHard(pSystem->getVCA(entry.c_str(), &newVCA));
 		pVCAs.insert({ truncateVCAPath(entry), newVCA });
 
 		vcaPaths.push_back(entry);
@@ -505,7 +456,7 @@ static void index() {
 	for (auto& entry : snapshotSet) {
 		// Get the Snapshot and add it to the map
 		FMOD::Studio::EventDescription* newSnapshot = nullptr;
-		ERRCHECK_HARD(pSystem->getEvent(entry.c_str(), &newSnapshot));
+		errorCheckFMODHard(pSystem->getEvent(entry.c_str(), &newSnapshot));
 
 		bool isSnapshot = false;
 		newSnapshot->isSnapshot(&isSnapshot);
@@ -536,10 +487,10 @@ static void index() {
 	std::vector<FMOD_STUDIO_PARAMETER_DESCRIPTION> paramVector(1);
 	FMOD_STUDIO_PARAMETER_DESCRIPTION* paramVectorPtr = paramVector.data();
 	int paramCount = 0;
-	ERRCHECK_HARD(pSystem->getParameterDescriptionCount(&paramCount));
+	errorCheckFMODHard(pSystem->getParameterDescriptionCount(&paramCount));
 	paramVector.resize(paramCount);
 	paramVectorPtr = paramVector.data();
-	ERRCHECK_HARD(pSystem->getParameterDescriptionList(paramVectorPtr, paramCount, &paramCount));
+	errorCheckFMODHard(pSystem->getParameterDescriptionList(paramVectorPtr, paramCount, &paramCount));
 
 	// Add them to the vector, one-by-one
 	std::cout << "   Global Parameters:\n";
@@ -601,7 +552,7 @@ static void list(const dpp::slashcommand_t& event) {
 						pathchars.resize(retrieved);
 						pathptr = pathchars.data();
 					}
-					else { ERRCHECK_SOFT(result); }
+					else { errorCheckFMODSoft(result); }
 				}
 
 				std::string instDescName(pathptr);					// Make string, then format
@@ -615,7 +566,7 @@ static void list(const dpp::slashcommand_t& event) {
 						// get current parameter name & value
 						std::string paramName(inst.second.params[i].name);
 						float paramVal = 0; float paramFinalVal = 0;
-						ERRCHECK_HARD(inst.second.instance->getParameterByID(inst.second.params[i].id, &paramVal, &paramFinalVal));
+						errorCheckFMODHard(inst.second.instance->getParameterByID(inst.second.params[i].id, &paramVal, &paramFinalVal));
 						std::string paramValStr = paramValueString(paramVal, inst.second.params[i]);
 
 						// Get the min/max
@@ -650,7 +601,7 @@ static void list(const dpp::slashcommand_t& event) {
 
 				// Get the Parameter's current value
 				float paramVal = 0;
-				ERRCHECK_HARD(pSystem->getParameterByName(param.second.name, &paramVal));
+				errorCheckFMODHard(pSystem->getParameterByName(param.second.name, &paramVal));
 				std::string paramValStr = paramValueString(paramVal, param.second);
 
 				// Get the min/max
@@ -692,7 +643,7 @@ static void list(const dpp::slashcommand_t& event) {
 						pathchars.resize(retrieved);
 						pathptr = pathchars.data();
 					}
-					else { ERRCHECK_SOFT(result); }
+					else { errorCheckFMODSoft(result); }
 				}
 
 				std::string instDescName(pathptr);							// Make string, then format
@@ -726,7 +677,7 @@ static void list(const dpp::slashcommand_t& event) {
 					std::string busName = bus.first;
 
 					float value = 0;
-					ERRCHECK_HARD(bus.second->getVolume(&value));
+					errorCheckFMODHard(bus.second->getVolume(&value));
 					value = floatTodB(value);
 
 					bussesList.append("- " + busName + ": " + volumeString(value) + "\n");
@@ -748,7 +699,7 @@ static void list(const dpp::slashcommand_t& event) {
 					std::string vcaName = vca.first;
 
 					float value = 0;
-					ERRCHECK_HARD(vca.second->getVolume(&value));
+					errorCheckFMODHard(vca.second->getVolume(&value));
 					value = floatTodB(value);
 
 					vcaList.append("- " + vcaName + ": " + volumeString(value) + "\n");
@@ -766,7 +717,7 @@ static void list(const dpp::slashcommand_t& event) {
 static void playable() {
 	// Get the number of strings in the Master Strings bank
 	int count = 0;
-	ERRCHECK_HARD(pMasterStringsBank->getStringCount(&count));
+	errorCheckFMODHard(pMasterStringsBank->getStringCount(&count));
 	if (count <= 0) {
 		std::cout << "Invalid strings count of " << count << ", that's a problem." << "\n";
 		std::cout << "Double check the Master.strings.bank file was loaded properly." << std::endl;
@@ -791,7 +742,7 @@ static void playable() {
 				pathStringChars.resize(retrieved);
 				pathStringCharsptr = pathStringChars.data();
 			}
-			else { ERRCHECK_HARD(result); }
+			else { errorCheckFMODHard(result); }
 		}
 		std::string pathString(pathStringCharsptr);
 
@@ -850,7 +801,7 @@ static void playable() {
 
 			// Grab associated Event Description
 			FMOD::Studio::EventDescription* newEventDesc = nullptr;
-			ERRCHECK_HARD(pSystem->getEvent(pathString.c_str(), &newEventDesc));
+			errorCheckFMODHard(pSystem->getEvent(pathString.c_str(), &newEventDesc));
 			sessionEventDesc newSessionEventDesc; newSessionEventDesc.description = newEventDesc;
 
 			// Grab the name of each associated non-built-in parameter
@@ -883,7 +834,7 @@ static void playable() {
 
 			// Grab Snapshot's Event Description and add to Snapshots map
 			FMOD::Studio::EventDescription* newSnapshotDesc = nullptr;
-			ERRCHECK_HARD(pSystem->getEvent(pathString.c_str(), &newSnapshotDesc));
+			errorCheckFMODHard(pSystem->getEvent(pathString.c_str(), &newSnapshotDesc));
 			pSnapshots.insert({truncateSnapshotPath(pathString), newSnapshotDesc});
 		}
 	}
@@ -996,15 +947,15 @@ static void play_event(const dpp::slashcommand_t& event, std::string eventToPlay
 
 	if ((newEventDesc != nullptr) && (newEventDesc->isValid())) {
 		FMOD::Studio::EventInstance* newEventInst = nullptr;
-		ERRCHECK_HARD(newEventDesc->createInstance(&newEventInst));
+		errorCheckFMODHard(newEventDesc->createInstance(&newEventInst));
 		std::vector<FMOD_STUDIO_PARAMETER_DESCRIPTION> newEventParams = pEventDescriptions.at(eventToPlay).params;
 		sessionEventInstance newSessionEventInst;
 		newSessionEventInst.instance = newEventInst;
 		newSessionEventInst.params = newEventParams;
 		pEventInstances.insert({ newName, newSessionEventInst });
-		ERRCHECK_HARD(pEventInstances.at(newName).instance->setCallback(eventInstanceDestroyedCallback, FMOD_STUDIO_EVENT_CALLBACK_DESTROYED));
-		ERRCHECK_HARD(pEventInstances.at(newName).instance->start());
-		ERRCHECK_HARD(pEventInstances.at(newName).instance->release());
+		errorCheckFMODHard(pEventInstances.at(newName).instance->setCallback(eventInstanceDestroyedCallback, FMOD_STUDIO_EVENT_CALLBACK_DESTROYED));
+		errorCheckFMODHard(pEventInstances.at(newName).instance->start());
+		errorCheckFMODHard(pEventInstances.at(newName).instance->release());
 
 		std::cout << "Playing event: " << eventToPlay << " with Instance name: " << newName << std::endl;
 		event.reply(dpp::message("Playing event: " + eventToPlay + " with Instance name: " + newName).set_flags(dpp::m_ephemeral));
@@ -1037,10 +988,10 @@ static void play_snapshot(const dpp::slashcommand_t& event, std::string eventToP
 
 	if ((newEventDesc != nullptr) && (newEventDesc->isValid())) {
 		FMOD::Studio::EventInstance* newSnapInst = nullptr;
-		ERRCHECK_HARD(newEventDesc->createInstance(&newSnapInst));
-		ERRCHECK_HARD(newSnapInst->setCallback(eventInstanceDestroyedCallback, FMOD_STUDIO_EVENT_CALLBACK_DESTROYED));
-		ERRCHECK_HARD(newSnapInst->start());
-		ERRCHECK_HARD(newSnapInst->release());
+		errorCheckFMODHard(newEventDesc->createInstance(&newSnapInst));
+		errorCheckFMODHard(newSnapInst->setCallback(eventInstanceDestroyedCallback, FMOD_STUDIO_EVENT_CALLBACK_DESTROYED));
+		errorCheckFMODHard(newSnapInst->start());
+		errorCheckFMODHard(newSnapInst->release());
 		pSnapshotInstances.insert({ newName, newSnapInst });
 
 		std::cout << "Playing snapshot: " << eventToPlay << " with Instance name: " << newName << std::endl;
@@ -1179,7 +1130,7 @@ static void keyoff(const dpp::slashcommand_t& event) {
 	std::cout << "Instance Name: " << inputName << std::endl;
 	if (pEventInstances.find(inputName) != pEventInstances.end()) {
 		FMOD::Studio::EventDescription* eventDesc = nullptr;
-		ERRCHECK_HARD(pEventInstances.at(inputName).instance->getDescription(&eventDesc));
+		errorCheckFMODHard(pEventInstances.at(inputName).instance->getDescription(&eventDesc));
 		bool hasSusPoint = false;
 		eventDesc->hasSustainPoint(&hasSusPoint);
 		if (hasSusPoint) {
@@ -1286,7 +1237,7 @@ static void param_global(const dpp::slashcommand_t& event, dpp::command_data_opt
 	}
 
 	// Set parameter
-	ERRCHECK_HARD(pSystem->setParameterByName(paramName.c_str(), value));
+	errorCheckFMODHard(pSystem->setParameterByName(paramName.c_str(), value));
 	std::cout << "Command carried out." << std::endl;
 	event.reply(dpp::message("Setting Global Parameter: " + paramName + " with value " + paramValueString(value, pGlobalParams.at(paramName)))
 		.set_flags(dpp::m_ephemeral));
@@ -1328,7 +1279,7 @@ static void param_event(const dpp::slashcommand_t& event, dpp::command_data_opti
 	}
 
 	// Finally set the parameter
-	ERRCHECK_HARD(pEventInstances.at(instanceName).instance->setParameterByName(paramName.c_str(), value));
+	errorCheckFMODHard(pEventInstances.at(instanceName).instance->setParameterByName(paramName.c_str(), value));
 	std::cout << "Command carried out." << std::endl;
 	event.reply(dpp::message("Setting Parameter: " + paramName + " on Instance " + instanceName + " with value " + std::to_string(value)).set_flags(dpp::m_ephemeral));
 }
@@ -1358,17 +1309,17 @@ static void volume(const dpp::slashcommand_t& event) {
 
 	// If found in Busses map
 	if (pBusses.contains(busOrVCAName)) {
-		ERRCHECK_HARD(pBusses.at(busOrVCAName)->setVolume(value));
+		errorCheckFMODHard(pBusses.at(busOrVCAName)->setVolume(value));
 		event.reply(dpp::message("Setting Bus: " + busOrVCAName + " to volume: " + std::to_string(floatTodB(value))).set_flags(dpp::m_ephemeral));
 	}
 	// Else if "Master" (not kept in Busses map)
 	else if (busOrVCAName == "Master" || busOrVCAName == "master") {
-		ERRCHECK_HARD(pMasterBus->setVolume(value + DISCORD_MASTERBUS_VOLOFFSET));
+		errorCheckFMODHard(pMasterBus->setVolume(value + DISCORD_MASTERBUS_VOLOFFSET));
 		event.reply(dpp::message("Setting Bus: Master to volume: " + std::to_string(floatTodB(value))).set_flags(dpp::m_ephemeral));
 	}
 	// Else if found in VCA map
 	else if (pVCAs.contains(busOrVCAName)) {
-		ERRCHECK_HARD(pVCAs.at(busOrVCAName)->setVolume(value));
+		errorCheckFMODHard(pVCAs.at(busOrVCAName)->setVolume(value));
 		event.reply(dpp::message("Setting VCA: " + busOrVCAName + " to volume: " + std::to_string(floatTodB(value))).set_flags(dpp::m_ephemeral));
 	}
 }
@@ -1587,25 +1538,25 @@ static void init() {
 
 	// FMOD Init
 	std::cout << "Initializing FMOD...";
-	ERRCHECK_HARD(FMOD::Studio::System::create(&pSystem));
-	ERRCHECK_HARD(pSystem->getCoreSystem(&pCoreSystem));
-	//ERRCHECK_HARD(pCoreSystem->setDSPBufferSize(4096, 4));
-	ERRCHECK_HARD(pSystem->initialize(128, FMOD_STUDIO_INIT_LIVEUPDATE, FMOD_INIT_NORMAL, nullptr));
+	errorCheckFMODHard(FMOD::Studio::System::create(&pSystem));
+	errorCheckFMODHard(pSystem->getCoreSystem(&pCoreSystem));
+	//errorCheckFMODHard(pCoreSystem->setDSPBufferSize(4096, 4));
+	errorCheckFMODHard(pSystem->initialize(128, FMOD_STUDIO_INIT_LIVEUPDATE, FMOD_INIT_NORMAL, nullptr));
 	std::cout << "Done." << std::endl;
 
 	// Load Master Bank and Master Strings
 	std::cout << "Loading Master banks...";
-	ERRCHECK_HARD(pSystem->loadBankFile((bank_dir_path.string() + "\\" + master_bank).c_str(), FMOD_STUDIO_LOAD_BANK_NORMAL, &pMasterBank));
-	ERRCHECK_HARD(pSystem->loadBankFile((bank_dir_path.string() + "\\" + masterstrings_bank).c_str(), FMOD_STUDIO_LOAD_BANK_NORMAL, &pMasterStringsBank));
+	errorCheckFMODHard(pSystem->loadBankFile((bank_dir_path.string() + "\\" + master_bank).c_str(), FMOD_STUDIO_LOAD_BANK_NORMAL, &pMasterBank));
+	errorCheckFMODHard(pSystem->loadBankFile((bank_dir_path.string() + "\\" + masterstrings_bank).c_str(), FMOD_STUDIO_LOAD_BANK_NORMAL, &pMasterStringsBank));
 	std::cout << "Done." << std::endl;
 
 	// Also get the Master Bus, set volume, and get the related Channel Group
 	std::cout << "Getting Busses and Channel Groups...";
-	ERRCHECK_HARD(pSystem->getBus("bus:/", &pMasterBus));
-	ERRCHECK_HARD(pMasterBus->setVolume(dBToFloat(DISCORD_MASTERBUS_VOLOFFSET)));
-	ERRCHECK_HARD(pMasterBus->lockChannelGroup());					// Tell the Master Channel Group to always exist even when events arn't playing...
-	ERRCHECK_HARD(pSystem->flushCommands());						// And wait until all previous commands are done (ensuring Channel Group exists)...
-	ERRCHECK_HARD(pMasterBus->getChannelGroup(&pMasterBusGroup));	// Or else this fails immediately, and we'll have DSP problems.
+	errorCheckFMODHard(pSystem->getBus("bus:/", &pMasterBus));
+	errorCheckFMODHard(pMasterBus->setVolume(dBToFloat(DISCORD_MASTERBUS_VOLOFFSET)));
+	errorCheckFMODHard(pMasterBus->lockChannelGroup());					// Tell the Master Channel Group to always exist even when events arn't playing...
+	errorCheckFMODHard(pSystem->flushCommands());						// And wait until all previous commands are done (ensuring Channel Group exists)...
+	errorCheckFMODHard(pMasterBus->getChannelGroup(&pMasterBusGroup));	// Or else this fails immediately, and we'll have DSP problems.
 	std::cout << "Done." << std::endl;
 	
 
@@ -1620,9 +1571,9 @@ static void init() {
 		dspdesc.numinputbuffers = 1;
 		dspdesc.numoutputbuffers = 1;
 		dspdesc.read = captureDSPReadCallback;
-		ERRCHECK_HARD(pCoreSystem->createDSP(&dspdesc, &mCaptureDSP));
+		errorCheckFMODHard(pCoreSystem->createDSP(&dspdesc, &mCaptureDSP));
 	}
-	ERRCHECK_HARD(pMasterBusGroup->addDSP(FMOD_CHANNELCONTROL_DSP_TAIL, mCaptureDSP));		// Adds the newly defined dsp
+	errorCheckFMODHard(pMasterBusGroup->addDSP(FMOD_CHANNELCONTROL_DSP_TAIL, mCaptureDSP));		// Adds the newly defined dsp
 	std::cout << "Done." << std::endl;
 
 	// Setting Listener positioning for 3D, in case it's used 
@@ -1630,13 +1581,13 @@ static void init() {
 	listenerAttributes.position = { 0.0f, 0.0f, 0.0f };
 	listenerAttributes.forward = { 0.0f, 1.0f, 0.0f };
 	listenerAttributes.up = { 0.0f, 0.0f, 1.0f };
-	ERRCHECK_HARD(pSystem->setListenerAttributes(0, &listenerAttributes));
+	errorCheckFMODHard(pSystem->setListenerAttributes(0, &listenerAttributes));
 	std::cout << "Done." << std::endl;
 
 	// Debug details
 	int samplerate; FMOD_SPEAKERMODE speakermode; int numrawspeakers;
-	ERRCHECK_HARD(pCoreSystem->getSoftwareFormat(&samplerate, &speakermode, &numrawspeakers));
-	ERRCHECK_HARD(pSystem->flushCommands());
+	errorCheckFMODHard(pCoreSystem->getSoftwareFormat(&samplerate, &speakermode, &numrawspeakers));
+	errorCheckFMODHard(pSystem->flushCommands());
 	std::cout << "\n";
 	std::cout << "###########################\n\n";
 	std::cout << "FMOD System Info:\n  Sample Rate- " << samplerate << "\n  Speaker Mode- " << speakermode
