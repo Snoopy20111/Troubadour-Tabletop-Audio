@@ -296,7 +296,8 @@ copy /y "C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\stu
     </PreLinkEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="SessionMusicBot.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dependencies\include\dpp-10.0\dpp\appcommand.h" />
@@ -386,11 +387,11 @@ copy /y "C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\stu
     <ClInclude Include="dependencies\include\dpp-10.0\dpp\win32_safe_warnings.h" />
     <ClInclude Include="dependencies\include\dpp-10.0\dpp\wsclient.h" />
     <ClInclude Include="resource.h" />
-    <ClInclude Include="SessionMusicBot.h" />
-    <ClInclude Include="SessionMusicBot_Utils.h" />
+    <ClInclude Include="main.h" />
+    <ClInclude Include="utils.h" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="SessionMusicBot.rc" />
+    <ResourceCompile Include="main.rc" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="icon.ico" />

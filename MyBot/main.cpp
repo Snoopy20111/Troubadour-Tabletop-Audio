@@ -1,4 +1,4 @@
-﻿#include "SessionMusicBot.h"				//Pre-written sanity checks for versions
+﻿#include "main.h"							//Pre-written sanity checks for versions
 #include <dpp/dpp.h>						//D++ header
 #include "fmod.hpp"							//FMOD Core
 #include "fmod_studio.hpp"					//FMOD Studio
@@ -6,10 +6,9 @@
 #include "fmod_studio_common.h"
 #include "fmod_errors.h"					//Allows FMOD Results to be output as understandable text
 #include <filesystem>						//Standard C++ Filesystem
-#ifndef NDEBUG
-#include <chrono>							//Standard C++ Timekeeping (mostly for debugging?)
-#endif
-#include "SessionMusicBot_Utils.h"			//Some utility functions specific to this bot
+#include "utils.h"							//Some utility functions specific to this bot
+
+using namespace utils;
 
 /* Be sure to place your token in the line below.
  * Follow steps here to get a token:
@@ -31,9 +30,9 @@ FMOD::DSP* mCaptureDSP = nullptr;						//DSP to attach to Master Channel Group f
 
 //---Banks and stuff---//
 FMOD::Studio::Bank* pMasterBank = nullptr;							//Master Bank, always loads first and contains shared content
-std::string master_bank = "Master.bank";
+const std::string master_bank = "Master.bank";
 FMOD::Studio::Bank* pMasterStringsBank = nullptr;					//Master Strings, allows us to refer to events by name instead of GUID
-std::string masterstrings_bank = "Master.strings.bank";
+const std::string masterstrings_bank = "Master.strings.bank";
 std::string bankPath = "bank:/";
 std::vector<FMOD::Studio::Bank*> pBanks;							// Vector of all other banks
 std::vector<std::filesystem::path> bankPaths;						// Vector of paths to the respective .bank files (at time of load)
@@ -416,9 +415,6 @@ static void index() {
 				coutString.append(" - Parameter: " + paramName);
 				coutString.append(" " + paramMinMaxString(parameter));
 				coutString.append(" " + paramAttributesString(parameter));
-#ifndef NDEBUG
-				coutString.append(" with flag: " + std::to_string(parameter.flags));
-#endif
 				std::cout << coutString;
 				newSessionEventDesc.params.push_back(parameter);
 			}
@@ -817,9 +813,6 @@ static void playable() {
 					coutString.append(" - Parameter: " + paramName);
 					coutString.append(" " + paramMinMaxString(parameter));
 					coutString.append(" " + paramAttributesString(parameter));
-#ifndef NDEBUG
-					coutString.append(" with flag: " + std::to_string(parameter.flags));
-#endif
 					std::cout << coutString;
 					newSessionEventDesc.params.push_back(parameter);
 				}
