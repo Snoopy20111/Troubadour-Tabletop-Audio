@@ -17,6 +17,10 @@ MyBot/users.config.temp
 Packages/
 Builds/
 
+#Files generated in the build process
+MyBot/Win32
+MyBot/x64
+
 # User-specific files
 *.rsuser
 *.suo
