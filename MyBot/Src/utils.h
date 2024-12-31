@@ -3,8 +3,6 @@
 #include "fmod.hpp"
 #include <dpp/dpp.h>
 #include "fmod_studio.hpp"
-#include "fmod_common.h"
-#include "fmod_studio_common.h"
 #include "fmod_errors.h"
 #include <filesystem>
 
