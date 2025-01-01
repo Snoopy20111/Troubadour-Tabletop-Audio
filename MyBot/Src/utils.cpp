@@ -2,7 +2,7 @@
 
 //---UTILS---//
 
-namespace utils {
+namespace trbdrUtils {
 	// Gets the location of the program executable.
 	// If porting away from Windows this is the first code change you should have to make.
 	std::filesystem::path getExecutablePath() {
@@ -18,12 +18,18 @@ namespace utils {
 		return exePath.parent_path();
 	}
 
-	// Returns a random signed floating point value
-	float randomFloat() {
-		float result = (float)(rand()) / (float)(RAND_MAX);
-		bool isPositive = ((float)(rand()) > ((float)(RAND_MAX) / 2));
-		if (!isPositive) { result *= -1; }
-		return result;
+	// Returns a set of paths to valid files in the soundfiles directory.
+	std::set<std::filesystem::path> getSoundFiles(const std::filesystem::path& soundsDir) {
+		//std::cout << "Checking directory: " << soundsDir.string() << std::endl;
+		std::set<std::filesystem::path> files;
+		if (std::filesystem::exists(soundsDir) && std::filesystem::is_directory(soundsDir)) {
+			for (const auto& entry : std::filesystem::recursive_directory_iterator(soundsDir)) {
+				if (std::filesystem::is_regular_file(entry)) {
+					files.insert(entry);
+				}
+			}
+		}
+		return files;
 	}
 
 	// Shorthand for converting dB value into decimal (0-1). Good for setting volumes.
@@ -79,6 +85,7 @@ namespace utils {
 		return token;
 	}
 
+	// Returns a set of Snowflakes, representing all authorized users.
 	std::set<dpp::snowflake> getAuthorizedUsers() {
 		// Read from config file, grab each Snowflake,
 		// and return them to be added as authorized users
@@ -123,6 +130,7 @@ namespace utils {
 		return authUsers;
 	}
 
+	// Adds an authorized user, with the option to check against the users.config file and against the Bot Owner.
 	bool addAuthorizedUser(const dpp::snowflake& newAuth, const bool& checkAgainstFile, const dpp::snowflake& botOwner) {
 		if (botOwner == newAuth) {
 			std::cout << "Cannot add botOwner, definitely already exists in the list." << std::endl;
@@ -149,6 +157,7 @@ namespace utils {
 		return true;
 	}
 
+	// Adds an authorized user, checking against the currently Set before checking or adding to the file.
 	bool addAuthorizedUser(const dpp::snowflake& newAuth, const std::set<dpp::snowflake>& userSet, const dpp::snowflake& botOwner) {
 		if (!userSet.contains(newAuth)) {
 			return addAuthorizedUser(newAuth, false, botOwner);
@@ -157,6 +166,7 @@ namespace utils {
 		return false;
 	}
 
+	// Removes an authorized user.
 	bool removeAuthorizedUser(const dpp::snowflake& authToRemove, std::set<dpp::snowflake>& userSet, const dpp::snowflake& botOwner) {
 		if (!userSet.contains(authToRemove)) {
 			std::cout << "Given snowflake doesn't exist in loaded Authorized User set, cannot remove. ";
@@ -210,14 +220,33 @@ namespace utils {
 		return true;
 	}
 
-	// Returns path of FMOD format ("bank:/") as the filepath it would've loaded from
-	std::string formatBankToFilepath(std::string bankPath, const std::filesystem::path& bank_dir_path) {
+	// Returns string with name/path of a sound file, relative to the soundfiles directory.
+	std::string formatPathToSoundfile(std::filesystem::path soundPath, const std::filesystem::path& soundsDirPath) {
+		soundPath.replace_extension("");
+		std::string soundPathStr(soundPath.string());
+		std::string soundsDirPathStr(soundsDirPath.string() + "\\");
+
+		//std::cout << "  soundPathStr: " << soundPathStr << "\n";
+		//std::cout << "  soundsDirPathStr: " << soundsDirPathStr << "\n";
+
+		std::size_t dirLocation = soundPathStr.find(soundsDirPathStr);
+		if ((dirLocation != std::string::npos) && (soundPathStr > soundsDirPathStr)) {
+			soundPathStr.erase(dirLocation, soundsDirPathStr.length());
+		}
+		else {
+			std::cout << "Error when formatting soundfile name: couldn't find soundsDirPathStr in soundPathStr!" << std::endl;
+		}
+		return soundPathStr;
+	}
+
+	// Returns path of FMOD format ("bank:/") as the filepath it would've loaded from.
+	std::string formatBankToFilepath(std::string bankPath, const std::filesystem::path& banksDirPath) {
 		bankPath.erase(0, 6);										// Remove "bank:/" at start
 		bankPath.append(".bank");									// Add ".bank" at end
-		bankPath = bank_dir_path.string() + "\\" + bankPath;		// Add banks directory path at start
+		bankPath = banksDirPath.string() + "\\" + bankPath;		// Add banks directory path at start
 
 		// Find and replace forward slashes
-		// Windows only, needs replacement if porting to other platforms
+		// Windows only. May need replacement or removal for other platforms.
 		size_t pos = bankPath.find("/");
 		while (pos != std::string::npos) {
 			bankPath.replace(pos, 1, "\\");
@@ -227,22 +256,22 @@ namespace utils {
 		return bankPath;
 	}
 
-	// Returns path of given event without the prefix "event:/Master/", for displaying lists and using as keys
+	// Returns path of given event without the prefix "event:/Master/", for displaying lists and using as keys.
 	std::string truncateEventPath(std::string input) {
 		return input.erase(0, 14);
 	}
 
-	// Returns path of given event without the prefix "bus:/", for displaying lists and using as keys
+	// Returns path of given event without the prefix "bus:/", for displaying lists and using as keys.
 	std::string truncateBusPath(std::string input) {
 		return input.erase(0, 5);
 	}
 
-	// Returns path of given event without the prefix "vca:/", for displaying lists and using as keys
+	// Returns path of given event without the prefix "vca:/", for displaying lists and using as keys.
 	std::string truncateVCAPath(std::string input) {
 		return input.erase(0, 5);
 	}
 
-	// Returns path of given event without the prefix "snapshot:/", for displaying lists and using as keys
+	// Returns path of given event without the prefix "snapshot:/", for displaying lists and using as keys.
 	std::string truncateSnapshotPath(std::string input) {
 		return input.erase(0, 10);
 	}
@@ -351,11 +380,15 @@ namespace utils {
 		return output;
 	}
 
-	/* Returns true if the Opus - sized packet has any signal at all.
-	 * Some minor fudging included here to keep from checking
-	 * _every_ sample, in the name of performance.
-	 * Note: not currently in use! Todo.
-	 */
+	// Returns a random signed floating point value
+	/*float randomFloat() {
+		float result = (float)(rand()) / (float)(RAND_MAX);
+		bool isPositive = ((float)(rand()) > ((float)(RAND_MAX) / 2));
+		if (!isPositive) { result *= -1; }
+		return result;
+	}*/
+
+	// Returns true if the Opus - sized packet has any signal at all.
 	/*bool containsSignal(std::vector<int16_t> pcmdata) {
 		int limit = (int)(dpp::send_audio_raw_max_length * 0.5);
 		for (int i = 0; i < limit; i += 16) {				// Checks every 16th sample of 5760
@@ -364,7 +397,6 @@ namespace utils {
 				return true;								// this is likely to return _very_ quickly
 			}
 		}
-
 		for (int i = limit - 16; i < limit; i++) {			// Double checking for the last few samples, just in case.
 			if (pcmdata[i] != 0) {							// Prevents transients from being chopped off in worst-case.
 				return true;

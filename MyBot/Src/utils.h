@@ -8,15 +8,15 @@
 
 //---UTILS---//
 
-namespace utils {
+namespace trbdrUtils {
 	// Gets the location of the program executable.
 	std::filesystem::path getExecutablePath();
 
 	// Gets the folder where the executable is contained.
 	std::filesystem::path getExecutableFolder();
 
-	// Returns a random signed floating point value.
-	float randomFloat();
+	// Returns a set of paths to valid files in the soundfiles directory.
+	std::set<std::filesystem::path> getSoundFiles(const std::filesystem::path& soundsDir);
 
 	// Shorthand for converting dB value into decimal (0-1). Good for setting volumes.
 	float dBToFloat(const float& input);
@@ -49,19 +49,22 @@ namespace utils {
 	// Removes an authorized user.
 	bool removeAuthorizedUser(const dpp::snowflake& authToRemove, std::set<dpp::snowflake>& userSet, const dpp::snowflake& botOwner = NULL);
 
-	// Returns path of FMOD format ("bank:/") as the filepath it would've loaded from
+	// Returns string with name/path of a sound file, relative to the soundfiles directory.
+	std::string formatPathToSoundfile(std::filesystem::path soundPath, const std::filesystem::path& soundsDirPath);
+
+	// Returns path of FMOD format ("bank:/") as the filepath it would've loaded from.
 	std::string formatBankToFilepath(std::string bankPath, const std::filesystem::path& bank_dir_path);
 
-	// Returns path of given event without the prefix "event:/Master/", for displaying lists and using as keys
+	// Returns path of given event without the prefix "event:/Master/", for displaying lists and using as keys.
 	std::string truncateEventPath(std::string input);
 
-	// Returns path of given event without the prefix "bus:/", for displaying lists and using as keys
+	// Returns path of given event without the prefix "bus:/", for displaying lists and using as keys.
 	std::string truncateBusPath(std::string input);
 
-	// Returns path of given event without the prefix "vca:/", for displaying lists and using as keys
+	// Returns path of given event without the prefix "vca:/", for displaying lists and using as keys.
 	std::string truncateVCAPath(std::string input);
 
-	// Returns path of given event without the prefix "snapshot:/", for displaying lists and using as keys
+	// Returns path of given event without the prefix "snapshot:/", for displaying lists and using as keys.
 	std::string truncateSnapshotPath(std::string input);
 
 	// Returns a string describing the min/max values of a parameter, with some rounding to look nice.
@@ -75,6 +78,9 @@ namespace utils {
 
 	// Returns a decibel volume level as a string (with the dB units), for display.
 	std::string volumeString(float inputValue);
+
+	// Returns a random signed floating point value.
+	/*float randomFloat();*/
 
 	// Returns true if the Opus - sized packet has any signal at all.
 	/*bool containsSignal(std::vector<int16_t> pcmdata);*/
@@ -90,5 +96,12 @@ namespace utils {
 	struct sessionEventInstance {
 		FMOD::Studio::EventInstance* instance = nullptr;
 		std::vector<FMOD_STUDIO_PARAMETER_DESCRIPTION> params;
+	};
+
+	// Struct to handle Channel Control objects in callbacks and split between them
+	// Ideally this would be a Union or std::variant, but I can't figure out how to properly use those
+	struct coreCallbackChannelControlObj {
+		FMOD::Channel* channel = nullptr;
+		FMOD::ChannelGroup* channelGroup = nullptr;
 	};
 }

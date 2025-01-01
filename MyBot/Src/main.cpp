@@ -1,82 +1,92 @@
 ﻿#include "main.h"			//Pre-written sanity checks for versions
 #include "utils.h"			//Utility functions and all other necessary includes
 
-using namespace utils;
+using namespace trbdrUtils;
 
 
 //---Constants you might change---//
-const std::string masterBankFile = "Master.bank";					// The name of the Master Bank file
-const std::string masterStringsFile = "Master.strings.bank";		// The name of the Master Strings Bank file
-const std::string callableEventPrefix = "event:/Master/";			// The FMOD-internal path where our callable events exist
-const float fmodMasterBusVolOffset = -10.0f;						// How much to pull down the Master Bus when running.
-const dpp::embed basicEmbed = dpp::embed()							// Generic embed, to be duplicated from for each embed response.
+static const std::string masterBankFile = "Master.bank";			// The name of the Master Bank file
+static const std::string masterStringsFile = "Master.strings.bank";	// The name of the Master Strings Bank file
+static const std::string soundbanksFolder = "soundbanks";			// The folder where the program's built FMOD Studio banks are located
+static const std::string soundfilesFolder = "soundfiles";			// The folder where loose sound files can be found and played.
+static const std::string callableEventPrefix = "event:/Master/";	// The FMOD-internal path where our callable events exist
+static const float fmodMasterBusVolOffset = -10.0f;					// How much to pull down the Master Bus fader when running
+static const size_t sendAudioThresh = dpp::send_audio_raw_max_length / 2;		//How many PCM samples we need before sending them to DPP
+static const dpp::embed basicEmbed = dpp::embed()					// Generic embed, to be duplicated from for each embed response
 	.set_color(dpp::colors::construction_cone_orange)
 	.set_timestamp(time(0));
 
 //---Constants that should never change---//
-const std::string bankPrefix = "bank:/";							// FMOD-internal path prefix for banks
-const std::string eventPrefix = "event:/";							// ...for events
-const std::string busPrefix = "bus:/";								// ...for busses
-const std::string vcaPrefix = "vca:/";								// ...for vcas
-const std::string snapshotPrefix = "snapshot:/";					// ...for snapshots
-const std::string paramPrefix = "parameter:/";						// ...for parameters
+static const std::string bankPrefix = "bank:/";						// FMOD-internal path prefix for banks
+static const std::string eventPrefix = "event:/";					// ...for events
+static const std::string busPrefix = "bus:/";						// ...for busses
+static const std::string vcaPrefix = "vca:/";						// ...for vcas
+static const std::string snapshotPrefix = "snapshot:/";				// ...for snapshots
+static const std::string paramPrefix = "parameter:/";				// ...for parameters
 
 
 //---File Paths---//
-std::filesystem::path exe_path;
-std::filesystem::path bank_dir_path;
+static std::filesystem::path exePath;
+static std::filesystem::path banksDirPath;
+static std::filesystem::path soundsDirPath;
 
 //---FMOD Declarations---//
-FMOD::Studio::System* pSystem = nullptr;							// FMOD Studio system
-FMOD::System* pCoreSystem = nullptr;								// FMOD Core system
-FMOD::Studio::Bus* pMasterBus = nullptr;							// Master bus
-FMOD::ChannelGroup* pMasterBusGroup = nullptr;						// Channel Group of the master bus
-FMOD::DSP* mCaptureDSP = nullptr;									// DSP to attach to Master Channel Group for stealing output
+static FMOD::Studio::System* pSystem = nullptr;						// FMOD Studio system
+static FMOD::System* pCoreSystem = nullptr;							// FMOD Core system
+static FMOD::Studio::Bus* pMasterBus = nullptr;						// Master bus
+static FMOD::ChannelGroup* pMasterBusGroup = nullptr;				// Channel Group of the master bus
+static FMOD::DSP* mCaptureDSP = nullptr;							// DSP to attach to Master Channel Group for stealing output
+static FMOD::ChannelGroup* pCoreGroup = nullptr;					// The group we'll route low-level playback through
 
-//---Banks and stuff---//
-FMOD::Studio::Bank* pMasterBank = nullptr;							// Master Bank, always loads first and contains shared content
-FMOD::Studio::Bank* pMasterStringsBank = nullptr;					// Master Strings, allows us to refer to events by name instead of GUID
-std::vector<std::filesystem::path> bankPaths;						// Vector of paths to the respective .bank files (at time of load)
-std::vector<FMOD::Studio::Bank*> pBanks;							// Vector of all other banks
+// Banks
+static FMOD::Studio::Bank* pMasterBank = nullptr;					// Master Bank, always loads first and contains shared content
+static FMOD::Studio::Bank* pMasterStringsBank = nullptr;			// Master Strings, allows us to refer to events by name instead of GUID
+static std::vector<std::filesystem::path> bankPaths;				// Vector of paths to the respective .bank files (at time of load)
+static std::vector<FMOD::Studio::Bank*> pBanks;						// Vector of all other banks
 
 // Events
-std::vector<std::string> eventPaths;								// Vector of FMOD-internal paths the user can call
-std::map<std::string, sessionEventDesc> pEventDescriptions;			// Map of all Event Descriptions and their parameters
-std::map<std::string, sessionEventInstance> pEventInstances;		// Map of all Event Instances, which pair user-given name to instance
+static std::vector<std::string> eventPaths;							// Vector of FMOD-internal paths the user can call
+static std::map<std::string, sessionEventDesc> pEventDescriptions;	// Map of all Event Descriptions and their parameters
+static std::map<std::string, sessionEventInstance> pEventInstances;	// Map of all Event Instances, which pair user-given name to instance
 
 // Busses
-std::vector<std::string> busPaths;									// Vector of FMOD-internal paths to each bus
-std::map <std::string, FMOD::Studio::Bus*> pBusses;
+static std::vector<std::string> busPaths;							// Vector of FMOD-internal paths to each bus
+static std::map <std::string, FMOD::Studio::Bus*> pBusses;			// Map of pointers to each bus object, by their path/name
 
 // VCAs
-std::vector<std::string> vcaPaths;
-std::map <std::string, FMOD::Studio::VCA*> pVCAs;
+static std::vector<std::string> vcaPaths;							// Same as busses but for VCAs
+static std::map <std::string, FMOD::Studio::VCA*> pVCAs;			// ...
 
 // Snapshots
-std::vector<std::string> snapshotPaths;
-std::map<std::string, FMOD::Studio::EventDescription*> pSnapshotDescriptions;
-std::map<std::string, FMOD::Studio::EventInstance*> pSnapshotInstances;
+static std::vector<std::string> snapshotPaths;						// Same as events but for Snapshots
+static std::map<std::string, FMOD::Studio::EventDescription*> pSnapshotDescriptions;
+static std::map<std::string, FMOD::Studio::EventInstance*> pSnapshotInstances;
 
 // Global Parameters
-std::vector<std::string> globalParamNames;
-std::map<std::string, FMOD_STUDIO_PARAMETER_DESCRIPTION> globalParamDescriptions;
+static std::vector<std::string> globalParamNames;					// Similar but for Global Params (Local live with each event)
+static std::map<std::string, FMOD_STUDIO_PARAMETER_DESCRIPTION> globalParamDescriptions;
 
-FMOD_3D_ATTRIBUTES listenerAttributes;					// Holds the listener's position & orientation (at the origin)
+// Loose audio files
+static std::vector<std::string> soundPaths;				// Similar but for loose sound files
+static std::map<std::string, FMOD::Sound*> pSounds;					// Like Event Descriptions but created on-the-fly so users have playback options
+static std::map<std::string, FMOD::Channel*> pChannels;				// Like Event Instances, sorta
+
 
 //---Misc Bot Declarations---//
-dpp::application botapp;								// Application object of the bot. Defined from a callback during startup
-dpp::discord_voice_client* currentClient = nullptr;		// Current Voice Client of the bot. Only designed to run on one server
-std::vector<int16_t> pcmDataBuffer;						// Our buffer of PCM audio data, which FMOD adds to and D++ cuts "frames" from
-bool exitRequested = false;								// Set to "true" when you want off Mr. Bones Wild Tunes.
-bool isConnected = false;								// Set to "true" when bot is connected to a Voice Channel.
-std::set<dpp::snowflake> authorizedUsers;				// Whitelisted users, including Owner.
+static dpp::application botapp;									// Application object of the bot. Defined from a callback during startup
+static dpp::discord_voice_client* currentClient = nullptr;		// Current Voice Client of the bot. Only designed to run on one server
+static std::vector<int16_t> pcmDataBuffer;						// Our buffer of PCM audio data, which FMOD adds to and D++ cuts "frames" from
+static bool exitRequested = false;								// Set to "true" when you want off Mr. Bones Wild Tunes.
+static bool isConnected = false;								// Set to "true" when bot is connected to a Voice Channel.
+static std::set<dpp::snowflake> authorizedUsers;				// Whitelisted users, including Owner.
 
 
 
 //---FMOD and Audio Functions---//
 
 // Callback for stealing sample data from the Master Bus
-static FMOD_RESULT F_CALL captureDSPReadCallback(FMOD_DSP_STATE* dsp_state, float* inbuffer, float* outbuffer, unsigned int length, int inchannels, int* outchannels) {
+static FMOD_RESULT F_CALL captureDSPReadCallback(FMOD_DSP_STATE* dsp_state, float* inbuffer,
+	float* outbuffer, unsigned int length, int inchannels, int* outchannels) {
 
 	if (isConnected) {
 		switch (inchannels) {
@@ -113,12 +123,12 @@ static FMOD_RESULT F_CALL captureDSPReadCallback(FMOD_DSP_STATE* dsp_state, floa
 }
 
 // Callback that triggers when an Event Instance is released
-// Despite the name, this callback will receive callbacks of all types, and so must filter them out
-static FMOD_RESULT F_CALL eventInstanceDestroyedCallback(FMOD_STUDIO_EVENT_CALLBACK_TYPE type, FMOD_STUDIO_EVENTINSTANCE* event, void* parameters) {
+static FMOD_RESULT F_CALL eventInstanceDestroyedCallback(FMOD_STUDIO_EVENT_CALLBACK_TYPE type,
+	FMOD_STUDIO_EVENTINSTANCE* event, void* parameters) {
 
 	FMOD::Studio::EventInstance* myEvent = (FMOD::Studio::EventInstance*)event;		// Cast approved by Firelight in the documentation
-
-	if (type == FMOD_STUDIO_EVENT_CALLBACK_DESTROYED) {								// Redundant due to callback mask
+	// Despite the name, this callback will receive callbacks of all types, and so must filter them out
+	if (type == FMOD_STUDIO_EVENT_CALLBACK_DESTROYED) {								// Redundant due to callback mask?
 		std::cout << "Event Destroyed Callback Triggered." << std::endl;
 
 		// Get some data to differentiate Events from Snapshots
@@ -148,6 +158,54 @@ static FMOD_RESULT F_CALL eventInstanceDestroyedCallback(FMOD_STUDIO_EVENT_CALLB
 	return FMOD_OK;
 }
 
+static FMOD_RESULT F_CALL soundChannelControlCallback(FMOD_CHANNELCONTROL *channelcontrol,
+	FMOD_CHANNELCONTROL_TYPE controltype, FMOD_CHANNELCONTROL_CALLBACK_TYPE callbacktype,
+	void *commanddata1, void *commanddata2) {
+
+	coreCallbackChannelControlObj callbackObj{.channel = nullptr, .channelGroup = nullptr};
+
+	// Cast depending on the type, Channel or ChannelGroup
+	// Should usually be a channel, but you never know
+	switch (controltype) {
+	case FMOD_CHANNELCONTROL_CHANNEL:
+		callbackObj.channel = (FMOD::Channel*)channelcontrol;
+		break;
+	case FMOD_CHANNELCONTROL_CHANNELGROUP:
+		callbackObj.channelGroup = (FMOD::ChannelGroup*)channelcontrol;
+		break;
+	default:
+		std::cout << "soundChannelControlCallback on unrecognized thing! Isn't a channel, nor a ChannelGroup." <<
+			" This is definitely a bug of some kind." << std::endl;
+	}
+
+	//Only one callback allowed per-sound, so filter here depending on callback type
+	switch (callbacktype) {
+	// This case should only work if the callbackObj is a Channel (not Channel Group)
+	case FMOD_CHANNELCONTROL_CALLBACK_END:
+		FMOD_MODE mode;
+		callbackObj.channel->getMode(&mode);
+		std::cout << "sound mode: " << std::to_string(mode) << std::endl;
+		if (mode == FMOD_LOOP_OFF) {
+			callbackObj.channel->stop();
+			// Channels don't get released, FMOD handles that for us,
+			// so just remove it from our list (if found with reverse search).
+			// Also don't release Sounds, that'll unload the file itself.
+
+			//std::string foundKey;
+			for (auto it = pChannels.begin(); it != pChannels.end(); ++it) {
+				if (it->second == callbackObj.channel) {
+					//foundKey = it->first;
+					pChannels.erase(it->first);
+				}
+			}
+		}
+		break;
+	default:
+		break;
+	}
+
+	return FMOD_OK;
+}
 
 //---Bot Functions---//
 
@@ -179,14 +237,14 @@ static void help(const dpp::slashcommand_t& event) {
 		.set_description("A bot to make audio for Tabletop Games more interesting through Discord, using Game Audio tools and techniques.")
 
 		.add_field("/ping", "Ping the bot to ensure it's alive.")
-		.add_field("/playable", "List all playable Events, their Parameters, and Snapshots.")
-		.add_field("/list", "Show all playing Event and Snapshot instances, as well as their Parameters.")
-		.add_field("/play", "Play a new Event or Snapshot.")
+		.add_field("/playable", "List all playable Events, their Parameters, and Snapshots, as well as all Sound files.")
+		.add_field("/list", "Show all playing Event and Snapshot instances, as well as their Parameters, and all loose Sounds.")
+		.add_field("/play", "Play a new Event, Snapshot, or Sound.")
 		.add_field("/pause", "Pause a currently playing Event.")
 		.add_field("/unpause", "Resume a currently paused Event.")
 		.add_field("/keyoff", "Key off a sustain point, if the Event has any.")
-		.add_field("/stop", "Stop a currently playing Event or Snapshot.")
-		.add_field("/stopall", "Stop all Events and Snapshots immediately.")
+		.add_field("/stop", "Stop a currently playing Event, Snapshot, or Sound.")
+		.add_field("/stopall", "Stop all Events, Snapshots, and Sounds immediately.")
 		.add_field("/param", "Set a Parameter, globally or on an Event instance.")
 		.add_field("/volume", "Set the volume of a Bus or VCA.")
 		.add_field("/banks", "List all banks in the Soundbanks folder.")
@@ -203,12 +261,12 @@ static void help(const dpp::slashcommand_t& event) {
 // Base function, called on startup and when requested by List Banks command
 static void banks() {
 
-	std::cout << "Checking Banks path: " << bank_dir_path.string() << "\n";
+	std::cout << "Checking Banks path: " << banksDirPath.string() << "\n";
 
 	std::set<std::filesystem::path> sortedOutput;
 
 	//Form set of .bank files from the soundbanks folder
-	for (const auto& entry : std::filesystem::directory_iterator(bank_dir_path)) {		// For every entry found in the banks folder
+	for (const auto& entry : std::filesystem::directory_iterator(banksDirPath)) {		// For every entry found in the banks folder
 		if (entry.is_directory()) {														// Skip if directory...
 			std::cout << "   Skipped: " << entry.path().string() << " -- is a directory." << "\n";
 			continue;
@@ -224,7 +282,7 @@ static void banks() {
 		}
 		else {
 			std::cout << "   Accepted: " << entry.path().string() << "\n";			// Accepted!
-			sortedOutput.insert(sortedOutput.end(), entry.path());
+			sortedOutput.insert(entry.path());
 		}
 	}
 	// Now, for each key pass to the bank Paths vector
@@ -307,7 +365,7 @@ static void banks(const dpp::slashcommand_t& event) {
 }
 
 // Indexes all Events, Busses, VCAs, Snapshots, etc. on Startup ONLY.
-static void index() {
+static void indexStudio() {
 	// Make sure vectors and maps are clear
 	eventPaths.clear();
 	busPaths.clear();
@@ -316,7 +374,7 @@ static void index() {
 
 	int count = 0;
 	errorCheckFMODHard(pMasterStringsBank->getStringCount(&count));
-	if (count <= 0) {
+	if (count < 1) {
 		std::cout << "Invalid strings count of " << count << ", that's a problem." << std::endl;
 		std::cout << "Double check the Master.strings.bank file was loaded properly." << std::endl;
 		return;
@@ -338,6 +396,8 @@ static void index() {
 		char* pathStringCharsptr = pathStringChars.data();
 		int retrieved = 0;
 
+		// If the string doesn't fit in the allotted size, resize appropriately and continue
+		// We do this because FMOD Studio will tell us exactly how long it _should_ be, but only after trying once
 		FMOD_RESULT result = pMasterStringsBank->getStringInfo(i, &pathGUID, pathStringCharsptr, 256, &retrieved);
 		if (result != FMOD_OK) {
 			if (result == FMOD_ERR_TRUNCATED) {
@@ -350,125 +410,140 @@ static void index() {
 		std::string pathString(pathStringCharsptr);
 
 		// Is it an event?
-		if ((pathString.find(eventPrefix, 0) == 0)) {
-			eventSet.insert(eventSet.end(), pathString);
-		}
-
+		if ((pathString.find(eventPrefix, 0) == 0)) { eventSet.insert(pathString); }
 		// Is it a bus?
-		else if ((pathString.find(busPrefix, 0) == 0)) { busSet.insert(busSet.end(), pathString); }
-
+		else if ((pathString.find(busPrefix, 0) == 0)) { busSet.insert(pathString); }
 		// Is it a VCA?
-		else if ((pathString.find(vcaPrefix, 0) == 0)) { vcaSet.insert(vcaSet.end(), pathString); }
-
+		else if ((pathString.find(vcaPrefix, 0) == 0)) { vcaSet.insert(pathString); }
 		// Is it a Snapshot?
-		else if ((pathString.find(snapshotPrefix, 0) == 0)) { snapshotSet.insert(snapshotSet.end(), pathString); }
-
-		// Is it a parameter? (will be addressed after this loop)
-		else if (pathString.find(paramPrefix) == 0) { paramSet.insert(paramSet.end(), pathString); }
-
-		// Is it a bank? (We don't care here, just for Cout data)
-		else if (pathString.find(bankPrefix, 0) == 0) { bankSet.insert(bankSet.end(), pathString); }
-		
+		else if ((pathString.find(snapshotPrefix, 0) == 0)) { snapshotSet.insert(pathString); }
+		// Is it a parameter?
+		else if (pathString.find(paramPrefix) == 0) { paramSet.insert(pathString); }
+		// Is it a bank?
+		else if (pathString.find(bankPrefix, 0) == 0) { bankSet.insert(pathString); }
 		// If it's none of the above, then we have NO idea what this thing is.
-		else { unrecognizedSet.insert(unrecognizedSet.end(), pathString); }
+		else { unrecognizedSet.insert(pathString); }
 	}
 
-	std::cout << "Events:\n";
-	for (auto& entry : eventSet) {
-		// Skip it if not in the Master folder.
-		if (entry.find(callableEventPrefix, 0) != 0) {
-			std::cout << "   Skipped as Event: " << entry << " -- Not in Master folder." << "\n";
-			continue;
+	// Print each sorted set if it has any entries, otherwise simply skip
+	if (!eventSet.empty()) {
+		std::cout << "Events:\n";
+		for (auto& entry : eventSet) {
+			// Skip it if not in the Master folder
+			if (entry.find(callableEventPrefix, 0) != 0) {
+				std::cout << "   Skipped as Event: " << entry << " -- Not in Master folder." << "\n";
+				continue;
+			}
+
+			// What's left should be good for our eventPaths vector
+			std::cout << "   Accepted as Event: " << entry << "\n";
+			eventPaths.push_back(entry);
+
+			// Grab associated Event Description
+			FMOD::Studio::EventDescription* newEventDesc = nullptr;
+			errorCheckFMODHard(pSystem->getEvent(entry.c_str(), &newEventDesc));
+			sessionEventDesc newSessionEventDesc; newSessionEventDesc.description = newEventDesc;
+
+			// Grab the name of each associated non-built-in parameter
+			int descParamCount = 0;
+			newSessionEventDesc.description->getParameterDescriptionCount(&descParamCount);
+
+			for (int i = 0; i < descParamCount; i++) {
+				FMOD_STUDIO_PARAMETER_DESCRIPTION parameter;
+				newSessionEventDesc.description->getParameterDescriptionByIndex(i, &parameter);
+				if (parameter.type == FMOD_STUDIO_PARAMETER_GAME_CONTROLLED) {
+					std::string paramName(parameter.name);
+					std::string coutString = "      ";
+
+					coutString.append(" - Parameter: " + paramName);
+					coutString.append(" " + paramMinMaxString(parameter));
+					coutString.append(" " + paramAttributesString(parameter));
+					std::cout << coutString;
+					newSessionEventDesc.params.push_back(parameter);
+				}
+			}
+			pEventDescriptions.insert({ truncateEventPath(entry), newSessionEventDesc });	// Add to map, connected to a trimmed "easy" path name
 		}
-
-		// What's left should be good for our eventPaths vector
-		std::cout << "   Accepted as Event: " << entry << "\n";
-		eventPaths.push_back(entry);
-
-		// Grab associated Event Description
-		FMOD::Studio::EventDescription* newEventDesc = nullptr;
-		errorCheckFMODHard(pSystem->getEvent(entry.c_str(), &newEventDesc));
-		sessionEventDesc newSessionEventDesc; newSessionEventDesc.description = newEventDesc;
-
-		// Grab the name of each associated non-built-in parameter
-		int descParamCount = 0;
-		newSessionEventDesc.description->getParameterDescriptionCount(&descParamCount);
-
-		for (int i = 0; i < descParamCount; i++) {
-			FMOD_STUDIO_PARAMETER_DESCRIPTION parameter;
-			newSessionEventDesc.description->getParameterDescriptionByIndex(i, &parameter);
-			if (parameter.type == FMOD_STUDIO_PARAMETER_GAME_CONTROLLED) {
-				std::string paramName(parameter.name);
-				std::string coutString = "      ";
-
-				coutString.append(" - Parameter: " + paramName);
-				coutString.append(" " + paramMinMaxString(parameter));
-				coutString.append(" " + paramAttributesString(parameter));
-				std::cout << coutString;
-				newSessionEventDesc.params.push_back(parameter);
+	}
+	
+	if (!busSet.empty()) {
+		std::cout << "Busses:\n";
+		for (auto& entry : busSet) {
+			if (entry == busPrefix) {		//The Master Bus is just "bus:/"
+				std::cout << "   Accepted as Bus: " << entry << " -- Is Master Bus.\n";
+			}
+			else {
+				// Get the Bus and add it to the map
+				FMOD::Studio::Bus* newBus = nullptr;
+				errorCheckFMODHard(pSystem->getBus(entry.c_str(), &newBus));
+				pBusses.insert({ truncateBusPath(entry), newBus });
+				busPaths.push_back(entry);
+				std::cout << "   Accepted as Bus: " << entry << " || Nice Name: " << truncateBusPath(entry) << "\n";
 			}
 		}
-		pEventDescriptions.insert({ truncateEventPath(entry), newSessionEventDesc });	// Add to map, connected to a trimmed "easy" path name
 	}
 	
-	std::cout << "Busses:\n";
-	for (auto& entry : busSet) {
-		if (entry == busPrefix) {		//The Master Bus is just "bus:/"
-			std::cout << "   Accepted as Bus: " << entry << " -- Is Master Bus.\n";
-		}
-		else {
-			// Get the Bus and add it to the map
-			FMOD::Studio::Bus* newBus = nullptr;
-			errorCheckFMODHard(pSystem->getBus(entry.c_str(), &newBus));
-			pBusses.insert({ truncateBusPath(entry), newBus });
-			busPaths.push_back(entry);
-			std::cout << "   Accepted as Bus: " << entry << " || Nice Name: " << truncateBusPath(entry) << "\n";
-		}
-	}
-	
-	std::cout << "VCAs:\n";
-	for (auto& entry : vcaSet) {
-		// Get the VCA and add it to the map
-		FMOD::Studio::VCA* newVCA = nullptr;
-		errorCheckFMODHard(pSystem->getVCA(entry.c_str(), &newVCA));
-		pVCAs.insert({ truncateVCAPath(entry), newVCA });
+	if (!vcaSet.empty()) {
+		std::cout << "VCAs:\n";
+		for (auto& entry : vcaSet) {
+			// Get the VCA and add it to the map
+			FMOD::Studio::VCA* newVCA = nullptr;
+			errorCheckFMODHard(pSystem->getVCA(entry.c_str(), &newVCA));
+			pVCAs.insert({ truncateVCAPath(entry), newVCA });
 
-		vcaPaths.push_back(entry);
-		std::cout << "   Accepted as VCA: " << entry << " || Nice Name: " << truncateVCAPath(entry) << "\n";
-	}
-	
-	std::cout << "Snapshots:\n";
-	for (auto& entry : snapshotSet) {
-		// Get the Snapshot and add it to the map
-		FMOD::Studio::EventDescription* newSnapshot = nullptr;
-		errorCheckFMODHard(pSystem->getEvent(entry.c_str(), &newSnapshot));
-
-		bool isSnapshot = false;
-		newSnapshot->isSnapshot(&isSnapshot);
-		if (!isSnapshot) {		//If this event description isn't actually a Snapshot
-			std::cout << "   Skipped as Snapshot: " << entry << " -- Not actually a snapshot!" << "\n";
-		}
-		else {
-			pSnapshotDescriptions.insert({ truncateSnapshotPath(entry), newSnapshot });
-			snapshotPaths.push_back(entry);
-			std::cout << "   Accepted as Snapshot: " << entry << " || Nice Name: " << truncateSnapshotPath(entry) << "\n";
+			vcaPaths.push_back(entry);
+			std::cout << "   Accepted as VCA: " << entry << " || Nice Name: " << truncateVCAPath(entry) << "\n";
 		}
 	}
 	
-	std::cout << "Skipped:\n";
-	for (auto& entry : paramSet) {
-		std::cout << "   Skipped as Parameter: " << entry << " -- See below for Global Parameters.\n";
-	}
-	for (auto& entry : bankSet) {
-		std::cout << "   Skipped as Bank: " << entry << " -- Is a Bank." << "\n";
-	}
-	for (auto& entry : unrecognizedSet) {
-		std::cout << "   Skipped as unrecognized string: " << entry << "\n";
-	}
+	if (!snapshotSet.empty()) {
+		std::cout << "Snapshots:\n";
+		for (auto& entry : snapshotSet) {
+			// Get the Snapshot and add it to the map
+			FMOD::Studio::EventDescription* newSnapshot = nullptr;
+			errorCheckFMODHard(pSystem->getEvent(entry.c_str(), &newSnapshot));
 
-	std::cout << std::endl;
+			bool isSnapshot = false;
+			newSnapshot->isSnapshot(&isSnapshot);
+			if (!isSnapshot) {		//If this event description isn't actually a Snapshot
+				std::cout << "   Skipped as Snapshot: " << entry << " -- Not actually a snapshot!" << "\n";
+			}
+			else {
+				pSnapshotDescriptions.insert({ truncateSnapshotPath(entry), newSnapshot });
+				snapshotPaths.push_back(entry);
+				std::cout << "   Accepted as Snapshot: " << entry << " || Nice Name: " << truncateSnapshotPath(entry) << "\n";
+			}
+		}
+	}
+	
+	// List the skipped items, if there are any
+	if (!paramSet.empty() || !bankSet.empty() || !unrecognizedSet.empty()) {
+		std::cout << "Skipped:\n";
+
+		if (!paramSet.empty()) {
+			for (auto& entry : paramSet) {
+				std::cout << "   Skipped as Parameter: " << entry << "\n";
+			}
+		}
+		
+		if (!bankSet.empty()) {
+			for (auto& entry : bankSet) {
+				std::cout << "   Skipped as Bank: " << entry << "\n";
+			}
+		}
+		
+		if (!unrecognizedSet.empty()) {
+			for (auto& entry : unrecognizedSet) {
+				std::cout << "   Skipped as unrecognized string: " << entry << "\n";
+			}
+		}
+		
+		std::cout << std::endl;
+	}
+	
 
 	// Seperately, get the list of Global Parameters
+	// For this purpose we assume there's at least 1 Global Param
 	std::vector<FMOD_STUDIO_PARAMETER_DESCRIPTION> paramVector(1);
 	FMOD_STUDIO_PARAMETER_DESCRIPTION* paramVectorPtr = paramVector.data();
 	int paramCount = 0;
@@ -479,6 +554,7 @@ static void index() {
 
 	// Add them to the vector, one-by-one
 	std::cout << "   Global Parameters:\n";
+	if (paramCount < 1) { std::cout << "      ...none\n"; }
 	for (int i = 0; i < paramCount; i++) {
 		globalParamNames.push_back(paramVector[i].name);
 		globalParamDescriptions.insert({ paramVector[i].name, paramVector[i] });
@@ -490,6 +566,43 @@ static void index() {
 		std::cout << coutString << "\n";
 	}
 
+}
+
+// Indexes all loose sound files, for playback with FMOD Core. On Startup ONLY.
+static void indexCore() {
+	// Make sure vectors and maps are clear
+	pSounds.clear();
+	//for (auto& entry : pChannels) { entry.second->stop(); }
+	pChannels.clear();
+
+	// Get a set of the valid files (not necessarily sounds) in the soundfiles folder
+	std::set<std::filesystem::path> files = getSoundFiles(soundsDirPath);
+
+	// Attempt to load each sound
+	for (auto& entry : files) {
+		//std::cout << "Entry: " << entry.string() << "\n";
+		FMOD::Sound* newSound = nullptr;
+		FMOD_RESULT result = pCoreSystem->createSound(entry.string().c_str(), FMOD_DEFAULT, nullptr, &newSound);
+
+		// If there's an error, give a warning in the console and toss it out
+		if (result != FMOD_OK) {
+			errorCheckFMODSoft(result);
+			std::cout << "Offending file: " << entry.string() << "\n\n";
+			files.erase(entry);
+		}
+		else {
+			// Some sanitization to translate filepath to user-friendly paths
+			std::cout << "  Accepted: " << entry.string() << "\n";
+			pSounds.insert({ formatPathToSoundfile(entry, soundsDirPath), newSound});
+		}
+	}
+	if (pSounds.size() > 0) {
+		std::cout << "Sounds:\n";
+		for (auto& entry : pSounds) {
+			std::cout << "   " << entry.first << "\n";
+		}
+	}
+	
 }
 
 // Prints all currently indexed Events, Snapshots, Global Parameters, Busses, and VCAs.
@@ -962,15 +1075,15 @@ static void play_snapshot(const dpp::slashcommand_t& event, std::string eventToP
 	std::cout << "Play Snapshot command issued." << "\n";
 	std::cout << "Snapshot to Play: " << eventToPlay << " || Instance name: " << newName << std::endl;
 
-	FMOD::Studio::EventDescription* newEventDesc = nullptr;
+	FMOD::Studio::EventDescription* newSnapDesc = nullptr;
 	
 	if (pSnapshotDescriptions.contains(eventToPlay)) {
-		newEventDesc = pSnapshotDescriptions.at(eventToPlay);
+		newSnapDesc = pSnapshotDescriptions.at(eventToPlay);
 	}
 
-	if ((newEventDesc != nullptr) && (newEventDesc->isValid())) {
+	if ((newSnapDesc != nullptr) && (newSnapDesc->isValid())) {
 		FMOD::Studio::EventInstance* newSnapInst = nullptr;
-		errorCheckFMODHard(newEventDesc->createInstance(&newSnapInst));
+		errorCheckFMODHard(newSnapDesc->createInstance(&newSnapInst));
 		errorCheckFMODHard(newSnapInst->setCallback(eventInstanceDestroyedCallback, FMOD_STUDIO_EVENT_CALLBACK_DESTROYED));
 		errorCheckFMODHard(newSnapInst->start());
 		errorCheckFMODHard(newSnapInst->release());
@@ -982,6 +1095,42 @@ static void play_snapshot(const dpp::slashcommand_t& event, std::string eventToP
 	else {
 		std::cout << "No valid Snapshot found with the given path." << std::endl;
 		event.reply(dpp::message("No valid Snapshot found with the given path.").set_flags(dpp::m_ephemeral));
+	}
+}
+
+// Play Sub-Command: create a new Channel and play a sound through it immediately.
+static void play_file(const dpp::slashcommand_t& event, std::string soundToPlay, std::string inputName, bool isLoop = false) {
+	//Determine Channel / Instance name
+	std::string newName = inputName;
+	std::string cleanName = newName;
+	int iterator = 1;
+	while (pChannels.find(newName) != pChannels.end()) {		// If that name already exists, quietly give it a number
+		newName = cleanName + "-" + std::to_string(iterator);				// Keep counting up until valid.
+		iterator++;
+	}
+
+	FMOD::Sound* newSound = nullptr;
+
+	if (pSounds.contains(soundToPlay)) {
+		newSound = pSounds.at(soundToPlay);
+	}
+
+	// Funky attempt at error checking with getSystemObject(), to replace Studio's isValid() method
+	if ((newSound != nullptr) && (newSound->getSystemObject(nullptr) == FMOD_OK)) {
+		FMOD::Channel* newChannel = nullptr;
+		if (isLoop) { newChannel->setMode(FMOD_LOOP_NORMAL); }
+		else { newChannel->setMode(FMOD_LOOP_OFF); }
+		pCoreSystem->playSound(newSound, pCoreGroup, true, &newChannel);
+		newChannel->setCallback(soundChannelControlCallback);
+		newChannel->setPaused(false);
+		pChannels.insert({ newName, newChannel });
+
+		std::cout << "Playing Sound: " << soundToPlay << " with Instance name: " << newName << std::endl;
+		event.reply(dpp::message("Playing Sound: " + soundToPlay + " with Instance name: " + newName).set_flags(dpp::m_ephemeral));
+	}
+	else {
+		std::cout << "No valid Sound found with the given path and filename." << std::endl;
+		event.reply(dpp::message("No valid Sound  found with the given path.").set_flags(dpp::m_ephemeral));
 	}
 }
 
@@ -1031,6 +1180,7 @@ static void play(const dpp::slashcommand_t& event) {
 	// Divert to the proper subcommand
 	if (subcommand.name == "event") { play_event(event, eventToPlay, inputName); }
 	else if (subcommand.name == "snapshot") { play_snapshot(event, eventToPlay, inputName); }
+	else if (subcommand.name == "file") { play_file(event, eventToPlay, inputName); }
 	else { event.reply(dpp::message("Used Play event without subcommand. This is a bug and not supported.").set_flags(dpp::m_ephemeral)); }
 }
 
@@ -1189,13 +1339,23 @@ static void stopall_snapshots() {
 	std::cout << "Done." << std::endl;
 }
 
-// Base function, stops all events and snapshots.
+// Base function, stops all loose files.
+static void stopall_files() {
+	std::cout << "Stopping Files...";
+	for (auto& entry : pChannels) {
+		entry.second->stop();
+	}
+	std::cout << "Done." << std::endl;
+}
+
+// Base function, stops all Events, Snapshots, and Files.
 static void stopall() {
 	stopall_events();
 	stopall_snapshots();
+	stopall_files();
 }
 
-// Stops all playing events and/or snapshots in the list.
+// Stops all playing Events, Snapshots, and Files in the list.
 static void stopall(const dpp::slashcommand_t& event) {
 	stopall();
 	event.reply(dpp::message("All events stopped.").set_flags(dpp::m_ephemeral));
@@ -1501,7 +1661,7 @@ static void onBotAppGet(const dpp::confirmation_callback_t& callbackObj) {
 		botapp = callbackObj.get<dpp::application>();
 		std::cout << "Owner added with Username: " << botapp.owner.username << " and Snowflake ID: " << botapp.owner.id << "\n";
 		addAuthorizedUser(botapp.owner.id, true);
-		authorizedUsers.insert(authorizedUsers.end(), botapp.owner.id);
+		authorizedUsers.insert(botapp.owner.id);
 		// Get other authorized users
 
 	}
@@ -1521,8 +1681,9 @@ static void init() {
 	std::cout << std::endl;
 
 	// file paths
-	exe_path = getExecutableFolder();
-	bank_dir_path = exe_path.append("soundbanks");
+	exePath = getExecutableFolder();
+	banksDirPath = exePath / ("soundbanks");		// Append method would affect exePath (bad)
+	soundsDirPath = exePath / ("soundfiles");		// Slash operator concatenates paths
 
 	// FMOD Init
 	std::cout << "Initializing FMOD...";
@@ -1534,22 +1695,30 @@ static void init() {
 
 	// Load Master Bank and Master Strings
 	std::cout << "Loading Master banks...";
-	errorCheckFMODHard(pSystem->loadBankFile((bank_dir_path.string() + "\\" + masterBankFile).c_str(), FMOD_STUDIO_LOAD_BANK_NORMAL, &pMasterBank));
-	errorCheckFMODHard(pSystem->loadBankFile((bank_dir_path.string() + "\\" + masterStringsFile).c_str(), FMOD_STUDIO_LOAD_BANK_NORMAL, &pMasterStringsBank));
+	std::string basePath = banksDirPath.string() + "\\";
+	errorCheckFMODHard(pSystem->loadBankFile((basePath + masterBankFile).c_str(), FMOD_STUDIO_LOAD_BANK_NORMAL, &pMasterBank));
+	errorCheckFMODHard(pSystem->loadBankFile((basePath + masterStringsFile).c_str(), FMOD_STUDIO_LOAD_BANK_NORMAL, &pMasterStringsBank));
 	std::cout << "Done." << std::endl;
 
 	// Also get the Master Bus, set volume, and get the related Channel Group
 	std::cout << "Getting Busses and Channel Groups...";
 	errorCheckFMODHard(pSystem->getBus("bus:/", &pMasterBus));
 	errorCheckFMODHard(pMasterBus->setVolume(dBToFloat(fmodMasterBusVolOffset)));
-	errorCheckFMODHard(pMasterBus->lockChannelGroup());					// Tell the Master Channel Group to always exist even when events arn't playing...
-	errorCheckFMODHard(pSystem->flushCommands());						// And wait until all previous commands are done (ensuring Channel Group exists)...
-	errorCheckFMODHard(pMasterBus->getChannelGroup(&pMasterBusGroup));	// Or else this fails immediately, and we'll have DSP problems.
+	errorCheckFMODHard(pMasterBus->lockChannelGroup());			// Tell the Master Channel Group to always exist even when events arn't playing...
+	errorCheckFMODHard(pSystem->flushCommands());				// And wait until all previous commands are done (ensuring Channel Group exists)...
+	errorCheckFMODHard(pMasterBus->getChannelGroup(&pMasterBusGroup));	// Or else this fails immediately and we'll have DSP problems.
+	
+	FMOD::Studio::Bus* pCoreBus = nullptr;
+	pSystem->getBus("bus:/SubMaster/Files", &pCoreBus);
+	pCoreBus->lockChannelGroup();
+	pSystem->flushCommands();
+	pCoreBus->getChannelGroup(&pCoreGroup);
+
 	std::cout << "Done." << std::endl;
 	
 
 	// Define and create our capture DSP on the Master Channel Group.
-	// Copied from FMOD's examples, unsure why this works and why it must be in brackets.
+	// Copied from FMOD's examples. Unsure why this specifically must be in brackets?
 	std::cout << "Setting up Capture DSP...";
 	{
 		FMOD_DSP_DESCRIPTION dspdesc;
@@ -1558,14 +1727,18 @@ static void init() {
 		dspdesc.version = 0x00010000;
 		dspdesc.numinputbuffers = 1;
 		dspdesc.numoutputbuffers = 1;
+		// Important: "Read" must point to an appropriate F_CALL function that's always valid (not bound).
+		// Since it also needs program data (isConnected and pcmDataBuffer), this is tough to refactor.
 		dspdesc.read = captureDSPReadCallback;
 		errorCheckFMODHard(pCoreSystem->createDSP(&dspdesc, &mCaptureDSP));
 	}
-	errorCheckFMODHard(pMasterBusGroup->addDSP(FMOD_CHANNELCONTROL_DSP_TAIL, mCaptureDSP));		// Adds the newly defined dsp
+	// Adds the newly defined dsp
+	errorCheckFMODHard(pMasterBusGroup->addDSP(FMOD_CHANNELCONTROL_DSP_TAIL, mCaptureDSP));
 	std::cout << "Done." << std::endl;
 
 	// Setting Listener positioning for 3D, in case it's used 
 	std::cout << "Setting up Listener...";
+	FMOD_3D_ATTRIBUTES listenerAttributes;
 	listenerAttributes.position = { 0.0f, 0.0f, 0.0f };
 	listenerAttributes.forward = { 0.0f, 1.0f, 0.0f };
 	listenerAttributes.up = { 0.0f, 0.0f, 1.0f };
@@ -1575,9 +1748,8 @@ static void init() {
 	// Debug details
 	int samplerate; FMOD_SPEAKERMODE speakermode; int numrawspeakers;
 	errorCheckFMODHard(pCoreSystem->getSoftwareFormat(&samplerate, &speakermode, &numrawspeakers));
-	errorCheckFMODHard(pSystem->flushCommands());
-	std::cout << "\n";
-	std::cout << "###########################\n\n";
+	errorCheckFMODHard(pSystem->flushCommands());	// Ensure everything above is done before displaying details
+	std::cout << "\n###########################\n\n";
 	std::cout << "FMOD System Info:\n  Sample Rate- " << samplerate << "\n  Speaker Mode- " << speakermode
 		<< "\n  Num Raw Speakers- " << numrawspeakers << "\n";
 	std::cout << std::endl;
@@ -1590,8 +1762,12 @@ static void init_session() {
 	banks();
 	std::cout << "...Done!\n" << std::endl;
 
-	std::cout << "Indexing Objects...\n";
-	index();
+	std::cout << "Indexing FMOD Studio objects...\n";
+	indexStudio();
+	std::cout << "...Done!\n\n";
+
+	std::cout << "Indexing loose sound files...\n";
+	indexCore();
 	std::cout << "...Done!\n\n";
 	std::cout << "###########################\n";
 	std::cout << std::endl;
@@ -1599,11 +1775,21 @@ static void init_session() {
 
 // Exit function to release FMOD resources before quitting the program
 static void releaseFMOD() {
+	// Stop everything, just in case
+	stopall();
+
 	// Remove DSP from master channel group, and release the DSP
 	pMasterBusGroup->removeDSP(mCaptureDSP);
 	mCaptureDSP->release();
 
+	// Unload and release any FMOD Core sounds
+	for (auto& sound : pSounds) {
+		sound.second->release();
+	}
+	pSounds.clear();
+
 	// Unload and release FMOD Studio System
+	// This should unload and release the connected Core objects too
 	pSystem->unloadAll();
 	pSystem->release();
 }
@@ -1671,6 +1857,11 @@ int main() {
 			playSnapshotSubCmd.add_option(dpp::command_option(dpp::co_string, "instance-name", "Optional: name used for interactions with this new Instance. Defaults to the name of the Snapshot.", false));
 			commands[2].add_option(playSnapshotSubCmd);
 
+			// Sub-Command: Play File
+			dpp::command_option playFileSubCmd = dpp::command_option(dpp::co_sub_command, "file", "Play a loose audio file.");
+			playSnapshotSubCmd.add_option(dpp::command_option(dpp::co_string, "file-name", "The file to play.", true));
+			playSnapshotSubCmd.add_option(dpp::command_option(dpp::co_string, "instance-name", "Optional: name used for interactions with this instance of the sound. Defaults to the filename.", false));
+			commands[2].add_option(playFileSubCmd);
 
 			// Pause options
 			commands[3].add_option(
@@ -1745,7 +1936,7 @@ int main() {
 			);
 
 			// Permissions. Show commands for only those who can use slash commands in a server.
-			// Permission to _run_ the commands will be checked locally.
+			// Permission to _run_ the commands will be checked locally at runtime.
 			for (unsigned int i = 0; i > commands.size(); i++) {
 				commands[i].default_member_permissions.has(dpp::permissions::p_use_application_commands);
 			}
@@ -1819,7 +2010,7 @@ int main() {
 					}
 				}
 			}
-			else /*if (subcmd.name == "snapshot")*/ {
+			else if (subcmd.name == "snapshot") {
 				for (auto& opt : subcmd.options) {
 					// Same but for Snapshot Descriptions
 					if (opt.focused) {
@@ -1835,6 +2026,7 @@ int main() {
 					}
 				}
 			}
+			//else /*if (subcmd.name == "file")*/ {}
 		}
 
 		// Pause, Unpause, and KeyOff all use the same list of Event Instances
@@ -1857,33 +2049,29 @@ int main() {
 			}
 		}
 
-		// Stop applies to both Event and Snapshot Instances
+		// Stop applies to both Event, Snapshot, and File Instances
 		else if (event.name == "stop") {
 			for (auto& opt : event.options) {
 				if (opt.focused) {
 					std::string uservalue = std::get<std::string>(opt.value);
 					dpp::interaction_response eventInstanceList(dpp::ir_autocomplete_reply);
-					std::cout << "Test01" << std::endl;
 
 					// For each Event Instance (Events, not Snapshots)
 					for (std::map<std::string, sessionEventInstance>::iterator it = pEventInstances.begin(); it != pEventInstances.end(); ++it) {
-						std::cout << "Test02\n";
 						std::string pathOption = it->first;
 						if ((pathOption.find(uservalue, 0) != std::string::npos) || (uservalue == "")) {
-							std::cout << "    Test03\n";
 							eventInstanceList.add_autocomplete_choice(dpp::command_option_choice(pathOption, pathOption));
 						}
 					}
-					std::cout << "Test04\n";
 					// and For each Snapshot Instance
 					for (std::map<std::string, FMOD::Studio::EventInstance*>::iterator it = pSnapshotInstances.begin(); it != pSnapshotInstances.end(); ++it) {
-						std::cout << "Test05\n";
 						std::string pathOption = it->first;
 						if ((pathOption.find(uservalue, 0) != std::string::npos) || (uservalue == "")) {
-							std::cout << "    Test06\n";
 							eventInstanceList.add_autocomplete_choice(dpp::command_option_choice(pathOption, pathOption));
 						}
 					}
+					// and For each File instance
+					// ...
 
 					bot.interaction_response_create(event.command.id, event.command.token, eventInstanceList);
 				}
@@ -2002,10 +2190,12 @@ int main() {
 	while (!exitRequested) {
 		// Send PCM data to D++, if applicable
 		if (isConnected) {
-			if (pcmDataBuffer.size() > dpp::send_audio_raw_max_length) {								// If buffer is full enough (note: big enough so half of buffer always remains)
-				while (pcmDataBuffer.size() > (dpp::send_audio_raw_max_length * 0.5)) {									// Until minimum size we want our buffer
-					currentClient->send_audio_raw((uint16_t*)pcmDataBuffer.data(), dpp::send_audio_raw_max_length);		// Send the buffer (method takes 11520 BYTES, so 5760 samples)
-					pcmDataBuffer.erase(pcmDataBuffer.begin(), pcmDataBuffer.begin() + (int)(dpp::send_audio_raw_max_length * 0.5));	// Trim our main buffer of the data just sent
+			if (pcmDataBuffer.size() > sendAudioThresh) {							// If buffer is full enough
+				while (pcmDataBuffer.size() > sendAudioThresh) {					// Until minimum size we want our buffer
+					currentClient->send_audio_raw((uint16_t*)pcmDataBuffer.data(),
+						dpp::send_audio_raw_max_length);							// Send the buffer (method takes 11520 BYTES, so 5760 samples)
+					pcmDataBuffer.erase(pcmDataBuffer.begin(),
+						pcmDataBuffer.begin() + (int)(dpp::send_audio_raw_max_length * 0.5));	// Trim our main buffer of the data just sent
 				}
 			}
 			// Todo: what if the audio ends? Or if completely silent? We should stop trying to transmit normally, right? Probably would go here.
@@ -2021,9 +2211,9 @@ int main() {
 
 	// Todo: If in voice, leave chat before dying?
 
+	// Release FMOD and the bot cluster
 	releaseFMOD();
-
-	// Todo: Any cleanup necessary for the bot?
+	bot.~cluster();
 
 	std::cout << std::endl;
 
