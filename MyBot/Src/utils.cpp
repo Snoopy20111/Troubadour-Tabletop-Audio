@@ -2,7 +2,7 @@
 
 //---UTILS---//
 
-namespace utils {
+namespace trbdrUtils {
 	// Gets the location of the program executable.
 	// If porting away from Windows this is the first code change you should have to make.
 	std::filesystem::path getExecutablePath() {
@@ -16,14 +16,6 @@ namespace utils {
 	std::filesystem::path getExecutableFolder() {
 		std::filesystem::path exePath = getExecutablePath();
 		return exePath.parent_path();
-	}
-
-	// Returns a random signed floating point value
-	float randomFloat() {
-		float result = (float)(rand()) / (float)(RAND_MAX);
-		bool isPositive = ((float)(rand()) > ((float)(RAND_MAX) / 2));
-		if (!isPositive) { result *= -1; }
-		return result;
 	}
 
 	// Shorthand for converting dB value into decimal (0-1). Good for setting volumes.
@@ -79,6 +71,7 @@ namespace utils {
 		return token;
 	}
 
+	// Returns a set of Snowflakes, representing all authorized users.
 	std::set<dpp::snowflake> getAuthorizedUsers() {
 		// Read from config file, grab each Snowflake,
 		// and return them to be added as authorized users
@@ -123,6 +116,7 @@ namespace utils {
 		return authUsers;
 	}
 
+	// Adds an authorized user, with the option to check against the users.config file and against the Bot Owner.
 	bool addAuthorizedUser(const dpp::snowflake& newAuth, const bool& checkAgainstFile, const dpp::snowflake& botOwner) {
 		if (botOwner == newAuth) {
 			std::cout << "Cannot add botOwner, definitely already exists in the list." << std::endl;
@@ -149,6 +143,7 @@ namespace utils {
 		return true;
 	}
 
+	// Adds an authorized user, checking against the currently Set before checking or adding to the file.
 	bool addAuthorizedUser(const dpp::snowflake& newAuth, const std::set<dpp::snowflake>& userSet, const dpp::snowflake& botOwner) {
 		if (!userSet.contains(newAuth)) {
 			return addAuthorizedUser(newAuth, false, botOwner);
@@ -157,6 +152,7 @@ namespace utils {
 		return false;
 	}
 
+	// Removes an authorized user.
 	bool removeAuthorizedUser(const dpp::snowflake& authToRemove, std::set<dpp::snowflake>& userSet, const dpp::snowflake& botOwner) {
 		if (!userSet.contains(authToRemove)) {
 			std::cout << "Given snowflake doesn't exist in loaded Authorized User set, cannot remove. ";
@@ -351,11 +347,15 @@ namespace utils {
 		return output;
 	}
 
-	/* Returns true if the Opus - sized packet has any signal at all.
-	 * Some minor fudging included here to keep from checking
-	 * _every_ sample, in the name of performance.
-	 * Note: not currently in use! Todo.
-	 */
+	// Returns a random signed floating point value
+	/*float randomFloat() {
+		float result = (float)(rand()) / (float)(RAND_MAX);
+		bool isPositive = ((float)(rand()) > ((float)(RAND_MAX) / 2));
+		if (!isPositive) { result *= -1; }
+		return result;
+	}*/
+
+	// Returns true if the Opus - sized packet has any signal at all.
 	/*bool containsSignal(std::vector<int16_t> pcmdata) {
 		int limit = (int)(dpp::send_audio_raw_max_length * 0.5);
 		for (int i = 0; i < limit; i += 16) {				// Checks every 16th sample of 5760
@@ -364,7 +364,6 @@ namespace utils {
 				return true;								// this is likely to return _very_ quickly
 			}
 		}
-
 		for (int i = limit - 16; i < limit; i++) {			// Double checking for the last few samples, just in case.
 			if (pcmdata[i] != 0) {							// Prevents transients from being chopped off in worst-case.
 				return true;

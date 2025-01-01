@@ -8,15 +8,12 @@
 
 //---UTILS---//
 
-namespace utils {
+namespace trbdrUtils {
 	// Gets the location of the program executable.
 	std::filesystem::path getExecutablePath();
 
 	// Gets the folder where the executable is contained.
 	std::filesystem::path getExecutableFolder();
-
-	// Returns a random signed floating point value.
-	float randomFloat();
 
 	// Shorthand for converting dB value into decimal (0-1). Good for setting volumes.
 	float dBToFloat(const float& input);
@@ -75,6 +72,9 @@ namespace utils {
 
 	// Returns a decibel volume level as a string (with the dB units), for display.
 	std::string volumeString(float inputValue);
+
+	// Returns a random signed floating point value.
+	/*float randomFloat();*/
 
 	// Returns true if the Opus - sized packet has any signal at all.
 	/*bool containsSignal(std::vector<int16_t> pcmdata);*/
