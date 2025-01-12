@@ -46,8 +46,8 @@ static std::vector<FMOD::Studio::Bank*> pBanks;						// Vector of all other bank
 
 // Events
 static std::vector<std::string> eventPaths;							// Vector of FMOD-internal paths the user can call
-static std::map<std::string, sessionEventDesc> pEventDescriptions;	// Map of all Event Descriptions and their parameters
-static std::map<std::string, sessionEventInstance> pEventInstances;	// Map of all Event Instances, which pair user-given name to instance
+static std::map<std::string, sessionEventDesc> pEventDescriptions;	// Map of all Event Descriptions and their parameters (with Nice Names as keys)
+static std::map<std::string, sessionEventInstance> pEventInstances;	// Map of all Event Instances (with User-given names as keys)
 
 // Busses
 static std::vector<std::string> busPaths;							// Vector of FMOD-internal paths to each bus
@@ -67,7 +67,7 @@ static std::vector<std::string> globalParamNames;					// Similar but for Global 
 static std::map<std::string, FMOD_STUDIO_PARAMETER_DESCRIPTION> globalParamDescriptions;
 
 // Loose audio files
-static std::vector<std::string> soundPaths;				// Similar but for loose sound files
+static std::vector<std::string> soundPaths;							// Similar but for loose sound files
 static std::map<std::string, FMOD::Sound*> pSounds;					// Like Event Descriptions but created on-the-fly so users have playback options
 static std::map<std::string, FMOD::Channel*> pChannels;				// Like Event Instances, sorta
 
@@ -580,7 +580,6 @@ static void indexCore() {
 
 	// Attempt to load each sound
 	for (auto& entry : files) {
-		//std::cout << "Entry: " << entry.string() << "\n";
 		FMOD::Sound* newSound = nullptr;
 		FMOD_RESULT result = pCoreSystem->createSound(entry.string().c_str(), FMOD_DEFAULT, nullptr, &newSound);
 
@@ -995,7 +994,7 @@ static void playable(const dpp::slashcommand_t& event) {
 				if (eventParams.size() != 0) {
 					std::string paramOutString = "";
 					for (int j = 0; j < (int)eventParams.size(); j++) {			// as well as each associated parameters and their ranges, if any.
-						paramOutString.append(" - ");
+						paramOutString.append("  - ");
 						paramOutString.append(eventParams[j].name);
 						paramOutString.append(" ");
 						paramOutString.append(paramMinMaxString(eventParams[j]) + paramAttributesString(eventParams[j]));
@@ -1006,14 +1005,20 @@ static void playable(const dpp::slashcommand_t& event) {
 			paramListEmbed.add_field("Events", playableEventsOutput);
 
 			std::string playableSnapshotsOutput = "";
-
-			//Snapshots 
+			// Snapshots 
 			for (int i = 0; i < (int)snapshotPaths.size(); i++) {						// For every path	
 				playableSnapshotsOutput.append("- ");
 				playableSnapshotsOutput.append(truncateSnapshotPath(snapshotPaths[i]) + "\n");
 			}
-
 			paramListEmbed.add_field("Snapshots", playableSnapshotsOutput);
+
+			std::string playableFilesOutput = "";
+			// Files
+			for (auto& entry : pSounds) {
+				playableFilesOutput.append("- ");
+				playableFilesOutput.append(entry.first + "\n");
+			}
+			paramListEmbed.add_field("Files", playableFilesOutput);
 
 			event.edit_original_response(dpp::message(event.command.channel_id, paramListEmbed));
 		}
@@ -1100,7 +1105,7 @@ static void play_snapshot(const dpp::slashcommand_t& event, std::string eventToP
 
 // Play Sub-Command: create a new Channel and play a sound through it immediately.
 static void play_file(const dpp::slashcommand_t& event, std::string soundToPlay, std::string inputName, bool isLoop = false) {
-	//Determine Channel / Instance name
+	//Determine Channel and Instance name
 	std::string newName = inputName;
 	std::string cleanName = newName;
 	int iterator = 1;
@@ -1115,8 +1120,8 @@ static void play_file(const dpp::slashcommand_t& event, std::string soundToPlay,
 		newSound = pSounds.at(soundToPlay);
 	}
 
-	// Funky attempt at error checking with getSystemObject(), to replace Studio's isValid() method
-	if ((newSound != nullptr) && (newSound->getSystemObject(nullptr) == FMOD_OK)) {
+	// Todo: find other error-checking methods here, to fill-in for Studio's isValid() method
+	if (newSound != nullptr) {
 		FMOD::Channel* newChannel = nullptr;
 		if (isLoop) { newChannel->setMode(FMOD_LOOP_NORMAL); }
 		else { newChannel->setMode(FMOD_LOOP_OFF); }
@@ -1130,7 +1135,7 @@ static void play_file(const dpp::slashcommand_t& event, std::string soundToPlay,
 	}
 	else {
 		std::cout << "No valid Sound found with the given path and filename." << std::endl;
-		event.reply(dpp::message("No valid Sound  found with the given path.").set_flags(dpp::m_ephemeral));
+		event.reply(dpp::message("No valid Sound found with the given path.").set_flags(dpp::m_ephemeral));
 	}
 }
 
@@ -1689,7 +1694,6 @@ static void init() {
 	std::cout << "Initializing FMOD...";
 	errorCheckFMODHard(FMOD::Studio::System::create(&pSystem));
 	errorCheckFMODHard(pSystem->getCoreSystem(&pCoreSystem));
-	//errorCheckFMODHard(pCoreSystem->setDSPBufferSize(4096, 4));
 	errorCheckFMODHard(pSystem->initialize(128, FMOD_STUDIO_INIT_LIVEUPDATE, FMOD_INIT_NORMAL, nullptr));
 	std::cout << "Done." << std::endl;
 
@@ -1817,12 +1821,12 @@ int main() {
 			std::vector<dpp::slashcommand> commands {
 				{ "playable", "List all playable Events, their Parameters, and Snapshots.", bot.me.id},
 				{ "list", "Show all playing Event instances and their Parameters.", bot.me.id},
-				{ "play", "Play a new Event or Snapshot.", bot.me.id},
-				{ "pause", "Pause a currently playing Event.", bot.me.id},
-				{ "unpause", "Resume a currently paused Event.", bot.me.id},
+				{ "play", "Play a new Event, Snapshot, or Sound.", bot.me.id},
+				{ "pause", "Pause a currently playing Event or Sound.", bot.me.id},
+				{ "unpause", "Resume a currently paused Event or Sound.", bot.me.id},
 				{ "keyoff", "Key off a sustain point, if the Event has any.", bot.me.id},
-				{ "stop", "Stop a currently playing Event or Snapshot.", bot.me.id},
-				{ "stopall", "Stop all Events and Snapshots immediately.", bot.me.id},
+				{ "stop", "Stop a currently playing Event, Snapshot, or Sound.", bot.me.id},
+				{ "stopall", "Stop all Events, Snapshots, and Sounds immediately.", bot.me.id},
 				{ "param", "Set a Parameter, globally or on an Event instance.", bot.me.id},
 				{ "volume", "Set the volume of a Bus or VCA.", bot.me.id},
 				{ "ping", "Ping the bot to ensure it's alive.", bot.me.id },
@@ -1859,8 +1863,8 @@ int main() {
 
 			// Sub-Command: Play File
 			dpp::command_option playFileSubCmd = dpp::command_option(dpp::co_sub_command, "file", "Play a loose audio file.");
-			playSnapshotSubCmd.add_option(dpp::command_option(dpp::co_string, "file-name", "The file to play.", true));
-			playSnapshotSubCmd.add_option(dpp::command_option(dpp::co_string, "instance-name", "Optional: name used for interactions with this instance of the sound. Defaults to the filename.", false));
+			playFileSubCmd.add_option(dpp::command_option(dpp::co_string, "file-name", "The file to play.", true).set_auto_complete(true));
+			playFileSubCmd.add_option(dpp::command_option(dpp::co_string, "instance-name", "Optional: name used for interactions with this instance of the sound. Defaults to the filename.", false));
 			commands[2].add_option(playFileSubCmd);
 
 			// Pause options
@@ -2000,7 +2004,7 @@ int main() {
 						dpp::interaction_response eventDescList(dpp::ir_autocomplete_reply);
 						// Add all the events in the prepared list
 						for (unsigned int i = 0; i < eventPaths.size(); i++) {
-							std::string pathOption = truncateEventPath(eventPaths.at(i));
+							std::string pathOption = truncateEventPath(eventPaths.at(i));	//Could pre-compute sets of these
 							// Only list matching event names; if empty, list all
 							if ((pathOption.find(uservalue, 0) != std::string::npos) || (uservalue == "")) {
 								eventDescList.add_autocomplete_choice(dpp::command_option_choice(pathOption, pathOption));
@@ -2017,7 +2021,7 @@ int main() {
 						std::string uservalue = std::get<std::string>(opt.value);
 						dpp::interaction_response snapshotDescList(dpp::ir_autocomplete_reply);
 						for (unsigned int i = 0; i < snapshotPaths.size(); i++) {
-							std::string pathOption = truncateSnapshotPath(snapshotPaths.at(i));
+							std::string pathOption = truncateSnapshotPath(snapshotPaths.at(i));		//Could pre-compute sets of these
 							if ((pathOption.find(uservalue, 0) != std::string::npos) || (uservalue == "")) {
 								snapshotDescList.add_autocomplete_choice(dpp::command_option_choice(pathOption, pathOption));
 							}
@@ -2026,11 +2030,54 @@ int main() {
 					}
 				}
 			}
-			//else /*if (subcmd.name == "file")*/ {}
+			else if (subcmd.name == "file") {
+				for (auto& opt : subcmd.options) {
+					// Similar for Files
+					if (opt.focused) {
+						std::string uservalue = std::get<std::string>(opt.value);
+						dpp::interaction_response soundsList(dpp::ir_autocomplete_reply);
+						for (auto& entry : pSounds) {
+							std::string pathOption = entry.first;
+							if ((pathOption.find(uservalue, 0) != std::string::npos) || (uservalue == "")) {
+								soundsList.add_autocomplete_choice(dpp::command_option_choice(pathOption, pathOption));
+							}
+						}
+						bot.interaction_response_create(event.command.id, event.command.token, soundsList);
+					}
+				}
+			}
 		}
 
 		// Pause, Unpause, and KeyOff all use the same list of Event Instances
-		else if (event.name == "pause" || event.name == "unpause" || event.name == "keyoff") {
+		else if (event.name == "pause" || event.name == "unpause") {
+			for (auto& opt : event.options) {
+				if (opt.focused) {
+					std::string uservalue = std::get<std::string>(opt.value);
+					dpp::interaction_response eventInstanceList(dpp::ir_autocomplete_reply);
+
+					// For each Event Instance (Events, not Snapshots)
+					for (std::map<std::string, sessionEventInstance>::iterator it = pEventInstances.begin(); it != pEventInstances.end(); ++it) {
+						std::string pathOption = it->first;
+						if ((pathOption.find(uservalue, 0) != std::string::npos) || (uservalue == "")) {
+							eventInstanceList.add_autocomplete_choice(dpp::command_option_choice(pathOption, pathOption));
+						}
+					}
+
+					// For each File Instance
+					for (std::map<std::string, FMOD::Channel*>::iterator it = pChannels.begin(); it != pChannels.end(); ++it) {
+						std::string pathOption = it->first;
+						if ((pathOption.find(uservalue, 0) != std::string::npos) || (uservalue == "")) {
+							eventInstanceList.add_autocomplete_choice(dpp::command_option_choice(pathOption, pathOption));
+						}
+					}
+
+					bot.interaction_response_create(event.command.id, event.command.token, eventInstanceList);
+				}
+			}
+		}
+
+		// Keyoff is very similar to Pause/Unpause, but only applies to Event Instances
+		else if (event.name == "keyoff") {
 			for (auto& opt : event.options) {
 				if (opt.focused) {
 					std::string uservalue = std::get<std::string>(opt.value);
@@ -2054,26 +2101,31 @@ int main() {
 			for (auto& opt : event.options) {
 				if (opt.focused) {
 					std::string uservalue = std::get<std::string>(opt.value);
-					dpp::interaction_response eventInstanceList(dpp::ir_autocomplete_reply);
+					dpp::interaction_response stoppableList(dpp::ir_autocomplete_reply);
 
 					// For each Event Instance (Events, not Snapshots)
 					for (std::map<std::string, sessionEventInstance>::iterator it = pEventInstances.begin(); it != pEventInstances.end(); ++it) {
 						std::string pathOption = it->first;
 						if ((pathOption.find(uservalue, 0) != std::string::npos) || (uservalue == "")) {
-							eventInstanceList.add_autocomplete_choice(dpp::command_option_choice(pathOption, pathOption));
+							stoppableList.add_autocomplete_choice(dpp::command_option_choice(pathOption, pathOption));
 						}
 					}
 					// and For each Snapshot Instance
 					for (std::map<std::string, FMOD::Studio::EventInstance*>::iterator it = pSnapshotInstances.begin(); it != pSnapshotInstances.end(); ++it) {
 						std::string pathOption = it->first;
 						if ((pathOption.find(uservalue, 0) != std::string::npos) || (uservalue == "")) {
-							eventInstanceList.add_autocomplete_choice(dpp::command_option_choice(pathOption, pathOption));
+							stoppableList.add_autocomplete_choice(dpp::command_option_choice(pathOption, pathOption));
 						}
 					}
 					// and For each File instance
-					// ...
+					for (std::map<std::string, FMOD::Channel*>::iterator it = pChannels.begin(); it != pChannels.end(); ++it) {
+						std::string pathOption = it->first;
+						if ((pathOption.find(uservalue, 0) != std::string::npos) || (uservalue == "")) {
+							stoppableList.add_autocomplete_choice(dpp::command_option_choice(pathOption, pathOption));
+						}
+					}
 
-					bot.interaction_response_create(event.command.id, event.command.token, eventInstanceList);
+					bot.interaction_response_create(event.command.id, event.command.token, stoppableList);
 				}
 			}
 		}
@@ -2213,7 +2265,7 @@ int main() {
 
 	// Release FMOD and the bot cluster
 	releaseFMOD();
-	bot.~cluster();
+	//bot.~cluster();
 
 	std::cout << std::endl;
 

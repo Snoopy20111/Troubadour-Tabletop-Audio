@@ -7,6 +7,9 @@
 		<property name="color">
 			<value>Blue</value>
 		</property>
+		<property name="overridingInputFormat">
+			<value>1</value>
+		</property>
 		<property name="name">
 			<value>Files</value>
 		</property>
@@ -25,6 +28,10 @@
 			<destination>{e6021db7-dd34-4e74-9e3e-37f80258bdf9}</destination>
 		</relationship>
 	</object>
-	<object class="MixerBusPanner" id="{3f72c77e-5ada-48da-9874-76c4bffb52f6}" />
+	<object class="MixerBusPanner" id="{3f72c77e-5ada-48da-9874-76c4bffb52f6}">
+		<property name="overridingOutputFormat">
+			<value>1</value>
+		</property>
+	</object>
 	<object class="MixerBusFader" id="{e6021db7-dd34-4e74-9e3e-37f80258bdf9}" />
 </objects>
