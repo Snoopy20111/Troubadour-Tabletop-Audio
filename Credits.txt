@@ -1,4 +1,10 @@
+All Sound Effects were created and/or edited by Logan Hardin, using appropriately licensed source files.
+
+#########################
 Music Attributions:
+
+Chaconne [in F Major], by Jan Antonin Losy (1650-1721). Performed by Michael Podolski, Lute. Accessed from MusOpen.org. Redistributed under Public Domain Mark 1.0 Universal license. https://musopen.org/music/45671-chaconne/
+
 Blackwaterside (Trad.) by Javolenus (c) copyright 2024 Licensed under a Creative Commons Attribution Noncommercial (4.0) license. https://dig.ccmixter.org/files/Javolenus/68249
 
 Blue Sky Bolero by Javolenus (c) copyright 2022 Licensed under a Creative Commons Attribution Noncommercial  (3.0) license. https://dig.ccmixter.org/files/Javolenus/64859
@@ -37,7 +43,7 @@ Packington's Pound by Javolenus (c) copyright 2024 Licensed under a Creative Com
 
 Quiet Gongs with Spacious Chimes by GeeArtriasRose (c) copyright 2024 Licensed under a Creative Commons Attribution Noncommercial (4.0) license. https://dig.ccmixter.org/files/GeeArtriasRose/68673
 
-Space Main Menu (Trailer) by LightMister -- https://freesound.org/s/690294/ -- License: Creative Commons 0
+Space Main Menu (Trailer) by LightMister (c) copyright 2023 Licensed under a Creative Commons 0 license. https://freesound.org/s/690294/
 
 Spring blues by Stefan Kartenberg (c) copyright 2023 Licensed under a Creative Commons Attribution Noncommercial (4.0) license. https://dig.ccmixter.org/files/JeffSpeed68/66360
 
@@ -45,4 +51,4 @@ Tansey's Fancy (Trad.) by Javolenus (c) copyright 2024 Licensed under a Creative
 
 To Drive The Cold Winter Away (Guitar) by Javolenus (c) copyright 2023 Licensed under a Creative Commons Attribution Noncommercial (4.0) license. https://dig.ccmixter.org/files/Javolenus/67611 
 
-Piano Piece 6 (Winter Lights) by Darkroom (c) copyright 2020 Licensed under a Creative Commons Attribution Noncommercial  (3.0) license. https://dig.ccmixter.org/files/mactonite/62882
+Piano Piece 6 (Winter Lights) by Darkroom (c) copyright 2020 Licensed under a Creative Commons Attribution Noncommercial (3.0) license. https://dig.ccmixter.org/files/mactonite/62882
