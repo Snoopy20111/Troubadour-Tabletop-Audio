@@ -69,7 +69,7 @@ static std::map<std::string, FMOD_STUDIO_PARAMETER_DESCRIPTION> globalParamDescr
 // Loose audio files
 static std::vector<std::string> soundPaths;							// Similar but for loose sound files
 static std::map<std::string, FMOD::Sound*> pSounds;					// Like Event Descriptions but created on-the-fly so users have playback options
-static std::map<std::string, FMOD::Channel*> pChannels;				// Like Event Instances, sorta
+static std::map<std::string, sessionSoundInstance> pChannels;		// Like Event Instances, sorta
 
 
 //---Misc Bot Declarations---//
@@ -184,17 +184,15 @@ static FMOD_RESULT F_CALL soundChannelControlCallback(FMOD_CHANNELCONTROL *chann
 	case FMOD_CHANNELCONTROL_CALLBACK_END:
 		FMOD_MODE mode;
 		callbackObj.channel->getMode(&mode);
-		std::cout << "sound mode: " << std::to_string(mode) << std::endl;
+		//std::cout << "sound mode: " << std::to_string(mode) << std::endl;
 		if (mode == FMOD_LOOP_OFF) {
 			callbackObj.channel->stop();
 			// Channels don't get released, FMOD handles that for us,
 			// so just remove it from our list (if found with reverse search).
 			// Also don't release Sounds, that'll unload the file itself.
 
-			//std::string foundKey;
 			for (auto it = pChannels.begin(); it != pChannels.end(); ++it) {
-				if (it->second == callbackObj.channel) {
-					//foundKey = it->first;
+				if (it->second.channel == callbackObj.channel) {
 					pChannels.erase(it->first);
 				}
 			}
@@ -722,30 +720,9 @@ static void list(const dpp::slashcommand_t& event) {
 			std::string snapshotsList = "";
 
 			for (auto const& snapshot : pSnapshotInstances) {
-
-				// Get the Event Instance name
+				// Get the Event Instance name and append it. Much simpler!
 				std::string snapName = snapshot.first;
-
-				// Get the related Event Description
-				FMOD::Studio::EventDescription* instDesc = nullptr;
-				snapshot.second->getDescription(&instDesc);
-
-				// Get the Event Description's name
-				std::vector<char> pathchars(256);
-				char* pathptr = pathchars.data();
-				int retrieved = 0;
-				FMOD_RESULT result = instDesc->getPath(pathptr, 256, &retrieved);
-				if (result != FMOD_OK) {
-					if (result == FMOD_ERR_TRUNCATED) {
-						pathchars.resize(retrieved);
-						pathptr = pathchars.data();
-					}
-					else { errorCheckFMODSoft(result); }
-				}
-
-				std::string instDescName(pathptr);							// Make string, then format
-				instDescName = truncateEventPath(instDescName);
-				snapshotsList.append("- " + snapName + "\n");	// Append the event Instance name
+				snapshotsList.append("- " + snapName + "\n");
 			}
 			listEmbed.add_field("Active Snapshots", snapshotsList);
 		}
@@ -755,6 +732,19 @@ static void list(const dpp::slashcommand_t& event) {
 		bool showFaders = false;
 		if (count > 0) {
 			showFaders = std::get<bool>(event.get_parameter(event.command.get_command_interaction().options[0].name));
+		}
+
+		// Files
+		if (pChannels.empty()) {
+			std::cout << "   No current sounds playing from files." << std::endl;
+			listEmbed.add_field("Active Sounds", "- No actively playing sounds.");
+		}
+		else {
+			std::string soundsList = "";
+			for (auto& entry : pChannels) {
+				soundsList.append("- " + entry.first + " (" + entry.second.soundNiceName + ")\n");
+			}
+			listEmbed.add_field("Active Sounds", soundsList);
 		}
 
 		// Busses and VCAs
@@ -1127,7 +1117,8 @@ static void play_file(const dpp::slashcommand_t& event, const std::string& sound
 		pCoreSystem->playSound(newSound, pCoreGroup, true, &newChannel);
 		newChannel->setCallback(soundChannelControlCallback);
 		newChannel->setPaused(false);
-		pChannels.insert({ newName, newChannel });
+		sessionSoundInstance newSoundInstance = { .soundNiceName = soundToPlay, .channel = newChannel };
+		pChannels.insert({ newName, newSoundInstance });
 
 		std::cout << "Playing Sound: " << soundToPlay << " with Instance name: " << newName << std::endl;
 		event.reply(dpp::message("Playing Sound: " + soundToPlay + " with Instance name: " + newName).set_flags(dpp::m_ephemeral));
@@ -1353,8 +1344,9 @@ static void stopall_snapshots() {
 static void stopall_files() {
 	std::cout << "Stopping Files...";
 	for (auto& entry : pChannels) {
-		entry.second->stop();
+		entry.second.channel->stop();
 	}
+	pChannels.clear();
 	std::cout << "Done." << std::endl;
 }
 
@@ -2069,7 +2061,7 @@ int main() {
 					}
 
 					// For each File Instance
-					for (std::map<std::string, FMOD::Channel*>::iterator it = pChannels.begin(); it != pChannels.end(); ++it) {
+					for (std::map<std::string, sessionSoundInstance>::iterator it = pChannels.begin(); it != pChannels.end(); ++it) {
 						std::string pathOption = it->first;
 						if ((pathOption.find(uservalue, 0) != std::string::npos) || (uservalue == "")) {
 							eventInstanceList.add_autocomplete_choice(dpp::command_option_choice(pathOption, pathOption));
@@ -2123,7 +2115,7 @@ int main() {
 						}
 					}
 					// and For each File instance
-					for (std::map<std::string, FMOD::Channel*>::iterator it = pChannels.begin(); it != pChannels.end(); ++it) {
+					for (std::map<std::string, sessionSoundInstance>::iterator it = pChannels.begin(); it != pChannels.end(); ++it) {
 						std::string pathOption = it->first;
 						if ((pathOption.find(uservalue, 0) != std::string::npos) || (uservalue == "")) {
 							stoppableList.add_autocomplete_choice(dpp::command_option_choice(pathOption, pathOption));

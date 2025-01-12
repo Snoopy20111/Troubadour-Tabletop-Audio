@@ -3,7 +3,10 @@ All Sound Effects were created and/or edited by Logan Hardin, using appropriatel
 #########################
 Music Attributions:
 
-Chaconne [in F Major], by Jan Antonin Losy (1650-1721). Performed by Michael Podolski, Lute. Accessed from MusOpen.org. Redistributed under Public Domain Mark 1.0 Universal license. https://musopen.org/music/45671-chaconne/
+Chaconne [in F Major] by Jan Antonin Losy (1650-1721). Performed by Michael Podolski, Lute. Accessed from MusOpen.org. Redistributed under Public Domain Mark 1.0 Universal license. https://musopen.org/music/45671-chaconne/
+
+Morrowind Dance Mix by setokaibarocket. Remix and midi resequence of Nerevar Rising by Jeremy Soule and Bethesda Studios for The Elder Scrolls III: Morrowind (c). Accessed from VGMusic.com, where it is linked as "Main (Dance Remix)."
+http://www.vgmusic.com/music/console/microsoft/xbox/
 
 Blackwaterside (Trad.) by Javolenus (c) copyright 2024 Licensed under a Creative Commons Attribution Noncommercial (4.0) license. https://dig.ccmixter.org/files/Javolenus/68249
 

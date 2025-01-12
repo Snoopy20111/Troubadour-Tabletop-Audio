@@ -98,6 +98,11 @@ namespace trbdrUtils {
 		std::vector<FMOD_STUDIO_PARAMETER_DESCRIPTION> params;
 	};
 
+	struct sessionSoundInstance {
+		std::string soundNiceName;
+		FMOD::Channel* channel = nullptr;
+	};
+
 	// Struct to handle Channel Control objects in callbacks and split between them
 	// Ideally this would be a Union or std::variant, but I can't figure out how to properly use those
 	struct coreCallbackChannelControlObj {
