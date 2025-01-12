@@ -1026,7 +1026,7 @@ static void playable(const dpp::slashcommand_t& event) {
 }
 
 // Play Sub-Command: create a new Instance of an event.
-static void play_event(const dpp::slashcommand_t& event, std::string eventToPlay, std::string inputName) {
+static void play_event(const dpp::slashcommand_t& event, const std::string& eventToPlay, const std::string& inputName) {
 
 	std::string newName = inputName;
 	std::string cleanName = newName;
@@ -1067,7 +1067,7 @@ static void play_event(const dpp::slashcommand_t& event, std::string eventToPlay
 }
 
 // Play Sub-Command: create a new Instance of a snapshot.
-static void play_snapshot(const dpp::slashcommand_t& event, std::string eventToPlay, std::string inputName) {
+static void play_snapshot(const dpp::slashcommand_t& event, const std::string& eventToPlay, const std::string& inputName) {
 
 	std::string newName = inputName;
 	std::string cleanName = newName;
@@ -1104,7 +1104,7 @@ static void play_snapshot(const dpp::slashcommand_t& event, std::string eventToP
 }
 
 // Play Sub-Command: create a new Channel and play a sound through it immediately.
-static void play_file(const dpp::slashcommand_t& event, std::string soundToPlay, std::string inputName, bool isLoop = false) {
+static void play_file(const dpp::slashcommand_t& event, const std::string& soundToPlay, const std::string& inputName, const bool& isLoop) {
 	//Determine Channel and Instance name
 	std::string newName = inputName;
 	std::string cleanName = newName;
@@ -1115,7 +1115,6 @@ static void play_file(const dpp::slashcommand_t& event, std::string soundToPlay,
 	}
 
 	FMOD::Sound* newSound = nullptr;
-
 	if (pSounds.contains(soundToPlay)) {
 		newSound = pSounds.at(soundToPlay);
 	}
@@ -1164,7 +1163,7 @@ static void play(const dpp::slashcommand_t& event) {
 		event.reply(dpp::message("Play " + subcommand.name + " command sent without enough arguments. Bad juju!").set_flags(dpp::m_ephemeral));
 		return;
 	}
-	else if (subcount > 2) {
+	else if (((subcommand.name == "file") && (subcount > 3)) || (subcount > 2)) {
 		std::cout << "Play " << subcommand.name << " command arrived with too many arguments. Bad juju!" << std::endl;
 		event.reply(dpp::message("Play " + subcommand.name + " command sent with too many arguments. Bad juju!").set_flags(dpp::m_ephemeral));
 		return;
@@ -1185,7 +1184,13 @@ static void play(const dpp::slashcommand_t& event) {
 	// Divert to the proper subcommand
 	if (subcommand.name == "event") { play_event(event, eventToPlay, inputName); }
 	else if (subcommand.name == "snapshot") { play_snapshot(event, eventToPlay, inputName); }
-	else if (subcommand.name == "file") { play_file(event, eventToPlay, inputName); }
+	else if (subcommand.name == "file") {
+		// Extra logic for Play File cmd's extra isLoop parameter
+		bool isLoop = false;
+		if (subcommand.options[1].type == dpp::co_boolean) { isLoop = std::get<bool>(event.get_parameter(subcommand.options[1].name)); }
+		else if (subcommand.options[2].type == dpp::co_boolean) { isLoop = std::get<bool>(event.get_parameter(subcommand.options[2].name)); }
+		play_file(event, eventToPlay, inputName, isLoop);
+	}
 	else { event.reply(dpp::message("Used Play event without subcommand. This is a bug and not supported.").set_flags(dpp::m_ephemeral)); }
 }
 
@@ -1367,7 +1372,7 @@ static void stopall(const dpp::slashcommand_t& event) {
 }
 
 // Param Sub-Command: Sets parameter with given name and value, globally.
-static void param_global(const dpp::slashcommand_t& event, dpp::command_data_option subcommand) {
+static void param_global(const dpp::slashcommand_t& event, const dpp::command_data_option& subcommand) {
 	int count = (int)subcommand.options.size();
 	if (count < 2) {
 		std::cout << "Set Parameter command arrived with no arguments. Bad juju!" << std::endl;
@@ -1392,18 +1397,17 @@ static void param_global(const dpp::slashcommand_t& event, dpp::command_data_opt
 }
 
 // Param Sub-Command: Sets parameter with given name and value on given Event Instance.
-static void param_event(const dpp::slashcommand_t& event, dpp::command_data_option subcommand) {
-	dpp::command_interaction cmd_data = event.command.get_command_interaction();
-	int count = (int)cmd_data.options.size();
+static void param_event(const dpp::slashcommand_t& event, const dpp::command_data_option& subcommand) {
+	int count = (int)subcommand.options.size();
 	if (count < 3) {
 		std::cout << "Set Parameter command arrived with no arguments. Bad juju!" << std::endl;
 		event.reply(dpp::message("Set Parameter command sent with no arguments. Bad juju!").set_flags(dpp::m_ephemeral));
 	}
 
 	std::cout << "Set Parameter command issued." << std::endl;
-	std::string instanceName = std::get<std::string>(event.get_parameter(cmd_data.options[0].name));
-	std::string paramName = std::get<std::string>(event.get_parameter(cmd_data.options[1].name));
-	float value = (float)std::get<double>(event.get_parameter(cmd_data.options[2].name));
+	std::string instanceName = std::get<std::string>(event.get_parameter(subcommand.options[0].name));
+	std::string paramName = std::get<std::string>(event.get_parameter(subcommand.options[1].name));
+	float value = (float)std::get<double>(event.get_parameter(subcommand.options[2].name));
 
 	std::cout << "Instance Name: " << instanceName << std::endl;
 	if (pEventInstances.find(instanceName) == pEventInstances.end()) {
@@ -1539,7 +1543,7 @@ static void quit(const dpp::slashcommand_t& event) {
 }
 
 // Lists all authorized users (usernames if known and definitely their snowflake ID's).
-static void user_list(const dpp::slashcommand_t& event, dpp::command_data_option subcommand) {
+static void user_list(const dpp::slashcommand_t& event/*, const dpp::command_data_option& subcommand*/) {
 	std::set<dpp::snowflake> authorizedList = getAuthorizedUsers();
 	dpp::embed userListEmbed = basicEmbed;
 
@@ -1564,7 +1568,7 @@ static void user_list(const dpp::slashcommand_t& event, dpp::command_data_option
 }
 
 // Adds an authorized user to the list.
-static void user_add(const dpp::slashcommand_t& event, dpp::command_data_option subcommand) {
+static void user_add(const dpp::slashcommand_t& event, const dpp::command_data_option& subcommand) {
 
 	int subcount = (int)subcommand.options.size();
 	if (subcount < 1) {
@@ -1606,7 +1610,7 @@ static void user_add(const dpp::slashcommand_t& event, dpp::command_data_option 
 }
 
 // Removes an authorized user from the list.
-static void user_remove(const dpp::slashcommand_t& event, dpp::command_data_option subcommand) {
+static void user_remove(const dpp::slashcommand_t& event, const dpp::command_data_option& subcommand) {
 
 	dpp::snowflake snowflakeToAdd = std::get<dpp::snowflake>(subcommand.options[0].value);
 	dpp::user* userToAdd = dpp::find_user(snowflakeToAdd);
@@ -1655,7 +1659,7 @@ static void user(const dpp::slashcommand_t& event) {
 
 	dpp::command_data_option subcommand = cmd_data.options[0];
 
-	if (subcommand.name == "list") { user_list(event, subcommand); }
+	if (subcommand.name == "list") { user_list(event/*, subcommand*/); }
 	else if (subcommand.name == "add") { user_add(event, subcommand); }
 	else if (subcommand.name == "remove") { user_remove(event, subcommand); }
 }
@@ -1865,6 +1869,7 @@ int main() {
 			dpp::command_option playFileSubCmd = dpp::command_option(dpp::co_sub_command, "file", "Play a loose audio file.");
 			playFileSubCmd.add_option(dpp::command_option(dpp::co_string, "file-name", "The file to play.", true).set_auto_complete(true));
 			playFileSubCmd.add_option(dpp::command_option(dpp::co_string, "instance-name", "Optional: name used for interactions with this instance of the sound. Defaults to the filename.", false));
+			playFileSubCmd.add_option(dpp::command_option(dpp::co_boolean, "is-loop", "Optional: whether to loop the file when it reaches the end. Default is False.", false));
 			commands[2].add_option(playFileSubCmd);
 
 			// Pause options
