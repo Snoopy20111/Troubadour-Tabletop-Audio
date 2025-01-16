@@ -79,6 +79,8 @@ namespace trbdrUtils {
 	// Returns a decibel volume level as a string (with the dB units), for display.
 	std::string volumeString(float inputValue);
 
+	void endProgram(const int& exitCode);
+
 	// Returns a random signed floating point value.
 	/*float randomFloat();*/
 

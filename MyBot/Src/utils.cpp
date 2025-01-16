@@ -58,7 +58,7 @@ namespace trbdrUtils {
 			std::cout << "\n\n";
 			printf("FMOD Error! (%d) %s\n", result, FMOD_ErrorString(result));
 			std::cout << "\n" << std::endl;
-			exit(result);								//Gives the FMOD error code again
+			endProgram(result);			//Gives the FMOD error code again
 		}
 	}
 
@@ -79,7 +79,7 @@ namespace trbdrUtils {
 		if (myfile.is_open()) { myfile >> token; }
 		else {
 			std::cout << "Token config file not opened properly. Ensure it's at the correct location and isn't corrupted!";
-			exit(-1);
+			endProgram(-1);
 		}
 		myfile.close();
 		return token;
@@ -125,7 +125,7 @@ namespace trbdrUtils {
 		}
 		else {
 			std::cout << "Owner.config file unable to be opened for reading." << std::endl;
-			//exit(-1);
+			endProgram(-1);
 		}
 		return authUsers;
 	}
@@ -378,6 +378,12 @@ namespace trbdrUtils {
 		output.append(" dB");		// Full Scale? I think?
 
 		return output;
+	}
+
+	void endProgram(const int& exitCode) {
+		std::cout << "Press ENTER to fully terminate the program." << std::endl;
+		getchar();
+		exit(exitCode);
 	}
 
 	// Returns a random signed floating point value

@@ -2238,7 +2238,7 @@ int main() {
 		std::cout << "\n\nException " << ex.code() << " when starting Bot:\n    " << ex.what() << "\n";
 		std::cout << "    Please also make sure your token.txt file has your Bot Token in it, and that the Token is correct!\n";
 		releaseFMOD();
-		exit(ex.code());
+		endProgram(ex.code());
 	}
 
 	/* Program loop */
@@ -2272,5 +2272,6 @@ int main() {
 
 	std::cout << std::endl;
 
+	endProgram(0);
 	return 0;
 }
