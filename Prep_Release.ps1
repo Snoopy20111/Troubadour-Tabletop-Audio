@@ -47,6 +47,7 @@ Function PrepRelease {
 	# Copy ReadMe.txt and Credits.txt from their locations to Packages\[versioning + arch]
 	Copy-Item -Path ".\MyBot\Setup Instructions.txt" -Destination $Package_TargetPath
 	Copy-Item -Path "Credits.txt" -Destination $Package_TargetPath
+	Copy-Item -Path "LICENSE" -Destination $Package_TargetPath
 
     # Delete and re-create new .config files, to avoid the .example nonsense for users
     Remove-Item "$Package_TargetPath\users.config"
