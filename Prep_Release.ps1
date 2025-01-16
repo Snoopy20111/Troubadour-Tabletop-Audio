@@ -31,7 +31,7 @@ Function PrepRelease {
 	
 	# Delete PDB file from Release builds, users won't need that
 	if ($Flavor -eq "_Release") {
-		Remove-Item "$Package_TargetPath\SessionMusicBot.pdb"
+		Remove-Item "$Package_TargetPath\Troubadour.pdb"
 	}
 	
 	# Copy FMOD_Proj folder to Packages\[version + arch]\FMOD_Proj
