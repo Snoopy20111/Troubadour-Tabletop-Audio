@@ -1687,8 +1687,10 @@ static void init() {
 
 	// file paths
 	exePath = getExecutableFolder();
-	banksDirPath = exePath / ("soundbanks");		// Append method would affect exePath (bad)
-	soundsDirPath = exePath / ("soundfiles");		// Slash operator concatenates paths
+	// Append method would affect exePath (bad), slash operator concatenates paths, apparently
+	// Including "Desktop" in banksDirPath because bank builds always include platform folders
+	banksDirPath = exePath / ("soundbanks") / ("Desktop");
+	soundsDirPath = exePath / ("soundfiles");
 
 	// FMOD Init
 	std::cout << "Initializing FMOD...";
