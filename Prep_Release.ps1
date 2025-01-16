@@ -1,9 +1,10 @@
 cd $PSScriptRoot
 
-$BuildDate = Get-Date -Format "yy.MM.dd.HH.mm.ss"
+$BuildDate = Get-Date -Format "yy.MM.dd"
+$BuildDateLong = Get-Date -Format "yy.MM.dd.HH.mm.ss"
 $CurrentVersion = "v0.1."
-$OIMVersionNum = $CurrentVersion + $BuildDate
-$Package_FolderPath = ".\Packages\" + $OIMVersionNum + "\SessionMusicBot_" + $OIMVersionNum
+$OIMVersionNum = $CurrentVersion + $BuildDateLong
+$Package_FolderPath = ".\Packages\" + $OIMVersionNum + "\SessionMusicBot_" + $CurrentVersion + $BuildDate
 $FMODProj_FolderPath = "\FMOD_Proj"
 
 Function PrepRelease {
