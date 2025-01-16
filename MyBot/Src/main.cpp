@@ -449,7 +449,8 @@ static void indexStudio() {
 			for (int i = 0; i < descParamCount; i++) {
 				FMOD_STUDIO_PARAMETER_DESCRIPTION parameter;
 				newSessionEventDesc.description->getParameterDescriptionByIndex(i, &parameter);
-				if (parameter.type == FMOD_STUDIO_PARAMETER_GAME_CONTROLLED) {
+				// If not built-in AND not Read-Only, list it
+				if (parameter.type == FMOD_STUDIO_PARAMETER_GAME_CONTROLLED && ((parameter.flags % 2) != 1)) {
 					std::string paramName(parameter.name);
 					std::string coutString = "      ";
 
@@ -658,6 +659,9 @@ static void list(const dpp::slashcommand_t& event) {
 				if (!inst.second.params.empty()) {			// If this Instance has any parameters associated...
 					std::string paramOutString = " - source event: " + instDescName + "\n";	// add in the event name
 					for (unsigned int i = 0; i < inst.second.params.size(); i++) {
+						// Skip this parameter if it's Read-Only
+						if ((inst.second.params[i].flags % 2) == 1) { continue; }
+
 						// get current parameter name & value
 						std::string paramName(inst.second.params[i].name);
 						float paramVal = 0; float paramFinalVal = 0;

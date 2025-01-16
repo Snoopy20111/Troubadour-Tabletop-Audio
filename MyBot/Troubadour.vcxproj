@@ -123,8 +123,8 @@
       <AdditionalLibraryDirectories>C:\Program Files %28x86%29\FMOD SoundSystem\FMOD Studio API Windows\api\core\lib\x86;C:\Program Files %28x86%29\FMOD SoundSystem\FMOD Studio API Windows\api\studio\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>for /r "$(MSBuildProjectDirectory)\soundbanks" %%D in (*) do xcopy /y /d /f /i "%%D" "$(OutDir)soundbanks\"
-xcopy /y /d /f /i "$(MSBuildProjectDirectory)\soundfiles" "$(OutDir)soundfiles"
+      <Command>xcopy /y /f /i /s "$(MSBuildProjectDirectory)\soundbanks" "$(OutDir)soundbanks"
+xcopy /y /f /i /s "$(MSBuildProjectDirectory)\soundfiles" "$(OutDir)soundfiles"
 copy /y "$(MSBuildProjectDirectory)\token.config" "$(OutDir)token.config"
 copy /y "$(MSBuildProjectDirectory)\users.config" "$(OutDir)users.config"</Command>
     </PostBuildEvent>
@@ -174,8 +174,8 @@ copy /y "C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\stu
       <AdditionalLibraryDirectories>C:\Program Files %28x86%29\FMOD SoundSystem\FMOD Studio API Windows\api\core\lib\x86;C:\Program Files %28x86%29\FMOD SoundSystem\FMOD Studio API Windows\api\studio\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>for /r "$(MSBuildProjectDirectory)\soundbanks" %%D in (*) do xcopy /y /d /f /i "%%D" "$(OutDir)soundbanks\"
-xcopy /y /d /f /i "$(MSBuildProjectDirectory)\soundfiles" "$(OutDir)soundfiles"
+      <Command>xcopy /y /f /i /s "$(MSBuildProjectDirectory)\soundbanks" "$(OutDir)soundbanks"
+xcopy /y /f /i /s "$(MSBuildProjectDirectory)\soundfiles" "$(OutDir)soundfiles"
 copy /y "$(MSBuildProjectDirectory)\token.config" "$(OutDir)token.config"
 copy /y "$(MSBuildProjectDirectory)\users.config" "$(OutDir)users.config"</Command>
     </PostBuildEvent>
@@ -221,8 +221,8 @@ copy /y "C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\stu
       <AdditionalLibraryDirectories>C:\Program Files %28x86%29\FMOD SoundSystem\FMOD Studio API Windows\api\core\lib\x64;C:\Program Files %28x86%29\FMOD SoundSystem\FMOD Studio API Windows\api\studio\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>for /r "$(MSBuildProjectDirectory)\soundbanks" %%D in (*) do xcopy /y /d /f /i "%%D" "$(OutDir)soundbanks\"
-xcopy /y /d /f /i "$(MSBuildProjectDirectory)\soundfiles" "$(OutDir)soundfiles"
+      <Command>xcopy /y /f /i /s "$(MSBuildProjectDirectory)\soundbanks" "$(OutDir)soundbanks"
+xcopy /y /f /i /s "$(MSBuildProjectDirectory)\soundfiles" "$(OutDir)soundfiles"
 copy /y "$(MSBuildProjectDirectory)\token.config" "$(OutDir)token.config"
 copy /y "$(MSBuildProjectDirectory)\users.config" "$(OutDir)users.config"</Command>
     </PostBuildEvent>
@@ -270,8 +270,8 @@ copy /y "C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\stu
       <AdditionalLibraryDirectories>C:\Program Files %28x86%29\FMOD SoundSystem\FMOD Studio API Windows\api\core\lib\x64;C:\Program Files %28x86%29\FMOD SoundSystem\FMOD Studio API Windows\api\studio\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>for /r "$(MSBuildProjectDirectory)\soundbanks" %%D in (*) do xcopy /y /d /f /i "%%D" "$(OutDir)soundbanks\"
-xcopy /y /d /f /i "$(MSBuildProjectDirectory)\soundfiles" "$(OutDir)soundfiles"
+      <Command>xcopy /y /f /i /s "$(MSBuildProjectDirectory)\soundbanks" "$(OutDir)soundbanks"
+xcopy /y /f /i /s "$(MSBuildProjectDirectory)\soundfiles" "$(OutDir)soundfiles"
 copy /y "$(MSBuildProjectDirectory)\token.config" "$(OutDir)token.config"
 copy /y "$(MSBuildProjectDirectory)\users.config" "$(OutDir)users.config"</Command>
     </PostBuildEvent>
