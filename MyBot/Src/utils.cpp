@@ -76,9 +76,30 @@ namespace trbdrUtils {
 		// Read from .config (text) file and grab the token
 		std::ifstream myfile("token.config");
 		std::string token;
-		if (myfile.is_open()) { myfile >> token; }
+
+		std::string line;
+
+		if (myfile.is_open()) {
+			// Check all the characters for anything invalid
+			// Currently that's only non-numbers and non-null
+			char ch; bool isValid = true;
+			for (unsigned int i = 0; i < line.length(); i++) {
+				ch = line.at(i);
+				//todo: if null terminator, not just null
+				//if (!std::isdigit(ch) && ch != NULL) {
+				if (ch != NULL && (std::iscntrl(ch) || std::isspace(ch))) {
+					isValid = false;
+					std::cout << "Invalid character: " << ch << " in token.config" << "\n";
+				}
+			}
+
+			if (isValid) {
+				myfile >> token;
+			}
+			std::cout << std::endl;
+		}
 		else {
-			std::cout << "Token config file not opened properly. Ensure it's at the correct location and isn't corrupted!";
+			std::cout << "Token config file not opened properly. Ensure it's at the correct location and isn't corrupted!\n";
 			endProgram(-1);
 		}
 		myfile.close();
@@ -381,7 +402,7 @@ namespace trbdrUtils {
 	}
 
 	void endProgram(const int& exitCode) {
-		std::cout << "Press ENTER to fully terminate the program." << std::endl;
+		std::cout << "\nPress ENTER to fully terminate the program." << std::endl;
 		getchar();
 		exit(exitCode);
 	}

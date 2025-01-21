@@ -1660,6 +1660,27 @@ static void user(const dpp::slashcommand_t& event) {
 	else if (subcommand.name == "remove") { user_remove(event, subcommand); }
 }
 
+// Exit function to release FMOD resources before quitting the program
+static void releaseFMOD() {
+	// Stop everything, just in case
+	stopall();
+
+	// Remove DSP from master channel group, and release the DSP
+	pMasterBusGroup->removeDSP(mCaptureDSP);
+	mCaptureDSP->release();
+
+	// Unload and release any FMOD Core sounds
+	for (auto& sound : pSounds) {
+		sound.second->release();
+	}
+	pSounds.clear();
+
+	// Unload and release FMOD Studio System
+	// This should unload and release the connected Core objects too
+	pSystem->unloadAll();
+	pSystem->release();
+}
+
 // Callback function called when bot's Application object is acquired
 static void onBotAppGet(const dpp::confirmation_callback_t& callbackObj) {
 	if (!callbackObj.is_error()) {
@@ -1671,8 +1692,10 @@ static void onBotAppGet(const dpp::confirmation_callback_t& callbackObj) {
 
 	}
 	else {
-		std::cout << "Error getting bot application object: " << callbackObj.get_error().human_readable << std::endl;
-		exit(0);
+		if (!exitRequested) {
+			exitRequested = true;
+			std::cout << "Error getting bot application object: " << callbackObj.get_error().human_readable << std::endl;
+		}
 	}
 }
 
@@ -1779,27 +1802,6 @@ static void init_session() {
 	std::cout << std::endl;
 }
 
-// Exit function to release FMOD resources before quitting the program
-static void releaseFMOD() {
-	// Stop everything, just in case
-	stopall();
-
-	// Remove DSP from master channel group, and release the DSP
-	pMasterBusGroup->removeDSP(mCaptureDSP);
-	mCaptureDSP->release();
-
-	// Unload and release any FMOD Core sounds
-	for (auto& sound : pSounds) {
-		sound.second->release();
-	}
-	pSounds.clear();
-
-	// Unload and release FMOD Studio System
-	// This should unload and release the connected Core objects too
-	pSystem->unloadAll();
-	pSystem->release();
-}
-
 int main() {
 
 	init();
@@ -1808,6 +1810,17 @@ int main() {
 	std::cout << "Starting Bot...\n" << std::endl;
 
 	/* Create bot cluster */
+	std::string token = getBotToken();
+	if (token == "" && !exitRequested) {
+		exitRequested = true;
+		std::cout << "ERROR! Token value is empty. Please make sure to fill in token.txt with your Discord Bot Token.\n";
+		std::cout << "If you don't have one, you can follow the directions on the following page to create a bot and token:\n"
+			<< "    https://dpp.dev/creating-a-bot-application.html\n" << std::endl;
+		endProgram(0);
+		return 0;	//endProgram should call exit(), but just in case
+	}
+
+
 	dpp::cluster bot(getBotToken());
 
 	/* Output simple log messages to stdout */
@@ -2235,10 +2248,14 @@ int main() {
 	/* Start the bot */
 	try { bot.start(); }
 	catch (dpp::exception ex) {
-		std::cout << "\n\nException " << ex.code() << " when starting Bot:\n    " << ex.what() << "\n";
-		std::cout << "    Please also make sure your token.txt file has your Bot Token in it, and that the Token is correct!\n";
-		releaseFMOD();
-		endProgram(ex.code());
+		if (!exitRequested) {
+			std::cout << "\n\nERROR! Exception " << ex.code() << " when starting Bot:\n    " << ex.what() << "\n";
+			std::cout << "    Please also make sure your token.txt file has your Bot Token in it, and that the Token is correct!\n";
+			std::cout << "If you don't have a token, you can follow the directions on the following page to create a bot and token:\n"
+				<< "    https://dpp.dev/creating-a-bot-application.html\n" << std::endl;
+			releaseFMOD();
+			endProgram(ex.code());
+		}
 	}
 
 	/* Program loop */
@@ -2273,5 +2290,5 @@ int main() {
 	std::cout << std::endl;
 
 	endProgram(0);
-	return 0;
+	return 1;
 }
