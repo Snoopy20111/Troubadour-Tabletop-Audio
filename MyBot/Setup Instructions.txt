@@ -13,7 +13,7 @@ Here's a quick guide to setting up this bot. It's not too difficult, but not as 
 3) Generate a Token.
 	- Click the new button that says "Reset Token." You will likely need to enter your password again or use 2-Factor-Authentication.
 	- You'll be given a token. DO NOT SHARE THIS, it is essentially the keys to the related bot account!
-	- In your Session Music Bot's folder (wherever you put it), find the file token.config. Open it in a text editor like Notepad, and delete any contents.
+	- In your Troubadour folder (wherever you put it), find the file token.config. Open it in a text editor like Notepad, and delete any contents.
 	- Copy and Paste your token here. Don't add any spaces or other characters, or the bot will fail to work.
 	- Save your token.config file.
 
@@ -26,7 +26,7 @@ Here's a quick guide to setting up this bot. It's not too difficult, but not as 
 
 6) Start the program.
 	- Go to the server in your Discord client which you invited the bot to. You should see it in the list of users, named with the username you set in step 2.
-	- Run SessionMusicBot.exe. A console output window should appear, and in Discord the bot will appear to come online.
+	- Run Troubadour.exe. A console output window should appear, and in Discord the bot will appear to come online.
 
 That's it! From there you can start giving it slash commands, authoring events from the included FMOD Studio project for it, and playing that audio for everybody present. To close the bot, I recommend using the /quit command, but you can also just close the console window and kick the bot from any Voice Chats it's in.
 
